@@ -331,7 +331,7 @@ window.Specs = {
 		"title": "Fonts",
 		"properties": {
 			"font-stretch": ["normal", "ultra-condensed", "extra-condensed", "condensed", "semi-condensed", "semi-expanded", "expanded", "extra-expanded", "ultra-expanded"],
-			"font-size-adjust": ["none", ".5"],
+			"font-size-adjust": ["none", "auto", ".5"],
 			"font-synthesis": ["none", "weight", "style", "weight style", "style weight"],
 			"font-kerning": ["auto", "normal", "none"],
 			"font-variant-position": ["normal", "sub", "super"],
