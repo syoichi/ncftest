@@ -434,6 +434,7 @@ window.Specs = {
 				"width",
 				"padding"
 			],
+			"initial": "initial",
 			"rem": "5rem",
 			"ch": "5ch",
 			"vw": "5vw",
