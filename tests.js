@@ -313,7 +313,7 @@ window.Specs = {
 	"css-text-decor-3": {
 		"title": "Text Decoration",
 		"properties": {
-			"text-decoration-line": ["none", "underline", "overline", "line-through", "underline overline"],
+			"text-decoration-line": ["none", "underline", "overline", "line-through", "blink", "underline overline"],
 			"text-decoration-color": "white",
 			"text-decoration-style": ["solid", "double", "dotted", "dashed", "wavy"],
 			"text-decoration": "underline dotted green",
