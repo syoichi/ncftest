@@ -188,6 +188,13 @@ window.Specs = {
 		}
 	},
 	
+	"css3-conditional": {
+		"title": "Conditional Rules",
+		"@rules": {
+			"@supports": "@supports (width:1px)"
+		}
+	},
+	
 	"css3-ui": {
 		"title": "Basic User Interface",
 		"properties": {
