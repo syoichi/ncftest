@@ -511,5 +511,20 @@ window.Specs = {
 			"shape-margin": ["0", "1px", "10em"],
 			"shape-padding": ["0", "1px", "10em"]
 		}
+	},
+	
+	"css3-regions": {
+		"title": "Regions",
+		"properties": {
+			"flow-into": ["table-content", "none", "inherit"],
+			"flow-from": ["thread", "none", "inherit"],
+			"break-before": ["region", "avoid-region"],
+			"break-after": ["region", "avoid-region"],
+			"break-inside": "avoid-region",
+			"region-fragment": ["auto", "break"]
+		},
+		"@rules": {
+			"@region": "@region div"
+		}
 	}
 };
