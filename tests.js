@@ -614,5 +614,49 @@ window.Specs = {
 			],
 			"grid-auto-flow": ["none", "rows", "columns"]
 		}
+	},
+	
+	"css3-layout": {
+		"title": "Grid Template Layout",
+		"properties": {
+			"grid-template": "\"****\" \"****\" \"****\"",
+			"grid-columns": [
+				"auto", "1px", "10%", "*", "1fr",
+				"minmax(1px , 10px)", "min-content", "max-content", "fit-content",
+				"* * * *"
+			],
+			"grid-rows": [
+				"auto", "1px", "10%", "*", "1fr",
+				"minmax(1px , 10px)", "min-content", "max-content", "fit-content",
+				"* * * *"
+			],
+			"grid": ["none"].concat(
+				[
+					"1px", "10%", "*", "1fr", "minmax(1px , 10px)",
+					"min-content", "max-content", "fit-content", "* * * *"
+				].and(["\"a b c\""]),
+				"\"a b c\"",
+				["\"a b c\""].and([
+					"1px", "10%", "*", "1fr", "minmax(1px , 10px)",
+					"min-content", "max-content", "fit-content", "* * * *"
+				]),
+				"10% \"d e f\" minmax(1px , 10px)",
+				"10% \"d e f\" minmax(1px , 10px) \"g h i\" min-content",
+				"10% \"d e f\" \"g h i\" max-content",
+				"\"a b\" \"c d\"", "* 10em \"a b c\" \"a b d\" 4em"
+			),
+			"flow": ["auto", "p1", "\"initial\"", "*", "same"],
+			"grid-area": ["same", "next"].times(2).concat(
+				["same", "next"].and(["1"]), ["2"].and(["same", "next"]),
+				["same", "next"].times(2).and(["3 4"]),
+				["same", "next"].and(["5"]).and(["6 7"]),
+				["8"].and(["same", "next"]).and(["9 10"])
+			),
+			"chains": ["none", "a", "b c", "d, e", "f g, h i", "j, k l", "m n, o p", "@ a b c d e, f g h i j k"]
+		},
+		"selectors": {
+			"::slot()": "body::slot(a)",
+			"::flow()": "p::flow(b)"
+		}
 	}
 };
