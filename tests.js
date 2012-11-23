@@ -526,5 +526,13 @@ window.Specs = {
 		"@rules": {
 			"@region": "@region div"
 		}
+	},
+	
+	"css3-break": {
+		"title": "Fragmentation",
+		"properties": {
+			"break-before": ["any", "recto", "verso"],
+			"break-after": ["any", "recto", "verso"]
+		}
 	}
 };
