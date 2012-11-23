@@ -500,6 +500,36 @@ window.Specs = {
 		}
 	},
 	
+	"css3-align": {
+		"title": "Box Alignment",
+		"properties": {
+			"justify-self": ["auto", "start", "end", "center"].concat(
+				["start", "end", "center"].and(['true']),
+				['true'].and(["start", "end", "center"])
+			),
+			"align-self": ["head", "foot"].concat(
+				["baseline", "head", "foot", "center", "stretch"].and(['true']),
+				['true'].and(["baseline", "head", "foot", "center", "stretch"])
+			),
+			"justify-content": ["auto", "start", "end", "left", "right"].concat(
+				["start", "end", "left", "right", "flex-start", "flex-end", "center", "space-between", "space-around"].and(['true']),
+				['true'].and(["start", "end", "left", "right", "flex-start", "flex-end", "center", "space-between", "space-around"])
+			),
+			"align-content": ["auto", "head", "foot", "baseline"].concat(
+				["head", "foot", "flex-start", "flex-end", "baseline", "center", "space-between", "space-around"].and(['true']),
+				['true'].and(["head", "foot", "flex-start", "flex-end", "baseline", "center", "space-between", "space-around"])
+			),
+			"justify-items": ["auto", "start", "center", "end"].concat(
+				["start", "center", "end"].and(['true']),
+				['true'].and(["start", "center", "end"])
+			),
+			"align-items": ["auto", "head", "foot"].concat(
+				["head", "foot", "flex-start", "flex-end", "center", "baseline", "stretch"].and(['true']),
+				['true'].and(["head", "foot", "flex-start", "flex-end", "center", "baseline", "stretch"])
+			)
+		}
+	},
+	
 	"css3-exclusions": {
 		"title": "Exclusions and Shapes",
 		"properties": {
