@@ -22,7 +22,7 @@ window.Specs = {
 			"border-image-outset": ["10px", "20", "10px 20", "10px 20px", "20 30", "2px 3px 4", "1 2px 3px 4"],
 			"border-image-repeat": ["stretch", "repeat", "round", "space"].times(1, 2),
 			"border-image": [
-				"url(foo.png) 10", "url(foo.png) 10%", "url(foo.png) 10% fill", 
+				"url(foo.png) 10", "url(foo.png) 10%", "url(foo.png) 10% fill",
 				"url(foo.png) 10 round", "url(foo.png) 10 stretch repeat",
 				"url(foo.png) 10 / 10px", "url(foo.png) 10 / 10% / 10px",
 				"url(foo.png) fill 10 / 10% / 10px", "url(foo.png) fill 10 / 10% / 10px space"
@@ -76,7 +76,7 @@ window.Specs = {
 				"image('sprites.png#xywh=10,30,60,20')",
 				"image('wavy.svg', 'wavy.png' , 'wavy.gif')",
 				"image('dark.png', black)", "image(green)"
-			],
+			]
 		},
 		"properties": {
 			"object-fit": ["fill", "contain", "cover", "none", "scale-down"],
@@ -108,28 +108,28 @@ window.Specs = {
 				":nth-child(even)", ":nth-child(odd)",
 				":nth-child(n)", ":nth-child(-n)", ":nth-child(0n)",
 				":nth-child(1)", ":nth-child(-1)", ":nth-child(0)",
-				":nth-child(n+1)",":nth-child(3n+1)", ":nth-child(3n + 1)",
+				":nth-child(n+1)", ":nth-child(3n+1)", ":nth-child(3n + 1)",
 				":nth-child(-n+1)", ":nth-child(-n-1)", ":nth-child(3n-1)"
 			],
 			":nth-last-child": [
 				":nth-last-child(even)", ":nth-last-child(odd)",
 				":nth-last-child(n)", ":nth-last-child(-n)", ":nth-last-child(0n)",
 				":nth-last-child(1)", ":nth-last-child(-1)", ":nth-last-child(0)",
-				":nth-last-child(n+1)",":nth-last-child(3n+1)", ":nth-last-child(3n + 1)",
+				":nth-last-child(n+1)", ":nth-last-child(3n+1)", ":nth-last-child(3n + 1)",
 				":nth-last-child(-n+1)", ":nth-last-child(-n-1)", ":nth-last-child(3n-1)"
 			],
 			":nth-of-type": [
 				":nth-of-type(even)", ":nth-of-type(odd)",
 				":nth-of-type(n)", ":nth-of-type(-n)", ":nth-of-type(0n)",
 				":nth-of-type(1)", ":nth-of-type(-1)", ":nth-of-type(0)",
-				":nth-of-type(n+1)",":nth-of-type(3n+1)", ":nth-of-type(3n + 1)",
+				":nth-of-type(n+1)", ":nth-of-type(3n+1)", ":nth-of-type(3n + 1)",
 				":nth-of-type(-n+1)", ":nth-of-type(-n-1)", ":nth-of-type(3n-1)"
 			],
 			":nth-last-of-type": [
 				":nth-last-of-type(even)", ":nth-last-of-type(odd)",
 				":nth-last-of-type(n)", ":nth-last-of-type(-n)", ":nth-last-of-type(0n)",
 				":nth-last-of-type(1)", ":nth-last-of-type(-1)", ":nth-last-of-type(0)",
-				":nth-last-of-type(n+1)",":nth-last-of-type(3n+1)", ":nth-last-of-type(3n + 1)",
+				":nth-last-of-type(n+1)", ":nth-last-of-type(3n+1)", ":nth-last-of-type(3n + 1)",
 				":nth-last-of-type(-n+1)", ":nth-last-of-type(-n-1)", ":nth-last-of-type(3n-1)"
 			],
 			":last-child": ":last-child",
@@ -138,7 +138,7 @@ window.Specs = {
 			":last-of-type": ":last-of-type",
 			":only-of-type": ":only-of-type",
 			":empty": ":empty",
-			":not()": [":not(*)", ":not(element)", ":not(.class):not(#id):not([attr]):not(:link)"],
+			":not()": [":not(*)", ":not(element)", ":not(.class):not(#id):not([attr]):not(:link)"]
 		}
 	},
 	
@@ -294,7 +294,7 @@ window.Specs = {
 			"transform-style": ["flat", "preserve-3d"],
 			"perspective": ["none", "600px"],
 			"perspective-origin": ["10px", "top", "top left", "50% 100%", "left 0%"],
-			"backface-visibility": ["visible", "hidden"],
+			"backface-visibility": ["visible", "hidden"]
 		}
 	},
 	
@@ -316,7 +316,7 @@ window.Specs = {
 			"hanging-punctuation": ["none", "first", "last", "force-end", "allow-end", "first last"]
 		}
 	},
-
+	
 	"css-text-decor-3": {
 		"title": "Text Decoration",
 		"properties": {
@@ -325,7 +325,7 @@ window.Specs = {
 			"text-decoration-style": ["solid", "double", "dotted", "dashed", "wavy"],
 			"text-decoration": "underline dotted green",
 			"text-decoration-skip": ["none", "objects", "spaces", "ink", "edges", "box-decoration", "objects edges"],
-			"text-underline-position": ["auto", "alphabetic","under", "left", "under right"],
+			"text-underline-position": ["auto", "alphabetic", "under", "left", "under right"],
 			"text-emphasis-style": ["none", "filled", "open dot", "circle", "double-circle", "triangle", "sesame", "'foo'"],
 			"text-emphasis-color": "green",
 			"text-emphasis": "open dot green",
@@ -486,17 +486,17 @@ window.Specs = {
 			"align-items": ["flex-start", "flex-end", "center", "baseline", "stretch"],
 			"align-self": ["flex-start", "flex-end", "center", "baseline", "stretch", "auto"],
 			"display": ["flex", "inline-flex"],
-			"flex": ["none","5 7 10%"],
-			"flex-basis": ["auto","1px"],
-			"flex-direction": ["row","row-reverse","column","column-reverse"],
+			"flex": ["none", "5 7 10%"],
+			"flex-basis": ["auto", "1px"],
+			"flex-direction": ["row", "row-reverse", "column", "column-reverse"],
 			"flex-flow": ["row", "row-reverse", "column", "column-reverse", "wrap", "wrap-reverse"],
-			"flex-grow": ["0","5"],
-			"flex-shrink": ["1","10"],
+			"flex-grow": ["0", "5"],
+			"flex-shrink": ["1", "10"],
 			"flex-wrap": ["nowrap", "wrap", "wrap-reverse"],
 			"justify-content": ["flex-start", "flex-end", "center", "space-between", "space-around"],
 			"min-height": ["auto"],
 			"min-width": ["auto"],
-			"order": ["0", "1"],
+			"order": ["0", "1"]
 		}
 	},
 	
@@ -504,28 +504,28 @@ window.Specs = {
 		"title": "Box Alignment",
 		"properties": {
 			"justify-self": ["auto", "start", "end", "center"].concat(
-				["start", "end", "center"].and(['true']),
-				['true'].and(["start", "end", "center"])
+				["start", "end", "center"].and(["true"]),
+				["true"].and(["start", "end", "center"])
 			),
 			"align-self": ["head", "foot"].concat(
-				["baseline", "head", "foot", "center", "stretch"].and(['true']),
-				['true'].and(["baseline", "head", "foot", "center", "stretch"])
+				["baseline", "head", "foot", "center", "stretch"].and(["true"]),
+				["true"].and(["baseline", "head", "foot", "center", "stretch"])
 			),
 			"justify-content": ["auto", "start", "end", "left", "right"].concat(
-				["start", "end", "left", "right", "flex-start", "flex-end", "center", "space-between", "space-around"].and(['true']),
-				['true'].and(["start", "end", "left", "right", "flex-start", "flex-end", "center", "space-between", "space-around"])
+				["start", "end", "left", "right", "flex-start", "flex-end", "center", "space-between", "space-around"].and(["true"]),
+				["true"].and(["start", "end", "left", "right", "flex-start", "flex-end", "center", "space-between", "space-around"])
 			),
 			"align-content": ["auto", "head", "foot", "baseline"].concat(
-				["head", "foot", "flex-start", "flex-end", "baseline", "center", "space-between", "space-around"].and(['true']),
-				['true'].and(["head", "foot", "flex-start", "flex-end", "baseline", "center", "space-between", "space-around"])
+				["head", "foot", "flex-start", "flex-end", "baseline", "center", "space-between", "space-around"].and(["true"]),
+				["true"].and(["head", "foot", "flex-start", "flex-end", "baseline", "center", "space-between", "space-around"])
 			),
 			"justify-items": ["auto", "start", "center", "end"].concat(
-				["start", "center", "end"].and(['true']),
-				['true'].and(["start", "center", "end"])
+				["start", "center", "end"].and(["true"]),
+				["true"].and(["start", "center", "end"])
 			),
 			"align-items": ["auto", "head", "foot"].concat(
-				["head", "foot", "flex-start", "flex-end", "center", "baseline", "stretch"].and(['true']),
-				['true'].and(["head", "foot", "flex-start", "flex-end", "center", "baseline", "stretch"])
+				["head", "foot", "flex-start", "flex-end", "center", "baseline", "stretch"].and(["true"]),
+				["true"].and(["head", "foot", "flex-start", "flex-end", "center", "baseline", "stretch"])
 			)
 		}
 	},
@@ -600,7 +600,7 @@ window.Specs = {
 			"grid-area": ["none", "head"].concat(
 				Array.prototype.concat.apply(["1", "\"first\"", "auto"].times(2), ["2", "3 4", "5 \"header\""].map(function (val1) {
 					return ["1", "\"first\"", "auto"].times(2).map(function (val2) {
-						return val2 + ' ' + val1;
+						return val2 + " " + val1;
 					});
 				}))
 			).concat(["\"labels\"", "\"controls\" \"oversized\"", "\"content\" 1", "auto"]),
