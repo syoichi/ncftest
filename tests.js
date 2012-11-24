@@ -658,5 +658,15 @@ window.Specs = {
 			"::slot()": "body::slot(a)",
 			"::flow()": "p::flow(b)"
 		}
+	},
+	
+	"css3-ruby": {
+		"title": "Ruby",
+		"properties": {
+			"ruby-position": ["before", "after", "inter-character", "inline"],
+			"ruby-align": ["auto", "start", "left", "center", "end", "right", "distribute-letter", "distribute-space", "line-edge"],
+			"ruby-overhang": ["auto", "start", "end", "none"],
+			"ruby-span": ["none", "attr(rbspan)"]
+		}
 	}
 };
