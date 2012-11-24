@@ -668,5 +668,88 @@ window.Specs = {
 			"ruby-overhang": ["auto", "start", "end", "none"],
 			"ruby-span": ["none", "attr(rbspan)"]
 		}
+	},
+	
+	"css3-box": {
+		"title": "Basic Box",
+		"properties": {
+			"display": [
+				"run-in", "compact",
+				"ruby", "ruby-base", "ruby-text", "ruby-base-group", "ruby-text-group",
+				"container"
+			],
+			"padding": ["auto"].times(1, 4).concat([
+				"auto 1px", "10% auto",
+				"auto 1px 10%", "1px auto 10%", "1px 10% auto",
+				"auto 1px 10% 100em", "1px auto 10% 100em", "1px 10% auto 100em", "1px 10% 100em auto"
+			]),
+			"padding-top": ["auto"],
+			"padding-right": ["auto"],
+			"padding-bottom": ["auto"],
+			"padding-left": ["auto"],
+			"margin-top": ["fill"],
+			"margin-right": ["fill"],
+			"margin-bottom": ["fill"],
+			"margin-left": ["fill"],
+			"margin": ["fill"].times(1, 4).concat([
+				"fill 1px", "10% fill",
+				"fill 1px 10%", "1px fill 10%", "1px 10% fill",
+				"fill 1px 10% auto", "1px fill 10% auto", "1px 10% fill auto", "1px 10% auto fill"
+			]),
+			"width": ["1px", "1%"].and(["border-box", "content-box"]).concat(
+				["border-box", "content-box"].and(["1px", "1%"]),
+				["available", "min-content", "max-content", "fit-content"]
+			),
+			"height": ["1px", "1%"].and(["border-box", "content-box"]).concat(
+				["border-box", "content-box"].and(["1px", "1%"]),
+				["available", "min-content", "max-content", "fit-content", "complex"]
+			),
+			"min-width": ["1px", "1%"].and(["border-box", "content-box"]).concat(
+				["border-box", "content-box"].and(["1px", "1%"]),
+				["available", "min-content", "max-content", "fit-content"]
+			),
+			"min-height": ["1px", "1%"].and(["border-box", "content-box"]).concat(
+				["border-box", "content-box"].and(["1px", "1%"]),
+				["available", "min-content", "max-content", "fit-content"]
+			),
+			"max-width": ["1px", "1%"].and(["border-box", "content-box"]).concat(
+				["border-box", "content-box"].and(["1px", "1%"]),
+				["available", "min-content", "max-content", "fit-content"]
+			),
+			"max-height": ["1px", "1%"].and(["border-box", "content-box"]).concat(
+				["border-box", "content-box"].and(["1px", "1%"]),
+				["available", "min-content", "max-content", "fit-content"]
+			),
+			"float": [
+				"top", "bottom", "start", "end",
+				"inside", "outside", "page", "multicol", "intrude",
+				"unless-room", "next", "page(landscape)", "hide"
+			].concat(
+				[
+					"left", "right", "top", "bottom", "start", "end",
+					"inside", "outside", "page", "multicol", "intrude",
+					"unless-room", "next", "page(landscape)", "hide"
+				].and(["contour"]),
+				["contour"].and([
+					"left", "right", "top", "bottom", "start", "end",
+					"inside", "outside", "page", "multicol", "intrude",
+					"unless-room", "next", "page(landscape)", "hide"
+				])
+			),
+			"clear-after": [
+				"none", "left", "right", "top", "bottom", "inside", "outside",
+				"start", "end", "both", "descendants"
+			],
+			"overflow-x": ["visible", "hidden", "scroll", "auto", "no-display", "no-content"],
+			"overflow-y": ["visible", "hidden", "scroll", "auto", "no-display", "no-content"],
+			"overflow": ["no-display", "no-content"].times(1, 2).concat(
+				["visible", "hidden", "scroll", "auto"].and(["no-display", "no-content"]),
+				["no-display", "no-content"].and(["visible", "hidden", "scroll", "auto"])
+			),
+			"alignment": ["top", "right", "bottom", "left", "center"],
+			"child-align": ["auto", "top", "middle", "bottom", "left", "right"],
+			"float-displace": ["line", "indent", "block", "block-within-page"],
+			"indent-edge-reset": ["none", "margin-edge", "border-edge", "padding-edge", "content-edge"]
+		}
 	}
 };
