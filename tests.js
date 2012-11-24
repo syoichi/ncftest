@@ -751,5 +751,18 @@ window.Specs = {
 			"float-displace": ["line", "indent", "block", "block-within-page"],
 			"indent-edge-reset": ["none", "margin-edge", "border-edge", "padding-edge", "content-edge"]
 		}
+	},
+	
+	"css3-sizing": {
+		"title": "Intrinsic & Extrinsic Sizing",
+		"properties": {
+			"width": ["fill-available", "repudiate-floats"],
+			"min-width": ["fill-available", "repudiate-floats", "contain-floats"],
+			"max-width": ["fill-available", "repudiate-floats"],
+			"height": ["fill-available", "repudiate-floats"],
+			"min-height": ["fill-available", "repudiate-floats", "contain-floats"],
+			"max-height": ["fill-available", "repudiate-floats"],
+			"column-width": ["min-content", "max-content", "fill-available", "fit-content"]
+		}
 	}
 };
