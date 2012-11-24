@@ -671,7 +671,7 @@ window.Specs = {
 	},
 	
 	"css3-box": {
-		"title": "Basic Box",
+		"title": "Basic Box Model",
 		"properties": {
 			"display": [
 				"run-in", "compact",
