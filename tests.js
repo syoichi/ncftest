@@ -44,7 +44,6 @@ window.Specs = {
 				"border-image",
 				"cursor",
 				"content"
-				
 			],
 			"linear-gradient": [
 				"linear-gradient(white, black)",
@@ -330,7 +329,7 @@ window.Specs = {
 	"css3-text": {
 		"title": "Text",
 		"properties": {
-			"text-transform": ["full-width"],
+			"text-transform": "full-width",
 			"tab-size": ["4", "1em"],
 			"line-break": ["auto", "loose", "normal", "strict"],
 			"word-break": ["normal", "keep-all", "break-all"],
@@ -488,7 +487,7 @@ window.Specs = {
 		"properties": {
 			"voice-volume": ["silent", "x-soft", "soft", "medium", "loud", "x-loud", "-6dB", "0", "6db"],
 			"voice-balance": ["left", "center", "right", "leftwards", "rightwards", "-100", "0", "100"],
-			"speak": ["auto"],
+			"speak": "auto",
 			"speak-as": ["normal", "spell-out", "digits", "literal-punctuation", "no-punctuation"],
 			"pause-before": ["none", "x-weak", "weak", "medium", "strong", "x-strong"],
 			"pause-after": ["none", "x-weak", "weak", "medium", "strong", "x-strong"],
@@ -499,7 +498,7 @@ window.Specs = {
 			"cue-before": ["-6dB", "0", "6db"],
 			"cue-after": ["-6dB", "0", "6db"],
 			"cue": ["-6dB", "0", "6db"],
-			"voice-family": ["preserve"],
+			"voice-family": "preserve",
 			"voice-rate": ["normal", "x-slow", "slow", "medium", "fast", "x-fast", "0", "100%"],
 			"voice-pitch": ["absolute", "x-low", "low", "medium", "high", "x-high", "0", "100%", "-100%", "250Hz", "+250Hz", "-20Hz", ".2kHz", "-3.5st", "3.5st"],
 			"voice-range": ["absolute", "x-low", "low", "medium", "high", "x-high", "0", "100%", "-100%", "250Hz", "+250Hz", "-20Hz", ".2kHz", "-3.5st", "3.5st"],
@@ -523,8 +522,8 @@ window.Specs = {
 			"flex-shrink": ["1", "10"],
 			"flex-wrap": ["nowrap", "wrap", "wrap-reverse"],
 			"justify-content": ["flex-start", "flex-end", "center", "space-between", "space-around"],
-			"min-height": ["auto"],
-			"min-width": ["auto"],
+			"min-height": "auto",
+			"min-width": "auto",
 			"order": ["0", "1"]
 		}
 	},
@@ -712,14 +711,14 @@ window.Specs = {
 				"auto 1px 10%", "1px auto 10%", "1px 10% auto",
 				"auto 1px 10% 100em", "1px auto 10% 100em", "1px 10% auto 100em", "1px 10% 100em auto"
 			]),
-			"padding-top": ["auto"],
-			"padding-right": ["auto"],
-			"padding-bottom": ["auto"],
-			"padding-left": ["auto"],
-			"margin-top": ["fill"],
-			"margin-right": ["fill"],
-			"margin-bottom": ["fill"],
-			"margin-left": ["fill"],
+			"padding-top": "auto",
+			"padding-right": "auto",
+			"padding-bottom": "auto",
+			"padding-left": "auto",
+			"margin-top": "fill",
+			"margin-right": "fill",
+			"margin-bottom": "fill",
+			"margin-left": "fill",
 			"margin": ["fill"].times(1, 4).concat([
 				"fill 1px", "10% fill",
 				"fill 1px 10%", "1px fill 10%", "1px 10% fill",
