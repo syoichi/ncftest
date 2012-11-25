@@ -519,6 +519,17 @@ window.Specs = {
 		}
 	},
 	
+	"css3-marquee": {
+		"title": "Marquee",
+		"properties": {
+			"overflow-style": ["auto", "marquee-line", "marquee-block"],
+			"marquee-style": ["scroll", "slide", "alternate"],
+			"marquee-play-count": ["1", "0", "infinite"],
+			"marquee-direction": ["forward", "reverse"],
+			"marquee-speed": ["normal", "slow", "fast "]
+		}
+	},
+	
 	"css3-flexbox": {
 		"title": "Flexible Box Layout",
 		"properties": {
