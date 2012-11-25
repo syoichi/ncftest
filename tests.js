@@ -223,6 +223,18 @@ window.Specs = {
 		}
 	},
 	
+	"css3-namespace": {
+		"title": "Namespaces",
+		"@rules": {
+			"@namespace": [
+				"@namespace \"http://www.w3.org/1999/xhtml\";",
+				"@namespace svg \"http://www.w3.org/2000/svg\";",
+				"@namespace url(http://www.w3.org/1999/xhtml);",
+				"@namespace svg url(http://www.w3.org/2000/svg);"
+			]
+		}
+	},
+	
 	"css3-ui": {
 		"title": "Basic User Interface",
 		"properties": {
