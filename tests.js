@@ -41,7 +41,7 @@ window.Specs = {
 			"properties": [
 				"background-image",
 				"list-style-image",
-				"border-image",
+				"border-image-source",
 				"cursor",
 				"content"
 			],
