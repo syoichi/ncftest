@@ -713,7 +713,7 @@ window.Specs = {
 	"css3-grid-layout": {
 		"title": "Grid Layout",
 		"properties": {
-			"display": ["grid", "inline-grid", "subgrid"],
+			"display": ["grid", "inline-grid"],
 			"grid-definition-columns": [
 				"none", "\"first\"", "minmax(1px, 10px)", "auto",
 				"100px", "30%", "1fr", "min-content", "max-content",
