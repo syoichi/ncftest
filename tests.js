@@ -915,5 +915,44 @@ window.Specs = {
 			"max-height": ["fill-available", "repudiate-floats"],
 			"column-width": ["min-content", "max-content", "fill-available", "fit-content"]
 		}
+	},
+	
+	"css-counter-styles-3": {
+		"title": "Counter Styles",
+		"values": {
+			"properties": ["list-style"],
+			"symbols()": [
+				"symbols(\"*\" \"\2020\" \"\2021\" \"\A7\")", "symbols(cyclic \"*\" \"\2020\" \"\2021\" \"\A7\")",
+				"symbols(numeric \"1\")", "symbols(alphabetic \"a\")",
+				"symbols(symbolic linear-gradient(white, black) url(foo.png))", "symbols(fixed \"0\" radial-gradient(white, black) \"A\")",
+			]
+		},
+		"properties": {
+			"system": ["cyclic", "numeric", "alphabetic", "symbolic", "additive", "fixed", "fixed 1", "override triangle"],
+			"negative": ["\"-\"", "\"(\" \")\""],
+			"prefix": ["\"\"", "\"-webkit-\""],
+			"suffix": ["\".\"", "kg"],
+			"range": ["auto", "1 infinite", "infinite 0"],
+			"fallback": [
+				"decimal", "decimal-leading-zero", "cjk-decimal", "lower-roman", "upper-roman", "armenian", "georgian", "hebrew",
+				"lower-alpha", "lower-latin", "upper-alpha", "upper-latin", "lower-greek", "hiragana", "hiragana-iroha", "katakana", "katakana-iroha",
+				"disc", "circle", "square", "disclosure-open", "disclosure-closed",
+				"japanese-informal", "japanese-formal", "korean-hangul-formal", "korean-hanja-informal", "korean-hanja-formal",
+				"simp-chinese-informal", "simp-chinese-formal", "trad-chinese-informal", "trad-chinese-formal", "cjk-ideographic",
+				"ethiopic-numeric"
+			],
+			"symbols": [
+				"‣", "◰ ◳ ◲ ◱", "* ⁑ † ‡", "A B C D E F G H I J K L M \nN O P Q R S T U V W X Y Z",
+				"url(white.svg) url(black.svg)", "'0' '1' '2' '3' '4' '5' '6' '7' '8' '9'",
+				"ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ⓚ ⓛ ⓜ ⓝ ⓞ ⓟ ⓠ ⓡ ⓢ ⓣ ⓤ ⓥ ⓦ ⓧ ⓨ ⓩ", "'1' linear-gradient(white, black) あ"
+			],
+			"additive-symbols": [
+				"6 ⚅, 5 ⚄, 4 ⚃, 3 ⚂, 2 ⚁, 1 ⚀", "'0' 0, 1 radial-gradient(white, black), 2 A"
+			],
+			"speak-as": ["auto", "numeric", "alphabetic", "bullet", "decimal", "lower-latin"]
+		},
+		"@rules": {
+			"@counter-style": "@counter-style circled-lower-latin"
+		}
 	}
 };
