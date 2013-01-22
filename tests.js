@@ -567,6 +567,13 @@ window.Specs = {
 		}
 	},
 	
+	"css3-cascade": {
+		"title": "Cascading and Inheritance",
+		"properties": {
+			"all": ["default"]
+		}
+	},
+	
 	"css3-values": {
 		"title": "Values and Units",
 		"values": {
