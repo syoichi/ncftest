@@ -929,6 +929,19 @@ window.Specs = {
 		}
 	},
 	
+	"css3-page": {
+		"title": "Paged Media",
+		"properties": {
+			"size": [
+				"auto", "4in", "8.5in 11in", "A5", "A4", "A3", "B5", "B4", "letter", "legal", "ledger", "portrait", " landscape"
+			].concat(
+				["A5", "A4", "A3", "B5", "B4", "letter", "legal", "ledger"].and(["portrait", " landscape"]),
+				["portrait", " landscape"].and(["A5", "A4", "A3", "B5", "B4", "letter", "legal", "ledger"])
+			),
+			"page": ["auto", "rotated", "narrow", "main", "index"]
+		}
+	},
+	
 	"css-counter-styles-3": {
 		"title": "Counter Styles",
 		"values": {
