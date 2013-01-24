@@ -42,7 +42,7 @@ dummy.setAttribute('data-px', '1px');
 document.documentElement.appendChild(dummy);
 
 var _ = window.Supports = {
-	prefixes: ['', '-moz-', '-webkit-', '-o-', '-ms-', 'ms-', '-khtml-'],
+	prefixes: ['', '-moz-', '-webkit-', '-o-', '-wap-', '-op-', '-xv-', '-ms-', 'ms-', '-khtml-'],
 	
 	property: function(property) {
 		if(property.charAt(0) === '-') {
