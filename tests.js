@@ -1015,7 +1015,7 @@ window.Specs = {
 	"css-counter-styles-3": {
 		"title": "Counter Styles",
 		"values": {
-			"properties": ["list-style"],
+			"properties": ["list-style-type"],
 			"symbols()": [
 				"symbols(\"*\" \"\2020\" \"\2021\" \"\A7\")", "symbols(cyclic \"*\" \"\2020\" \"\2021\" \"\A7\")",
 				"symbols(numeric \"1\")", "symbols(alphabetic \"a\")",
