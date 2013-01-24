@@ -982,6 +982,36 @@ window.Specs = {
 		}
 	},
 	
+	"css3-lists": {
+		"title": "Lists and Counters",
+		"properties": {
+			"display": ["inline-list-item"],
+			"list-style-image": ["image('sprites.svg#xywh=40,0,20,20')", "radial-gradient(circle, #006, #00a 90%, #0000af 100%, white 100%)"],
+			"list-style-type": [
+				"\"★\"", "cjk-decimal", "hebrew", "hiragana", "hiragana-iroha", "katakana", "katakana-iroha", "disclosure-open", "disclosure-closed",
+				"japanese-informal", "japanese-formal", "korean-hangul-formal", "korean-hanja-informal", "korean-hanja-formal",
+				"simp-chinese-informal", "simp-chinese-formal", "trad-chinese-informal", "trad-chinese-formal", "cjk-ideographic",
+				"ethiopic-numeric", "circled-lower-latin", "symbols(repeating '○' '●')", "toggle(disc, square, circle)"
+			],
+			"list-style": [
+				"hebrew", "linear-gradient(white, black)",
+				"hiragana radial-gradient(white, black)", "hiragana-iroha outside",
+				"repeating-linear-gradient(white, black) katakana", "repeating-radial-gradient(white, black) inside",
+				"outside katakana-iroha", "inside linear-gradient(to left, white, black)",
+				"cjk-ideographic radial-gradient(at center, white, black) outside",
+				"repeating-linear-gradient(to left, white, black) hebrew inside",
+				"outside hiragana repeating-radial-gradient(at center, white, black)",
+				"inside radial-gradient(closest-side ellipse at 10px 10%, white, black) hiragana-iroha"
+			],
+			"position": ["marker"],
+			"marker-side": ["list-item", "list-container"],
+			"counter-set": ["none", "section", "chapter 0", "section -1 imagenum 99", "list-item attr(value integer, 1)"]
+		},
+		"selectors": {
+			"::marker": "li::marker"
+		}
+	},
+	
 	"css-counter-styles-3": {
 		"title": "Counter Styles",
 		"values": {
