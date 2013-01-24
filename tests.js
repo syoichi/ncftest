@@ -929,6 +929,46 @@ window.Specs = {
 		}
 	},
 	
+	"css3-linebox": {
+		"title": "Line Layout",
+		"properties": {
+			"text-height": ["auto", "font-size", "text-size", "max-size", "10.52"],
+			"line-height": ["none"],
+			"line-box-contain": ["block", "inline", "font", "glyphs", "replaced", "inline-box", "none", "inherit", "initial"],
+			"line-stacking-strategy": ["inline-line-height", "block-line-height", "max-height", "grid-height"],
+			"line-stacking-ruby": ["exclude-ruby", "include-ruby"],
+			"line-stacking-shift": ["consider-shifts", "disregard-shifts"],
+			"line-stacking": [
+				"inline-line-height", "block-line-height", "max-height", "grid-height", "exclude-ruby", "include-ruby", "consider-shifts", "disregard-shifts"
+			].concat(
+				["inline-line-height", "block-line-height", "max-height", "grid-height"].and(["exclude-ruby", "include-ruby"]),
+				["inline-line-height", "block-line-height", "max-height", "grid-height"].and(["consider-shifts", "disregard-shifts"]),
+				["exclude-ruby", "include-ruby"].and(["inline-line-height", "block-line-height", "max-height", "grid-height"]),
+				["exclude-ruby", "include-ruby"].and(["consider-shifts", "disregard-shifts"]),
+				["consider-shifts", "disregard-shifts"].and(["inline-line-height", "block-line-height", "max-height", "grid-height"]),
+				["consider-shifts", "disregard-shifts"].and(["exclude-ruby", "include-ruby"]),
+				["inline-line-height", "block-line-height", "max-height", "grid-height"].and(["exclude-ruby", "include-ruby"]).and(["consider-shifts", "disregard-shifts"]),
+				["inline-line-height", "block-line-height", "max-height", "grid-height"].and(["consider-shifts", "disregard-shifts"]).and(["exclude-ruby", "include-ruby"]),
+				["exclude-ruby", "include-ruby"].and(["inline-line-height", "block-line-height", "max-height", "grid-height"]).and(["consider-shifts", "disregard-shifts"]),
+				["exclude-ruby", "include-ruby"].and(["consider-shifts", "disregard-shifts"]).and(["inline-line-height", "block-line-height", "max-height", "grid-height"]),
+				["consider-shifts", "disregard-shifts"].and(["inline-line-height", "block-line-height", "max-height", "grid-height"]).and(["exclude-ruby", "include-ruby"]),
+				["consider-shifts", "disregard-shifts"].and(["exclude-ruby", "include-ruby"]).and(["inline-line-height", "block-line-height", "max-height", "grid-height"])
+			),
+			"dominant-baseline": ["auto", "use-script", "no-change", "reset-size", "alphabetic", "hanging", "ideographic", "mathematical", "central", "middle", "text-after-edge", "text-before-edge"],
+			"alignment-baseline": ["baseline", "use-script", "before-edge", "text-before-edge", "after-edge", "text-after-edge", "central", "middle", "ideographic", "alphabetic", "hanging", "mathematical"],
+			"alignment-adjust": ["auto", "baseline", "before-edge", "text-before-edge", "middle", "central", "after-edge", "text-after-edge", "ideographic", "alphabetic", "hanging", "mathematical", "0%", "10%", "0cm", "10px"],
+			"baseline-shift": ["baseline", "sub", "super", "0%", "10%", "0cm", "10px"],
+			"vertical-align": ["auto", "central"],
+			"inline-box-align": ["last", "initial", "1"],
+			"drop-initial-value": ["initial", "1"],
+			"drop-initial-size": ["auto", "&lt;line&gt;", "10%", "10px"],
+			"drop-initial-after-align": ["baseline", "use-script", "before-edge", "text-before-edge", "after-edge", "text-after-edge", "central", "middle", "ideographic", "alphabetic", "hanging", "mathematical"],
+			"drop-initial-after-adjust": ["text-after-edge", "central", "middle", "after-edge", "ideographic", "alphabetic", "mathematical", "0%", "10%", "0cm", "10px"],
+			"drop-initial-before-align": ["caps-height", "baseline", "use-script", "before-edge", "text-before-edge", "after-edge", "text-after-edge", "central", "middle", "ideographic", "alphabetic", "hanging", "mathematical"],
+			"drop-initial-before-adjust": ["text-before-edge", "before-edge", "central", "middle", "hanging", "mathematical", "0%", "10%", "0cm", "10px"],
+		}
+	},
+	
 	"css3-page": {
 		"title": "Paged Media",
 		"properties": {
