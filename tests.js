@@ -554,7 +554,7 @@ window.Specs = {
 			"writing-mode": ["horizontal-tb", "vertical-rl", "vertical-lr"],
 			"text-orientation": ["mixed", "upright", "sideways-right", "sideways-left", "sideways", "use-glyph-orientation"],
 			"caption-side": ["before", "after"],
-			"text-combine-horizontal": ["none", "all"]
+			"text-combine-horizontal": ["none", "all", "digits", "digits 2"]
 		}
 	},
 	
