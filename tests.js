@@ -453,18 +453,31 @@ window.Specs = {
 		"title": "Text",
 		"properties": {
 			"text-transform": "full-width",
-			"tab-size": ["4", "1em"],
+			"tab-size": ["8", "1em"],
 			"line-break": ["auto", "loose", "normal", "strict"],
 			"word-break": ["normal", "keep-all", "break-all"],
 			"hyphens": ["auto", "manual", "none"],
+			"word-wrap": ["normal", "break-word"],
 			"overflow-wrap": ["normal", "break-word"],
-			"text-align": ["start", "end", "'a'", "match-parent", "start end"],
+			"text-align": ["start", "end", "match-parent", "start end"],
 			"text-align-last": ["auto", "start", "end", "left", "right", "center", "justify"],
-			"text-justify": ["auto", "none", "inter-word", "inter-ideograph", "inter-cluster", "distribute", "kashida"],
-			"word-spacing": ["50%", "1em .5em", "1em .5em 2em", "normal 1em 2em"],
-			"letter-spacing": ["50%", "1em .5em", "1em .5em 2em", "normal 1em 2em"],
-			"text-indent": ["1em hanging", "1em each-line", "1em hanging each-line"],
-			"hanging-punctuation": ["none", "first", "last", "force-end", "allow-end", "first last"]
+			"text-justify": ["auto", "none", "inter-word", "distribute"],
+			"word-spacing": ["50%"].concat(["normal", "1em", "50%"].times(2, 3)),
+			"text-indent": [
+				"1em hanging", "1em each-line", "hanging 2em", "each-line 3em",
+				"1em hanging each-line", "1em each-line hanging", "hanging each-line 1em", "each-line hanging 1em"
+			],
+			"hanging-punctuation": [
+				"none", "first", "last", "force-end", "allow-end",
+				"first force-end", "first allow-end", "first last",
+				"force-end first", "force-end last",
+				"allow-end first", "allow-end last",
+				"last first", "last force-end", "last force-end",
+				"first force-end last", "first allow-end last", "first last force-end", "first last allow-end",
+				"force-end first last", "force-end last first",
+				"allow-end first last", "allow-end last first",
+				"last first force-end", "last first allow-end", "last force-end first", "last allow-end first"
+			]
 		}
 	},
 	
