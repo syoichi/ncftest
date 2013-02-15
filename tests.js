@@ -930,6 +930,13 @@ window.Specs = {
 		}
 	},
 	
+	"css3-overflow": {
+		"title": "Overflow",
+		"properties": {
+			"max-lines": ["none", "1"]
+		}
+	},
+	
 	"css3-sizing": {
 		"title": "Intrinsic & Extrinsic Sizing",
 		"properties": {
