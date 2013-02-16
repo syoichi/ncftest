@@ -29,7 +29,7 @@ Score.prototype = {
 	}
 };
 
-var mainScore = new Score(), _bTestResults = {};
+var mainScore = new Score();
 
 var Test = function (tests, spec, title) {
 	this.tests = tests;
@@ -78,9 +78,6 @@ var Test = function (tests, spec, title) {
 	for(var id in Test.groups) {
 		this.group(id, Test.groups[id]);
 	}
-	
-	// Add overall spec score to BrowserScope
-	_bTestResults[this.id] = mainScore.percent();
 	
 	// Display score for this spec
 	$u.element.create({
@@ -176,9 +173,6 @@ Test.prototype = {
 			dt.className = passclass({ passed: passed, total: tests.length });
 			
 			thisSection.appendChild(dl);
-			
-			// Add to browserscope
-			_bTestResults[this.id + ' / ' + feature.replace(/[,=]/g, '')] = Math.round(100 * passed / tests.length);
 		}
 	}
 }
@@ -345,19 +339,6 @@ onload = function() {
 			
 			// Display time taken
 			timeTaken.textContent = +new Date - timeBefore + 'ms';
-			
-			// Send to Browserscope
-			var testKey = 'agt1YS1wcm9maWxlcnINCxIEVGVzdBidzawNDA';
-			
-			_bTestResults['Overall'] = mainScore.percent();
-			  
-			$u.element.create({
-				tag: 'script',
-				properties: {
-					src: '//www.browserscope.org/user/beacon/' + testKey
-				},
-				inside: $('head')
-			});
 		}
 	})();
 	
