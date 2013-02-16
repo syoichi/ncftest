@@ -1028,6 +1028,34 @@ window.Specs = {
 		}
 	},
 	
+	"css3-gcpm": {
+		"title": "Generated Content for Paged Media",
+		"properties": {
+			"string-set": ["none"].concat(["header"].and([
+				"\"foo\"", "counter(par-num, upper-roman)", "counters(par-num, upper-roman, disc)",
+				"contents", "content-element", "content-before", "content-after", "content-first-letter",
+				"env(url)", "env(date)", "env(time)", "env(date-time)"
+			])).concat([
+				"title contents", "index content-first-letter", "header content-before content-element",
+				"header \"Chapter \" counter(chapter) contents", "header \"Chapter \" counter(header) \": \" contents",
+				"index \"foo\" attr(title) counter(par-num, upper-roman) counters(par-num, upper-roman, disc) contents content-element content-before content-after content-first-letter env(url) env(date) env(time) env(date-time)",
+				"index content-first-letter, entry contents", "title env(date-time), header content-before, index content-after"
+			]),
+			"marks": ["none", "crop", "cross", "crop cross", "cross crop"],
+			"bleed": ["6pt"],
+			"bookmark-level": ["none", "1"],
+			"bookmark-label": [
+				"none", "\"foo\"", "counter(par-num, upper-roman)", "counters(par-num, upper-roman, disc)",
+				"contents", "content-element", "content-before", "content-after", "content-first-letter",
+				"env(url)", "env(date)", "env(time)", "env(date-time)", "content-before \": \" contents",
+				"\"foo\" counter(par-num, upper-roman) counters(par-num, upper-roman, disc) contents content-element content-before content-after content-first-letter env(url) env(date) env(time) env(date-time)"
+			],
+			"bookmark-state": ["open", "closed"],
+			"float-offset": ["0 0", "5px", "2em 3em"],
+			"clear-side": ["auto", "both"]
+		}
+	},
+	
 	"css3-lists": {
 		"title": "Lists and Counters",
 		"properties": {
