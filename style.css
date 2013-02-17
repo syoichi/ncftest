@@ -51,40 +51,6 @@ h1, h2 {
 			background: #f06;
 		}
 
-body > h1 {
-	position: fixed;
-	left: 0;
-	top: 0;
-	padding: .5em 1em;
-	background: hsl(200, 10%, 20%);
-	box-shadow: -2px 2px 10px rgba(0,0,0,.5);
-	color: white;
-	font-size: 150%;
-	font-weight: bold;
-	text-transform: uppercase;
-	text-shadow: 0 .1em .1em black;
-	
-	-webkit-transform:  rotate(-90deg) translateX(-100%);
-	-webkit-transform-origin: top left;
-	-ms-transform:  rotate(-90deg) translateX(-100%);
-	-ms-transform-origin: top left;
-	transform:  rotate(-90deg) translateX(-100%);
-	transform-origin: top left;
-}
-
-#mark img {
-	position: fixed;
-	left: 10px;
-	top: 230px;
-	width: 50px;
-	border-radius: 50%;
-	box-shadow: 2px 2px 10px rgba(0,0,0,.5);
-	
-	-webkit-transform: rotate(-15deg);
-	-ms-transform: rotate(-15deg);
-	transform: rotate(-15deg);
-}
-
 #tests {
 	float: left;
 	width: 65%;
@@ -247,12 +213,16 @@ aside {
 		margin-left: 66%;
 	}
 	
-	aside .caution p {
+	aside .about p {
 		padding: 1em;
 		margin-left: 2em;
 		background: hsl(200, 10%, 20%);
 		color: white;
 		text-shadow: 0 -.1em .2em black;
+	}
+	
+	aside .about p a {
+		color: white;
 	}
 	
 		aside h1 {
@@ -293,6 +263,10 @@ aside {
 				border-radius: 50%;
 				box-shadow: 0 2px white;
 			}
+
+		.time {
+			margin-top: 86px;
+		}
 			
 footer {
 	margin-left: 65%;
@@ -306,40 +280,3 @@ footer {
 		border-top: 1px solid hsl(200, 10%, 20%);
 		text-align: center;
 	}
-	
-/* Ad packs */
-.bsa_it_ad {
-	padding:10px !important;
-	font: inherit !important;
-	overflow: hidden;
-}
-
-	.bsa_it_i {
-		display:block;
-		float:none;
-		margin: 0 10px 5px 0 !important;
-	}
-	
-	.bsa_it_ad img {
-		padding:0;
-		border:none;
-	}
-	
-	.bsa_it_ad .bsa_it_t {
-		padding:1px 0 0 0;
-	}
-	
-	.bsa_it_d {
-		font-size: 70% !important;
-	}
-	
-.bsa_it_p {
-	display: none !important;
-}
-
-#bsap_aplink {
-	display:block;
-	font-size:10px;
-	margin:12px 15px 0;
-	text-align:right;
-}
