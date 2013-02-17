@@ -98,6 +98,10 @@ dt {
 	cursor: pointer;
 }
 
+.prefixed:after {
+	color: black;
+}
+
 dd {
 	margin: .3em 0 .3em 2em;
 	font-size: 90%;

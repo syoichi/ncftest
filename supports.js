@@ -67,7 +67,10 @@ var _ = window.Supports = {
 		return _.property.cached[property] = false;
 	},
 	
-	value: function(property, value) {
+	value: function(property, value, label) {
+		if(!_.value.cached) {
+			_.value.cached = {};
+		}
 		property = _.property(property);
 		
 		if(!property) { return false; }
@@ -85,6 +88,9 @@ var _ = window.Supports = {
 			} catch(e) {}
 			
 			if(inline.length > 0) {
+				if (label && _.value.cached[label] === void 0) {
+					_.value.cached[label] = _.prefixes[i] + label;
+				}
 				return prefixed;
 			}
 		}
@@ -113,7 +119,7 @@ var _ = window.Supports = {
 		return  _.selector.cached[selector] = false;
 	},
 	
-	atrule: function(atrule) {
+	atrule: function(atrule, atruleName) {
 		if(!_.atrule.cached) {
 			_.atrule.cached = {};
 		}
@@ -127,6 +133,9 @@ var _ = window.Supports = {
 			style.textContent = prefixed + '{}';  // Safari 4 has issues with style.innerHTML
 			
 			if(style.sheet.cssRules.length > 0) {
+				if (_.atrule.cached[atruleName] === void 0) {
+					_.atrule.cached[atruleName] = atruleName.replace(/^@/, '@' + _.prefixes[i]);
+				}
 				return _.atrule.cached[atrule] = prefixed;
 			}
 		}

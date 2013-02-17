@@ -76,7 +76,7 @@ var Test = function (tests, spec, title) {
 	
 	// Perform tests
 	for(var id in Test.groups) {
-		this.group(id, Test.groups[id]);
+		this.group(id, Test.groups[id].getResults);
 	}
 	
 	// Display score for this spec
@@ -158,7 +158,7 @@ Test.prototype = {
 				
 				passed += +success;
 				
-				$u.element.create({
+				var dd = $u.element.create({
 					tag: 'dd',
 					prop: {
 						innerHTML: test + (note? '<small>' + note + '</small>' : ''),
@@ -166,57 +166,88 @@ Test.prototype = {
 					},
 					inside: dl
 				});
+
+				if (what === 'properties' && results && results !== test) {
+					dd.className += ' prefixed';
+					dd.title += 'prefixed';
+				}
 			}
 			
 			this.score.update({passed: passed, total: tests.length });
 			
 			dt.className = passclass({ passed: passed, total: tests.length });
 			
+			var support = Supports[Test.groups[what].type];
+
+			if (support.cached) {
+				var result = support.cached[feature];
+
+				if (result && result !== feature) {
+					dt.className += ' prefixed';
+					dt.title += 'prefixed';
+				}
+			}
+
 			thisSection.appendChild(dl);
 		}
 	}
 }
 
 Test.groups = {
-	'values': function(test, label, tests) {
-		var properties = tests.properties,
-			failed = [];
-	
-		for(var j=0, property; property = properties[j++];) {
-			if(!Supports.property(property)) {
-				properties.splice(--j, 1);
-				continue;
+	'values': {
+		type: 'value',
+		getResults: function(test, label, tests) {
+			var properties = tests.properties,
+				failed = [];
+		
+			for(var j=0, property; property = properties[j++];) {
+				if(!Supports.property(property)) {
+					properties.splice(--j, 1);
+					continue;
+				}
+				
+				if(!Supports.value(property, test, label)) {
+					failed.push(property);
+				}
 			}
 			
-			if(!Supports.value(property, test)) {
-				failed.push(property);
+			success = 1 - failed.length / properties.length;
+			
+			return {
+				success: success,
+				note: success > 0 && success < 1? 'Failed in: ' + failed.join(', ') : ''
 			}
 		}
-		
-		success = 1 - failed.length / properties.length;
-		
-		return {
-			success: success,
-			note: success > 0 && success < 1? 'Failed in: ' + failed.join(', ') : ''
+	},
+	
+	'properties': {
+		type: 'property',
+		getResults: function(value, property) {
+			return Supports.value(property, value);
 		}
 	},
 	
-	'properties': function(value, property) {
-		return Supports.value(property, value);
+	'selectors': {
+		type: 'selector',
+		getResults: function(test) {
+			return Supports.selector(test);
+		}
 	},
 	
-	'selectors': function(test) {
-		return Supports.selector(test);
+	'@rules': {
+		type: 'atrule',
+		getResults: function(test, atruleName) {
+			return Supports.atrule(test, atruleName);
+		}
 	},
 	
-	'@rules': function(test) {
-		return Supports.atrule(test);
-	},
-	
-	'Media queries': function(test) {
-		var matches = matchMedia(test);
-		
-		return matches.media !== 'invalid' && matches.matches;
+	'Media queries': {
+		type: 'mq',
+		getResults: function(test) {
+			var matches = matchMedia(test);
+			
+			return matches.media !== 'invalid' && matches.matches;
+		}
 	}
 };
 
