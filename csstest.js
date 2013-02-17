@@ -46,7 +46,7 @@ var Test = function (tests, spec, title) {
 			$u.element.create({
 				tag: 'a',
 				properties: {
-					href: 'http://w3.org/TR/' + this.id,
+					href: 'http://www.w3.org/TR/' + this.id,
 					target: '_blank',
 					textContent: 'TR',
 					className: 'spec-link'
