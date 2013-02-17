@@ -736,8 +736,8 @@ window.Specs = {
 	"css3-regions": {
 		"title": "Regions",
 		"properties": {
-			"flow-into": ["table-content", "none", "inherit"],
-			"flow-from": ["thread", "none", "inherit"],
+			"flow-into": ["table-content", "none"],
+			"flow-from": ["thread", "none"],
 			"break-before": ["region", "avoid-region"],
 			"break-after": ["region", "avoid-region"],
 			"break-inside": "avoid-region",
@@ -980,7 +980,7 @@ window.Specs = {
 		"properties": {
 			"text-height": ["auto", "font-size", "text-size", "max-size", "10.52"],
 			"line-height": ["none"],
-			"line-box-contain": ["block", "inline", "font", "glyphs", "replaced", "inline-box", "none", "inherit", "initial"],
+			"line-box-contain": ["block", "inline", "font", "glyphs", "replaced", "inline-box", "none"],
 			"line-stacking-strategy": ["inline-line-height", "block-line-height", "max-height", "grid-height"],
 			"line-stacking-ruby": ["exclude-ruby", "include-ruby"],
 			"line-stacking-shift": ["consider-shifts", "disregard-shifts"],
