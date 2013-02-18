@@ -1121,6 +1121,17 @@ window.Specs = {
 		}
 	},
 	
+	"css-variables": {
+		"title": "Custom Properties for Cascading Variables",
+		"values": {
+			"properties": ["background-color", "var-foo"],
+			"var()": ["var(color)", "var(header-color)"/*, "calc(var(gap) * 1px)"*/]
+		}/*,
+		"properties": {
+			"var-*": ["var-foo", "var-FOO", "var-header-color"]
+		}*/
+	},
+	
 	"css-device-adapt": {
 		"title": "Device Adaptation",
 		"properties": {
