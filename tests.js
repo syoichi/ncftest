@@ -1176,5 +1176,18 @@ window.Specs = {
 		"@rules": {
 			"@viewport": "@viewport"
 		}
+	},
+	
+	"view-mode": {
+		"title": "The 'view-mode' Media Feature",
+		"tr": "http://www.w3.org/TR/view-mode",
+		"dev": "http://dev.w3.org/2006/waf/widgets-vmmf",
+		"Media queries": {
+			"windowed": ["(view-mode: windowed)"],
+			"floating": ["not print and (view-mode: floating)"],
+			"fullscreen": ["not print and (view-mode: fullscreen)"],
+			"maximized": ["not print and (view-mode: maximized)"],
+			"minimized": ["not print and (view-mode: minimized)"]
+		}
 	}
 };
