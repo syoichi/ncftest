@@ -1189,5 +1189,24 @@ window.Specs = {
 			"maximized": ["not print and (view-mode: maximized)"],
 			"minimized": ["not print and (view-mode: minimized)"]
 		}
+	},
+	
+	"becss": {
+		"title": "Behavioral Extensions to CSS",
+		"tr": "http://www.w3.org/TR/becss",
+		"dev": "http://dev.w3.org/2006/xbl2/css-module.html",
+		"properties": {
+			"binding": [
+				"none",
+				"url(\"http://example.org/htmlBindings.xml#checkbox\")",
+				"url(triangles.xml#isoceles)",
+				"url(#rightangle)",
+				"url(triangles.xml#isoceles) url(triangles.xml#rightangle)",
+				"url(#checkbox) url(#isoceles) url(#rightangle)"
+			]
+		},
+		"selectors": {
+			":bound-element": ":bound-element > *"
+		}
 	}
 };
