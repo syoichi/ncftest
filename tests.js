@@ -362,39 +362,33 @@ window.Specs = {
 		"title": "Transitions",
 		"properties": {
 			"transition-property": [
-				"none", "all",
+				"all", "none",
 				"background-color", "background-position", "border-bottom-color", "border-bottom-width",
 				"border-left-color", "border-left-width", "border-right-color", "border-right-width",
 				"border-spacing", "border-top-color", "border-top-width", "bottom",
-				"clip", "color", /* "crop", */ "font-size",
-				"font-weight", "height", "left", "letter-spacing",
+				"clip", "color", "font-size", "font-weight", "height", "left", "letter-spacing",
 				"line-height", "margin-bottom", "margin-left", "margin-right",
 				"margin-top", "max-height", "max-width", "min-height",
-				"min-width", "opacity", "outline-color", "outline-offset",
-				"outline-width", "padding-bottom", "padding-left", "padding-right",
+				"min-width", "opacity", "outline-color", "outline-width",
+				"padding-bottom", "padding-left", "padding-right",
 				"padding-top", "right", "text-indent", "text-shadow",
-				"top", "vertical-align", "visibility", "width",
-				"word-spacing", "z-index",
-				"background-size", "border-top-left-radius", "border-top-right-radius", "border-bottom-left-radius",
-				"border-bottom-right-radius", "box-shadow", "column-count", "column-gap",
-				"column-rule-color", "column-rule-width", "column-width", /* "font-size-adjust", */
-				"font-stretch", /* "marker-offset", "text-decoration-color", */ "transform",
-				"transform-origin",
-				"width, height", "all, background-color"
+				"top", "vertical-align", "visibility", "width", "word-spacing", "z-index",
+				"all, all", "all, background-color", "width, height", "width, all, height"
 			],
-			"transition-duration": ["0s", "1s", "100ms", "0s, 10s"],
+			"transition-duration": ["0s", "1s", "100ms", "0s, 10s", "0ms, 10s, 100s"],
 			"transition-timing-function": [
 				"ease", "linear", "ease-in", "ease-out", "ease-in-out",
-				"cubic-bezier(.5, .5, .5, .5)",
-				"cubic-bezier(.5, 1.5, .5, -2.5)",
-				"step-start", "step-end", "steps(1)", "steps(3, start)", "steps(5, end)"
+				"step-start", "step-end", "steps(1)", "steps(3, start)", "steps(5, end)",
+				"cubic-bezier(.5, .5, .5, .5)", "cubic-bezier(.5, 1.5, .5, -2.5)"
 			],
-			"transition-delay": ["1s", "-1s"],
+			"transition-delay": ["0s", "-1s", "100ms", "0s, 10s", "-100ms, 1s, 10s"],
 			"transition": [
 				"none", "all", "background-color", "0s", "ease", "-1s",
 				"all 0s", "-1s 1s", "background-color 0.1s ease", "background-position 10ms linear 1s",
 				"background-color linear 1s", "1s 2s width linear", "border-bottom-color ease-in", "100s 100ms",
-				"all, all", "-1s, -1s", "all, 1s, ease-in-out", "10s border-left-color step-start, step-end, steps(10, start) all",
+				"all, all", "all, background-color", "-1s, -1s", "all, 1s, ease-in-out",
+				"10s border-left-color step-start, step-end, steps(10, start) all",
+				"cubic-bezier(.5, 1.5, .5, -2.5) -10ms, -1s all 10s, all ease-in-out",
 				"all 1s ease 2s, cubic-bezier(0.25, 0.1, 0.25, 1) 60s 1ms opacity"
 			]
 		}
