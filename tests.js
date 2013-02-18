@@ -201,6 +201,8 @@ window.Specs = {
 	
 	"css3-selectors": {
 		"title": "Selectors",
+		"tr": "http://www.w3.org/TR/css3-selectors",
+		"dev": "http://dev.w3.org/csswg/selectors3",
 		"selectors": {
 			"Sibling combinator": "foo ~ bar",
 			"::before": "::before",
