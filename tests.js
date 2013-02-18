@@ -1132,6 +1132,13 @@ window.Specs = {
 		}*/
 	},
 	
+	"css-size-adjust": {
+		"title": "Mobile Text Size Adjustment",
+		"properties": {
+			"text-size-adjust": ["auto", "none", "50%"]
+		}
+	},
+	
 	"css-color-correction": {
 		"title": "Color Correction",
 		"properties": {
