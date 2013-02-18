@@ -1119,5 +1119,37 @@ window.Specs = {
 		"@rules": {
 			"@counter-style": "@counter-style circled-lower-latin"
 		}
+	},
+	
+	"css-device-adapt": {
+		"title": "Device Adaptation",
+		"properties": {
+			"min-width": ["device-width", "device-height"],
+			"max-width": ["auto", "device-width", "device-height"],
+			"width": [
+				"device-width", "device-height",
+				"device-width auto", "device-height auto", "auto device-width", "device-width device-width",
+				"device-height device-width", "10px device-width", "50% device-width", "auto device-height",
+				"device-width device-height", "device-height device-height", "10px device-height", "50% device-height",
+				"device-width 10px", "device-height 10px", "device-width 50%", "device-height 50%"
+			],
+			"min-height": ["device-width", "device-height"],
+			"max-height": ["auto", "device-width", "device-height"],
+			"height": [
+				"device-width", "device-height",
+				"device-width auto", "device-height auto", "auto device-width", "device-width device-width",
+				"device-height device-width", "10px device-width", "50% device-width", "auto device-height",
+				"device-width device-height", "device-height device-height", "10px device-height", "50% device-height",
+				"device-width 10px", "device-height 10px", "device-width 50%", "device-height 50%"
+			],
+			"zoom": ["auto", "1.0", "2.0", "0.5", "100%", "200%", "50%"],
+			"min-zoom": ["auto", "1.0", "2.0", "0.5", "100%", "200%", "50%"],
+			"max-zoom": ["auto", "1.0", "2.0", "0.5", "100%", "200%", "50%"],
+			"user-zoom": ["zoom", "fixed"],
+			"orientation": ["auto", "portrait", "landscape"]
+		},
+		"@rules": {
+			"@viewport": "@viewport"
+		}
 	}
 };
