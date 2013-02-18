@@ -1132,6 +1132,13 @@ window.Specs = {
 		}*/
 	},
 	
+	"css-color-correction": {
+		"title": "Color Correction",
+		"properties": {
+			"color-correction": ["default", "sRGB"]
+		}
+	},
+	
 	"css-device-adapt": {
 		"title": "Device Adaptation",
 		"properties": {
