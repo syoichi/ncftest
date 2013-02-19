@@ -263,43 +263,57 @@ window.Specs = {
 	"css3-mediaqueries": {
 		"title": "Media Queries",
 		"Media queries": {
-			"negation": ["not print", "not all and (width:1px)"],
-			"width": ["(width)", "(min-width:1px)", "(max-width:1000000px)"],
-			"height": ["(height)", "(min-height:1px)", "(max-height:1000000px)"],
-			"device-width": ["(device-width)", "(min-device-width:1px)", "(max-device-width:1000000px)"],
-			"device-height": ["(device-height)", "(min-device-height:1px)", "(max-device-height:1000000px)"],
-			"orientation": "(orientation:portrait), (orientation:landscape)",
+			"only": ["only screen", "only all"],
+			"not": ["not braille", "not handheld", "not print", "not projection", "not tty", "not tv"],
+			"and": [
+				"all and (width)", "(width) and (height)",
+				"screen, print and (height)", "only screen and (width)", "not print and (height)",
+				"only screen, (width) and (height)", "not tv and (width) and (height)",
+				"all and (width) and (height), only print and (width), not screen and (height)"
+			],
+			"width": ["(width)", "(min-width: 0)", "(min-width: 1px)", "(max-width: 1000000px)"],
+			"height": ["(height)", "(min-height: 0)", "(min-height: 1px)", "(max-height: 1000000px)"],
+			"device-width": [
+				"(device-width)", "(min-device-width: 0)", "(min-device-width: 1px)",
+				"(max-device-width: 1000000px)"
+			],
+			"device-height": [
+				"(device-height)", "(min-device-height: 0)", "(min-device-height: 1px)",
+				"(max-device-height: 1000000px)"
+			],
+			"orientation": ["(orientation)", "not print and (orientation: portrait)", "(orientation: landscape)"],
 			"aspect-ratio": [
 				"(aspect-ratio)",
-				"(min-aspect-ratio:1/1000000)",
-				"(min-aspect-ratio:1 / 1000000)",
-				"(max-aspect-ratio:1000000/1)",
+				"(min-aspect-ratio: 1/1000000)",
+				"(min-aspect-ratio: 1 / 1000000)",
+				"(max-aspect-ratio: 1000000/1)",
 			],
 			"device-aspect-ratio": [
 				"(device-aspect-ratio)",
-				"(min-device-aspect-ratio:1/1000000)",
-				"(min-device-aspect-ratio:1 / 1000000)",
-				"(max-device-aspect-ratio:1000000/1)",
+				"(min-device-aspect-ratio: 1/1000000)",
+				"(min-device-aspect-ratio: 1 / 1000000)",
+				"(max-device-aspect-ratio: 1000000/1)",
 			],
 			"color": [
 				"(color)", "(min-color: 0)", "(max-color: 100)"
 			],
 			"color-index": [
-				"all, (color-index)",
-				"(min-color-index: 0)",
-				"(max-color-index: 10000000)"
+				"not print and (color-index)", "(min-color-index: 0)",
+				"not print and (min-color-index: 1)", "(max-color-index: 10000000)"
 			],
 			"monochrome": [
-				"all, (monochrome)", "(min-monochrome: 0)", "(max-monochrome: 10000)"
+				"not print and (monochrome)", "(min-monochrome: 0)",
+				"not print and (min-monochrome: 1)", "(max-monochrome: 10000)"
 			],
 			"resolution": [
 				"(resolution)",
 				"(min-resolution: 1dpi)",
 				"(max-resolution: 1000000dpi)",
-				"(max-resolution: 1000000dpcm)"
+				"(max-resolution: 1000000dpcm)",
+				"(max-resolution: 1000000dppx)"
 			],
-			"scan": ["not tv, (scan: progressive)", "not tv, (scan: interlace)"],
-			"grid": ["all, (grid)", "(grid: 0), (grid: 1)"]
+			"scan": ["not tv and (scan)", "not tv and (scan: progressive)", "not tv and (scan: interlace)"],
+			"grid": ["not print and (grid)", "(grid: -0)", "(grid: 0)", "not print and (grid: 1)"]
 		}
 	},
 	
