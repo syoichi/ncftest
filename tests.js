@@ -1222,5 +1222,38 @@ window.Specs = {
 		"selectors": {
 			":bound-element": ":bound-element > *"
 		}
+	},
+	
+	"webcomponents": {
+		"title": "Web Components",
+		"tr": "http://www.w3.org/TR/webcomponents",
+		"dev": "https://dvcs.w3.org/hg/webcomponents/raw-file/tip/explainer/index.html",
+		"properties": {
+			"decorator": ["url(#fade-to-white)"]
+		},
+		"selectors": {
+			":host": ":host"
+		}
+	},
+	
+	"shadow-dom": {
+		"title": "Shadow DOM",
+		"tr": "http://www.w3.org/TR/shadow-dom",
+		"dev": "https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html",
+		"selectors": {
+			"::distributed()": "::distributed(div)"
+		},
+		"@rules": {
+			"@host": "@host"
+		}
+	},
+	
+	"custom-elements": {
+		"title": "Custom Elements",
+		"tr": "http://www.w3.org/TR/custom-elements",
+		"dev": "https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/custom/index.html",
+		"selectors": {
+			":unknown": ":unknown"
+		}
 	}
 };
