@@ -1192,6 +1192,16 @@ window.Specs = {
 		}
 	},
 	
+	"mediaqueries4": {
+		"title": "Media Queries Level 4",
+		"Media queries": {
+			"script": ["(script)", "not all and (script: 0)", "not all and (script: -0)", "(script: 1)"],
+			"floating": ["(pointer)", "(pointer: none)", "(pointer: coarse)", "(pointer: fine)"],
+			"hover": ["(hover)", "(hover: 0)", "(hover: -0)", "(hover: 1)"],
+			"luminosity": ["(luminosity)", "(luminosity: dim)", "(luminosity: normal)", "(luminosity: washed)"]
+		}
+	},
+	
 	"view-mode": {
 		"title": "The 'view-mode' Media Feature",
 		"tr": "http://www.w3.org/TR/view-mode",
