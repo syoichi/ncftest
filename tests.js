@@ -1192,6 +1192,47 @@ window.Specs = {
 		}
 	},
 	
+	"selectors4": {
+		"title": "Selectors Level 4",
+		"selectors": {
+			"!": ["head! > title", "!ol > li", "ul > ol! > li", "!span:only-child a[href^=\"https://\"]"],
+			"A /attr/ B": ["label /for/ input"],
+			"[att=val i]": ["[class=\"example\" i]", "[frame=hsides i]"],
+			":any-link": [":any-link"],
+			":local-link": [":local-link"],
+			":local-link()": [":local-link(0)", ":local-link(1)", ":not(:local-link(0))"],
+			":scope": [":scope", ":scope > .example"],
+			":current": [":current"],
+			":current()": [":current(div)", ":current(p, li, dt, dd)"],
+			":past": [":past"],
+			":future": [":future"],
+			":active-drop-target": [":active-drop-target"],
+			":valid-drop-target": [":valid-drop-target"],
+			":invalid-drop-target": [":invalid-drop-target"],
+			":user-error": [":user-error"],
+			":not()": [":not(div:only-child)", ":not(header, footer)", ":not(header, main, footer)"],
+			":matches()": [
+				":matches(.example)", ":matches(div:only-child)", ":matches(section, article)",
+				":matches(section, article, aside, nav) h1",
+				":matches(section, article, aside, nav) :matches(section, article, aside, nav) h1"
+			],
+			":dir()": [":dir(ltr)", ":dir(rtl)"],
+			":lang()": [":lang(de-*)", ":lang(en, ja)", ":lang(zh, *-hant)"],
+			":nth-match(an+b of selector-list)": [
+				":nth-match(3 of .foo)",
+				":nth-match(2n+1 of .foo, #bar)"
+			],
+			":nth-last-match(an+b of selector-list)": [
+				":nth-last-match(1 of #example)",
+				":nth-last-match(even of #example > div, .foo)"
+			],
+			":column()": [":column(.example)"],
+			"E || F": ["col.selected || td"],
+			":nth-column()": [":nth-column(1)"],
+			":nth-last-column()": [":nth-last-column(1)"]
+		}
+	},
+	
 	"mediaqueries4": {
 		"title": "Media Queries Level 4",
 		"Media queries": {
