@@ -1135,6 +1135,26 @@ window.Specs = {
 		}
 	},
 	
+	"css3-hyperlinks": {
+		"title": "Hyperlink Presentation",
+		"properties": {
+			"target-name": ["current", "root", "parent", "new", "modal", "\"foo\""],
+			"target-new": ["window", "tab", "none"],
+			"target-position": ["above", "behind", "front", "back"],
+			"target": ["current", "root", "parent", "new", "modal", "\"foo\""].concat(
+				["window", "tab", "none"],
+				["above", "behind", "front", "back"],
+				["current", "root", "parent", "new", "modal", "\"foo\""].and(["window", "tab", "none"]),
+				["current", "root", "parent", "new", "modal", "\"foo\""].and(["above", "behind", "front", "back"]),
+				["window", "tab", "none"].and(["current", "root", "parent", "new", "modal", "\"foo\""]),
+				["window", "tab", "none"].and(["above", "behind", "front", "back"]),
+				["above", "behind", "front", "back"].and(["current", "root", "parent", "new", "modal", "\"foo\""]),
+				["above", "behind", "front", "back"].and(["window", "tab", "none"]),
+				["current window above", "behind tab root"]
+			)
+		}
+	},
+	
 	"css-variables": {
 		"title": "Custom Properties for Cascading Variables",
 		"values": {
