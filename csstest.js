@@ -304,6 +304,12 @@ Array.prototype.and = function(arr2, separator) {
 	return ret;
 };
 
+Array.prototype.or = function(arr2, separator) {
+	separator = separator || ' ';
+	
+	return this.concat(arr2, this.and(arr2, separator), arr2.and(this, separator));
+};
+
 // [ x or y or z ]{min, max}
 Array.prototype.times = function(min, max, separator) {
 	separator = separator || ' ';
