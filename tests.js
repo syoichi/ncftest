@@ -1698,6 +1698,86 @@ window.Specs = {
 		}
 	},
 	
+	"compositing": {
+		"title": "Compositing and Blending",
+		"tr": "http://www.w3.org/TR/compositing",
+		"dev": "https://dvcs.w3.org/hg/FXTF/rawfile/tip/compositing/index.html",
+		"properties": {
+			"mix-composite": [
+				"source-over", "clear", "copy", "destination", "destination-over",
+				"source-in", "destination-in", "source-out", "destination-out",
+				"source-atop", "destination-atop", "xor", "lighter"
+			].concat(
+				["element", "box-shadow", "text-shadow", "background", "border", "content"].and([
+					"clear", "copy", "destination", "source-over", "destination-over",
+					"source-in", "destination-in", "source-out", "destination-out",
+					"source-atop", "destination-atop", "xor", "lighter"
+				]),
+				[
+					"source-over clear", "source-over element clear",
+					"element clear source-over", "element clear box-shadow copy",
+					"source-over clear element clear box-shadow copy"
+				]
+			),
+			"mix-blend-mode": [
+				"normal", "multiply", "screen", "overlay", "darken", "lighten",
+				"color-dodge", "color-burn", "hard-light", "soft-light", "difference",
+				"exclusion", "hue", "saturation", "color", "luminosity"
+			].concat(
+				["element", "box-shadow", "text-shadow", "background", "border", "content"].and([
+					"normal", "multiply", "screen", "overlay", "darken", "lighten",
+					"color-dodge", "color-burn", "hard-light", "soft-light", "difference",
+					"exclusion", "hue", "saturation", "color", "luminosity"
+				]),
+				[
+					"normal multiply", "normal element multiply",
+					"element multiply normal", "element multiply box-shadow screen",
+					"normal multiply element multiply box-shadow screen"
+				]
+			),
+			"isolation": ["auto", "isolate"],
+			"knock-out": ["preserve", "knock-out"],
+			"mix": [
+				"clear", "copy", "destination", "source-over", "destination-over",
+				"source-in", "destination-in", "source-out", "destination-out",
+				"source-atop", "destination-atop", "xor", "lighter",
+				"normal", "multiply", "screen", "overlay", "darken", "lighten",
+				"color-dodge", "color-burn", "hard-light", "soft-light", "difference",
+				"exclusion", "hue", "saturation", "color", "luminosity",
+				"auto", "isolate",
+				"preserve", "knock-out"
+			].concat(
+				["element", "box-shadow", "text-shadow", "background", "border", "content"].and([
+					"clear", "copy", "destination", "source-over", "destination-over",
+					"source-in", "destination-in", "source-out", "destination-out",
+					"source-atop", "destination-atop", "xor", "lighter",
+					"normal", "multiply", "screen", "overlay", "darken", "lighten",
+					"color-dodge", "color-burn", "hard-light", "soft-light", "difference",
+					"exclusion", "hue", "saturation", "color", "luminosity",
+					"auto", "isolate",
+					"preserve", "knock-out"
+				]),
+				[
+					"clear normal auto preserve", "element clear normal auto preserve",
+					"knock-out isolate luminosity lighter", "content knock-out isolate luminosity lighter",
+					"isolate destination-in hard-light", "background isolate destination-in hard-light"
+				]
+			),
+			"background-composite": [
+				"source-over", "clear", "copy", "destination", "destination-over",
+				"source-in", "destination-in", "source-out", "destination-out",
+				"source-atop", "destination-atop", "xor", "lighter",
+				"source-over clear"
+			],
+			"background-blend-mode": [
+				"normal", "multiply", "screen", "overlay", "darken", "lighten",
+				"color-dodge", "color-burn", "hard-light", "soft-light", "difference",
+				"exclusion", "hue", "saturation", "color", "luminosity",
+				"normal multiply"
+			]
+		}
+	},
+	
 	"view-mode": {
 		"title": "The 'view-mode' Media Feature",
 		"tr": "http://www.w3.org/TR/view-mode",
