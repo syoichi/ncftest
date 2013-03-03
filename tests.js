@@ -2121,6 +2121,24 @@ window.Specs = {
 					"preserve", "knock-out"
 				]),
 				[
+					"clear", "copy", "destination", "source-over", "destination-over",
+					"source-in", "destination-in", "source-out", "destination-out",
+					"source-atop", "destination-atop", "xor", "lighter"
+				].and([
+					"normal", "multiply", "screen", "overlay", "darken", "lighten",
+					"color-dodge", "color-burn", "hard-light", "soft-light", "difference",
+					"exclusion", "hue", "saturation", "color", "luminosity"
+				]),
+				[
+					"normal", "multiply", "screen", "overlay", "darken", "lighten",
+					"color-dodge", "color-burn", "hard-light", "soft-light", "difference",
+					"exclusion", "hue", "saturation", "color", "luminosity"
+				].and([
+					"clear", "copy", "destination", "source-over", "destination-over",
+					"source-in", "destination-in", "source-out", "destination-out",
+					"source-atop", "destination-atop", "xor", "lighter"
+				]),
+				[
 					"clear normal auto preserve", "element clear normal auto preserve",
 					"knock-out isolate luminosity lighter", "content knock-out isolate luminosity lighter",
 					"isolate destination-in hard-light", "background isolate destination-in hard-light",
