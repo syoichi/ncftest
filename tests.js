@@ -1698,6 +1698,165 @@ window.Specs = {
 		}
 	},
 	
+	"css-masking": {
+		"title": "Masking",
+		"tr": "http://www.w3.org/TR/css-masking",
+		"dev": "https://dvcs.w3.org/hg/FXTF/raw-file/tip/masking/index.html",
+		"properties": {
+			"mask-image": [
+				"none", "url(tl.png)", "linear-gradient(black 0%, transparent 100%)",
+				"url(#mask)", "url(commonmasks.xml#mask)", "child",
+				"select(img)", "select(mask:last-of-type)", "select(img, mask:last-of-type)",
+				"none, none", "none, url(foo.png)", "url(tl.png), url(tr.png)",
+				"url(foo.png), linear-gradient(white, black)",
+				"linear-gradient(black 0%, transparent 100%), linear-gradient(white, black)",
+				"none, url(foo.png), linear-gradient(white, black)"
+			],
+			"mask-source-type": ["auto", "alpha", "luminance", "alpha, luminance"],
+			"mask-repeat": ["repeat-x", "repeat-y"].concat(
+				["repeat", "space", "round", "no-repeat"].times(1, 2),
+				["repeat-x, repeat-y"]
+			),
+			"mask-position": [
+				"left", "center", "right", "top", "bottom", "10%", "10px"
+			].concat(
+				["left", "center", "right", "10%", "10px"].and(["top", "center", "bottom", "10%", "10px"])
+			).concat([
+				"top center", "top left", "top right", "bottom center", "bottom left", "bottom right",
+				"center top 10%", "center top 10px", "center bottom 10%", "center bottom 10px",
+				"center left 10%", "center left 10px", "center right 10%", "center right 10px",
+				"left top 10%", "left top 10px", "left bottom 10%", "left bottom 10px",
+				"right top 10%", "right top 10px", "right bottom 10%", "right bottom 10px",
+				"top left 10%", "top left 10px", "top right 10%", "top right 10px",
+				"bottom left 10%", "bottom left 10px", "bottom right 10%", "bottom right 10px",
+				"left 10% center", "left 10% top", "left 10% bottom",
+				"left 10px center", "left 10px top", "left 10px bottom",
+				"right 10% center", "right 10% top", "right 10% bottom",
+				"right 10px center", "right 10px top", "right 10px bottom",
+				"top 10% center", "top 10% left", "top 10% right",
+				"top 10px center", "top 10px left", "top 10px right",
+				"bottom 10% center", "bottom 10% left", "bottom 10% right",
+				"bottom 10px center", "bottom 10px left", "bottom 10px right",
+				"left 10% top 10%", "left 10% top 10px", "left 10% bottom 10%", "left 10% bottom 10px",
+				"left 10px top 10%", "left 10px top 10px", "left 10px bottom 10%", "left 10px bottom 10px",
+				"right 10% top 10%", "right 10% top 10px", "right 10% bottom 10%", "right 10% bottom 10px",
+				"right 10px top 10%", "right 10px top 10px", "right 10px bottom 10%", "right 10px bottom 10px",
+				"top 10% left 10%", "top 10% left 10px", "top 10% right 10%", "top 10% right 10px",
+				"top 10px left 10%", "top 10px left 10px", "top 10px right 10%", "top 10px right 10px",
+				"bottom 10% left 10%", "bottom 10% left 10px", "bottom 10% right 10%", "bottom 10% right 10px",
+				"bottom 10px left 10%", "bottom 10px left 10px", "bottom 10px right 10%", "bottom 10px right 10px",
+				"left, center"
+			]),
+			"mask-clip": ["border-box", "padding-box", "content-box", "no-clip", "border-box, padding-box"],
+			"mask-origin": ["border-box", "padding-box", "content-box", "border-box, padding-box"],
+			"mask-size": ["auto", "10px", "10%"].times(1, 2).concat(["cover", "contain"]),
+			"mask": [
+				"none", "url(tl.png)", "linear-gradient(black 0%, transparent 100%)",
+				"url(#mask)", "url(commonmasks.xml#mask)", "child",
+				"select(img)", "select(mask:last-of-type)", "select(img, mask:last-of-type)",
+				"none, none", "none, url(foo.png)", "url(tl.png), url(tr.png)",
+				"url(foo.png), linear-gradient(white, black)",
+				"linear-gradient(black 0%, transparent 100%), linear-gradient(white, black)",
+				"none, url(foo.png), linear-gradient(white, black)"
+			].concat(
+				[
+					"left", "center", "right", "top", "bottom", "10%", "10px"
+				].concat(
+					["left", "center", "right", "10%", "10px"].and(["top", "center", "bottom", "10%", "10px"])
+				).concat([
+					"top center", "top left", "top right", "bottom center", "bottom left", "bottom right",
+					"center top 10%", "center top 10px", "center bottom 10%", "center bottom 10px",
+					"center left 10%", "center left 10px", "center right 10%", "center right 10px",
+					"left top 10%", "left top 10px", "left bottom 10%", "left bottom 10px",
+					"right top 10%", "right top 10px", "right bottom 10%", "right bottom 10px",
+					"top left 10%", "top left 10px", "top right 10%", "top right 10px",
+					"bottom left 10%", "bottom left 10px", "bottom right 10%", "bottom right 10px",
+					"left 10% center", "left 10% top", "left 10% bottom",
+					"left 10px center", "left 10px top", "left 10px bottom",
+					"right 10% center", "right 10% top", "right 10% bottom",
+					"right 10px center", "right 10px top", "right 10px bottom",
+					"top 10% center", "top 10% left", "top 10% right",
+					"top 10px center", "top 10px left", "top 10px right",
+					"bottom 10% center", "bottom 10% left", "bottom 10% right",
+					"bottom 10px center", "bottom 10px left", "bottom 10px right",
+					"left 10% top 10%", "left 10% top 10px", "left 10% bottom 10%", "left 10% bottom 10px",
+					"left 10px top 10%", "left 10px top 10px", "left 10px bottom 10%", "left 10px bottom 10px",
+					"right 10% top 10%", "right 10% top 10px", "right 10% bottom 10%", "right 10% bottom 10px",
+					"right 10px top 10%", "right 10px top 10px", "right 10px bottom 10%", "right 10px bottom 10px",
+					"top 10% left 10%", "top 10% left 10px", "top 10% right 10%", "top 10% right 10px",
+					"top 10px left 10%", "top 10px left 10px", "top 10px right 10%", "top 10px right 10px",
+					"bottom 10% left 10%", "bottom 10% left 10px", "bottom 10% right 10%", "bottom 10% right 10px",
+					"bottom 10px left 10%", "bottom 10px left 10px", "bottom 10px right 10%", "bottom 10px right 10px"
+				]),
+				["repeat-x", "repeat-y"].concat(["repeat", "space", "round", "no-repeat"].times(1, 2)),
+				["border-box", "padding-box", "content-box", "no-clip"],
+				[
+					"none", "url(tl.png)", "linear-gradient(black 0%, transparent 100%)",
+					"url(#mask)", "url(commonmasks.xml#mask)", "child",
+					"select(img)", "select(mask:last-of-type)", "select(img, mask:last-of-type)",
+					"none, none", "none, url(foo.png)", "url(tl.png), url(tr.png)",
+					"url(foo.png), linear-gradient(white, black)",
+					"linear-gradient(black 0%, transparent 100%), linear-gradient(white, black)",
+					"none, url(foo.png), linear-gradient(white, black)"
+				].and(["alpha", "luminance", "auto"]),
+				[
+					"left / auto", "bottom 10px right 10px / 10px 10%", "padding-box space",
+					"url(tl.png) alpha left / auto repeat-x border-box border-box",
+					"url(foo.png), linear-gradient(white, black) luminance bottom 10px right 10px / 10px 10% repeat space content-box no-clip"
+				]
+			),
+			"mask-type": ["luminance", "alpha"],
+			"mask-box-image-source": ["none", "url(tl.png)", "linear-gradient(white, black)"],
+			"mask-box-image-slice": ["1", "10%"].times(1, 4).concat(
+				["1", "10%"].times(1, 4).and(["fill"]),
+				["fill"].and(["1", "10%"].times(1, 4))
+			),
+			"mask-box-image-width": ["auto", "10px", "10%", "1"].times(1, 4),
+			"mask-box-image-outset": ["10px", "1"].times(1, 4),
+			"mask-box-image-repeat": ["stretch", "repeat", "round", "space"].times(1, 2),
+			"mask-box-image": ["none", "url(tl.png)", "linear-gradient(white, black)"].concat(
+				["1", "10%"].times(1, 4).concat(
+					["1", "10%"].times(1, 4).and(["fill"]),
+					["fill"].and(["1", "10%"].times(1, 4))
+				),
+				["stretch", "repeat", "round", "space"].times(1, 2),
+				[
+					"1 / 1", "1 / / 1", "1 / 1 / 1",
+					"10px 5 20px 5px fill / 1 10px 10% auto / 10 5px 1px 10px",
+					"url(tl.png) 10px 5 20px 5px fill / 1 10px 10% auto / 10 5px 1px 10px repeat space"
+				]
+			),
+			"clip-path": ["none"].concat(
+				["10px", "10%"].times(4).concat(
+					["10px", "10%"].times(4).and(["curve"].and(["10px", "10%"].times(1, 2)))
+				).map(function (arg) {
+					return 'rectangle(' + arg + ') ';
+				}),
+				["10px", "10%"].times(3).map(function (arg) {
+					return 'circle(' + arg + ') ';
+				}),
+				["10px", "10%"].times(4).map(function (arg) {
+					return 'ellipse(' + arg + ') ';
+				}),
+				["10px", "10%"].times(2).concat(
+					["nonzero", "evenodd"].and(["10px", "10%"].times(2), ', '),
+					["10px 10%, 10px 10%", "nonzero, 10px 10%, 10px 10%", "evenodd, 10px 10%, 10px 10%"]
+				).map(function (arg) {
+					return 'polygon(' + arg + ') ';
+				})
+			).concat([
+				"url(#mask)", "url(commonmasks.xml#mask)", "url(tl.png)",
+				"child", "img", "clipPath:last-of-type"
+			]),
+			"clip-rule": ["nonzero", "evenodd"],
+			"clip": [
+				"auto", "rect(5px, 40px, 45px, 5px)",
+				"rect(-5px, 40px, 45px, 5px)", "rect(5px, 40px, 45px, auto)",
+				"rect(-5px, auto, 0px, 5px)"
+			],
+		}
+	},
+	
 	"compositing": {
 		"title": "Compositing and Blending",
 		"tr": "http://www.w3.org/TR/compositing",
