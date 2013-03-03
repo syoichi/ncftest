@@ -29,8 +29,17 @@ window.Specs = {
 			],
 			"box-decoration-break": ["slice", "clone"],
 			"box-shadow": [
-				"1px 1px", "0 0 black", "1px 2px 3px black", "1px 2px 3px 4px black",
-				"inset 1px 1px", "1px 2px 3px 4px black inset"
+				"none", "1px 2px", "1px 2px 3px", "1px 2px 3px 4px",
+				"1px 2px red", "blue 1px 2px", "1px 2px 3px yellow", "green 1px 2px 3px",
+				"1px 2px 3px 4px purple", "pink 1px 2px 3px 4px",
+				"inset 1px 2px", "1px 2px inset", "inset 1px 2px 3px", "1px 2px 3px inset",
+				"inset 1px 2px 3px 4px", "1px 2px 3px 4px inset",
+				"inset 1px 2px red", "1px 2px red inset", "inset blue 1px 2px", "blue 1px 2px inset",
+				"inset 1px 2px 3px yellow", "1px 2px 3px yellow inset",
+				"inset green 1px 2px 3px", "green 1px 2px 3px inset",
+				"inset 1px 2px 3px 4px purple", "1px 2px 3px 4px purple inset",
+				"inset pink 1px 2px 3px 4px", "pink 1px 2px 3px 4px inset",
+				"1px 2px, 1px 2px"
 			]
 		}
 	},
