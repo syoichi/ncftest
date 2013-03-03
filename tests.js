@@ -735,8 +735,46 @@ window.Specs = {
 		"properties": {
 			"wrap-flow": ["auto", "both", "start", "end", "minimum", "maximum", "clear"],
 			"wrap-through": ["wrap", "none"],
-			"shape-outside": ["auto", "rectangle", "circle", "ellipse", "polygon", "url(foo.png)"],
-			"shape-inside": ["outside-shape", "auto", "rectangle", "circle", "ellipse", "polygon", "url(foo.png)"],
+			"shape-outside": ["auto"].concat(
+				["10px", "10%"].times(4).concat(
+					["10px", "10%"].times(4).and(["curve"].and(["10px", "10%"].times(1, 2)))
+				).map(function (arg) {
+					return 'rectangle(' + arg + ') ';
+				}),
+				["10px", "10%"].times(3).map(function (arg) {
+					return 'circle(' + arg + ') ';
+				}),
+				["10px", "10%"].times(4).map(function (arg) {
+					return 'ellipse(' + arg + ') ';
+				}),
+				["10px", "10%"].times(2).concat(
+					["nonzero", "evenodd"].and(["10px", "10%"].times(2), ', '),
+					["10px 10%, 10px 10%", "nonzero, 10px 10%, 10px 10%", "evenodd, 10px 10%, 10px 10%"]
+				).map(function (arg) {
+					return 'polygon(' + arg + ') ';
+				}),
+				["url(foo.png)"]
+			),
+			"shape-inside": ["outside-shape", "auto"].concat(
+				["10px", "10%"].times(4).concat(
+					["10px", "10%"].times(4).and(["curve"].and(["10px", "10%"].times(1, 2)))
+				).map(function (arg) {
+					return 'rectangle(' + arg + ') ';
+				}),
+				["10px", "10%"].times(3).map(function (arg) {
+					return 'circle(' + arg + ') ';
+				}),
+				["10px", "10%"].times(4).map(function (arg) {
+					return 'ellipse(' + arg + ') ';
+				}),
+				["10px", "10%"].times(2).concat(
+					["nonzero", "evenodd"].and(["10px", "10%"].times(2), ', '),
+					["10px 10%, 10px 10%", "nonzero, 10px 10%, 10px 10%", "evenodd, 10px 10%, 10px 10%"]
+				).map(function (arg) {
+					return 'polygon(' + arg + ') ';
+				}),
+				["url(foo.png)"]
+			),
 			"shape-image-threshold": ["0.5", "0.0", "1.0"],
 			"shape-margin": ["0", "1px", "10em"],
 			"shape-padding": ["0", "1px", "10em"]
