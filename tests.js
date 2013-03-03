@@ -1736,6 +1736,172 @@ window.Specs = {
 		}
 	},
 	
+	"filter-effects": {
+		"title": "Filter Effects",
+		"tr": "http://www.w3.org/TR/filter-effects",
+		"dev": "https://dvcs.w3.org/hg/FXTF/raw-file/tip/filters/index.html",
+		"properties": {
+			"filter": [
+				"none", "url(commonmasks.xml#mask)",
+				"grayscale(10)", "grayscale(100%)", "sepia(50)", "sepia(10%)",
+				"saturate(10)", "saturate(50%)", "hue-rotate(90deg)",
+				"invert(100)", "invert(0%)", "opacity(1)", "opacity(25%)",
+				"brightness(15)", "brightness(15%)", "contrast(45)", "contrast(1%)",
+				"blur(10px)"
+			].concat([
+				"1px 2px", "1px 2px 3px",
+				"1px 2px red", "blue 1px 2px", "1px 2px 3px yellow", "green 1px 2px 3px",
+				"1px 2px, 1px 2px"
+			].map(function (shadow) {
+				return "drop-shadow(" + shadow + ")";
+			})).concat(
+				["warp, param"].and(["matrix(1, 2, 3, 4, 5, 6)"].concat(
+					["0", "10px", "-20px", "50%"].times(1, 2, ", ").map(function (arg) {
+						return "translate(" + arg + ")";
+					}),
+					["0", "10px", "-20px", "50%"].times(1).map(function (translationValue) {
+						return "translateX(" + translationValue + ")";
+					}),
+					["0", "10px", "-20px", "50%"].times(1).map(function (translationValue) {
+						return "translateY(" + translationValue + ")";
+					}),
+					["scale(1)", "scale(1, 2)", "scaleX(1)", "scaleY(1)"],
+					["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+						return "rotate(" + angle + ")";
+					}),
+					["90deg", "100grad", "1rad", "1turn"].times(1, 2, ", ").map(function (arg) {
+						return "skew(" + arg + ")";
+					}),
+					["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+						return "skewX(" + angle + ")";
+					}),
+					["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+						return "skewY(" + angle + ")";
+					}),
+					["matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)"],
+					["0", "10px", "-20px", "50%"].times(2, 2, ", ").map(function (arg) {
+						return "translate3d(" + arg + ", 10px)";
+					}),
+					["translateZ(10px)", "scale3d(1, 2, 3)", "scaleZ(1)"],
+					["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+						return "rotate3d(1, 2, 3, " + angle + ")";
+					}),
+					["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+						return "rotateX(" + angle + ")";
+					}),
+					["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+						return "rotateY(" + angle + ")";
+					}),
+					["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+						return "rotateZ(" + angle + ")";
+					}),
+					["perspective(10px)", "true", "false"],
+					["1"].times(1, 4),
+					["array(1)", "array(1, 2)"],
+					["2"].times(3, 3, ", ").map(function (arg) {
+						return "mat2(1, " + arg + ")";
+					}),
+					["2"].times(8, 8, ", ").map(function (arg) {
+						return "mat3(1, " + arg + ")";
+					}),
+					["2"].times(15, 15, ", ").map(function (arg) {
+						return "mat4(1, " + arg + ")";
+					}),
+					["white", "texture(url(foo.png))"]
+				)).map(function (arg) {
+					return "custom(" + arg + ")";
+				}),
+				[
+					"custom(warp, param matrix(1, 2, 3, 4, 5, 6), shader rotate(90deg))",
+					"linear-gradient(white, black), none", "linear-gradient(white, black), sepia(50%)",
+					"linear-gradient(white, black), sepia(50%) contrast(50%)",
+					"linear-gradient(white, black), custom(warp, param matrix(1, 2, 3, 4, 5, 6), shader rotate(90deg))"
+				]
+			),
+			"flood-color": [
+				"black", "currentColor",
+				"black icc-color(white, 1)", "#ffffff icc-color(white, 1, 2)"
+			],
+			"flood-opacity": ["1", "10%"],
+			"color-interpolation-filters": ["linearRGB", "auto", "sRGB"],
+			"lighting-color": [
+				"white", "currentColor",
+				"black icc-color(white, 1)", "#ffffff icc-color(white, 1, 2)"
+			],
+			"src": [
+				"url(#warp)", "url(#warp) format(\"warp\")",
+				"url(distort.vs), url(tint.fs)",
+				"url('simple.vs') format('x-shader/x-vertex'), url(simple.fs) format('x-shader/x-fragment')"
+			],
+			"parameters": ["warp"].and(["matrix(1, 2, 3, 4, 5, 6)"].concat(
+				["0", "10px", "-20px", "50%"].times(1, 2, ", ").map(function (arg) {
+					return "translate(" + arg + ")";
+				}),
+				["0", "10px", "-20px", "50%"].times(1).map(function (translationValue) {
+					return "translateX(" + translationValue + ")";
+				}),
+				["0", "10px", "-20px", "50%"].times(1).map(function (translationValue) {
+					return "translateY(" + translationValue + ")";
+				}),
+				["scale(1)", "scale(1, 2)", "scaleX(1)", "scaleY(1)"],
+				["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+					return "rotate(" + angle + ")";
+				}),
+				["90deg", "100grad", "1rad", "1turn"].times(1, 2, ", ").map(function (arg) {
+					return "skew(" + arg + ")";
+				}),
+				["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+					return "skewX(" + angle + ")";
+				}),
+				["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+					return "skewY(" + angle + ")";
+				}),
+				["matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)"],
+				["0", "10px", "-20px", "50%"].times(2, 2, ", ").map(function (arg) {
+					return "translate3d(" + arg + ", 10px)";
+				}),
+				["translateZ(10px)", "scale3d(1, 2, 3)", "scaleZ(1)"],
+				["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+					return "rotate3d(1, 2, 3, " + angle + ")";
+				}),
+				["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+					return "rotateX(" + angle + ")";
+				}),
+				["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+					return "rotateY(" + angle + ")";
+				}),
+				["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+					return "rotateZ(" + angle + ")";
+				}),
+				["perspective(10px)", "true", "false"],
+				["1"].times(1, 4),
+				["array(1)", "array(1, 2)"],
+				["2"].times(3, 3, ", ").map(function (arg) {
+					return "mat2(1, " + arg + ")";
+				}),
+				["2"].times(8, 8, ", ").map(function (arg) {
+					return "mat3(1, " + arg + ")";
+				}),
+				["2"].times(15, 15, ", ").map(function (arg) {
+					return "mat4(1, " + arg + ")";
+				}),
+				["white", "texture(url(foo.png))"]
+			)),
+			"geometry": [
+				"grid(1)", "grid(1 2)",
+				"grid(1 detached)", "grid(1 2 detached)", "grid(detached 1)", "grid(detached 1 2)",
+				"grid(1 attached)", "grid(1 2 attached)", "grid(attached 1)", "grid(attached 1 2)",
+				"grid(1 1 attached)"
+			],
+			"mix": ["none"],
+			"enable-background": ["accumulate", "new"]
+		},
+		"@rules": {
+			"@support": "@support filter(webgl)",
+			"@filter": "@filter warp"
+		}
+	},
+	
 	"css-masking": {
 		"title": "Masking",
 		"tr": "http://www.w3.org/TR/css-masking",
