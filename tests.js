@@ -739,19 +739,19 @@ window.Specs = {
 				["10px", "10%"].times(4).concat(
 					["10px", "10%"].times(4).and(["curve"].and(["10px", "10%"].times(1, 2)))
 				).map(function (arg) {
-					return 'rectangle(' + arg + ') ';
+					return "rectangle(" + arg + ")";
 				}),
 				["10px", "10%"].times(3).map(function (arg) {
-					return 'circle(' + arg + ') ';
+					return "circle(" + arg + ")";
 				}),
 				["10px", "10%"].times(4).map(function (arg) {
-					return 'ellipse(' + arg + ') ';
+					return "ellipse(" + arg + ")";
 				}),
 				["10px", "10%"].times(2).concat(
-					["nonzero", "evenodd"].and(["10px", "10%"].times(2), ', '),
+					["nonzero", "evenodd"].and(["10px", "10%"].times(2), ", "),
 					["10px 10%, 10px 10%", "nonzero, 10px 10%, 10px 10%", "evenodd, 10px 10%, 10px 10%"]
 				).map(function (arg) {
-					return 'polygon(' + arg + ') ';
+					return "polygon(" + arg + ")";
 				}),
 				["url(foo.png)"]
 			),
@@ -759,19 +759,19 @@ window.Specs = {
 				["10px", "10%"].times(4).concat(
 					["10px", "10%"].times(4).and(["curve"].and(["10px", "10%"].times(1, 2)))
 				).map(function (arg) {
-					return 'rectangle(' + arg + ') ';
+					return "rectangle(" + arg + ")";
 				}),
 				["10px", "10%"].times(3).map(function (arg) {
-					return 'circle(' + arg + ') ';
+					return "circle(" + arg + ")";
 				}),
 				["10px", "10%"].times(4).map(function (arg) {
-					return 'ellipse(' + arg + ') ';
+					return "ellipse(" + arg + ")";
 				}),
 				["10px", "10%"].times(2).concat(
-					["nonzero", "evenodd"].and(["10px", "10%"].times(2), ', '),
+					["nonzero", "evenodd"].and(["10px", "10%"].times(2), ", "),
 					["10px 10%, 10px 10%", "nonzero, 10px 10%, 10px 10%", "evenodd, 10px 10%, 10px 10%"]
 				).map(function (arg) {
-					return 'polygon(' + arg + ') ';
+					return "polygon(" + arg + ")";
 				}),
 				["url(foo.png)"]
 			),
@@ -2034,19 +2034,19 @@ window.Specs = {
 				["10px", "10%"].times(4).concat(
 					["10px", "10%"].times(4).and(["curve"].and(["10px", "10%"].times(1, 2)))
 				).map(function (arg) {
-					return 'rectangle(' + arg + ') ';
+					return "rectangle(" + arg + ")";
 				}),
 				["10px", "10%"].times(3).map(function (arg) {
-					return 'circle(' + arg + ') ';
+					return "circle(" + arg + ")";
 				}),
 				["10px", "10%"].times(4).map(function (arg) {
-					return 'ellipse(' + arg + ') ';
+					return "ellipse(" + arg + ")";
 				}),
 				["10px", "10%"].times(2).concat(
-					["nonzero", "evenodd"].and(["10px", "10%"].times(2), ', '),
+					["nonzero", "evenodd"].and(["10px", "10%"].times(2), ", "),
 					["10px 10%, 10px 10%", "nonzero, 10px 10%, 10px 10%", "evenodd, 10px 10%, 10px 10%"]
 				).map(function (arg) {
-					return 'polygon(' + arg + ') ';
+					return "polygon(" + arg + ")";
 				})
 			).concat([
 				"url(#mask)", "url(commonmasks.xml#mask)", "url(tl.png)",
