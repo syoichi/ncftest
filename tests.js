@@ -1873,9 +1873,9 @@ window.Specs = {
 					"source-atop", "destination-atop", "xor", "lighter"
 				]),
 				[
-					"source-over clear", "source-over element clear",
-					"element clear source-over", "element clear box-shadow copy",
-					"source-over clear element clear box-shadow copy"
+					"source-over, clear", "source-over, element clear",
+					"element clear, source-over", "element clear, box-shadow copy",
+					"source-over, clear, element clear, box-shadow copy"
 				]
 			),
 			"mix-blend-mode": [
@@ -1889,9 +1889,9 @@ window.Specs = {
 					"exclusion", "hue", "saturation", "color", "luminosity"
 				]),
 				[
-					"normal multiply", "normal element multiply",
-					"element multiply normal", "element multiply box-shadow screen",
-					"normal multiply element multiply box-shadow screen"
+					"normal, multiply", "normal, element multiply",
+					"element multiply, normal", "element multiply, box-shadow screen",
+					"normal, multiply, element multiply, box-shadow screen"
 				]
 			),
 			"isolation": ["auto", "isolate"],
@@ -1919,20 +1919,21 @@ window.Specs = {
 				[
 					"clear normal auto preserve", "element clear normal auto preserve",
 					"knock-out isolate luminosity lighter", "content knock-out isolate luminosity lighter",
-					"isolate destination-in hard-light", "background isolate destination-in hard-light"
+					"isolate destination-in hard-light", "background isolate destination-in hard-light",
+					"clear, clear"
 				]
 			),
 			"background-composite": [
 				"source-over", "clear", "copy", "destination", "destination-over",
 				"source-in", "destination-in", "source-out", "destination-out",
 				"source-atop", "destination-atop", "xor", "lighter",
-				"source-over clear"
+				"source-over, clear"
 			],
 			"background-blend-mode": [
 				"normal", "multiply", "screen", "overlay", "darken", "lighten",
 				"color-dodge", "color-burn", "hard-light", "soft-light", "difference",
 				"exclusion", "hue", "saturation", "color", "luminosity",
-				"normal multiply"
+				"normal, multiply"
 			]
 		}
 	},
