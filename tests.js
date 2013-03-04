@@ -445,25 +445,92 @@ window.Specs = {
 	"css3-transforms": {
 		"title": "Transforms",
 		"properties": {
-			"transform": [
-				"none",
-				"translate(5px)", "translate(5px, 10px)", "translateY(5px)", "translateX(5px)", "translateY(5%)", "translateX(5%)",
-				"scale(2)", "scale(2, -1)", "scaleX(2)", "scaleY(2.5)",
-				"rotate(45deg)",
-				"skew(45deg)", "skew(45deg, 15deg)", "skewX(45deg)", "skewY(45deg)",
-				"matrix(1,-.2,0,1,0,0)", "matrix(1,-.2,0,1,10,10)",
-				"translate(50px, -24px) rotate(180deg) scale(.5) skew(0, 22.5deg)",
-				"translate3d(0, 0, 5px)", "translateZ(5px)",
-				"scale3d(1, 0, -1)", "scaleZ(1.5)",
-				"rotate3d(1, 1, 1, 45deg)", "rotateX(-45deg)", "rotateY(-45deg)", "rotateZ(-45deg)",
-				"matrix3d(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)", "matrix3d(0,0,0,0,0,0,0,0,0,0,1,0,10,10,0,1)",
-				"translate3d(50px, -24px, 5px) rotate3d(1, 2, 3, 180deg) scale3d(-1, 0, .5)",
-				"perspective(600px)"
-			],
-			"transform-origin": ["10px", "top", "top left", "50% 100%", "left 0%", "right bottom 20px"],
+			"transform": ["none", "matrix(1, 2, 3, 4, 5, 6)"].concat(
+				["0", "10px", "-20px", "50%"].times(1, 2, ", ").map(function (arg) {
+					return "translate(" + arg + ")";
+				}),
+				["0", "10px", "-20px", "50%"].times(1).map(function (translationValue) {
+					return "translateX(" + translationValue + ")";
+				}),
+				["0", "10px", "-20px", "50%"].times(1).map(function (translationValue) {
+					return "translateY(" + translationValue + ")";
+				}),
+				["scale(1)", "scale(1, 2)", "scaleX(1)", "scaleY(1)"],
+				["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+					return "rotate(" + angle + ")";
+				}),
+				["90deg", "100grad", "1rad", "1turn"].times(1, 2, ", ").map(function (arg) {
+					return "skew(" + arg + ")";
+				}),
+				["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+					return "skewX(" + angle + ")";
+				}),
+				["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+					return "skewY(" + angle + ")";
+				}),
+				["matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)"],
+				["0", "10px", "-20px", "50%"].times(2, 2, ", ").map(function (arg) {
+					return "translate3d(" + arg + ", 10px)";
+				}),
+				["translateZ(10px)", "scale3d(1, 2, 3)", "scaleZ(1)"],
+				["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+					return "rotate3d(1, 2, 3, " + angle + ")";
+				}),
+				["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+					return "rotateX(" + angle + ")";
+				}),
+				["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+					return "rotateY(" + angle + ")";
+				}),
+				["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+					return "rotateZ(" + angle + ")";
+				}),
+				[
+					"perspective(10px)", "matrix(1, 2, 3, 4, 5, 6) translate(0)",
+					"scale(2, -1) scaleY(2.5) matrix(1, -.2, 0, 1, 10, 10)",
+					"translate(50px, -24px) rotate(180deg) scale(.5) skew(0, 22.5deg)",
+					"matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16) translate3d(0, 0, 10px)",
+					"scale3d(1, 0, -1) rotateX(-45deg) rotateY(-45deg) rotateZ(-45deg)",
+					"translate3d(50px, -24px, 5px) rotate3d(1, 2, 3, 180deg) scale3d(-1, 0, .5)",
+					"matrix(1, 2, 3, 4, 5, 6) matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)"
+				]
+			),
+			"transform-origin": [
+				"10%", "10px", "left", "center", "right", "top", "bottom",
+				"10% 10%", "10px 10%", "left 10%", "center 10%", "right 10%",
+				"10% 10px", "10px 10px", "left 10px", "center 10px", "right 10px",
+				"10% top", "10px top", "left top", "center top", "right top",
+				"10% center", "10px center", "left center", "center center",
+				"right center", "10% bottom", "10px bottom", "left bottom",
+				"center bottom", "right bottom", "top 10%", "bottom 10%",
+				"top 10px", "bottom 10px", "10% left", "10px left", "top left",
+				"center left", "bottom left", "top center", "bottom center",
+				"10% right", "10px right", "top right", "center right", "bottom right"
+			].concat([
+				"10% 10%", "10px 10%", "left 10%", "center 10%", "right 10%",
+				"10% 10px", "10px 10px", "left 10px", "center 10px", "right 10px",
+				"10% top", "10px top", "left top", "center top", "right top",
+				"10% center", "10px center", "left center", "center center",
+				"right center", "10% bottom", "10px bottom", "left bottom",
+				"center bottom", "right bottom", "top 10%", "bottom 10%",
+				"top 10px", "bottom 10px", "10% left", "10px left", "top left",
+				"center left", "bottom left", "top center", "bottom center",
+				"10% right", "10px right", "top right", "center right", "bottom right"
+			].and(['10px'])),
 			"transform-style": ["flat", "preserve-3d"],
 			"perspective": ["none", "600px"],
-			"perspective-origin": ["10px", "top", "top left", "50% 100%", "left 0%"],
+			"perspective-origin": [
+				"10%", "10px", "left", "center", "right", "top", "bottom",
+				"10% 10%", "10px 10%", "left 10%", "center 10%", "right 10%",
+				"10% 10px", "10px 10px", "left 10px", "center 10px", "right 10px",
+				"10% top", "10px top", "left top", "center top", "right top",
+				"10% center", "10px center", "left center", "center center",
+				"right center", "10% bottom", "10px bottom", "left bottom",
+				"center bottom", "right bottom", "top 10%", "bottom 10%",
+				"top 10px", "bottom 10px", "10% left", "10px left", "top left",
+				"center left", "bottom left", "top center", "bottom center",
+				"10% right", "10px right", "top right", "center right", "bottom right"
+			],
 			"backface-visibility": ["visible", "hidden"]
 		}
 	},
