@@ -2025,7 +2025,7 @@ window.Specs = {
 			].concat(
 				["left", "center", "right", "10%", "10px"].and(["top", "center", "bottom", "10%", "10px"])
 			).concat([
-				"top center", "top left", "top right", "bottom center", "bottom left", "bottom right",
+				"top center", "top left", "top right", "bottom center", "bottom left", "bottom right", "center left", "center right",
 				"center top 10%", "center top 10px", "center bottom 10%", "center bottom 10px",
 				"center left 10%", "center left 10px", "center right 10%", "center right 10px",
 				"left top 10%", "left top 10px", "left bottom 10%", "left bottom 10px",
@@ -2067,7 +2067,7 @@ window.Specs = {
 				].concat(
 					["left", "center", "right", "10%", "10px"].and(["top", "center", "bottom", "10%", "10px"])
 				).concat([
-					"top center", "top left", "top right", "bottom center", "bottom left", "bottom right",
+					"top center", "top left", "top right", "bottom center", "bottom left", "bottom right", "center left", "center right",
 					"center top 10%", "center top 10px", "center bottom 10%", "center bottom 10px",
 					"center left 10%", "center left 10px", "center right 10%", "center right 10px",
 					"left top 10%", "left top 10px", "left bottom 10%", "left bottom 10px",
