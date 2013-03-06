@@ -427,7 +427,8 @@ window.Specs = {
 			"transition-timing-function": [
 				"ease", "linear", "ease-in", "ease-out", "ease-in-out",
 				"step-start", "step-end", "steps(1)", "steps(3, start)", "steps(5, end)",
-				"cubic-bezier(.5, .5, .5, .5)", "cubic-bezier(.5, 1.5, .5, -2.5)"
+				"cubic-bezier(.5, .5, .5, .5)", "cubic-bezier(.5, 1.5, .5, -2.5)",
+				"ease, linear", "ease, ease, ease"
 			],
 			"transition-delay": ["0s", "-1s", "100ms", "0s, 10s", "-100ms, 1s, 10s"],
 			"transition": [
