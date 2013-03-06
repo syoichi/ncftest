@@ -445,20 +445,43 @@ window.Specs = {
 	"css3-animations": {
 		"title": "Animations",
 		"properties": {
-			"animation-name": ["foo", "foo, bar"],
-			"animation-duration": ["0s", "1s", "100ms"],
+			"animation-name": ["none", "foo", "foo, bar", "none, foo, bar"],
+			"animation-duration": ["0s", "1s", "100ms", "1s, 2s", "0ms, 1s, 3s"],
 			"animation-timing-function": [
 				"ease", "linear", "ease-in", "ease-out", "ease-in-out",
-				"cubic-bezier(.5, .5, .5, .5)",
-				"cubic-bezier(.5, 1.5, .5, -2.5)",
-				"step-start", "step-end", "steps(3, start)", "steps(5, end)"
+				"step-start", "step-end", "steps(1)", "steps(3, start)", "steps(5, end)",
+				"cubic-bezier(.5, .5, .5, .5)", "cubic-bezier(.5, 1.5, .5, -2.5)",
+				"ease, linear", "ease, ease, ease"
 			],
-			"animation-iteration-count": ["infinite", "8", "4.35"],
-			"animation-direction": ["normal", "alternate", "reverse", "alternate-reverse"],
-			"animation-play-state": ["running", "paused"],
-			"animation-delay": ["1s", "-1s"],
-			"animation-fill-mode": ["none", "forwards", "backwards", "both"],
-			"animation": "foo 1s 2s infinite linear alternate both"
+			"animation-iteration-count": ["infinite", "8", "4.35", "1, .5", "0, 1, 2"],
+			"animation-direction": [
+				"normal", "reverse", "alternate", "alternate-reverse",
+				"normal, reverse", "normal, normal, alternate-reverse"
+			],
+			"animation-play-state": [
+				"running", "paused",
+				"running, paused", "paused, paused, paused"
+			],
+			"animation-delay": ["1s", "-1s", "0s, 1ms", "-10s, 0s, 10s"],
+			"animation-fill-mode": [
+				"none", "forwards", "backwards", "both",
+				"none, forwards", "none, none, none"
+			],
+			"animation": [
+				"none", "foo", "0s", "ease", "linear", "ease-in", "ease-out",
+				"ease-in-out", "step-start", "step-end", "steps(1)",
+				"steps(3, start)", "steps(5, end)", "cubic-bezier(.5, .5, .5, .5)",
+				"cubic-bezier(.5, 1.5, .5, -2.5)", "1", "infinite", "normal",
+				"reverse", "alternate", "alternate-reverse", "running", "paused",
+				"0s", "none", "forwards", "backwards", "both",
+				"none 0s", "both paused", "none none", "-1s 0s", "foo running",
+				"none -1s cubic-bezier(.5, 1.5, .5, -2.5)",
+				"foo 1s 2s infinite linear alternate both",
+				"none 0s ease 0s 1 normal none running",
+				"none, none", "-1s, -1s", "none 0s, both paused",
+				"none 0s ease 0s 1 normal none running, none 0s ease 1 normal running 0s none",
+				"0s, 0s, 0s"
+			]
 		},
 		"@rules": {
 			"@keyframes": "@keyframes foo"
