@@ -1311,17 +1311,23 @@ window.Specs = {
 		"values": {
 			"properties": ["list-style-type"],
 			"symbols()": [
-				"symbols(\"*\" \"\2020\" \"\2021\" \"\A7\")", "symbols(cyclic \"*\" \"\2020\" \"\2021\" \"\A7\")",
-				"symbols(numeric \"1\")", "symbols(alphabetic \"a\")",
-				"symbols(symbolic linear-gradient(white, black) url(foo.png))", "symbols(fixed \"0\" radial-gradient(white, black) \"A\")",
+				"symbols(\"\")", "symbols(url(foo.png))", "symbols(linear-gradient(white, black))",
+				"symbols(cyclic \"\")", "symbols(numeric url(foo.png))", "symbols(alphabetic linear-gradient(white, black))",
+				"symbols(\"\" \"\")", "symbols(url(foo.png) url(foo.png))", "symbols(linear-gradient(white, black) linear-gradient(white, black))",
+				"symbols(symbolic \"\" \"\")", "symbols(fixed url(foo.png) linear-gradient(white, black))",
+				"symbols(cyclic \"\" url(foo.png) linear-gradient(white, black))",
+				"symbols(numeric \"0\" radial-gradient(white, black) \"A\")"
 			]
 		},
 		"properties": {
-			"system": ["cyclic", "numeric", "alphabetic", "symbolic", "additive", "fixed", "fixed 1", "override triangle"],
-			"negative": ["\"-\"", "\"(\" \")\""],
-			"prefix": ["\"\"", "\"-webkit-\""],
-			"suffix": ["\".\"", "kg"],
-			"range": ["auto", "1 infinite", "infinite 0"],
+			"system": ["symbolic", "cyclic", "numeric", "alphabetic", "additive", "fixed", "fixed 1", "override triangle"],
+			"negative": ["\"-\"", "url(foo.svg)", "linear-gradient(white, black)", "triangle"].times(1, 2),
+			"prefix": ["\"\"", "\"-webkit-\"", "url(foo.svg)", "linear-gradient(white, black)", "triangle"],
+			"suffix": ["\".\"", "\"kg\"", "url(foo.svg)", "linear-gradient(white, black)", "triangle"],
+			"range": ["auto"].concat(["1", "infinite"].times(2), ["1 1, 1 1"]),
+			"width": ["0"].and(["\"\"", "url(foo.svg)", "linear-gradient(white, black)", "triangle"]).concat(
+				["\"\"", "url(foo.svg)", "linear-gradient(white, black)", "triangle"].and(["0"])
+			),
 			"fallback": [
 				"decimal", "decimal-leading-zero", "cjk-decimal", "lower-roman", "upper-roman", "armenian", "georgian", "hebrew",
 				"lower-alpha", "lower-latin", "upper-alpha", "upper-latin", "lower-greek", "hiragana", "hiragana-iroha", "katakana", "katakana-iroha",
@@ -1330,15 +1336,16 @@ window.Specs = {
 				"simp-chinese-informal", "simp-chinese-formal", "trad-chinese-informal", "trad-chinese-formal", "cjk-ideographic",
 				"ethiopic-numeric"
 			],
-			"symbols": [
+			"symbols": ["\"\"", "url(foo.svg)", "linear-gradient(white, black)", "triangle"].times(1, 2).concat([
 				"‣", "◰ ◳ ◲ ◱", "* ⁑ † ‡", "A B C D E F G H I J K L M \nN O P Q R S T U V W X Y Z",
-				"url(white.svg) url(black.svg)", "'0' '1' '2' '3' '4' '5' '6' '7' '8' '9'",
+				"'0' '1' '2' '3' '4' '5' '6' '7' '8' '9'",
 				"ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ⓚ ⓛ ⓜ ⓝ ⓞ ⓟ ⓠ ⓡ ⓢ ⓣ ⓤ ⓥ ⓦ ⓧ ⓨ ⓩ", "'1' linear-gradient(white, black) あ"
-			],
-			"additive-symbols": [
-				"6 ⚅, 5 ⚄, 4 ⚃, 3 ⚂, 2 ⚁, 1 ⚀", "'0' 0, 1 radial-gradient(white, black), 2 A"
-			],
-			"speak-as": ["auto", "numeric", "alphabetic", "bullet", "decimal", "lower-latin"]
+			]),
+			"additive-symbols": ["0"].and(["\"\"", "url(foo.svg)", "linear-gradient(white, black)", "triangle"]).concat(
+				["\"\"", "url(foo.svg)", "linear-gradient(white, black)", "triangle"].and(["0"]),
+				["\"\", \"\"", "6 ⚅, 5 ⚄, 4 ⚃, 3 ⚂, 2 ⚁, 1 ⚀", "'0' 0, 1 radial-gradient(white, black), 2 A"]
+			),
+			"speak-as": ["auto", "numeric", "alphabetic", "bullet", "triangle"]
 		},
 		"@rules": {
 			"@counter-style": "@counter-style circled-lower-latin"
