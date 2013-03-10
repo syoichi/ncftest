@@ -2,8 +2,23 @@ window.Specs = {
 	"css3-background": {
 		"title": "Backgrounds and Borders",
 		"properties": {
-			"background-repeat": ["space", "round"].concat(["repeat", "space", "round", "no-repeat"].times(2)),
-			"background-attachment": "local",
+			"background-image": ["linear-gradient(white, black)"].concat(
+				["none", "url(foo.png)", "linear-gradient(white, black)"].times(2, 2, ", "),
+				["none, url(foo.png), linear-gradient(white, black)"]
+			),
+			"background-repeat": [
+				"space", "round",
+				"space repeat", "round repeat", "repeat space", "space space", "round space",
+				"no-repeat space", "repeat round", "space round", "round round", "no-repeat round",
+				"space no-repeat", "round no-repeat"
+			].concat(
+				["repeat", "repeat-x", "repeat-y", "no-repeat", "space", "round"].times(2, 2, ", "),
+				["repeat, repeat-x, repeat-y"]
+			),
+			"background-attachment": ["local"].concat(
+				["scroll", "fixed", "local"].times(2, 2, ", "),
+				["scroll, fixed, local"]
+			),
 			"background-position": [
 				"center top 10%", "center top 10px", "center bottom 10%", "center bottom 10px",
 				"center left 10%", "center left 10px", "center right 10%", "center right 10px",
@@ -26,30 +41,136 @@ window.Specs = {
 				"top 10% left 10%", "top 10% left 10px", "top 10% right 10%", "top 10% right 10px",
 				"top 10px left 10%", "top 10px left 10px", "top 10px right 10%", "top 10px right 10px",
 				"bottom 10% left 10%", "bottom 10% left 10px", "bottom 10% right 10%", "bottom 10% right 10px",
-				"bottom 10px left 10%", "bottom 10px left 10px", "bottom 10px right 10%", "bottom 10px right 10px"
+				"bottom 10px left 10%", "bottom 10px left 10px", "bottom 10px right 10%", "bottom 10px right 10px",
+				"left, center", "left, center, right", "left, left top, center top 10%, left 10% top 10%"
 			],
-			"background-clip": ["border-box", "padding-box", "content-box"],
-			"background-origin": ["border-box", "padding-box", "content-box"],
-			"background-size": ["auto", "cover", "contain", "10px", "50%", "10px auto", "auto 10%", "50em 50%"],
+			"background-clip": ["border-box", "padding-box", "content-box"].times(1, 2, ", ").concat(
+				["border-box, padding-box, content-box"]
+			),
+			"background-origin": ["padding-box", "border-box", "content-box"].times(1, 2, ", ").concat(
+				["padding-box, border-box, content-box"]
+			),
+			"background-size": ["auto", "10px", "50%", "cover", "contain"].concat(
+				["auto", "10px", "50%"].times(2),
+				["auto", "10px", "50%", "cover", "contain"].times(2, 2, ", "),
+				["auto, 10px, 50%"]
+			),
 			"background": [
-				"url(foo.png), url(bar.svg)",
-				"top left / 50% 60%",
-				"border-box",
-				"border-box padding-box",
-				"url(foo.png) bottom right / cover padding-box content-box"
-			],
-			"border-radius": ["10px", "50%", "10px / 20px", "2px 4px 8px 16px"],
-			"border-image-source": ["none", "url(foo.png)"],
-			"border-image-slice": ["10", "30%"].times(1, 4).concat(["fill 30%", "fill 10", "fill 2 4 8% 16%", "30% fill", "10 fill", "2 4 8% 16% fill"]),
-			"border-image-width": ["10px", "5%", "28", "auto", "10px 10px", "5% 10px", "28 10px", "auto 10px", "10px 5%", "5% 5%", "28 5%", "auto 5%", "10px 28", "5% 28", "28 28", "auto 28", "10px auto", "5% auto", "28 auto", "auto auto", "10px 10% 10", "5% 10px 20 auto"],
-			"border-image-outset": ["10px", "20", "10px 20", "10px 20px", "20 30", "2px 3px 4", "1 2px 3px 4"],
+				"linear-gradient(white, black)",
+				"center top 10%", "center top 10px", "center bottom 10%", "center bottom 10px",
+				"center left 10%", "center left 10px", "center right 10%", "center right 10px",
+				"left top 10%", "left top 10px", "left bottom 10%", "left bottom 10px",
+				"right top 10%", "right top 10px", "right bottom 10%", "right bottom 10px",
+				"top left 10%", "top left 10px", "top right 10%", "top right 10px",
+				"bottom left 10%", "bottom left 10px", "bottom right 10%", "bottom right 10px",
+				"left 10% center", "left 10% top", "left 10% bottom",
+				"left 10px center", "left 10px top", "left 10px bottom",
+				"right 10% center", "right 10% top", "right 10% bottom",
+				"right 10px center", "right 10px top", "right 10px bottom",
+				"top 10% center", "top 10% left", "top 10% right",
+				"top 10px center", "top 10px left", "top 10px right",
+				"bottom 10% center", "bottom 10% left", "bottom 10% right",
+				"bottom 10px center", "bottom 10px left", "bottom 10px right",
+				"left 10% top 10%", "left 10% top 10px", "left 10% bottom 10%", "left 10% bottom 10px",
+				"left 10px top 10%", "left 10px top 10px", "left 10px bottom 10%", "left 10px bottom 10px",
+				"right 10% top 10%", "right 10% top 10px", "right 10% bottom 10%", "right 10% bottom 10px",
+				"right 10px top 10%", "right 10px top 10px", "right 10px bottom 10%", "right 10px bottom 10px",
+				"top 10% left 10%", "top 10% left 10px", "top 10% right 10%", "top 10% right 10px",
+				"top 10px left 10%", "top 10px left 10px", "top 10px right 10%", "top 10px right 10px",
+				"bottom 10% left 10%", "bottom 10% left 10px", "bottom 10% right 10%", "bottom 10% right 10px",
+				"bottom 10px left 10%", "bottom 10px left 10px", "bottom 10px right 10%", "bottom 10px right 10px",
+				"space", "round",
+				"space repeat", "round repeat", "repeat space", "space space", "round space",
+				"no-repeat space", "repeat round", "space round", "round round", "no-repeat round",
+				"space no-repeat", "round no-repeat",
+				"local"
+			].concat(
+				["border-box", "padding-box", "content-box"].times(1, 2),
+				["left"].and(["auto", "10px", "50%", "cover", "contain"].concat(["auto", "10px", "50%"].times(2)), " / "),
+				[
+					"left", "center", "right", "top", "bottom", "10%", "10px"
+				].concat(
+					["left", "center", "right", "10%", "10px"].and(["top", "center", "bottom", "10%", "10px"])
+				).concat([
+					"top center", "top left", "top right", "bottom center", "bottom left", "bottom right", "center left", "center right",
+					"center top 10%", "center top 10px", "center bottom 10%", "center bottom 10px",
+					"center left 10%", "center left 10px", "center right 10%", "center right 10px",
+					"left top 10%", "left top 10px", "left bottom 10%", "left bottom 10px",
+					"right top 10%", "right top 10px", "right bottom 10%", "right bottom 10px",
+					"top left 10%", "top left 10px", "top right 10%", "top right 10px",
+					"bottom left 10%", "bottom left 10px", "bottom right 10%", "bottom right 10px",
+					"left 10% center", "left 10% top", "left 10% bottom",
+					"left 10px center", "left 10px top", "left 10px bottom",
+					"right 10% center", "right 10% top", "right 10% bottom",
+					"right 10px center", "right 10px top", "right 10px bottom",
+					"top 10% center", "top 10% left", "top 10% right",
+					"top 10px center", "top 10px left", "top 10px right",
+					"bottom 10% center", "bottom 10% left", "bottom 10% right",
+					"bottom 10px center", "bottom 10px left", "bottom 10px right",
+					"left 10% top 10%", "left 10% top 10px", "left 10% bottom 10%", "left 10% bottom 10px",
+					"left 10px top 10%", "left 10px top 10px", "left 10px bottom 10%", "left 10px bottom 10px",
+					"right 10% top 10%", "right 10% top 10px", "right 10% bottom 10%", "right 10% bottom 10px",
+					"right 10px top 10%", "right 10px top 10px", "right 10px bottom 10%", "right 10px bottom 10px",
+					"top 10% left 10%", "top 10% left 10px", "top 10% right 10%", "top 10% right 10px",
+					"top 10px left 10%", "top 10px left 10px", "top 10px right 10%", "top 10px right 10px",
+					"bottom 10% left 10%", "bottom 10% left 10px", "bottom 10% right 10%", "bottom 10% right 10px",
+					"bottom 10px left 10%", "bottom 10px left 10px", "bottom 10px right 10%", "bottom 10px right 10px"
+				]).and(["auto"], " / "),
+				[
+					"0% 0% / cover", "top left / 50% 60%", "center top 10% / contain", "bottom 10px right 10px / auto 10px",
+					"linear-gradient(white, black) left", "linear-gradient(white, black) transparent",
+					"left linear-gradient(white, black)", "transparent linear-gradient(white, black)",
+					"none left repeat scroll border-box",
+					"none left repeat scroll border-box transparent",
+					"none left / auto repeat scroll border-box",
+					"none left / auto repeat scroll border-box transparent",
+					"none left repeat scroll border-box padding-box",
+					"none left repeat scroll border-box padding-box transparent",
+					"none left / auto repeat scroll border-box padding-box",
+					"none left / auto repeat scroll border-box padding-box transparent",
+					"url(foo.png) bottom right / cover padding-box content-box",
+					"linear-gradient(white, black) left 10% top 10% / auto 10px space round local content-box content-box rgba(255, 255, 0, 0.5)",
+					"url(foo.png), url(bar.svg)", "url(foo.png), transparent",
+					"none left repeat scroll border-box, none left repeat scroll border-box",
+					"none left / auto repeat scroll border-box padding-box, none left / auto repeat scroll border-box padding-box transparent",
+					"none, none, none"
+				]
+			),
+			"border-top-left-radius": ["10px", "10%"].times(1, 2),
+			"border-top-right-radius": ["10px", "10%"].times(1, 2),
+			"border-bottom-right-radius": ["10px", "10%"].times(1, 2),
+			"border-bottom-left-radius": ["10px", "10%"].times(1, 2),
+			"border-radius": ["10px", "10%"].times(1, 4).concat(
+				["10px", "10%"].times(1, 4).and(["10px", "10%"].times(1, 4), " / ")
+			),
+			"border-image-source": ["none", "url(foo.png)", "linear-gradient(white, black)"],
+			"border-image-slice": ["10", "30%"].times(1, 4).concat(
+				["10", "30%"].times(1, 4).and(["fill"]),
+				["fill"].and(["10", "30%"].times(1, 4))
+			),
+			"border-image-width": ["1", "10px", "10%", "auto"].times(1, 4),
+			"border-image-outset": ["10px", "1"].times(1, 4),
 			"border-image-repeat": ["stretch", "repeat", "round", "space"].times(1, 2),
-			"border-image": [
-				"url(foo.png) 10", "url(foo.png) 10%", "url(foo.png) 10% fill",
-				"url(foo.png) 10 round", "url(foo.png) 10 stretch repeat",
-				"url(foo.png) 10 / 10px", "url(foo.png) 10 / 10% / 10px",
-				"url(foo.png) fill 10 / 10% / 10px", "url(foo.png) fill 10 / 10% / 10px space"
-			],
+			"border-image": ["none", "url(foo.png)", "linear-gradient(white, black)"].concat(
+				["10", "30%"].times(1, 4).concat(
+					["10", "30%"].times(1, 4).and(["fill"]),
+					["fill"].and(["10", "30%"].times(1, 4))
+				),
+				["stretch", "repeat", "round", "space"].times(1, 2),
+				[
+					"1 / 1", "1 / / 1", "30% 30% / / 10px 10px", "fill 10 / / 1 10px",
+					"30% 10 30% / / 10px 10px 10px", "fill 30% 30% 30% 30% / / 1 1 1 1",
+					"1 / 1 / 1", "10 30% 10 30% fill / 1 10px 10% auto / 10 5px 1px 10px",
+					"none 100%", "100% none", "stretch 100%", "none stretch",
+					"none 100% stretch", "none 100% / 1 stretch", "none 100% / / 0 stretch",
+					"none 100% / 1 / 0 stretch", "none 100% fill / 1 / 0 stretch",
+					"url(foo.png) 10", "url(foo.png) 10%", "url(foo.png) 10% fill",
+					"url(foo.png) 10 round", "url(foo.png) 10 stretch repeat",
+					"url(foo.png) 10 / 10px", "url(foo.png) 10 / 10% / 10px",
+					"url(foo.png) fill 10 / 10% / 10px", "url(foo.png) fill 10 / 10% / 10px repeat",
+					"url(tl.png) 10 30% 10 30% fill / 1 10px 10% auto / 10 5px 1px 10px repeat round"
+				]
+			),
 			"box-decoration-break": ["slice", "clone"],
 			"box-shadow": [
 				"none", "1px 2px", "1px 2px 3px", "1px 2px 3px 4px",
@@ -62,7 +183,7 @@ window.Specs = {
 				"inset green 1px 2px 3px", "green 1px 2px 3px inset",
 				"inset 1px 2px 3px 4px purple", "1px 2px 3px 4px purple inset",
 				"inset pink 1px 2px 3px 4px", "pink 1px 2px 3px 4px inset",
-				"1px 2px, 1px 2px"
+				"1px 2px, 1px 2px", "1px 2px, 1px 2px, 1px 2px"
 			]
 		}
 	},
