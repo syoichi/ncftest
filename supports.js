@@ -35,8 +35,18 @@ window.matchMedia = window.matchMedia || (function(doc, undefined){
 var dummy = document.createElement('_'),
 	inline = dummy.style,
 	style = document.createElement('style');
-	
-document.documentElement.appendChild(style);
+
+// On WebKit, @rule test is too slow.
+if (/WebKit/.test(navigator.userAgent)) {
+	var iframe = document.createElement('iframe');
+	iframe.hidden = true;
+	iframe.src = 'about:blank';
+	document.body.appendChild(iframe);
+	iframe.contentDocument.body.appendChild(style);
+} else {
+	document.documentElement.appendChild(style);
+}
+
 dummy.setAttribute('data-foo', 'bar');
 dummy.setAttribute('data-px', '1px');
 document.documentElement.appendChild(dummy);
