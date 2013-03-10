@@ -2325,9 +2325,17 @@ window.Specs = {
 				),
 				["stretch", "repeat", "round", "space"].times(1, 2),
 				[
-					"1 / 1", "1 / / 1", "1 / 1 / 1",
-					"10px 5 20px 5px fill / 1 10px 10% auto / 10 5px 1px 10px",
-					"url(tl.png) 10px 5 20px 5px fill / 1 10px 10% auto / 10 5px 1px 10px repeat space"
+					"1 / 1", "1 / / 1", "30% 30% / / 10px 10px", "fill 10 / / 1 10px",
+					"30% 10 30% / / 10px 10px 10px", "fill 30% 30% 30% 30% / / 1 1 1 1",
+					"1 / 1 / 1", "10 30% 10 30% fill / 1 10px 10% auto / 10 5px 1px 10px",
+					"none 100%", "100% none", "stretch 100%", "none stretch",
+					"none 100% stretch", "none 100% / 1 stretch", "none 100% / / 0 stretch",
+					"none 100% / 1 / 0 stretch", "none 100% fill / 1 / 0 stretch",
+					"url(foo.png) 10", "url(foo.png) 10%", "url(foo.png) 10% fill",
+					"url(foo.png) 10 round", "url(foo.png) 10 stretch repeat",
+					"url(foo.png) 10 / 10px", "url(foo.png) 10 / 10% / 10px",
+					"url(foo.png) fill 10 / 10% / 10px", "url(foo.png) fill 10 / 10% / 10px repeat",
+					"url(tl.png) 10 30% 10 30% fill / 1 10px 10% auto / 10 5px 1px 10px repeat round"
 				]
 			),
 			"clip-path": ["none"].concat(
