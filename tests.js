@@ -947,17 +947,23 @@ window.Specs = {
 	"css3-align": {
 		"title": "Box Alignment",
 		"properties": {
-			"justify-self": ["auto", "start", "end", "center"].concat(
-				["start", "end", "center"].and(["true"]),
-				["true"].and(["start", "end", "center"])
+			"justify-self": ["auto", "baseline", "start", "end", "center", "stretch"].concat(
+				["baseline", "start", "end", "center", "stretch"].and(["true"]),
+				["true"].and(["baseline", "start", "end", "center", "stretch"])
 			),
 			"align-self": ["head", "foot"].concat(
 				["baseline", "head", "foot", "center", "stretch"].and(["true"]),
 				["true"].and(["baseline", "head", "foot", "center", "stretch"])
 			),
-			"justify-content": ["auto", "start", "end", "left", "right"].concat(
-				["start", "end", "left", "right", "flex-start", "flex-end", "center", "space-between", "space-around"].and(["true"]),
-				["true"].and(["start", "end", "left", "right", "flex-start", "flex-end", "center", "space-between", "space-around"])
+			"justify-content": ["auto", "start", "end", "left", "right", "baseline"].concat(
+				[
+					"start", "end", "left", "right", "flex-start", "flex-end",
+					"baseline", "center", "space-between", "space-around"
+				].and(["true"]),
+				["true"].and([
+					"start", "end", "left", "right", "flex-start", "flex-end",
+					"baseline", "center", "space-between", "space-around"
+				])
 			),
 			"align-content": ["auto", "head", "foot", "baseline"].concat(
 				["head", "foot", "flex-start", "flex-end", "baseline", "center", "space-between", "space-around"].and(["true"]),
