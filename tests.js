@@ -354,59 +354,89 @@ window.Specs = {
 	
 	"css3-selectors": {
 		"title": "Selectors",
-		"tr": "http://www.w3.org/TR/css3-selectors",
 		"dev": "http://dev.w3.org/csswg/selectors3",
 		"selectors": {
-			"Sibling combinator": "foo ~ bar",
-			"::before": "::before",
-			"::after": "::after",
-			"::first-letter": "::first-letter",
-			"::first-line": "::first-line",
+			"ns|E": [/*"svg|html", */"*|html", "|html", /*"svg|*", */"*|*", "|*"],
 			"[att^=val]": ["[att^=val]", "[att^=\"val\"]"],
-			"[att*=val]": ["[att*=val]", "[att*=\"val\"]"],
 			"[att$=val]": ["[att$=val]", "[att$=\"val\"]"],
-			"Namespaces": ["*|html", "[*|attr]", "[*|attr=val]", "*|html[*|attr]"],
+			"[att*=val]": ["[att*=val]", "[att*=\"val\"]"],
+			"[ns|att]": [
+				/*"[svg|attr]", "[svg|attr=val]", */"[*|attr]", "[*|attr=val]",
+				"[|attr]", "[|attr=val]", "*|html[*|attr]"
+			],
 			":target": ":target",
 			":enabled": ":enabled",
 			":disabled": ":disabled",
 			":checked": ":checked",
 			":indeterminate": ":indeterminate",
 			":root": ":root",
-			":nth-child": [
-				":nth-child(even)", ":nth-child(odd)",
-				":nth-child(n)", ":nth-child(-n)", ":nth-child(0n)",
-				":nth-child(1)", ":nth-child(-1)", ":nth-child(0)",
-				":nth-child(n+1)", ":nth-child(3n+1)", ":nth-child(3n + 1)",
-				":nth-child(-n+1)", ":nth-child(-n-1)", ":nth-child(3n-1)"
-			],
-			":nth-last-child": [
-				":nth-last-child(even)", ":nth-last-child(odd)",
-				":nth-last-child(n)", ":nth-last-child(-n)", ":nth-last-child(0n)",
-				":nth-last-child(1)", ":nth-last-child(-1)", ":nth-last-child(0)",
-				":nth-last-child(n+1)", ":nth-last-child(3n+1)", ":nth-last-child(3n + 1)",
-				":nth-last-child(-n+1)", ":nth-last-child(-n-1)", ":nth-last-child(3n-1)"
-			],
-			":nth-of-type": [
-				":nth-of-type(even)", ":nth-of-type(odd)",
-				":nth-of-type(n)", ":nth-of-type(-n)", ":nth-of-type(0n)",
-				":nth-of-type(1)", ":nth-of-type(-1)", ":nth-of-type(0)",
-				":nth-of-type(n+1)", ":nth-of-type(3n+1)", ":nth-of-type(3n + 1)",
-				":nth-of-type(-n+1)", ":nth-of-type(-n-1)", ":nth-of-type(3n-1)"
-			],
-			":nth-last-of-type": [
-				":nth-last-of-type(even)", ":nth-last-of-type(odd)",
-				":nth-last-of-type(n)", ":nth-last-of-type(-n)", ":nth-last-of-type(0n)",
-				":nth-last-of-type(1)", ":nth-last-of-type(-1)", ":nth-last-of-type(0)",
-				":nth-last-of-type(n+1)", ":nth-last-of-type(3n+1)", ":nth-last-of-type(3n + 1)",
-				":nth-last-of-type(-n+1)", ":nth-last-of-type(-n-1)", ":nth-last-of-type(3n-1)"
-			],
 			":last-child": ":last-child",
-			":only-child": ":only-child",
 			":first-of-type": ":first-of-type",
 			":last-of-type": ":last-of-type",
+			":only-child": ":only-child",
 			":only-of-type": ":only-of-type",
 			":empty": ":empty",
-			":not()": [":not(*)", ":not(element)", ":not(.class):not(#id):not([attr]):not(:link)"]
+			":nth-child()": [
+				"n", "-n", "+n", "1n", "-1n", "+1n", "0n", "-0n", "+0n",
+				"10n", "-10n", "+10n", "01n", "-01n", "+01n", "00n", "-00n", "+00n",
+				"n-1", "-n-1", "+n-1", "1n-1", "-1n-1", "+1n-1", "0n-1", "-0n-1", "+0n-1",
+				"10n-1", "-10n-1", "+10n-1", "01n-1", "-01n-1", "+01n-1", "00n-1", "-00n-1", "+00n-1",
+				"n+1", "-n+1", "+n+1", "1n+1", "-1n+1", "+1n+1", "0n+1", "-0n+1", "+0n+1",
+				"10n+1", "-10n+1", "+10n+1", "01n+1", "-01n+1", "+01n+1", "00n+1", "-00n+1", "+00n+1",
+				"n+0", "n+00", "3n +1", "3n- 1", "3n + 1",
+				"0", "1", "10", "01", "00", "-0", "-1", "-10", "-01", "-00", "+0", "+1", "+10", "+01", "+00",
+				"odd", "even"
+			].map(function (nth) {
+				return ":nth-child(" + nth + ")";
+			}),
+			":nth-last-child()": [
+				"n", "-n", "+n", "1n", "-1n", "+1n", "0n", "-0n", "+0n",
+				"10n", "-10n", "+10n", "01n", "-01n", "+01n", "00n", "-00n", "+00n",
+				"n-1", "-n-1", "+n-1", "1n-1", "-1n-1", "+1n-1", "0n-1", "-0n-1", "+0n-1",
+				"10n-1", "-10n-1", "+10n-1", "01n-1", "-01n-1", "+01n-1", "00n-1", "-00n-1", "+00n-1",
+				"n+1", "-n+1", "+n+1", "1n+1", "-1n+1", "+1n+1", "0n+1", "-0n+1", "+0n+1",
+				"10n+1", "-10n+1", "+10n+1", "01n+1", "-01n+1", "+01n+1", "00n+1", "-00n+1", "+00n+1",
+				"n+0", "n+00", "3n +1", "3n- 1", "3n + 1",
+				"0", "1", "10", "01", "00", "-0", "-1", "-10", "-01", "-00", "+0", "+1", "+10", "+01", "+00",
+				"odd", "even"
+			].map(function (nth) {
+				return ":nth-last-child(" + nth + ")";
+			}),
+			":nth-of-type()": [
+				"n", "-n", "+n", "1n", "-1n", "+1n", "0n", "-0n", "+0n",
+				"10n", "-10n", "+10n", "01n", "-01n", "+01n", "00n", "-00n", "+00n",
+				"n-1", "-n-1", "+n-1", "1n-1", "-1n-1", "+1n-1", "0n-1", "-0n-1", "+0n-1",
+				"10n-1", "-10n-1", "+10n-1", "01n-1", "-01n-1", "+01n-1", "00n-1", "-00n-1", "+00n-1",
+				"n+1", "-n+1", "+n+1", "1n+1", "-1n+1", "+1n+1", "0n+1", "-0n+1", "+0n+1",
+				"10n+1", "-10n+1", "+10n+1", "01n+1", "-01n+1", "+01n+1", "00n+1", "-00n+1", "+00n+1",
+				"n+0", "n+00", "3n +1", "3n- 1", "3n + 1",
+				"0", "1", "10", "01", "00", "-0", "-1", "-10", "-01", "-00", "+0", "+1", "+10", "+01", "+00",
+				"odd", "even"
+			].map(function (nth) {
+				return ":nth-of-type(" + nth + ")";
+			}),
+			":nth-last-of-type()": [
+				"n", "-n", "+n", "1n", "-1n", "+1n", "0n", "-0n", "+0n",
+				"10n", "-10n", "+10n", "01n", "-01n", "+01n", "00n", "-00n", "+00n",
+				"n-1", "-n-1", "+n-1", "1n-1", "-1n-1", "+1n-1", "0n-1", "-0n-1", "+0n-1",
+				"10n-1", "-10n-1", "+10n-1", "01n-1", "-01n-1", "+01n-1", "00n-1", "-00n-1", "+00n-1",
+				"n+1", "-n+1", "+n+1", "1n+1", "-1n+1", "+1n+1", "0n+1", "-0n+1", "+0n+1",
+				"10n+1", "-10n+1", "+10n+1", "01n+1", "-01n+1", "+01n+1", "00n+1", "-00n+1", "+00n+1",
+				"n+0", "n+00", "3n +1", "3n- 1", "3n + 1",
+				"0", "1", "10", "01", "00", "-0", "-1", "-10", "-01", "-00", "+0", "+1", "+10", "+01", "+00",
+				"odd", "even"
+			].map(function (nth) {
+				return ":nth-last-of-type(" + nth + ")";
+			}),
+			":not()": [
+				":not(element)", ":not(*)", ":not([attr])", ":not(.class)", ":not(#id)", ":not(:first-child)",
+				":not(.class):not(#id):not([attr]):not(:link)"
+			],
+			"::first-line": "::first-line",
+			"::first-letter": "::first-letter",
+			"::before": "::before",
+			"::after": "::after",
+			"E ~ F": "foo ~ bar"
 		}
 	},
 	
