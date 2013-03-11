@@ -1537,8 +1537,12 @@ window.Specs = {
 		"title": "Custom Properties for Cascading Variables",
 		"values": {
 			"properties": ["background-color", "var-foo"],
-			"var()": ["var(color)", "var(header-color)"/*, "calc(var(gap) * 1px)"*/]
+			"var()": [
+				"var(color)", "var(header-color)", "var(header-color, blue)"
+				/*, "calc(var(gap) * 1px)"*/
+			]
 		}/*,
+		// "var-*" must be checked by element.style.var.*.
 		"properties": {
 			"var-*": ["var-foo", "var-FOO", "var-header-color"]
 		}*/
