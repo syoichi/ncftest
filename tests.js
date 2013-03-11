@@ -926,21 +926,21 @@ window.Specs = {
 	"css3-flexbox": {
 		"title": "Flexible Box Layout",
 		"properties": {
-			"align-content": ["flex-start", "flex-end", "center", "space-between", "space-around", "stretch"],
-			"align-items": ["flex-start", "flex-end", "center", "baseline", "stretch"],
-			"align-self": ["flex-start", "flex-end", "center", "baseline", "stretch", "auto"],
 			"display": ["flex", "inline-flex"],
-			"flex": ["none", "5 7 10%"],
-			"flex-basis": ["auto", "1px"],
-			"flex-direction": ["row", "row-reverse", "column", "column-reverse"],
-			"flex-flow": ["row", "row-reverse", "column", "column-reverse", "wrap", "wrap-reverse"],
-			"flex-grow": ["0", "5"],
-			"flex-shrink": ["1", "10"],
-			"flex-wrap": ["nowrap", "wrap", "wrap-reverse"],
-			"justify-content": ["flex-start", "flex-end", "center", "space-between", "space-around"],
-			"min-height": "auto",
 			"min-width": "auto",
-			"order": ["0", "1"]
+			"min-height": "auto",
+			"flex-direction": ["row", "row-reverse", "column", "column-reverse"],
+			"flex-wrap": ["nowrap", "wrap", "wrap-reverse"],
+			"flex-flow": ["row", "row-reverse", "column", "column-reverse"].or(["nowrap", "wrap", "wrap-reverse"]),
+			"order": ["0", "1", "-1"],
+			"flex": ["none"].concat(["1", "1 1"].or(["auto", "10px", "10%"])),
+			"flex-grow": ["0", "5", "0.11"],
+			"flex-shrink": ["1", "10", "0", "0.11"],
+			"flex-basis": ["auto", "1px", "1%"],
+			"justify-content": ["flex-start", "flex-end", "center", "space-between", "space-around"],
+			"align-items": ["stretch", "flex-start", "flex-end", "center", "baseline"],
+			"align-self": ["auto", "flex-start", "flex-end", "center", "baseline", "stretch"],
+			"align-content": ["stretch", "flex-start", "flex-end", "center", "space-between", "space-around"]
 		}
 	},
 	
