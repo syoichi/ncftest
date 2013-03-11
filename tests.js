@@ -1376,13 +1376,36 @@ window.Specs = {
 	"css3-page": {
 		"title": "Paged Media",
 		"properties": {
-			"size": [
-				"auto", "4in", "8.5in 11in", "A5", "A4", "A3", "B5", "B4", "letter", "legal", "ledger", "portrait", " landscape"
-			].concat(
-				["A5", "A4", "A3", "B5", "B4", "letter", "legal", "ledger"].and(["portrait", " landscape"]),
-				["portrait", " landscape"].and(["A5", "A4", "A3", "B5", "B4", "letter", "legal", "ledger"])
+			"size": ["auto", "4in", "8.5in 11in"].concat(
+				["A5", "A4", "A3", "B5", "B4", "letter", "legal", "ledger"].or(["portrait", " landscape"])
 			),
 			"page": ["auto", "rotated", "narrow", "main", "index"]
+		},
+		"@rules": {
+			"@page": [
+				"@page :blank", "@page LandscapeTable", "@page :left:right", "@page :left:left",
+				"@page :left:right:first", "@page :left:right:first:blank",
+				"@page CompanyLetterHead:left", "@page CompanyLetterHead:right",
+				"@page CompanyLetterHead:first", "@page CompanyLetterHead:blank", "@page page:left:right",
+				"@page :left, :right", "@page toc, index", "@page toc, :first",
+				"@page page:left:right, :left:right:first:blank"
+			]/*,
+			// It seems that Page-Margin Boxes need CSSOM API.
+			"@top-left-corner": "@top-left-corner",
+			"@top-left": "@top-left",
+			"@top-center": "@top-center",
+			"@top-right": "@top-right",
+			"@top-right-corner": "@top-right-corner",
+			"@bottom-left-corner": "@bottom-left-corner",
+			"@bottom-left": "@bottom-left",
+			"@bottom-center": "@bottom-center",
+			"@bottom-right": "@bottom-right",
+			"@bottom-right-corner": "@bottom-right-corner",
+			"@left-top": "@left-top",
+			"@left-middle": "@left-middle",
+			"@right-top": "@right-top",
+			"@right-middle": "@right-middle",
+			"@right-bottom": "@right-bottom"*/
 		}
 	},
 	
