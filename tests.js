@@ -1201,94 +1201,43 @@ window.Specs = {
 		"properties": {
 			"display": ["grid", "inline-grid"],
 			"grid-definition-columns": [
-				"none", "\"first\"", "minmax(1px, 10px)", "auto",
+				"none", "minmax(1px, 10px)", "auto",
 				"100px", "30%", "1fr", "min-content", "max-content",
-				"repeat(2, 2px)", "repeat(4, \"content\" 250px 10px)",
-				"\"first\" \"content\"", "minmax(1px, 10px) auto", "\"first\" auto \"content\"",
+				"repeat(2, 2px)", "repeat(4, \"content\" 10px)", "repeat(4, 10px \"content\")",
+				"repeat(4, \"content\" \"repeat\" 10px)", "repeat(4, \"content\" 250px 10px)",
+				"repeat(4, 10px \"content\" \"repeat\")", "repeat(4, \"content\" 10px \"repeat\")",
+				"repeat(4, \"content\" \"repeat\" 250px 10px)", "repeat(4, \"content\" 250px 10px \"repeat\")",
+				"\"header\" 10px", "\"first\" repeat(2, 2px)", "minmax(1px, 10px) auto",
+				"\"first\" \"content\" 30%", "\"first\" 10px 30%", "10px 10px 10px",
+				"\"first\" auto \"content\"", "\"first\" repeat(2, 2px) \"content\"",
 				"100px 1fr max-content minmax(min-content, 1fr)",
+				"\"first\" \"header\" 50px \"main\" 1fr \"footer\" 50px \"last\""
 			],
 			"grid-definition-rows": [
-				"none", "\"header\"", "minmax(1px, 10px)", "auto",
+				"none", "minmax(1px, 10px)", "auto",
 				"100px", "30%", "1fr", "min-content", "max-content",
-				"repeat(2, 2px)", "repeat(4, \"content\" 250px 10px)",
-				"\"first\" \"content\"", "minmax(1px, 10px) auto", "\"first\" auto \"content\"",
-				"\"first\" \"header\" 50px \"main\" 1fr \"footer\" 50px \"last\"",
+				"repeat(2, 2px)", "repeat(4, \"content\" 10px)", "repeat(4, 10px \"content\")",
+				"repeat(4, \"content\" \"repeat\" 10px)", "repeat(4, \"content\" 250px 10px)",
+				"repeat(4, 10px \"content\" \"repeat\")", "repeat(4, \"content\" 10px \"repeat\")",
+				"repeat(4, \"content\" \"repeat\" 250px 10px)", "repeat(4, \"content\" 250px 10px \"repeat\")",
+				"\"header\" 10px", "\"first\" repeat(2, 2px)", "minmax(1px, 10px) auto",
+				"\"first\" \"content\" 30%", "\"first\" 10px 30%", "10px 10px 10px",
+				"\"first\" auto \"content\"", "\"first\" repeat(2, 2px) \"content\"",
+				"100px 1fr max-content minmax(min-content, 1fr)",
+				"\"first\" \"header\" 50px \"main\" 1fr \"footer\" 50px \"last\""
 			],
 			"grid-template": ["none", "\"head head\" \"nav main\" \"foot .\""],
 			"grid-auto-columns": ["minmax(1px, 10px)"],
 			"grid-auto-rows": ["minmax(1px, 10px)"],
-			"grid-before": ["auto"].concat(
-				["1"].or(["'C'"]),
-				["span"].and(["1"].or(["'C'"])),
-				["1"].or(["'C'"]).and(["span"]),
-				["ident"]
-			),
-			"grid-start": ["auto"].concat(
-				["1"].or(["'C'"]),
-				["span"].and(["1"].or(["'C'"])),
-				["1"].or(["'C'"]).and(["span"]),
-				["ident"]
-			),
-			"grid-after": ["auto"].concat(
-				["1"].or(["'C'"]),
-				["span"].and(["1"].or(["'C'"])),
-				["1"].or(["'C'"]).and(["span"]),
-				["ident"]
-			),
-			"grid-end": ["auto"].concat(
-				["1"].or(["'C'"]),
-				["span"].and(["1"].or(["'C'"])),
-				["1"].or(["'C'"]).and(["span"]),
-				["ident"]
-			),
-			"grid-column": ["auto"].concat(
-				["1"].or(["'C'"]),
-				["span"].and(["1"].or(["'C'"])),
-				["1"].or(["'C'"]).and(["span"]),
-				["ident"]
-			).concat(["auto"].concat(
-				["1"].or(["'C'"]),
-				["span"].and(["1"].or(["'C'"])),
-				["1"].or(["'C'"]).and(["span"]),
-				["ident"]
-			).and(["auto"].concat(
-				["1"].or(["'C'"]),
-				["span"].and(["1"].or(["'C'"])),
-				["1"].or(["'C'"]).and(["span"]),
-				["ident"]
-			), " / ")),
-			"grid-row": ["auto"].concat(
-				["1"].or(["'C'"]),
-				["span"].and(["1"].or(["'C'"])),
-				["1"].or(["'C'"]).and(["span"]),
-				["ident"]
-			).concat(["auto"].concat(
-				["1"].or(["'C'"]),
-				["span"].and(["1"].or(["'C'"])),
-				["1"].or(["'C'"]).and(["span"]),
-				["ident"]
-			).and(["auto"].concat(
-				["1"].or(["'C'"]),
-				["span"].and(["1"].or(["'C'"])),
-				["1"].or(["'C'"]).and(["span"]),
-				["ident"]
-			), " / ")),
-			"grid-area": ["auto"].concat(
-				["1"].or(["'C'"]),
-				["span"].and(["1"].or(["'C'"])),
-				["1"].or(["'C'"]).and(["span"]),
-				["ident"]
-			).concat(["auto"].concat(
-				["1"].or(["'C'"]),
-				["span"].and(["1"].or(["'C'"])),
-				["1"].or(["'C'"]).and(["span"]),
-				["ident"]
-			).and(["auto"].concat(
-				["1"].or(["'C'"]),
-				["span"].and(["1"].or(["'C'"])),
-				["1"].or(["'C'"]).and(["span"]),
-				["ident"]
-			), " / "), [
+			"grid-before": ["auto", "ident"].concat(["1"].or(["'C'"]), ["span"].amp(["1"].or(["'C'"]))),
+			"grid-start": ["auto", "ident"].concat(["1"].or(["'C'"]), ["span"].amp(["1"].or(["'C'"]))),
+			"grid-after": ["auto", "ident"].concat(["1"].or(["'C'"]), ["span"].amp(["1"].or(["'C'"]))),
+			"grid-end": ["auto", "ident"].concat(["1"].or(["'C'"]), ["span"].amp(["1"].or(["'C'"]))),
+			"grid-column": ["auto", "ident"].concat(["1"].or(["'C'"]), ["span"].amp(["1"].or(["'C'"]))).times(1, 2, " / "),
+			"grid-row": ["auto", "ident"].concat(["1"].or(["'C'"]), ["span"].amp(["1"].or(["'C'"]))).times(1, 2, " / "),
+			"grid-area": ["auto", "ident"].concat(
+				["1"].or(["'C'"]), ["span"].amp(["1"].or(["'C'"]))
+			).times(1, 2, " / ").concat([
 				"auto / auto / auto", "auto / auto / auto / auto"
 			]),
 			"grid-auto-flow": ["none", "rows", "columns"]
