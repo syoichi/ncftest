@@ -503,7 +503,18 @@ window.Specs = {
 	"css3-conditional": {
 		"title": "Conditional Rules",
 		"@rules": {
-			"@supports": "@supports (width:1px)"
+			"@supports": [
+				"@supports (width: 1px)", "@supports ((width: 1px))", "@supports (width: 1px !important)",
+				"@supports (javascript: @return)",
+				"@supports url(foo.png)", "@supports (1px)", "@supports (@media)",
+				"@supports (~=)", "@supports (|=)", "@supports (:)", "@supports (url(foo.png))", "@supports ({;})",
+				"@supports not (javascript: return)",
+				"@supports (width: 1px) or (display: flex)", "@supports (width: 1px) and (height: 1px)",
+				"@supports (box-shadow: 2px 2px 2px black) or (-moz-box-shadow: 2px 2px 2px black) or (-webkit-box-shadow: 2px 2px 2px black) or (-o-box-shadow: 2px 2px 2px black)",
+				"@supports ((transition-property: color) or (animation-name: foo)) and (transform: rotate(10deg))",
+				"@supports (transition-property: color) or ((animation-name: foo) and (transform: rotate(10deg)))",
+				"@supports ((not (javascript: return)) and (transition-property: color)) or (display: subgrid)"
+			]
 		}
 	},
 	
