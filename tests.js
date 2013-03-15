@@ -1023,8 +1023,6 @@ window.Specs = {
 		"title": "Flexible Box Layout",
 		"properties": {
 			"display": ["flex", "inline-flex"],
-			"min-width": "auto",
-			"min-height": "auto",
 			"flex-direction": ["row", "row-reverse", "column", "column-reverse"],
 			"flex-wrap": ["nowrap", "wrap", "wrap-reverse"],
 			"flex-flow": ["row", "row-reverse", "column", "column-reverse"].or(["nowrap", "wrap", "wrap-reverse"]),
