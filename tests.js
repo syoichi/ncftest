@@ -1659,7 +1659,7 @@ window.Specs = {
 	"css-device-adapt": {
 		"title": "Device Adaptation",
 		"properties": {
-			"min-width": ["device-width", "device-height"],
+			"min-width": ["auto", "device-width", "device-height"],
 			"max-width": ["auto", "device-width", "device-height"],
 			"width": [
 				"device-width", "device-height",
@@ -1668,7 +1668,7 @@ window.Specs = {
 				"device-width device-height", "device-height device-height", "10px device-height", "50% device-height",
 				"device-width 10px", "device-height 10px", "device-width 50%", "device-height 50%"
 			],
-			"min-height": ["device-width", "device-height"],
+			"min-height": ["auto", "device-width", "device-height"],
 			"max-height": ["auto", "device-width", "device-height"],
 			"height": [
 				"device-width", "device-height",
