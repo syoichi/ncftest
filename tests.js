@@ -2383,7 +2383,7 @@ window.Specs = {
 			"enable-background": ["accumulate", "new"]
 		},
 		"@rules": {
-			"@support": "@support filter(webgl)",
+			"@supports": "@supports filter(webgl)",
 			"@filter": "@filter warp"
 		}
 	},
