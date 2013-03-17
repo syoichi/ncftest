@@ -1624,6 +1624,18 @@ window.Specs = {
 		}
 	},
 	
+	"css-line-grid": {
+		"title": "Line Grid",
+		"properties": {
+			"line-grid": ["root-grid", "ident"],
+			"line-snap": ["none", "baseline", "contain"],
+			"line-slack": ["none", "1"],
+			"box-snap": ["none", "margin-box", "border-box", "half-border"].concat(
+				["none", "margin-box", "border-box", "half-border"].and(["ident"].times(1, 4), " / ")
+			)
+		}
+	},
+	
 	"css-variables": {
 		"title": "Custom Properties for Cascading Variables",
 		"values": {
