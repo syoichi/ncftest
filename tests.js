@@ -1623,6 +1623,13 @@ window.Specs = {
 		}
 	},
 	
+	"css-module": {
+		"title": "Template",
+		"properties": {
+			"display-inside": ["text", "inline-inside", "block-inside", "ruby", "icon"]
+		}
+	},
+	
 	"css3-hyperlinks": {
 		"title": "Hyperlink Presentation",
 		"properties": {
