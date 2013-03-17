@@ -1604,6 +1604,25 @@ window.Specs = {
 		}
 	},
 	
+	"css-display-3": {
+		"title": "Display",
+		"properties": {
+			"display-inside": ["auto", "block", "table", "flex", "grid"],
+			"display-outside": [
+				"inline-level", "block-level", "table-row-group", "table-header-group",
+				"table-footer-group", "table-row", "table-cell", "table-column-group",
+				"table-column", "table-caption"
+			],
+			"display-box": ["normal", "none", "contents"],
+			"display-extras": ["none", "list-item"],
+			"display": [
+				"auto", "block-level", "inline-level", "normal", "contents",
+				"auto inline-level", "none normal", "none none",
+				"auto inline-level normal", "auto inline-level normal none"
+			]
+		}
+	},
+	
 	"css3-hyperlinks": {
 		"title": "Hyperlink Presentation",
 		"properties": {
