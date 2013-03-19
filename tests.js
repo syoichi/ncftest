@@ -1848,6 +1848,28 @@ window.Specs = {
 		}
 	},
 	
+	"css3-tables": {
+		"title": "Tables",
+		"properties": {
+			"tab-position": ["0", "10px", "10%"],
+			"tab-align": ["none ", "left", "top", "center", "right", "bottom", "\"foo\""],
+			"tab-leaders": ["\"\"", "\"foo\""],
+			"tab-leaders-alignment": ["aligned", "centered", "distributed"],
+			"tab": ["10px", "10%"].or(["none ", "left", "top", "center", "right", "bottom", "\"foo\""]).concat(
+				["10px", "10%"].or(["none ", "left", "top", "center", "right", "bottom", "\"foo\""]).and(
+					["\"foo\""].or(["aligned", "centered", "distributed"]), " / "
+				)
+			),
+			"caption-side": ["left", "right", "before", "after"].concat(
+				["top", "bottom", "left", "right", "before", "after"].amp(["outside"])
+			),
+			"table-column-span": ["auto", "attr(colspan)"],
+			"table-row-span": ["auto", "attr(rowspan)"],
+			"table-baseline": "1",
+			"speak-header": ["once", "always"]
+		}
+	},
+	
 	"css-variables": {
 		"title": "Custom Properties for Cascading Variables",
 		"values": {
