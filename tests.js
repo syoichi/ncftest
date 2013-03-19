@@ -2397,11 +2397,8 @@ window.Specs = {
 				"white", "currentColor",
 				"black icc-color(white, 1)", "#ffffff icc-color(white, 1, 2)"
 			],
-			"src": [
-				"url(#warp)", "url(#warp) format(\"warp\")",
-				"url(distort.vs), url(tint.fs)",
-				"url('simple.vs') format('x-shader/x-vertex'), url(simple.fs) format('x-shader/x-fragment')"
-			],
+			/*
+			// "parameters" and "geometry" and "mix" are descriptor of @font-face, not property.
 			"parameters": ["warp"].and(["matrix(1, 2, 3, 4, 5, 6)"].concat(
 				["0", "10px", "-20px", "50%"].times(1, 2, ", ").map(function (arg) {
 					return "translate(" + arg + ")";
@@ -2456,13 +2453,10 @@ window.Specs = {
 				}),
 				["white", "texture(url(foo.png))"]
 			)),
-			"geometry": [
-				"grid(1)", "grid(1 2)",
-				"grid(1 detached)", "grid(1 2 detached)", "grid(detached 1)", "grid(detached 1 2)",
-				"grid(1 attached)", "grid(1 2 attached)", "grid(attached 1)", "grid(attached 1 2)",
-				"grid(1 1 attached)"
-			],
-			"mix": ["none"],
+			"geometry": ["1", "1 2"].or(["detached", "attached"]).map(function (arg) {
+				return "grid(" + arg + ")";
+			}),
+			"mix": ["none"],*/
 			"enable-background": ["accumulate", "new"]
 		},
 		"@rules": {
