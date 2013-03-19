@@ -1635,6 +1635,43 @@ window.Specs = {
 		}
 	},
 	
+	"css3-content": {
+		"title": "Generated Content",
+		"properties": {/*
+			"move-to": ["normal", "here", "ident", "top-floats"],
+			"crop": [
+				"auto", "rect(0px, 115px, 85px, 30px)", "rect(10%, 10%, 10%, 10%)",
+				"inset-rect(0px, 115px, 85px, 30px)", "inset-rect(10%, 10%, 10%, 10%)"
+			],*/
+			"page-policy": ["start", "first", "last"],
+			"content": [
+				"inhibit", "pending(insert)", "contents", "footnote", "endnote",
+				"section-note", "box", "check", "circle", "diamond", "disc", "hyphen",
+				"square", "date()", "time()", "document-url"/*, "<target>"*/,
+				"url(foo.png), none", "icon, none", "icon, icon",
+				"url(foo.png), url(foo.png), none"
+			]
+		},
+		"selectors": {/*
+			"::outside": [
+				"note::outside", "note::outside::before"
+			],
+			"::outside()": [
+				"span::outside(1)", "span::outside(1)::before", "span::outside(2)::after"
+			],
+			"::alternate": [
+				"span::alternate", "span::alternate::before", "span::after::alternate"
+			],*/
+			"::line-marker": "span::line-marker"
+		}/*,
+		"@rules": {
+			"@counter-styles": "@counter-styles",
+			"@counter": "@counter footnote",
+			"@string": "@string chapter",
+			"@footnote": "@footnote"
+		}*/
+	},
+	
 	"css3-gcpm": {
 		"title": "Generated Content for Paged Media",
 		"properties": {
