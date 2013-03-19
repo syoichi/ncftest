@@ -1323,7 +1323,16 @@ window.Specs = {
 				"auto / auto / auto", "auto / auto / auto / auto"
 			]),
 			"grid-auto-flow": ["none", "rows", "columns"]
-		}
+		}/*,
+		"values": {
+			"properties": [
+				"grid-definition-columns",
+				"grid-definition-rows",
+				"grid-columns",
+				"grid-rows"
+			],
+			"fr": "1fr"
+		}*/
 	},
 	
 	"css3-layout": {
