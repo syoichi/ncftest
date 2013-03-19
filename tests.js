@@ -1381,6 +1381,50 @@ window.Specs = {
 		}
 	},
 	
+	"css3-grid": {
+		"title": "Grid Positioning",
+		"properties": {
+			"grid-columns": ["none"].concat(/*
+				["10px", "10%", "10fr", "*"].times(1, 3).map(function (arg) {
+					return "(" + arg + ")";
+				}),
+				["10px", "10%", "10fr", "*"].times(1, 3).map(function (arg) {
+					return "(" + arg + ")[1]";
+				}),*/
+				["10px", "10%", "10fr"].times(1, 3).map(function (arg) {
+					return "repeat(" + arg + ")";
+				}),
+				[
+					/*"* * (0.5in * *)[2]", "* (1em *)[2]",
+					"10px (10px)", "(10px) (10px)", "10px (10px)[1]",
+					"10px 10px (10px)",*/
+					"10px repeat(10px)", "repeat(10px) repeat(10px)",
+					"4em repeat(0.25em 1em)", "10px 10px repeat(10px)"
+				]
+			),
+			"grid-rows": ["none"].concat(
+				["10px", "10%", "10fr"/*, "*"*/].times(1, 3).map(function (arg) {
+					return "(" + arg + ")";
+				}),
+				["10px", "10%", "10fr"/*, "*"*/].times(1, 3).map(function (arg) {
+					return "(" + arg + ")[1]";
+				}),
+				[
+					"10px (10px)", "(10px) (10px)", "10px (10px)[1]",
+					"10px 10px (10px)"
+				]
+			)
+		},
+		"values": {
+			"properties": [
+				// "float-offset",
+				"width",
+				"left"
+			],
+			"gr": "1gr"
+		}
+	},
+	
 	"css3-ruby": {
 		"title": "Ruby",
 		"properties": {
