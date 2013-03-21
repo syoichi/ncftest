@@ -277,6 +277,22 @@ function passclass(info) {
 	return classes[index];
 }
 
+function isDuplicated(vals) {
+    var idx, valsLen, hash, filename;
+
+    hash = {};
+
+    for (idx = 0, valsLen = vals.length; idx < valsLen; idx += 1) {
+        val = vals[idx];
+
+        if (!hash[val]) {
+            hash[val] = true;
+        }
+    }
+
+    return Object.keys(hash).length !== valsLen;
+}
+
 document.onclick = function(evt) {
 	var target = evt.target;
 	
@@ -304,10 +320,50 @@ Array.prototype.and = function(arr2, separator) {
 	return ret;
 };
 
-Array.prototype.or = function(arr2, separator) {
-	separator = separator || ' ';
+Array.prototype.or = function() {
+	var arg = Array.prototype.slice.call(arguments),
+		argLen = arg.length,
+		lastArg = arg[argLen - 1],
+		hasSeparator = typeof lastArg === 'string',
+		separator = hasSeparator ? lastArg : ' ';
 	
-	return this.concat(arr2, this.and(arr2, separator), arr2.and(this, separator));
+	if (argLen === 1 || (argLen === 2 && hasSeparator)) {
+		var firstArg = arg[0];
+		return this.concat(firstArg, this.and(firstArg, separator), firstArg.and(this, separator));
+	}
+	
+	var arr = hasSeparator ? arg.slice(0, -1) : arg;
+	var max = 1 + (hasSeparator ? argLen - 1 : argLen);
+	var lists = arr.slice();
+	lists.unshift(this);
+	var listsLen = lists.length;
+	
+	return this.concat(arr.reduce(function flattened(pre, cur) {
+		return pre.concat(cur);
+	})).times(1, max, separator).filter(function(val) {
+		var vals = val.split(separator);
+		
+		if (isDuplicated(vals)) {
+			return false;
+		}
+		
+		for (var i = 0, list; i < listsLen; i += 1) {
+			list = lists[i];
+			
+			for (var j = count = 0, listLen = list.length; j < listLen; j += 1) {
+				if (vals.indexOf(list[j]) !== -1) {
+					count += 1;
+					if (count === 2) {
+						return false;
+					}
+				}
+			}
+			
+			if (listsLen === (i + 1)) {
+				return true;
+			}
+		}
+	});
 };
 
 Array.prototype.amp = function(arr2, separator) {
