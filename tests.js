@@ -2452,6 +2452,71 @@ window.Specs = {
 		}
 	},
 	
+	"css4-text": {
+		"title": "Text Level 4",
+		"properties": {
+			"text-transform": ["capitalize", "uppercase", "lowercase"].or(
+				["full-width"], ["full-size-kana"]
+			).slice(4),
+			"text-space-collapse": ["collapse", "discard"].concat(
+				["preserve", "preserve-breaks"].amp(["trim-inner"].or(["consume-before"], ["consume-after"]))
+			),
+			"hyphenate-character": ["auto", "\"\2010\""],
+			"hyphenate-limit-zone": ["0", "10%", "10px"],
+			"hyphenate-limit-chars": ["auto", "1"].times(1, 3),
+			"hyphenate-limit-lines": ["no-limit ", "1"],
+			"hyphenate-limit-last": ["none ", "always", "column", "page", "spread"],
+			"text-wrap": ["normal", "none", "avoid"],
+			"overflow-wrap": ["hyphenate"].concat(["break-word"].amp(["hyphenate"])),
+			"text-align": ["\"foo\""].and(["start", "end", "left", "right", "center", "justify"]),
+			"text-justify": ["inter-ideograph", "inter-cluster", "kashida"],
+			"letter-spacing": ["50%"].concat(["normal", "1em", "50%"].times(2, 3)),
+			"text-spacing": [
+				"normal", "none", "trim-start", "space-start",
+				"trim-end", "space-end", "allow-end", "trim-adjacent", "space-adjacent",
+				"no-compress", "ideograph-alpha", "ideograph-numeric", "punctuation",
+				"trim-start trim-end", "trim-end trim-start",
+				"no-compress ideograph-alpha ideograph-numeric punctuation",
+				"trim-start trim-end trim-adjacent no-compress ideograph-alpha ideograph-numeric punctuation"
+			],
+			"text-decoration-line": ["remove-all"].concat(
+				["underline", "no-underline", "replace-underline"].or(
+					["overline", "no-overline", "replace-overline"],
+					["line-through", "no-line-through", "replace-line-through"]
+				).filter(function (val) {
+					return this.indexOf(val) === -1;
+				}, ["underline"].or(["overline"], ["line-through"]))
+			),
+			"text-decoration": ["remove-all "].concat(
+				["underline", "no-underline", "replace-underline"].or(
+					["overline", "no-overline", "replace-overline"],
+					["line-through", "no-line-through", "replace-line-through"]
+				).filter(function (val) {
+					return this.indexOf(val) === -1;
+				}, ["underline"].or(["overline"], ["line-through"])),
+				[
+					"remove-all solid", "solid remove-all",
+					"remove-all solid black", "underline overline no-line-through solid black"
+				]
+			),
+			"text-underline-position": ["below left", "below right"],
+			"text-emphasis-position": ["above", "below"].amp(["right", "left"]),
+			"text-emphasis-skip": ["spaces"].or(["punctuation"], ["symbols"], ["narrow"]),
+			"text-shadow": [
+				"1px 2px 3px 4px", "1px 2px 3px 4px purple", "pink 1px 2px 3px 4px",
+				"inset 1px 2px", "1px 2px inset", "inset 1px 2px 3px", "1px 2px 3px inset",
+				"inset 1px 2px 3px 4px", "1px 2px 3px 4px inset",
+				"inset 1px 2px red", "1px 2px red inset", "inset blue 1px 2px", "blue 1px 2px inset",
+				"inset 1px 2px 3px yellow", "1px 2px 3px yellow inset",
+				"inset green 1px 2px 3px", "green 1px 2px 3px inset",
+				"inset 1px 2px 3px 4px purple", "1px 2px 3px 4px purple inset",
+				"inset pink 1px 2px 3px 4px", "pink 1px 2px 3px 4px inset",
+				"1px 2px, inset 1px 2px", "1px 2px 3px 4px, 1px 2px 3px 4px",
+				"1px 2px, 1px 2px, inset 1px 2px"
+			]
+		}
+	},
+	
 	"filter-effects": {
 		"title": "Filter Effects",
 		"tr": "http://www.w3.org/TR/filter-effects",
