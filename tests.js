@@ -1930,6 +1930,41 @@ window.Specs = {
 			"@viewport": "@viewport"
 		}
 	},
+
+	"css4-background": {
+		"title": "Backgrounds and Borders Level 4",
+		"properties": {
+			"border-corner-shape": ["curve", "bevel", "scoop", "notch"],
+			"border-image": ["10", "30%"].times(1, 4).concat(
+				["10", "30%"].times(1, 4).amp(["fill"])
+			).and([" / "]),
+			"border-clip": ["normal"].concat(
+				["10px", "10%", "1fr"].times(1, 3),
+				["0 10px 1fr 10px", "3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr"]
+			),
+			"border-clip-top": ["normal"].concat(
+				["10px", "10%", "1fr"].times(1, 3),
+				["0 10px 1fr 10px", "3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr"]
+			),
+			"border-clip-right": ["normal"].concat(
+				["10px", "10%", "1fr"].times(1, 3),
+				["0 10px 1fr 10px", "3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr"]
+			),
+			"border-clip-bottom": ["normal"].concat(
+				["10px", "10%", "1fr"].times(1, 3),
+				["0 10px 1fr 10px", "3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr"]
+			),
+			"border-clip-left": ["normal"].concat(
+				["10px", "10%", "1fr"].times(1, 3),
+				["0 10px 1fr 10px", "3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr"]
+			),
+			"border-top-parts": [
+				"repeat(10px 10px)", "repeat(10px 10px) 1fr",
+				"40px 20px 0 1fr repeat(20px 20px) 0 1fr 40px",
+				"40px 20px 0 1fr 20px 20px 0 1fr 40px"
+			]
+		}
+	},
 	
 	"css4-images": {
 		"title": "Image Values and Replaced Content Level 4",
