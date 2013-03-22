@@ -2526,6 +2526,18 @@ window.Specs = {
 		}
 	},
 	
+	"css4-pseudo": {
+		"title": "Pseudo-elements Level 4",
+		"selectors": {
+			"::before()": "div::before(1)",
+			"::after()": "div::after(1)",
+			"::nth-before()": "div::nth-before(1)",
+			"::nth-after()": "div::nth-after(1)",
+			"::nth-last-before()": "div::nth-last-before(1)",
+			"::nth-last-after()": "div::nth-last-after(1)"
+		}
+	},
+	
 	"filter-effects": {
 		"title": "Filter Effects",
 		"tr": "http://www.w3.org/TR/filter-effects",
