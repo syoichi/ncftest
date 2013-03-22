@@ -1347,7 +1347,7 @@ window.Specs = {
 	"css3-layout": {
 		"title": "Grid Template Layout",
 		"properties": {
-			"grid-template": "\"****\" \"****\" \"****\"",
+			"grid-template": ["\"*\"", "\"****\" \"****\" \"****\""],
 			"grid-columns": [
 				"auto", "1px", "10%", "*", "1fr",
 				"minmax(1px, 10px)", "min-content", "max-content", "fit-content",
@@ -1366,15 +1366,7 @@ window.Specs = {
 			],
 			"grid": ["none"].concat(
 				"\"a b c\"",
-				[
-					"1px", "10%", "*", "1fr",
-					"minmax(1px, 10px)", "min-content", "max-content", "fit-content",
-					"minmax(10%, 10px)", "minmax(*, 10px)", "minmax(1fr, 10px)", "minmax(minmax(1px, 10px), 10px)",
-					"minmax(min-content, 10px)", "minmax(max-content, 10px)", "minmax(fit-content, 10px)",
-					"minmax(min-content, max-content)",
-					"1px 1px", "* * * *"
-				].and(["\"a b c\""]),
-				["\"a b c\""].and([
+				["\"a b c\""].amp([
 					"1px", "10%", "*", "1fr",
 					"minmax(1px, 10px)", "min-content", "max-content", "fit-content",
 					"minmax(10%, 10px)", "minmax(*, 10px)", "minmax(1fr, 10px)", "minmax(minmax(1px, 10px), 10px)",
@@ -1395,7 +1387,8 @@ window.Specs = {
 			"chains": ["none", "a", "b c", "d, e", "f g, h i", "j, k l", "m n, o p", "@ a b c d e, f g h i j k"]
 		},
 		"selectors": {
-			"::slot()": "body::slot(a)"
+			"::slot()": "body::slot(a)",
+			"::blank()": "body::blank(a)"
 		}
 	},
 	
