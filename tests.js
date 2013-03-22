@@ -771,17 +771,39 @@ window.Specs = {
 	"css-text-decor-3": {
 		"title": "Text Decoration",
 		"properties": {
-			"text-decoration-line": ["none", "underline", "overline", "line-through", "blink", "underline overline"],
+			"text-decoration-line": ["none"].concat(
+				["underline"].or(["overline"], ["line-through"], ["blink"])
+			),
 			"text-decoration-color": "white",
 			"text-decoration-style": ["solid", "double", "dotted", "dashed", "wavy"],
-			"text-decoration": "underline dotted green",
-			"text-decoration-skip": ["none", "objects", "spaces", "ink", "edges", "box-decoration", "objects edges"],
-			"text-underline-position": ["auto", "alphabetic", "under", "left", "under right"],
-			"text-emphasis-style": ["none", "filled", "open dot", "circle", "double-circle", "triangle", "sesame", "'foo'"],
+			"text-decoration": ["white", "solid", "double", "dotted", "dashed", "wavy"].concat(
+				["none"].concat(["underline"].or(["overline"], ["line-through"], ["blink"])).amp(["white"]),
+				["none"].concat(["underline"].or(["overline"], ["line-through"], ["blink"])).amp(
+					["solid", "double", "dotted", "dashed", "wavy"]
+				),
+				["white"].amp(["solid", "double", "dotted", "dashed", "wavy"]),
+				["none white solid", "none solid white", "underline overline line-through blink white solid"]
+			),
+			"text-decoration-skip": ["none"].concat(
+				["objects"].or(["spaces"], ["ink"], ["edges"], ["box-decoration"])
+			),
+			"text-underline-position": ["auto", "alphabetic"].concat(["under"].or(["left", "right"])),
+			"text-emphasis-style": ["none", "'foo'"].concat(
+				["filled", "open"].or(["dot", "circle", "double-circle", "triangle", "sesame"])
+			),
 			"text-emphasis-color": "green",
-			"text-emphasis": "open dot green",
-			"text-emphasis-position": ["over right", "under left"],
-			"text-shadow": ["1px 1px", "0 0 black", "1px 2px 3px black"]
+			"text-emphasis": ["none", "'foo'"].concat(
+				["filled", "open"].or(["dot", "circle", "double-circle", "triangle", "sesame"])
+			).or(["white"]),
+			"text-emphasis-position": ["over", "under"].amp(["right", "left"]),
+			"text-shadow": ["none"].concat(
+				["10px"].times(2, 3),
+				["10px"].times(2, 3).amp(["white"]),
+				[
+					"10px 10px, 10px 10px", "white 10px 10px 10px, 10px 10px 10px white",
+					"10px 10px, 10px 10px, 10px 10px"
+				]
+			)
 		}
 	},
 	
