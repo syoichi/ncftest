@@ -1290,7 +1290,7 @@ window.Specs = {
 	"css3-grid-layout": {
 		"title": "Grid Layout",
 		"properties": {
-			"display": ["grid", "inline-grid"],
+			"display": ["grid", "inline-grid", "subgrid"],
 			"grid-definition-columns": [
 				"none", "minmax(1px, 10px)", "auto",
 				"100px", "30%", "1fr", "min-content", "max-content",
@@ -1302,6 +1302,8 @@ window.Specs = {
 				"\"first\" \"content\" 30%", "\"first\" 10px 30%", "10px 10px 10px",
 				"\"first\" auto \"content\"", "\"first\" repeat(2, 2px) \"content\"",
 				"100px 1fr max-content minmax(min-content, 1fr)",
+				"10px repeat(2, 1fr auto minmax(30%, 1fr))",
+				"repeat(4, 10px \"col-start\" 250px \"col-end\") 10px",
 				"\"first\" \"header\" 50px \"main\" 1fr \"footer\" 50px \"last\""
 			],
 			"grid-definition-rows": [
@@ -1315,11 +1317,23 @@ window.Specs = {
 				"\"first\" \"content\" 30%", "\"first\" 10px 30%", "10px 10px 10px",
 				"\"first\" auto \"content\"", "\"first\" repeat(2, 2px) \"content\"",
 				"100px 1fr max-content minmax(min-content, 1fr)",
+				"10px repeat(2, 1fr auto minmax(30%, 1fr))",
+				"repeat(4, 10px \"col-start\" 250px \"col-end\") 10px",
 				"\"first\" \"header\" 50px \"main\" 1fr \"footer\" 50px \"last\""
 			],
-			"grid-template": ["none", "\"head head\" \"nav main\" \"foot .\""],
-			"grid-auto-columns": ["minmax(1px, 10px)"],
-			"grid-auto-rows": ["minmax(1px, 10px)"],
+			"grid-template": ["none", "\"nav\"", "\"head head\" \"nav main\" \"foot .\""],
+			"grid-auto-columns": [
+				"auto", "minmax(1px, 10px)", "minmax(10%, 10px)"/*,
+				"minmax(*, 10px)", "minmax(1fr, 10px)", "minmax(minmax(1px, 10px), 10px)",
+				"minmax(min-content, 10px)", "minmax(max-content, 10px)",
+				"minmax(fit-content, 10px)", "minmax(min-content, max-content)"*/
+			],
+			"grid-auto-rows": [
+				"auto", "minmax(1px, 10px)", "minmax(10%, 10px)"/*,
+				"minmax(*, 10px)", "minmax(1fr, 10px)", "minmax(minmax(1px, 10px), 10px)",
+				"minmax(min-content, 10px)", "minmax(max-content, 10px)",
+				"minmax(fit-content, 10px)", "minmax(min-content, max-content)"*/
+			],
 			"grid-before": ["auto", "ident"].concat(["1"].or(["'C'"]), ["span"].amp(["1"].or(["'C'"]))),
 			"grid-start": ["auto", "ident"].concat(["1"].or(["'C'"]), ["span"].amp(["1"].or(["'C'"]))),
 			"grid-after": ["auto", "ident"].concat(["1"].or(["'C'"]), ["span"].amp(["1"].or(["'C'"]))),
