@@ -663,23 +663,23 @@ window.Specs = {
 				["0", "10px", "-20px", "50%"].times(1, 2, ", ").map(function (arg) {
 					return "translate(" + arg + ")";
 				}),
-				["0", "10px", "-20px", "50%"].times(1).map(function (translationValue) {
+				["0", "10px", "-20px", "50%"].map(function (translationValue) {
 					return "translateX(" + translationValue + ")";
 				}),
-				["0", "10px", "-20px", "50%"].times(1).map(function (translationValue) {
+				["0", "10px", "-20px", "50%"].map(function (translationValue) {
 					return "translateY(" + translationValue + ")";
 				}),
 				["scale(1)", "scale(1, 2)", "scaleX(1)", "scaleY(1)"],
-				["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+				["90deg", "100grad", "1rad", "1turn"].map(function (angle) {
 					return "rotate(" + angle + ")";
 				}),
 				["90deg", "100grad", "1rad", "1turn"].times(1, 2, ", ").map(function (arg) {
 					return "skew(" + arg + ")";
 				}),
-				["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+				["90deg", "100grad", "1rad", "1turn"].map(function (angle) {
 					return "skewX(" + angle + ")";
 				}),
-				["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+				["90deg", "100grad", "1rad", "1turn"].map(function (angle) {
 					return "skewY(" + angle + ")";
 				}),
 				["matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)"],
@@ -687,16 +687,16 @@ window.Specs = {
 					return "translate3d(" + arg + ", 10px)";
 				}),
 				["translateZ(10px)", "scale3d(1, 2, 3)", "scaleZ(1)"],
-				["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+				["90deg", "100grad", "1rad", "1turn"].map(function (angle) {
 					return "rotate3d(1, 2, 3, " + angle + ")";
 				}),
-				["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+				["90deg", "100grad", "1rad", "1turn"].map(function (angle) {
 					return "rotateX(" + angle + ")";
 				}),
-				["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+				["90deg", "100grad", "1rad", "1turn"].map(function (angle) {
 					return "rotateY(" + angle + ")";
 				}),
-				["90deg", "100grad", "1rad", "1turn"].times(1).map(function (angle) {
+				["90deg", "100grad", "1rad", "1turn"].map(function (angle) {
 					return "rotateZ(" + angle + ")";
 				}),
 				[
@@ -709,42 +709,27 @@ window.Specs = {
 					"matrix(1, 2, 3, 4, 5, 6) matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)"
 				]
 			),
-			"transform-origin": [
-				"10%", "10px", "left", "center", "right", "top", "bottom",
-				"10% 10%", "10px 10%", "left 10%", "center 10%", "right 10%",
-				"10% 10px", "10px 10px", "left 10px", "center 10px", "right 10px",
-				"10% top", "10px top", "left top", "center top", "right top",
-				"10% center", "10px center", "left center", "center center",
-				"right center", "10% bottom", "10px bottom", "left bottom",
-				"center bottom", "right bottom", "top 10%", "bottom 10%",
-				"top 10px", "bottom 10px", "10% left", "10px left", "top left",
-				"center left", "bottom left", "top center", "bottom center",
-				"10% right", "10px right", "top right", "center right", "bottom right"
-			].concat([
-				"10% 10%", "10px 10%", "left 10%", "center 10%", "right 10%",
-				"10% 10px", "10px 10px", "left 10px", "center 10px", "right 10px",
-				"10% top", "10px top", "left top", "center top", "right top",
-				"10% center", "10px center", "left center", "center center",
-				"right center", "10% bottom", "10px bottom", "left bottom",
-				"center bottom", "right bottom", "top 10%", "bottom 10%",
-				"top 10px", "bottom 10px", "10% left", "10px left", "top left",
-				"center left", "bottom left", "top center", "bottom center",
-				"10% right", "10px right", "top right", "center right", "bottom right"
-			].and(['10px'])),
+			"transform-origin": ["left", "center", "right", "top", "bottom", "10%", "10px"].concat(
+				["left", "center", "right", "10%", "10px"].and(["top", "center", "bottom", "10%", "10px"]),
+				["left", "center", "right", "10%", "10px"].and(["top", "center", "bottom", "10%", "10px"]).and(['10px']),
+				[
+					"top left", "center left", "bottom left", "top center",
+					"bottom center", "top right", "center right", "bottom right"
+				],
+				[
+					"top left", "center left", "bottom left", "top center",
+					"bottom center", "top right", "center right", "bottom right"
+				].and(['10px'])
+			),
 			"transform-style": ["flat", "preserve-3d"],
 			"perspective": ["none", "600px"],
-			"perspective-origin": [
-				"10%", "10px", "left", "center", "right", "top", "bottom",
-				"10% 10%", "10px 10%", "left 10%", "center 10%", "right 10%",
-				"10% 10px", "10px 10px", "left 10px", "center 10px", "right 10px",
-				"10% top", "10px top", "left top", "center top", "right top",
-				"10% center", "10px center", "left center", "center center",
-				"right center", "10% bottom", "10px bottom", "left bottom",
-				"center bottom", "right bottom", "top 10%", "bottom 10%",
-				"top 10px", "bottom 10px", "10% left", "10px left", "top left",
-				"center left", "bottom left", "top center", "bottom center",
-				"10% right", "10px right", "top right", "center right", "bottom right"
-			],
+			"perspective-origin": ["left", "center", "right", "top", "bottom", "10%", "10px"].concat(
+				["left", "center", "right", "10%", "10px"].and(["top", "center", "bottom", "10%", "10px"]),
+				[
+					"top left", "center left", "bottom left", "top center",
+					"bottom center", "top right", "center right", "bottom right"
+				]
+			),
 			"backface-visibility": ["visible", "hidden"]
 		}
 	},
