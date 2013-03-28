@@ -1531,7 +1531,13 @@ window.Specs = {
 	"css3-overflow": {
 		"title": "Overflow",
 		"properties": {
+			"overflow-x": ["paged-x", "paged-y", "paged-x-controls", "paged-y-controls", "fragments"],
+			"overflow-y": ["paged-x", "paged-y", "paged-x-controls", "paged-y-controls", "fragments"],
+			"overflow": ["paged-x", "paged-y", "paged-x-controls", "paged-y-controls", "fragments"],
 			"max-lines": ["none", "1"]
+		},
+		"selectors": {
+			"::nth-fragment()": "div::nth-fragment(1)"
 		}
 	},
 	
