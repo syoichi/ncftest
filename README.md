@@ -1,7 +1,5 @@
-# How to add tests
+# NCF Test - The New CSS Features Test
 
-Go to `tests.js`. Follow the current structure. Please only add tests from specs that are reasonably stable.
-They don't have to be a CR, just not too much in Flux.
+NCF Test is Fork of [Lea Verou](http://lea.verou.me/)'s [The CSS3 Test](http://css3test.com/), and it treats not only CSS3 but also other New CSS Features(e.g. CSS4+, CSS-SVG Effects, Web Components, etc.). This test is New CSS Features Test by checking Syntax Parsing, NOT Layout/Rendering.
 
-- Don't add specs when there are NO implementations of ANYTHING in the spec.
-- Don't add tests that already exist, just with different values. E.g. if `calc(1px + 2px)` is a testcase, adding `calc(2px + 2px)` won't help.
+Support Browsers: Internet Explorer 10, Firefox 22.0a1+, Chromium 28+, Opera 12.14, on Windows 7 Home Premium SP1 64bit
