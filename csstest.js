@@ -410,6 +410,15 @@ Object.defineProperties(Array.prototype, {
 			return this.and(arr2, separator).concat(arr2.and(this, separator));
 		},
 		enumerable: false
+	},
+	// [ x | y | z ] a?
+	'qmark': {
+		value: function qmark(arr2, separator) {
+			separator = separator || ' ';
+			
+			return this.concat(this.and(arr2, separator));
+		},
+		enumerable: false
 	}
 });
 
