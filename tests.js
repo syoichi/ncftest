@@ -1749,7 +1749,8 @@ window.Specs = {
 				"symbols(cyclic \"\" url(foo.png) linear-gradient(white, black))",
 				"symbols(numeric \"0\" radial-gradient(white, black) \"A\")"
 			]
-		},
+		},/*
+		// These are descriptors, not property.
 		"properties": {
 			"system": ["symbolic", "cyclic", "numeric", "alphabetic", "additive", "fixed", "fixed 1", "override triangle"],
 			"negative": ["\"-\"", "url(foo.svg)", "linear-gradient(white, black)", "triangle"].times(1, 2),
@@ -1777,7 +1778,7 @@ window.Specs = {
 				["\"\", \"\"", "6 ⚅, 5 ⚄, 4 ⚃, 3 ⚂, 2 ⚁, 1 ⚀", "'0' 0, 1 radial-gradient(white, black), 2 A"]
 			),
 			"speak-as": ["auto", "numeric", "alphabetic", "bullet", "triangle"]
-		},
+		},*/
 		"@rules": {
 			"@counter-style": "@counter-style circled-lower-latin"
 		}
