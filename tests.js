@@ -2526,6 +2526,25 @@ window.Specs = {
 		}
 	},
 	
+	"css-color-4": {
+		"title": "Color Level 4",
+		"values": {
+			"properties": [
+				"color",
+				"background-color",
+				"border-color",
+				"text-decoration-color",
+				"column-rule-color"
+			],
+			"hsl()": ["90deg", "100grad", "1rad", "1turn"].map(function (angle) {
+				return "hsl(" + angle + ", 0%, 0%)";
+			}),
+			"hsla()": ["90deg", "100grad", "1rad", "1turn"].map(function (angle) {
+				return "hsla(" + angle + ", 0%, 0%, 0.99)";
+			})
+		}
+	},
+	
 	"css4-pseudo": {
 		"title": "Pseudo-elements Level 4",
 		"selectors": {
