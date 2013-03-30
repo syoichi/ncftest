@@ -1908,7 +1908,8 @@ window.Specs = {
 	},
 	
 	"css-device-adapt": {
-		"title": "Device Adaptation",
+		"title": "Device Adaptation",/*
+		// These are descriptors, not property.
 		"properties": {
 			"min-width": ["auto", "device-width", "device-height"],
 			"max-width": ["auto", "device-width", "device-height"],
@@ -1933,7 +1934,7 @@ window.Specs = {
 			"max-zoom": ["auto", "1.0", "2.0", "0.5", "100%", "200%", "50%"],
 			"user-zoom": ["zoom", "fixed"],
 			"orientation": ["auto", "portrait", "landscape"]
-		},
+		},*/
 		"@rules": {
 			"@viewport": "@viewport"
 		}
