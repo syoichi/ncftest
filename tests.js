@@ -2524,7 +2524,7 @@ window.Specs = {
 		}
 	},
 	
-	"css-color-4": {
+	"css-color": {
 		"title": "Color Level 4",
 		"values": {
 			"properties": [
@@ -2534,12 +2534,21 @@ window.Specs = {
 				"text-decoration-color",
 				"column-rule-color"
 			],
+			"rgb()": ["rgba(1.1, 0, 0)", "rgba(1.1, 1.2, 0)", "rgba(1.1, 1.2, 1.3)"],
+			"rgba()": [
+				"rgba(1.1, 0, 0, 1)", "rgba(1.1, 1.2, 0, 1)", "rgba(1.1, 1.2, 1.3, 1)",
+				"rgba(0, 0, 0, 10%)"
+			],
 			"hsl()": ["90deg", "100grad", "1rad", "1turn"].map(function (angle) {
 				return "hsl(" + angle + ", 0%, 0%)";
 			}),
 			"hsla()": ["90deg", "100grad", "1rad", "1turn"].map(function (angle) {
 				return "hsla(" + angle + ", 0%, 0%, 0.99)";
-			})
+			}).concat(["hsla(0, 0%, 0%, 10%)"])
+		},
+		"properties": {
+			"opacity": "10%",
+			"color-correction": "auto"
 		}
 	},
 	
