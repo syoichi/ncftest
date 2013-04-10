@@ -2425,12 +2425,23 @@ window.Specs = {
 			":active-drop-target": [":active-drop-target"],
 			":valid-drop-target": [":valid-drop-target"],
 			":invalid-drop-target": [":invalid-drop-target"],
+			":placeholder-shown": [":placeholder-shown"],
 			":user-error": [":user-error"],
-			":not()": [":not(div:only-child)", ":not(header, footer)", ":not(header, main, footer)"],
+			":not()": [
+				// fast profile
+				":not(div:only-child)", ":not(header, footer)", ":not(header, main, footer)",
+				// complete profile
+				":not(div div)", ":not(div > div)", ":not(div + div)", ":not(div ~ div)",
+				":not(div#text.text[data-text^=\"base\"]:only-child > div, main)"
+			],
 			":matches()": [
+				// fast profile
 				":matches(.example)", ":matches(div:only-child)", ":matches(section, article)",
 				":matches(section, article, aside, nav) h1",
-				":matches(section, article, aside, nav) :matches(section, article, aside, nav) h1"
+				":matches(section, article, aside, nav) :matches(section, article, aside, nav) h1",
+				// complete profile
+				":matches(div div)", ":matches(div > div)", ":matches(div + div)", ":matches(div ~ div)",
+				":matches(div#text.text[data-text^=\"base\"]:only-child > div, main)"
 			],
 			":dir()": [":dir(ltr)", ":dir(rtl)"],
 			":lang()": [":lang(de-*)", ":lang(en, ja)", ":lang(zh, *-hant)"],
