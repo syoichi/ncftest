@@ -1201,7 +1201,7 @@ window.Specs = {
 	"css3-exclusions": {
 		"title": "Exclusions and Shapes",
 		"tr": "http://www.w3.org/TR/css3-exclusions/",
-		"dev": "http://dev.w3.org/csswg/css-exclusions/",
+		"dev": "http://dev.w3.org/csswg/css-exclusions-3/",
 		"properties": {
 			"wrap-flow": ["auto", "both", "start", "end", "minimum", "maximum", "clear"],
 			"wrap-through": ["wrap", "none"],
@@ -2535,7 +2535,7 @@ window.Specs = {
 		}
 	},
 	
-	"css-color": {
+	"css-color-4": {
 		"title": "Color Level 4",
 		"values": {
 			"properties": [
