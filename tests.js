@@ -2716,8 +2716,8 @@ window.Specs = {
 	},
 	
 	"css-masking": {
-		"title": "Masking",
-		"tr": "http://www.w3.org/TR/css-masking",
+		"title": "Masking Level 1",
+		"tr": "http://www.w3.org/TR/css-masking/",
 		"dev": "https://dvcs.w3.org/hg/FXTF/raw-file/tip/masking/index.html",
 		"properties": {
 			"mask-image": [
