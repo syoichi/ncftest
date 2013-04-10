@@ -1200,13 +1200,13 @@ window.Specs = {
 	
 	"css3-exclusions": {
 		"title": "Exclusions and Shapes",
+		"tr": "http://www.w3.org/TR/css3-exclusions/",
+		"dev": "http://dev.w3.org/csswg/css-exclusions/",
 		"properties": {
 			"wrap-flow": ["auto", "both", "start", "end", "minimum", "maximum", "clear"],
 			"wrap-through": ["wrap", "none"],
 			"shape-outside": ["auto"].concat(
-				["10px", "10%"].times(4).concat(
-					["10px", "10%"].times(4).and(["curve"].and(["10px", "10%"].times(1, 2)))
-				).map(function (arg) {
+				["10px", "10%"].times(4).qmark(["curve"].and(["10px", "10%"].times(1, 2))).map(function (arg) {
 					return "rectangle(" + arg + ")";
 				}),
 				["10px", "10%"].times(3).map(function (arg) {
@@ -1224,9 +1224,7 @@ window.Specs = {
 				["url(foo.png)"]
 			),
 			"shape-inside": ["outside-shape", "auto"].concat(
-				["10px", "10%"].times(4).concat(
-					["10px", "10%"].times(4).and(["curve"].and(["10px", "10%"].times(1, 2)))
-				).map(function (arg) {
+				["10px", "10%"].times(4).qmark(["curve"].and(["10px", "10%"].times(1, 2))).map(function (arg) {
 					return "rectangle(" + arg + ")";
 				}),
 				["10px", "10%"].times(3).map(function (arg) {
