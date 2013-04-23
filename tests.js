@@ -2729,8 +2729,8 @@ window.Specs = {
 			"mix": ["none"],*/
 			"enable-background": ["accumulate", "new"]
 		},
-		"@rules": {
-			"@supports": "@supports filter(webgl)",
+		"@rules": {/*
+			"@supports": "@supports filter(webgl)",*/
 			"@filter": "@filter warp"
 		}
 	},
