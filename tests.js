@@ -1198,70 +1198,6 @@ window.Specs = {
 		}
 	},
 	
-	"css3-exclusions": {
-		"title": "Exclusions and Shapes",
-		"tr": "http://www.w3.org/TR/css3-exclusions/",
-		"dev": "http://dev.w3.org/csswg/css-exclusions-3/",
-		"properties": {
-			"wrap-flow": ["auto", "both", "start", "end", "minimum", "maximum", "clear"],
-			"wrap-through": ["wrap", "none"],
-			"shape-outside": ["auto"].concat(
-				["10px", "10%"].times(4).qmark(["curve"].and(["10px", "10%"].times(1, 2))).map(function (arg) {
-					return "rectangle(" + arg + ")";
-				}),
-				["10px", "10%"].times(3).map(function (arg) {
-					return "circle(" + arg + ")";
-				}),
-				["10px", "10%"].times(4).map(function (arg) {
-					return "ellipse(" + arg + ")";
-				}),
-				["10px", "10%"].times(2).concat(
-					["nonzero", "evenodd"].and(["10px", "10%"].times(2), ", "),
-					["10px 10%, 10px 10%", "nonzero, 10px 10%, 10px 10%", "evenodd, 10px 10%, 10px 10%"]
-				).map(function (arg) {
-					return "polygon(" + arg + ")";
-				}),
-				["url(foo.png)"]
-			),
-			"shape-inside": ["outside-shape", "auto"].concat(
-				["10px", "10%"].times(4).qmark(["curve"].and(["10px", "10%"].times(1, 2))).map(function (arg) {
-					return "rectangle(" + arg + ")";
-				}),
-				["10px", "10%"].times(3).map(function (arg) {
-					return "circle(" + arg + ")";
-				}),
-				["10px", "10%"].times(4).map(function (arg) {
-					return "ellipse(" + arg + ")";
-				}),
-				["10px", "10%"].times(2).concat(
-					["nonzero", "evenodd"].and(["10px", "10%"].times(2), ", "),
-					["10px 10%, 10px 10%", "nonzero, 10px 10%, 10px 10%", "evenodd, 10px 10%, 10px 10%"]
-				).map(function (arg) {
-					return "polygon(" + arg + ")";
-				}),
-				["url(foo.png)"]
-			),
-			"shape-image-threshold": ["0.5", "0.0", "1.0"],
-			"shape-margin": ["0", "1px", "10em"],
-			"shape-padding": ["0", "1px", "10em"]
-		}
-	},
-	
-	"css3-regions": {
-		"title": "Regions",
-		"properties": {
-			"flow-into": ["table-content", "none"],
-			"flow-from": ["thread", "none"],
-			"break-before": ["region", "avoid-region"],
-			"break-after": ["region", "avoid-region"],
-			"break-inside": "avoid-region",
-			"region-fragment": ["auto", "break"]
-		},
-		"@rules": {
-			"@region": "@region div"
-		}
-	},
-	
 	"css3-break": {
 		"title": "Fragmentation",
 		"properties": {
@@ -1877,28 +1813,6 @@ window.Specs = {
 		}
 	},
 	
-	"css-variables": {
-		"title": "Custom Properties for Cascading Variables",
-		"values": {
-			"properties": ["background-color", "var-foo"],
-			"var()": [
-				"var(color)", "var(header-color)", "var(header-color, blue)"
-				/*, "calc(var(gap) * 1px)"*/
-			]
-		}/*,
-		// "var-*" must be checked by element.style.var.*.
-		"properties": {
-			"var-*": ["var-foo", "var-FOO", "var-header-color"]
-		}*/
-	},
-	
-	"css-size-adjust": {
-		"title": "Mobile Text Size Adjustment",
-		"properties": {
-			"text-size-adjust": ["auto", "none", "50%"]
-		}
-	},
-	
 	"css-color-correction": {
 		"title": "Color Correction",
 		"properties": {
@@ -1936,6 +1850,93 @@ window.Specs = {
 		},*/
 		"@rules": {
 			"@viewport": "@viewport"
+		}
+	},
+	
+	"css-exclusions-1": {
+		"title": "Exclusions and Shapes Level 1",
+		"tr": "http://www.w3.org/TR/css3-exclusions/",
+		"properties": {
+			"wrap-flow": ["auto", "both", "start", "end", "minimum", "maximum", "clear"],
+			"wrap-through": ["wrap", "none"],
+			"shape-outside": ["auto"].concat(
+				["10px", "10%"].times(4).qmark(["curve"].and(["10px", "10%"].times(1, 2))).map(function (arg) {
+					return "rectangle(" + arg + ")";
+				}),
+				["10px", "10%"].times(3).map(function (arg) {
+					return "circle(" + arg + ")";
+				}),
+				["10px", "10%"].times(4).map(function (arg) {
+					return "ellipse(" + arg + ")";
+				}),
+				["10px", "10%"].times(2).concat(
+					["nonzero", "evenodd"].and(["10px", "10%"].times(2), ", "),
+					["10px 10%, 10px 10%", "nonzero, 10px 10%, 10px 10%", "evenodd, 10px 10%, 10px 10%"]
+				).map(function (arg) {
+					return "polygon(" + arg + ")";
+				}),
+				["url(foo.png)"]
+			),
+			"shape-inside": ["outside-shape", "auto"].concat(
+				["10px", "10%"].times(4).qmark(["curve"].and(["10px", "10%"].times(1, 2))).map(function (arg) {
+					return "rectangle(" + arg + ")";
+				}),
+				["10px", "10%"].times(3).map(function (arg) {
+					return "circle(" + arg + ")";
+				}),
+				["10px", "10%"].times(4).map(function (arg) {
+					return "ellipse(" + arg + ")";
+				}),
+				["10px", "10%"].times(2).concat(
+					["nonzero", "evenodd"].and(["10px", "10%"].times(2), ", "),
+					["10px 10%, 10px 10%", "nonzero, 10px 10%, 10px 10%", "evenodd, 10px 10%, 10px 10%"]
+				).map(function (arg) {
+					return "polygon(" + arg + ")";
+				}),
+				["url(foo.png)"]
+			),
+			"shape-image-threshold": ["0.5", "0.0", "1.0"],
+			"shape-margin": ["0", "1px", "10em"],
+			"shape-padding": ["0", "1px", "10em"]
+		}
+	},
+	
+	"css-regions-1": {
+		"title": "Regions Level 1",
+		"tr": "http://www.w3.org/TR/css3-regions/",
+		"properties": {
+			"flow-into": ["table-content", "none"],
+			"flow-from": ["thread", "none"],
+			"break-before": ["region", "avoid-region"],
+			"break-after": ["region", "avoid-region"],
+			"break-inside": "avoid-region",
+			"region-fragment": ["auto", "break"]
+		},
+		"@rules": {
+			"@region": "@region div"
+		}
+	},
+	
+	"css-variables-1": {
+		"title": "Custom Properties for Cascading Variables Level 1",
+		"tr": "http://www.w3.org/TR/css-variables/",
+		"values": {
+			"properties": ["background-color", "var-foo"],
+			"var()": [
+				"var(color)", "var(header-color)", "var(header-color, blue)"
+				/*, "calc(var(gap) * 1px)"*/
+			]
+		}/*,
+		// "var-*" must be checked by element.style.var.*.
+		"properties": {
+			"var-*": ["var-foo", "var-FOO", "var-header-color"]
+		}*/
+	},
+	
+	"css-size-adjust": {
+		"title": "Mobile Text Size Adjustment Level 1",
+		"properties": {
+			"text-size-adjust": ["auto", "none", "50%"]
 		}
 	},
 
