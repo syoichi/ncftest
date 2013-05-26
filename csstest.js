@@ -46,7 +46,7 @@ var Test = function (tests, spec, title) {
 			$u.element.create({
 				tag: 'a',
 				properties: {
-					href: tests.tr || 'http://www.w3.org/TR/' + this.id,
+					href: tests.tr || 'http://www.w3.org/TR/' + this.id + '/',
 					target: '_blank',
 					textContent: 'TR',
 					className: 'spec-link'
@@ -55,7 +55,7 @@ var Test = function (tests, spec, title) {
 			$u.element.create({
 				tag: 'a',
 				properties: {
-					href: tests.dev || 'http://dev.w3.org/csswg/' + this.id,
+					href: tests.dev || 'http://dev.w3.org/csswg/' + this.id + '/',
 					target: '_blank',
 					textContent: 'DEV',
 					className: 'spec-link'
