@@ -1787,17 +1787,18 @@ window.Specs = {
 		"properties": {
 			"display-inside": ["auto", "block", "table", "flex", "grid"],
 			"display-outside": [
-				"inline-level", "block-level", "table-row-group", "table-header-group",
+				"inline-level", "block-level", "none", "table-row-group", "table-header-group",
 				"table-footer-group", "table-row", "table-cell", "table-column-group",
 				"table-column", "table-caption"
 			],
-			"display-box": ["normal", "none", "contents"],
 			"display-extras": ["none", "list-item"],
 			"display": [
 				"auto", "block-level", "inline-level", "normal", "contents",
 				"auto inline-level", "none normal", "none none",
-				"auto inline-level normal", "auto inline-level normal none"
-			]
+				"auto inline-level normal", "none none none",
+				"auto inline-level normal none"
+			],
+			"box": ["normal", "none", "contents"]
 		}
 	},
 	
