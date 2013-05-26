@@ -3059,10 +3059,9 @@ window.Specs = {
 	
 	"custom-elements": {
 		"title": "Custom Elements",
-		"tr": "http://www.w3.org/TR/custom-elements",
 		"dev": "https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/custom/index.html",
 		"selectors": {
-			":unknown": ":unknown"
+			":unresolved": ":unresolved"
 		}
 	},
 	
