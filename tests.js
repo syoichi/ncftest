@@ -1895,15 +1895,15 @@ window.Specs = {
 		"title": "Regions Level 1",
 		"tr": "http://www.w3.org/TR/css3-regions/",
 		"properties": {
-			"flow-into": ["table-content", "none"],
-			"flow-from": ["thread", "none"],
+			"flow-into": ["none"].concat(["ident"].qmark(["element", "content"])),
+			"flow-from": ["none", "ident"],
 			"break-before": ["region", "avoid-region"],
 			"break-after": ["region", "avoid-region"],
 			"break-inside": "avoid-region",
 			"region-fragment": ["auto", "break"]
 		},
-		"@rules": {
-			"@region": "@region div"
+		"selectors": {
+			"::region()": ["#region-1::region(p)"]
 		}
 	},
 	
