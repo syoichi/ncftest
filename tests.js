@@ -935,13 +935,14 @@ window.Specs = {
 		}
 	},
 	
-	"css3-writing-modes": {
+	"css-writing-modes-3": {
 		"title": "Writing Modes",
+		"tr": "http://www.w3.org/TR/css3-writing-modes/",
 		"properties": {
 			"unicode-bidi": ["isolate", "isolate-override", "plaintext"],
 			"writing-mode": ["horizontal-tb", "vertical-rl", "vertical-lr"],
 			"text-orientation": ["mixed", "upright", "sideways-right", "sideways-left", "sideways", "use-glyph-orientation"],
-			"caption-side": ["before", "after"],
+			"caption-side": ["start", "end"],
 			"text-combine-horizontal": ["none", "all", "digits", "digits 2"]
 		}
 	},
