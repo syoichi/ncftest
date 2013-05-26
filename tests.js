@@ -443,8 +443,9 @@ window.Specs = {
 	/*
 	 * Note: the following media queries must be true in supporting UAs!
 	 */
-	"css3-mediaqueries": {
+	"mediaqueries3": {
 		"title": "Media Queries",
+		"tr": "http://www.w3.org/TR/css3-mediaqueries/",
 		"Media queries": {
 			"only": ["only screen", "only all"],
 			"not": ["not braille", "not handheld", "not print", "not projection", "not tty", "not tv"],
@@ -454,42 +455,53 @@ window.Specs = {
 				"only screen, (width) and (height)", "not tv and (width) and (height)",
 				"all and (width) and (height), only print and (width), not screen and (height)"
 			],
-			"width": ["(width)", "(min-width: 0)", "(min-width: 1px)", "(max-width: 1000000px)"],
-			"height": ["(height)", "(min-height: 0)", "(min-height: 1px)", "(max-height: 1000000px)"],
+			"width": [
+				"(width)", "not print and (width: 0)",
+				"(min-width: 0)", "(min-width: 1px)", "(max-width: 1000000px)"
+			],
+			"height": [
+				"(height)", "not print and (height: 0)",
+				"(min-height: 0)", "(min-height: 1px)", "(max-height: 1000000px)"
+			],
 			"device-width": [
-				"(device-width)", "(min-device-width: 0)", "(min-device-width: 1px)",
+				"(device-width)", "not print and (device-width: 0)",
+				"(min-device-width: 0)", "(min-device-width: 1px)",
 				"(max-device-width: 1000000px)"
 			],
 			"device-height": [
-				"(device-height)", "(min-device-height: 0)", "(min-device-height: 1px)",
+				"(device-height)", "not print and (device-height: 0)",
+				"(min-device-height: 0)", "(min-device-height: 1px)",
 				"(max-device-height: 1000000px)"
 			],
 			"orientation": ["(orientation)", "not print and (orientation: portrait)", "(orientation: landscape)"],
 			"aspect-ratio": [
 				"(aspect-ratio)",
+				"not print and (aspect-ratio: 1/1)",
 				"(min-aspect-ratio: 1/1000000)",
 				"(min-aspect-ratio: 1 / 1000000)",
 				"(max-aspect-ratio: 1000000/1)",
 			],
 			"device-aspect-ratio": [
 				"(device-aspect-ratio)",
+				"not print and (device-aspect-ratio: 1/1)",
 				"(min-device-aspect-ratio: 1/1000000)",
 				"(min-device-aspect-ratio: 1 / 1000000)",
 				"(max-device-aspect-ratio: 1000000/1)",
 			],
 			"color": [
-				"(color)", "(min-color: 0)", "(max-color: 100)"
+				"(color)", "not print and (color: 0)", "(min-color: 0)", "(max-color: 100)"
 			],
 			"color-index": [
-				"not print and (color-index)", "(min-color-index: 0)",
+				"not print and (color-index)", "(color-index: 0)", "(min-color-index: 0)",
 				"not print and (min-color-index: 1)", "(max-color-index: 10000000)"
 			],
 			"monochrome": [
-				"not print and (monochrome)", "(min-monochrome: 0)",
+				"not print and (monochrome)", "(monochrome: 0)", "(min-monochrome: 0)",
 				"not print and (min-monochrome: 1)", "(max-monochrome: 10000)"
 			],
 			"resolution": [
 				"(resolution)",
+				"not print and (resolution: 1dpi)",
 				"(min-resolution: 1dpi)",
 				"(max-resolution: 1000000dpi)",
 				"(max-resolution: 1000000dpcm)",
