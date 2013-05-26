@@ -3064,5 +3064,13 @@ window.Specs = {
 		"selectors": {
 			":unknown": ":unknown"
 		}
+	},
+	
+	"pointerevents": {
+		"title": "Pointer Events",
+		"dev": "https://dvcs.w3.org/hg/pointerevents/raw-file/tip/pointerEvents.html",
+		"properties": {
+			"touch-action": ["auto", "none"].concat(["pan-x"].or(["pan-y"]))
+		}
 	}
 };
