@@ -3,24 +3,24 @@
 /**
  * Setup dummy elements
  */
+
 var dummy = document.createElement('_'),
-  inline = dummy.style,
-  style = document.createElement('style');
+    inline = dummy.style,
+    style = document.createElement('style');
 
 // On WebKit, @rule test is too slow.
 if (/WebKit/.test(navigator.userAgent)) {
   var iframe = document.createElement('iframe');
-  iframe.hidden = true;
   iframe.src = 'about:blank';
-  document.body.appendChild(iframe);
-  iframe.contentDocument.body.appendChild(style);
+  document.head.appendChild(iframe);
+  iframe.contentDocument.head.appendChild(style);
 } else {
-  document.documentElement.appendChild(style);
+  document.head.appendChild(style);
 }
 
 dummy.setAttribute('data-foo', 'bar');
 dummy.setAttribute('data-px', '1px');
-document.documentElement.appendChild(dummy);
+document.head.appendChild(dummy);
 
 var _ = window.Supports = {
   prefixes: ['', '-moz-', '-webkit-', '-o-', '-wap-', '-op-', '-xv-', '-ms-', 'ms-', '-khtml-', '-apple-'],
