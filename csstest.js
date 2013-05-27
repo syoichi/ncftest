@@ -243,10 +243,8 @@ Test.groups = {
 
   'Media queries': {
     type: 'mq',
-    getResults: function(test) {
-      var matches = matchMedia(test);
-
-      return matches.media !== 'invalid' && matches.matches;
+    getResults: function(test, mqName) {
+      return Supports.mq(test, mqName);
     }
   }
 };

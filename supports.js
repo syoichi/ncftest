@@ -124,8 +124,26 @@ var _ = window.Supports = {
     return _.atrule.cached[atrule] = false;
   },
 
-  mq: function(mq) {
-    return matchMedia(mq).media !== 'invalid';
+  mq: function(mq, mqName) {
+    if(!_.mq.cached) {
+      _.mq.cached = {};
+    } else if(_.mq.cached[mq]) {
+      return _.mq.cached[mq];
+    }
+
+    for(var i=0; i<_.prefixes.length; i++) {
+      var prefixed = mq.replace(/\(/g, '(' + _.prefixes[i]);
+      var mql = matchMedia(prefixed);
+
+      if(mql.media !== 'invalid' && mql.matches) {
+        if (_.mq.cached[mqName] === void 0) {
+          _.mq.cached[mqName] = _.prefixes[i] + mqName;
+        }
+        return _.mq.cached[mq] = prefixed;
+      }
+    }
+
+    return _.mq.cached[mq] = false;
   }
 };
 
