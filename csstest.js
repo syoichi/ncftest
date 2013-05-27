@@ -226,17 +226,15 @@ Test.groups = {
   }
 };
 
-document.onclick = function(evt) {
+doc.addEventListener('click', function(evt) {
   var target = evt.target;
 
-  if(/^dt$/i.test(target.nodeName)) {
+  if(target.tagName === 'DT') {
     evt.stopPropagation();
 
-    var dl = target.parentNode;
-
-    dl.className = dl.className === 'open'? '' : 'open';
+    target.parentNode.classList.toggle('open');
   }
-}
+});
 
 onload = function() {
   specsTested = doc.getElementById('specsTested');
