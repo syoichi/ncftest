@@ -1,3 +1,7 @@
+var doc = document,
+    specsTested = doc.getElementById('specsTested'),
+    all = doc.getElementById('all');
+
 var Score = function(parent) {
   this.passed = this.total =
   this.passedTests = this.totalTests = 0;
@@ -38,41 +42,21 @@ var Test = function (tests, spec, title) {
 
   this.score = new Score(mainScore);
 
-  var 
-  h1 = $u.element.create({
-    tag: 'h1',
-    contents: [
-      this.title,
-      $u.element.create({
-        tag: 'a',
-        properties: {
-          href: tests.tr || 'http://www.w3.org/TR/' + this.id + '/',
-          target: '_blank',
-          textContent: 'TR',
-          className: 'spec-link'
-        }
-      }),
-      $u.element.create({
-        tag: 'a',
-        properties: {
-          href: tests.dev || 'http://dev.w3.org/csswg/' + this.id + '/',
-          target: '_blank',
-          textContent: 'DEV',
-          className: 'spec-link'
-        }
-      })
-    ]
-  }), valuesSection;
-
   // Wrapper section
-  this.section = $u.element.create({
-    tag: 'section',
-    properties: {
-      id: this.id,
-      className: 'tests'
-    },
-    contents: [h1]
-  });
+  var section = this.section = doc.createElement('section'),
+      h1 = section.appendChild(doc.createElement('h1'));
+
+  h1.appendChild(doc.createTextNode(title));
+  var tr = h1.appendChild(doc.createElement('a'));
+  tr.target = '_blank';
+  tr.className = 'spec-link';
+  var dev = h1.appendChild(tr.cloneNode(false));
+  tr.href = tests.tr || 'http://www.w3.org/TR/' + spec + '/';
+  tr.textContent = 'TR';
+  dev.href = tests.dev || 'http://dev.w3.org/csswg/' + spec + '/';
+  dev.textContent = 'DEV';
+  section.id = spec;
+  section.className = 'tests';
 
   // Perform tests
   for(var id in Test.groups) {
@@ -80,35 +64,20 @@ var Test = function (tests, spec, title) {
   }
 
   // Display score for this spec
-  $u.element.create({
-    tag: 'span',
-    contents: this.score + '',
-    properties: {
-      className: 'score'
-    },
-    inside: h1
-  });
+  var score = h1.appendChild(doc.createElement('span'));
+  score.className = 'score';
+  score.textContent = this.score;
 
-  all.appendChild(this.section);
+  all.appendChild(section);
 
   // Add to list of tested specs
-  $u.element.create({
-    tag: 'li',
-    properties: {
-      className: passclass({ passed: this.score.passed, total: this.score.total }),
-      title: this.score + ' passed'
-    },
-    contents: [
-      $u.element.create({
-        tag: 'a',
-        prop: {
-          href: '#' + spec
-        },
-        contents: title
-      })
-    ],
-    inside: specsTested
-  });
+  var list = doc.createElement('li');
+  list.className = passclass({ passed: this.score.passed, total: this.score.total });
+  list.title = this.score + ' passed';
+  var anchor = list.appendChild(doc.createElement('a'));
+  anchor.href = '#' + spec;
+  anchor.textContent = title;
+  specsTested.appendChild(list);
 }
 
 Test.prototype = {
@@ -120,27 +89,16 @@ Test.prototype = {
         continue;
       }
 
-      thisSection = thisSection || $u.element.create({
-        tag: 'section',
-        properties: {
-          className: 'tests ' + what
-        },
-        contents: $u.element.create({
-            tag: 'h1',
-            contents: what
-          }),
-        inside: this.section
-      });
+      if (!thisSection) {
+        thisSection = this.section.appendChild(doc.createElement('section'));
+        thisSection.className = 'tests ' + what;
+        thisSection.appendChild(doc.createElement('h1')).textContent = what;
+      }
 
-      var dl = document.createElement('dl'),
-          dt = $u.element.create({
-        tag: 'dt',
-        prop: {
-          textContent: feature,
-          tabIndex: '0'
-        },
-        inside: dl
-      });
+      var dl = thisSection.appendChild(doc.createElement('dl')),
+          dt = dl.appendChild(doc.createElement('dt'));
+
+      dt.textContent = feature;
 
       var passed = 0, tests = theseTests[feature];
 
@@ -158,14 +116,12 @@ Test.prototype = {
 
         passed += +success;
 
-        var dd = $u.element.create({
-          tag: 'dd',
-          prop: {
-            innerHTML: test + (note? '<small>' + note + '</small>' : ''),
-            className: passclass({passed: Math.round(success * 10000), total: 10000 })
-          },
-          inside: dl
-        });
+        var dd = dl.appendChild(doc.createElement('dd'));
+        dd.className = passclass({passed: Math.round(success * 10000), total: 10000 });
+        dd.textContent = test;
+        if (note) {
+          dd.appendChild(doc.createElement('small')).textContent = note;
+        }
 
         if (what === 'properties' && results && results !== test) {
           dd.className += ' prefixed';
@@ -187,8 +143,6 @@ Test.prototype = {
           dt.title += 'prefixed';
         }
       }
-
-      thisSection.appendChild(dl);
     }
   }
 }
