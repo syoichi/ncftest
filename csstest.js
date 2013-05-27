@@ -1,4 +1,4 @@
-var doc = document, specsTested, all;
+var doc = document;
 
 var Score = function(parent) {
   this.passed = this.total =
@@ -236,19 +236,12 @@ doc.addEventListener('click', function(evt) {
   }
 });
 
-onload = function() {
-  specsTested = doc.getElementById('specsTested');
-  all = doc.getElementById('all');
-  var timeBefore = +new Date,
-    duration = 0;
+doc.addEventListener('DOMContentLoaded', function () {
+  var duration = 0,
+      specs = Object.keys(Specs),
+      timeBefore = Date.now();
 
-  var specs = [];
-
-  for(var spec in Specs) {
-    specs.push(spec);
-  }
-
-  (function() {
+  (function main() {
     if(specs.length) {
       // Get spec id
       var spec = specs.shift();
@@ -257,23 +250,22 @@ onload = function() {
       var test = new Test(Specs[spec], spec, Specs[spec].title);
 
       // Count test duration
-      duration += +new Date - timeBefore;
-      timeBefore = +new Date;
+      duration += Date.now() - timeBefore;
+      timeBefore = Date.now();
 
       // Output current score
-      score.textContent = mainScore + '';
+      score.textContent = mainScore;
       passedTests.textContent = ~~mainScore.passedTests;
       totalTests.textContent = mainScore.totalTests;
       total.textContent = mainScore.total;
 
       // Schedule next test
-      setTimeout(arguments.callee, 50)
+      setTimeout(main, 50);
+      return;
     }
-    else {
-      // Done!
+    // Done!
 
-      // Display time taken
-      timeTaken.textContent = +new Date - timeBefore + 'ms';
-    }
+    // Display time taken
+    timeTaken.textContent = (Date.now() - timeBefore) + 'ms';
   })();
-}
+});
