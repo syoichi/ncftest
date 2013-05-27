@@ -1,6 +1,4 @@
-var doc = document,
-    specsTested = doc.getElementById('specsTested'),
-    all = doc.getElementById('all');
+var doc = document, specsTested, all;
 
 var Score = function(parent) {
   this.passed = this.total =
@@ -241,6 +239,8 @@ document.onclick = function(evt) {
 }
 
 onload = function() {
+  specsTested = doc.getElementById('specsTested');
+  all = doc.getElementById('all');
   var timeBefore = +new Date,
     duration = 0;
 
