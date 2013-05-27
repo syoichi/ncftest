@@ -72,7 +72,7 @@ var Test = function (tests, spec, title) {
 
   // Add to list of tested specs
   var list = doc.createElement('li');
-  list.className = passclass({ passed: this.score.passed, total: this.score.total });
+  list.className = this.passclass({ passed: this.score.passed, total: this.score.total });
   list.title = this.score + ' passed';
   var anchor = list.appendChild(doc.createElement('a'));
   anchor.href = '#' + spec;
@@ -117,7 +117,7 @@ Test.prototype = {
         passed += +success;
 
         var dd = dl.appendChild(doc.createElement('dd'));
-        dd.className = passclass({passed: Math.round(success * 10000), total: 10000 });
+        dd.className = this.passclass({passed: Math.round(success * 10000), total: 10000 });
         dd.textContent = test;
         if (note) {
           dd.appendChild(doc.createElement('small')).textContent = note;
@@ -131,7 +131,7 @@ Test.prototype = {
 
       this.score.update({passed: passed, total: tests.length });
 
-      dt.className = passclass({ passed: passed, total: tests.length });
+      dt.className = this.passclass({ passed: passed, total: tests.length });
 
       var support = Supports[Test.groups[what].type];
 
@@ -144,6 +144,31 @@ Test.prototype = {
         }
       }
     }
+  },
+  passclass: function(info) {
+    var success;
+
+    if('passed' in info) {
+      success = info.passed / info.total;
+    }
+    else if('failed' in info) {
+      success = 1 - info.failed / info.total;
+    }
+
+    if (success === 1) { return 'pass' }
+    if (success === 0) { return 'epic-fail' }
+
+    var classes = [
+      'fail',
+      'very-buggy',
+      'buggy',
+      'slightly-buggy',
+      'almost-pass',
+    ];
+
+    var index = Math.round(success * (classes.length - 1));
+
+    return classes[index];
   }
 }
 
@@ -202,48 +227,6 @@ Test.groups = {
     }
   }
 };
-
-function passclass(info) {
-  var success;
-
-  if('passed' in info) {
-    success = info.passed / info.total;
-  }
-  else if('failed' in info) {
-    success = 1 - info.failed / info.total;
-  }
-
-  if (success === 1) { return 'pass' }
-  if (success === 0) { return 'epic-fail' }
-
-  var classes = [
-    'fail',
-    'very-buggy',
-    'buggy',
-    'slightly-buggy',
-    'almost-pass',
-  ];
-
-  var index = Math.round(success * (classes.length - 1));
-
-  return classes[index];
-}
-
-function isDuplicated(vals) {
-    var idx, valsLen, hash, filename;
-
-    hash = {};
-
-    for (idx = 0, valsLen = vals.length; idx < valsLen; idx += 1) {
-        val = vals[idx];
-
-        if (!hash[val]) {
-            hash[val] = true;
-        }
-    }
-
-    return Object.keys(hash).length !== valsLen;
-}
 
 document.onclick = function(evt) {
   var target = evt.target;
@@ -306,54 +289,73 @@ Object.defineProperties(Array.prototype, {
     enumerable: false
   },
   // [ a | b | c ] || [ x | y | z ]
-  'or': {
-    value: function or() {
-      var arg = Array.prototype.slice.call(arguments),
-        argLen = arg.length,
-        lastArg = arg[argLen - 1],
-        hasSeparator = typeof lastArg === 'string',
-        separator = hasSeparator ? lastArg : ' ';
+  'or': (function () {
 
-      if (argLen === 1 || (argLen === 2 && hasSeparator)) {
-        var firstArg = arg[0];
-        return this.concat(firstArg, this.and(firstArg, separator), firstArg.and(this, separator));
-      }
+    function isDuplicated(vals) {
+        var idx, valsLen, hash, filename;
 
-      var arr = hasSeparator ? arg.slice(0, -1) : arg;
-      var max = 1 + (hasSeparator ? argLen - 1 : argLen);
-      var lists = arr.slice();
-      lists.unshift(this);
-      var listsLen = lists.length;
+        hash = {};
 
-      return this.concat(arr.reduce(function flattened(pre, cur) {
-        return pre.concat(cur);
-      })).times(1, max, separator).filter(function duplicatedFilter(val) {
-        var vals = val.split(separator);
+        for (idx = 0, valsLen = vals.length; idx < valsLen; idx += 1) {
+            val = vals[idx];
 
-        if (isDuplicated(vals)) {
-          return false;
+            if (!hash[val]) {
+                hash[val] = true;
+            }
         }
 
-        for (var i = 0, list; i < listsLen; i += 1) {
-          list = lists[i];
+        return Object.keys(hash).length !== valsLen;
+    }
 
-          for (var j = count = 0, listLen = list.length; j < listLen; j += 1) {
-            if (vals.indexOf(list[j]) !== -1) {
-              count += 1;
-              if (count === 2) {
-                return false;
+    return {
+      value: function or() {
+        var arg = Array.prototype.slice.call(arguments),
+          argLen = arg.length,
+          lastArg = arg[argLen - 1],
+          hasSeparator = typeof lastArg === 'string',
+          separator = hasSeparator ? lastArg : ' ';
+
+        if (argLen === 1 || (argLen === 2 && hasSeparator)) {
+          var firstArg = arg[0];
+          return this.concat(firstArg, this.and(firstArg, separator), firstArg.and(this, separator));
+        }
+
+        var arr = hasSeparator ? arg.slice(0, -1) : arg;
+        var max = 1 + (hasSeparator ? argLen - 1 : argLen);
+        var lists = arr.slice();
+        lists.unshift(this);
+        var listsLen = lists.length;
+
+        return this.concat(arr.reduce(function flattened(pre, cur) {
+          return pre.concat(cur);
+        })).times(1, max, separator).filter(function duplicatedFilter(val) {
+          var vals = val.split(separator);
+
+          if (isDuplicated(vals)) {
+            return false;
+          }
+
+          for (var i = 0, list; i < listsLen; i += 1) {
+            list = lists[i];
+
+            for (var j = count = 0, listLen = list.length; j < listLen; j += 1) {
+              if (vals.indexOf(list[j]) !== -1) {
+                count += 1;
+                if (count === 2) {
+                  return false;
+                }
               }
             }
-          }
 
-          if (listsLen === (i + 1)) {
-            return true;
+            if (listsLen === (i + 1)) {
+              return true;
+            }
           }
-        }
-      });
-    },
-    enumerable: false
-  },
+        });
+      },
+      enumerable: false
+    };
+  }()),
   // [ a | b | c ] && [ x | y | z ]
   'amp': {
     value: function amp(arr2, separator) {
