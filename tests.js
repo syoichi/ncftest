@@ -2538,7 +2538,7 @@ window.Specs = {
         "1px 2px, 1px 2px, inset 1px 2px"
       ]
     }
-  },
+  },/*
 
   "css-color-4": {
     "title": "Color Level 4",
@@ -2566,7 +2566,7 @@ window.Specs = {
       "opacity": "10%",
       "color-correction": "auto"
     }
-  },
+  },*/
 
   "css4-pseudo": {
     "title": "Pseudo-elements Level 4",
