@@ -1,7 +1,7 @@
 (function executeSupports(win, doc) {
   'use strict';
 
-  var dummy, inline, style, iframe, head, prefixes, prefixesLen;
+  var dummy, inline, style, iframe, head, prefixes, prefixesLen, isCSS;
 
   /**
    * Setup dummy elements
@@ -16,6 +16,7 @@
     '-wap-', '-op-', '-xv-', 'ms-', '-khtml-', '-apple-'
   ];
   prefixesLen = prefixes.length;
+  isCSS = 'CSS' in win;
 
   function camelCase(str) {
     return str.replace(/-([a-z])/g, function makeUpperCase($0, $1) {
@@ -82,24 +83,39 @@
         return false;
       }
 
-      property = camelCase(property);
-      inline[property] = inline.cssText = '';
+      if (isCSS) {
+        for (idx = 0; idx < prefixesLen; idx += 1) {
+          prefix = prefixes[idx];
+          prefixed = prefix + value;
 
-      for (idx = 0; idx < prefixesLen; idx += 1) {
-        prefix = prefixes[idx];
-        prefixed = prefix + value;
+          if (win.CSS.supports(property, prefixed)) {
+            if (label && cached[label] === void 0) {
+              cached[label] = prefix + label;
+            }
 
-        // Internet Explorer 10 throws Undefined Error.
-        try {
-          inline[property] = prefixed;
-        } catch (err) {}
-
-        if (inline.length > 0) {
-          if (label && cached[label] === void 0) {
-            cached[label] = prefix + label;
+            return prefixed;
           }
+        }
+      } else {
+        property = camelCase(property);
+        inline[property] = inline.cssText = '';
 
-          return prefixed;
+        for (idx = 0; idx < prefixesLen; idx += 1) {
+          prefix = prefixes[idx];
+          prefixed = prefix + value;
+
+          // Internet Explorer 10 throws Undefined Error.
+          try {
+            inline[property] = prefixed;
+          } catch (err) {}
+
+          if (inline.length > 0) {
+            if (label && cached[label] === void 0) {
+              cached[label] = prefix + label;
+            }
+
+            return prefixed;
+          }
         }
       }
 
