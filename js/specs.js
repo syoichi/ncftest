@@ -1,4 +1,3 @@
-/* jshint globalstrict:true, maxlen:200 */
 window.Specs = {
   'css3-background': {
     'title': 'Backgrounds and Borders',
