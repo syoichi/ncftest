@@ -226,20 +226,22 @@ Test.groups = {
   }
 };
 
-doc.addEventListener('click', function(evt) {
-  var target = evt.target;
-
-  if(target.tagName === 'DT') {
-    evt.stopPropagation();
-
-    target.parentNode.classList.toggle('open');
-  }
-});
-
 doc.addEventListener('DOMContentLoaded', function () {
   var duration = 0,
       specs = Object.keys(Specs),
-      timeBefore = Date.now();
+      timeBefore;
+
+  all.addEventListener('click', function (evt) {
+    var target = evt.target;
+
+    if (target.tagName === 'DT') {
+      evt.stopPropagation();
+
+      target.parentNode.classList.toggle('open');
+    }
+  });
+
+  timeBefore = Date.now();
 
   (function main() {
     if(specs.length) {
