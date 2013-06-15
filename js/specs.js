@@ -1297,7 +1297,7 @@ window.Specs = {
         'auto / auto / auto', 'auto / auto / auto / auto'
       ]),
       'grid-auto-flow': ['none', 'rows', 'columns']
-    }/*,
+    },
     'values': {
       'properties': [
         'grid-definition-columns',
@@ -1306,7 +1306,7 @@ window.Specs = {
         'grid-rows'
       ],
       'fr': '1fr'
-    }*/
+    }
   },
 
   'css3-layout': {
