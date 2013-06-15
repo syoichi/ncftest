@@ -206,17 +206,19 @@
         failed = [];
         results = {};
 
-        for (idx = 0; properties[idx]; idx += 1) {
+        for (idx = 0; properties[idx];) {
           property = properties[idx];
+          idx += 1;
 
           if (!Supports.property(property)) {
-            properties.splice(idx, 1);
+            properties.splice(idx -= 1, 1);
           } else if (!Supports.value(property, test, label)) {
             failed.push(property);
           }
         }
 
-        results.success = success = 1 - failed.length / properties.length;
+        results.success = success =
+          1 - (properties.length ? failed.length / properties.length : 1);
 
         if (0 < success && success < 1) {
           results.note = 'Failed in: ' + failed.join(', ');
