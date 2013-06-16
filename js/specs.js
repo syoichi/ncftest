@@ -804,12 +804,14 @@ window.Specs = {
     }
   },
 
-  'css3-fonts': {
+  'css-fonts-3': {
     'title': 'Fonts',
+    'tr': 'http://www.w3.org/TR/css3-fonts/',
     'properties': {
       'font-stretch': [
         'normal', 'ultra-condensed', 'extra-condensed', 'condensed',
-        'semi-condensed', 'semi-expanded', 'expanded', 'extra-expanded', 'ultra-expanded'
+        'semi-condensed', 'semi-expanded', 'expanded', 'extra-expanded',
+        'ultra-expanded'
       ],
       'font-size-adjust': ['none', 'auto', '1', '.5'],
       'font': [
@@ -823,31 +825,6 @@ window.Specs = {
         ['normal normal normal normal medium / normal Times, serif']
       ),
       'font-synthesis': ['none'].concat(['weight'].or(['style'])),
-      /*
-      // 'src' and 'unicode-range' are descriptor of @font-face, not property.
-      // But WebKit has these as a property.
-      'src': [
-        'url(fonts/simple.ttf)', 'local(Gentium)',
-        'url(ideal-sans-serif.woff) format(\'woff\')', 'url(basic-sans-serif.ttf) format(\'truetype\')',
-        'url(basic-sans-serif.ttf) format(\'opentype\')', 'url(basic-sans-serif.eot) format(\'embedded-opentype\')',
-        'url(fonts.svg#MyGeometricModern) format(\'svg\')',
-        'url(basic-sans-serif.ttf) format(\'truetype\', \'opentype\')',
-        'url(fonts/simple.ttf), url(ideal-sans-serif.woff)',
-        'url(GentiumBold.ttf), local(Gentium-Bold)',
-        'local(Gentium), url(Gentium.ttf)',
-        'local(Futura-Medium), url(fonts.svg#MyGeometricModern) format(\'svg\')',
-        'url(ideal-sans-serif.woff) format(\'woff\'), url(basic-sans-serif.ttf) format(\'opentype\')',
-        'url(fonts/simple.ttf), url(ideal-sans-serif.woff), url(basic-sans-serif.ttf)',
-        'local(HiraKakuPro-W3), local(Meiryo), local(IPAPGothic)'
-      ],
-      'unicode-range': [
-        'U+0-10FFFF', 'U+416', 'U+400-4ff', 'U+4??',
-        'U+A5', 'U+0-7F', 'U+590-5ff', 'U+30??', 'U+0-2FF',
-        'U+416, U+417', 'U+A5, U+4E00-9FFF', 'U+00-FF, U+980-9FF',
-        'U+3000-9FFF, U+ff??', 'U+000-5FF, U+1e00-1fff, U+2000-2300',
-        'U+A5, U+4E00-9FFF, U+30??, U+FF00-FF9F',
-        'U+000-49F, U+2000-27FF, U+2900-2BFF, U+1D400-1D7FF'
-      ],*/
       'font-kerning': ['auto', 'normal', 'none'],
       'font-variant-ligatures': [
         'normal', 'none',
@@ -855,9 +832,11 @@ window.Specs = {
         'discretionary-ligatures', 'no-discretionary-ligatures',
         'historical-ligatures', 'no-historical-ligatures',
         'contextual', 'no-contextual',
-        'common-ligatures discretionary-ligatures', 'discretionary-ligatures common-ligatures',
+        'common-ligatures discretionary-ligatures',
+        'discretionary-ligatures common-ligatures',
         'common-ligatures discretionary-ligatures historical-ligatures',
-        'common-ligatures discretionary-ligatures historical-ligatures contextual'
+        'common-ligatures discretionary-ligatures historical-ligatures ' +
+          'contextual'
       ],
       'font-variant-position': ['normal', 'sub', 'super'],
       'font-variant-caps': [
@@ -882,13 +861,21 @@ window.Specs = {
         'styleset(Bongo)', 'styleset(Bongo, Jupiter Sans)',
         'character-variant(Bongo)', 'character-variant(Bongo, Jupiter Sans)',
         'swash(Bongo)', 'ornaments(Bongo)', 'annotation(Bongo)',
-        'stylistic(Bongo) historical-forms', 'historical-forms stylistic(Bongo)',
+        'stylistic(Bongo) historical-forms',
+        'historical-forms stylistic(Bongo)',
         'stylistic(Bongo) historical-forms styleset(Bongo)',
-        'stylistic(Bongo) historical-forms styleset(Bongo) character-variant(Bongo)',
-        'stylistic(Bongo) historical-forms styleset(Bongo) character-variant(Bongo) swash(Bongo)',
-        'stylistic(Bongo) historical-forms styleset(Bongo) character-variant(Bongo) swash(Bongo) ornaments(Bongo)',
-        'stylistic(Bongo) historical-forms styleset(Bongo) character-variant(Bongo) swash(Bongo) ornaments(Bongo) annotation(Bongo)',
-        'stylistic(Bongo) historical-forms styleset(Bongo, Jupiter Sans) character-variant(Bongo, Jupiter Sans) swash(Bongo) ornaments(Bongo) annotation(Bongo)'
+        'stylistic(Bongo) historical-forms styleset(Bongo) ' +
+          'character-variant(Bongo)',
+        'stylistic(Bongo) historical-forms styleset(Bongo) ' +
+          'character-variant(Bongo) swash(Bongo)',
+        'stylistic(Bongo) historical-forms styleset(Bongo) ' +
+          'character-variant(Bongo) swash(Bongo) ornaments(Bongo)',
+        'stylistic(Bongo) historical-forms styleset(Bongo) ' +
+          'character-variant(Bongo) swash(Bongo) ornaments(Bongo) ' +
+          'annotation(Bongo)',
+        'stylistic(Bongo) historical-forms styleset(Bongo, Jupiter Sans) ' +
+          'character-variant(Bongo, Jupiter Sans) swash(Bongo) ' +
+          'ornaments(Bongo) annotation(Bongo)'
       ],
       'font-variant-east-asian': [
         'normal',
@@ -909,7 +896,8 @@ window.Specs = {
         'styleset(Bongo)', 'styleset(Bongo, Jupiter Sans)',
         'character-variant(Bongo)', 'character-variant(Bongo, Jupiter Sans)',
         'swash(Bongo)', 'ornaments(Bongo)', 'annotation(Bongo)',
-        'all-small-caps', 'petite-caps', 'all-petite-caps', 'unicase', 'titling-caps',
+        'all-small-caps', 'petite-caps', 'all-petite-caps', 'unicase',
+        'titling-caps',
         'lining-nums', 'oldstyle-nums',
         'proportional-nums', 'tabular-nums',
         'diagonal-fractions', 'stacked-fractions',
@@ -917,8 +905,15 @@ window.Specs = {
         'jis78', 'jis83', 'jis90', 'jis04', 'simplified', 'traditional',
         'full-width', 'proportional-width',
         'ruby',
-        'common-ligatures discretionary-ligatures', 'discretionary-ligatures common-ligatures',
-        'common-ligatures discretionary-ligatures historical-ligatures contextual stylistic(Bongo) historical-forms styleset(Bongo, Jupiter Sans) character-variant(Bongo, Jupiter Sans) swash(Bongo) ornaments(Bongo) annotation(Bongo) small-caps lining-nums proportional-nums diagonal-fractions ordinal slashed-zero jis78 full-width ruby'
+        'common-ligatures discretionary-ligatures',
+        'discretionary-ligatures common-ligatures',
+        'common-ligatures discretionary-ligatures ' +
+          'historical-ligatures contextual stylistic(Bongo) ' +
+          'historical-forms styleset(Bongo, Jupiter Sans) ' +
+          'character-variant(Bongo, Jupiter Sans) swash(Bongo) ' +
+          'ornaments(Bongo) annotation(Bongo) small-caps lining-nums ' +
+          'proportional-nums diagonal-fractions ordinal slashed-zero jis78 ' +
+          'full-width ruby'
       ],
       'font-feature-settings': [
         'normal', '\'c2sc\'', '\'c2sc\' 1', '\'smcp\' on', '\'liga\' off',
@@ -932,6 +927,84 @@ window.Specs = {
     '@rules': {
       '@font-face': '@font-face',
       '@font-feature-values': '@font-feature-values Jupiter Sans'
+    },
+    // WebKit/Blink has 'src' and 'unicode-range' as a property too.
+    'descriptors': {
+      'atrule': '@font-face',
+      'font-family': ['Helvetica', 'Verdana'],
+      'src': [
+        'url(fonts/simple.ttf)', 'local(Gentium)', 'Gentium',
+        'url(ideal-sans-serif.woff) format(\'woff\')',
+        'url(basic-sans-serif.ttf) format(\'truetype\')',
+        'url(basic-sans-serif.ttf) format(\'opentype\')',
+        'url(basic-sans-serif.eot) format(\'embedded-opentype\')',
+        'url(fonts.svg#MyGeometricModern) format(\'svg\')',
+        'url(basic-sans-serif.ttf) format(\'truetype\', \'opentype\')',
+        'url(fonts/simple.ttf), url(ideal-sans-serif.woff)',
+        'url(GentiumBold.ttf), local(Gentium-Bold)',
+        'local(Gentium), url(Gentium.ttf)',
+        'local(Futura-Medium), ' +
+          'url(fonts.svg#MyGeometricModern) format(\'svg\')',
+        'url(ideal-sans-serif.woff) format(\'woff\'), ' +
+          'url(basic-sans-serif.ttf) format(\'opentype\')',
+        'url(fonts/simple.ttf), ' +
+          'url(ideal-sans-serif.woff), url(basic-sans-serif.ttf)',
+        'local(HiraKakuPro-W3), local(Meiryo), local(IPAPGothic)'
+      ],
+      'font-style': ['normal', 'italic', 'oblique'],
+      'font-weight': [
+        'normal', 'bold',
+        '100', '200', '300', '400', '500', '600', '700', '800', '900'
+      ],
+      'font-stretch': [
+        'normal', 'ultra-condensed', 'extra-condensed', 'condensed',
+        'semi-condensed', 'semi-expanded', 'expanded', 'extra-expanded',
+        'ultra-expanded'
+      ],
+      'unicode-range': [
+        'U+0-10FFFF', 'U+416', 'U+400-4ff', 'U+4??',
+        'U+A5', 'U+0-7F', 'U+590-5ff', 'U+30??', 'U+0-2FF',
+        'U+416, U+417', 'U+A5, U+4E00-9FFF', 'U+00-FF, U+980-9FF',
+        'U+3000-9FFF, U+ff??', 'U+000-5FF, U+1e00-1fff, U+2000-2300',
+        'U+A5, U+4E00-9FFF, U+30??, U+FF00-FF9F',
+        'U+000-49F, U+2000-27FF, U+2900-2BFF, U+1D400-1D7FF'
+      ],
+      'font-variant': [
+        'none',
+        'common-ligatures', 'no-common-ligatures',
+        'discretionary-ligatures', 'no-discretionary-ligatures',
+        'historical-ligatures', 'no-historical-ligatures',
+        'contextual', 'no-contextual',
+        'stylistic(Bongo)', 'historical-forms',
+        'styleset(Bongo)', 'styleset(Bongo, Jupiter Sans)',
+        'character-variant(Bongo)', 'character-variant(Bongo, Jupiter Sans)',
+        'swash(Bongo)', 'ornaments(Bongo)', 'annotation(Bongo)',
+        'all-small-caps', 'petite-caps', 'all-petite-caps', 'unicase',
+        'titling-caps',
+        'lining-nums', 'oldstyle-nums',
+        'proportional-nums', 'tabular-nums',
+        'diagonal-fractions', 'stacked-fractions',
+        'ordinal', 'slashed-zero',
+        'jis78', 'jis83', 'jis90', 'jis04', 'simplified', 'traditional',
+        'full-width', 'proportional-width',
+        'ruby',
+        'common-ligatures discretionary-ligatures',
+        'discretionary-ligatures common-ligatures',
+        'common-ligatures discretionary-ligatures ' +
+          'historical-ligatures contextual stylistic(Bongo) ' +
+          'historical-forms styleset(Bongo, Jupiter Sans) ' +
+          'character-variant(Bongo, Jupiter Sans) swash(Bongo) ' +
+          'ornaments(Bongo) annotation(Bongo) small-caps lining-nums ' +
+          'proportional-nums diagonal-fractions ordinal slashed-zero jis78 ' +
+          'full-width ruby'
+      ],
+      'font-feature-settings': [
+        'normal', '\'c2sc\'', '\'c2sc\' 1', '\'smcp\' on', '\'liga\' off',
+        '\'smcp\', \'swsh\'',
+        '\'smcp\', \'swsh\' 2',
+        '\'smcp\' on, \'swsh\' off',
+        '\'c2sc\', \'smcp\', \'swsh\''
+      ]
     }
   },
 
