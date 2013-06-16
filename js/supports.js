@@ -113,7 +113,7 @@
           prefix = prefixes[idx];
           prefixed = prefix + value;
 
-          // Internet Explorer 10 throws Undefined Error.
+          // Trident throws Undefined Error.
           try {
             inline[property] = prefixed;
           } catch (err) {}
