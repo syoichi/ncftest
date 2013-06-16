@@ -2865,8 +2865,15 @@ window.Specs = {
       'lighting-color': [
         'white', 'currentColor',
         'black icc-color(white, 1)', '#ffffff icc-color(white, 1, 2)'
-      ]/*,
-      // 'src', 'parameters', 'geometry', 'mix', 'margin' are the descriptor of @filter, not property.
+      ]
+    },
+    '@rules': {
+      '@supports': '@supports filter(webgl)',
+      '@filter': '@filter warp'
+    },
+    'descriptors': {
+      'atrule': '@filter warp',
+      'atruleName': '@filter',
       'src': [
         'url(\'simple.vs\')', 'url(\'simple.vs\') format(\'x-shader/x-vertex\')',
         'url(\'simple.vs\'), url(simple.fs)',
@@ -2948,11 +2955,7 @@ window.Specs = {
         'source-in', 'destination-in', 'source-out', 'destination-out',
         'source-atop', 'destination-atop', 'xor', 'lighter'
       ],
-      'margin': ['10px', '10%', 'auto'].times(1, 4)*/
-    },
-    '@rules': {
-      '@supports': '@supports filter(webgl)',
-      '@filter': '@filter warp'
+      'margin': ['10px', '10%', 'auto'].times(1, 4)
     }
   },
 
