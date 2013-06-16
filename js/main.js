@@ -104,7 +104,7 @@
       for (i = 0; i < testListLen; i += 1) {
         feature = testList[i];
 
-        if (feature !== 'properties') {
+        if (!/^(?:properties|atrule|atruleName)$/.test(feature)) {
           if (!thisSection) {
             thisSection = this.section.appendChild(
               doc.createElement('section')
@@ -243,6 +243,12 @@
       type: 'atrule',
       getResults: function atrules(test, atruleName) {
         return Supports.atrule(test, atruleName);
+      }
+    },
+    'descriptors': {
+      type: 'descriptor',
+      getResults: function descriptors(value, descriptor, tests) {
+        return Supports.descriptor(descriptor, value, tests);
       }
     },
     'Media queries': {

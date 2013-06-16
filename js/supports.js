@@ -180,6 +180,56 @@
 
       return false;
     },
+    descriptor: function descriptorFunc(descriptor, value, tests) {
+      var cached, key, atrule, idx, prefix, prefixed, prop, cssRule, styleDec;
+
+      cached = descriptorFunc.cached;
+      key = descriptor + ': ' + value;
+
+      if (!cached) {
+        cached = descriptorFunc.cached = {};
+      } else if (cached[key]) {
+        return cached[key];
+      }
+
+      atrule = this.atrule(tests.atrule, tests.atruleName || tests.atrule);
+
+      if (!atrule) {
+        return false;
+      }
+
+      for (idx = 0; idx < prefixesLen; idx += 1) {
+        prefix = prefixes[idx];
+        prefixed = prefix + descriptor;
+        prop = camelCase(prefixed);
+
+        // value should do prefix test.
+        style.textContent = atrule + '{' + prefixed + ': ' + value + ';}';
+        cssRule = style.sheet.cssRules[0];
+        styleDec = cssRule.style;
+
+        if (
+          // probably standard
+          cssRule[prop] ||
+            // for Trident, WebKit/Blink, Presto
+            styleDec[prop] ||
+            // for Gecko
+            styleDec.getPropertyValue(prefixed)
+        ) {
+          if (cached[descriptor] === void 0) {
+            cached[descriptor] = prefixed;
+          }
+
+          cached[key] = prefixed;
+
+          return prefixed;
+        }
+      }
+
+      cached[key] = false;
+
+      return false;
+    },
     mq: function mqFunc(mq, mqName) {
       var cached, idx, prefix, prefixed, mql;
 
