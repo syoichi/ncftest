@@ -1,10 +1,9 @@
 /* global Supports, Specs */
-/* global specsTested, all, score, passedTests, totalTests, total, timeTaken */
 
-(function (doc) {
+(function executeScoringAndTesting(doc) {
   'use strict';
 
-  var mainScore;
+  var mainScore, all, specsTested;
 
   function Score(main) {
     this.passed = this.total = this.passedTests = this.totalTests = 0;
@@ -36,7 +35,8 @@
   };
 
   function Test(tests, spec, title) {
-    var section, h1, tr, dev, groups, groupsLen, idx, id, score, list, anchor;
+    var section, h1, tr, dev, groups, groupsLen, idx, id,
+        miniScore, list, anchor;
 
     this.tests = tests;
     this.id = spec;
@@ -69,9 +69,9 @@
     }
 
     // Display score for this spec
-    score = h1.appendChild(doc.createElement('span'));
-    score.className = 'score';
-    score.textContent = this.score;
+    miniScore = h1.appendChild(doc.createElement('span'));
+    miniScore.className = 'score';
+    miniScore.textContent = this.score;
 
     all.appendChild(section);
 
@@ -199,7 +199,7 @@
   Test.groups = {
     'values': {
       type: 'value',
-      getResults: function values(test, label, tests) {
+      getResults: function values(value, label, tests) {
         var properties, failed, results, idx, property, success;
 
         properties = tests.properties;
@@ -212,7 +212,7 @@
 
           if (!Supports.property(property)) {
             properties.splice(idx -= 1, 1);
-          } else if (!Supports.value(property, test, label)) {
+          } else if (!Supports.value(property, value, label)) {
             failed.push(property);
           }
         }
@@ -235,14 +235,14 @@
     },
     'selectors': {
       type: 'selector',
-      getResults: function selectors(test) {
-        return Supports.selector(test);
+      getResults: function selectors(selector) {
+        return Supports.selector(selector);
       }
     },
     '@rules': {
       type: 'atrule',
-      getResults: function atrules(test, atruleName) {
-        return Supports.atrule(test, atruleName);
+      getResults: function atrules(atrule, atruleName) {
+        return Supports.atrule(atrule, atruleName);
       }
     },
     'descriptors': {
@@ -253,8 +253,8 @@
     },
     'Media queries': {
       type: 'mq',
-      getResults: function mediaQueries(test, mqName) {
-        return Supports.mq(test, mqName);
+      getResults: function mediaQueries(mq, mqName) {
+        return Supports.mq(mq, mqName);
       }
     }
   };
@@ -262,7 +262,15 @@
   mainScore = new Score(null);
 
   doc.addEventListener('DOMContentLoaded', function prepare() {
-    var duration, specs, timeBefore;
+    var score, passedTests, totalTests, total, duration, specs, timeBefore;
+
+    all = doc.getElementById('all');
+    specsTested = doc.getElementById('specsTested');
+
+    score = doc.getElementById('score');
+    passedTests = doc.getElementById('passedTests');
+    totalTests = doc.getElementById('totalTests');
+    total = doc.getElementById('total');
 
     duration = 0;
     specs = Object.keys(Specs);
@@ -280,7 +288,7 @@
     timeBefore = Date.now();
 
     (function main() {
-      var spec, test;
+      var spec, test, timeTaken;
 
       if (specs.length) {
         // Get spec id
@@ -306,6 +314,7 @@
       // Done!
 
       // Display time taken
+      timeTaken = doc.getElementById('timeTaken');
       timeTaken.textContent = (Date.now() - timeBefore) + 'ms';
     })();
   });
