@@ -1879,28 +1879,18 @@ window.Specs = {
     }
   },
 
-  'css-device-adapt': {
-    'title': 'Device Adaptation',/*
+  'css-device-adapt-1': {
+    'title': 'Device Adaptation',
+    'tr': 'http://www.w3.org/TR/css-device-adapt/',/*
     // These are descriptors, not property.
+    // These descriptors should check by CSSOM API.
     'properties': {
-      'min-width': ['auto', 'device-width', 'device-height'],
-      'max-width': ['auto', 'device-width', 'device-height'],
-      'width': [
-        'device-width', 'device-height',
-        'device-width auto', 'device-height auto', 'auto device-width', 'device-width device-width',
-        'device-height device-width', '10px device-width', '50% device-width', 'auto device-height',
-        'device-width device-height', 'device-height device-height', '10px device-height', '50% device-height',
-        'device-width 10px', 'device-height 10px', 'device-width 50%', 'device-height 50%'
-      ],
-      'min-height': ['auto', 'device-width', 'device-height'],
-      'max-height': ['auto', 'device-width', 'device-height'],
-      'height': [
-        'device-width', 'device-height',
-        'device-width auto', 'device-height auto', 'auto device-width', 'device-width device-width',
-        'device-height device-width', '10px device-width', '50% device-width', 'auto device-height',
-        'device-width device-height', 'device-height device-height', '10px device-height', '50% device-height',
-        'device-width 10px', 'device-height 10px', 'device-width 50%', 'device-height 50%'
-      ],
+      'min-width': ['auto', '10px', '10%'],
+      'max-width': ['auto', '10px', '10%'],
+      'width': ['auto', '10px', '10%'].times(1, 2),
+      'min-height': ['auto', '10px', '10%'],
+      'max-height': ['auto', '10px', '10%'],
+      'height': ['auto', '10px', '10%'].times(1, 2),
       'zoom': ['auto', '1.0', '2.0', '0.5', '100%', '200%', '50%'],
       'min-zoom': ['auto', '1.0', '2.0', '0.5', '100%', '200%', '50%'],
       'max-zoom': ['auto', '1.0', '2.0', '0.5', '100%', '200%', '50%'],
