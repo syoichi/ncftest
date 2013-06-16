@@ -32,8 +32,9 @@
     style = doc.createElement('style');
     style.disabled = true;
 
-    // On WebKit/Blink, @rule test is too slow.
-    if (/WebKit/.test(win.navigator.userAgent)) {
+    // On WebKit/Blink, @rule test is too slow or freezing.
+    // On Trident and WebKit/Blink, descriptor test is too slow or freezing.
+    if (/Trident|WebKit/.test(win.navigator.userAgent)) {
       iframe = doc.createElement('iframe');
       iframe.className = 'dummy';
       iframe.src = 'about:blank';
