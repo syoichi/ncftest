@@ -1792,10 +1792,13 @@ window.Specs = {
         'symbols(cyclic \'\' url(foo.png) linear-gradient(white, black))',
         'symbols(numeric \'0\' radial-gradient(white, black) \'A\')'
       ]
-    },/*
-    // These are descriptors, not property.
-    // These descriptors should check by CSSOM API.
-    'properties': {
+    },
+    '@rules': {
+      '@counter-style': '@counter-style circled-lower-latin'
+    },
+    'descriptors': {
+      'atrule': '@counter-style circled-lower-latin',
+      'atruleName': '@counter-style',
       'system': [
         'symbolic', 'cyclic', 'numeric', 'alphabetic', 'additive',
         'fixed', 'fixed 1', 'override triangle'
@@ -1844,10 +1847,7 @@ window.Specs = {
         '\'0\' 0, 1 radial-gradient(white, black), 2 A'
       ]),
       'speak-as': ['auto', 'numeric', 'alphabetic', 'bullet', 'triangle']
-    },*/
-    '@rules': {
-      '@counter-style': '@counter-style circled-lower-latin'
-    }
+    },
   },
 
   'css-display-3': {
