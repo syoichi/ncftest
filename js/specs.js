@@ -1708,41 +1708,68 @@ window.Specs = {
     'values': {
       'properties': ['list-style-type'],
       'symbols()': [
-        'symbols(\'\')', 'symbols(url(foo.png))', 'symbols(linear-gradient(white, black))',
-        'symbols(cyclic \'\')', 'symbols(numeric url(foo.png))', 'symbols(alphabetic linear-gradient(white, black))',
-        'symbols(\'\' \'\')', 'symbols(url(foo.png) url(foo.png))', 'symbols(linear-gradient(white, black) linear-gradient(white, black))',
-        'symbols(symbolic \'\' \'\')', 'symbols(fixed url(foo.png) linear-gradient(white, black))',
+        'symbols(\'\')', 'symbols(url(foo.png))',
+        'symbols(linear-gradient(white, black))',
+        'symbols(cyclic \'\')', 'symbols(numeric url(foo.png))',
+        'symbols(alphabetic linear-gradient(white, black))',
+        'symbols(\'\' \'\')', 'symbols(url(foo.png) url(foo.png))',
+        'symbols(linear-gradient(white, black) linear-gradient(white, black))',
+        'symbols(symbolic \'\' \'\')',
+        'symbols(fixed url(foo.png) linear-gradient(white, black))',
         'symbols(cyclic \'\' url(foo.png) linear-gradient(white, black))',
         'symbols(numeric \'0\' radial-gradient(white, black) \'A\')'
       ]
     },/*
     // These are descriptors, not property.
+    // These descriptors should check by CSSOM API.
     'properties': {
-      'system': ['symbolic', 'cyclic', 'numeric', 'alphabetic', 'additive', 'fixed', 'fixed 1', 'override triangle'],
-      'negative': ['\'-\'', 'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'].times(1, 2),
-      'prefix': ['\'\'', '\'-webkit-\'', 'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'],
-      'suffix': ['\'.\'', '\'kg\'', 'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'],
+      'system': [
+        'symbolic', 'cyclic', 'numeric', 'alphabetic', 'additive',
+        'fixed', 'fixed 1', 'override triangle'
+      ],
+      'negative': [
+        '\'-\'', 'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'
+      ].times(1, 2),
+      'prefix': [
+        '\'\'', '\'-webkit-\'',
+        'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'
+      ],
+      'suffix': [
+        '\'.\'', '\'kg\'',
+        'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'
+      ],
       'range': ['auto'].concat(['1', 'infinite'].times(2), ['1 1, 1 1']),
-      'width': ['0'].and(['\'\'', 'url(foo.svg)', 'linear-gradient(white, black)', 'triangle']).concat(
-        ['\'\'', 'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'].and(['0'])
-      ),
+      'pad': ['0'].amp([
+        '\'\'', 'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'
+      ]),
       'fallback': [
-        'decimal', 'decimal-leading-zero', 'cjk-decimal', 'lower-roman', 'upper-roman', 'armenian', 'georgian', 'hebrew',
-        'lower-alpha', 'lower-latin', 'upper-alpha', 'upper-latin', 'lower-greek', 'hiragana', 'hiragana-iroha', 'katakana', 'katakana-iroha',
+        'decimal', 'decimal-leading-zero', 'cjk-decimal', 'lower-roman',
+        'upper-roman', 'armenian', 'georgian', 'hebrew',
+        'lower-alpha', 'lower-latin', 'upper-alpha', 'upper-latin',
+        'lower-greek', 'hiragana', 'hiragana-iroha',
+        'katakana', 'katakana-iroha',
         'disc', 'circle', 'square', 'disclosure-open', 'disclosure-closed',
-        'japanese-informal', 'japanese-formal', 'korean-hangul-formal', 'korean-hanja-informal', 'korean-hanja-formal',
-        'simp-chinese-informal', 'simp-chinese-formal', 'trad-chinese-informal', 'trad-chinese-formal', 'cjk-ideographic',
+        'japanese-informal', 'japanese-formal',
+        'korean-hangul-formal', 'korean-hanja-informal', 'korean-hanja-formal',
+        'simp-chinese-informal', 'simp-chinese-formal',
+        'trad-chinese-informal', 'trad-chinese-formal', 'cjk-ideographic',
         'ethiopic-numeric'
       ],
-      'symbols': ['\'\'', 'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'].times(1, 2).concat([
-        '‣', '◰ ◳ ◲ ◱', '* ⁑ † ‡', 'A B C D E F G H I J K L M \nN O P Q R S T U V W X Y Z',
+      'symbols': [
+        '\'\'', 'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'
+      ].times(1, 2).concat([
+        '‣', '◰ ◳ ◲ ◱', '* ⁑ † ‡',
+        'A B C D E F G H I J K L M \nN O P Q R S T U V W X Y Z',
         '\'0\' \'1\' \'2\' \'3\' \'4\' \'5\' \'6\' \'7\' \'8\' \'9\'',
-        'ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ⓚ ⓛ ⓜ ⓝ ⓞ ⓟ ⓠ ⓡ ⓢ ⓣ ⓤ ⓥ ⓦ ⓧ ⓨ ⓩ', '\'1\' linear-gradient(white, black) あ'
+        'ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ⓚ ⓛ ⓜ ⓝ ⓞ ⓟ ⓠ ⓡ ⓢ ⓣ ⓤ ⓥ ⓦ ⓧ ⓨ ⓩ',
+        '\'1\' linear-gradient(white, black) あ'
       ]),
-      'additive-symbols': ['0'].and(['\'\'', 'url(foo.svg)', 'linear-gradient(white, black)', 'triangle']).concat(
-        ['\'\'', 'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'].and(['0']),
-        ['\'\', \'\'', '6 ⚅, 5 ⚄, 4 ⚃, 3 ⚂, 2 ⚁, 1 ⚀', '\'0\' 0, 1 radial-gradient(white, black), 2 A']
-      ),
+      'additive-symbols': ['0'].amp([
+        '\'\'', 'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'
+      ]).concat([
+        '3 \'a\', 2 \'b\'', '6 ⚅, 5 ⚄, 4 ⚃, 3 ⚂, 2 ⚁, 1 ⚀',
+        '\'0\' 0, 1 radial-gradient(white, black), 2 A'
+      ]),
       'speak-as': ['auto', 'numeric', 'alphabetic', 'bullet', 'triangle']
     },*/
     '@rules': {
