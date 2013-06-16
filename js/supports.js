@@ -1,16 +1,8 @@
 (function executeSupports(win, doc) {
   'use strict';
 
-  var dummy, inline, style, iframe, head, prefixes, prefixesLen, isCSS;
+  var inline, style, prefixes, prefixesLen, isCSS;
 
-  /**
-   * Setup dummy elements
-   */
-  dummy = doc.createElement('_');
-  inline = dummy.style;
-  style = doc.createElement('style');
-
-  head = doc.head;
   prefixes = [
     '', '-moz-', '-webkit-', '-o-', '-ms-',
     '-wap-', '-op-', '-xv-', 'ms-', '-khtml-', '-apple-'
@@ -24,19 +16,35 @@
     }).replace('-', '');
   }
 
-  // On WebKit/Blink, @rule test is too slow.
-  if (/WebKit/.test(win.navigator.userAgent)) {
-    iframe = document.createElement('iframe');
-    iframe.src = 'about:blank';
-    head.appendChild(iframe);
-    iframe.contentDocument.head.appendChild(style);
-  } else {
-    head.appendChild(style);
-  }
+  doc.addEventListener('DOMContentLoaded', function setupDummys() {
+    var head, body, dummy, iframe;
 
-  dummy.setAttribute('data-foo', 'bar');
-  dummy.setAttribute('data-px', '1px');
-  head.appendChild(dummy);
+    head = doc.head;
+    body = doc.body;
+
+    dummy = doc.createElement('_');
+    dummy.className = 'dummy';
+    inline = dummy.style;
+    dummy.setAttribute('data-foo', 'bar');
+    dummy.setAttribute('data-px', '1px');
+    body.appendChild(dummy);
+
+    style = doc.createElement('style');
+    style.disabled = true;
+
+    // On WebKit/Blink, @rule test is too slow.
+    if (/WebKit/.test(win.navigator.userAgent)) {
+      iframe = doc.createElement('iframe');
+      iframe.className = 'dummy';
+      iframe.src = 'about:blank';
+      iframe.addEventListener('load', function appendStyle() {
+        iframe.contentDocument.head.appendChild(style);
+      });
+      body.appendChild(iframe);
+    } else {
+      head.appendChild(style);
+    }
+  });
 
   win.Supports = {
     property: function propertyFunc(property) {
