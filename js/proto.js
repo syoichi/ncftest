@@ -3,7 +3,7 @@
 
   Object.defineProperties(Array.prototype, {
     // [ a | b | c ] [ x | y | z ]
-    'and': {
+    and: {
       value: function and(arr2, separator) {
         var idx, len, ret;
 
@@ -22,7 +22,7 @@
       enumerable: false
     },
     // [ x | y | z ]{min, max}
-    'times': {
+    times: {
       value: function times(min, max, separator) {
         var ret, i, j;
 
@@ -51,7 +51,7 @@
       enumerable: false
     },
     // [ a | b | c ] || [ x | y | z ]
-    'or': (function executeReturn() {
+    or: (function executeReturn() {
 
       function isDuplicated(vals) {
         var hash, idx, valsLen, val;
@@ -71,12 +71,14 @@
 
       return {
         value: function or() {
-          var arg = Array.prototype.slice.call(arguments),
-            argLen = arg.length,
-            lastArg = arg[argLen - 1],
-            hasSeparator = typeof lastArg === 'string',
-            separator = hasSeparator ? lastArg : ' ',
-            firstArg, arr, max, lists, listsLen;
+          var arg, argLen, lastArg, hasSeparator, separator,
+              firstArg, arr, max, lists, listsLen;
+
+          arg = Array.prototype.slice.call(arguments);
+          argLen = arg.length;
+          lastArg = arg[argLen - 1];
+          hasSeparator = typeof lastArg === 'string';
+          separator = hasSeparator ? lastArg : ' ';
 
           if (argLen === 1 || (argLen === 2 && hasSeparator)) {
             firstArg = arg[0];
@@ -126,7 +128,7 @@
       };
     }()),
     // [ a | b | c ] && [ x | y | z ]
-    'amp': {
+    amp: {
       value: function amp(arr2, separator) {
         separator = separator || ' ';
 
@@ -135,7 +137,7 @@
       enumerable: false
     },
     // [ x | y | z ] a?
-    'qmark': {
+    qmark: {
       value: function qmark(arr2, separator) {
         separator = separator || ' ';
 
