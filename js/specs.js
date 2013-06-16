@@ -1954,10 +1954,12 @@ window.Specs = {
 
   'css-device-adapt-1': {
     'title': 'Device Adaptation',
-    'tr': 'http://www.w3.org/TR/css-device-adapt/',/*
-    // These are descriptors, not property.
-    // These descriptors should check by CSSOM API.
-    'properties': {
+    'tr': 'http://www.w3.org/TR/css-device-adapt/',
+    '@rules': {
+      '@viewport': '@viewport'
+    },
+    'descriptors': {
+      'atrule': '@viewport',
       'min-width': ['auto', '10px', '10%'],
       'max-width': ['auto', '10px', '10%'],
       'width': ['auto', '10px', '10%'].times(1, 2),
@@ -1969,9 +1971,6 @@ window.Specs = {
       'max-zoom': ['auto', '1.0', '2.0', '0.5', '100%', '200%', '50%'],
       'user-zoom': ['zoom', 'fixed'],
       'orientation': ['auto', 'portrait', 'landscape']
-    },*/
-    '@rules': {
-      '@viewport': '@viewport'
     }
   },
 
