@@ -2435,52 +2435,129 @@ window.Specs = {
   'selectors4': {
     'title': 'Selectors Level 4',
     'selectors': {
-      '!': ['head! > title', '!ol > li', 'ul > ol! > li', '!span:only-child a[href^=\'https://\']'],
-      'A /attr/ B': ['label /for/ input'],
+      'E! > F, !E F': [
+        'head! > title', '!ol > li', 'ul > ol! > li',
+        '!span:only-child a[href^=\'https://\']'
+      ],
+      'E /attr/ F': ['label /for/ input'],
+      'E || F': ['col.selected || td'],
       '[att=val i]': ['[class=\'example\' i]', '[frame=hsides i]'],
       ':any-link': [':any-link'],
       ':local-link': [':local-link'],
-      ':local-link()': [':local-link(0)', ':local-link(1)', ':not(:local-link(0))'],
+      ':local-link()': [
+        ':local-link(0)', ':local-link(1)', ':not(:local-link(0))'
+      ],
       ':scope': [':scope', ':scope > .example'],
       ':current': [':current'],
       ':current()': [':current(div)', ':current(p, li, dt, dd)'],
       ':past': [':past'],
       ':future': [':future'],
+      ':active-drop': [':active-drop'],
+      ':valid-drop': [':valid-drop'],
+      ':invalid-drop': [':invalid-drop'],
       ':active-drop-target': [':active-drop-target'],
       ':valid-drop-target': [':valid-drop-target'],
       ':invalid-drop-target': [':invalid-drop-target'],
       ':placeholder-shown': [':placeholder-shown'],
       ':user-error': [':user-error'],
+      ':blank': [':blank'],
+      ':dir()': [':dir(ltr)', ':dir(rtl)'],
+      ':lang()': [
+        ':lang(de-*)',':lang(*-CH)' , ':lang(en, ja)', ':lang(zh, *-hant)'
+      ],
       ':not()': [
         // fast profile
-        ':not(div:only-child)', ':not(header, footer)', ':not(header, main, footer)',
+        ':not(div:only-child)', ':not(header, footer)',
+        ':not(header, main, footer)',
         // complete profile
-        ':not(div div)', ':not(div > div)', ':not(div + div)', ':not(div ~ div)',
+        ':not(div div)', ':not(div > div)',
+        ':not(div + div)', ':not(div ~ div)',
         ':not(div#text.text[data-text^=\'base\']:only-child > div, main)'
       ],
       ':matches()': [
         // fast profile
-        ':matches(.example)', ':matches(div:only-child)', ':matches(section, article)',
+        ':matches(.example)', ':matches(div:only-child)',
+        ':matches(section, article)',
         ':matches(section, article, aside, nav) h1',
-        ':matches(section, article, aside, nav) :matches(section, article, aside, nav) h1',
+        ':matches(section, article, aside, nav) ' +
+          ':matches(section, article, aside, nav) h1',
         // complete profile
-        ':matches(div div)', ':matches(div > div)', ':matches(div + div)', ':matches(div ~ div)',
+        ':matches(div div)', ':matches(div > div)',
+        ':matches(div + div)', ':matches(div ~ div)',
         ':matches(div#text.text[data-text^=\'base\']:only-child > div, main)'
       ],
-      ':dir()': [':dir(ltr)', ':dir(rtl)'],
-      ':lang()': [':lang(de-*)', ':lang(en, ja)', ':lang(zh, *-hant)'],
       ':nth-match(an+b of selector-list)': [
-        ':nth-match(3 of .foo)',
-        ':nth-match(2n+1 of .foo, #bar)'
-      ],
+        'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
+        '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
+        'n-1', '-n-1', '+n-1', '1n-1', '-1n-1',
+        '+1n-1', '0n-1', '-0n-1', '+0n-1',
+        '10n-1', '-10n-1', '+10n-1', '01n-1', '-01n-1',
+        '+01n-1', '00n-1', '-00n-1', '+00n-1',
+        'n+1', '-n+1', '+n+1', '1n+1', '-1n+1',
+        '+1n+1', '0n+1', '-0n+1', '+0n+1',
+        '10n+1', '-10n+1', '+10n+1', '01n+1', '-01n+1',
+        '+01n+1', '00n+1', '-00n+1', '+00n+1',
+        'n+0', 'n+00', '3n +1', '3n- 1', '3n + 1',
+        '0', '1', '10', '01', '00', '-0', '-1', '-10',
+        '-01', '-00', '+0', '+1', '+10', '+01', '+00',
+        'odd', 'even'
+      ].map(function (nth) {
+        return ':nth-match(' + nth + ' of .foo)';
+      }).concat([':nth-match(2n+1 of .foo, #bar)']),
       ':nth-last-match(an+b of selector-list)': [
-        ':nth-last-match(1 of #example)',
-        ':nth-last-match(even of #example > div, .foo)'
-      ],
-      ':column()': [':column(.example)'],
-      'E || F': ['col.selected || td'],
-      ':nth-column()': [':nth-column(1)'],
-      ':nth-last-column()': [':nth-last-column(1)']
+        'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
+        '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
+        'n-1', '-n-1', '+n-1', '1n-1', '-1n-1',
+        '+1n-1', '0n-1', '-0n-1', '+0n-1',
+        '10n-1', '-10n-1', '+10n-1', '01n-1', '-01n-1',
+        '+01n-1', '00n-1', '-00n-1', '+00n-1',
+        'n+1', '-n+1', '+n+1', '1n+1', '-1n+1',
+        '+1n+1', '0n+1', '-0n+1', '+0n+1',
+        '10n+1', '-10n+1', '+10n+1', '01n+1', '-01n+1',
+        '+01n+1', '00n+1', '-00n+1', '+00n+1',
+        'n+0', 'n+00', '3n +1', '3n- 1', '3n + 1',
+        '0', '1', '10', '01', '00', '-0', '-1', '-10',
+        '-01', '-00', '+0', '+1', '+10', '+01', '+00',
+        'odd', 'even'
+      ].map(function (nth) {
+        return ':nth-last-match(' + nth + ' of #example)';
+      }).concat([':nth-last-match(even of #example > div, .foo)']),
+      ':nth-column()': [
+        'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
+        '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
+        'n-1', '-n-1', '+n-1', '1n-1', '-1n-1',
+        '+1n-1', '0n-1', '-0n-1', '+0n-1',
+        '10n-1', '-10n-1', '+10n-1', '01n-1', '-01n-1',
+        '+01n-1', '00n-1', '-00n-1', '+00n-1',
+        'n+1', '-n+1', '+n+1', '1n+1', '-1n+1',
+        '+1n+1', '0n+1', '-0n+1', '+0n+1',
+        '10n+1', '-10n+1', '+10n+1', '01n+1', '-01n+1',
+        '+01n+1', '00n+1', '-00n+1', '+00n+1',
+        'n+0', 'n+00', '3n +1', '3n- 1', '3n + 1',
+        '0', '1', '10', '01', '00', '-0', '-1', '-10',
+        '-01', '-00', '+0', '+1', '+10', '+01', '+00',
+        'odd', 'even'
+      ].map(function (nth) {
+        return ':nth-column(' + nth + ')';
+      }),
+      ':nth-last-column()': [
+        'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
+        '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
+        'n-1', '-n-1', '+n-1', '1n-1', '-1n-1',
+        '+1n-1', '0n-1', '-0n-1', '+0n-1',
+        '10n-1', '-10n-1', '+10n-1', '01n-1', '-01n-1',
+        '+01n-1', '00n-1', '-00n-1', '+00n-1',
+        'n+1', '-n+1', '+n+1', '1n+1', '-1n+1',
+        '+1n+1', '0n+1', '-0n+1', '+0n+1',
+        '10n+1', '-10n+1', '+10n+1', '01n+1', '-01n+1',
+        '+01n+1', '00n+1', '-00n+1', '+00n+1',
+        'n+0', 'n+00', '3n +1', '3n- 1', '3n + 1',
+        '0', '1', '10', '01', '00', '-0', '-1', '-10',
+        '-01', '-00', '+0', '+1', '+10', '+01', '+00',
+        'odd', 'even'
+      ].map(function (nth) {
+        return ':nth-last-column(' + nth + ')';
+      })
     }
   },
 
