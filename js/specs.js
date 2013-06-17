@@ -1,6 +1,238 @@
 window.Specs = {
-  'css3-background': {
+  // CSS Level 3
+  'selectors3': {
+    'title': 'Selectors',
+    'tr': 'http://www.w3.org/TR/css3-selectors/',
+    'selectors': {
+      'ns|E': [/*'svg|html', */'*|html', '|html', /*'svg|*', */'*|*', '|*'],
+      '[att^=val]': ['[att^=val]', '[att^=\'val\']'],
+      '[att$=val]': ['[att$=val]', '[att$=\'val\']'],
+      '[att*=val]': ['[att*=val]', '[att*=\'val\']'],
+      '[ns|att]': [
+        /*'[svg|attr]', '[svg|attr=val]', */'[*|attr]', '[*|attr=val]',
+        '[|attr]', '[|attr=val]', '*|html[*|attr]'
+      ],
+      ':target': ':target',
+      ':enabled': ':enabled',
+      ':disabled': ':disabled',
+      ':checked': ':checked',
+      ':indeterminate': ':indeterminate',
+      ':root': ':root',
+      ':last-child': ':last-child',
+      ':first-of-type': ':first-of-type',
+      ':last-of-type': ':last-of-type',
+      ':only-child': ':only-child',
+      ':only-of-type': ':only-of-type',
+      ':empty': ':empty',
+      ':nth-child()': [
+        'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
+        '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
+        'n-1', '-n-1', '+n-1', '1n-1', '-1n-1', '+1n-1', '0n-1', '-0n-1', '+0n-1',
+        '10n-1', '-10n-1', '+10n-1', '01n-1', '-01n-1', '+01n-1', '00n-1', '-00n-1', '+00n-1',
+        'n+1', '-n+1', '+n+1', '1n+1', '-1n+1', '+1n+1', '0n+1', '-0n+1', '+0n+1',
+        '10n+1', '-10n+1', '+10n+1', '01n+1', '-01n+1', '+01n+1', '00n+1', '-00n+1', '+00n+1',
+        'n+0', 'n+00', '3n +1', '3n- 1', '3n + 1',
+        '0', '1', '10', '01', '00', '-0', '-1', '-10', '-01', '-00', '+0', '+1', '+10', '+01', '+00',
+        'odd', 'even'
+      ].map(function (nth) {
+        return ':nth-child(' + nth + ')';
+      }),
+      ':nth-last-child()': [
+        'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
+        '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
+        'n-1', '-n-1', '+n-1', '1n-1', '-1n-1', '+1n-1', '0n-1', '-0n-1', '+0n-1',
+        '10n-1', '-10n-1', '+10n-1', '01n-1', '-01n-1', '+01n-1', '00n-1', '-00n-1', '+00n-1',
+        'n+1', '-n+1', '+n+1', '1n+1', '-1n+1', '+1n+1', '0n+1', '-0n+1', '+0n+1',
+        '10n+1', '-10n+1', '+10n+1', '01n+1', '-01n+1', '+01n+1', '00n+1', '-00n+1', '+00n+1',
+        'n+0', 'n+00', '3n +1', '3n- 1', '3n + 1',
+        '0', '1', '10', '01', '00', '-0', '-1', '-10', '-01', '-00', '+0', '+1', '+10', '+01', '+00',
+        'odd', 'even'
+      ].map(function (nth) {
+        return ':nth-last-child(' + nth + ')';
+      }),
+      ':nth-of-type()': [
+        'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
+        '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
+        'n-1', '-n-1', '+n-1', '1n-1', '-1n-1', '+1n-1', '0n-1', '-0n-1', '+0n-1',
+        '10n-1', '-10n-1', '+10n-1', '01n-1', '-01n-1', '+01n-1', '00n-1', '-00n-1', '+00n-1',
+        'n+1', '-n+1', '+n+1', '1n+1', '-1n+1', '+1n+1', '0n+1', '-0n+1', '+0n+1',
+        '10n+1', '-10n+1', '+10n+1', '01n+1', '-01n+1', '+01n+1', '00n+1', '-00n+1', '+00n+1',
+        'n+0', 'n+00', '3n +1', '3n- 1', '3n + 1',
+        '0', '1', '10', '01', '00', '-0', '-1', '-10', '-01', '-00', '+0', '+1', '+10', '+01', '+00',
+        'odd', 'even'
+      ].map(function (nth) {
+        return ':nth-of-type(' + nth + ')';
+      }),
+      ':nth-last-of-type()': [
+        'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
+        '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
+        'n-1', '-n-1', '+n-1', '1n-1', '-1n-1', '+1n-1', '0n-1', '-0n-1', '+0n-1',
+        '10n-1', '-10n-1', '+10n-1', '01n-1', '-01n-1', '+01n-1', '00n-1', '-00n-1', '+00n-1',
+        'n+1', '-n+1', '+n+1', '1n+1', '-1n+1', '+1n+1', '0n+1', '-0n+1', '+0n+1',
+        '10n+1', '-10n+1', '+10n+1', '01n+1', '-01n+1', '+01n+1', '00n+1', '-00n+1', '+00n+1',
+        'n+0', 'n+00', '3n +1', '3n- 1', '3n + 1',
+        '0', '1', '10', '01', '00', '-0', '-1', '-10', '-01', '-00', '+0', '+1', '+10', '+01', '+00',
+        'odd', 'even'
+      ].map(function (nth) {
+        return ':nth-last-of-type(' + nth + ')';
+      }),
+      ':not()': [
+        ':not(element)', ':not(*)', ':not([attr])', ':not(.class)', ':not(#id)', ':not(:first-child)',
+        ':not(.class):not(#id):not([attr]):not(:link)'
+      ],
+      '::first-line': '::first-line',
+      '::first-letter': '::first-letter',
+      '::before': '::before',
+      '::after': '::after',
+      'E ~ F': 'foo ~ bar'
+    }
+  },
+
+  'css-color-3': {
+    'title': 'Color',
+    'tr': 'http://www.w3.org/TR/css3-color/',
+    'values': {
+      'properties': [
+        'color',
+        'background-color',
+        'border-color',
+        'text-decoration-color',
+        'column-rule-color'
+      ],
+      'rgba()': ['rgba(0, 0, 0, .5)', 'rgba(255, 0, 0, 1)', 'rgba(100%, 0%, 0%, 1)'],
+      'hsl()': 'hsl(0, 0%, 0%)',
+      'hsla()': 'hsla(0, 0%, 0%, .5)',
+      'transparent': 'transparent',
+      'currentColor': 'currentColor'
+    },
+    'properties': {
+      'color': [
+        'aliceblue', 'antiquewhite', 'aquamarine', 'azure', 'beige', 'bisque',
+        'blanchedalmond', 'blueviolet', 'brown', 'burlywood', 'cadetblue',
+        'chartreuse', 'chocolate', 'coral', 'cornflowerblue', 'cornsilk',
+        'crimson', 'cyan', 'darkblue', 'darkcyan', 'darkgoldenrod', 'darkgray',
+        'darkgreen', 'darkgrey', 'darkkhaki', 'darkmagenta', 'darkolivegreen',
+        'darkorange', 'darkorchid', 'darkred', 'darksalmon', 'darkseagreen',
+        'darkslateblue', 'darkslategray', 'darkslategrey', 'darkturquoise',
+        'darkviolet', 'deeppink', 'deepskyblue', 'dimgray', 'dimgrey',
+        'dodgerblue', 'firebrick', 'floralwhite', 'forestgreen', 'gainsboro',
+        'ghostwhite', 'gold', 'goldenrod', 'greenyellow', 'grey', 'honeydew',
+        'hotpink', 'indianred', 'indigo', 'ivory', 'khaki', 'lavender',
+        'lavenderblush', 'lawngreen', 'lemonchiffon', 'lightblue',
+        'lightcoral', 'lightcyan', 'lightgoldenrodyellow', 'lightgray',
+        'lightgreen', 'lightgrey', 'lightpink', 'lightsalmon', 'lightseagreen',
+        'lightskyblue', 'lightslategray', 'lightslategrey', 'lightsteelblue',
+        'lightyellow', 'limegreen', 'linen', 'magenta', 'mediumaquamarine',
+        'mediumblue', 'mediumorchid', 'mediumpurple', 'mediumseagreen',
+        'mediumslateblue', 'mediumspringgreen', 'mediumturquoise', 'mediumvioletred',
+        'midnightblue', 'mintcream', 'mistyrose', 'moccasin', 'navajowhite',
+        'oldlace', 'olivedrab', 'orangered', 'orchid', 'palegoldenrod', 'palegreen',
+        'paleturquoise', 'palevioletred', 'papayawhip', 'peachpuff', 'peru',
+        'pink', 'plum', 'powderblue', 'rosybrown', 'royalblue', 'saddlebrown',
+        'salmon', 'sandybrown', 'seagreen', 'seashell', 'sienna', 'skyblue',
+        'slateblue', 'slategray', 'slategrey', 'snow', 'springgreen', 'steelblue',
+        'tan', 'thistle', 'tomato', 'turquoise', 'violet', 'wheat', 'whitesmoke', 'yellowgreen'
+      ],
+      'opacity': ['1', '0', '2', '-5', '.5', '0.0', '1.0']
+    }
+  },
+
+  /*
+   * Note: the following media queries must be true in supporting UAs!
+   */
+  'mediaqueries3': {
+    'title': 'Media Queries',
+    'tr': 'http://www.w3.org/TR/css3-mediaqueries/',
+    'Media queries': {
+      'only': ['only screen', 'only all'],
+      'not': ['not braille', 'not handheld', 'not print', 'not projection', 'not tty', 'not tv'],
+      'and': [
+        'all and (width)', '(width) and (height)',
+        'screen, print and (height)', 'only screen and (width)', 'not print and (height)',
+        'only screen, (width) and (height)', 'not tv and (width) and (height)',
+        'all and (width) and (height), only print and (width), not screen and (height)'
+      ],
+      'width': [
+        '(width)', 'not print and (width: 0)',
+        '(min-width: 0)', '(min-width: 1px)', '(max-width: 1000000px)'
+      ],
+      'height': [
+        '(height)', 'not print and (height: 0)',
+        '(min-height: 0)', '(min-height: 1px)', '(max-height: 1000000px)'
+      ],
+      'device-width': [
+        '(device-width)', 'not print and (device-width: 0)',
+        '(min-device-width: 0)', '(min-device-width: 1px)',
+        '(max-device-width: 1000000px)'
+      ],
+      'device-height': [
+        '(device-height)', 'not print and (device-height: 0)',
+        '(min-device-height: 0)', '(min-device-height: 1px)',
+        '(max-device-height: 1000000px)'
+      ],
+      'orientation': ['(orientation)', 'not print and (orientation: portrait)', '(orientation: landscape)'],
+      'aspect-ratio': [
+        '(aspect-ratio)',
+        'not print and (aspect-ratio: 1/1)',
+        '(min-aspect-ratio: 1/1000000)',
+        '(min-aspect-ratio: 1 / 1000000)',
+        '(max-aspect-ratio: 1000000/1)',
+      ],
+      'device-aspect-ratio': [
+        '(device-aspect-ratio)',
+        'not print and (device-aspect-ratio: 1/1)',
+        '(min-device-aspect-ratio: 1/1000000)',
+        '(min-device-aspect-ratio: 1 / 1000000)',
+        '(max-device-aspect-ratio: 1000000/1)',
+      ],
+      'color': [
+        '(color)', 'not print and (color: 0)', '(min-color: 0)', '(max-color: 100)'
+      ],
+      'color-index': [
+        'not print and (color-index)', '(color-index: 0)', '(min-color-index: 0)',
+        'not print and (min-color-index: 1)', '(max-color-index: 10000000)'
+      ],
+      'monochrome': [
+        'not print and (monochrome)', '(monochrome: 0)', '(min-monochrome: 0)',
+        'not print and (min-monochrome: 1)', '(max-monochrome: 10000)'
+      ],
+      'resolution': [
+        '(resolution)',
+        'not print and (resolution: 1dpi)',
+        '(min-resolution: 1dpi)',
+        '(max-resolution: 1000000dpi)',
+        '(max-resolution: 1000000dpcm)',
+        '(max-resolution: 1000000dppx)'
+      ],
+      'scan': ['not tv and (scan)', 'not tv and (scan: progressive)', 'not tv and (scan: interlace)'],
+      'grid': ['not print and (grid)', '(grid: -0)', '(grid: 0)', 'not print and (grid: 1)']
+    }
+  },
+
+  'css-conditional-3': {
+    'title': 'Conditional Rules',
+    'tr': 'http://www.w3.org/TR/css3-conditional/',
+    '@rules': {
+      '@supports': [
+        // check syntax parsing, not check supporting these as a feature.
+        // see http://dev.w3.org/csswg/css-conditional-3/#supports_rule
+        '@supports (width: 1px)', '@supports ((width: 1px))', '@supports (width: 1px !important)',
+        '@supports (javascript: @return)',
+        '@supports url(foo.png)', '@supports (1px)', '@supports (@media)',
+        '@supports (~=)', '@supports (|=)', '@supports (:)', '@supports (url(foo.png))', '@supports ({;})',
+        '@supports not (javascript: return)',
+        '@supports (width: 1px) or (display: flex)', '@supports (width: 1px) and (height: 1px)',
+        '@supports (box-shadow: 2px 2px 2px black) or (-moz-box-shadow: 2px 2px 2px black) or (-webkit-box-shadow: 2px 2px 2px black) or (-o-box-shadow: 2px 2px 2px black)',
+        '@supports ((transition-property: color) or (animation-name: foo)) and (transform: rotate(10deg))',
+        '@supports (transition-property: color) or ((animation-name: foo) and (transform: rotate(10deg)))',
+        '@supports ((not (javascript: return)) and (transition-property: color)) or (display: subgrid)'
+      ]
+    }
+  },
+
+  'css-backgrounds-3': {
     'title': 'Backgrounds and Borders',
+    'tr': 'http://www.w3.org/TR/css3-background/',
     'properties': {
       'background-image': ['linear-gradient(white, black)'].concat(
         ['none', 'url(foo.png)', 'linear-gradient(white, black)'].times(2, 2, ', '),
@@ -188,362 +420,64 @@ window.Specs = {
     }
   },
 
-  'css3-images': {
-    'title': 'Image Values and Replaced Content',
+  'css-values-3': {
+    'title': 'Values and Units',
+    'tr': 'http://www.w3.org/TR/css3-values/',
     'values': {
       'properties': [
-        'background-image',
-        'list-style-image',
-        'border-image-source',
-        'cursor',
-        'content'
+        'top',
+        'bottom',
+        'left',
+        'right',
+        // 'width',
+        // 'height',
+        // 'max-width',
+        // 'max-height',
+        // 'min-width',
+        // 'min-height',
+        'margin',
+        // 'padding',
+        // 'font-size',
+        // 'line-height',
+        'background-position',
+        'text-indent',
+        'vertical-align'
       ],
-      'linear-gradient': [
-        'linear-gradient(white, black)',
-        'linear-gradient(white 1px, black)',
-        'linear-gradient(white 1%, black)',
-        'linear-gradient(white, black 1px)',
-        'linear-gradient(white, black 1%)',
-        'linear-gradient(white 1px, black 1%)',
-        'linear-gradient(0deg, white, black)',
-        'linear-gradient(90deg, white, black)',
-        'linear-gradient(360deg, white, black)',
-        'linear-gradient(-45deg, white, black)',
-        'linear-gradient(to left, white, black)',
-        'linear-gradient(to right, white, black)',
-        'linear-gradient(to top, white, black)',
-        'linear-gradient(to bottom, white, black)',
-        'linear-gradient(to left top, white, black)',
-        'linear-gradient(to left bottom, white, black)',
-        'linear-gradient(to right top, white, black)',
-        'linear-gradient(to right bottom, white, black)',
-        'linear-gradient(to top left, white, black)',
-        'linear-gradient(to top right, white, black)',
-        'linear-gradient(to bottom left, white, black)',
-        'linear-gradient(to bottom right, white, black)',
-        'linear-gradient(-270deg, red, blue 90px, yellow, green 50%)',
-        'linear-gradient(to bottom right, currentColor 100%, rgba(255, 0, 255, 0.3) 100px, transparent 0em, hsla(225, 50%, 100%, 0.7) 75%)'
+      'initial': 'initial',
+      'ch': '5ch',
+      'rem': '5rem',
+      'vw': '5vw',
+      'vh': '5vh',
+      'vmin': '5vmin',
+      'vmax': '5vmax',
+      'calc()': [
+        /*'calc(1)', 'calc(0)', 'calc(-1)', 'calc(+1)', 'calc(1.1)',*/
+        'calc(1px)', 'calc(0px)', 'calc(-1px)', 'calc(+1px)', 'calc(1.1px)',
+        'calc(1%)', 'calc(0%)', 'calc(-1%)', 'calc(+1%)', 'calc(1.1%)',
+        'calc(1px + 2px)', 'calc(5px - 10px)', 'calc(5px * 2)', 'calc(5px / 2)',
+        'calc(100%/3 - 2*1em - 2*1px)'/*, 'calc(attr(data-px) * 2)'*/
       ],
-      'radial-gradient': [
-        'radial-gradient(white, black)',
-        'radial-gradient(white 1px, black)',
-        'radial-gradient(white 1%, black)',
-        'radial-gradient(white, black 1px)',
-        'radial-gradient(white, black 1%)',
-        'radial-gradient(white 1px, black 1%)',
-        'radial-gradient(circle, white, black)',
-        'radial-gradient(10px, white, black)',
-        'radial-gradient(circle 10em, white, black)',
-        'radial-gradient(100px circle, white, black)',
-        'radial-gradient(ellipse, white, black)',
-        'radial-gradient(10px 10%, white, black)',
-        'radial-gradient(ellipse 10% 20%, white, black)',
-        'radial-gradient(10em 100px ellipse, white, black)',
-        'radial-gradient(closest-corner, white, black)',
-        'radial-gradient(closest-side, white, black)',
-        'radial-gradient(farthest-corner, white, black)',
-        'radial-gradient(farthest-side, white, black)',
-        'radial-gradient(circle closest-corner, white, black)',
-        'radial-gradient(closest-side ellipse, white, black)',
-        'radial-gradient(at center, white, black)',
-        'radial-gradient(circle at left, white, black)',
-        'radial-gradient(ellipse at right, white, black)',
-        'radial-gradient(closest-corner at top, white, black)',
-        'radial-gradient(closest-side at bottom, white, black)',
-        'radial-gradient(farthest-corner at 10%, white, black)',
-        'radial-gradient(farthest-side at 10px, white, black)',
-        'radial-gradient(10px at left top, white, black)',
-        'radial-gradient(circle 10em at center 10%, white, black)',
-        'radial-gradient(100px circle at 10px bottom, white, black)',
-        'radial-gradient(10px 10% at right center, white, black)',
-        'radial-gradient(ellipse 10% 20% at 10% 10%, white, black)',
-        'radial-gradient(10em 100px ellipse at 10px 10px, white, black)',
-        'radial-gradient(circle closest-corner at 10% 10px, white, black)',
-        'radial-gradient(closest-side ellipse at 10px 10%, white, black)',
-        'radial-gradient(at bottom left, white, black)',
-        'radial-gradient(at center top 50%, white, black)',
-        'radial-gradient(at right 50px center, white, black)',
-        'radial-gradient(at left 10px top 10%, white, black)',
-        'radial-gradient(at bottom 50% right 50%, white, black)',
-        'radial-gradient(10% 100px ellipse at top 10% right 10px, white 10%, black 10px, red 50%)',
-        'radial-gradient(ellipse 10% 20% at top 30% left 40%, currentColor 50%, #0000FF 60%, rgba(255, 255, 0, 0.5) 70%, hsla(240, 100%, 50%, 0.5) 80%, lightgoldenrodyellow 90%, transparent 100%)'
-      ],
-      'repeating-linear-gradient': [
-        'repeating-linear-gradient(white, black)',
-        'repeating-linear-gradient(white 1px, black)',
-        'repeating-linear-gradient(white 1%, black)',
-        'repeating-linear-gradient(white, black 1px)',
-        'repeating-linear-gradient(white, black 1%)',
-        'repeating-linear-gradient(white 1px, black 1%)',
-        'repeating-linear-gradient(0deg, white, black)',
-        'repeating-linear-gradient(90deg, white, black)',
-        'repeating-linear-gradient(360deg, white, black)',
-        'repeating-linear-gradient(-45deg, white, black)',
-        'repeating-linear-gradient(to left, white, black)',
-        'repeating-linear-gradient(to right, white, black)',
-        'repeating-linear-gradient(to top, white, black)',
-        'repeating-linear-gradient(to bottom, white, black)',
-        'repeating-linear-gradient(to left top, white, black)',
-        'repeating-linear-gradient(to left bottom, white, black)',
-        'repeating-linear-gradient(to right top, white, black)',
-        'repeating-linear-gradient(to right bottom, white, black)',
-        'repeating-linear-gradient(to top left, white, black)',
-        'repeating-linear-gradient(to top right, white, black)',
-        'repeating-linear-gradient(to bottom left, white, black)',
-        'repeating-linear-gradient(to bottom right, white, black)',
-        'repeating-linear-gradient(-270deg, red, blue 90px, yellow, green 50%)',
-        'repeating-linear-gradient(to bottom right, currentColor 100%, rgba(255, 0, 255, 0.3) 100px, transparent 0em, hsla(225, 50%, 100%, 0.7) 75%)'
-      ],
-      'repeating-radial-gradient': [
-        'repeating-radial-gradient(white, black)',
-        'repeating-radial-gradient(white 1px, black)',
-        'repeating-radial-gradient(white 1%, black)',
-        'repeating-radial-gradient(white, black 1px)',
-        'repeating-radial-gradient(white, black 1%)',
-        'repeating-radial-gradient(white 1px, black 1%)',
-        'repeating-radial-gradient(circle, white, black)',
-        'repeating-radial-gradient(10px, white, black)',
-        'repeating-radial-gradient(circle 10em, white, black)',
-        'repeating-radial-gradient(100px circle, white, black)',
-        'repeating-radial-gradient(ellipse, white, black)',
-        'repeating-radial-gradient(10px 10%, white, black)',
-        'repeating-radial-gradient(ellipse 10% 20%, white, black)',
-        'repeating-radial-gradient(10em 100px ellipse, white, black)',
-        'repeating-radial-gradient(closest-corner, white, black)',
-        'repeating-radial-gradient(closest-side, white, black)',
-        'repeating-radial-gradient(farthest-corner, white, black)',
-        'repeating-radial-gradient(farthest-side, white, black)',
-        'repeating-radial-gradient(circle closest-corner, white, black)',
-        'repeating-radial-gradient(closest-side ellipse, white, black)',
-        'repeating-radial-gradient(at center, white, black)',
-        'repeating-radial-gradient(circle at left, white, black)',
-        'repeating-radial-gradient(ellipse at right, white, black)',
-        'repeating-radial-gradient(closest-corner at top, white, black)',
-        'repeating-radial-gradient(closest-side at bottom, white, black)',
-        'repeating-radial-gradient(farthest-corner at 10%, white, black)',
-        'repeating-radial-gradient(farthest-side at 10px, white, black)',
-        'repeating-radial-gradient(10px at left top, white, black)',
-        'repeating-radial-gradient(circle 10em at center 10%, white, black)',
-        'repeating-radial-gradient(100px circle at 10px bottom, white, black)',
-        'repeating-radial-gradient(10px 10% at right center, white, black)',
-        'repeating-radial-gradient(ellipse 10% 20% at 10% 10%, white, black)',
-        'repeating-radial-gradient(10em 100px ellipse at 10px 10px, white, black)',
-        'repeating-radial-gradient(circle closest-corner at 10% 10px, white, black)',
-        'repeating-radial-gradient(closest-side ellipse at 10px 10%, white, black)',
-        'repeating-radial-gradient(at bottom left, white, black)',
-        'repeating-radial-gradient(at center top 50%, white, black)',
-        'repeating-radial-gradient(at right 50px center, white, black)',
-        'repeating-radial-gradient(at left 10px top 10%, white, black)',
-        'repeating-radial-gradient(at bottom 50% right 50%, white, black)',
-        'repeating-radial-gradient(10% 100px ellipse at top 10% right 10px, white 10%, black 10px, red 50%)',
-        'repeating-radial-gradient(ellipse 10% 20% at top 30% left 40%, currentColor 50%, #0000FF 60%, rgba(255, 255, 0, 0.5) 70%, hsla(240, 100%, 50%, 0.5) 80%, lightgoldenrodyellow 90%, transparent 100%)'
-      ],
-      'image()': [
-        'image(\'sprites.png#xywh=10,30,60,20\')',
-        'image(\'wavy.svg\', \'wavy.png\' , \'wavy.gif\')',
-        'image(\'dark.png\', black)', 'image(green)'
-      ]
-    },
-    'properties': {
-      'object-fit': ['fill', 'contain', 'cover', 'none', 'scale-down'],
-      'object-position': ['50% 50%', 'center', 'top right', 'bottom 10px right 20px'],
-      'image-resolution': ['from-image', 'from-image snap', 'snap from-image', '1dppx', '300dpi', 'from-image 300dpi', '300dpi from-image', '300dpi from-image snap'],
-      'image-orientation': ['0deg', '90deg', '45deg', '1turn', '100grad', '2rad']
+      'toggle()': ['toggle(1px, 2px)', 'toggle(1px, 2px, 3px)'],
+      'attr()': [
+        'data-px',
+        'data-text string', 'data-text color', 'data-text url', 'data-text integer',
+        'data-text number', 'data-text length', 'data-text angle', 'data-text time',
+        'data-text frequency', 'data-text em', 'data-text ex', 'data-text px',
+        'data-text rem', 'data-text vw', 'data-text vh', 'data-text vmin',
+        'data-text vmax', 'data-text mm', 'data-text cm', 'data-text in',
+        'data-text pt', 'data-text pc', 'data-text deg', 'data-text grad',
+        'data-text rad', 'data-text ms', 'data-text s', 'data-text Hz',
+        'data-text kHz', 'data-text %',
+        'data-px, 1px', 'data-px px, 1px', 'data-px px, calc(1px)'
+      ].map(function (arg) {
+        return 'attr(' + arg + ')';
+      })
     }
   },
 
-  'css3-selectors': {
-    'title': 'Selectors',
-    'dev': 'http://dev.w3.org/csswg/selectors3',
-    'selectors': {
-      'ns|E': [/*'svg|html', */'*|html', '|html', /*'svg|*', */'*|*', '|*'],
-      '[att^=val]': ['[att^=val]', '[att^=\'val\']'],
-      '[att$=val]': ['[att$=val]', '[att$=\'val\']'],
-      '[att*=val]': ['[att*=val]', '[att*=\'val\']'],
-      '[ns|att]': [
-        /*'[svg|attr]', '[svg|attr=val]', */'[*|attr]', '[*|attr=val]',
-        '[|attr]', '[|attr=val]', '*|html[*|attr]'
-      ],
-      ':target': ':target',
-      ':enabled': ':enabled',
-      ':disabled': ':disabled',
-      ':checked': ':checked',
-      ':indeterminate': ':indeterminate',
-      ':root': ':root',
-      ':last-child': ':last-child',
-      ':first-of-type': ':first-of-type',
-      ':last-of-type': ':last-of-type',
-      ':only-child': ':only-child',
-      ':only-of-type': ':only-of-type',
-      ':empty': ':empty',
-      ':nth-child()': [
-        'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
-        '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
-        'n-1', '-n-1', '+n-1', '1n-1', '-1n-1', '+1n-1', '0n-1', '-0n-1', '+0n-1',
-        '10n-1', '-10n-1', '+10n-1', '01n-1', '-01n-1', '+01n-1', '00n-1', '-00n-1', '+00n-1',
-        'n+1', '-n+1', '+n+1', '1n+1', '-1n+1', '+1n+1', '0n+1', '-0n+1', '+0n+1',
-        '10n+1', '-10n+1', '+10n+1', '01n+1', '-01n+1', '+01n+1', '00n+1', '-00n+1', '+00n+1',
-        'n+0', 'n+00', '3n +1', '3n- 1', '3n + 1',
-        '0', '1', '10', '01', '00', '-0', '-1', '-10', '-01', '-00', '+0', '+1', '+10', '+01', '+00',
-        'odd', 'even'
-      ].map(function (nth) {
-        return ':nth-child(' + nth + ')';
-      }),
-      ':nth-last-child()': [
-        'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
-        '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
-        'n-1', '-n-1', '+n-1', '1n-1', '-1n-1', '+1n-1', '0n-1', '-0n-1', '+0n-1',
-        '10n-1', '-10n-1', '+10n-1', '01n-1', '-01n-1', '+01n-1', '00n-1', '-00n-1', '+00n-1',
-        'n+1', '-n+1', '+n+1', '1n+1', '-1n+1', '+1n+1', '0n+1', '-0n+1', '+0n+1',
-        '10n+1', '-10n+1', '+10n+1', '01n+1', '-01n+1', '+01n+1', '00n+1', '-00n+1', '+00n+1',
-        'n+0', 'n+00', '3n +1', '3n- 1', '3n + 1',
-        '0', '1', '10', '01', '00', '-0', '-1', '-10', '-01', '-00', '+0', '+1', '+10', '+01', '+00',
-        'odd', 'even'
-      ].map(function (nth) {
-        return ':nth-last-child(' + nth + ')';
-      }),
-      ':nth-of-type()': [
-        'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
-        '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
-        'n-1', '-n-1', '+n-1', '1n-1', '-1n-1', '+1n-1', '0n-1', '-0n-1', '+0n-1',
-        '10n-1', '-10n-1', '+10n-1', '01n-1', '-01n-1', '+01n-1', '00n-1', '-00n-1', '+00n-1',
-        'n+1', '-n+1', '+n+1', '1n+1', '-1n+1', '+1n+1', '0n+1', '-0n+1', '+0n+1',
-        '10n+1', '-10n+1', '+10n+1', '01n+1', '-01n+1', '+01n+1', '00n+1', '-00n+1', '+00n+1',
-        'n+0', 'n+00', '3n +1', '3n- 1', '3n + 1',
-        '0', '1', '10', '01', '00', '-0', '-1', '-10', '-01', '-00', '+0', '+1', '+10', '+01', '+00',
-        'odd', 'even'
-      ].map(function (nth) {
-        return ':nth-of-type(' + nth + ')';
-      }),
-      ':nth-last-of-type()': [
-        'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
-        '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
-        'n-1', '-n-1', '+n-1', '1n-1', '-1n-1', '+1n-1', '0n-1', '-0n-1', '+0n-1',
-        '10n-1', '-10n-1', '+10n-1', '01n-1', '-01n-1', '+01n-1', '00n-1', '-00n-1', '+00n-1',
-        'n+1', '-n+1', '+n+1', '1n+1', '-1n+1', '+1n+1', '0n+1', '-0n+1', '+0n+1',
-        '10n+1', '-10n+1', '+10n+1', '01n+1', '-01n+1', '+01n+1', '00n+1', '-00n+1', '+00n+1',
-        'n+0', 'n+00', '3n +1', '3n- 1', '3n + 1',
-        '0', '1', '10', '01', '00', '-0', '-1', '-10', '-01', '-00', '+0', '+1', '+10', '+01', '+00',
-        'odd', 'even'
-      ].map(function (nth) {
-        return ':nth-last-of-type(' + nth + ')';
-      }),
-      ':not()': [
-        ':not(element)', ':not(*)', ':not([attr])', ':not(.class)', ':not(#id)', ':not(:first-child)',
-        ':not(.class):not(#id):not([attr]):not(:link)'
-      ],
-      '::first-line': '::first-line',
-      '::first-letter': '::first-letter',
-      '::before': '::before',
-      '::after': '::after',
-      'E ~ F': 'foo ~ bar'
-    }
-  },
-
-  /*
-   * Note: the following media queries must be true in supporting UAs!
-   */
-  'mediaqueries3': {
-    'title': 'Media Queries',
-    'tr': 'http://www.w3.org/TR/css3-mediaqueries/',
-    'Media queries': {
-      'only': ['only screen', 'only all'],
-      'not': ['not braille', 'not handheld', 'not print', 'not projection', 'not tty', 'not tv'],
-      'and': [
-        'all and (width)', '(width) and (height)',
-        'screen, print and (height)', 'only screen and (width)', 'not print and (height)',
-        'only screen, (width) and (height)', 'not tv and (width) and (height)',
-        'all and (width) and (height), only print and (width), not screen and (height)'
-      ],
-      'width': [
-        '(width)', 'not print and (width: 0)',
-        '(min-width: 0)', '(min-width: 1px)', '(max-width: 1000000px)'
-      ],
-      'height': [
-        '(height)', 'not print and (height: 0)',
-        '(min-height: 0)', '(min-height: 1px)', '(max-height: 1000000px)'
-      ],
-      'device-width': [
-        '(device-width)', 'not print and (device-width: 0)',
-        '(min-device-width: 0)', '(min-device-width: 1px)',
-        '(max-device-width: 1000000px)'
-      ],
-      'device-height': [
-        '(device-height)', 'not print and (device-height: 0)',
-        '(min-device-height: 0)', '(min-device-height: 1px)',
-        '(max-device-height: 1000000px)'
-      ],
-      'orientation': ['(orientation)', 'not print and (orientation: portrait)', '(orientation: landscape)'],
-      'aspect-ratio': [
-        '(aspect-ratio)',
-        'not print and (aspect-ratio: 1/1)',
-        '(min-aspect-ratio: 1/1000000)',
-        '(min-aspect-ratio: 1 / 1000000)',
-        '(max-aspect-ratio: 1000000/1)',
-      ],
-      'device-aspect-ratio': [
-        '(device-aspect-ratio)',
-        'not print and (device-aspect-ratio: 1/1)',
-        '(min-device-aspect-ratio: 1/1000000)',
-        '(min-device-aspect-ratio: 1 / 1000000)',
-        '(max-device-aspect-ratio: 1000000/1)',
-      ],
-      'color': [
-        '(color)', 'not print and (color: 0)', '(min-color: 0)', '(max-color: 100)'
-      ],
-      'color-index': [
-        'not print and (color-index)', '(color-index: 0)', '(min-color-index: 0)',
-        'not print and (min-color-index: 1)', '(max-color-index: 10000000)'
-      ],
-      'monochrome': [
-        'not print and (monochrome)', '(monochrome: 0)', '(min-monochrome: 0)',
-        'not print and (min-monochrome: 1)', '(max-monochrome: 10000)'
-      ],
-      'resolution': [
-        '(resolution)',
-        'not print and (resolution: 1dpi)',
-        '(min-resolution: 1dpi)',
-        '(max-resolution: 1000000dpi)',
-        '(max-resolution: 1000000dpcm)',
-        '(max-resolution: 1000000dppx)'
-      ],
-      'scan': ['not tv and (scan)', 'not tv and (scan: progressive)', 'not tv and (scan: interlace)'],
-      'grid': ['not print and (grid)', '(grid: -0)', '(grid: 0)', 'not print and (grid: 1)']
-    }
-  },
-
-  'css3-conditional': {
-    'title': 'Conditional Rules',
-    '@rules': {
-      '@supports': [
-        '@supports (width: 1px)', '@supports ((width: 1px))', '@supports (width: 1px !important)',
-        '@supports (javascript: @return)',
-        '@supports url(foo.png)', '@supports (1px)', '@supports (@media)',
-        '@supports (~=)', '@supports (|=)', '@supports (:)', '@supports (url(foo.png))', '@supports ({;})',
-        '@supports not (javascript: return)',
-        '@supports (width: 1px) or (display: flex)', '@supports (width: 1px) and (height: 1px)',
-        '@supports (box-shadow: 2px 2px 2px black) or (-moz-box-shadow: 2px 2px 2px black) or (-webkit-box-shadow: 2px 2px 2px black) or (-o-box-shadow: 2px 2px 2px black)',
-        '@supports ((transition-property: color) or (animation-name: foo)) and (transform: rotate(10deg))',
-        '@supports (transition-property: color) or ((animation-name: foo) and (transform: rotate(10deg)))',
-        '@supports ((not (javascript: return)) and (transition-property: color)) or (display: subgrid)'
-      ]
-    }
-  },
-
-  'css3-namespace': {
-    'title': 'Namespaces',
-    '@rules': {
-      '@namespace': [
-        '@namespace \'http://www.w3.org/1999/xhtml\';',
-        '@namespace svg \'http://www.w3.org/2000/svg\';',
-        '@namespace url(http://www.w3.org/1999/xhtml);',
-        '@namespace svg url(http://www.w3.org/2000/svg);'
-      ]
-    }
-  },
-
-  'css3-ui': {
+  'css-ui-3': {
     'title': 'Basic User Interface',
+    'tr': 'http://www.w3.org/TR/css3-ui/',
     'properties': {
       'content': 'icon',
       'icon': ['auto'].concat(['url(foo.png)'].times(1, 3, ', ')),
@@ -585,169 +519,9 @@ window.Specs = {
     }
   },
 
-  'css3-transitions': {
-    'title': 'Transitions',
-    'properties': {
-      'transition-property': [
-        'all', 'none',
-        'background-color', 'background-position', 'border-bottom-color', 'border-bottom-width',
-        'border-left-color', 'border-left-width', 'border-right-color', 'border-right-width',
-        'border-spacing', 'border-top-color', 'border-top-width', 'bottom',
-        'clip', 'color', 'font-size', 'font-weight', 'height', 'left', 'letter-spacing',
-        'line-height', 'margin-bottom', 'margin-left', 'margin-right',
-        'margin-top', 'max-height', 'max-width', 'min-height',
-        'min-width', 'opacity', 'outline-color', 'outline-width',
-        'padding-bottom', 'padding-left', 'padding-right',
-        'padding-top', 'right', 'text-indent', 'text-shadow',
-        'top', 'vertical-align', 'visibility', 'width', 'word-spacing', 'z-index',
-        'all, all', 'all, background-color', 'width, height', 'width, all, height'
-      ],
-      'transition-duration': ['0s', '1s', '100ms', '0s, 10s', '0ms, 10s, 100s'],
-      'transition-timing-function': [
-        'ease', 'linear', 'ease-in', 'ease-out', 'ease-in-out',
-        'step-start', 'step-end', 'steps(1)', 'steps(3, start)', 'steps(5, end)',
-        'cubic-bezier(.5, .5, .5, .5)', 'cubic-bezier(.5, 1.5, .5, -2.5)',
-        'ease, linear', 'ease, ease, ease'
-      ],
-      'transition-delay': ['0s', '-1s', '100ms', '0s, 10s', '-100ms, 1s, 10s'],
-      'transition': [
-        'none', 'all', 'background-color', '0s', 'ease', '-1s',
-        'all 0s', '-1s 1s', 'background-color 0.1s ease', 'background-position 10ms linear 1s',
-        'background-color linear 1s', '1s 2s width linear', 'border-bottom-color ease-in', '100s 100ms',
-        'all, all', 'all, background-color', '-1s, -1s', 'all, 1s, ease-in-out',
-        '10s border-left-color step-start, step-end, steps(10, start) all',
-        'cubic-bezier(.5, 1.5, .5, -2.5) -10ms, -1s all 10s, all ease-in-out',
-        'all 1s ease 2s, cubic-bezier(0.25, 0.1, 0.25, 1) 60s 1ms opacity'
-      ]
-    }
-  },
-
-  'css3-animations': {
-    'title': 'Animations',
-    'properties': {
-      'animation-name': ['none', 'foo', 'foo, bar', 'none, foo, bar'],
-      'animation-duration': ['0s', '1s', '100ms', '1s, 2s', '0ms, 1s, 3s'],
-      'animation-timing-function': [
-        'ease', 'linear', 'ease-in', 'ease-out', 'ease-in-out',
-        'step-start', 'step-end', 'steps(1)', 'steps(3, start)', 'steps(5, end)',
-        'cubic-bezier(.5, .5, .5, .5)', 'cubic-bezier(.5, 1.5, .5, -2.5)',
-        'ease, linear', 'ease, ease, ease'
-      ],
-      'animation-iteration-count': ['infinite', '8', '4.35', '1, .5', '0, 1, 2'],
-      'animation-direction': [
-        'normal', 'reverse', 'alternate', 'alternate-reverse',
-        'normal, reverse', 'normal, normal, alternate-reverse'
-      ],
-      'animation-play-state': [
-        'running', 'paused',
-        'running, paused', 'paused, paused, paused'
-      ],
-      'animation-delay': ['1s', '-1s', '0s, 1ms', '-10s, 0s, 10s'],
-      'animation-fill-mode': [
-        'none', 'forwards', 'backwards', 'both',
-        'none, forwards', 'none, none, none'
-      ],
-      'animation': [
-        'none', 'foo', '0s', 'ease', 'linear', 'ease-in', 'ease-out',
-        'ease-in-out', 'step-start', 'step-end', 'steps(1)',
-        'steps(3, start)', 'steps(5, end)', 'cubic-bezier(.5, .5, .5, .5)',
-        'cubic-bezier(.5, 1.5, .5, -2.5)', '1', 'infinite', 'normal',
-        'reverse', 'alternate', 'alternate-reverse', 'running', 'paused',
-        '0s', 'none', 'forwards', 'backwards', 'both',
-        'none 0s', 'both paused', 'none none', '-1s 0s', 'foo running',
-        'none -1s cubic-bezier(.5, 1.5, .5, -2.5)',
-        'foo 1s 2s infinite linear alternate both',
-        'none 0s ease 0s 1 normal none running',
-        'none, none', '-1s, -1s', 'none 0s, both paused',
-        'none 0s ease 0s 1 normal none running, none 0s ease 1 normal running 0s none',
-        '0s, 0s, 0s'
-      ]
-    },
-    '@rules': {
-      '@keyframes': '@keyframes foo'
-    }
-  },
-
-  'css3-transforms': {
-    'title': 'Transforms',
-    'properties': {
-      'transform': ['none', 'matrix(1, 2, 3, 4, 5, 6)'].concat(
-        ['0', '10px', '-20px', '50%'].times(1, 2, ', ').map(function (arg) {
-          return 'translate(' + arg + ')';
-        }),
-        ['0', '10px', '-20px', '50%'].map(function (translationValue) {
-          return 'translateX(' + translationValue + ')';
-        }),
-        ['0', '10px', '-20px', '50%'].map(function (translationValue) {
-          return 'translateY(' + translationValue + ')';
-        }),
-        ['scale(1)', 'scale(1, 2)', 'scaleX(1)', 'scaleY(1)'],
-        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
-          return 'rotate(' + angle + ')';
-        }),
-        ['90deg', '100grad', '1rad', '1turn'].times(1, 2, ', ').map(function (arg) {
-          return 'skew(' + arg + ')';
-        }),
-        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
-          return 'skewX(' + angle + ')';
-        }),
-        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
-          return 'skewY(' + angle + ')';
-        }),
-        ['matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)'],
-        ['0', '10px', '-20px', '50%'].times(2, 2, ', ').map(function (arg) {
-          return 'translate3d(' + arg + ', 10px)';
-        }),
-        ['translateZ(10px)', 'scale3d(1, 2, 3)', 'scaleZ(1)'],
-        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
-          return 'rotate3d(1, 2, 3, ' + angle + ')';
-        }),
-        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
-          return 'rotateX(' + angle + ')';
-        }),
-        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
-          return 'rotateY(' + angle + ')';
-        }),
-        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
-          return 'rotateZ(' + angle + ')';
-        }),
-        [
-          'perspective(10px)', 'matrix(1, 2, 3, 4, 5, 6) translate(0)',
-          'scale(2, -1) scaleY(2.5) matrix(1, -.2, 0, 1, 10, 10)',
-          'translate(50px, -24px) rotate(180deg) scale(.5) skew(0, 22.5deg)',
-          'matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16) translate3d(0, 0, 10px)',
-          'scale3d(1, 0, -1) rotateX(-45deg) rotateY(-45deg) rotateZ(-45deg)',
-          'translate3d(50px, -24px, 5px) rotate3d(1, 2, 3, 180deg) scale3d(-1, 0, .5)',
-          'matrix(1, 2, 3, 4, 5, 6) matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)'
-        ]
-      ),
-      'transform-origin': ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
-        ['left', 'center', 'right', '10%', '10px'].and(['top', 'center', 'bottom', '10%', '10px']),
-        ['left', 'center', 'right', '10%', '10px'].and(['top', 'center', 'bottom', '10%', '10px']).and(['10px']),
-        [
-          'top left', 'center left', 'bottom left', 'top center',
-          'bottom center', 'top right', 'center right', 'bottom right'
-        ],
-        [
-          'top left', 'center left', 'bottom left', 'top center',
-          'bottom center', 'top right', 'center right', 'bottom right'
-        ].and(['10px'])
-      ),
-      'transform-style': ['flat', 'preserve-3d'],
-      'perspective': ['none', '600px'],
-      'perspective-origin': ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
-        ['left', 'center', 'right', '10%', '10px'].and(['top', 'center', 'bottom', '10%', '10px']),
-        [
-          'top left', 'center left', 'bottom left', 'top center',
-          'bottom center', 'top right', 'center right', 'bottom right'
-        ]
-      ),
-      'backface-visibility': ['visible', 'hidden']
-    }
-  },
-
-  'css3-text': {
+  'css-text-3': {
     'title': 'Text',
+    'tr': 'http://www.w3.org/TR/css3-text/',
     'properties': {
       'text-transform': 'full-width',
       'tab-size': ['8', '1em'],
@@ -801,6 +575,43 @@ window.Specs = {
           '10px 10px, 10px 10px, 10px 10px'
         ]
       )
+    }
+  },
+
+  'css-page-3': {
+    'title': 'Paged Media',
+    'tr': 'http://www.w3.org/TR/css3-page/',
+    'properties': {
+      'size': ['auto', '4in', '8.5in 11in'].concat(
+        ['A5', 'A4', 'A3', 'B5', 'B4', 'letter', 'legal', 'ledger'].or(['portrait', ' landscape'])
+      ),
+      'page': ['auto', 'rotated', 'narrow', 'main', 'index']
+    },
+    '@rules': {
+      '@page': [
+        '@page :blank', '@page LandscapeTable', '@page :left:right', '@page :left:left',
+        '@page :left:right:first', '@page :left:right:first:blank',
+        '@page CompanyLetterHead:left', '@page CompanyLetterHead:right',
+        '@page CompanyLetterHead:first', '@page CompanyLetterHead:blank', '@page page:left:right',
+        '@page :left, :right', '@page toc, index', '@page toc, :first',
+        '@page page:left:right, :left:right:first:blank'
+      ]/*,
+      // It seems that Page-Margin Boxes need CSSOM API.
+      '@top-left-corner': '@top-left-corner',
+      '@top-left': '@top-left',
+      '@top-center': '@top-center',
+      '@top-right': '@top-right',
+      '@top-right-corner': '@top-right-corner',
+      '@bottom-left-corner': '@bottom-left-corner',
+      '@bottom-left': '@bottom-left',
+      '@bottom-center': '@bottom-center',
+      '@bottom-right': '@bottom-right',
+      '@bottom-right-corner': '@bottom-right-corner',
+      '@left-top': '@left-top',
+      '@left-middle': '@left-middle',
+      '@right-top': '@right-top',
+      '@right-middle': '@right-middle',
+      '@right-bottom': '@right-bottom'*/
     }
   },
 
@@ -1008,6 +819,327 @@ window.Specs = {
     }
   },
 
+  'css-images-3': {
+    'title': 'Image Values and Replaced Content',
+    'tr': 'http://www.w3.org/TR/css3-images/',
+    'values': {
+      'properties': [
+        'background-image',
+        'list-style-image',
+        'border-image-source',
+        'cursor',
+        'content'
+      ],
+      'linear-gradient': [
+        'linear-gradient(white, black)',
+        'linear-gradient(white 1px, black)',
+        'linear-gradient(white 1%, black)',
+        'linear-gradient(white, black 1px)',
+        'linear-gradient(white, black 1%)',
+        'linear-gradient(white 1px, black 1%)',
+        'linear-gradient(0deg, white, black)',
+        'linear-gradient(90deg, white, black)',
+        'linear-gradient(360deg, white, black)',
+        'linear-gradient(-45deg, white, black)',
+        'linear-gradient(to left, white, black)',
+        'linear-gradient(to right, white, black)',
+        'linear-gradient(to top, white, black)',
+        'linear-gradient(to bottom, white, black)',
+        'linear-gradient(to left top, white, black)',
+        'linear-gradient(to left bottom, white, black)',
+        'linear-gradient(to right top, white, black)',
+        'linear-gradient(to right bottom, white, black)',
+        'linear-gradient(to top left, white, black)',
+        'linear-gradient(to top right, white, black)',
+        'linear-gradient(to bottom left, white, black)',
+        'linear-gradient(to bottom right, white, black)',
+        'linear-gradient(-270deg, red, blue 90px, yellow, green 50%)',
+        'linear-gradient(to bottom right, currentColor 100%, rgba(255, 0, 255, 0.3) 100px, transparent 0em, hsla(225, 50%, 100%, 0.7) 75%)'
+      ],
+      'radial-gradient': [
+        'radial-gradient(white, black)',
+        'radial-gradient(white 1px, black)',
+        'radial-gradient(white 1%, black)',
+        'radial-gradient(white, black 1px)',
+        'radial-gradient(white, black 1%)',
+        'radial-gradient(white 1px, black 1%)',
+        'radial-gradient(circle, white, black)',
+        'radial-gradient(10px, white, black)',
+        'radial-gradient(circle 10em, white, black)',
+        'radial-gradient(100px circle, white, black)',
+        'radial-gradient(ellipse, white, black)',
+        'radial-gradient(10px 10%, white, black)',
+        'radial-gradient(ellipse 10% 20%, white, black)',
+        'radial-gradient(10em 100px ellipse, white, black)',
+        'radial-gradient(closest-corner, white, black)',
+        'radial-gradient(closest-side, white, black)',
+        'radial-gradient(farthest-corner, white, black)',
+        'radial-gradient(farthest-side, white, black)',
+        'radial-gradient(circle closest-corner, white, black)',
+        'radial-gradient(closest-side ellipse, white, black)',
+        'radial-gradient(at center, white, black)',
+        'radial-gradient(circle at left, white, black)',
+        'radial-gradient(ellipse at right, white, black)',
+        'radial-gradient(closest-corner at top, white, black)',
+        'radial-gradient(closest-side at bottom, white, black)',
+        'radial-gradient(farthest-corner at 10%, white, black)',
+        'radial-gradient(farthest-side at 10px, white, black)',
+        'radial-gradient(10px at left top, white, black)',
+        'radial-gradient(circle 10em at center 10%, white, black)',
+        'radial-gradient(100px circle at 10px bottom, white, black)',
+        'radial-gradient(10px 10% at right center, white, black)',
+        'radial-gradient(ellipse 10% 20% at 10% 10%, white, black)',
+        'radial-gradient(10em 100px ellipse at 10px 10px, white, black)',
+        'radial-gradient(circle closest-corner at 10% 10px, white, black)',
+        'radial-gradient(closest-side ellipse at 10px 10%, white, black)',
+        'radial-gradient(at bottom left, white, black)',
+        'radial-gradient(at center top 50%, white, black)',
+        'radial-gradient(at right 50px center, white, black)',
+        'radial-gradient(at left 10px top 10%, white, black)',
+        'radial-gradient(at bottom 50% right 50%, white, black)',
+        'radial-gradient(10% 100px ellipse at top 10% right 10px, white 10%, black 10px, red 50%)',
+        'radial-gradient(ellipse 10% 20% at top 30% left 40%, currentColor 50%, #0000FF 60%, rgba(255, 255, 0, 0.5) 70%, hsla(240, 100%, 50%, 0.5) 80%, lightgoldenrodyellow 90%, transparent 100%)'
+      ],
+      'repeating-linear-gradient': [
+        'repeating-linear-gradient(white, black)',
+        'repeating-linear-gradient(white 1px, black)',
+        'repeating-linear-gradient(white 1%, black)',
+        'repeating-linear-gradient(white, black 1px)',
+        'repeating-linear-gradient(white, black 1%)',
+        'repeating-linear-gradient(white 1px, black 1%)',
+        'repeating-linear-gradient(0deg, white, black)',
+        'repeating-linear-gradient(90deg, white, black)',
+        'repeating-linear-gradient(360deg, white, black)',
+        'repeating-linear-gradient(-45deg, white, black)',
+        'repeating-linear-gradient(to left, white, black)',
+        'repeating-linear-gradient(to right, white, black)',
+        'repeating-linear-gradient(to top, white, black)',
+        'repeating-linear-gradient(to bottom, white, black)',
+        'repeating-linear-gradient(to left top, white, black)',
+        'repeating-linear-gradient(to left bottom, white, black)',
+        'repeating-linear-gradient(to right top, white, black)',
+        'repeating-linear-gradient(to right bottom, white, black)',
+        'repeating-linear-gradient(to top left, white, black)',
+        'repeating-linear-gradient(to top right, white, black)',
+        'repeating-linear-gradient(to bottom left, white, black)',
+        'repeating-linear-gradient(to bottom right, white, black)',
+        'repeating-linear-gradient(-270deg, red, blue 90px, yellow, green 50%)',
+        'repeating-linear-gradient(to bottom right, currentColor 100%, rgba(255, 0, 255, 0.3) 100px, transparent 0em, hsla(225, 50%, 100%, 0.7) 75%)'
+      ],
+      'repeating-radial-gradient': [
+        'repeating-radial-gradient(white, black)',
+        'repeating-radial-gradient(white 1px, black)',
+        'repeating-radial-gradient(white 1%, black)',
+        'repeating-radial-gradient(white, black 1px)',
+        'repeating-radial-gradient(white, black 1%)',
+        'repeating-radial-gradient(white 1px, black 1%)',
+        'repeating-radial-gradient(circle, white, black)',
+        'repeating-radial-gradient(10px, white, black)',
+        'repeating-radial-gradient(circle 10em, white, black)',
+        'repeating-radial-gradient(100px circle, white, black)',
+        'repeating-radial-gradient(ellipse, white, black)',
+        'repeating-radial-gradient(10px 10%, white, black)',
+        'repeating-radial-gradient(ellipse 10% 20%, white, black)',
+        'repeating-radial-gradient(10em 100px ellipse, white, black)',
+        'repeating-radial-gradient(closest-corner, white, black)',
+        'repeating-radial-gradient(closest-side, white, black)',
+        'repeating-radial-gradient(farthest-corner, white, black)',
+        'repeating-radial-gradient(farthest-side, white, black)',
+        'repeating-radial-gradient(circle closest-corner, white, black)',
+        'repeating-radial-gradient(closest-side ellipse, white, black)',
+        'repeating-radial-gradient(at center, white, black)',
+        'repeating-radial-gradient(circle at left, white, black)',
+        'repeating-radial-gradient(ellipse at right, white, black)',
+        'repeating-radial-gradient(closest-corner at top, white, black)',
+        'repeating-radial-gradient(closest-side at bottom, white, black)',
+        'repeating-radial-gradient(farthest-corner at 10%, white, black)',
+        'repeating-radial-gradient(farthest-side at 10px, white, black)',
+        'repeating-radial-gradient(10px at left top, white, black)',
+        'repeating-radial-gradient(circle 10em at center 10%, white, black)',
+        'repeating-radial-gradient(100px circle at 10px bottom, white, black)',
+        'repeating-radial-gradient(10px 10% at right center, white, black)',
+        'repeating-radial-gradient(ellipse 10% 20% at 10% 10%, white, black)',
+        'repeating-radial-gradient(10em 100px ellipse at 10px 10px, white, black)',
+        'repeating-radial-gradient(circle closest-corner at 10% 10px, white, black)',
+        'repeating-radial-gradient(closest-side ellipse at 10px 10%, white, black)',
+        'repeating-radial-gradient(at bottom left, white, black)',
+        'repeating-radial-gradient(at center top 50%, white, black)',
+        'repeating-radial-gradient(at right 50px center, white, black)',
+        'repeating-radial-gradient(at left 10px top 10%, white, black)',
+        'repeating-radial-gradient(at bottom 50% right 50%, white, black)',
+        'repeating-radial-gradient(10% 100px ellipse at top 10% right 10px, white 10%, black 10px, red 50%)',
+        'repeating-radial-gradient(ellipse 10% 20% at top 30% left 40%, currentColor 50%, #0000FF 60%, rgba(255, 255, 0, 0.5) 70%, hsla(240, 100%, 50%, 0.5) 80%, lightgoldenrodyellow 90%, transparent 100%)'
+      ],
+      'image()': [
+        'image(\'sprites.png#xywh=10,30,60,20\')',
+        'image(\'wavy.svg\', \'wavy.png\' , \'wavy.gif\')',
+        'image(\'dark.png\', black)', 'image(green)'
+      ]
+    },
+    'properties': {
+      'object-fit': ['fill', 'contain', 'cover', 'none', 'scale-down'],
+      'object-position': ['50% 50%', 'center', 'top right', 'bottom 10px right 20px'],
+      'image-resolution': ['from-image', 'from-image snap', 'snap from-image', '1dppx', '300dpi', 'from-image 300dpi', '300dpi from-image', '300dpi from-image snap'],
+      'image-orientation': ['0deg', '90deg', '45deg', '1turn', '100grad', '2rad']
+    }
+  },
+
+  'css-inline-3': {
+    'title': 'Line Layout',
+    'tr': 'http://www.w3.org/TR/css3-linebox/',
+    'properties': {
+      'text-height': ['auto', 'font-size', 'text-size', 'max-size', '10.52'],
+      'line-height': ['none'],
+      'line-box-contain': ['block', 'inline', 'font', 'glyphs', 'replaced', 'inline-box', 'none'],
+      'line-stacking-strategy': ['inline-line-height', 'block-line-height', 'max-height', 'grid-height'],
+      'line-stacking-ruby': ['exclude-ruby', 'include-ruby'],
+      'line-stacking-shift': ['consider-shifts', 'disregard-shifts'],
+      'line-stacking': [
+        'inline-line-height', 'block-line-height', 'max-height', 'grid-height', 'exclude-ruby', 'include-ruby', 'consider-shifts', 'disregard-shifts'
+      ].concat(
+        ['inline-line-height', 'block-line-height', 'max-height', 'grid-height'].and(['exclude-ruby', 'include-ruby']),
+        ['inline-line-height', 'block-line-height', 'max-height', 'grid-height'].and(['consider-shifts', 'disregard-shifts']),
+        ['exclude-ruby', 'include-ruby'].and(['inline-line-height', 'block-line-height', 'max-height', 'grid-height']),
+        ['exclude-ruby', 'include-ruby'].and(['consider-shifts', 'disregard-shifts']),
+        ['consider-shifts', 'disregard-shifts'].and(['inline-line-height', 'block-line-height', 'max-height', 'grid-height']),
+        ['consider-shifts', 'disregard-shifts'].and(['exclude-ruby', 'include-ruby']),
+        ['inline-line-height', 'block-line-height', 'max-height', 'grid-height'].and(['exclude-ruby', 'include-ruby']).and(['consider-shifts', 'disregard-shifts']),
+        ['inline-line-height', 'block-line-height', 'max-height', 'grid-height'].and(['consider-shifts', 'disregard-shifts']).and(['exclude-ruby', 'include-ruby']),
+        ['exclude-ruby', 'include-ruby'].and(['inline-line-height', 'block-line-height', 'max-height', 'grid-height']).and(['consider-shifts', 'disregard-shifts']),
+        ['exclude-ruby', 'include-ruby'].and(['consider-shifts', 'disregard-shifts']).and(['inline-line-height', 'block-line-height', 'max-height', 'grid-height']),
+        ['consider-shifts', 'disregard-shifts'].and(['inline-line-height', 'block-line-height', 'max-height', 'grid-height']).and(['exclude-ruby', 'include-ruby']),
+        ['consider-shifts', 'disregard-shifts'].and(['exclude-ruby', 'include-ruby']).and(['inline-line-height', 'block-line-height', 'max-height', 'grid-height'])
+      ),
+      'dominant-baseline': ['auto', 'use-script', 'no-change', 'reset-size', 'alphabetic', 'hanging', 'ideographic', 'mathematical', 'central', 'middle', 'text-after-edge', 'text-before-edge'],
+      'alignment-baseline': ['baseline', 'use-script', 'before-edge', 'text-before-edge', 'after-edge', 'text-after-edge', 'central', 'middle', 'ideographic', 'alphabetic', 'hanging', 'mathematical'],
+      'alignment-adjust': ['auto', 'baseline', 'before-edge', 'text-before-edge', 'middle', 'central', 'after-edge', 'text-after-edge', 'ideographic', 'alphabetic', 'hanging', 'mathematical', '0%', '10%', '0cm', '10px'],
+      'baseline-shift': ['baseline', 'sub', 'super', '0%', '10%', '0cm', '10px'],
+      'vertical-align': ['auto', 'central'],
+      'inline-box-align': ['last', 'initial', '1'],
+      'drop-initial-value': ['initial', '1'],
+      'drop-initial-size': ['auto', '&lt;line&gt;', '10%', '10px'],
+      'drop-initial-after-align': ['baseline', 'use-script', 'before-edge', 'text-before-edge', 'after-edge', 'text-after-edge', 'central', 'middle', 'ideographic', 'alphabetic', 'hanging', 'mathematical'],
+      'drop-initial-after-adjust': ['text-after-edge', 'central', 'middle', 'after-edge', 'ideographic', 'alphabetic', 'mathematical', '0%', '10%', '0cm', '10px'],
+      'drop-initial-before-align': ['caps-height', 'baseline', 'use-script', 'before-edge', 'text-before-edge', 'after-edge', 'text-after-edge', 'central', 'middle', 'ideographic', 'alphabetic', 'hanging', 'mathematical'],
+      'drop-initial-before-adjust': ['text-before-edge', 'before-edge', 'central', 'middle', 'hanging', 'mathematical', '0%', '10%', '0cm', '10px'],
+    }
+  },
+
+  'css-lists-3': {
+    'title': 'Lists and Counters',
+    'tr': 'http://www.w3.org/TR/css3-lists/',
+    'properties': {
+      'display': ['inline-list-item'],
+      'list-style-image': ['image(\'sprites.svg#xywh=40,0,20,20\')', 'radial-gradient(circle, #006, #00a 90%, #0000af 100%, white 100%)'],
+      'list-style-type': [
+        '\'★\'', 'cjk-decimal', 'hebrew', 'hiragana', 'hiragana-iroha', 'katakana', 'katakana-iroha', 'disclosure-open', 'disclosure-closed',
+        'japanese-informal', 'japanese-formal', 'korean-hangul-formal', 'korean-hanja-informal', 'korean-hanja-formal',
+        'simp-chinese-informal', 'simp-chinese-formal', 'trad-chinese-informal', 'trad-chinese-formal', 'cjk-ideographic',
+        'ethiopic-numeric', 'circled-lower-latin', 'symbols(repeating \'○\' \'●\')', 'toggle(disc, square, circle)'
+      ],
+      'list-style': [
+        'hebrew', 'linear-gradient(white, black)',
+        'hiragana radial-gradient(white, black)', 'hiragana-iroha outside',
+        'repeating-linear-gradient(white, black) katakana', 'repeating-radial-gradient(white, black) inside',
+        'outside katakana-iroha', 'inside linear-gradient(to left, white, black)',
+        'cjk-ideographic radial-gradient(at center, white, black) outside',
+        'repeating-linear-gradient(to left, white, black) hebrew inside',
+        'outside hiragana repeating-radial-gradient(at center, white, black)',
+        'inside radial-gradient(closest-side ellipse at 10px 10%, white, black) hiragana-iroha'
+      ],
+      'position': ['marker'],
+      'marker-side': ['list-item', 'list-container'],
+      'counter-set': ['none', 'section', 'chapter 0', 'section -1 imagenum 99', 'list-item attr(value integer, 1)']
+    },
+    'selectors': {
+      '::marker': 'li::marker'
+    }
+  },
+
+  'css-box-3': {
+    'title': 'Basic Box Model',
+    'tr': 'http://www.w3.org/TR/css3-box/',
+    'properties': {
+      'display': [
+        'run-in', 'compact',
+        'ruby', 'ruby-base', 'ruby-text', 'ruby-base-group', 'ruby-text-group',
+        'container'
+      ],
+      'padding': ['auto'].times(1, 4).concat([
+        'auto 1px', '10% auto',
+        'auto 1px 10%', '1px auto 10%', '1px 10% auto',
+        'auto 1px 10% 100em', '1px auto 10% 100em', '1px 10% auto 100em', '1px 10% 100em auto'
+      ]),
+      'padding-top': 'auto',
+      'padding-right': 'auto',
+      'padding-bottom': 'auto',
+      'padding-left': 'auto',
+      'margin-top': 'fill',
+      'margin-right': 'fill',
+      'margin-bottom': 'fill',
+      'margin-left': 'fill',
+      'margin': ['fill'].times(1, 4).concat([
+        'fill 1px', '10% fill',
+        'fill 1px 10%', '1px fill 10%', '1px 10% fill',
+        'fill 1px 10% auto', '1px fill 10% auto', '1px 10% fill auto', '1px 10% auto fill'
+      ]),
+      'width': ['1px', '1%'].and(['border-box', 'content-box']).concat(
+        ['border-box', 'content-box'].and(['1px', '1%']),
+        ['available', 'min-content', 'max-content', 'fit-content']
+      ),
+      'height': ['1px', '1%'].and(['border-box', 'content-box']).concat(
+        ['border-box', 'content-box'].and(['1px', '1%']),
+        ['available', 'min-content', 'max-content', 'fit-content', 'complex']
+      ),
+      'min-width': ['1px', '1%'].and(['border-box', 'content-box']).concat(
+        ['border-box', 'content-box'].and(['1px', '1%']),
+        ['available', 'min-content', 'max-content', 'fit-content']
+      ),
+      'min-height': ['1px', '1%'].and(['border-box', 'content-box']).concat(
+        ['border-box', 'content-box'].and(['1px', '1%']),
+        ['available', 'min-content', 'max-content', 'fit-content']
+      ),
+      'max-width': ['1px', '1%'].and(['border-box', 'content-box']).concat(
+        ['border-box', 'content-box'].and(['1px', '1%']),
+        ['available', 'min-content', 'max-content', 'fit-content']
+      ),
+      'max-height': ['1px', '1%'].and(['border-box', 'content-box']).concat(
+        ['border-box', 'content-box'].and(['1px', '1%']),
+        ['available', 'min-content', 'max-content', 'fit-content']
+      ),
+      'float': [
+        'top', 'bottom', 'start', 'end',
+        'inside', 'outside', 'page', 'multicol', 'intrude',
+        'unless-room', 'next', 'page(landscape)', 'hide'
+      ].concat(
+        [
+          'left', 'right', 'top', 'bottom', 'start', 'end',
+          'inside', 'outside', 'page', 'multicol', 'intrude',
+          'unless-room', 'next', 'page(landscape)', 'hide'
+        ].and(['contour']),
+        ['contour'].and([
+          'left', 'right', 'top', 'bottom', 'start', 'end',
+          'inside', 'outside', 'page', 'multicol', 'intrude',
+          'unless-room', 'next', 'page(landscape)', 'hide'
+        ])
+      ),
+      'clear-after': [
+        'none', 'left', 'right', 'top', 'bottom', 'inside', 'outside',
+        'start', 'end', 'both', 'descendants'
+      ],
+      'overflow-x': ['visible', 'hidden', 'scroll', 'auto', 'no-display', 'no-content'],
+      'overflow-y': ['visible', 'hidden', 'scroll', 'auto', 'no-display', 'no-content'],
+      'overflow': ['no-display', 'no-content'].times(1, 2).concat(
+        ['visible', 'hidden', 'scroll', 'auto'].and(['no-display', 'no-content']),
+        ['no-display', 'no-content'].and(['visible', 'hidden', 'scroll', 'auto'])
+      ),
+      'alignment': ['top', 'right', 'bottom', 'left', 'center'],
+      'child-align': ['auto', 'top', 'middle', 'bottom', 'left', 'right'],
+      'float-displace': ['line', 'indent', 'block', 'block-within-page'],
+      'indent-edge-reset': ['none', 'margin-edge', 'border-edge', 'padding-edge', 'content-edge']
+    }
+  },
+
   'css-writing-modes-3': {
     'title': 'Writing Modes',
     'tr': 'http://www.w3.org/TR/css3-writing-modes/',
@@ -1020,236 +1152,161 @@ window.Specs = {
     }
   },
 
-  'css3-color': {
-    'title': 'Color',
-    'values': {
-      'properties': [
-        'color',
-        'background-color',
-        'border-color',
-        'text-decoration-color',
-        'column-rule-color'
-      ],
-      'rgba()': ['rgba(0, 0, 0, .5)', 'rgba(255, 0, 0, 1)', 'rgba(100%, 0%, 0%, 1)'],
-      'hsl()': 'hsl(0, 0%, 0%)',
-      'hsla()': 'hsla(0, 0%, 0%, .5)',
-      'transparent': 'transparent',
-      'currentColor': 'currentColor'
+  'css-overflow-3': {
+    'title': 'Overflow',
+    'properties': {
+      'overflow-x': ['paged-x', 'paged-y', 'paged-x-controls', 'paged-y-controls', 'fragments'],
+      'overflow-y': ['paged-x', 'paged-y', 'paged-x-controls', 'paged-y-controls', 'fragments'],
+      'overflow': ['paged-x', 'paged-y', 'paged-x-controls', 'paged-y-controls', 'fragments'],
+      'max-lines': ['none', '1']
     },
+    'selectors': {
+      '::nth-fragment()': 'div::nth-fragment(1)'
+    }
+  },
+
+  'css-sizing-3': {
+    'title': 'Intrinsic & Extrinsic Sizing',
+    'tr': 'http://www.w3.org/TR/css3-sizing/',
     'properties': {
-      'color': [
-        'aliceblue', 'antiquewhite', 'aquamarine', 'azure', 'beige', 'bisque',
-        'blanchedalmond', 'blueviolet', 'brown', 'burlywood', 'cadetblue',
-        'chartreuse', 'chocolate', 'coral', 'cornflowerblue', 'cornsilk',
-        'crimson', 'cyan', 'darkblue', 'darkcyan', 'darkgoldenrod', 'darkgray',
-        'darkgreen', 'darkgrey', 'darkkhaki', 'darkmagenta', 'darkolivegreen',
-        'darkorange', 'darkorchid', 'darkred', 'darksalmon', 'darkseagreen',
-        'darkslateblue', 'darkslategray', 'darkslategrey', 'darkturquoise',
-        'darkviolet', 'deeppink', 'deepskyblue', 'dimgray', 'dimgrey',
-        'dodgerblue', 'firebrick', 'floralwhite', 'forestgreen', 'gainsboro',
-        'ghostwhite', 'gold', 'goldenrod', 'greenyellow', 'grey', 'honeydew',
-        'hotpink', 'indianred', 'indigo', 'ivory', 'khaki', 'lavender',
-        'lavenderblush', 'lawngreen', 'lemonchiffon', 'lightblue',
-        'lightcoral', 'lightcyan', 'lightgoldenrodyellow', 'lightgray',
-        'lightgreen', 'lightgrey', 'lightpink', 'lightsalmon', 'lightseagreen',
-        'lightskyblue', 'lightslategray', 'lightslategrey', 'lightsteelblue',
-        'lightyellow', 'limegreen', 'linen', 'magenta', 'mediumaquamarine',
-        'mediumblue', 'mediumorchid', 'mediumpurple', 'mediumseagreen',
-        'mediumslateblue', 'mediumspringgreen', 'mediumturquoise', 'mediumvioletred',
-        'midnightblue', 'mintcream', 'mistyrose', 'moccasin', 'navajowhite',
-        'oldlace', 'olivedrab', 'orangered', 'orchid', 'palegoldenrod', 'palegreen',
-        'paleturquoise', 'palevioletred', 'papayawhip', 'peachpuff', 'peru',
-        'pink', 'plum', 'powderblue', 'rosybrown', 'royalblue', 'saddlebrown',
-        'salmon', 'sandybrown', 'seagreen', 'seashell', 'sienna', 'skyblue',
-        'slateblue', 'slategray', 'slategrey', 'snow', 'springgreen', 'steelblue',
-        'tan', 'thistle', 'tomato', 'turquoise', 'violet', 'wheat', 'whitesmoke', 'yellowgreen'
+      'width': ['fill-available', 'repudiate-floats'],
+      'min-width': ['fill-available', 'repudiate-floats', 'contain-floats'],
+      'max-width': ['fill-available', 'repudiate-floats'],
+      'height': ['fill-available', 'repudiate-floats'],
+      'min-height': ['fill-available', 'repudiate-floats', 'contain-floats'],
+      'max-height': ['fill-available', 'repudiate-floats'],
+      'column-width': ['min-content', 'max-content', 'fill-available', 'fit-content']
+    }
+  },
+
+  'css-gcpm-3': {
+    'title': 'Generated Content for Paged Media',
+    'tr': 'http://www.w3.org/TR/css3-gcpm/',
+    'properties': {
+      'string-set': ['none'].concat(['header'].and([
+        '\'foo\'', 'counter(par-num, upper-roman)', 'counters(par-num, upper-roman, disc)',
+        'contents', 'content-element', 'content-before', 'content-after', 'content-first-letter',
+        'env(url)', 'env(date)', 'env(time)', 'env(date-time)'
+      ])).concat([
+        'title contents', 'index content-first-letter', 'header content-before content-element',
+        'header \'Chapter \' counter(chapter) contents', 'header \'Chapter \' counter(header) \': \' contents',
+        'index \'foo\' attr(title) counter(par-num, upper-roman) counters(par-num, upper-roman, disc) contents content-element content-before content-after content-first-letter env(url) env(date) env(time) env(date-time)',
+        'index content-first-letter, entry contents', 'title env(date-time), header content-before, index content-after'
+      ]),
+      'marks': ['none', 'crop', 'cross', 'crop cross', 'cross crop'],
+      'bleed': ['6pt'],
+      'bookmark-level': ['none', '1'],
+      'bookmark-label': [
+        'none', '\'foo\'', 'counter(par-num, upper-roman)', 'counters(par-num, upper-roman, disc)',
+        'contents', 'content-element', 'content-before', 'content-after', 'content-first-letter',
+        'env(url)', 'env(date)', 'env(time)', 'env(date-time)', 'content-before \': \' contents',
+        '\'foo\' counter(par-num, upper-roman) counters(par-num, upper-roman, disc) contents content-element content-before content-after content-first-letter env(url) env(date) env(time) env(date-time)'
       ],
-      'opacity': ['1', '0', '2', '-5', '.5', '0.0', '1.0']
+      'bookmark-state': ['open', 'closed'],
+      'float-offset': ['0 0', '5px', '2em 3em'],
+      'clear-side': ['auto', 'both']
     }
   },
 
-  'css3-multicol': {
-    'title': 'Multi-column Layout',
+  'css-position-3': {
+    'title': 'Positioned Layout',
+    'tr': 'http://www.w3.org/TR/css3-positioning/',
     'properties': {
-      'column-width': ['10em', 'auto'],
-      'column-count': ['2', 'auto'],
-      'columns': ['100px', '3', '10em 2', 'auto 2', '10em auto', 'auto auto', '2 10em', 'auto 10em', '2 auto'],
-      'column-gap': ['1em', 'normal'],
-      'column-rule-color': 'red',
-      'column-rule-style': ['none', 'hidden', 'dotted', 'dashed', 'solid', 'double', 'groove', 'ridge', 'inset', 'outset'],
-      'column-rule-width': ['1px', 'thin', 'medium', 'thick'],
-      'column-rule': [
-        'medium', 'none', 'red', 'transparent',
-        'medium none', 'none medium', 'medium red', 'none red',
-        'red medium', 'red none', 'medium transparent', 'none transparent',
-        'transparent medium', 'transparent none',
-        '1px solid black', 'thin outset blue', 'thick yellow hidden', 'dashed white medium',
-        'dotted 10em purple', 'green double thin', 'black thick groove',
-        'transparent ridge medium', 'transparent thin inset'
-      ],
-      'break-before': ['auto', 'always', 'avoid', 'left', 'right', 'page', 'column', 'avoid-page', 'avoid-column'],
-      'break-after': ['auto', 'always', 'avoid', 'left', 'right', 'page', 'column', 'avoid-page', 'avoid-column'],
-      'break-inside': ['auto', 'avoid', 'avoid-page', 'avoid-column'],
-      'column-span': ['none', 'all'],
-      'column-fill': ['auto', 'balance']
+      'position': ['center', 'page'],
+      'offset-before': ['auto', '10px', '10%'],
+      'offset-end': ['auto', '10px', '10%'],
+      'offset-after': ['auto', '10px', '10%'],
+      'offset-start': ['auto', '10px', '10%'],
+      'clip': ['inset(5px, 40px, 45px, 5px)', 'inset(30%, 0%, 30%, 25%)']
     }
   },
 
-  'css3-cascade': {
-    'title': 'Cascading and Inheritance',
-    'properties': {
-      'all': ['default']
-    }
-  },
-
-  'css3-values': {
-    'title': 'Values and Units',
+  'css-counter-styles-3': {
+    'title': 'Counter Styles',
     'values': {
-      'properties': [
-        'top',
-        'bottom',
-        'left',
-        'right',
-        // 'width',
-        // 'height',
-        // 'max-width',
-        // 'max-height',
-        // 'min-width',
-        // 'min-height',
-        'margin',
-        // 'padding',
-        // 'font-size',
-        // 'line-height',
-        'background-position',
-        'text-indent',
-        'vertical-align'
+      'properties': ['list-style-type'],
+      'symbols()': [
+        'symbols(\'\')', 'symbols(url(foo.png))',
+        'symbols(linear-gradient(white, black))',
+        'symbols(cyclic \'\')', 'symbols(numeric url(foo.png))',
+        'symbols(alphabetic linear-gradient(white, black))',
+        'symbols(\'\' \'\')', 'symbols(url(foo.png) url(foo.png))',
+        'symbols(linear-gradient(white, black) linear-gradient(white, black))',
+        'symbols(symbolic \'\' \'\')',
+        'symbols(fixed url(foo.png) linear-gradient(white, black))',
+        'symbols(cyclic \'\' url(foo.png) linear-gradient(white, black))',
+        'symbols(numeric \'0\' radial-gradient(white, black) \'A\')'
+      ]
+    },
+    '@rules': {
+      '@counter-style': '@counter-style circled-lower-latin'
+    },
+    'descriptors': {
+      'atrule': '@counter-style circled-lower-latin',
+      'atruleName': '@counter-style',
+      'system': [
+        'symbolic', 'cyclic', 'numeric', 'alphabetic', 'additive',
+        'fixed', 'fixed 1', 'override triangle'
       ],
-      'initial': 'initial',
-      'ch': '5ch',
-      'rem': '5rem',
-      'vw': '5vw',
-      'vh': '5vh',
-      'vmin': '5vmin',
-      'vmax': '5vmax',
-      'calc()': [
-        /*'calc(1)', 'calc(0)', 'calc(-1)', 'calc(+1)', 'calc(1.1)',*/
-        'calc(1px)', 'calc(0px)', 'calc(-1px)', 'calc(+1px)', 'calc(1.1px)',
-        'calc(1%)', 'calc(0%)', 'calc(-1%)', 'calc(+1%)', 'calc(1.1%)',
-        'calc(1px + 2px)', 'calc(5px - 10px)', 'calc(5px * 2)', 'calc(5px / 2)',
-        'calc(100%/3 - 2*1em - 2*1px)'/*, 'calc(attr(data-px) * 2)'*/
+      'negative': [
+        '\'-\'', 'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'
+      ].times(1, 2),
+      'prefix': [
+        '\'\'', '\'-webkit-\'',
+        'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'
       ],
-      'toggle()': ['toggle(1px, 2px)', 'toggle(1px, 2px, 3px)'],
-      'attr()': [
-        'data-px',
-        'data-text string', 'data-text color', 'data-text url', 'data-text integer',
-        'data-text number', 'data-text length', 'data-text angle', 'data-text time',
-        'data-text frequency', 'data-text em', 'data-text ex', 'data-text px',
-        'data-text rem', 'data-text vw', 'data-text vh', 'data-text vmin',
-        'data-text vmax', 'data-text mm', 'data-text cm', 'data-text in',
-        'data-text pt', 'data-text pc', 'data-text deg', 'data-text grad',
-        'data-text rad', 'data-text ms', 'data-text s', 'data-text Hz',
-        'data-text kHz', 'data-text %',
-        'data-px, 1px', 'data-px px, 1px', 'data-px px, calc(1px)'
-      ].map(function (arg) {
-        return 'attr(' + arg + ')';
-      })
-    }
-  },
-
-  'css3-speech': {
-    'title': 'Speech',
-    'properties': {
-      'voice-volume': ['silent'].concat(
-        ['x-soft', 'soft', 'medium', 'loud', 'x-loud'].or(['-6dB', '0', '6db'])
-      ),
-      'voice-balance': ['center', '-100', '0', '1.1', '100', 'left', 'right', 'leftwards', 'rightwards'],
-      'speak': 'auto',
-      'speak-as': [
-        'normal', 'spell-out', 'digits', 'literal-punctuation', 'no-punctuation',
-        'spell-out digits', 'spell-out literal-punctuation', 'spell-out no-punctuation',
-        'digits spell-out', 'digits literal-punctuation', 'digits no-punctuation',
-        'literal-punctuation spell-out', 'literal-punctuation digits',
-        'no-punctuation spell-out', 'no-punctuation digits',
-        'spell-out digits literal-punctuation', 'spell-out digits no-punctuation',
-        'spell-out literal-punctuation digits', 'spell-out no-punctuation digits',
-        'digits spell-out literal-punctuation', 'digits spell-out no-punctuation',
-        'digits literal-punctuation spell-out', 'digits no-punctuation spell-out',
-        'literal-punctuation spell-out digits', 'literal-punctuation digits spell-out',
-        'no-punctuation spell-out digits', 'no-punctuation digits spell-out'
+      'suffix': [
+        '\'.\'', '\'kg\'',
+        'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'
       ],
-      'pause-before': ['none', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'],
-      'pause-after': ['none', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'],
-      'pause': ['none', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'].times(1, 2).concat(
-        ['20ms'].amp(['none', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'])
-      ),
-      'rest-before': ['none', '+3s', '250ms', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'],
-      'rest-after': ['none', '+3s', '250ms', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'],
-      'rest': ['none', '+3s', '250ms', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'].times(1, 2),
-      'cue-before': ['url(\'bell.aiff\') -6dB', 'url(\'dong.wav\') 0', 'url(\'pop.au\') 6db'],
-      'cue-after': ['url(/audio/bell.aiff) -6dB', 'url(../clips-1/pop.au) 0', 'url(./audio/caution.wav) 6db'],
-      'cue': ['url(/audio/bell.aiff) -6dB', 'url(../clips-1/pop.au) 0', 'url(./audio/caution.wav) 6db'].times(1, 2).concat(
-        ['none', '-6dB', '0', '6db', 'url(../clips-2/pop.au)'].amp(
-          ['url(\'bell.aiff\') -6dB', 'url(\'dong.wav\') 0', 'url(\'pop.au\') 6db']
-        )
-      ),
-      'voice-family': ['neutral', 'preserve'].concat(
-        ['child', 'young', 'old'].and(['male', 'female', 'neutral']),
-        ['male', 'female', 'neutral'].and(['1']),
-        ['child', 'young', 'old'].and(['male', 'female', 'neutral']).and(['1']),
-        [
-          'comedian, neutral', 'male, preserve', 'female, child male', 'romeo, young male 1',
-          'young female, juliet', 'child male, male 1', 'young male 1, young female 2',
-          'male, female, preserve'
-        ]
-      ),
-      'voice-rate': ['normal', 'x-slow', 'slow', 'medium', 'fast', 'x-fast'].or(['0', '100%']),
-      'voice-pitch': ['250Hz', '+250Hz', '-20Hz', '.2kHz'].amp(['absolute']).concat(
-        ['x-low', 'low', 'medium', 'high', 'x-high'].or(
-          ['0', '250Hz', '+250Hz', '-20Hz', '.2kHz', '-3.5st', '3.5st', '100%', '-100%']
-        )
-      ),
-      'voice-range': ['250Hz', '+250Hz', '-20Hz', '.2kHz'].amp(['absolute']).concat(
-        ['x-low', 'low', 'medium', 'high', 'x-high'].or(
-          ['0', '250Hz', '+250Hz', '-20Hz', '.2kHz', '-3.5st', '3.5st', '100%', '-100%']
-        )
-      ),
-      'voice-stress': ['normal', 'strong', 'moderate', 'none', 'reduced'],
-      'voice-duration': ['auto', '+3s', '250ms']
-    }
+      'range': ['auto'].concat(['1', 'infinite'].times(2), ['1 1, 1 1']),
+      'pad': ['0'].amp([
+        '\'\'', 'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'
+      ]),
+      'fallback': [
+        'decimal', 'decimal-leading-zero', 'cjk-decimal', 'lower-roman',
+        'upper-roman', 'armenian', 'georgian', 'hebrew',
+        'lower-alpha', 'lower-latin', 'upper-alpha', 'upper-latin',
+        'lower-greek', 'hiragana', 'hiragana-iroha',
+        'katakana', 'katakana-iroha',
+        'disc', 'circle', 'square', 'disclosure-open', 'disclosure-closed',
+        'japanese-informal', 'japanese-formal',
+        'korean-hangul-formal', 'korean-hanja-informal', 'korean-hanja-formal',
+        'simp-chinese-informal', 'simp-chinese-formal',
+        'trad-chinese-informal', 'trad-chinese-formal', 'cjk-ideographic',
+        'ethiopic-numeric'
+      ],
+      'symbols': [
+        '\'\'', 'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'
+      ].times(1, 2).concat([
+        '‣', '◰ ◳ ◲ ◱', '* ⁑ † ‡',
+        'A B C D E F G H I J K L M \nN O P Q R S T U V W X Y Z',
+        '\'0\' \'1\' \'2\' \'3\' \'4\' \'5\' \'6\' \'7\' \'8\' \'9\'',
+        'ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ⓚ ⓛ ⓜ ⓝ ⓞ ⓟ ⓠ ⓡ ⓢ ⓣ ⓤ ⓥ ⓦ ⓧ ⓨ ⓩ',
+        '\'1\' linear-gradient(white, black) あ'
+      ]),
+      'additive-symbols': ['0'].amp([
+        '\'\'', 'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'
+      ]).concat([
+        '3 \'a\', 2 \'b\'', '6 ⚅, 5 ⚄, 4 ⚃, 3 ⚂, 2 ⚁, 1 ⚀',
+        '\'0\' 0, 1 radial-gradient(white, black), 2 A'
+      ]),
+      'speak-as': ['auto', 'numeric', 'alphabetic', 'bullet', 'triangle']
+    },
   },
 
-  'css3-marquee': {
-    'title': 'Marquee',
+  'css-break-3': {
+    'title': 'Fragmentation',
+    'tr': 'http://www.w3.org/TR/css3-break/',
     'properties': {
-      'overflow-style': ['auto', 'marquee-line', 'marquee-block'],
-      'marquee-style': ['scroll', 'slide', 'alternate'],
-      'marquee-play-count': ['1', '0', 'infinite'],
-      'marquee-direction': ['forward', 'reverse'],
-      'marquee-speed': ['normal', 'slow', 'fast ']
+      'break-before': ['any', 'recto', 'verso'],
+      'break-after': ['any', 'recto', 'verso']
     }
   },
 
-  'css3-flexbox': {
-    'title': 'Flexible Box Layout',
-    'properties': {
-      'display': ['flex', 'inline-flex'],
-      'flex-direction': ['row', 'row-reverse', 'column', 'column-reverse'],
-      'flex-wrap': ['nowrap', 'wrap', 'wrap-reverse'],
-      'flex-flow': ['row', 'row-reverse', 'column', 'column-reverse'].or(['nowrap', 'wrap', 'wrap-reverse']),
-      'order': ['0', '1', '-1'],
-      'flex': ['none'].concat(['1', '1 1'].or(['auto', '10px', '10%'])),
-      'flex-grow': ['0', '5', '0.11'],
-      'flex-shrink': ['1', '10', '0', '0.11'],
-      'flex-basis': ['auto', '1px', '1%'],
-      'justify-content': ['flex-start', 'flex-end', 'center', 'space-between', 'space-around'],
-      'align-items': ['stretch', 'flex-start', 'flex-end', 'center', 'baseline'],
-      'align-self': ['auto', 'flex-start', 'flex-end', 'center', 'baseline', 'stretch'],
-      'align-content': ['stretch', 'flex-start', 'flex-end', 'center', 'space-between', 'space-around']
-    }
-  },
-
-  'css3-align': {
+  'css-align-3': {
     'title': 'Box Alignment',
+    'tr': 'http://www.w3.org/TR/css3-align/',
     'properties': {
       'justify-self': ['auto', 'baseline', 'start', 'end', 'center', 'stretch'].concat(
         ['baseline', 'start', 'end', 'center', 'stretch'].and(['true']),
@@ -1284,15 +1341,339 @@ window.Specs = {
     }
   },
 
-  'css3-break': {
-    'title': 'Fragmentation',
+  'css-cascade-3': {
+    'title': 'Cascading and Inheritance',
+    'tr': 'http://www.w3.org/TR/css3-cascade/',
     'properties': {
-      'break-before': ['any', 'recto', 'verso'],
-      'break-after': ['any', 'recto', 'verso']
+      'all': ['default']
     }
   },
 
-  'css-grid': {
+  'css-display-3': {
+    'title': 'Display',
+    'properties': {
+      'display-inside': ['auto', 'block', 'table', 'flex', 'grid'],
+      'display-outside': [
+        'inline-level', 'block-level', 'none', 'table-row-group', 'table-header-group',
+        'table-footer-group', 'table-row', 'table-cell', 'table-column-group',
+        'table-column', 'table-caption'
+      ],
+      'display-extras': ['none', 'list-item'],
+      'display': [
+        'auto', 'block-level', 'inline-level', 'normal', 'contents',
+        'auto inline-level', 'none normal', 'none none',
+        'auto inline-level normal', 'none none none',
+        'auto inline-level normal none'
+      ],
+      'box': ['normal', 'none', 'contents']
+    }
+  },
+
+  // Unmaintained CSS Level 3
+  'css-content-3': {
+    'title': 'Generated Content',
+    'tr': 'http://www.w3.org/TR/css3-content/',
+    'properties': {/*
+      'move-to': ['normal', 'here', 'ident', 'top-floats'],
+      'crop': [
+        'auto', 'rect(0px, 115px, 85px, 30px)', 'rect(10%, 10%, 10%, 10%)',
+        'inset-rect(0px, 115px, 85px, 30px)', 'inset-rect(10%, 10%, 10%, 10%)'
+      ],*/
+      'page-policy': ['start', 'first', 'last'],
+      'content': [
+        'inhibit', 'pending(insert)', 'contents', 'footnote', 'endnote',
+        'section-note', 'box', 'check', 'circle', 'diamond', 'disc', 'hyphen',
+        'square', 'date()', 'time()', 'document-url'/*, '<target>'*/,
+        'url(foo.png), none', 'icon, none', 'icon, icon',
+        'url(foo.png), url(foo.png), none'
+      ]
+    },
+    'selectors': {/*
+      '::outside': [
+        'note::outside', 'note::outside::before'
+      ],
+      '::outside()': [
+        'span::outside(1)', 'span::outside(1)::before', 'span::outside(2)::after'
+      ],
+      '::alternate': [
+        'span::alternate', 'span::alternate::before', 'span::after::alternate'
+      ],*/
+      '::line-marker': 'span::line-marker'
+    }/*,
+    '@rules': {
+      '@counter-styles': '@counter-styles',
+      '@counter': '@counter footnote',
+      '@string': '@string chapter',
+      '@footnote': '@footnote'
+    }*/
+  },
+
+  'css3-tables': {
+    'title': 'Tables',
+    'properties': {
+      'tab-position': ['0', '10px', '10%'],
+      'tab-align': ['none ', 'left', 'top', 'center', 'right', 'bottom', '\'foo\''],
+      'tab-leaders': ['\'\'', '\'foo\''],
+      'tab-leaders-alignment': ['aligned', 'centered', 'distributed'],
+      'tab': ['10px', '10%'].or(['none ', 'left', 'top', 'center', 'right', 'bottom', '\'foo\'']).concat(
+        ['10px', '10%'].or(['none ', 'left', 'top', 'center', 'right', 'bottom', '\'foo\'']).and(
+          ['\'foo\''].or(['aligned', 'centered', 'distributed']), ' / '
+        )
+      ),
+      'caption-side': ['left', 'right', 'before', 'after'].concat(
+        ['top', 'bottom', 'left', 'right', 'before', 'after'].amp(['outside'])
+      ),
+      'table-column-span': ['auto', 'attr(colspan)'],
+      'table-row-span': ['auto', 'attr(rowspan)'],
+      'table-baseline': '1',
+      'speak-header': ['once', 'always']
+    }
+  },
+
+  'css-grid-position-3': {
+    'title': 'Grid Positioning',
+    'tr': 'http://www.w3.org/TR/css3-grid/',
+    'properties': {
+      'grid-columns': ['none'].concat(/*
+        ['10px', '10%', '10fr', '*'].times(1, 3).map(function (arg) {
+          return '(' + arg + ')';
+        }),
+        ['10px', '10%', '10fr', '*'].times(1, 3).map(function (arg) {
+          return '(' + arg + ')[1]';
+        }),*/
+        ['10px', '10%', '10fr'].times(1, 3).map(function (arg) {
+          return 'repeat(' + arg + ')';
+        }),
+        [
+          /*'* * (0.5in * *)[2]', '* (1em *)[2]',
+          '10px (10px)', '(10px) (10px)', '10px (10px)[1]',
+          '10px 10px (10px)',*/
+          '10px repeat(10px)', 'repeat(10px) repeat(10px)',
+          '4em repeat(0.25em 1em)', '10px 10px repeat(10px)'
+        ]
+      ),
+      'grid-rows': ['none'].concat(
+        ['10px', '10%', '10fr'/*, '*'*/].times(1, 3).map(function (arg) {
+          return '(' + arg + ')';
+        }),
+        ['10px', '10%', '10fr'/*, '*'*/].times(1, 3).map(function (arg) {
+          return '(' + arg + ')[1]';
+        }),
+        [
+          '10px (10px)', '(10px) (10px)', '10px (10px)[1]',
+          '10px 10px (10px)'
+        ]
+      )
+    },
+    'values': {
+      'properties': [
+        'float-offset',
+        'width',
+        'left'
+      ],
+      'gr': '1gr'
+    }
+  },
+
+  'css3-marquee': {
+    'title': 'Marquee',
+    'properties': {
+      'overflow-style': ['auto', 'marquee-line', 'marquee-block'],
+      'marquee-style': ['scroll', 'slide', 'alternate'],
+      'marquee-play-count': ['1', '0', 'infinite'],
+      'marquee-direction': ['forward', 'reverse'],
+      'marquee-speed': ['normal', 'slow', 'fast ']
+    }
+  },
+
+  'css3-hyperlinks': {
+    'title': 'Hyperlink Presentation',
+    'properties': {
+      'target-name': ['current', 'root', 'parent', 'new', 'modal', '\'foo\''],
+      'target-new': ['window', 'tab', 'none'],
+      'target-position': ['above', 'behind', 'front', 'back'],
+      'target': ['current', 'root', 'parent', 'new', 'modal', '\'foo\''].concat(
+        ['window', 'tab', 'none'],
+        ['above', 'behind', 'front', 'back'],
+        ['current', 'root', 'parent', 'new', 'modal', '\'foo\''].and(['window', 'tab', 'none']),
+        ['current', 'root', 'parent', 'new', 'modal', '\'foo\''].and(['above', 'behind', 'front', 'back']),
+        ['window', 'tab', 'none'].and(['current', 'root', 'parent', 'new', 'modal', '\'foo\'']),
+        ['window', 'tab', 'none'].and(['above', 'behind', 'front', 'back']),
+        ['above', 'behind', 'front', 'back'].and(['current', 'root', 'parent', 'new', 'modal', '\'foo\'']),
+        ['above', 'behind', 'front', 'back'].and(['window', 'tab', 'none']),
+        ['current window above', 'behind tab root']
+      )
+    }
+  },
+
+  // CSS Level 3?
+  'css-line-grid': {
+    'title': 'Line Grid',
+    'properties': {
+      'line-grid': ['root-grid', 'ident'],
+      'line-snap': ['none', 'baseline', 'contain'],
+      'line-slack': ['none', '1'],
+      'box-snap': ['none', 'margin-box', 'border-box', 'half-border'].concat(
+        ['none', 'margin-box', 'border-box', 'half-border'].and(['ident'].times(1, 4), ' / ')
+      )
+    }
+  },
+
+  'css-module': {
+    'title': 'Template',
+    'properties': {
+      'display-inside': ['text', 'inline-inside', 'block-inside', 'ruby', 'icon']
+    }
+  },
+
+  // New CSS Level 1~3
+  'css-namespaces-1': {
+    'title': 'Namespaces',
+    'tr': 'http://www.w3.org/TR/css3-namespace/',
+    '@rules': {
+      '@namespace': [
+        '@namespace \'http://www.w3.org/1999/xhtml\';',
+        '@namespace svg \'http://www.w3.org/2000/svg\';',
+        '@namespace url(http://www.w3.org/1999/xhtml);',
+        '@namespace svg url(http://www.w3.org/2000/svg);'
+      ]
+    }
+  },
+
+  'css-transitions-1': {
+    'title': 'Transitions',
+    'tr': 'http://www.w3.org/TR/css3-transitions/',
+    'properties': {
+      'transition-property': [
+        'all', 'none',
+        'background-color', 'background-position', 'border-bottom-color', 'border-bottom-width',
+        'border-left-color', 'border-left-width', 'border-right-color', 'border-right-width',
+        'border-spacing', 'border-top-color', 'border-top-width', 'bottom',
+        'clip', 'color', 'font-size', 'font-weight', 'height', 'left', 'letter-spacing',
+        'line-height', 'margin-bottom', 'margin-left', 'margin-right',
+        'margin-top', 'max-height', 'max-width', 'min-height',
+        'min-width', 'opacity', 'outline-color', 'outline-width',
+        'padding-bottom', 'padding-left', 'padding-right',
+        'padding-top', 'right', 'text-indent', 'text-shadow',
+        'top', 'vertical-align', 'visibility', 'width', 'word-spacing', 'z-index',
+        'all, all', 'all, background-color', 'width, height', 'width, all, height'
+      ],
+      'transition-duration': ['0s', '1s', '100ms', '0s, 10s', '0ms, 10s, 100s'],
+      'transition-timing-function': [
+        'ease', 'linear', 'ease-in', 'ease-out', 'ease-in-out',
+        'step-start', 'step-end', 'steps(1)', 'steps(3, start)', 'steps(5, end)',
+        'cubic-bezier(.5, .5, .5, .5)', 'cubic-bezier(.5, 1.5, .5, -2.5)',
+        'ease, linear', 'ease, ease, ease'
+      ],
+      'transition-delay': ['0s', '-1s', '100ms', '0s, 10s', '-100ms, 1s, 10s'],
+      'transition': [
+        'none', 'all', 'background-color', '0s', 'ease', '-1s',
+        'all 0s', '-1s 1s', 'background-color 0.1s ease', 'background-position 10ms linear 1s',
+        'background-color linear 1s', '1s 2s width linear', 'border-bottom-color ease-in', '100s 100ms',
+        'all, all', 'all, background-color', '-1s, -1s', 'all, 1s, ease-in-out',
+        '10s border-left-color step-start, step-end, steps(10, start) all',
+        'cubic-bezier(.5, 1.5, .5, -2.5) -10ms, -1s all 10s, all ease-in-out',
+        'all 1s ease 2s, cubic-bezier(0.25, 0.1, 0.25, 1) 60s 1ms opacity'
+      ]
+    }
+  },
+
+  'css-animations-1': {
+    'title': 'Animations',
+    'tr': 'http://www.w3.org/TR/css3-animations/',
+    'properties': {
+      'animation-name': ['none', 'foo', 'foo, bar', 'none, foo, bar'],
+      'animation-duration': ['0s', '1s', '100ms', '1s, 2s', '0ms, 1s, 3s'],
+      'animation-timing-function': [
+        'ease', 'linear', 'ease-in', 'ease-out', 'ease-in-out',
+        'step-start', 'step-end', 'steps(1)', 'steps(3, start)', 'steps(5, end)',
+        'cubic-bezier(.5, .5, .5, .5)', 'cubic-bezier(.5, 1.5, .5, -2.5)',
+        'ease, linear', 'ease, ease, ease'
+      ],
+      'animation-iteration-count': ['infinite', '8', '4.35', '1, .5', '0, 1, 2'],
+      'animation-direction': [
+        'normal', 'reverse', 'alternate', 'alternate-reverse',
+        'normal, reverse', 'normal, normal, alternate-reverse'
+      ],
+      'animation-play-state': [
+        'running', 'paused',
+        'running, paused', 'paused, paused, paused'
+      ],
+      'animation-delay': ['1s', '-1s', '0s, 1ms', '-10s, 0s, 10s'],
+      'animation-fill-mode': [
+        'none', 'forwards', 'backwards', 'both',
+        'none, forwards', 'none, none, none'
+      ],
+      'animation': [
+        'none', 'foo', '0s', 'ease', 'linear', 'ease-in', 'ease-out',
+        'ease-in-out', 'step-start', 'step-end', 'steps(1)',
+        'steps(3, start)', 'steps(5, end)', 'cubic-bezier(.5, .5, .5, .5)',
+        'cubic-bezier(.5, 1.5, .5, -2.5)', '1', 'infinite', 'normal',
+        'reverse', 'alternate', 'alternate-reverse', 'running', 'paused',
+        '0s', 'none', 'forwards', 'backwards', 'both',
+        'none 0s', 'both paused', 'none none', '-1s 0s', 'foo running',
+        'none -1s cubic-bezier(.5, 1.5, .5, -2.5)',
+        'foo 1s 2s infinite linear alternate both',
+        'none 0s ease 0s 1 normal none running',
+        'none, none', '-1s, -1s', 'none 0s, both paused',
+        'none 0s ease 0s 1 normal none running, none 0s ease 1 normal running 0s none',
+        '0s, 0s, 0s'
+      ]
+    },
+    '@rules': {
+      '@keyframes': '@keyframes foo'
+    }
+  },
+
+  'css-multicol-1': {
+    'title': 'Multi-column Layout',
+    'tr': 'http://www.w3.org/TR/css3-multicol/',
+    'properties': {
+      'column-width': ['10em', 'auto'],
+      'column-count': ['2', 'auto'],
+      'columns': ['100px', '3', '10em 2', 'auto 2', '10em auto', 'auto auto', '2 10em', 'auto 10em', '2 auto'],
+      'column-gap': ['1em', 'normal'],
+      'column-rule-color': 'red',
+      'column-rule-style': ['none', 'hidden', 'dotted', 'dashed', 'solid', 'double', 'groove', 'ridge', 'inset', 'outset'],
+      'column-rule-width': ['1px', 'thin', 'medium', 'thick'],
+      'column-rule': [
+        'medium', 'none', 'red', 'transparent',
+        'medium none', 'none medium', 'medium red', 'none red',
+        'red medium', 'red none', 'medium transparent', 'none transparent',
+        'transparent medium', 'transparent none',
+        '1px solid black', 'thin outset blue', 'thick yellow hidden', 'dashed white medium',
+        'dotted 10em purple', 'green double thin', 'black thick groove',
+        'transparent ridge medium', 'transparent thin inset'
+      ],
+      'break-before': ['auto', 'always', 'avoid', 'left', 'right', 'page', 'column', 'avoid-page', 'avoid-column'],
+      'break-after': ['auto', 'always', 'avoid', 'left', 'right', 'page', 'column', 'avoid-page', 'avoid-column'],
+      'break-inside': ['auto', 'avoid', 'avoid-page', 'avoid-column'],
+      'column-span': ['none', 'all'],
+      'column-fill': ['auto', 'balance']
+    }
+  },
+
+  'css-flexbox-1': {
+    'title': 'Flexible Box Layout',
+    'tr': 'http://www.w3.org/TR/css3-flexbox/',
+    'properties': {
+      'display': ['flex', 'inline-flex'],
+      'flex-direction': ['row', 'row-reverse', 'column', 'column-reverse'],
+      'flex-wrap': ['nowrap', 'wrap', 'wrap-reverse'],
+      'flex-flow': ['row', 'row-reverse', 'column', 'column-reverse'].or(['nowrap', 'wrap', 'wrap-reverse']),
+      'order': ['0', '1', '-1'],
+      'flex': ['none'].concat(['1', '1 1'].or(['auto', '10px', '10%'])),
+      'flex-grow': ['0', '5', '0.11'],
+      'flex-shrink': ['1', '10', '0', '0.11'],
+      'flex-basis': ['auto', '1px', '1%'],
+      'justify-content': ['flex-start', 'flex-end', 'center', 'space-between', 'space-around'],
+      'align-items': ['stretch', 'flex-start', 'flex-end', 'center', 'baseline'],
+      'align-self': ['auto', 'flex-start', 'flex-end', 'center', 'baseline', 'stretch'],
+      'align-content': ['stretch', 'flex-start', 'flex-end', 'center', 'space-between', 'space-around']
+    }
+  },
+
+  'css-grid-1': {
     'title': 'Grid Layout',
     'tr': 'http://www.w3.org/TR/css3-grid-layout/',
     'properties': {
@@ -1382,8 +1763,9 @@ window.Specs = {
     }
   },
 
-  'css3-layout': {
+  'css-template-1': {
     'title': 'Grid Template Layout',
+    'tr': 'http://www.w3.org/TR/css3-layout/',
     'properties': {
       'grid-template': ['\'*\'', '\'****\' \'****\' \'****\''],
       'grid-columns': [
@@ -1430,528 +1812,6 @@ window.Specs = {
     }
   },
 
-  'css3-grid': {
-    'title': 'Grid Positioning',
-    'properties': {
-      'grid-columns': ['none'].concat(/*
-        ['10px', '10%', '10fr', '*'].times(1, 3).map(function (arg) {
-          return '(' + arg + ')';
-        }),
-        ['10px', '10%', '10fr', '*'].times(1, 3).map(function (arg) {
-          return '(' + arg + ')[1]';
-        }),*/
-        ['10px', '10%', '10fr'].times(1, 3).map(function (arg) {
-          return 'repeat(' + arg + ')';
-        }),
-        [
-          /*'* * (0.5in * *)[2]', '* (1em *)[2]',
-          '10px (10px)', '(10px) (10px)', '10px (10px)[1]',
-          '10px 10px (10px)',*/
-          '10px repeat(10px)', 'repeat(10px) repeat(10px)',
-          '4em repeat(0.25em 1em)', '10px 10px repeat(10px)'
-        ]
-      ),
-      'grid-rows': ['none'].concat(
-        ['10px', '10%', '10fr'/*, '*'*/].times(1, 3).map(function (arg) {
-          return '(' + arg + ')';
-        }),
-        ['10px', '10%', '10fr'/*, '*'*/].times(1, 3).map(function (arg) {
-          return '(' + arg + ')[1]';
-        }),
-        [
-          '10px (10px)', '(10px) (10px)', '10px (10px)[1]',
-          '10px 10px (10px)'
-        ]
-      )
-    },
-    'values': {
-      'properties': [
-        'float-offset',
-        'width',
-        'left'
-      ],
-      'gr': '1gr'
-    }
-  },
-
-  'css3-ruby': {
-    'title': 'Ruby',
-    'properties': {
-      'ruby-position': ['before', 'after', 'inter-character', 'inline'],
-      'ruby-align': ['auto', 'start', 'left', 'center', 'end', 'right', 'distribute-letter', 'distribute-space', 'line-edge'],
-      'ruby-overhang': ['auto', 'start', 'end', 'none'],
-      'ruby-span': ['none', 'attr(rbspan)']
-    }
-  },
-
-  'css3-box': {
-    'title': 'Basic Box Model',
-    'properties': {
-      'display': [
-        'run-in', 'compact',
-        'ruby', 'ruby-base', 'ruby-text', 'ruby-base-group', 'ruby-text-group',
-        'container'
-      ],
-      'padding': ['auto'].times(1, 4).concat([
-        'auto 1px', '10% auto',
-        'auto 1px 10%', '1px auto 10%', '1px 10% auto',
-        'auto 1px 10% 100em', '1px auto 10% 100em', '1px 10% auto 100em', '1px 10% 100em auto'
-      ]),
-      'padding-top': 'auto',
-      'padding-right': 'auto',
-      'padding-bottom': 'auto',
-      'padding-left': 'auto',
-      'margin-top': 'fill',
-      'margin-right': 'fill',
-      'margin-bottom': 'fill',
-      'margin-left': 'fill',
-      'margin': ['fill'].times(1, 4).concat([
-        'fill 1px', '10% fill',
-        'fill 1px 10%', '1px fill 10%', '1px 10% fill',
-        'fill 1px 10% auto', '1px fill 10% auto', '1px 10% fill auto', '1px 10% auto fill'
-      ]),
-      'width': ['1px', '1%'].and(['border-box', 'content-box']).concat(
-        ['border-box', 'content-box'].and(['1px', '1%']),
-        ['available', 'min-content', 'max-content', 'fit-content']
-      ),
-      'height': ['1px', '1%'].and(['border-box', 'content-box']).concat(
-        ['border-box', 'content-box'].and(['1px', '1%']),
-        ['available', 'min-content', 'max-content', 'fit-content', 'complex']
-      ),
-      'min-width': ['1px', '1%'].and(['border-box', 'content-box']).concat(
-        ['border-box', 'content-box'].and(['1px', '1%']),
-        ['available', 'min-content', 'max-content', 'fit-content']
-      ),
-      'min-height': ['1px', '1%'].and(['border-box', 'content-box']).concat(
-        ['border-box', 'content-box'].and(['1px', '1%']),
-        ['available', 'min-content', 'max-content', 'fit-content']
-      ),
-      'max-width': ['1px', '1%'].and(['border-box', 'content-box']).concat(
-        ['border-box', 'content-box'].and(['1px', '1%']),
-        ['available', 'min-content', 'max-content', 'fit-content']
-      ),
-      'max-height': ['1px', '1%'].and(['border-box', 'content-box']).concat(
-        ['border-box', 'content-box'].and(['1px', '1%']),
-        ['available', 'min-content', 'max-content', 'fit-content']
-      ),
-      'float': [
-        'top', 'bottom', 'start', 'end',
-        'inside', 'outside', 'page', 'multicol', 'intrude',
-        'unless-room', 'next', 'page(landscape)', 'hide'
-      ].concat(
-        [
-          'left', 'right', 'top', 'bottom', 'start', 'end',
-          'inside', 'outside', 'page', 'multicol', 'intrude',
-          'unless-room', 'next', 'page(landscape)', 'hide'
-        ].and(['contour']),
-        ['contour'].and([
-          'left', 'right', 'top', 'bottom', 'start', 'end',
-          'inside', 'outside', 'page', 'multicol', 'intrude',
-          'unless-room', 'next', 'page(landscape)', 'hide'
-        ])
-      ),
-      'clear-after': [
-        'none', 'left', 'right', 'top', 'bottom', 'inside', 'outside',
-        'start', 'end', 'both', 'descendants'
-      ],
-      'overflow-x': ['visible', 'hidden', 'scroll', 'auto', 'no-display', 'no-content'],
-      'overflow-y': ['visible', 'hidden', 'scroll', 'auto', 'no-display', 'no-content'],
-      'overflow': ['no-display', 'no-content'].times(1, 2).concat(
-        ['visible', 'hidden', 'scroll', 'auto'].and(['no-display', 'no-content']),
-        ['no-display', 'no-content'].and(['visible', 'hidden', 'scroll', 'auto'])
-      ),
-      'alignment': ['top', 'right', 'bottom', 'left', 'center'],
-      'child-align': ['auto', 'top', 'middle', 'bottom', 'left', 'right'],
-      'float-displace': ['line', 'indent', 'block', 'block-within-page'],
-      'indent-edge-reset': ['none', 'margin-edge', 'border-edge', 'padding-edge', 'content-edge']
-    }
-  },
-
-  'css3-overflow': {
-    'title': 'Overflow',
-    'properties': {
-      'overflow-x': ['paged-x', 'paged-y', 'paged-x-controls', 'paged-y-controls', 'fragments'],
-      'overflow-y': ['paged-x', 'paged-y', 'paged-x-controls', 'paged-y-controls', 'fragments'],
-      'overflow': ['paged-x', 'paged-y', 'paged-x-controls', 'paged-y-controls', 'fragments'],
-      'max-lines': ['none', '1']
-    },
-    'selectors': {
-      '::nth-fragment()': 'div::nth-fragment(1)'
-    }
-  },
-
-  'css3-sizing': {
-    'title': 'Intrinsic & Extrinsic Sizing',
-    'properties': {
-      'width': ['fill-available', 'repudiate-floats'],
-      'min-width': ['fill-available', 'repudiate-floats', 'contain-floats'],
-      'max-width': ['fill-available', 'repudiate-floats'],
-      'height': ['fill-available', 'repudiate-floats'],
-      'min-height': ['fill-available', 'repudiate-floats', 'contain-floats'],
-      'max-height': ['fill-available', 'repudiate-floats'],
-      'column-width': ['min-content', 'max-content', 'fill-available', 'fit-content']
-    }
-  },
-
-  'css3-positioning': {
-    'title': 'Positioned Layout',
-    'properties': {
-      'position': ['center', 'page'],
-      'offset-before': ['auto', '10px', '10%'],
-      'offset-end': ['auto', '10px', '10%'],
-      'offset-after': ['auto', '10px', '10%'],
-      'offset-start': ['auto', '10px', '10%'],
-      'clip': ['inset(5px, 40px, 45px, 5px)', 'inset(30%, 0%, 30%, 25%)']
-    }
-  },
-
-  'css3-linebox': {
-    'title': 'Line Layout',
-    'properties': {
-      'text-height': ['auto', 'font-size', 'text-size', 'max-size', '10.52'],
-      'line-height': ['none'],
-      'line-box-contain': ['block', 'inline', 'font', 'glyphs', 'replaced', 'inline-box', 'none'],
-      'line-stacking-strategy': ['inline-line-height', 'block-line-height', 'max-height', 'grid-height'],
-      'line-stacking-ruby': ['exclude-ruby', 'include-ruby'],
-      'line-stacking-shift': ['consider-shifts', 'disregard-shifts'],
-      'line-stacking': [
-        'inline-line-height', 'block-line-height', 'max-height', 'grid-height', 'exclude-ruby', 'include-ruby', 'consider-shifts', 'disregard-shifts'
-      ].concat(
-        ['inline-line-height', 'block-line-height', 'max-height', 'grid-height'].and(['exclude-ruby', 'include-ruby']),
-        ['inline-line-height', 'block-line-height', 'max-height', 'grid-height'].and(['consider-shifts', 'disregard-shifts']),
-        ['exclude-ruby', 'include-ruby'].and(['inline-line-height', 'block-line-height', 'max-height', 'grid-height']),
-        ['exclude-ruby', 'include-ruby'].and(['consider-shifts', 'disregard-shifts']),
-        ['consider-shifts', 'disregard-shifts'].and(['inline-line-height', 'block-line-height', 'max-height', 'grid-height']),
-        ['consider-shifts', 'disregard-shifts'].and(['exclude-ruby', 'include-ruby']),
-        ['inline-line-height', 'block-line-height', 'max-height', 'grid-height'].and(['exclude-ruby', 'include-ruby']).and(['consider-shifts', 'disregard-shifts']),
-        ['inline-line-height', 'block-line-height', 'max-height', 'grid-height'].and(['consider-shifts', 'disregard-shifts']).and(['exclude-ruby', 'include-ruby']),
-        ['exclude-ruby', 'include-ruby'].and(['inline-line-height', 'block-line-height', 'max-height', 'grid-height']).and(['consider-shifts', 'disregard-shifts']),
-        ['exclude-ruby', 'include-ruby'].and(['consider-shifts', 'disregard-shifts']).and(['inline-line-height', 'block-line-height', 'max-height', 'grid-height']),
-        ['consider-shifts', 'disregard-shifts'].and(['inline-line-height', 'block-line-height', 'max-height', 'grid-height']).and(['exclude-ruby', 'include-ruby']),
-        ['consider-shifts', 'disregard-shifts'].and(['exclude-ruby', 'include-ruby']).and(['inline-line-height', 'block-line-height', 'max-height', 'grid-height'])
-      ),
-      'dominant-baseline': ['auto', 'use-script', 'no-change', 'reset-size', 'alphabetic', 'hanging', 'ideographic', 'mathematical', 'central', 'middle', 'text-after-edge', 'text-before-edge'],
-      'alignment-baseline': ['baseline', 'use-script', 'before-edge', 'text-before-edge', 'after-edge', 'text-after-edge', 'central', 'middle', 'ideographic', 'alphabetic', 'hanging', 'mathematical'],
-      'alignment-adjust': ['auto', 'baseline', 'before-edge', 'text-before-edge', 'middle', 'central', 'after-edge', 'text-after-edge', 'ideographic', 'alphabetic', 'hanging', 'mathematical', '0%', '10%', '0cm', '10px'],
-      'baseline-shift': ['baseline', 'sub', 'super', '0%', '10%', '0cm', '10px'],
-      'vertical-align': ['auto', 'central'],
-      'inline-box-align': ['last', 'initial', '1'],
-      'drop-initial-value': ['initial', '1'],
-      'drop-initial-size': ['auto', '&lt;line&gt;', '10%', '10px'],
-      'drop-initial-after-align': ['baseline', 'use-script', 'before-edge', 'text-before-edge', 'after-edge', 'text-after-edge', 'central', 'middle', 'ideographic', 'alphabetic', 'hanging', 'mathematical'],
-      'drop-initial-after-adjust': ['text-after-edge', 'central', 'middle', 'after-edge', 'ideographic', 'alphabetic', 'mathematical', '0%', '10%', '0cm', '10px'],
-      'drop-initial-before-align': ['caps-height', 'baseline', 'use-script', 'before-edge', 'text-before-edge', 'after-edge', 'text-after-edge', 'central', 'middle', 'ideographic', 'alphabetic', 'hanging', 'mathematical'],
-      'drop-initial-before-adjust': ['text-before-edge', 'before-edge', 'central', 'middle', 'hanging', 'mathematical', '0%', '10%', '0cm', '10px'],
-    }
-  },
-
-  'css3-page': {
-    'title': 'Paged Media',
-    'properties': {
-      'size': ['auto', '4in', '8.5in 11in'].concat(
-        ['A5', 'A4', 'A3', 'B5', 'B4', 'letter', 'legal', 'ledger'].or(['portrait', ' landscape'])
-      ),
-      'page': ['auto', 'rotated', 'narrow', 'main', 'index']
-    },
-    '@rules': {
-      '@page': [
-        '@page :blank', '@page LandscapeTable', '@page :left:right', '@page :left:left',
-        '@page :left:right:first', '@page :left:right:first:blank',
-        '@page CompanyLetterHead:left', '@page CompanyLetterHead:right',
-        '@page CompanyLetterHead:first', '@page CompanyLetterHead:blank', '@page page:left:right',
-        '@page :left, :right', '@page toc, index', '@page toc, :first',
-        '@page page:left:right, :left:right:first:blank'
-      ]/*,
-      // It seems that Page-Margin Boxes need CSSOM API.
-      '@top-left-corner': '@top-left-corner',
-      '@top-left': '@top-left',
-      '@top-center': '@top-center',
-      '@top-right': '@top-right',
-      '@top-right-corner': '@top-right-corner',
-      '@bottom-left-corner': '@bottom-left-corner',
-      '@bottom-left': '@bottom-left',
-      '@bottom-center': '@bottom-center',
-      '@bottom-right': '@bottom-right',
-      '@bottom-right-corner': '@bottom-right-corner',
-      '@left-top': '@left-top',
-      '@left-middle': '@left-middle',
-      '@right-top': '@right-top',
-      '@right-middle': '@right-middle',
-      '@right-bottom': '@right-bottom'*/
-    }
-  },
-
-  'css3-content': {
-    'title': 'Generated Content',
-    'properties': {/*
-      'move-to': ['normal', 'here', 'ident', 'top-floats'],
-      'crop': [
-        'auto', 'rect(0px, 115px, 85px, 30px)', 'rect(10%, 10%, 10%, 10%)',
-        'inset-rect(0px, 115px, 85px, 30px)', 'inset-rect(10%, 10%, 10%, 10%)'
-      ],*/
-      'page-policy': ['start', 'first', 'last'],
-      'content': [
-        'inhibit', 'pending(insert)', 'contents', 'footnote', 'endnote',
-        'section-note', 'box', 'check', 'circle', 'diamond', 'disc', 'hyphen',
-        'square', 'date()', 'time()', 'document-url'/*, '<target>'*/,
-        'url(foo.png), none', 'icon, none', 'icon, icon',
-        'url(foo.png), url(foo.png), none'
-      ]
-    },
-    'selectors': {/*
-      '::outside': [
-        'note::outside', 'note::outside::before'
-      ],
-      '::outside()': [
-        'span::outside(1)', 'span::outside(1)::before', 'span::outside(2)::after'
-      ],
-      '::alternate': [
-        'span::alternate', 'span::alternate::before', 'span::after::alternate'
-      ],*/
-      '::line-marker': 'span::line-marker'
-    }/*,
-    '@rules': {
-      '@counter-styles': '@counter-styles',
-      '@counter': '@counter footnote',
-      '@string': '@string chapter',
-      '@footnote': '@footnote'
-    }*/
-  },
-
-  'css3-gcpm': {
-    'title': 'Generated Content for Paged Media',
-    'properties': {
-      'string-set': ['none'].concat(['header'].and([
-        '\'foo\'', 'counter(par-num, upper-roman)', 'counters(par-num, upper-roman, disc)',
-        'contents', 'content-element', 'content-before', 'content-after', 'content-first-letter',
-        'env(url)', 'env(date)', 'env(time)', 'env(date-time)'
-      ])).concat([
-        'title contents', 'index content-first-letter', 'header content-before content-element',
-        'header \'Chapter \' counter(chapter) contents', 'header \'Chapter \' counter(header) \': \' contents',
-        'index \'foo\' attr(title) counter(par-num, upper-roman) counters(par-num, upper-roman, disc) contents content-element content-before content-after content-first-letter env(url) env(date) env(time) env(date-time)',
-        'index content-first-letter, entry contents', 'title env(date-time), header content-before, index content-after'
-      ]),
-      'marks': ['none', 'crop', 'cross', 'crop cross', 'cross crop'],
-      'bleed': ['6pt'],
-      'bookmark-level': ['none', '1'],
-      'bookmark-label': [
-        'none', '\'foo\'', 'counter(par-num, upper-roman)', 'counters(par-num, upper-roman, disc)',
-        'contents', 'content-element', 'content-before', 'content-after', 'content-first-letter',
-        'env(url)', 'env(date)', 'env(time)', 'env(date-time)', 'content-before \': \' contents',
-        '\'foo\' counter(par-num, upper-roman) counters(par-num, upper-roman, disc) contents content-element content-before content-after content-first-letter env(url) env(date) env(time) env(date-time)'
-      ],
-      'bookmark-state': ['open', 'closed'],
-      'float-offset': ['0 0', '5px', '2em 3em'],
-      'clear-side': ['auto', 'both']
-    }
-  },
-
-  'css3-lists': {
-    'title': 'Lists and Counters',
-    'properties': {
-      'display': ['inline-list-item'],
-      'list-style-image': ['image(\'sprites.svg#xywh=40,0,20,20\')', 'radial-gradient(circle, #006, #00a 90%, #0000af 100%, white 100%)'],
-      'list-style-type': [
-        '\'★\'', 'cjk-decimal', 'hebrew', 'hiragana', 'hiragana-iroha', 'katakana', 'katakana-iroha', 'disclosure-open', 'disclosure-closed',
-        'japanese-informal', 'japanese-formal', 'korean-hangul-formal', 'korean-hanja-informal', 'korean-hanja-formal',
-        'simp-chinese-informal', 'simp-chinese-formal', 'trad-chinese-informal', 'trad-chinese-formal', 'cjk-ideographic',
-        'ethiopic-numeric', 'circled-lower-latin', 'symbols(repeating \'○\' \'●\')', 'toggle(disc, square, circle)'
-      ],
-      'list-style': [
-        'hebrew', 'linear-gradient(white, black)',
-        'hiragana radial-gradient(white, black)', 'hiragana-iroha outside',
-        'repeating-linear-gradient(white, black) katakana', 'repeating-radial-gradient(white, black) inside',
-        'outside katakana-iroha', 'inside linear-gradient(to left, white, black)',
-        'cjk-ideographic radial-gradient(at center, white, black) outside',
-        'repeating-linear-gradient(to left, white, black) hebrew inside',
-        'outside hiragana repeating-radial-gradient(at center, white, black)',
-        'inside radial-gradient(closest-side ellipse at 10px 10%, white, black) hiragana-iroha'
-      ],
-      'position': ['marker'],
-      'marker-side': ['list-item', 'list-container'],
-      'counter-set': ['none', 'section', 'chapter 0', 'section -1 imagenum 99', 'list-item attr(value integer, 1)']
-    },
-    'selectors': {
-      '::marker': 'li::marker'
-    }
-  },
-
-  'css-counter-styles-3': {
-    'title': 'Counter Styles',
-    'values': {
-      'properties': ['list-style-type'],
-      'symbols()': [
-        'symbols(\'\')', 'symbols(url(foo.png))',
-        'symbols(linear-gradient(white, black))',
-        'symbols(cyclic \'\')', 'symbols(numeric url(foo.png))',
-        'symbols(alphabetic linear-gradient(white, black))',
-        'symbols(\'\' \'\')', 'symbols(url(foo.png) url(foo.png))',
-        'symbols(linear-gradient(white, black) linear-gradient(white, black))',
-        'symbols(symbolic \'\' \'\')',
-        'symbols(fixed url(foo.png) linear-gradient(white, black))',
-        'symbols(cyclic \'\' url(foo.png) linear-gradient(white, black))',
-        'symbols(numeric \'0\' radial-gradient(white, black) \'A\')'
-      ]
-    },
-    '@rules': {
-      '@counter-style': '@counter-style circled-lower-latin'
-    },
-    'descriptors': {
-      'atrule': '@counter-style circled-lower-latin',
-      'atruleName': '@counter-style',
-      'system': [
-        'symbolic', 'cyclic', 'numeric', 'alphabetic', 'additive',
-        'fixed', 'fixed 1', 'override triangle'
-      ],
-      'negative': [
-        '\'-\'', 'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'
-      ].times(1, 2),
-      'prefix': [
-        '\'\'', '\'-webkit-\'',
-        'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'
-      ],
-      'suffix': [
-        '\'.\'', '\'kg\'',
-        'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'
-      ],
-      'range': ['auto'].concat(['1', 'infinite'].times(2), ['1 1, 1 1']),
-      'pad': ['0'].amp([
-        '\'\'', 'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'
-      ]),
-      'fallback': [
-        'decimal', 'decimal-leading-zero', 'cjk-decimal', 'lower-roman',
-        'upper-roman', 'armenian', 'georgian', 'hebrew',
-        'lower-alpha', 'lower-latin', 'upper-alpha', 'upper-latin',
-        'lower-greek', 'hiragana', 'hiragana-iroha',
-        'katakana', 'katakana-iroha',
-        'disc', 'circle', 'square', 'disclosure-open', 'disclosure-closed',
-        'japanese-informal', 'japanese-formal',
-        'korean-hangul-formal', 'korean-hanja-informal', 'korean-hanja-formal',
-        'simp-chinese-informal', 'simp-chinese-formal',
-        'trad-chinese-informal', 'trad-chinese-formal', 'cjk-ideographic',
-        'ethiopic-numeric'
-      ],
-      'symbols': [
-        '\'\'', 'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'
-      ].times(1, 2).concat([
-        '‣', '◰ ◳ ◲ ◱', '* ⁑ † ‡',
-        'A B C D E F G H I J K L M \nN O P Q R S T U V W X Y Z',
-        '\'0\' \'1\' \'2\' \'3\' \'4\' \'5\' \'6\' \'7\' \'8\' \'9\'',
-        'ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ⓚ ⓛ ⓜ ⓝ ⓞ ⓟ ⓠ ⓡ ⓢ ⓣ ⓤ ⓥ ⓦ ⓧ ⓨ ⓩ',
-        '\'1\' linear-gradient(white, black) あ'
-      ]),
-      'additive-symbols': ['0'].amp([
-        '\'\'', 'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'
-      ]).concat([
-        '3 \'a\', 2 \'b\'', '6 ⚅, 5 ⚄, 4 ⚃, 3 ⚂, 2 ⚁, 1 ⚀',
-        '\'0\' 0, 1 radial-gradient(white, black), 2 A'
-      ]),
-      'speak-as': ['auto', 'numeric', 'alphabetic', 'bullet', 'triangle']
-    },
-  },
-
-  'css-display-3': {
-    'title': 'Display',
-    'properties': {
-      'display-inside': ['auto', 'block', 'table', 'flex', 'grid'],
-      'display-outside': [
-        'inline-level', 'block-level', 'none', 'table-row-group', 'table-header-group',
-        'table-footer-group', 'table-row', 'table-cell', 'table-column-group',
-        'table-column', 'table-caption'
-      ],
-      'display-extras': ['none', 'list-item'],
-      'display': [
-        'auto', 'block-level', 'inline-level', 'normal', 'contents',
-        'auto inline-level', 'none normal', 'none none',
-        'auto inline-level normal', 'none none none',
-        'auto inline-level normal none'
-      ],
-      'box': ['normal', 'none', 'contents']
-    }
-  },
-
-  'css-module': {
-    'title': 'Template',
-    'properties': {
-      'display-inside': ['text', 'inline-inside', 'block-inside', 'ruby', 'icon']
-    }
-  },
-
-  'css3-hyperlinks': {
-    'title': 'Hyperlink Presentation',
-    'properties': {
-      'target-name': ['current', 'root', 'parent', 'new', 'modal', '\'foo\''],
-      'target-new': ['window', 'tab', 'none'],
-      'target-position': ['above', 'behind', 'front', 'back'],
-      'target': ['current', 'root', 'parent', 'new', 'modal', '\'foo\''].concat(
-        ['window', 'tab', 'none'],
-        ['above', 'behind', 'front', 'back'],
-        ['current', 'root', 'parent', 'new', 'modal', '\'foo\''].and(['window', 'tab', 'none']),
-        ['current', 'root', 'parent', 'new', 'modal', '\'foo\''].and(['above', 'behind', 'front', 'back']),
-        ['window', 'tab', 'none'].and(['current', 'root', 'parent', 'new', 'modal', '\'foo\'']),
-        ['window', 'tab', 'none'].and(['above', 'behind', 'front', 'back']),
-        ['above', 'behind', 'front', 'back'].and(['current', 'root', 'parent', 'new', 'modal', '\'foo\'']),
-        ['above', 'behind', 'front', 'back'].and(['window', 'tab', 'none']),
-        ['current window above', 'behind tab root']
-      )
-    }
-  },
-
-  'css3-preslev': {
-    'title': 'Presentation Levels',
-    'tr': 'http://www.w3.org/TR/css3-preslev',
-    'dev': 'http://dev.w3.org/csswg/css3-preslev/Overview.src.html',
-    'properties': {
-      'presentation-level': ['0', '1', 'same', 'increment']
-    },
-    'selectors': {
-      ':below-level': [':below-level'],
-      ':at-level': [':at-level'],
-      ':above-level': [':above-level']
-    }
-  },
-
-  'css-line-grid': {
-    'title': 'Line Grid',
-    'properties': {
-      'line-grid': ['root-grid', 'ident'],
-      'line-snap': ['none', 'baseline', 'contain'],
-      'line-slack': ['none', '1'],
-      'box-snap': ['none', 'margin-box', 'border-box', 'half-border'].concat(
-        ['none', 'margin-box', 'border-box', 'half-border'].and(['ident'].times(1, 4), ' / ')
-      )
-    }
-  },
-
-  'css3-tables': {
-    'title': 'Tables',
-    'properties': {
-      'tab-position': ['0', '10px', '10%'],
-      'tab-align': ['none ', 'left', 'top', 'center', 'right', 'bottom', '\'foo\''],
-      'tab-leaders': ['\'\'', '\'foo\''],
-      'tab-leaders-alignment': ['aligned', 'centered', 'distributed'],
-      'tab': ['10px', '10%'].or(['none ', 'left', 'top', 'center', 'right', 'bottom', '\'foo\'']).concat(
-        ['10px', '10%'].or(['none ', 'left', 'top', 'center', 'right', 'bottom', '\'foo\'']).and(
-          ['\'foo\''].or(['aligned', 'centered', 'distributed']), ' / '
-        )
-      ),
-      'caption-side': ['left', 'right', 'before', 'after'].concat(
-        ['top', 'bottom', 'left', 'right', 'before', 'after'].amp(['outside'])
-      ),
-      'table-column-span': ['auto', 'attr(colspan)'],
-      'table-row-span': ['auto', 'attr(rowspan)'],
-      'table-baseline': '1',
-      'speak-header': ['once', 'always']
-    }
-  },
-
-  'css-color-correction': {
-    'title': 'Color Correction',
-    'properties': {
-      'color-correction': ['default', 'sRGB']
-    }
-  },
-
   'css-device-adapt-1': {
     'title': 'Device Adaptation',
     'tr': 'http://www.w3.org/TR/css-device-adapt/',
@@ -1971,6 +1831,182 @@ window.Specs = {
       'max-zoom': ['auto', '1.0', '2.0', '0.5', '100%', '200%', '50%'],
       'user-zoom': ['zoom', 'fixed'],
       'orientation': ['auto', 'portrait', 'landscape']
+    }
+  },
+
+  'css-speech-1': {
+    'title': 'Speech',
+    'tr': 'http://www.w3.org/TR/css3-speech/',
+    'properties': {
+      'voice-volume': ['silent'].concat(
+        ['x-soft', 'soft', 'medium', 'loud', 'x-loud'].or(['-6dB', '0', '6db'])
+      ),
+      'voice-balance': ['center', '-100', '0', '1.1', '100', 'left', 'right', 'leftwards', 'rightwards'],
+      'speak': 'auto',
+      'speak-as': [
+        'normal', 'spell-out', 'digits', 'literal-punctuation', 'no-punctuation',
+        'spell-out digits', 'spell-out literal-punctuation', 'spell-out no-punctuation',
+        'digits spell-out', 'digits literal-punctuation', 'digits no-punctuation',
+        'literal-punctuation spell-out', 'literal-punctuation digits',
+        'no-punctuation spell-out', 'no-punctuation digits',
+        'spell-out digits literal-punctuation', 'spell-out digits no-punctuation',
+        'spell-out literal-punctuation digits', 'spell-out no-punctuation digits',
+        'digits spell-out literal-punctuation', 'digits spell-out no-punctuation',
+        'digits literal-punctuation spell-out', 'digits no-punctuation spell-out',
+        'literal-punctuation spell-out digits', 'literal-punctuation digits spell-out',
+        'no-punctuation spell-out digits', 'no-punctuation digits spell-out'
+      ],
+      'pause-before': ['none', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'],
+      'pause-after': ['none', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'],
+      'pause': ['none', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'].times(1, 2).concat(
+        ['20ms'].amp(['none', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'])
+      ),
+      'rest-before': ['none', '+3s', '250ms', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'],
+      'rest-after': ['none', '+3s', '250ms', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'],
+      'rest': ['none', '+3s', '250ms', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'].times(1, 2),
+      'cue-before': ['url(\'bell.aiff\') -6dB', 'url(\'dong.wav\') 0', 'url(\'pop.au\') 6db'],
+      'cue-after': ['url(/audio/bell.aiff) -6dB', 'url(../clips-1/pop.au) 0', 'url(./audio/caution.wav) 6db'],
+      'cue': ['url(/audio/bell.aiff) -6dB', 'url(../clips-1/pop.au) 0', 'url(./audio/caution.wav) 6db'].times(1, 2).concat(
+        ['none', '-6dB', '0', '6db', 'url(../clips-2/pop.au)'].amp(
+          ['url(\'bell.aiff\') -6dB', 'url(\'dong.wav\') 0', 'url(\'pop.au\') 6db']
+        )
+      ),
+      'voice-family': ['neutral', 'preserve'].concat(
+        ['child', 'young', 'old'].and(['male', 'female', 'neutral']),
+        ['male', 'female', 'neutral'].and(['1']),
+        ['child', 'young', 'old'].and(['male', 'female', 'neutral']).and(['1']),
+        [
+          'comedian, neutral', 'male, preserve', 'female, child male', 'romeo, young male 1',
+          'young female, juliet', 'child male, male 1', 'young male 1, young female 2',
+          'male, female, preserve'
+        ]
+      ),
+      'voice-rate': ['normal', 'x-slow', 'slow', 'medium', 'fast', 'x-fast'].or(['0', '100%']),
+      'voice-pitch': ['250Hz', '+250Hz', '-20Hz', '.2kHz'].amp(['absolute']).concat(
+        ['x-low', 'low', 'medium', 'high', 'x-high'].or(
+          ['0', '250Hz', '+250Hz', '-20Hz', '.2kHz', '-3.5st', '3.5st', '100%', '-100%']
+        )
+      ),
+      'voice-range': ['250Hz', '+250Hz', '-20Hz', '.2kHz'].amp(['absolute']).concat(
+        ['x-low', 'low', 'medium', 'high', 'x-high'].or(
+          ['0', '250Hz', '+250Hz', '-20Hz', '.2kHz', '-3.5st', '3.5st', '100%', '-100%']
+        )
+      ),
+      'voice-stress': ['normal', 'strong', 'moderate', 'none', 'reduced'],
+      'voice-duration': ['auto', '+3s', '250ms']
+    }
+  },
+
+  'css-color-correction-1': {
+    'title': 'Color Correction',
+    'properties': {
+      'color-correction': ['default', 'sRGB']
+    }
+  },
+
+  // Unmaintained CSS Level 1~3
+  'css-ruby-1': {
+    'title': 'Ruby',
+    'tr': 'http://www.w3.org/TR/css3-ruby/',
+    'properties': {
+      'ruby-position': ['before', 'after', 'inter-character', 'inline'],
+      'ruby-align': ['auto', 'start', 'left', 'center', 'end', 'right', 'distribute-letter', 'distribute-space', 'line-edge'],
+      'ruby-overhang': ['auto', 'start', 'end', 'none'],
+      'ruby-span': ['none', 'attr(rbspan)']
+    }
+  },
+
+  'css-preslev-1': {
+    'title': 'Presentation Levels',
+    'tr': 'http://www.w3.org/TR/css3-preslev',
+    'dev': 'http://dev.w3.org/csswg/css-preslev-1/Overview.src.html',
+    'properties': {
+      'presentation-level': ['0', '1', 'same', 'increment']
+    },
+    'selectors': {
+      ':below-level': [':below-level'],
+      ':at-level': [':at-level'],
+      ':above-level': [':above-level']
+    }
+  },
+
+  // New CSS Level 1
+  'css-transforms-1': {
+    'title': 'Transforms Level 1',
+    'tr': 'http://www.w3.org/TR/css3-transforms/',
+    'properties': {
+      'transform': ['none', 'matrix(1, 2, 3, 4, 5, 6)'].concat(
+        ['0', '10px', '-20px', '50%'].times(1, 2, ', ').map(function (arg) {
+          return 'translate(' + arg + ')';
+        }),
+        ['0', '10px', '-20px', '50%'].map(function (translationValue) {
+          return 'translateX(' + translationValue + ')';
+        }),
+        ['0', '10px', '-20px', '50%'].map(function (translationValue) {
+          return 'translateY(' + translationValue + ')';
+        }),
+        ['scale(1)', 'scale(1, 2)', 'scaleX(1)', 'scaleY(1)'],
+        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+          return 'rotate(' + angle + ')';
+        }),
+        ['90deg', '100grad', '1rad', '1turn'].times(1, 2, ', ').map(function (arg) {
+          return 'skew(' + arg + ')';
+        }),
+        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+          return 'skewX(' + angle + ')';
+        }),
+        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+          return 'skewY(' + angle + ')';
+        }),
+        ['matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)'],
+        ['0', '10px', '-20px', '50%'].times(2, 2, ', ').map(function (arg) {
+          return 'translate3d(' + arg + ', 10px)';
+        }),
+        ['translateZ(10px)', 'scale3d(1, 2, 3)', 'scaleZ(1)'],
+        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+          return 'rotate3d(1, 2, 3, ' + angle + ')';
+        }),
+        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+          return 'rotateX(' + angle + ')';
+        }),
+        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+          return 'rotateY(' + angle + ')';
+        }),
+        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+          return 'rotateZ(' + angle + ')';
+        }),
+        [
+          'perspective(10px)', 'matrix(1, 2, 3, 4, 5, 6) translate(0)',
+          'scale(2, -1) scaleY(2.5) matrix(1, -.2, 0, 1, 10, 10)',
+          'translate(50px, -24px) rotate(180deg) scale(.5) skew(0, 22.5deg)',
+          'matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16) translate3d(0, 0, 10px)',
+          'scale3d(1, 0, -1) rotateX(-45deg) rotateY(-45deg) rotateZ(-45deg)',
+          'translate3d(50px, -24px, 5px) rotate3d(1, 2, 3, 180deg) scale3d(-1, 0, .5)',
+          'matrix(1, 2, 3, 4, 5, 6) matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)'
+        ]
+      ),
+      'transform-origin': ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
+        ['left', 'center', 'right', '10%', '10px'].and(['top', 'center', 'bottom', '10%', '10px']),
+        ['left', 'center', 'right', '10%', '10px'].and(['top', 'center', 'bottom', '10%', '10px']).and(['10px']),
+        [
+          'top left', 'center left', 'bottom left', 'top center',
+          'bottom center', 'top right', 'center right', 'bottom right'
+        ],
+        [
+          'top left', 'center left', 'bottom left', 'top center',
+          'bottom center', 'top right', 'center right', 'bottom right'
+        ].and(['10px'])
+      ),
+      'transform-style': ['flat', 'preserve-3d'],
+      'perspective': ['none', '600px'],
+      'perspective-origin': ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
+        ['left', 'center', 'right', '10%', '10px'].and(['top', 'center', 'bottom', '10%', '10px']),
+        [
+          'top left', 'center left', 'bottom left', 'top center',
+          'bottom center', 'top right', 'center right', 'bottom right'
+        ]
+      ),
+      'backface-visibility': ['visible', 'hidden']
     }
   },
 
@@ -2051,43 +2087,10 @@ window.Specs = {
     }
   },
 
-  'css4-background': {
-    'title': 'Backgrounds and Borders Level 4',
-    'properties': {
-      'border-corner-shape': ['curve', 'bevel', 'scoop', 'notch'],
-      'border-image': ['10', '30%'].times(1, 4).concat(
-        ['10', '30%'].times(1, 4).amp(['fill'])
-      ).and([' / ']),
-      'border-clip': ['normal'].concat(
-        ['10px', '10%', '1fr'].times(1, 3),
-        ['0 10px 1fr 10px', '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr']
-      ),
-      'border-clip-top': ['normal'].concat(
-        ['10px', '10%', '1fr'].times(1, 3),
-        ['0 10px 1fr 10px', '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr']
-      ),
-      'border-clip-right': ['normal'].concat(
-        ['10px', '10%', '1fr'].times(1, 3),
-        ['0 10px 1fr 10px', '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr']
-      ),
-      'border-clip-bottom': ['normal'].concat(
-        ['10px', '10%', '1fr'].times(1, 3),
-        ['0 10px 1fr 10px', '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr']
-      ),
-      'border-clip-left': ['normal'].concat(
-        ['10px', '10%', '1fr'].times(1, 3),
-        ['0 10px 1fr 10px', '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr']
-      ),
-      'border-top-parts': [
-        'repeat(10px 10px)', 'repeat(10px 10px) 1fr',
-        '40px 20px 0 1fr repeat(20px 20px) 0 1fr 40px',
-        '40px 20px 0 1fr 20px 20px 0 1fr 40px'
-      ]
-    }
-  },
-
-  'css4-images': {
+  // CSS Level 4
+  'css-images-4': {
     'title': 'Image Values and Replaced Content Level 4',
+    'tr': 'http://www.w3.org/TR/css4-images/',
     'values': {
       'properties': [
         'background-image',
@@ -2660,7 +2663,43 @@ window.Specs = {
     }
   },
 
-  'css4-text': {
+  // No Ready CSS Level 4
+  'css-backgrounds-4': {
+    'title': 'Backgrounds and Borders Level 4',
+    'properties': {
+      'border-corner-shape': ['curve', 'bevel', 'scoop', 'notch'],
+      'border-image': ['10', '30%'].times(1, 4).concat(
+        ['10', '30%'].times(1, 4).amp(['fill'])
+      ).and([' / ']),
+      'border-clip': ['normal'].concat(
+        ['10px', '10%', '1fr'].times(1, 3),
+        ['0 10px 1fr 10px', '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr']
+      ),
+      'border-clip-top': ['normal'].concat(
+        ['10px', '10%', '1fr'].times(1, 3),
+        ['0 10px 1fr 10px', '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr']
+      ),
+      'border-clip-right': ['normal'].concat(
+        ['10px', '10%', '1fr'].times(1, 3),
+        ['0 10px 1fr 10px', '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr']
+      ),
+      'border-clip-bottom': ['normal'].concat(
+        ['10px', '10%', '1fr'].times(1, 3),
+        ['0 10px 1fr 10px', '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr']
+      ),
+      'border-clip-left': ['normal'].concat(
+        ['10px', '10%', '1fr'].times(1, 3),
+        ['0 10px 1fr 10px', '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr']
+      ),
+      'border-top-parts': [
+        'repeat(10px 10px)', 'repeat(10px 10px) 1fr',
+        '40px 20px 0 1fr repeat(20px 20px) 0 1fr 40px',
+        '40px 20px 0 1fr 20px 20px 0 1fr 40px'
+      ]
+    }
+  },
+
+  'css-text-4': {
     'title': 'Text Level 4',
     'properties': {
       'text-transform': ['capitalize', 'uppercase', 'lowercase'].or(
@@ -2753,7 +2792,7 @@ window.Specs = {
     }
   },*/
 
-  'css4-pseudo': {
+  'css-pseudo-4': {
     'title': 'Pseudo-elements Level 4',
     'selectors': {
       '::before()': 'div::before(1)',
@@ -2765,9 +2804,10 @@ window.Specs = {
     }
   },
 
+  // CSS-SVG Effects
   'filter-effects': {
     'title': 'Filter Effects 1.0',
-    'dev': 'https://dvcs.w3.org/hg/FXTF/raw-file/tip/filters/index.html',
+    'dev': 'http://dev.w3.org/fxtf/filters/',
     'properties': {
       'filter': [
         'none', 'url(commonmasks.xml#mask)',
@@ -2961,8 +3001,7 @@ window.Specs = {
 
   'css-masking': {
     'title': 'Masking Level 1',
-    'tr': 'http://www.w3.org/TR/css-masking/',
-    'dev': 'https://dvcs.w3.org/hg/FXTF/raw-file/tip/masking/index.html',
+    'dev': 'http://dev.w3.org/fxtf/masking/',
     'properties': {
       'mask-image': [
         'none', 'url(tl.png)', 'linear-gradient(black 0%, transparent 100%)',
@@ -3128,7 +3167,7 @@ window.Specs = {
 
   'compositing': {
     'title': 'Compositing and Blending Level 1',
-    'dev': 'https://dvcs.w3.org/hg/FXTF/rawfile/tip/compositing/index.html',
+    'dev': 'http://dev.w3.org/fxtf/compositing/',
     'properties': {
       'mix-blend-mode': [
         'normal', 'multiply', 'screen', 'overlay', 'darken', 'lighten',
@@ -3146,23 +3185,40 @@ window.Specs = {
     }
   },
 
-  'view-mode': {
-    'title': 'The \'view-mode\' Media Feature',
-    'dev': 'http://dev.w3.org/2006/waf/widgets-vmmf/',
-    'Media queries': {
-      'view-mode': [
-        '(view-mode: windowed)',
-        'not print and (view-mode: floating)',
-        'not print and (view-mode: fullscreen)',
-        'not print and (view-mode: maximized)',
-        'not print and (view-mode: minimized)'
-      ]
+  // Web Components
+  'components-intro': {
+    'title': 'Web Components',
+    'dev': 'https://dvcs.w3.org/hg/webcomponents/raw-file/tip/explainer/index.html',
+    'properties': {
+      'decorator': ['url(#fade-to-white)']
+    },
+    'selectors': {
+      ':host': ':host'
     }
   },
 
+  'shadow-dom': {
+    'title': 'Shadow DOM',
+    'dev': 'https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html',
+    'selectors': {
+      '::distributed()': '::distributed(div)'
+    },
+    '@rules': {
+      '@host': '@host'
+    }
+  },
+
+  'custom-elements': {
+    'title': 'Custom Elements',
+    'dev': 'https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/custom/index.html',
+    'selectors': {
+      ':unresolved': ':unresolved'
+    }
+  },
+
+  // XBL
   'becss': {
     'title': 'Behavioral Extensions to CSS',
-    'tr': 'http://www.w3.org/TR/becss',
     'dev': 'http://dev.w3.org/2006/xbl2/css-module.html',
     'properties': {
       'binding': [
@@ -3179,35 +3235,18 @@ window.Specs = {
     }
   },
 
-  'webcomponents': {
-    'title': 'Web Components',
-    'tr': 'http://www.w3.org/TR/webcomponents',
-    'dev': 'https://dvcs.w3.org/hg/webcomponents/raw-file/tip/explainer/index.html',
-    'properties': {
-      'decorator': ['url(#fade-to-white)']
-    },
-    'selectors': {
-      ':host': ':host'
-    }
-  },
-
-  'shadow-dom': {
-    'title': 'Shadow DOM',
-    'tr': 'http://www.w3.org/TR/shadow-dom',
-    'dev': 'https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html',
-    'selectors': {
-      '::distributed()': '::distributed(div)'
-    },
-    '@rules': {
-      '@host': '@host'
-    }
-  },
-
-  'custom-elements': {
-    'title': 'Custom Elements',
-    'dev': 'https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/custom/index.html',
-    'selectors': {
-      ':unresolved': ':unresolved'
+  // Extra
+  'view-mode': {
+    'title': 'The \'view-mode\' Media Feature',
+    'dev': 'http://dev.w3.org/2006/waf/widgets-vmmf/',
+    'Media queries': {
+      'view-mode': [
+        '(view-mode: windowed)',
+        'not print and (view-mode: floating)',
+        'not print and (view-mode: fullscreen)',
+        'not print and (view-mode: maximized)',
+        'not print and (view-mode: minimized)'
+      ]
     }
   },
 
