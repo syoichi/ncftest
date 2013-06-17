@@ -29,7 +29,7 @@
     },
     percent: {
       value: function percent() {
-        return Math.round(100 * this.passed / this.total) + '%';
+        return parseInt(100 * this.passed / this.total, 10) + '%';
       },
       enumerable: false
     }
