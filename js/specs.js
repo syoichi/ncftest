@@ -3191,9 +3191,6 @@ window.Specs = {
     'dev': 'https://dvcs.w3.org/hg/webcomponents/raw-file/tip/explainer/index.html',
     'properties': {
       'decorator': ['url(#fade-to-white)']
-    },
-    'selectors': {
-      ':host': ':host'
     }
   },
 
