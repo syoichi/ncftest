@@ -16,29 +16,29 @@ a {
   text-decoration: none;
 }
 
-h1, h2 {
+h1, header > p {
   margin: 1em 0 .5em;
   font-weight: normal;
   line-height: 1;
 }
 
-  body > section section section h1 {
+  body > section section h1 {
     font-size: 180%;
   }
 
-  section section section section h1 {
+  section section section h1 {
     color: hsla(200, 10%, 20%, .5);
     font-size: 120%;
     font-weight: bold;
     text-transform: capitalize;
   }
 
-    h1 > .score {
+    .score {
       float: right;
       font-weight: bold;
     }
 
-    h1 > .spec-link {
+    .spec-link {
       display: inline-block;
       padding: .3em .4em;
       margin: 0 0 0 .3em;
@@ -50,32 +50,32 @@ h1, h2 {
       text-shadow: 0 .1em .1em black;
     }
 
-    h1 > .spec-link:hover {
+    .spec-link:hover {
       background-color: #f06;
     }
 
-#tests {
+header, body > section {
   float: left;
   width: 65%;
   margin-right: 2em;
 }
 
-  #tests hgroup {
+  header {
     text-align: center;
   }
 
-    #tests > hgroup > h1 {
+    header > h1 {
       font-size: 250%;
     }
 
-      #tests h1 > strong {
+      header > h1 > strong {
         display: block;
         margin-top: .1em;
         font-size: 500%;
         line-height: .7;
       }
 
-    #tests h2 {
+    header > p {
       font-size: 80%;
     }
 
