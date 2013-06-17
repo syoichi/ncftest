@@ -86,10 +86,6 @@ dl {
   line-height: normal;
 }
 
-  dl dl {
-    margin: 0;
-  }
-
 dt, dd[class] {
   padding: .5em;
   background-color: gray;
@@ -112,36 +108,36 @@ dd {
   font-size: 90%;
 }
 
-  dd small {
+  dd > small {
     display: block;
     opacity: .8;
   }
 
-dl .pass, li.pass:before {
+dl > .pass, li.pass:before {
   background-color: #490;
 }
 
-dl .almost-pass, li.almost-pass:before {
+dl > .almost-pass, li.almost-pass:before {
   background-color: #8c0;
 }
 
-dl .slightly-buggy, li.slightly-buggy:before {
+dl > .slightly-buggy, li.slightly-buggy:before {
   background-color: #bb0;
 }
 
-dl .buggy, li.buggy:before {
+dl > .buggy, li.buggy:before {
   background-color: #e80;
 }
 
-dl .very-buggy, li.very-buggy:before {
+dl > .very-buggy, li.very-buggy:before {
   background-color: #e40;
 }
 
-dl .fail, li.fail:before {
+dl > .fail, li.fail:before {
   background-color: #e20;
 }
 
-dl .epic-fail, li.epic-fail:before {
+dl > .epic-fail, li.epic-fail:before {
   background-color: #b00;
 }
 
@@ -223,7 +219,7 @@ aside {
   font-size: 85%;
 }
 
-  aside section {
+  aside > section {
     margin-left: 66%;
   }
 
