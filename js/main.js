@@ -58,7 +58,7 @@
     dev.href = tests.dev || 'http://dev.w3.org/csswg/' + spec + '/';
     dev.textContent = 'DEV';
     section.id = spec;
-    section.className = 'tests';
+    section.className = 'test';
 
     // Perform tests
     groups = Object.keys(Test.groups);
@@ -109,7 +109,7 @@
               thisSection = this.section.appendChild(
                 doc.createElement('section')
               );
-              thisSection.className = 'tests ' + what;
+              thisSection.className = what;
               thisSection.appendChild(
                 doc.createElement('h1')
               ).textContent = what;

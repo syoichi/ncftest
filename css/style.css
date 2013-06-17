@@ -22,11 +22,11 @@ h1, header > p {
   line-height: 1;
 }
 
-  body > section section h1 {
+  .test > h1 {
     font-size: 180%;
   }
 
-  section section section h1 {
+  .test > section > h1 {
     color: hsla(200, 10%, 20%, .5);
     font-size: 120%;
     font-weight: bold;
