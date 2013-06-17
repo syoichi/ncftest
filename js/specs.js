@@ -195,7 +195,7 @@ window.Specs = {
         'background-image',
         'list-style-image',
         'border-image-source',
-        // 'cursor',
+        'cursor',
         'content'
       ],
       'linear-gradient': [
@@ -1466,7 +1466,7 @@ window.Specs = {
     },
     'values': {
       'properties': [
-        // 'float-offset',
+        'float-offset',
         'width',
         'left'
       ],
