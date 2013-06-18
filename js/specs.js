@@ -1905,17 +1905,6 @@ window.Specs = {
   },
 
   // Unmaintained CSS Level 1~3
-  'css-ruby-1': {
-    'title': 'Ruby',
-    'tr': 'http://www.w3.org/TR/css3-ruby/',
-    'properties': {
-      'ruby-position': ['before', 'after', 'inter-character', 'inline'],
-      'ruby-align': ['auto', 'start', 'left', 'center', 'end', 'right', 'distribute-letter', 'distribute-space', 'line-edge'],
-      'ruby-overhang': ['auto', 'start', 'end', 'none'],
-      'ruby-span': ['none', 'attr(rbspan)']
-    }
-  },
-
   'css-preslev-1': {
     'title': 'Presentation Levels',
     'tr': 'http://www.w3.org/TR/css3-preslev',
@@ -2061,6 +2050,20 @@ window.Specs = {
     },
     'selectors': {
       '::region()': ['#region-1::region(p)']
+    }
+  },
+
+  'css-ruby-1': {
+    'title': 'Ruby Level 1',
+    'tr': 'http://www.w3.org/TR/css3-ruby/',
+    'properties': {
+      'ruby-position': ['before', 'after', 'inter-character', 'inline'],
+      'ruby-align': [
+        'auto', 'start', 'left', 'center', 'end', 'right',
+        'distribute-letter', 'distribute-space', 'line-edge'
+      ],
+      'ruby-overhang': ['none', 'auto', 'start', 'end'],
+      'ruby-span': ['none', 'attr(rbspan)']
     }
   },
 
