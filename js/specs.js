@@ -1061,9 +1061,7 @@ window.Specs = {
     'tr': 'http://www.w3.org/TR/css3-box/',
     'properties': {
       'display': [
-        'run-in', 'compact',
-        'ruby', 'ruby-base', 'ruby-text', 'ruby-base-group', 'ruby-text-group',
-        'container'
+        'run-in', 'compact', 'ruby-base-group', 'ruby-text-group', 'container'
       ],
       'padding': ['auto'].times(1, 4).concat([
         'auto 1px', '10% auto',
@@ -2057,13 +2055,18 @@ window.Specs = {
     'title': 'Ruby Level 1',
     'tr': 'http://www.w3.org/TR/css3-ruby/',
     'properties': {
-      'ruby-position': ['before', 'after', 'inter-character', 'inline'],
-      'ruby-align': [
-        'auto', 'start', 'left', 'center', 'end', 'right',
-        'distribute-letter', 'distribute-space', 'line-edge'
+      'display': [
+        'ruby', 'ruby-base', 'ruby-text',
+        'ruby-base-container', 'ruby-text-container'
       ],
-      'ruby-overhang': ['none', 'auto', 'start', 'end'],
-      'ruby-span': ['none', 'attr(rbspan)']
+      'ruby-position': ['over', 'under', 'inter-character'].amp(
+        ['right', 'left']
+      ),
+      'ruby-merge': ['separate', 'collapse', 'auto'],
+      'ruby-align': [
+        'auto', 'start', 'center',
+        'distribute-letter', 'distribute-space'
+      ]
     }
   },
 
