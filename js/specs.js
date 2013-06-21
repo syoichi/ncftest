@@ -3171,9 +3171,10 @@ window.Specs = {
     }
   },
 
-  'compositing': {
+  'compositing-1': {
     'title': 'Compositing and Blending Level 1',
-    'dev': 'http://dev.w3.org/fxtf/compositing/',
+    'tr': 'http://www.w3.org/TR/compositing/',
+    'dev': 'http://dev.w3.org/fxtf/compositing-1/',
     'properties': {
       'mix-blend-mode': [
         'normal', 'multiply', 'screen', 'overlay', 'darken', 'lighten',
