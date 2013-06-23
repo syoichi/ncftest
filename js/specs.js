@@ -2030,7 +2030,7 @@ window.Specs = {
         }),
         ['url(foo.png)']
       ),
-      'shape-image-threshold': ['0.5', '0.0', '1.0'],
+      'shape-image-threshold': ['0.0', '0.5', '1.0'],
       'shape-margin': ['0', '1px', '10em']
     }
   },
