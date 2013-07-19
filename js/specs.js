@@ -3296,6 +3296,47 @@ window.Specs = {
     }
   },
 
+  'html': {
+    'title': 'HTML',
+    'dev': 'http://www.whatwg.org/specs/web-apps/current-work/multipage/',
+    'properties': {
+      // http://www.whatwg.org/specs/web-apps/current-work/multipage/commands.html#anchor-points
+      'anchor-point': [
+        'none', 'left', 'center', 'right', 'top', 'bottom', '10%', '10px'
+      ].concat(
+        ['left', 'center', 'right', '10%', '10px'].and(['top', 'center', 'bottom', '10%', '10px'])
+      ).concat([
+        'top center', 'top left', 'top right', 'bottom center', 'bottom left', 'bottom right', 'center left', 'center right',
+        'center top 10%', 'center top 10px', 'center bottom 10%', 'center bottom 10px',
+        'center left 10%', 'center left 10px', 'center right 10%', 'center right 10px',
+        'left top 10%', 'left top 10px', 'left bottom 10%', 'left bottom 10px',
+        'right top 10%', 'right top 10px', 'right bottom 10%', 'right bottom 10px',
+        'top left 10%', 'top left 10px', 'top right 10%', 'top right 10px',
+        'bottom left 10%', 'bottom left 10px', 'bottom right 10%', 'bottom right 10px',
+        'left 10% center', 'left 10% top', 'left 10% bottom',
+        'left 10px center', 'left 10px top', 'left 10px bottom',
+        'right 10% center', 'right 10% top', 'right 10% bottom',
+        'right 10px center', 'right 10px top', 'right 10px bottom',
+        'top 10% center', 'top 10% left', 'top 10% right',
+        'top 10px center', 'top 10px left', 'top 10px right',
+        'bottom 10% center', 'bottom 10% left', 'bottom 10% right',
+        'bottom 10px center', 'bottom 10px left', 'bottom 10px right',
+        'left 10% top 10%', 'left 10% top 10px', 'left 10% bottom 10%', 'left 10% bottom 10px',
+        'left 10px top 10%', 'left 10px top 10px', 'left 10px bottom 10%', 'left 10px bottom 10px',
+        'right 10% top 10%', 'right 10% top 10px', 'right 10% bottom 10%', 'right 10% bottom 10px',
+        'right 10px top 10%', 'right 10px top 10px', 'right 10px bottom 10%', 'right 10px bottom 10px',
+        'top 10% left 10%', 'top 10% left 10px', 'top 10% right 10%', 'top 10% right 10px',
+        'top 10px left 10%', 'top 10px left 10px', 'top 10px right 10%', 'top 10px right 10px',
+        'bottom 10% left 10%', 'bottom 10% left 10px', 'bottom 10% right 10%', 'bottom 10% right 10px',
+        'bottom 10px left 10%', 'bottom 10px left 10px', 'bottom 10px right 10%', 'bottom 10px right 10px'
+      ])
+    },
+    '@rules': {
+      // http://www.whatwg.org/specs/web-apps/current-work/multipage/semantics.html#the-style-element
+      '@global': '@global'
+    }
+  },
+
   'fullscreen': {
     'title': 'Fullscreen API',
     'dev': 'http://fullscreen.spec.whatwg.org/',
