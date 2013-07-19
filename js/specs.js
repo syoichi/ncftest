@@ -3281,10 +3281,7 @@ window.Specs = {
     'dev': 'http://fullscreen.spec.whatwg.org/',
     'selectors': {
       '::backdrop': '::backdrop',
-      ':fullscreen': [
-        ':fullscreen', '*|*:not(:root):fullscreen', 'iframe:fullscreen',
-        '*|*:fullscreen::backdrop'
-      ]
+      ':fullscreen': ':fullscreen'
     }
   },
 
