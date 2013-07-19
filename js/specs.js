@@ -2010,21 +2010,25 @@ window.Specs = {
     'title': 'Shapes Level 1',
     'properties': {
       'shape-outside': ['auto'].concat(
-        ['10px', '10%'].times(4).qmark(['curve'].and(['10px', '10%'].times(1, 2))).map(function (arg) {
+        ['10px', '10%'].times(4, 6, ', ').map(function (arg) {
           return 'rectangle(' + arg + ')';
         }),
-        ['10px', '10%'].times(4).qmark(['curve'].and(['10px', '10%'].times(1, 2))).map(function (arg) {
+        ['10px', '10%'].times(4, 6, ', ').map(function (arg) {
           return 'inset-rectangle(' + arg + ')';
         }),
-        ['10px', '10%'].times(3).map(function (arg) {
+        ['10px', '10%'].times(3, ', ').map(function (arg) {
           return 'circle(' + arg + ')';
         }),
-        ['10px', '10%'].times(4).map(function (arg) {
+        ['10px', '10%'].times(4, ', ').map(function (arg) {
           return 'ellipse(' + arg + ')';
         }),
         ['10px', '10%'].times(2).concat(
           ['nonzero', 'evenodd'].and(['10px', '10%'].times(2), ', '),
-          ['10px 10%, 10px 10%', 'nonzero, 10px 10%, 10px 10%', 'evenodd, 10px 10%, 10px 10%']
+          [
+            '10px 10%, 10px 10%',
+            'nonzero, 10px 10%, 10px 10%', 'evenodd, 10px 10%, 10px 10%',
+            'nonzero, 100% 0, 100% 100%, 0 100%'
+          ]
         ).map(function (arg) {
           return 'polygon(' + arg + ')';
         }),
@@ -3141,20 +3145,25 @@ window.Specs = {
         ]
       ),
       'clip-path': ['none'].concat(
-        ['10px', '10%'].times(4).concat(
-          ['10px', '10%'].times(4).and(['curve'].and(['10px', '10%'].times(1, 2)))
-        ).map(function (arg) {
+        ['10px', '10%'].times(4, 6, ', ').map(function (arg) {
           return 'rectangle(' + arg + ')';
         }),
-        ['10px', '10%'].times(3).map(function (arg) {
+        ['10px', '10%'].times(4, 6, ', ').map(function (arg) {
+          return 'inset-rectangle(' + arg + ')';
+        }),
+        ['10px', '10%'].times(3, ', ').map(function (arg) {
           return 'circle(' + arg + ')';
         }),
-        ['10px', '10%'].times(4).map(function (arg) {
+        ['10px', '10%'].times(4, ', ').map(function (arg) {
           return 'ellipse(' + arg + ')';
         }),
         ['10px', '10%'].times(2).concat(
           ['nonzero', 'evenodd'].and(['10px', '10%'].times(2), ', '),
-          ['10px 10%, 10px 10%', 'nonzero, 10px 10%, 10px 10%', 'evenodd, 10px 10%, 10px 10%']
+          [
+            '10px 10%, 10px 10%',
+            'nonzero, 10px 10%, 10px 10%', 'evenodd, 10px 10%, 10px 10%',
+            'nonzero, 100% 0, 100% 100%, 0 100%'
+          ]
         ).map(function (arg) {
           return 'polygon(' + arg + ')';
         })
