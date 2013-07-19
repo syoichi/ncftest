@@ -3296,6 +3296,18 @@ window.Specs = {
     }
   },
 
+  'fullscreen': {
+    'title': 'Fullscreen API',
+    'dev': 'http://fullscreen.spec.whatwg.org/',
+    'selectors': {
+      '::backdrop': '::backdrop',
+      ':fullscreen': [
+        ':fullscreen', '*|*:not(:root):fullscreen', 'iframe:fullscreen',
+        '*|*:fullscreen::backdrop'
+      ]
+    }
+  },
+
   'pointerevents': {
     'title': 'Pointer Events',
     'dev': 'https://dvcs.w3.org/hg/pointerevents/raw-file/tip/pointerEvents.html',
