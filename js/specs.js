@@ -2097,6 +2097,39 @@ window.Specs = {
     }
   },
 
+  // New CSS Level 2
+  'css-shapes-2': {
+    'title': 'Shapes Level 2',
+    'properties': {
+      'shape-inside': ['auto', 'outside-shape'].concat(
+        ['10px', '10%'].times(4, 6, ', ').map(function (arg) {
+          return 'rectangle(' + arg + ')';
+        }),
+        ['10px', '10%'].times(4, 6, ', ').map(function (arg) {
+          return 'inset-rectangle(' + arg + ')';
+        }),
+        ['10px', '10%'].times(3, ', ').map(function (arg) {
+          return 'circle(' + arg + ')';
+        }),
+        ['10px', '10%'].times(4, ', ').map(function (arg) {
+          return 'ellipse(' + arg + ')';
+        }),
+        ['10px', '10%'].times(2).concat(
+          ['nonzero', 'evenodd'].and(['10px', '10%'].times(2), ', '),
+          [
+            '10px 10%, 10px 10%',
+            'nonzero, 10px 10%, 10px 10%', 'evenodd, 10px 10%, 10px 10%',
+            'nonzero, 100% 0, 100% 100%, 0 100%'
+          ]
+        ).map(function (arg) {
+          return 'polygon(' + arg + ')';
+        }),
+        ['url(foo.png)']
+      ),
+      'shape-margin': ['0', '1px', '10em']
+    }
+  },
+
   // CSS Level 4
   'css-images-4': {
     'title': 'Image Values and Replaced Content Level 4',
