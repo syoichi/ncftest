@@ -617,7 +617,6 @@ window.Specs = {
 
   'css-fonts-3': {
     'title': 'Fonts',
-    'tr': 'http://www.w3.org/TR/css3-fonts/',
     'properties': {
       'font-stretch': [
         'normal', 'ultra-condensed', 'extra-condensed', 'condensed',
@@ -637,40 +636,30 @@ window.Specs = {
       ),
       'font-synthesis': ['none'].concat(['weight'].or(['style'])),
       'font-kerning': ['auto', 'normal', 'none'],
-      'font-variant-ligatures': [
-        'normal', 'none',
-        'common-ligatures', 'no-common-ligatures',
-        'discretionary-ligatures', 'no-discretionary-ligatures',
-        'historical-ligatures', 'no-historical-ligatures',
-        'contextual', 'no-contextual',
-        'common-ligatures discretionary-ligatures',
-        'discretionary-ligatures common-ligatures',
-        'common-ligatures discretionary-ligatures historical-ligatures',
-        'common-ligatures discretionary-ligatures historical-ligatures ' +
-          'contextual'
-      ],
+      'font-variant-ligatures': ['normal', 'none'].concat(
+        ['common-ligatures', 'no-common-ligatures'].or(
+          ['discretionary-ligatures', 'no-discretionary-ligatures'],
+          ['historical-ligatures', 'no-historical-ligatures'],
+          ['contextual', 'no-contextual']
+        )
+      ),
       'font-variant-position': ['normal', 'sub', 'super'],
       'font-variant-caps': [
         'normal', 'small-caps', 'all-small-caps', 'petite-caps',
         'all-petite-caps', 'unicase', 'titling-caps'
       ],
-      'font-variant-numeric': [
-        'normal',
-        'lining-nums', 'oldstyle-nums',
-        'proportional-nums', 'tabular-nums',
-        'diagonal-fractions', 'stacked-fractions',
-        'ordinal', 'slashed-zero',
-        'lining-nums proportional-nums', 'proportional-nums lining-nums',
-        'lining-nums proportional-nums diagonal-fractions',
-        'lining-nums proportional-nums diagonal-fractions ordinal',
-        'lining-nums proportional-nums diagonal-fractions ordinal slashed-zero',
-        'oldstyle-nums tabular-nums stacked-fractions ordinal slashed-zero',
-        'slashed-zero ordinal tabular-nums stacked-fractions oldstyle-nums'
-      ],
+      'font-variant-numeric': ['normal'].concat(
+        ['lining-nums', 'oldstyle-nums'].or(
+          ['proportional-nums', 'tabular-nums'],
+          ['diagonal-fractions', 'stacked-fractions'],
+          ['ordinal'],
+          ['slashed-zero']
+        )
+      ),
       'font-variant-alternates': [
         'normal', 'stylistic(Bongo)', 'historical-forms',
-        'styleset(Bongo)', 'styleset(Bongo, Jupiter Sans)',
-        'character-variant(Bongo)', 'character-variant(Bongo, Jupiter Sans)',
+        'styleset(Bongo)', 'styleset(stacked-g, geometric-m)',
+        'character-variant(Bongo)', 'character-variant(beta-3, gamma)',
         'swash(Bongo)', 'ornaments(Bongo)', 'annotation(Bongo)',
         'stylistic(Bongo) historical-forms',
         'historical-forms stylistic(Bongo)',
@@ -684,19 +673,16 @@ window.Specs = {
         'stylistic(Bongo) historical-forms styleset(Bongo) ' +
           'character-variant(Bongo) swash(Bongo) ornaments(Bongo) ' +
           'annotation(Bongo)',
-        'stylistic(Bongo) historical-forms styleset(Bongo, Jupiter Sans) ' +
-          'character-variant(Bongo, Jupiter Sans) swash(Bongo) ' +
+        'stylistic(Bongo) historical-forms styleset(stacked-g, geometric-m) ' +
+          'character-variant(beta-3, gamma) swash(Bongo) ' +
           'ornaments(Bongo) annotation(Bongo)'
       ],
-      'font-variant-east-asian': [
-        'normal',
-        'jis78', 'jis83', 'jis90', 'jis04', 'simplified', 'traditional',
-        'full-width', 'proportional-width',
-        'ruby',
-        'jis78 full-width', 'full-width jis78',
-        'jis78 full-width ruby',
-        'simplified full-width ruby'
-      ],
+      'font-variant-east-asian': ['normal'].concat(
+        ['jis78', 'jis83', 'jis90', 'jis04', 'simplified', 'traditional'].or(
+          ['full-width', 'proportional-width'],
+          ['ruby']
+        )
+      ),
       'font-variant': [
         'none',
         'common-ligatures', 'no-common-ligatures',
@@ -704,8 +690,8 @@ window.Specs = {
         'historical-ligatures', 'no-historical-ligatures',
         'contextual', 'no-contextual',
         'stylistic(Bongo)', 'historical-forms',
-        'styleset(Bongo)', 'styleset(Bongo, Jupiter Sans)',
-        'character-variant(Bongo)', 'character-variant(Bongo, Jupiter Sans)',
+        'styleset(Bongo)', 'styleset(stacked-g, geometric-m)',
+        'character-variant(Bongo)', 'character-variant(beta-3, gamma)',
         'swash(Bongo)', 'ornaments(Bongo)', 'annotation(Bongo)',
         'all-small-caps', 'petite-caps', 'all-petite-caps', 'unicase',
         'titling-caps',
@@ -720,8 +706,8 @@ window.Specs = {
         'discretionary-ligatures common-ligatures',
         'common-ligatures discretionary-ligatures ' +
           'historical-ligatures contextual stylistic(Bongo) ' +
-          'historical-forms styleset(Bongo, Jupiter Sans) ' +
-          'character-variant(Bongo, Jupiter Sans) swash(Bongo) ' +
+          'historical-forms styleset(stacked-g, geometric-m) ' +
+          'character-variant(beta-3, gamma) swash(Bongo) ' +
           'ornaments(Bongo) annotation(Bongo) small-caps lining-nums ' +
           'proportional-nums diagonal-fractions ordinal slashed-zero jis78 ' +
           'full-width ruby'
@@ -744,10 +730,10 @@ window.Specs = {
       'atrule': '@font-face',
       'font-family': ['Helvetica', 'Verdana'],
       'src': [
-        'url(fonts/simple.ttf)', 'local(Gentium)', 'Gentium',
+        'url(fonts/simple.ttf)', 'local(Gentium)', 'local("Arial Lihavoitu")',
         'url(ideal-sans-serif.woff) format(\'woff\')',
         'url(basic-sans-serif.ttf) format(\'truetype\')',
-        'url(basic-sans-serif.ttf) format(\'opentype\')',
+        'url(basic-sans-serif.otf) format(\'opentype\')',
         'url(basic-sans-serif.eot) format(\'embedded-opentype\')',
         'url(fonts.svg#MyGeometricModern) format(\'svg\')',
         'url(basic-sans-serif.ttf) format(\'truetype\', \'opentype\')',
@@ -781,17 +767,17 @@ window.Specs = {
         'U+000-49F, U+2000-27FF, U+2900-2BFF, U+1D400-1D7FF'
       ],
       'font-variant': [
-        'none',
+        'normal', 'none',
         'common-ligatures', 'no-common-ligatures',
         'discretionary-ligatures', 'no-discretionary-ligatures',
         'historical-ligatures', 'no-historical-ligatures',
         'contextual', 'no-contextual',
         'stylistic(Bongo)', 'historical-forms',
-        'styleset(Bongo)', 'styleset(Bongo, Jupiter Sans)',
-        'character-variant(Bongo)', 'character-variant(Bongo, Jupiter Sans)',
+        'styleset(Bongo)', 'styleset(stacked-g, geometric-m)',
+        'character-variant(Bongo)', 'character-variant(beta-3, gamma)',
         'swash(Bongo)', 'ornaments(Bongo)', 'annotation(Bongo)',
-        'all-small-caps', 'petite-caps', 'all-petite-caps', 'unicase',
-        'titling-caps',
+        'small-caps', 'all-small-caps', 'petite-caps', 'all-petite-caps',
+        'unicase', 'titling-caps',
         'lining-nums', 'oldstyle-nums',
         'proportional-nums', 'tabular-nums',
         'diagonal-fractions', 'stacked-fractions',
@@ -803,8 +789,8 @@ window.Specs = {
         'discretionary-ligatures common-ligatures',
         'common-ligatures discretionary-ligatures ' +
           'historical-ligatures contextual stylistic(Bongo) ' +
-          'historical-forms styleset(Bongo, Jupiter Sans) ' +
-          'character-variant(Bongo, Jupiter Sans) swash(Bongo) ' +
+          'historical-forms styleset(stacked-g, geometric-m) ' +
+          'character-variant(beta-3, gamma) swash(Bongo) ' +
           'ornaments(Bongo) annotation(Bongo) small-caps lining-nums ' +
           'proportional-nums diagonal-fractions ordinal slashed-zero jis78 ' +
           'full-width ruby'
