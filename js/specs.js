@@ -2847,8 +2847,7 @@ window.Specs = {
         'blur(10px)'
       ].concat([
         '1px 2px', '1px 2px 3px',
-        '1px 2px red', 'blue 1px 2px', '1px 2px 3px yellow', 'green 1px 2px 3px',
-        '1px 2px, 1px 2px', '1px 2px 3px red, 1px 2px 3px red'
+        '1px 2px red', 'blue 1px 2px', '1px 2px 3px yellow', 'green 1px 2px 3px'
       ].map(function (shadow) {
         return 'drop-shadow(' + shadow + ')';
       })).concat(
