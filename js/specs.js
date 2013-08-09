@@ -3207,8 +3207,7 @@ window.Specs = {
       'mix-blend-mode': [
         'normal', 'multiply', 'screen', 'overlay', 'darken', 'lighten',
         'color-dodge', 'color-burn', 'hard-light', 'soft-light', 'difference',
-        'exclusion', 'hue', 'saturation', 'color', 'luminosity',
-        'normal, multiply'
+        'exclusion', 'hue', 'saturation', 'color', 'luminosity'
       ],
       'isolation': ['auto', 'isolate'],
       'background-blend-mode': [
