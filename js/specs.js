@@ -623,7 +623,7 @@ window.Specs = {
         'semi-condensed', 'semi-expanded', 'expanded', 'extra-expanded',
         'ultra-expanded'
       ],
-      'font-size-adjust': ['none', 'auto', '1', '.5'],
+      'font-size-adjust': ['none', '1', '.5'],
       'font': [
         'ultra-condensed', 'extra-condensed', 'condensed', 'semi-condensed',
         'semi-expanded', 'expanded', 'extra-expanded', 'ultra-expanded',
@@ -717,7 +717,8 @@ window.Specs = {
         '\'smcp\', \'swsh\'',
         '\'smcp\', \'swsh\' 2',
         '\'smcp\' on, \'swsh\' off',
-        '\'c2sc\', \'smcp\', \'swsh\''
+        '\'c2sc\', \'smcp\', \'swsh\'',
+        '\'c2sc\', \'c2sc\' 1, \'smcp\' on, \'liga\' off'
       ],
       'font-language-override': ['normal', '\'SRB\'']
     },
@@ -800,7 +801,8 @@ window.Specs = {
         '\'smcp\', \'swsh\'',
         '\'smcp\', \'swsh\' 2',
         '\'smcp\' on, \'swsh\' off',
-        '\'c2sc\', \'smcp\', \'swsh\''
+        '\'c2sc\', \'smcp\', \'swsh\'',
+        '\'c2sc\', \'c2sc\' 1, \'smcp\' on, \'liga\' off'
       ]
     }
   },
