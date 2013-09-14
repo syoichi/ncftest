@@ -1638,26 +1638,6 @@ window.Specs = {
     }
   },
 
-  'css-flexbox-1': {
-    'title': 'Flexible Box Layout',
-    'tr': 'http://www.w3.org/TR/css3-flexbox/',
-    'properties': {
-      'display': ['flex', 'inline-flex'],
-      'flex-direction': ['row', 'row-reverse', 'column', 'column-reverse'],
-      'flex-wrap': ['nowrap', 'wrap', 'wrap-reverse'],
-      'flex-flow': ['row', 'row-reverse', 'column', 'column-reverse'].or(['nowrap', 'wrap', 'wrap-reverse']),
-      'order': ['0', '1', '-1'],
-      'flex': ['none'].concat(['1', '1 1'].or(['auto', '10px', '10%'])),
-      'flex-grow': ['0', '5', '0.11'],
-      'flex-shrink': ['1', '10', '0', '0.11'],
-      'flex-basis': ['auto', '1px', '1%'],
-      'justify-content': ['flex-start', 'flex-end', 'center', 'space-between', 'space-around'],
-      'align-items': ['stretch', 'flex-start', 'flex-end', 'center', 'baseline'],
-      'align-self': ['auto', 'flex-start', 'flex-end', 'center', 'baseline', 'stretch'],
-      'align-content': ['stretch', 'flex-start', 'flex-end', 'center', 'space-between', 'space-around']
-    }
-  },
-
   'css-grid-1': {
     'title': 'Grid Layout',
     'tr': 'http://www.w3.org/TR/css3-grid-layout/',
@@ -2100,6 +2080,26 @@ window.Specs = {
         ]
       ),
       'backface-visibility': ['visible', 'hidden']
+    }
+  },
+
+  'css-flexbox-1': {
+    'title': 'Flexible Box Layout Level 1',
+    'tr': 'http://www.w3.org/TR/css3-flexbox/',
+    'properties': {
+      'display': ['flex', 'inline-flex'],
+      'flex-direction': ['row', 'row-reverse', 'column', 'column-reverse'],
+      'flex-wrap': ['nowrap', 'wrap', 'wrap-reverse'],
+      'flex-flow': ['row', 'row-reverse', 'column', 'column-reverse'].or(['nowrap', 'wrap', 'wrap-reverse']),
+      'order': ['0', '1', '-1'],
+      'flex': ['none'].concat(['1', '1 1'].or(['auto', '10px', '10%'])),
+      'flex-grow': ['0', '5', '0.11'],
+      'flex-shrink': ['1', '10', '0', '0.11'],
+      'flex-basis': ['auto', '1px', '1%'],
+      'justify-content': ['flex-start', 'flex-end', 'center', 'space-between', 'space-around'],
+      'align-items': ['stretch', 'flex-start', 'flex-end', 'center', 'baseline'],
+      'align-self': ['auto', 'flex-start', 'flex-end', 'center', 'baseline', 'stretch'],
+      'align-content': ['stretch', 'flex-start', 'flex-end', 'center', 'space-between', 'space-around']
     }
   },
 
