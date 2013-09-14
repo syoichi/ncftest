@@ -1418,7 +1418,6 @@ window.Specs = {
 
   'css-grid-position-3': {
     'title': 'Grid Positioning',
-    'tr': 'http://www.w3.org/TR/css3-grid/',
     'properties': {
       'grid-columns': ['none'].concat(/*
         ['10px', '10%', '10fr', '*'].times(1, 3).map(function (arg) {
