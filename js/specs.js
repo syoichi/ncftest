@@ -2174,10 +2174,7 @@ window.Specs = {
         ['right', 'left']
       ),
       'ruby-merge': ['separate', 'collapse', 'auto'],
-      'ruby-align': [
-        'auto', 'start', 'center',
-        'distribute-letter', 'distribute-space'
-      ]
+      'ruby-align': ['space-around', 'start', 'center', 'space-between']
     }
   },
 
