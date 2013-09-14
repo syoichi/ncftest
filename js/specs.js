@@ -2675,11 +2675,12 @@ window.Specs = {
     'title': 'Selectors Level 4',
     'selectors': {
       'E! > F, !E F': [
-        'head! > title', '!ol > li', 'ul > ol! > li',
-        '!span:only-child a[href^=\'https://\']'
+        'head! > title', '!ol > li', '!ol > li:only-child', 'ul > ol! > li',
+        '!div p', '!span:only-child a[href^=\'https://\']',
+        '!div > !p.warning'
       ],
       'E /attr/ F': ['label /for/ input'],
-      'E || F': ['col.selected || td'],
+      'E || F': ['div || span', 'col.selected || td'],
       '[att=val i]': ['[class=\'example\' i]', '[frame=hsides i]'],
       ':any-link': [':any-link'],
       ':local-link': [':local-link'],
@@ -2687,16 +2688,19 @@ window.Specs = {
         ':local-link(0)', ':local-link(1)', ':not(:local-link(0))'
       ],
       ':scope': [':scope', ':scope > .example'],
+      ':drop': [':drop'],
+      ':drop()': [':drop()'].concat(
+        ['active'].or(['valid'], ['invalid']).map(function (arg) {
+          return ':drop(' + arg + ')'
+        })
+      ),
       ':current': [':current'],
-      ':current()': [':current(div)', ':current(p, li, dt, dd)'],
+      ':current()': [
+        ':current(div)', ':current(div:only-child)',
+        ':current(div, p)', ':current(p, li, dt, dd)'
+      ],
       ':past': [':past'],
       ':future': [':future'],
-      ':active-drop': [':active-drop'],
-      ':valid-drop': [':valid-drop'],
-      ':invalid-drop': [':invalid-drop'],
-      ':active-drop-target': [':active-drop-target'],
-      ':valid-drop-target': [':valid-drop-target'],
-      ':invalid-drop-target': [':invalid-drop-target'],
       ':placeholder-shown': [':placeholder-shown'],
       ':user-error': [':user-error'],
       ':blank': [':blank'],
@@ -2716,7 +2720,7 @@ window.Specs = {
       ':matches()': [
         // fast profile
         ':matches(.example)', ':matches(div:only-child)',
-        ':matches(section, article)',
+        ':matches(section, article)', ':matches(:link, :visited)',
         ':matches(section, article, aside, nav) h1',
         ':matches(section, article, aside, nav) ' +
           ':matches(section, article, aside, nav) h1',
@@ -2725,7 +2729,7 @@ window.Specs = {
         ':matches(div + div)', ':matches(div ~ div)',
         ':matches(div#text.text[data-text^=\'base\']:only-child > div, main)'
       ],
-      ':nth-match(an+b of selector-list)': [
+      ':nth-match(an+b of <selector>)': [
         'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
         '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
         'n-1', '-n-1', '+n-1', '1n-1', '-1n-1',
@@ -2743,7 +2747,7 @@ window.Specs = {
       ].map(function (nth) {
         return ':nth-match(' + nth + ' of .foo)';
       }).concat([':nth-match(2n+1 of .foo, #bar)']),
-      ':nth-last-match(an+b of selector-list)': [
+      ':nth-last-match(an+b of <selector>)': [
         'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
         '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
         'n-1', '-n-1', '+n-1', '1n-1', '-1n-1',
