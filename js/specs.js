@@ -1638,215 +1638,6 @@ window.Specs = {
     }
   },
 
-  'css-grid-1': {
-    'title': 'Grid Layout',
-    'tr': 'http://www.w3.org/TR/css3-grid-layout/',
-    'properties': {
-      'display': ['grid', 'inline-grid'/*, 'subgrid'*/],
-      'grid-template-columns': ['none'].concat(
-        [
-          '10px', '10%', '1fr', 'min-content', 'max-content'
-        ].times(2, 2, ', ').map(function minmax(arg) {
-          return 'minmax(' + arg + ')';
-        }),
-        ['auto', '10px', '10%', '1fr', 'min-content', 'max-content'],
-        [
-          'minmax(1px, 1px)', 'auto',
-          '1px', '1%', '1fr', 'min-content', 'max-content'
-        ].map(function repeat(arg) {
-          return 'repeat(1, ' + arg + ')';
-        }),
-        [
-          'repeat(4, \'content\' 10px)',
-          'repeat(4, 10px \'content\')',
-          'repeat(4, \'content\' \'repeat\' 10px)',
-          'repeat(4, \'content\' 250px 10px)',
-          'repeat(4, 10px \'content\' \'repeat\')',
-          'repeat(4, \'content\' 10px \'repeat\')',
-          'repeat(4, \'content\' \'repeat\' 250px 10px)',
-          'repeat(4, \'content\' 250px 10px \'repeat\')',
-          'repeat(4, \'content\' 1fr minmax(1px, 1px) \'repeat\')'
-        ],
-        [
-          'auto auto', 'auto minmax(min-content, 1fr)', 'auto repeat(1, 10px)',
-          'minmax(1px, 10px) auto',
-          '(start) auto', '(first) repeat(2, 2px)',
-          'auto (end)', '(first header) auto',
-          '10px repeat(2, 1fr auto minmax(30%, 1fr))',
-          'repeat(4, 10px \'col-start\' 250px \'col-end\') 10px',
-          'auto auto auto', '10px 10px 10px',
-          'auto minmax(min-content, 1fr) repeat(1, 10px)',
-          '(start) auto minmax(min-content, 1fr)', '(first) 10px 30%',
-          'auto repeat(1, 10px) (end)',
-          '(start) auto (end)', '(first) repeat(2, 2px) (content)',
-          '(start) auto (track-start) 0.5fr ' +
-            '(thumb-start) auto (fill-split) auto ' +
-            '(thumb-end) 0.5fr (track-end) auto (end)',
-          '100px 1fr max-content minmax(min-content, 1fr)',
-          '(first) 1fr (header) 50px (main) 1fr (footer) 50px (last)',
-          '(first header) minmax(min-content, max-content) auto max-content ' +
-            'repeat(4, \'content\' 1fr minmax(1px, 1px) \'repeat\') (middle) ' +
-            '1fr (last footer)'
-        ]
-      ),
-      'grid-template-rows': ['none'].concat(
-        [
-          '10px', '10%', '1fr', 'min-content', 'max-content'
-        ].times(2, 2, ', ').map(function minmax(arg) {
-          return 'minmax(' + arg + ')';
-        }),
-        ['auto', '10px', '10%', '1fr', 'min-content', 'max-content'],
-        [
-          'minmax(1px, 1px)', 'auto',
-          '1px', '1%', '1fr', 'min-content', 'max-content'
-        ].map(function repeat(arg) {
-          return 'repeat(1, ' + arg + ')';
-        }),
-        [
-          'repeat(4, \'content\' 10px)',
-          'repeat(4, 10px \'content\')',
-          'repeat(4, \'content\' \'repeat\' 10px)',
-          'repeat(4, \'content\' 250px 10px)',
-          'repeat(4, 10px \'content\' \'repeat\')',
-          'repeat(4, \'content\' 10px \'repeat\')',
-          'repeat(4, \'content\' \'repeat\' 250px 10px)',
-          'repeat(4, \'content\' 250px 10px \'repeat\')',
-          'repeat(4, \'content\' 1fr minmax(1px, 1px) \'repeat\')'
-        ],
-        [
-          'auto auto', 'auto minmax(min-content, 1fr)', 'auto repeat(1, 10px)',
-          'minmax(1px, 10px) auto',
-          '(start) auto', '(first) repeat(2, 2px)',
-          'auto (end)', '(first header) auto',
-          '10px repeat(2, 1fr auto minmax(30%, 1fr))',
-          'repeat(4, 10px \'col-start\' 250px \'col-end\') 10px',
-          'auto auto auto', '10px 10px 10px',
-          'auto minmax(min-content, 1fr) repeat(1, 10px)',
-          '(start) auto minmax(min-content, 1fr)', '(first) 10px 30%',
-          'auto repeat(1, 10px) (end)',
-          '(start) auto (end)', '(first) repeat(2, 2px) (content)',
-          '(start) auto (track-start) 0.5fr ' +
-            '(thumb-start) auto (fill-split) auto ' +
-            '(thumb-end) 0.5fr (track-end) auto (end)',
-          '100px 1fr max-content minmax(min-content, 1fr)',
-          '(first) 1fr (header) 50px (main) 1fr (footer) 50px (last)',
-          '(first header) minmax(min-content, max-content) auto max-content ' +
-            'repeat(4, \'content\' 1fr minmax(1px, 1px) \'repeat\') (middle) ' +
-            '1fr (last footer)'
-        ]
-      ),
-      'grid-template-areas': [
-        'none', '\'nav\'', '\'.\'', '\'head head\' \'nav main\' \'foot .\''
-      ],
-      'grid-template': [
-        'none', '\'nav\'', '\'.\'', '\'head head\' \'nav main\' \'foot .\''
-      ].concat(
-        ['none'].concat(
-          [
-            '10px', '10%', '1fr', 'min-content', 'max-content'
-          ].times(2, 2, ', ').map(function minmax(arg) {
-            return 'minmax(' + arg + ')';
-          }),
-          ['auto', '10px', '10%', '1fr', 'min-content', 'max-content'],
-          [
-            'minmax(1px, 1px)', 'auto',
-            '1px', '1%', '1fr', 'min-content', 'max-content'
-          ].map(function repeat(arg) {
-            return 'repeat(1, ' + arg + ')';
-          }),
-          [
-            'repeat(4, \'content\' 10px)',
-            'repeat(4, 10px \'content\')',
-            'repeat(4, \'content\' \'repeat\' 10px)',
-            'repeat(4, \'content\' 250px 10px)',
-            'repeat(4, 10px \'content\' \'repeat\')',
-            'repeat(4, \'content\' 10px \'repeat\')',
-            'repeat(4, \'content\' \'repeat\' 250px 10px)',
-            'repeat(4, \'content\' 250px 10px \'repeat\')',
-            'repeat(4, \'content\' 1fr minmax(1px, 1px) \'repeat\')'
-          ],
-          [
-            'auto auto', 'auto minmax(min-content, 1fr)', 'auto repeat(1, 10px)',
-            'minmax(1px, 10px) auto',
-            '(start) auto', '(first) repeat(2, 2px)',
-            'auto (end)', '(first header) auto',
-            '10px repeat(2, 1fr auto minmax(30%, 1fr))',
-            'repeat(4, 10px \'col-start\' 250px \'col-end\') 10px',
-            'auto auto auto', '10px 10px 10px',
-            'auto minmax(min-content, 1fr) repeat(1, 10px)',
-            '(start) auto minmax(min-content, 1fr)', '(first) 10px 30%',
-            'auto repeat(1, 10px) (end)',
-            '(start) auto (end)', '(first) repeat(2, 2px) (content)',
-            '(start) auto (track-start) 0.5fr ' +
-              '(thumb-start) auto (fill-split) auto ' +
-              '(thumb-end) 0.5fr (track-end) auto (end)',
-            '100px 1fr max-content minmax(min-content, 1fr)',
-            '(first) 1fr (header) 50px (main) 1fr (footer) 50px (last)',
-            '(first header) minmax(min-content, max-content) auto max-content ' +
-              'repeat(4, \'content\' 1fr minmax(1px, 1px) \'repeat\') (middle) ' +
-              '1fr (last footer)'
-          ]
-        ).and(['none'], ' / '),
-        [
-          '(start) "nav"', '"nav" auto (end)', '(start) "nav" auto (end)',
-          'none / "nav"', 'none / (start) "nav"', 'none / "nav" auto (end)',
-          'none / "head" "nav" "main" "foot"', 'none / (start) "nav" auto (end)',
-          'auto 1fr auto / auto 1fr',
-          'auto 1fr auto / (header-top) "a   a   a" (header-bottom) ' +
-            '(main-top) "b   b   b" 1fr (main-bottom)',
-          '(first header) minmax(min-content, max-content) auto max-content ' +
-              'repeat(4, \'content\' 1fr minmax(1px, 1px) \'repeat\') (middle) ' +
-              '1fr (last footer) / (start) "nav" auto (end)'
-        ]
-      ),
-      'grid-auto-columns': ['auto'].concat([
-          '10px', '10%', '1fr', 'min-content', 'max-content'
-        ].times(2, 2, ', ').map(function minmax(arg) {
-          return 'minmax(' + arg + ')';
-        })
-      ),
-      'grid-auto-rows': ['auto'].concat([
-          '10px', '10%', '1fr', 'min-content', 'max-content'
-        ].times(2, 2, ', ').map(function minmax(arg) {
-          return 'minmax(' + arg + ')';
-        })
-      ),
-      'grid-row-start': ['auto', 'ident'].concat(
-        ['1'].or(['\'C\'']), ['span'].amp(['1'].or(['\'C\'']))
-      ),
-      'grid-column-start': ['auto', 'ident'].concat(
-        ['1'].or(['\'C\'']), ['span'].amp(['1'].or(['\'C\'']))
-      ),
-      'grid-row-end': ['auto', 'ident'].concat(
-        ['1'].or(['\'C\'']), ['span'].amp(['1'].or(['\'C\'']))
-      ),
-      'grid-column-end': ['auto', 'ident'].concat(
-        ['1'].or(['\'C\'']), ['span'].amp(['1'].or(['\'C\'']))
-      ),
-      'grid-column': ['auto', 'ident'].concat(
-        ['1'].or(['\'C\'']), ['span'].amp(['1'].or(['\'C\'']))
-      ).times(1, 2, ' / '),
-      'grid-row': ['auto', 'ident'].concat(
-        ['1'].or(['\'C\'']), ['span'].amp(['1'].or(['\'C\'']))
-      ).times(1, 2, ' / '),
-      'grid-area': ['auto', 'ident'].concat(
-        ['1'].or(['\'C\'']), ['span'].amp(['1'].or(['\'C\'']))
-      ).times(1, 2, ' / ').concat([
-        'auto / auto / auto', 'auto / auto / auto / auto'
-      ]),
-      'grid-auto-flow': ['rows', 'columns']
-    },
-    'values': {
-      'properties': [
-        'grid-template-columns',
-        'grid-template-rows',
-        'grid-columns',
-        'grid-rows'
-      ],
-      'fr': '1fr'
-    }
-  },
-
   'css-template-1': {
     'title': 'Grid Template Layout',
     'tr': 'http://www.w3.org/TR/css3-layout/',
@@ -2100,6 +1891,411 @@ window.Specs = {
       'align-items': ['stretch', 'flex-start', 'flex-end', 'center', 'baseline'],
       'align-self': ['auto', 'flex-start', 'flex-end', 'center', 'baseline', 'stretch'],
       'align-content': ['stretch', 'flex-start', 'flex-end', 'center', 'space-between', 'space-around']
+    }
+  },
+
+  'css-grid-1': {
+    'title': 'Grid Layout Level 1',
+    'properties': {
+      'display': ['grid', 'inline-grid'],
+      'grid-template-columns': ['none'].concat(
+        ['auto', '10px', '10%', '1fr', 'min-content', 'max-content'],
+        [
+          '10px', '10%', '1fr', 'min-content', 'max-content'
+        ].times(2, 2, ', ').map(function minmax(arg) {
+          return 'minmax(' + arg + ')';
+        }),
+        [
+          'auto', '1px', '1%', '1fr', 'min-content', 'max-content',
+          'minmax(1px, 1px)'
+        ].map(function repeat(arg) {
+          return 'repeat(1, ' + arg + ')';
+        }),
+        [
+          'repeat(4, 250px 10px)',
+          'repeat(4, (content) 10px)',
+          'repeat(4, 10px (content))',
+          'repeat(4, (first nav) 10px)',
+          'repeat(4, 250px 10px 1px)',
+          'repeat(2, 1fr auto minmax(30%, 1fr))',
+          'repeat(4, (content) 250px 10px)',
+          'repeat(4, 250px 10px (content))',
+          'repeat(4, (content) 10px (repeat))',
+          'repeat(4, 250px 10px 5px 1px)',
+          'repeat(4, (content) 250px 10px 1px)',
+          'repeat(4, 250px 10px 1px (repeat))',
+          'repeat(4, (content) 250px 10px (repeat))',
+          'repeat(4, (content) 1fr minmax(1px, 1px) (repeat))',
+          'repeat(4, (first) 250px (content) 10px)',
+          'repeat(4, 250px (content) 10px (repeat))',
+          'repeat(4, 10px (col-start) 250px (col-end))',
+          'repeat(4, (first) 250px (content) 10px (repeat))',
+          'repeat(4, (first nav) 1fr (content) minmax(1px, 1px) (repeat))'
+        ],
+        [
+          'auto auto', 'auto minmax(min-content, 1fr)', 'auto repeat(1, 10px)',
+          'minmax(1px, 10px) auto', '10px repeat(2, 1fr auto minmax(30%, 1fr))',
+          'repeat(4, 10px (col-start) 250px (col-end)) 10px',
+          '(start) auto', '(first) repeat(2, 2px)',
+          'auto (end)', '(first header) auto',
+          'auto auto auto', '10px 10px 10px',
+          'auto minmax(min-content, 1fr) auto',
+          'auto minmax(min-content, 1fr) repeat(1, 10px)',
+          '(start) auto minmax(min-content, 1fr)', '(first) 10px 30%',
+          'auto repeat(1, 10px) (end)', '(start) auto (end)',
+          '(first) repeat(2, 2px) (content)',
+          'auto auto minmax(min-content, 1fr) auto',
+          '100px 1fr max-content minmax(min-content, 1fr)',
+          '150px (item1-start) 1fr (item1-end)',
+          '(item1-start) 50px 1fr 50px (item1-end)',
+          '(first nav) 150px (main) 1fr (last)',
+          '(labels) auto (controls) auto (oversized) auto',
+          '(first header) 50px (main) 1fr (footer) 50px (last)',
+          '(first) 1fr (header) 50px (main) 1fr (footer) 50px (last)',
+          '(start) auto (track-start) 0.5fr ' +
+            '(thumb-start) auto (fill-split) auto ' +
+            '(thumb-end) 0.5fr (track-end) auto (end)',
+          '(first header) minmax(min-content, max-content) auto max-content ' +
+            'repeat(4, (content) 1fr minmax(1px, 1px) (repeat)) (middle) ' +
+            '1fr (last footer)',
+          '(a) auto (b) minmax(min-content, 1fr) (b c d)' +
+            ' repeat(2, (e) 40px) repeat(5, auto)',
+          '(a) 50px (b) 320px (b c d) repeat(2, (e) 40px) repeat(4, 0px) 50px'
+        ],
+        [
+          'subgrid', 'subgrid (content)', 'subgrid repeat(1, (content))',
+          'subgrid (content) (repeat)',
+          'subgrid repeat(1, (content)) repeat(2, (repeat))',
+          'subgrid (content) repeat(2, (repeat))',
+          'subgrid repeat(1, (content)) (repeat)',
+          'subgrid (first) (content) (repeat)',
+          'subgrid (first) (second) (third) (fourth) (fifth)'
+        ]
+      ),
+      'grid-template-rows': ['none'].concat(
+        ['auto', '10px', '10%', '1fr', 'min-content', 'max-content'],
+        [
+          '10px', '10%', '1fr', 'min-content', 'max-content'
+        ].times(2, 2, ', ').map(function minmax(arg) {
+          return 'minmax(' + arg + ')';
+        }),
+        [
+          'auto', '1px', '1%', '1fr', 'min-content', 'max-content',
+          'minmax(1px, 1px)'
+        ].map(function repeat(arg) {
+          return 'repeat(1, ' + arg + ')';
+        }),
+        [
+          'repeat(4, 250px 10px)',
+          'repeat(4, (content) 10px)',
+          'repeat(4, 10px (content))',
+          'repeat(4, (first nav) 10px)',
+          'repeat(4, 250px 10px 1px)',
+          'repeat(2, 1fr auto minmax(30%, 1fr))',
+          'repeat(4, (content) 250px 10px)',
+          'repeat(4, 250px 10px (content))',
+          'repeat(4, (content) 10px (repeat))',
+          'repeat(4, 250px 10px 5px 1px)',
+          'repeat(4, (content) 250px 10px 1px)',
+          'repeat(4, 250px 10px 1px (repeat))',
+          'repeat(4, (content) 250px 10px (repeat))',
+          'repeat(4, (content) 1fr minmax(1px, 1px) (repeat))',
+          'repeat(4, (first) 250px (content) 10px)',
+          'repeat(4, 250px (content) 10px (repeat))',
+          'repeat(4, 10px (col-start) 250px (col-end))',
+          'repeat(4, (first) 250px (content) 10px (repeat))',
+          'repeat(4, (first nav) 1fr (content) minmax(1px, 1px) (repeat))'
+        ],
+        [
+          'auto auto', 'auto minmax(min-content, 1fr)', 'auto repeat(1, 10px)',
+          'minmax(1px, 10px) auto', '10px repeat(2, 1fr auto minmax(30%, 1fr))',
+          'repeat(4, 10px (col-start) 250px (col-end)) 10px',
+          '(start) auto', '(first) repeat(2, 2px)',
+          'auto (end)', '(first header) auto',
+          'auto auto auto', '10px 10px 10px',
+          'auto minmax(min-content, 1fr) auto',
+          'auto minmax(min-content, 1fr) repeat(1, 10px)',
+          '(start) auto minmax(min-content, 1fr)', '(first) 10px 30%',
+          'auto repeat(1, 10px) (end)', '(start) auto (end)',
+          '(first) repeat(2, 2px) (content)',
+          'auto auto minmax(min-content, 1fr) auto',
+          '100px 1fr max-content minmax(min-content, 1fr)',
+          '150px (item1-start) 1fr (item1-end)',
+          '(item1-start) 50px 1fr 50px (item1-end)',
+          '(first nav) 150px (main) 1fr (last)',
+          '(labels) auto (controls) auto (oversized) auto',
+          '(first header) 50px (main) 1fr (footer) 50px (last)',
+          '(first) 1fr (header) 50px (main) 1fr (footer) 50px (last)',
+          '(start) auto (track-start) 0.5fr ' +
+            '(thumb-start) auto (fill-split) auto ' +
+            '(thumb-end) 0.5fr (track-end) auto (end)',
+          '(first header) minmax(min-content, max-content) auto max-content ' +
+            'repeat(4, (content) 1fr minmax(1px, 1px) (repeat)) (middle) ' +
+            '1fr (last footer)',
+          '(a) auto (b) minmax(min-content, 1fr) (b c d)' +
+            ' repeat(2, (e) 40px) repeat(5, auto)',
+          '(a) 50px (b) 320px (b c d) repeat(2, (e) 40px) repeat(4, 0px) 50px'
+        ],
+        [
+          'subgrid', 'subgrid (content)', 'subgrid repeat(1, (content))',
+          'subgrid (content) (repeat)',
+          'subgrid repeat(1, (content)) repeat(2, (repeat))',
+          'subgrid (content) repeat(2, (repeat))',
+          'subgrid repeat(1, (content)) (repeat)',
+          'subgrid (first) (content) (repeat)',
+          'subgrid (first) (second) (third) (fourth) (fifth)'
+        ]
+      ),
+      'grid-template-areas': [
+        'none', '\'nav\'', '\'.\'', '\'head head\' \'nav main\' \'foot .\''
+      ],
+      'grid-template': [
+        'none', '\'nav\'', '\'.\'', '\'head head\' \'nav main\' \'foot .\''
+      ].concat(
+        ['none'].concat(
+          ['auto', '10px', '10%', '1fr', 'min-content', 'max-content'],
+          [
+            '10px', '10%', '1fr', 'min-content', 'max-content'
+          ].times(2, 2, ', ').map(function minmax(arg) {
+            return 'minmax(' + arg + ')';
+          }),
+          [
+            'auto', '1px', '1%', '1fr', 'min-content', 'max-content',
+            'minmax(1px, 1px)'
+          ].map(function repeat(arg) {
+            return 'repeat(1, ' + arg + ')';
+          }),
+          [
+            'repeat(4, 250px 10px)',
+            'repeat(4, (content) 10px)',
+            'repeat(4, 10px (content))',
+            'repeat(4, (first nav) 10px)',
+            'repeat(4, 250px 10px 1px)',
+            'repeat(2, 1fr auto minmax(30%, 1fr))',
+            'repeat(4, (content) 250px 10px)',
+            'repeat(4, 250px 10px (content))',
+            'repeat(4, (content) 10px (repeat))',
+            'repeat(4, 250px 10px 5px 1px)',
+            'repeat(4, (content) 250px 10px 1px)',
+            'repeat(4, 250px 10px 1px (repeat))',
+            'repeat(4, (content) 250px 10px (repeat))',
+            'repeat(4, (content) 1fr minmax(1px, 1px) (repeat))',
+            'repeat(4, (first) 250px (content) 10px)',
+            'repeat(4, 250px (content) 10px (repeat))',
+            'repeat(4, 10px (col-start) 250px (col-end))',
+            'repeat(4, (first) 250px (content) 10px (repeat))',
+            'repeat(4, (first nav) 1fr (content) minmax(1px, 1px) (repeat))'
+          ],
+          [
+            'auto auto', 'auto minmax(min-content, 1fr)', 'auto repeat(1, 10px)',
+            'minmax(1px, 10px) auto', '10px repeat(2, 1fr auto minmax(30%, 1fr))',
+            'repeat(4, 10px (col-start) 250px (col-end)) 10px',
+            '(start) auto', '(first) repeat(2, 2px)',
+            'auto (end)', '(first header) auto',
+            'auto auto auto', '10px 10px 10px',
+            'auto minmax(min-content, 1fr) auto',
+            'auto minmax(min-content, 1fr) repeat(1, 10px)',
+            '(start) auto minmax(min-content, 1fr)', '(first) 10px 30%',
+            'auto repeat(1, 10px) (end)', '(start) auto (end)',
+            '(first) repeat(2, 2px) (content)',
+            'auto auto minmax(min-content, 1fr) auto',
+            '100px 1fr max-content minmax(min-content, 1fr)',
+            '150px (item1-start) 1fr (item1-end)',
+            '(item1-start) 50px 1fr 50px (item1-end)',
+            '(first nav) 150px (main) 1fr (last)',
+            '(labels) auto (controls) auto (oversized) auto',
+            '(first header) 50px (main) 1fr (footer) 50px (last)',
+            '(first) 1fr (header) 50px (main) 1fr (footer) 50px (last)',
+            '(start) auto (track-start) 0.5fr ' +
+              '(thumb-start) auto (fill-split) auto ' +
+              '(thumb-end) 0.5fr (track-end) auto (end)',
+            '(first header) minmax(min-content, max-content) auto max-content ' +
+              'repeat(4, (content) 1fr minmax(1px, 1px) (repeat)) (middle) ' +
+              '1fr (last footer)',
+            '(a) auto (b) minmax(min-content, 1fr) (b c d)' +
+              ' repeat(2, (e) 40px) repeat(5, auto)',
+            '(a) 50px (b) 320px (b c d) repeat(2, (e) 40px) repeat(4, 0px) 50px'
+          ],
+          [
+            'subgrid', 'subgrid (content)', 'subgrid repeat(1, (content))',
+            'subgrid (content) (repeat)',
+            'subgrid repeat(1, (content)) repeat(2, (repeat))',
+            'subgrid (content) repeat(2, (repeat))',
+            'subgrid repeat(1, (content)) (repeat)',
+            'subgrid (first) (content) (repeat)',
+            'subgrid (first) (second) (third) (fourth) (fifth)'
+          ]
+        ).and(['none'], ' / '),
+        [
+          '(start) "nav"', '"nav" auto (end)', '(start) "nav" auto (end)',
+          'auto / "nav"', 'auto / (start) "nav"', 'auto / "nav" auto (end)',
+          'auto / "head" "nav" "main" "foot"', 'none / (start) "nav" auto (end)',
+          'auto 1fr auto / auto 1fr',
+          '(start) auto (end) / (first) "content" auto (last)',
+          'auto 1fr auto / (header-top) "a   a   a" (header-bottom) ' +
+            '(main-top) "b   b   b" 1fr (main-bottom)',
+          '(first header) minmax(min-content, max-content) auto max-content ' +
+              'repeat(4, (content) 1fr minmax(1px, 1px) (repeat)) (middle) ' +
+              '1fr (last footer) / (start) "nav" auto (end)'
+        ]
+      ),
+      'grid-auto-columns': [
+        'auto', '10px', '10%', '1fr', 'min-content', 'max-content'
+      ].concat([
+        '10px', '10%', '1fr', 'min-content', 'max-content'
+      ].times(2, 2, ', ').map(function minmax(arg) {
+        return 'minmax(' + arg + ')';
+      })),
+      'grid-auto-rows': [
+        'auto', '10px', '10%', '1fr', 'min-content', 'max-content'
+      ].concat([
+        '10px', '10%', '1fr', 'min-content', 'max-content'
+      ].times(2, 2, ', ').map(function minmax(arg) {
+        return 'minmax(' + arg + ')';
+      })),
+      'grid-auto-flow': ['none'].concat(
+        ['rows', 'columns'], ['rows', 'columns'].amp(['dense'])
+      ),
+      'grid-auto-position': ['auto'].concat(
+        ['1'].or(['ident']), ['span'].amp(['1'].or(['ident']))
+      ).times(2, 2, ' / '),
+      'grid': [
+        'none', '\'nav\'', '\'.\'', '\'head head\' \'nav main\' \'foot .\''
+      ].concat(
+        ['none'].concat(
+          ['auto', '10px', '10%', '1fr', 'min-content', 'max-content'],
+          [
+            '10px', '10%', '1fr', 'min-content', 'max-content'
+          ].times(2, 2, ', ').map(function minmax(arg) {
+            return 'minmax(' + arg + ')';
+          }),
+          [
+            'auto', '1px', '1%', '1fr', 'min-content', 'max-content',
+            'minmax(1px, 1px)'
+          ].map(function repeat(arg) {
+            return 'repeat(1, ' + arg + ')';
+          }),
+          [
+            'repeat(4, 250px 10px)',
+            'repeat(4, (content) 10px)',
+            'repeat(4, 10px (content))',
+            'repeat(4, (first nav) 10px)',
+            'repeat(4, 250px 10px 1px)',
+            'repeat(2, 1fr auto minmax(30%, 1fr))',
+            'repeat(4, (content) 250px 10px)',
+            'repeat(4, 250px 10px (content))',
+            'repeat(4, (content) 10px (repeat))',
+            'repeat(4, 250px 10px 5px 1px)',
+            'repeat(4, (content) 250px 10px 1px)',
+            'repeat(4, 250px 10px 1px (repeat))',
+            'repeat(4, (content) 250px 10px (repeat))',
+            'repeat(4, (content) 1fr minmax(1px, 1px) (repeat))',
+            'repeat(4, (first) 250px (content) 10px)',
+            'repeat(4, 250px (content) 10px (repeat))',
+            'repeat(4, 10px (col-start) 250px (col-end))',
+            'repeat(4, (first) 250px (content) 10px (repeat))',
+            'repeat(4, (first nav) 1fr (content) minmax(1px, 1px) (repeat))'
+          ],
+          [
+            'auto auto', 'auto minmax(min-content, 1fr)', 'auto repeat(1, 10px)',
+            'minmax(1px, 10px) auto', '10px repeat(2, 1fr auto minmax(30%, 1fr))',
+            'repeat(4, 10px (col-start) 250px (col-end)) 10px',
+            '(start) auto', '(first) repeat(2, 2px)',
+            'auto (end)', '(first header) auto',
+            'auto auto auto', '10px 10px 10px',
+            'auto minmax(min-content, 1fr) auto',
+            'auto minmax(min-content, 1fr) repeat(1, 10px)',
+            '(start) auto minmax(min-content, 1fr)', '(first) 10px 30%',
+            'auto repeat(1, 10px) (end)', '(start) auto (end)',
+            '(first) repeat(2, 2px) (content)',
+            'auto auto minmax(min-content, 1fr) auto',
+            '100px 1fr max-content minmax(min-content, 1fr)',
+            '150px (item1-start) 1fr (item1-end)',
+            '(item1-start) 50px 1fr 50px (item1-end)',
+            '(first nav) 150px (main) 1fr (last)',
+            '(labels) auto (controls) auto (oversized) auto',
+            '(first header) 50px (main) 1fr (footer) 50px (last)',
+            '(first) 1fr (header) 50px (main) 1fr (footer) 50px (last)',
+            '(start) auto (track-start) 0.5fr ' +
+              '(thumb-start) auto (fill-split) auto ' +
+              '(thumb-end) 0.5fr (track-end) auto (end)',
+            '(first header) minmax(min-content, max-content) auto max-content ' +
+              'repeat(4, (content) 1fr minmax(1px, 1px) (repeat)) (middle) ' +
+              '1fr (last footer)',
+            '(a) auto (b) minmax(min-content, 1fr) (b c d)' +
+              ' repeat(2, (e) 40px) repeat(5, auto)',
+            '(a) 50px (b) 320px (b c d) repeat(2, (e) 40px) repeat(4, 0px) 50px'
+          ],
+          [
+            'subgrid', 'subgrid (content)', 'subgrid repeat(1, (content))',
+            'subgrid (content) (repeat)',
+            'subgrid repeat(1, (content)) repeat(2, (repeat))',
+            'subgrid (content) repeat(2, (repeat))',
+            'subgrid repeat(1, (content)) (repeat)',
+            'subgrid (first) (content) (repeat)',
+            'subgrid (first) (second) (third) (fourth) (fifth)'
+          ]
+        ).and(['none'], ' / '),
+        [
+          '(start) "nav"', '"nav" auto (end)', '(start) "nav" auto (end)',
+          'auto / "nav"', 'auto / (start) "nav"', 'auto / "nav" auto (end)',
+          'auto / "head" "nav" "main" "foot"', 'none / (start) "nav" auto (end)',
+          'auto 1fr auto / auto 1fr',
+          '(start) auto (end) / (first) "content" auto (last)',
+          'auto 1fr auto / (header-top) "a   a   a" (header-bottom) ' +
+            '(main-top) "b   b   b" 1fr (main-bottom)',
+          '(first header) minmax(min-content, max-content) auto max-content ' +
+              'repeat(4, (content) 1fr minmax(1px, 1px) (repeat)) (middle) ' +
+              '1fr (last footer) / (start) "nav" auto (end)'
+        ],
+        [
+          'none auto', 'none auto / auto',
+          'rows dense minmax(10px, 10px) / minmax(min-content, max-content)'
+        ]
+        /*['none'].concat(
+          ['rows', 'columns'], ['rows', 'columns'].amp(['dense'])
+        ).and([
+          'auto', '10px', '10%', '1fr', 'min-content', 'max-content'
+        ].concat([
+          '10px', '10%', '1fr', 'min-content', 'max-content'
+        ].times(2, 2, ', ').map(function minmax(arg) {
+          return 'minmax(' + arg + ')';
+        })).times(1, 2, ' / '))*/
+      ),
+      'grid-row-start': ['auto'].concat(
+        ['1'].or(['ident']), ['span'].amp(['1'].or(['ident']))
+      ),
+      'grid-column-start': ['auto'].concat(
+        ['1'].or(['ident']), ['span'].amp(['1'].or(['ident']))
+      ),
+      'grid-row-end': ['auto'].concat(
+        ['1'].or(['ident']), ['span'].amp(['1'].or(['ident']))
+      ),
+      'grid-column-end': ['auto'].concat(
+        ['1'].or(['ident']), ['span'].amp(['1'].or(['ident']))
+      ),
+      'grid-column': ['auto'].concat(
+        ['1'].or(['ident']), ['span'].amp(['1'].or(['ident']))
+      ).times(1, 2, ' / '),
+      'grid-row': ['auto'].concat(
+        ['1'].or(['ident']), ['span'].amp(['1'].or(['ident']))
+      ).times(1, 2, ' / '),
+      'grid-area': ['auto'].concat(
+        ['1'].or(['ident']), ['span'].amp(['1'].or(['ident']))
+      ).times(1, 2, ' / ').concat([
+        'auto / auto / auto', 'auto / auto / auto / auto'
+      ])
+    },
+    'values': {
+      'properties': [
+        'grid-template-columns',
+        'grid-template-rows',
+        'grid-auto-columns',
+        'grid-auto-rows',
+        'grid-columns',
+        'grid-rows'
+      ],
+      'fr': '1fr'
     }
   },
 
