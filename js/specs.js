@@ -523,7 +523,7 @@ window.Specs = {
     'title': 'Text',
     'tr': 'http://www.w3.org/TR/css3-text/',
     'properties': {
-      'text-transform': 'full-width',
+      'text-transform': ['full-width'],
       'tab-size': ['8', '1em'],
       'line-break': ['auto', 'loose', 'normal', 'strict'],
       'word-break': ['normal', 'keep-all', 'break-all'],
@@ -533,7 +533,7 @@ window.Specs = {
       'text-align': ['start', 'end', 'match-parent', 'start end'],
       'text-align-last': ['auto', 'start', 'end', 'left', 'right', 'center', 'justify'],
       'text-justify': ['auto', 'none', 'inter-word', 'distribute'],
-      'word-spacing': ['50%'].concat(['normal', '1em', '50%'].times(2, 3)),
+      'word-spacing': ['10%', '-10%'],
       'text-indent': ['1em', '1%'].amp(['hanging'].or(['each-line'])),
       'hanging-punctuation': ['none'].concat(['first'].or(['force-end', 'allow-end'], ['last']))
     }
