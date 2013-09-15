@@ -1642,44 +1642,93 @@ window.Specs = {
     'title': 'Grid Template Layout',
     'tr': 'http://www.w3.org/TR/css3-layout/',
     'properties': {
-      'grid-template': ['\'*\'', '\'****\' \'****\' \'****\''],
-      'grid-columns': [
-        'auto', '1px', '10%', '*', '1fr',
-        'minmax(1px, 10px)', 'min-content', 'max-content', 'fit-content',
-        'minmax(10%, 10px)', 'minmax(*, 10px)', 'minmax(1fr, 10px)', 'minmax(minmax(1px, 10px), 10px)',
-        'minmax(min-content, 10px)', 'minmax(max-content, 10px)', 'minmax(fit-content, 10px)',
-        'minmax(min-content, max-content)',
-        '1px 1px', '* * * *'
-      ],
-      'grid-rows': [
-        'auto', '1px', '10%', '*', '1fr',
-        'minmax(1px, 10px)', 'min-content', 'max-content', 'fit-content',
-        'minmax(10%, 10px)', 'minmax(*, 10px)', 'minmax(1fr, 10px)', 'minmax(minmax(1px, 10px), 10px)',
-        'minmax(min-content, 10px)', 'minmax(max-content, 10px)', 'minmax(fit-content, 10px)',
-        'minmax(min-content, max-content)',
-        '1px 1px', '* * * *'
-      ],
-      'grid': ['none'].concat(
-        '\'a b c\'',
-        ['\'a b c\''].amp([
-          '1px', '10%', '*', '1fr',
-          'minmax(1px, 10px)', 'min-content', 'max-content', 'fit-content',
-          'minmax(10%, 10px)', 'minmax(*, 10px)', 'minmax(1fr, 10px)', 'minmax(minmax(1px, 10px), 10px)',
-          'minmax(min-content, 10px)', 'minmax(max-content, 10px)', 'minmax(fit-content, 10px)',
-          'minmax(min-content, max-content)'
-        ]),
-        '10% \'d e f\' minmax(1px, 10px)',
-        '\'a b c\' * \'d e f\' *',
-        '10% \'d e f\' minmax(1px, 10px) \'g h i\' min-content',
-        '10% \'d e f\' \'g h i\' max-content',
-        '\'a b\' \'c d\'', '* 10em \'a b c\' \'a b d\' 4em'
+      'grid-template-areas': ['\'*\'', '\'****\' \'****\' \'****\''],
+      'grid-template-columns': ['*', 'fit-content'].concat(
+        ['*', 'fit-content'].amp([
+          '10px', '10%', '1fr', 'min-content', 'max-content'
+        ], ', ').concat(
+          ['*', 'fit-content'].times(2, 2, ', ')
+        ).map(function minmax(arg) {
+          return 'minmax(' + arg + ')';
+        }),
+        ['minmax(minmax(1px, 1px), 1px)'],
+        ['*', 'fit-content'].amp([
+          '10px', '10%', '1fr', 'min-content', 'max-content'
+        ]).concat(['*', 'fit-content'].times(2, 2)),
+        ['* * * *']
+      ),
+      'grid-template-rows': ['*', 'fit-content'].concat(
+        ['*', 'fit-content'].amp([
+          '10px', '10%', '1fr', 'min-content', 'max-content'
+        ], ', ').concat(
+          ['*', 'fit-content'].times(2, 2, ', ')
+        ).map(function minmax(arg) {
+          return 'minmax(' + arg + ')';
+        }),
+        ['minmax(minmax(1px, 1px), 1px)'],
+        ['*', 'fit-content'].amp([
+          '10px', '10%', '1fr', 'min-content', 'max-content'
+        ]).concat(['*', 'fit-content'].times(2, 2)),
+        ['* * * *']
+      ),
+      'grid-template': ['"a"'].amp([
+        '10px', '10%', '*', '1fr',
+        'min-content', 'max-content', 'fit-content'
+      ].concat([
+        '10px', '10%', '*', '1fr',
+        'min-content', 'max-content', 'fit-content'
+      ].times(2, 2, ', ').map(function minmax(arg) {
+        return 'minmax(' + arg + ')';
+      }))).concat(
+        [
+          '10px 10px "a"', '"a" 10px 10px', '10px "a" 10px',
+          '"a" "b" 10px', '10px "a" "b"', '"a" 10px "b"',
+          '10px 10px "a" 10px "b" 10px'
+        ],
+        ['/'].and([
+          '10px', '10%', '*', '1fr',
+          'min-content', 'max-content', 'fit-content'
+        ].concat([
+          '10px', '10%', '*', '1fr',
+          'min-content', 'max-content', 'fit-content'
+        ].times(2, 2, ', ').map(function minmax(arg) {
+          return 'minmax(' + arg + ')';
+        }))),
+        ['*', 'fit-content'].times(2, 2, ' / '),
+        ['* * / * *']
+      ),
+      'grid': ['"a"'].amp([
+        '10px', '10%', '*', '1fr',
+        'min-content', 'max-content', 'fit-content'
+      ].concat([
+        '10px', '10%', '*', '1fr',
+        'min-content', 'max-content', 'fit-content'
+      ].times(2, 2, ', ').map(function minmax(arg) {
+        return 'minmax(' + arg + ')';
+      }))).concat(
+        [
+          '10px 10px "a"', '"a" 10px 10px', '10px "a" 10px',
+          '"a" "b" 10px', '10px "a" "b"', '"a" 10px "b"',
+          '10px 10px "a" 10px "b" 10px'
+        ],
+        ['/'].and([
+          '10px', '10%', '*', '1fr',
+          'min-content', 'max-content', 'fit-content'
+        ].concat([
+          '10px', '10%', '*', '1fr',
+          'min-content', 'max-content', 'fit-content'
+        ].times(2, 2, ', ').map(function minmax(arg) {
+          return 'minmax(' + arg + ')';
+        }))),
+        ['*', 'fit-content'].times(2, 2, ' / '),
+        ['* * / * *', '* 10em / 4em 5em', '* 10em "a b c" "a b d" 4em']
       ),
       'flow': ['auto', 'p1', '\'initial\'', '*', 'same'],
-      'grid-area': ['none'].concat(
-        ['1', 'same', 'next'].times(2),
-        ['1', 'same', 'next'].times(2).and(['1 1'])
-      ),
-      'chains': ['none', 'a', 'b c', 'd, e', 'f g, h i', 'j, k l', 'm n, o p', '@ a b c d e, f g h i j k']
+      'chains': [
+        'none', 'a', 'b c',
+        'd, e', 'f g, h i', 'j, k l', 'm n, o p',
+        '@ a b c d e, f g h i j k'
+      ]
     },
     'selectors': {
       '::slot()': 'body::slot(a)',
