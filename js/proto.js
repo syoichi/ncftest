@@ -144,6 +144,21 @@
         return this.concat(this.and(arr2, separator));
       },
       enumerable: false
+    },
+    // simple uniq
+    uniq: {
+      value: function uniq() {
+        var hash = {};
+
+        return this.filter(function filter(val) {
+          if (!hash[val]) {
+            hash[val] = true;
+
+            return true;
+          }
+        });
+      },
+      enumerable: false
     }
   });
 }());
