@@ -3063,6 +3063,7 @@ window.Specs = {
       'overflow-wrap': ['hyphenate'].concat(['break-word'].amp(['hyphenate'])),
       'text-align': ['\'foo\''].and(['start', 'end', 'left', 'right', 'center', 'justify']),
       'text-justify': ['inter-ideograph', 'inter-cluster', 'kashida'],
+      'word-spacing': ['normal', '1em', '50%'].times(2, 3),
       'letter-spacing': ['50%'].concat(['normal', '1em', '50%'].times(2, 3)),
       'text-spacing': [
         'normal', 'none', 'trim-start', 'space-start',
