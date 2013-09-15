@@ -818,157 +818,160 @@ window.Specs = {
         'cursor',
         'content'
       ],
-      'linear-gradient': [
-        'linear-gradient(white, black)',
-        'linear-gradient(white 1px, black)',
-        'linear-gradient(white 1%, black)',
-        'linear-gradient(white, black 1px)',
-        'linear-gradient(white, black 1%)',
-        'linear-gradient(white 1px, black 1%)',
-        'linear-gradient(0deg, white, black)',
-        'linear-gradient(90deg, white, black)',
-        'linear-gradient(360deg, white, black)',
-        'linear-gradient(-45deg, white, black)',
-        'linear-gradient(to left, white, black)',
-        'linear-gradient(to right, white, black)',
-        'linear-gradient(to top, white, black)',
-        'linear-gradient(to bottom, white, black)',
-        'linear-gradient(to left top, white, black)',
-        'linear-gradient(to left bottom, white, black)',
-        'linear-gradient(to right top, white, black)',
-        'linear-gradient(to right bottom, white, black)',
-        'linear-gradient(to top left, white, black)',
-        'linear-gradient(to top right, white, black)',
-        'linear-gradient(to bottom left, white, black)',
-        'linear-gradient(to bottom right, white, black)',
-        'linear-gradient(-270deg, red, blue 90px, yellow, green 50%)',
-        'linear-gradient(to bottom right, currentColor 100%, rgba(255, 0, 255, 0.3) 100px, transparent 0em, hsla(225, 50%, 100%, 0.7) 75%)'
-      ],
-      'radial-gradient': [
-        'radial-gradient(white, black)',
-        'radial-gradient(white 1px, black)',
-        'radial-gradient(white 1%, black)',
-        'radial-gradient(white, black 1px)',
-        'radial-gradient(white, black 1%)',
-        'radial-gradient(white 1px, black 1%)',
-        'radial-gradient(circle, white, black)',
-        'radial-gradient(10px, white, black)',
-        'radial-gradient(circle 10em, white, black)',
-        'radial-gradient(100px circle, white, black)',
-        'radial-gradient(ellipse, white, black)',
-        'radial-gradient(10px 10%, white, black)',
-        'radial-gradient(ellipse 10% 20%, white, black)',
-        'radial-gradient(10em 100px ellipse, white, black)',
-        'radial-gradient(closest-corner, white, black)',
-        'radial-gradient(closest-side, white, black)',
-        'radial-gradient(farthest-corner, white, black)',
-        'radial-gradient(farthest-side, white, black)',
-        'radial-gradient(circle closest-corner, white, black)',
-        'radial-gradient(closest-side ellipse, white, black)',
-        'radial-gradient(at center, white, black)',
-        'radial-gradient(circle at left, white, black)',
-        'radial-gradient(ellipse at right, white, black)',
-        'radial-gradient(closest-corner at top, white, black)',
-        'radial-gradient(closest-side at bottom, white, black)',
-        'radial-gradient(farthest-corner at 10%, white, black)',
-        'radial-gradient(farthest-side at 10px, white, black)',
-        'radial-gradient(10px at left top, white, black)',
-        'radial-gradient(circle 10em at center 10%, white, black)',
-        'radial-gradient(100px circle at 10px bottom, white, black)',
-        'radial-gradient(10px 10% at right center, white, black)',
-        'radial-gradient(ellipse 10% 20% at 10% 10%, white, black)',
-        'radial-gradient(10em 100px ellipse at 10px 10px, white, black)',
-        'radial-gradient(circle closest-corner at 10% 10px, white, black)',
-        'radial-gradient(closest-side ellipse at 10px 10%, white, black)',
-        'radial-gradient(at bottom left, white, black)',
-        'radial-gradient(at center top 50%, white, black)',
-        'radial-gradient(at right 50px center, white, black)',
-        'radial-gradient(at left 10px top 10%, white, black)',
-        'radial-gradient(at bottom 50% right 50%, white, black)',
-        'radial-gradient(10% 100px ellipse at top 10% right 10px, white 10%, black 10px, red 50%)',
-        'radial-gradient(ellipse 10% 20% at top 30% left 40%, currentColor 50%, #0000FF 60%, rgba(255, 255, 0, 0.5) 70%, hsla(240, 100%, 50%, 0.5) 80%, lightgoldenrodyellow 90%, transparent 100%)'
-      ],
-      'repeating-linear-gradient': [
-        'repeating-linear-gradient(white, black)',
-        'repeating-linear-gradient(white 1px, black)',
-        'repeating-linear-gradient(white 1%, black)',
-        'repeating-linear-gradient(white, black 1px)',
-        'repeating-linear-gradient(white, black 1%)',
-        'repeating-linear-gradient(white 1px, black 1%)',
-        'repeating-linear-gradient(0deg, white, black)',
-        'repeating-linear-gradient(90deg, white, black)',
-        'repeating-linear-gradient(360deg, white, black)',
-        'repeating-linear-gradient(-45deg, white, black)',
-        'repeating-linear-gradient(to left, white, black)',
-        'repeating-linear-gradient(to right, white, black)',
-        'repeating-linear-gradient(to top, white, black)',
-        'repeating-linear-gradient(to bottom, white, black)',
-        'repeating-linear-gradient(to left top, white, black)',
-        'repeating-linear-gradient(to left bottom, white, black)',
-        'repeating-linear-gradient(to right top, white, black)',
-        'repeating-linear-gradient(to right bottom, white, black)',
-        'repeating-linear-gradient(to top left, white, black)',
-        'repeating-linear-gradient(to top right, white, black)',
-        'repeating-linear-gradient(to bottom left, white, black)',
-        'repeating-linear-gradient(to bottom right, white, black)',
-        'repeating-linear-gradient(-270deg, red, blue 90px, yellow, green 50%)',
-        'repeating-linear-gradient(to bottom right, currentColor 100%, rgba(255, 0, 255, 0.3) 100px, transparent 0em, hsla(225, 50%, 100%, 0.7) 75%)'
-      ],
-      'repeating-radial-gradient': [
-        'repeating-radial-gradient(white, black)',
-        'repeating-radial-gradient(white 1px, black)',
-        'repeating-radial-gradient(white 1%, black)',
-        'repeating-radial-gradient(white, black 1px)',
-        'repeating-radial-gradient(white, black 1%)',
-        'repeating-radial-gradient(white 1px, black 1%)',
-        'repeating-radial-gradient(circle, white, black)',
-        'repeating-radial-gradient(10px, white, black)',
-        'repeating-radial-gradient(circle 10em, white, black)',
-        'repeating-radial-gradient(100px circle, white, black)',
-        'repeating-radial-gradient(ellipse, white, black)',
-        'repeating-radial-gradient(10px 10%, white, black)',
-        'repeating-radial-gradient(ellipse 10% 20%, white, black)',
-        'repeating-radial-gradient(10em 100px ellipse, white, black)',
-        'repeating-radial-gradient(closest-corner, white, black)',
-        'repeating-radial-gradient(closest-side, white, black)',
-        'repeating-radial-gradient(farthest-corner, white, black)',
-        'repeating-radial-gradient(farthest-side, white, black)',
-        'repeating-radial-gradient(circle closest-corner, white, black)',
-        'repeating-radial-gradient(closest-side ellipse, white, black)',
-        'repeating-radial-gradient(at center, white, black)',
-        'repeating-radial-gradient(circle at left, white, black)',
-        'repeating-radial-gradient(ellipse at right, white, black)',
-        'repeating-radial-gradient(closest-corner at top, white, black)',
-        'repeating-radial-gradient(closest-side at bottom, white, black)',
-        'repeating-radial-gradient(farthest-corner at 10%, white, black)',
-        'repeating-radial-gradient(farthest-side at 10px, white, black)',
-        'repeating-radial-gradient(10px at left top, white, black)',
-        'repeating-radial-gradient(circle 10em at center 10%, white, black)',
-        'repeating-radial-gradient(100px circle at 10px bottom, white, black)',
-        'repeating-radial-gradient(10px 10% at right center, white, black)',
-        'repeating-radial-gradient(ellipse 10% 20% at 10% 10%, white, black)',
-        'repeating-radial-gradient(10em 100px ellipse at 10px 10px, white, black)',
-        'repeating-radial-gradient(circle closest-corner at 10% 10px, white, black)',
-        'repeating-radial-gradient(closest-side ellipse at 10px 10%, white, black)',
-        'repeating-radial-gradient(at bottom left, white, black)',
-        'repeating-radial-gradient(at center top 50%, white, black)',
-        'repeating-radial-gradient(at right 50px center, white, black)',
-        'repeating-radial-gradient(at left 10px top 10%, white, black)',
-        'repeating-radial-gradient(at bottom 50% right 50%, white, black)',
-        'repeating-radial-gradient(10% 100px ellipse at top 10% right 10px, white 10%, black 10px, red 50%)',
-        'repeating-radial-gradient(ellipse 10% 20% at top 30% left 40%, currentColor 50%, #0000FF 60%, rgba(255, 255, 0, 0.5) 70%, hsla(240, 100%, 50%, 0.5) 80%, lightgoldenrodyellow 90%, transparent 100%)'
-      ],
       'image()': [
-        'image(\'sprites.png#xywh=10,30,60,20\')',
-        'image(\'wavy.svg\', \'wavy.png\' , \'wavy.gif\')',
-        'image(\'dark.png\', black)', 'image(green)'
-      ]
+        'image(url(../img/noise.png))', 'image("../img/noise.png")',
+        'image(\'sprites.png#xywh=10,30,60,20\')', 'image(white)',
+        'image(url(../img/noise.png), \'wavy.svg\')',
+        'image(\'cat_meme.gif#frame=5\', \'lolcat.png\')',
+        'image(url("bg-image.png"), rgba(0, 0, 255, .5))',
+        'image(\'dark.png\', black)',
+        'image(\'wavy.svg\', \'wavy.png\' , \'wavy.gif\')'
+      ],
+      'linear-gradient()': [
+        '45deg', '1turn', '100grad', '2rad'
+      ].concat(
+        ['to'].and(['left', 'right'].or(['top', 'bottom']))
+      ).qmark(['white'].qmark([
+        '10%', '10px'
+      ]).times(2, 2, ', '), ', ', {former: true}).map(function linearGradient(arg) {
+        return 'linear-gradient(' + arg + ')';
+      }).concat([
+        'linear-gradient(0deg, white, black)',
+        'linear-gradient(-45deg, white, black)',
+        'linear-gradient(to bottom, yellow 0%, blue 100%)',
+        'linear-gradient(yellow, blue 20%, #0f0)',
+        'linear-gradient(to top right, red, white, blue)',
+        'linear-gradient(-270deg, red, blue 90px, yellow, green 50%)',
+        'linear-gradient(to bottom right, currentColor 100%, ' +
+          'rgba(255, 0, 255, 0.3) 100px, transparent 0em, ' +
+          'hsla(225, 50%, 100%, 0.7) 75%)'
+      ]),
+      'radial-gradient()': ['white'].qmark([
+        '10%', '10px'
+      ]).times(2, 2, ', ').concat(['at'].and(
+        ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
+          ['left', 'center', 'right', '10%', '10px'].and([
+            'top', 'center', 'bottom', '10%', '10px'
+          ]),
+          ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
+            ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
+          )
+        ).uniq()
+      ).concat(
+        ['circle'].or(['10px']).concat(
+          ['ellipse'].or(['10px', '10%'].times(2)),
+          ['circle', 'ellipse'].or([
+            'closest-corner', 'closest-side', 'farthest-corner', 'farthest-side'
+          ])
+        ).uniq().and(['at'].and(
+          ['left', 'center', 'right', 'top', 'bottom', '10%', '10px']/*.concat(
+            ['left', 'center', 'right', '10%', '10px'].and([
+              'top', 'center', 'bottom', '10%', '10px'
+            ]),
+            ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
+              ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
+            )
+          ).uniq()*/
+        ))
+      ).and(['white, black'], ', ')).map(function radialGradient(arg) {
+        return 'radial-gradient(' + arg + ')';
+      }).concat([
+        'radial-gradient(ellipse at center, yellow 0%, green 100%)',
+        'radial-gradient(farthest-corner at 50% 50%, yellow, green)',
+        'radial-gradient(farthest-side at left bottom, red, ' +
+          'yellow 50px, green)',
+        'radial-gradient(closest-side at 20px 30px, red, yellow, green)',
+        'radial-gradient(20px 30px at 20px 30px, red, yellow, green)',
+        'radial-gradient(closest-side circle at 20px 30px, red, yellow, green)',
+        'radial-gradient(circle, #006, #00a 90%, #0000af 100%, white 100%)',
+        'radial-gradient(20px 20px at 20px 30px, red, yellow, green)',
+        'radial-gradient(10% 100px ellipse at top 10% right 10px, ' +
+          'white 10%, black 10px, red 50%)',
+        'radial-gradient(ellipse 10% 20% at top 30% left 40%, ' +
+          'currentColor 50%, #0000FF 60%, rgba(255, 255, 0, 0.5) 70%, ' +
+          'hsla(240, 100%, 50%, 0.5) 80%, lightgoldenrodyellow 90%, ' +
+          'transparent 100%)'
+      ]),
+      'repeating-linear-gradient()': [
+        '45deg', '1turn', '100grad', '2rad'
+      ].concat(
+        ['to'].and(['left', 'right'].or(['top', 'bottom']))
+      ).qmark(
+        ['white'].qmark(['10%', '10px']).times(2, 2, ', '), ', ', {former: true}
+      ).map(function repeatingLinearGradient(arg) {
+        return 'repeating-linear-gradient(' + arg + ')';
+      }).concat([
+        'repeating-linear-gradient(0deg, white, black)',
+        'repeating-linear-gradient(-45deg, white, black)',
+        'repeating-linear-gradient(red 0px, white 0px, blue 0px)',
+        'repeating-linear-gradient(red 0px, white .1px, blue .2px)',
+        'repeating-linear-gradient(red, blue 20px, red 40px)',
+        'repeating-linear-gradient(-270deg, red, blue 90px, yellow, green 50%)',
+        'repeating-linear-gradient(to bottom right, currentColor 100%, ' +
+          'rgba(255, 0, 255, 0.3) 100px, transparent 0em, ' +
+          'hsla(225, 50%, 100%, 0.7) 75%)'
+      ]),
+      'repeating-radial-gradient()': ['white'].qmark([
+        '10%', '10px'
+      ]).times(2, 2, ', ').concat(['at'].and(
+        ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
+          ['left', 'center', 'right', '10%', '10px'].and([
+            'top', 'center', 'bottom', '10%', '10px'
+          ]),
+          ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
+            ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
+          )
+        ).uniq()
+      ).concat(
+        ['circle'].or(['10px']).concat(
+          ['ellipse'].or(['10px', '10%'].times(2)),
+          ['circle', 'ellipse'].or([
+            'closest-corner', 'closest-side', 'farthest-corner', 'farthest-side'
+          ])
+        ).uniq().and(['at'].and(
+          ['left', 'center', 'right', 'top', 'bottom', '10%', '10px']/*.concat(
+            ['left', 'center', 'right', '10%', '10px'].and([
+              'top', 'center', 'bottom', '10%', '10px'
+            ]),
+            ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
+              ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
+            )
+          ).uniq()*/
+        ))
+      ).and(['white, black'], ', ')).map(function repeatingRadialGradient(arg) {
+        return 'repeating-radial-gradient(' + arg + ')';
+      }).concat([
+        'repeating-radial-gradient(red, blue 20px, red 40px)',
+        'repeating-radial-gradient(circle, #006, #00a 90%, ' +
+          '#0000af 100%, white 100%)',
+        'repeating-radial-gradient(circle closest-side at 20px 30px, red, ' +
+          'yellow, green 100%, yellow 150%, red 200%)',
+        'repeating-radial-gradient(10% 100px ellipse at top 10% right 10px, ' +
+          'white 10%, black 10px, red 50%)',
+        'repeating-radial-gradient(ellipse 10% 20% at top 30% left 40%, ' +
+          'currentColor 50%, #0000FF 60%, rgba(255, 255, 0, 0.5) 70%, ' +
+          'hsla(240, 100%, 50%, 0.5) 80%, lightgoldenrodyellow 90%, ' +
+          'transparent 100%)'
+      ])
     },
     'properties': {
       'object-fit': ['fill', 'contain', 'cover', 'none', 'scale-down'],
-      'object-position': ['50% 50%', 'center', 'top right', 'bottom 10px right 20px'],
-      'image-resolution': ['from-image', 'from-image snap', 'snap from-image', '1dppx', '300dpi', 'from-image 300dpi', '300dpi from-image', '300dpi from-image snap'],
-      'image-orientation': ['0deg', '90deg', '45deg', '1turn', '100grad', '2rad']
+      'object-position': [
+        'left', 'center', 'right', 'top', 'bottom', '10%', '10px'
+      ].concat(
+        ['left', 'center', 'right', '10%', '10px'].and([
+          'top', 'center', 'bottom', '10%', '10px'
+        ]),
+        ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
+          ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
+        )
+      ).uniq(),
+      'image-resolution': ['from-image'].or(['300dpi', '1dpcm', '1dppx']).qmark(
+        ['snap'], ' ', {amp: true}
+      ),
+      'image-orientation': [
+        '0deg', '90deg', '-45deg', '1turn', '100grad', '2rad'
+      ]
     }
   },
 
