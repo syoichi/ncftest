@@ -137,11 +137,17 @@
       enumerable: false
     },
     // [ x | y | z ] a?
+    // [ a | b | c ]? [ x | y | z ]
+    // [ x | y | z ] && a?
+    // [ a | b | c ]? && [ x | y | z ]
     qmark: {
-      value: function qmark(arr2, separator) {
+      value: function qmark(arr2, separator, option) {
         separator = separator || ' ';
+        option = option || {};
 
-        return this.concat(this.and(arr2, separator));
+        return (option.former ? arr2 : this).concat(
+          this[option.amp ? 'amp' : 'and'](arr2, separator)
+        );
       },
       enumerable: false
     },
