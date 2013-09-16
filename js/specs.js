@@ -3204,82 +3204,98 @@ window.Specs = {
   },
 
   // CSS-SVG Effects
-  'filter-effects': {
+  'filters': {
     'title': 'Filter Effects 1.0',
+    'tr': 'http://www.w3.org/TR/filter-effects/',
     'dev': 'http://dev.w3.org/fxtf/filters/',
     'properties': {
       'filter': [
-        'none', 'url(commonmasks.xml#mask)',
+        'none',
         'grayscale(10)', 'grayscale(100%)', 'sepia(50)', 'sepia(10%)',
-        'saturate(10)', 'saturate(50%)', 'hue-rotate(90deg)',
+        'saturate(10)', 'saturate(50%)',
+        'hue-rotate(90deg)', 'hue-rotate(1turn)', 'hue-rotate(100grad)',
+        'hue-rotate(2rad)',
         'invert(100)', 'invert(0%)', 'opacity(1)', 'opacity(25%)',
         'brightness(15)', 'brightness(15%)', 'contrast(45)', 'contrast(1%)',
         'blur(10px)'
-      ].concat([
-        '1px 2px', '1px 2px 3px',
-        '1px 2px red', 'blue 1px 2px', '1px 2px 3px yellow', 'green 1px 2px 3px'
-      ].map(function (shadow) {
-        return 'drop-shadow(' + shadow + ')';
-      })).concat(
+      ].concat(
+        ['10px'].times(2, 3).qmark(
+          ['white'], ' ', {amp: true}
+        ).map(function dropShadow(shadow) {
+          return 'drop-shadow(' + shadow + ')';
+        }),
+        ['custom(warp)'],
         ['warp, param'].and(['matrix(1, 2, 3, 4, 5, 6)'].concat(
-          ['0', '10px', '-20px', '50%'].times(1, 2, ', ').map(function (arg) {
+          ['0', '10px', '-20px', '50%'].times(
+            1, 2, ', '
+          ).map(function translate(arg) {
             return 'translate(' + arg + ')';
-          }),
-          ['0', '10px', '-20px', '50%'].map(function (translationValue) {
+          }), [
+            '0', '1px', '-20px', '50%'
+          ].map(function translateX(translationValue) {
             return 'translateX(' + translationValue + ')';
-          }),
-          ['0', '10px', '-20px', '50%'].map(function (translationValue) {
+          }), [
+            '0', '1px', '-20px', '50%'
+          ].map(function translateY(translationValue) {
             return 'translateY(' + translationValue + ')';
           }),
           ['scale(1)', 'scale(1, 2)', 'scaleX(1)', 'scaleY(1)'],
-          ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+          ['90deg', '100grad', '1rad', '1turn'].map(function rotate(angle) {
             return 'rotate(' + angle + ')';
           }),
-          ['90deg', '100grad', '1rad', '1turn'].times(1, 2, ', ').map(function (arg) {
+          ['90deg', '100grad', '1rad', '1turn'].times(
+            1, 2, ', '
+          ).map(function skew(arg) {
             return 'skew(' + arg + ')';
           }),
-          ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+          ['90deg', '100grad', '1rad', '1turn'].map(function skewX(angle) {
             return 'skewX(' + angle + ')';
           }),
-          ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+          ['90deg', '100grad', '1rad', '1turn'].map(function skewY(angle) {
             return 'skewY(' + angle + ')';
           }),
           ['matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)'],
-          ['0', '10px', '-20px', '50%'].times(2, 2, ', ').map(function (arg) {
+          ['0', '10px', '-20px', '50%'].times(
+            2, 2, ', '
+          ).map(function translate3d(arg) {
             return 'translate3d(' + arg + ', 10px)';
           }),
           ['translateZ(10px)', 'scale3d(1, 2, 3)', 'scaleZ(1)'],
-          ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+          ['90deg', '100grad', '1rad', '1turn'].map(function rotate3d(angle) {
             return 'rotate3d(1, 2, 3, ' + angle + ')';
           }),
-          ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+          ['90deg', '100grad', '1rad', '1turn'].map(function rotateX(angle) {
             return 'rotateX(' + angle + ')';
           }),
-          ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+          ['90deg', '100grad', '1rad', '1turn'].map(function rotateY(angle) {
             return 'rotateY(' + angle + ')';
           }),
-          ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+          ['90deg', '100grad', '1rad', '1turn'].map(function rotateZ(angle) {
             return 'rotateZ(' + angle + ')';
           }),
           [
-            'perspective(10px)', 'matrix(1, 2, 3, 4, 5, 6) translate(0)',
+            'perspective(10px)',
+            'matrix(1, 2, 3, 4, 5, 6) translate(0)',
             'scale(2, -1) scaleY(2.5) matrix(1, -.2, 0, 1, 10, 10)',
             'translate(50px, -24px) rotate(180deg) scale(.5) skew(0, 22.5deg)',
-            'matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16) translate3d(0, 0, 10px)',
+            'matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16) ' +
+              'translate3d(0, 0, 10px)',
             'scale3d(1, 0, -1) rotateX(-45deg) rotateY(-45deg) rotateZ(-45deg)',
-            'translate3d(50px, -24px, 5px) rotate3d(1, 2, 3, 180deg) scale3d(-1, 0, .5)',
-            'matrix(1, 2, 3, 4, 5, 6) matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)'
+            'translate3d(50px, -24px, 5px) rotate3d(1, 2, 3, 180deg) ' +
+              'scale3d(-1, 0, .5)',
+            'matrix(1, 2, 3, 4, 5, 6) ' +
+              'matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)'
           ],
           ['1'].times(1, 4),
           ['array(1)', 'array(1, 2)'],
-          ['2'].times(3, 3, ', ').map(function (arg) {
-            return 'mat2(1, ' + arg + ')';
+          ['1'].times(4, 4, ', ').map(function mat2(arg) {
+            return 'mat2(' + arg + ')';
           }),
-          ['2'].times(8, 8, ', ').map(function (arg) {
-            return 'mat3(1, ' + arg + ')';
+          ['1'].times(9, 9, ', ').map(function mat3(arg) {
+            return 'mat3(' + arg + ')';
           }),
-          ['2'].times(15, 15, ', ').map(function (arg) {
-            return 'mat4(1, ' + arg + ')';
+          ['1'].times(16, 16, ', ').map(function mat4(arg) {
+            return 'mat4(' + arg + ')';
           }),
           ['white', 'url(foo.png)']
         )).map(function (arg) {
@@ -3288,10 +3304,22 @@ window.Specs = {
         [
           'custom(warp, warp 1, warp 1)',
           'custom(warp, param matrix(1, 2, 3, 4, 5, 6), shader rotate(90deg))',
-          'custom(warp, distortAmount 0.5, lightVector 1.0 1.0 0.0, disp texture(disp.png))',
-          'linear-gradient(white, black), none', 'linear-gradient(white, black), sepia(50%)',
+          'custom(warp, distortAmount 0.5, lightVector 1.0 1.0 0.0, ' +
+            'disp texture(disp.png))',
+          'url(commonmasks.svg#filter)',
+          'select(div)', 'select(filter:last-of-type)', 'select(div, div)',
+          'select(div:first-child, div:last-child)', 'child',
+          'url(foo.png), grayscale(10)',
+          'linear-gradient(white, black), grayscale(10)',
+          '"foo.png", grayscale(10)',
+          'url(foo.png), url(commonmasks.svg#filter)',
+          'url(foo.png), select(div:first-child)',
+          'url(foo.png), custom(warp)',
           'linear-gradient(white, black), sepia(50%) contrast(50%)',
-          'linear-gradient(white, black), custom(warp, param matrix(1, 2, 3, 4, 5, 6), shader rotate(90deg))'
+          'linear-gradient(white, black), invert(0%) ' +
+            'custom(warp, param matrix(1, 2, 3, 4, 5, 6), ' +
+            'shader rotate(90deg)) ' +
+            'url(commonmasks.svg#filter) select(div, div:last-child)'
         ]
       ),
       'flood-color': [
@@ -3313,80 +3341,95 @@ window.Specs = {
       'atrule': '@filter warp',
       'atruleName': '@filter',
       'src': [
-        'url(\'simple.vs\')', 'url(\'simple.vs\') format(\'x-shader/x-vertex\')',
+        'url(#warp)',
+        'url(\'simple.vs\')',
+        'url(\'simple.vs\') format(\'x-shader/x-vertex\')',
         'url(\'simple.vs\'), url(simple.fs)',
-        'url(\'simple.vs\') format(\'x-shader/x-vertex\'), url(simple.fs) format(\'x-shader/x-fragment\')'
+        'url(\'simple.vs\') format(\'x-shader/x-vertex\'), ' +
+          'url(simple.fs) format(\'x-shader/x-fragment\')'
       ],
       'parameters': ['warp'].and(['matrix(1, 2, 3, 4, 5, 6)'].concat(
-        ['0', '10px', '-20px', '50%'].times(1, 2, ', ').map(function (arg) {
+        ['0', '10px', '-20px', '50%'].times(
+          1, 2, ', '
+        ).map(function translate(arg) {
           return 'translate(' + arg + ')';
         }),
-        ['0', '10px', '-20px', '50%'].map(function (translationValue) {
+        ['0', '1px', '-20px', '50%'].map(function translateX(translationValue) {
           return 'translateX(' + translationValue + ')';
         }),
-        ['0', '10px', '-20px', '50%'].map(function (translationValue) {
+        ['0', '1px', '-20px', '50%'].map(function translateY(translationValue) {
           return 'translateY(' + translationValue + ')';
         }),
         ['scale(1)', 'scale(1, 2)', 'scaleX(1)', 'scaleY(1)'],
-        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+        ['90deg', '100grad', '1rad', '1turn'].map(function rotate(angle) {
           return 'rotate(' + angle + ')';
         }),
-        ['90deg', '100grad', '1rad', '1turn'].times(1, 2, ', ').map(function (arg) {
+        ['90deg', '100grad', '1rad', '1turn'].times(
+          1, 2, ', '
+        ).map(function skew(arg) {
           return 'skew(' + arg + ')';
         }),
-        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+        ['90deg', '100grad', '1rad', '1turn'].map(function skewX(angle) {
           return 'skewX(' + angle + ')';
         }),
-        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+        ['90deg', '100grad', '1rad', '1turn'].map(function skewY(angle) {
           return 'skewY(' + angle + ')';
         }),
         ['matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)'],
-        ['0', '10px', '-20px', '50%'].times(2, 2, ', ').map(function (arg) {
+        ['0', '10px', '-20px', '50%'].times(
+          2, 2, ', '
+        ).map(function translate3d(arg) {
           return 'translate3d(' + arg + ', 10px)';
         }),
         ['translateZ(10px)', 'scale3d(1, 2, 3)', 'scaleZ(1)'],
-        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+        ['90deg', '100grad', '1rad', '1turn'].map(function rotate3d(angle) {
           return 'rotate3d(1, 2, 3, ' + angle + ')';
         }),
-        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+        ['90deg', '100grad', '1rad', '1turn'].map(function rotateX(angle) {
           return 'rotateX(' + angle + ')';
         }),
-        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+        ['90deg', '100grad', '1rad', '1turn'].map(function rotateY(angle) {
           return 'rotateY(' + angle + ')';
         }),
-        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+        ['90deg', '100grad', '1rad', '1turn'].map(function rotateZ(angle) {
           return 'rotateZ(' + angle + ')';
         }),
         [
           'perspective(10px)', 'matrix(1, 2, 3, 4, 5, 6) translate(0)',
           'scale(2, -1) scaleY(2.5) matrix(1, -.2, 0, 1, 10, 10)',
           'translate(50px, -24px) rotate(180deg) scale(.5) skew(0, 22.5deg)',
-          'matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16) translate3d(0, 0, 10px)',
+          'matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16) ' +
+            'translate3d(0, 0, 10px)',
           'scale3d(1, 0, -1) rotateX(-45deg) rotateY(-45deg) rotateZ(-45deg)',
-          'translate3d(50px, -24px, 5px) rotate3d(1, 2, 3, 180deg) scale3d(-1, 0, .5)',
-          'matrix(1, 2, 3, 4, 5, 6) matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)'
+          'translate3d(50px, -24px, 5px) rotate3d(1, 2, 3, 180deg) ' +
+            'scale3d(-1, 0, .5)',
+          'matrix(1, 2, 3, 4, 5, 6) ' +
+            'matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)'
         ],
         ['1'].times(1, 4),
         ['array(1)', 'array(1, 2)'],
-        ['2'].times(3, 3, ', ').map(function (arg) {
-          return 'mat2(1, ' + arg + ')';
+        ['1'].times(4, 4, ', ').map(function mat2(arg) {
+          return 'mat2(' + arg + ')';
         }),
-        ['2'].times(8, 8, ', ').map(function (arg) {
-          return 'mat3(1, ' + arg + ')';
+        ['1'].times(9, 9, ', ').map(function mat3(arg) {
+          return 'mat3(' + arg + ')';
         }),
-        ['2'].times(15, 15, ', ').map(function (arg) {
-          return 'mat4(1, ' + arg + ')';
+        ['1'].times(16, 16, ', ').map(function mat4(arg) {
+          return 'mat4(' + arg + ')';
         }),
         ['white', 'url(foo.png)']
       )).concat([
         'warp 1, warp 1',
         'distortAmount 0.5, lightVector 1.0 1.0 0.0, disp texture(disp.png)'
       ]),
-      'geometry': ['1', '1 2'].or(['detached', 'attached']).map(function (arg) {
+      'geometry': ['1', '1 2'].or(
+        ['detached', 'attached']
+      ).map(function grid(arg) {
         return 'grid(' + arg + ')';
       }),
       'mix': [
-        'auto', 'normal', 'multiply', 'screen', 'overlay', 'darken', 'lighten',
+        'auto',
+        'normal', 'multiply', 'screen', 'overlay', 'darken', 'lighten',
         'color-dodge', 'color-burn', 'hard-light', 'soft-light', 'difference',
         'exclusion', 'hue', 'saturation', 'color', 'luminosity',
         'clear', 'copy', 'destination', 'source-over', 'destination-over',
