@@ -2381,10 +2381,10 @@ window.Specs = {
         ).map(function polygon(arg) {
           return 'polygon(' + arg + ')';
         }),
-        ['url(foo.png)']
+        ['url(foo.png)', 'linear-gradient(white, black)']
       ),
       'shape-image-threshold': ['0.0', '0.5', '1.0'],
-      'shape-margin': ['0', '1px', '10em']
+      'shape-margin': ['0', '1px']
     }
   },
 
@@ -2467,7 +2467,7 @@ window.Specs = {
         }),
         ['url(foo.png)']
       ),
-      'shape-margin': ['0', '1px', '10em']
+      'shape-padding': ['0', '1px']
     }
   },
 
