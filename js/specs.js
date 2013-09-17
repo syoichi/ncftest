@@ -1851,77 +1851,84 @@ window.Specs = {
     'title': 'Transforms Level 1',
     'tr': 'http://www.w3.org/TR/css3-transforms/',
     'properties': {
-      'transform': ['none', 'matrix(1, 2, 3, 4, 5, 6)'].concat(
-        ['0', '10px', '-20px', '50%'].times(1, 2, ', ').map(function (arg) {
+      'transform': ['none', 'matrix(1, 2, 3, 4, 5, 6)'].concat([
+        '0', '10px', '-20px', '50%'
+        ].times(1, 2, ', ').map(function translate(arg) {
           return 'translate(' + arg + ')';
         }),
-        ['0', '10px', '-20px', '50%'].map(function (translationValue) {
+        ['0', '1px', '-20px', '50%'].map(function translateX(translationValue) {
           return 'translateX(' + translationValue + ')';
         }),
-        ['0', '10px', '-20px', '50%'].map(function (translationValue) {
+        ['0', '1px', '-20px', '50%'].map(function translateY(translationValue) {
           return 'translateY(' + translationValue + ')';
         }),
         ['scale(1)', 'scale(1, 2)', 'scaleX(1)', 'scaleY(1)'],
-        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+        ['90deg', '100grad', '1rad', '1turn'].map(function rotate(angle) {
           return 'rotate(' + angle + ')';
-        }),
-        ['90deg', '100grad', '1rad', '1turn'].times(1, 2, ', ').map(function (arg) {
+        }), [
+         '90deg', '100grad', '1rad', '1turn'
+        ].times(1, 2, ', ').map(function skew(arg) {
           return 'skew(' + arg + ')';
         }),
-        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+        ['90deg', '100grad', '1rad', '1turn'].map(function skewX(angle) {
           return 'skewX(' + angle + ')';
         }),
-        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+        ['90deg', '100grad', '1rad', '1turn'].map(function skewY(angle) {
           return 'skewY(' + angle + ')';
         }),
         ['matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)'],
-        ['0', '10px', '-20px', '50%'].times(2, 2, ', ').map(function (arg) {
+        [
+          '0', '10px', '-20px', '50%'
+        ].times(2, 2, ', ').map(function translate3d(arg) {
           return 'translate3d(' + arg + ', 10px)';
         }),
         ['translateZ(10px)', 'scale3d(1, 2, 3)', 'scaleZ(1)'],
-        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+        ['90deg', '100grad', '1rad', '1turn'].map(function rotate3d(angle) {
           return 'rotate3d(1, 2, 3, ' + angle + ')';
         }),
-        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+        ['90deg', '100grad', '1rad', '1turn'].map(function rotateX(angle) {
           return 'rotateX(' + angle + ')';
         }),
-        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+        ['90deg', '100grad', '1rad', '1turn'].map(function rotateY(angle) {
           return 'rotateY(' + angle + ')';
         }),
-        ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+        ['90deg', '100grad', '1rad', '1turn'].map(function rotateZ(angle) {
           return 'rotateZ(' + angle + ')';
         }),
         [
-          'perspective(10px)', 'matrix(1, 2, 3, 4, 5, 6) translate(0)',
+          'perspective(10px)',
+          'matrix(1, 2, 3, 4, 5, 6) translate(0)',
           'scale(2, -1) scaleY(2.5) matrix(1, -.2, 0, 1, 10, 10)',
           'translate(50px, -24px) rotate(180deg) scale(.5) skew(0, 22.5deg)',
-          'matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16) translate3d(0, 0, 10px)',
+          'matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16) ' +
+            'translate3d(0, 0, 10px)',
           'scale3d(1, 0, -1) rotateX(-45deg) rotateY(-45deg) rotateZ(-45deg)',
-          'translate3d(50px, -24px, 5px) rotate3d(1, 2, 3, 180deg) scale3d(-1, 0, .5)',
-          'matrix(1, 2, 3, 4, 5, 6) matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)'
+          'translate3d(50px, -24px, 5px) rotate3d(1, 2, 3, 180deg) ' +
+            'scale3d(-1, 0, .5)',
+          'matrix(1, 2, 3, 4, 5, 6) ' +
+            'matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)'
         ]
       ),
-      'transform-origin': ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
-        ['left', 'center', 'right', '10%', '10px'].and(['top', 'center', 'bottom', '10%', '10px']),
-        ['left', 'center', 'right', '10%', '10px'].and(['top', 'center', 'bottom', '10%', '10px']).and(['10px']),
-        [
-          'top left', 'center left', 'bottom left', 'top center',
-          'bottom center', 'top right', 'center right', 'bottom right'
-        ],
-        [
-          'top left', 'center left', 'bottom left', 'top center',
-          'bottom center', 'top right', 'center right', 'bottom right'
-        ].and(['10px'])
-      ),
+      'transform-origin': [
+        'left', 'center', 'right', 'top', 'bottom', '10%', '10px'
+      ].concat(
+        ['left', 'center', 'right', '10%', '10px'].and([
+          'top', 'center', 'bottom', '10%', '10px'
+        ]).qmark(['10px']),
+        ['center', 'left', 'right'].amp([
+          'center', 'top', 'bottom'
+        ]).qmark(['10px'])
+      ).uniq(),
       'transform-style': ['flat', 'preserve-3d'],
-      'perspective': ['none', '600px'],
-      'perspective-origin': ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
-        ['left', 'center', 'right', '10%', '10px'].and(['top', 'center', 'bottom', '10%', '10px']),
-        [
-          'top left', 'center left', 'bottom left', 'top center',
-          'bottom center', 'top right', 'center right', 'bottom right'
-        ]
-      ),
+      'perspective': ['none', '10px'],
+      'perspective-origin': [
+        'left', 'center', 'right', 'top', 'bottom', '10%', '10px'
+      ].concat(
+        ['left', 'center', 'right', '10%', '10px'].and([
+          'top', 'center', 'bottom', '10%', '10px'
+        ]),
+        ['center', 'left', 'right'].amp(['center', 'top', 'bottom'])
+      ).uniq(),
       'backface-visibility': ['visible', 'hidden']
     }
   },
