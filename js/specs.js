@@ -1859,6 +1859,24 @@ window.Specs = {
     }
   },
 
+  'css-page-template-1': {
+    'title': 'Pagination Templates',
+    'properties': {
+      'overflow-style': [
+        'paged-x', 'paged-y', 'paged-x-controls', 'paged-y-controls'
+      ],
+      'template-set': ['one', 'one two']
+    },
+    '@rules': {
+      '@template': ['@template paged-display', '@template side-by-side:first']
+    },
+    'descriptors': {
+      'atrule': '@template paged-display',
+      'atruleName': '@template',
+      'required-flow': ['related-flow', 'lead-flow']
+    }
+  },
+
   // New CSS Level 1
   'css-transforms-1': {
     'title': 'Transforms Level 1',
