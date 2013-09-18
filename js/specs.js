@@ -777,7 +777,15 @@ window.Specs = {
         'list-style-image',
         'border-image-source',
         'cursor',
-        'content'
+        'content',
+        'background',
+        'border-image',
+        'list-style',
+        'shape-outside',
+        'mask-image',
+        'mask',
+        'mask-box-image-source',
+        'mask-box-image'
       ],
       'image()': [
         'image(url(../img/noise.png))', 'image("../img/noise.png")',
