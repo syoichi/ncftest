@@ -1393,6 +1393,17 @@ window.Specs = {
     }
   },
 
+  'css-page-floats': {
+    'title': 'Page Floats',
+    'properties': {
+      'float-defer-column': ['none', '1', 'last'],
+      'float-defer-page': ['none', '1', 'last'],
+      'float-wrap': ['none', 'wrap'],
+      'float-offset': ['0', '5px', '0 0', '2em 3em'],
+      'clear-side': ['auto', 'both']
+    }
+  },
+
   // Unmaintained CSS Level 3
   'css-content-3': {
     'title': 'Generated Content',
