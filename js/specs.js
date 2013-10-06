@@ -233,6 +233,13 @@ window.Specs = {
   'css-cascade-3': {
     'title': 'Cascading and Inheritance',
     'tr': 'http://www.w3.org/TR/css3-cascade/',
+    'values': {
+      'properties': [
+        'width',
+        'height'
+      ],
+      'unset': 'unset'
+    },
     'properties': {
       'all': ['unset']
     }
