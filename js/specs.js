@@ -1379,6 +1379,13 @@ window.Specs = {
     }
   },
 
+  'css-overflow-clipping': {
+    'title': 'Overflow Clipping',
+    'properties': {
+      'overflow': ['clip']
+    }
+  },
+
   // Unmaintained CSS Level 3
   'css-content-3': {
     'title': 'Generated Content',
