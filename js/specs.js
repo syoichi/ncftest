@@ -230,6 +230,14 @@ window.Specs = {
     }
   },
 
+  'css-cascade-3': {
+    'title': 'Cascading and Inheritance',
+    'tr': 'http://www.w3.org/TR/css3-cascade/',
+    'properties': {
+      'all': ['unset']
+    }
+  },
+
   'css-backgrounds-3': {
     'title': 'Backgrounds and Borders',
     'tr': 'http://www.w3.org/TR/css3-background/',
@@ -436,146 +444,6 @@ window.Specs = {
     }
   },
 
-  'css-ui-3': {
-    'title': 'Basic User Interface',
-    'tr': 'http://www.w3.org/TR/css3-ui/',
-    'properties': {
-      'content': 'icon',
-      'icon': ['auto'].concat(['url(foo.png)'].times(1, 3, ', ')),
-      'box-sizing': ['content-box', 'padding-box', 'border-box'],
-      'outline-style': 'auto',
-      'outline-offset': ['0', '5px', '-5px'],
-      'resize': ['none', 'both', 'horizontal', 'vertical'],
-      'text-overflow': ['clip', 'ellipsis', '\'foo\''].times(1, 2),
-      'cursor': [
-        'url(foo.png) 2 2, auto', 'url(foo.png) 1 1, url(bar.png), auto',
-        'url(foo.png) 1 1, url(bar.png) 2 2, auto',
-        'url(foo.png) 1.1 1.1, url(bar.png) 2.2 2.2, url(baz.png) 3.3 3.3, auto',
-        'url(example.svg#linkcursor), url(hyper.cur), url(hyper.png) 2 3, pointer',
-        'none', 'context-menu', 'cell', 'vertical-text',
-        'alias', 'copy', 'no-drop', 'not-allowed', 'ew-resize', 'ns-resize', 'nesw-resize',
-        'nwse-resize', 'col-resize', 'row-resize', 'all-scroll', 'zoom-in', 'zoom-out'
-      ],
-      'nav-index': ['auto', '1', '10', '1.1'],
-      'nav-up': ['auto', '#foo'].concat(['#foo'].and(['current', 'root', '\'main\''])),
-      'nav-right': ['auto', '#foo'].concat(['#foo'].and(['current', 'root', '\'main\''])),
-      'nav-down': ['auto', '#foo'].concat(['#foo'].and(['current', 'root', '\'main\''])),
-      'nav-left': ['auto', '#foo'].concat(['#foo'].and(['current', 'root', '\'main\''])),
-      'ime-mode': ['auto', 'normal', 'active', 'inactive', 'disabled']
-    },
-    'selectors': {
-      ':default': ':default',
-      ':valid': ':valid',
-      ':invalid': ':invalid',
-      ':in-range': ':in-range',
-      ':out-of-range': ':out-of-range',
-      ':required': ':required',
-      ':optional': ':optional',
-      ':read-only': ':read-only',
-      ':read-write': ':read-write',
-      '::value': '::value',
-      '::choices': '::choices',
-      '::repeat-item': '::repeat-item',
-      '::repeat-index': '::repeat-index'
-    }
-  },
-
-  'css-text-3': {
-    'title': 'Text',
-    'tr': 'http://www.w3.org/TR/css3-text/',
-    'properties': {
-      'text-transform': ['full-width'],
-      'tab-size': ['8', '1em'],
-      'line-break': ['auto', 'loose', 'normal', 'strict'],
-      'word-break': ['normal', 'keep-all', 'break-all'],
-      'hyphens': ['manual', 'none', 'auto'],
-      'word-wrap': ['normal', 'break-word'],
-      'overflow-wrap': ['normal', 'break-word'],
-      'text-align': ['start', 'end', 'match-parent', 'start end'],
-      'text-align-last': ['auto', 'start', 'end', 'left', 'right', 'center', 'justify'],
-      'text-justify': ['auto', 'none', 'inter-word', 'distribute'],
-      'word-spacing': ['10%', '-10%'],
-      'text-indent': ['1em', '1%'].amp(['hanging'].or(['each-line'])),
-      'hanging-punctuation': ['none'].concat(['first'].or(['force-end', 'allow-end'], ['last']))
-    }
-  },
-
-  'css-text-decor-3': {
-    'title': 'Text Decoration',
-    'properties': {
-      'text-decoration-line': ['none'].concat(
-        ['underline'].or(['overline'], ['line-through'], ['blink'])
-      ),
-      'text-decoration-color': 'white',
-      'text-decoration-style': ['solid', 'double', 'dotted', 'dashed', 'wavy'],
-      'text-decoration': ['white', 'solid', 'double', 'dotted', 'dashed', 'wavy'].concat(
-        ['none'].concat(['underline'].or(['overline'], ['line-through'], ['blink'])).amp(['white']),
-        ['none'].concat(['underline'].or(['overline'], ['line-through'], ['blink'])).amp(
-          ['solid', 'double', 'dotted', 'dashed', 'wavy']
-        ),
-        ['white'].amp(['solid', 'double', 'dotted', 'dashed', 'wavy']),
-        ['none white solid', 'none solid white', 'underline overline line-through blink white solid']
-      ),
-      'text-decoration-skip': ['none'].concat(
-        ['objects'].or(['spaces'], ['ink'], ['edges'], ['box-decoration'])
-      ),
-      'text-underline-position': ['auto', 'alphabetic'].concat(['under'].or(['left', 'right'])),
-      'text-emphasis-style': ['none', '\'foo\''].concat(
-        ['filled', 'open'].or(['dot', 'circle', 'double-circle', 'triangle', 'sesame'])
-      ),
-      'text-emphasis-color': 'green',
-      'text-emphasis': ['none', '\'foo\''].concat(
-        ['filled', 'open'].or(['dot', 'circle', 'double-circle', 'triangle', 'sesame'])
-      ).or(['white']),
-      'text-emphasis-position': ['over', 'under'].amp(['right', 'left']),
-      'text-shadow': ['none'].concat(
-        ['10px'].times(2, 3),
-        ['10px'].times(2, 3).amp(['white']),
-        [
-          '10px 10px, 10px 10px', 'white 10px 10px 10px, 10px 10px 10px white',
-          '10px 10px, 10px 10px, 10px 10px'
-        ]
-      )
-    }
-  },
-
-  'css-page-3': {
-    'title': 'Paged Media',
-    'tr': 'http://www.w3.org/TR/css3-page/',
-    'properties': {
-      'size': ['auto', '4in', '8.5in 11in'].concat(
-        ['A5', 'A4', 'A3', 'B5', 'B4', 'letter', 'legal', 'ledger'].or(['portrait', ' landscape'])
-      ),
-      'page': ['auto', 'rotated', 'narrow', 'main', 'index']
-    },
-    '@rules': {
-      '@page': [
-        '@page :blank', '@page LandscapeTable', '@page :left:right', '@page :left:left',
-        '@page :left:right:first', '@page :left:right:first:blank',
-        '@page CompanyLetterHead:left', '@page CompanyLetterHead:right',
-        '@page CompanyLetterHead:first', '@page CompanyLetterHead:blank', '@page page:left:right',
-        '@page :left, :right', '@page toc, index', '@page toc, :first',
-        '@page page:left:right, :left:right:first:blank'
-      ]/*,
-      // It seems that Page-Margin Boxes need CSSOM API.
-      '@top-left-corner': '@top-left-corner',
-      '@top-left': '@top-left',
-      '@top-center': '@top-center',
-      '@top-right': '@top-right',
-      '@top-right-corner': '@top-right-corner',
-      '@bottom-left-corner': '@bottom-left-corner',
-      '@bottom-left': '@bottom-left',
-      '@bottom-center': '@bottom-center',
-      '@bottom-right': '@bottom-right',
-      '@bottom-right-corner': '@bottom-right-corner',
-      '@left-top': '@left-top',
-      '@left-middle': '@left-middle',
-      '@right-top': '@right-top',
-      '@right-middle': '@right-middle',
-      '@right-bottom': '@right-bottom'*/
-    }
-  },
-
   'css-fonts-3': {
     'title': 'Fonts',
     'properties': {
@@ -765,6 +633,158 @@ window.Specs = {
         '\'c2sc\', \'smcp\', \'swsh\'',
         '\'c2sc\', \'c2sc\' 1, \'smcp\' on, \'liga\' off'
       ]
+    }
+  },
+
+  'css-writing-modes-3': {
+    'title': 'Writing Modes',
+    'tr': 'http://www.w3.org/TR/css3-writing-modes/',
+    'properties': {
+      'unicode-bidi': ['isolate', 'isolate-override', 'plaintext'],
+      'writing-mode': ['horizontal-tb', 'vertical-rl', 'vertical-lr'],
+      'text-orientation': ['mixed', 'upright', 'sideways-right', 'sideways-left', 'sideways', 'use-glyph-orientation'],
+      'caption-side': ['block-start', 'block-end'],
+      'text-combine-horizontal': ['none', 'all', 'digits', 'digits 2']
+    }
+  },
+
+  'css-ui-3': {
+    'title': 'Basic User Interface',
+    'tr': 'http://www.w3.org/TR/css3-ui/',
+    'properties': {
+      'content': 'icon',
+      'icon': ['auto'].concat(['url(foo.png)'].times(1, 3, ', ')),
+      'box-sizing': ['content-box', 'padding-box', 'border-box'],
+      'outline-style': 'auto',
+      'outline-offset': ['0', '5px', '-5px'],
+      'resize': ['none', 'both', 'horizontal', 'vertical'],
+      'text-overflow': ['clip', 'ellipsis', '\'foo\''].times(1, 2),
+      'cursor': [
+        'url(foo.png) 2 2, auto', 'url(foo.png) 1 1, url(bar.png), auto',
+        'url(foo.png) 1 1, url(bar.png) 2 2, auto',
+        'url(foo.png) 1.1 1.1, url(bar.png) 2.2 2.2, url(baz.png) 3.3 3.3, auto',
+        'url(example.svg#linkcursor), url(hyper.cur), url(hyper.png) 2 3, pointer',
+        'none', 'context-menu', 'cell', 'vertical-text',
+        'alias', 'copy', 'no-drop', 'not-allowed', 'ew-resize', 'ns-resize', 'nesw-resize',
+        'nwse-resize', 'col-resize', 'row-resize', 'all-scroll', 'zoom-in', 'zoom-out'
+      ],
+      'nav-index': ['auto', '1', '10', '1.1'],
+      'nav-up': ['auto', '#foo'].concat(['#foo'].and(['current', 'root', '\'main\''])),
+      'nav-right': ['auto', '#foo'].concat(['#foo'].and(['current', 'root', '\'main\''])),
+      'nav-down': ['auto', '#foo'].concat(['#foo'].and(['current', 'root', '\'main\''])),
+      'nav-left': ['auto', '#foo'].concat(['#foo'].and(['current', 'root', '\'main\''])),
+      'ime-mode': ['auto', 'normal', 'active', 'inactive', 'disabled']
+    },
+    'selectors': {
+      ':default': ':default',
+      ':valid': ':valid',
+      ':invalid': ':invalid',
+      ':in-range': ':in-range',
+      ':out-of-range': ':out-of-range',
+      ':required': ':required',
+      ':optional': ':optional',
+      ':read-only': ':read-only',
+      ':read-write': ':read-write',
+      '::value': '::value',
+      '::choices': '::choices',
+      '::repeat-item': '::repeat-item',
+      '::repeat-index': '::repeat-index'
+    }
+  },
+
+  'css-text-3': {
+    'title': 'Text',
+    'tr': 'http://www.w3.org/TR/css3-text/',
+    'properties': {
+      'text-transform': ['full-width'],
+      'tab-size': ['8', '1em'],
+      'line-break': ['auto', 'loose', 'normal', 'strict'],
+      'word-break': ['normal', 'keep-all', 'break-all'],
+      'hyphens': ['manual', 'none', 'auto'],
+      'word-wrap': ['normal', 'break-word'],
+      'overflow-wrap': ['normal', 'break-word'],
+      'text-align': ['start', 'end', 'match-parent', 'start end'],
+      'text-align-last': ['auto', 'start', 'end', 'left', 'right', 'center', 'justify'],
+      'text-justify': ['auto', 'none', 'inter-word', 'distribute'],
+      'word-spacing': ['10%', '-10%'],
+      'text-indent': ['1em', '1%'].amp(['hanging'].or(['each-line'])),
+      'hanging-punctuation': ['none'].concat(['first'].or(['force-end', 'allow-end'], ['last']))
+    }
+  },
+
+  'css-text-decor-3': {
+    'title': 'Text Decoration',
+    'properties': {
+      'text-decoration-line': ['none'].concat(
+        ['underline'].or(['overline'], ['line-through'], ['blink'])
+      ),
+      'text-decoration-color': 'white',
+      'text-decoration-style': ['solid', 'double', 'dotted', 'dashed', 'wavy'],
+      'text-decoration': ['white', 'solid', 'double', 'dotted', 'dashed', 'wavy'].concat(
+        ['none'].concat(['underline'].or(['overline'], ['line-through'], ['blink'])).amp(['white']),
+        ['none'].concat(['underline'].or(['overline'], ['line-through'], ['blink'])).amp(
+          ['solid', 'double', 'dotted', 'dashed', 'wavy']
+        ),
+        ['white'].amp(['solid', 'double', 'dotted', 'dashed', 'wavy']),
+        ['none white solid', 'none solid white', 'underline overline line-through blink white solid']
+      ),
+      'text-decoration-skip': ['none'].concat(
+        ['objects'].or(['spaces'], ['ink'], ['edges'], ['box-decoration'])
+      ),
+      'text-underline-position': ['auto', 'alphabetic'].concat(['under'].or(['left', 'right'])),
+      'text-emphasis-style': ['none', '\'foo\''].concat(
+        ['filled', 'open'].or(['dot', 'circle', 'double-circle', 'triangle', 'sesame'])
+      ),
+      'text-emphasis-color': 'green',
+      'text-emphasis': ['none', '\'foo\''].concat(
+        ['filled', 'open'].or(['dot', 'circle', 'double-circle', 'triangle', 'sesame'])
+      ).or(['white']),
+      'text-emphasis-position': ['over', 'under'].amp(['right', 'left']),
+      'text-shadow': ['none'].concat(
+        ['10px'].times(2, 3),
+        ['10px'].times(2, 3).amp(['white']),
+        [
+          '10px 10px, 10px 10px', 'white 10px 10px 10px, 10px 10px 10px white',
+          '10px 10px, 10px 10px, 10px 10px'
+        ]
+      )
+    }
+  },
+
+  'css-page-3': {
+    'title': 'Paged Media',
+    'tr': 'http://www.w3.org/TR/css3-page/',
+    'properties': {
+      'size': ['auto', '4in', '8.5in 11in'].concat(
+        ['A5', 'A4', 'A3', 'B5', 'B4', 'letter', 'legal', 'ledger'].or(['portrait', ' landscape'])
+      ),
+      'page': ['auto', 'rotated', 'narrow', 'main', 'index']
+    },
+    '@rules': {
+      '@page': [
+        '@page :blank', '@page LandscapeTable', '@page :left:right', '@page :left:left',
+        '@page :left:right:first', '@page :left:right:first:blank',
+        '@page CompanyLetterHead:left', '@page CompanyLetterHead:right',
+        '@page CompanyLetterHead:first', '@page CompanyLetterHead:blank', '@page page:left:right',
+        '@page :left, :right', '@page toc, index', '@page toc, :first',
+        '@page page:left:right, :left:right:first:blank'
+      ]/*,
+      // It seems that Page-Margin Boxes need CSSOM API.
+      '@top-left-corner': '@top-left-corner',
+      '@top-left': '@top-left',
+      '@top-center': '@top-center',
+      '@top-right': '@top-right',
+      '@top-right-corner': '@top-right-corner',
+      '@bottom-left-corner': '@bottom-left-corner',
+      '@bottom-left': '@bottom-left',
+      '@bottom-center': '@bottom-center',
+      '@bottom-right': '@bottom-right',
+      '@bottom-right-corner': '@bottom-right-corner',
+      '@left-top': '@left-top',
+      '@left-middle': '@left-middle',
+      '@right-top': '@right-top',
+      '@right-middle': '@right-middle',
+      '@right-bottom': '@right-bottom'*/
     }
   },
 
@@ -1150,18 +1170,6 @@ window.Specs = {
     }
   },
 
-  'css-writing-modes-3': {
-    'title': 'Writing Modes',
-    'tr': 'http://www.w3.org/TR/css3-writing-modes/',
-    'properties': {
-      'unicode-bidi': ['isolate', 'isolate-override', 'plaintext'],
-      'writing-mode': ['horizontal-tb', 'vertical-rl', 'vertical-lr'],
-      'text-orientation': ['mixed', 'upright', 'sideways-right', 'sideways-left', 'sideways', 'use-glyph-orientation'],
-      'caption-side': ['block-start', 'block-end'],
-      'text-combine-horizontal': ['none', 'all', 'digits', 'digits 2']
-    }
-  },
-
   'css-overflow-3': {
     'title': 'Overflow',
     'properties': {
@@ -1172,20 +1180,6 @@ window.Specs = {
     },
     'selectors': {
       '::nth-fragment()': 'div::nth-fragment(1)'
-    }
-  },
-
-  'css-sizing-3': {
-    'title': 'Intrinsic & Extrinsic Sizing',
-    'tr': 'http://www.w3.org/TR/css3-sizing/',
-    'properties': {
-      'width': ['fill', 'repudiate-floats'],
-      'min-width': ['fill', 'repudiate-floats', 'contain-floats'],
-      'max-width': ['fill', 'repudiate-floats'],
-      'height': ['fill', 'repudiate-floats'],
-      'min-height': ['fill', 'repudiate-floats', 'contain-floats'],
-      'max-height': ['fill', 'repudiate-floats'],
-      'column-width': ['fill', 'max-content', 'min-content', 'fit-content']
     }
   },
 
@@ -1228,6 +1222,20 @@ window.Specs = {
       'offset-after': ['auto', '10px', '10%'],
       'offset-start': ['auto', '10px', '10%'],
       'clip': ['inset(5px, 40px, 45px, 5px)', 'inset(30%, 0%, 30%, 25%)']
+    }
+  },
+
+  'css-sizing-3': {
+    'title': 'Intrinsic & Extrinsic Sizing',
+    'tr': 'http://www.w3.org/TR/css3-sizing/',
+    'properties': {
+      'width': ['fill', 'repudiate-floats'],
+      'min-width': ['fill', 'repudiate-floats', 'contain-floats'],
+      'max-width': ['fill', 'repudiate-floats'],
+      'height': ['fill', 'repudiate-floats'],
+      'min-height': ['fill', 'repudiate-floats', 'contain-floats'],
+      'max-height': ['fill', 'repudiate-floats'],
+      'column-width': ['fill', 'max-content', 'min-content', 'fit-content']
     }
   },
 
@@ -1348,14 +1356,6 @@ window.Specs = {
         ['head', 'foot', 'flex-start', 'flex-end', 'center', 'baseline', 'stretch'].and(['true']),
         ['true'].and(['head', 'foot', 'flex-start', 'flex-end', 'center', 'baseline', 'stretch'])
       )
-    }
-  },
-
-  'css-cascade-3': {
-    'title': 'Cascading and Inheritance',
-    'tr': 'http://www.w3.org/TR/css3-cascade/',
-    'properties': {
-      'all': ['unset']
     }
   },
 
@@ -1669,6 +1669,28 @@ window.Specs = {
     }
   },
 
+  'css-device-adapt-1': {
+    'title': 'Device Adaptation',
+    'tr': 'http://www.w3.org/TR/css-device-adapt/',
+    '@rules': {
+      '@viewport': '@viewport'
+    },
+    'descriptors': {
+      'atrule': '@viewport',
+      'min-width': ['auto', '10px', '10%'],
+      'max-width': ['auto', '10px', '10%'],
+      'width': ['auto', '10px', '10%'].times(1, 2),
+      'min-height': ['auto', '10px', '10%'],
+      'max-height': ['auto', '10px', '10%'],
+      'height': ['auto', '10px', '10%'].times(1, 2),
+      'zoom': ['auto', '1.0', '2.0', '0.5', '100%', '200%', '50%'],
+      'min-zoom': ['auto', '1.0', '2.0', '0.5', '100%', '200%', '50%'],
+      'max-zoom': ['auto', '1.0', '2.0', '0.5', '100%', '200%', '50%'],
+      'user-zoom': ['zoom', 'fixed'],
+      'orientation': ['auto', 'portrait', 'landscape']
+    }
+  },
+
   'css-template-1': {
     'title': 'Grid Template Layout',
     'tr': 'http://www.w3.org/TR/css3-layout/',
@@ -1764,28 +1786,6 @@ window.Specs = {
     'selectors': {
       '::slot()': 'body::slot(a)',
       '::blank()': 'body::blank(a)'
-    }
-  },
-
-  'css-device-adapt-1': {
-    'title': 'Device Adaptation',
-    'tr': 'http://www.w3.org/TR/css-device-adapt/',
-    '@rules': {
-      '@viewport': '@viewport'
-    },
-    'descriptors': {
-      'atrule': '@viewport',
-      'min-width': ['auto', '10px', '10%'],
-      'max-width': ['auto', '10px', '10%'],
-      'width': ['auto', '10px', '10%'].times(1, 2),
-      'min-height': ['auto', '10px', '10%'],
-      'max-height': ['auto', '10px', '10%'],
-      'height': ['auto', '10px', '10%'].times(1, 2),
-      'zoom': ['auto', '1.0', '2.0', '0.5', '100%', '200%', '50%'],
-      'min-zoom': ['auto', '1.0', '2.0', '0.5', '100%', '200%', '50%'],
-      'max-zoom': ['auto', '1.0', '2.0', '0.5', '100%', '200%', '50%'],
-      'user-zoom': ['zoom', 'fixed'],
-      'orientation': ['auto', 'portrait', 'landscape']
     }
   },
 
