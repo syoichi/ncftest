@@ -1194,28 +1194,75 @@ window.Specs = {
     'title': 'Generated Content for Paged Media',
     'tr': 'http://www.w3.org/TR/css3-gcpm/',
     'properties': {
-      'string-set': ['none'].concat(['header'].and([
-        '\'foo\'', 'counter(par-num, upper-roman)', 'counters(par-num, upper-roman, disc)',
-        'contents', 'content-element', 'content-before', 'content-after', 'content-first-letter',
-        'env(url)', 'env(date)', 'env(time)', 'env(date-time)'
-      ])).concat([
-        'title contents', 'index content-first-letter', 'header content-before content-element',
-        'header \'Chapter \' counter(chapter) contents', 'header \'Chapter \' counter(header) \': \' contents',
-        'index \'foo\' attr(title) counter(par-num, upper-roman) counters(par-num, upper-roman, disc) contents content-element content-before content-after content-first-letter env(url) env(date) env(time) env(date-time)',
-        'index content-first-letter, entry contents', 'title env(date-time), header content-before, index content-after'
-      ]),
-      'marks': ['none', 'crop', 'cross', 'crop cross', 'cross crop'],
-      'bleed': ['6pt'],
-      'bookmark-level': ['none', '1'],
-      'bookmark-label': [
-        'none', '\'foo\'', 'counter(par-num, upper-roman)', 'counters(par-num, upper-roman, disc)',
-        'contents', 'content-element', 'content-before', 'content-after', 'content-first-letter',
-        'env(url)', 'env(date)', 'env(time)', 'env(date-time)', 'content-before \': \' contents',
-        '\'foo\' counter(par-num, upper-roman) counters(par-num, upper-roman, disc) contents content-element content-before content-after content-first-letter env(url) env(date) env(time) env(date-time)'
+      'string-set': ['none'].concat(
+        ['header'].and([
+          '\'foo\'',
+          'counter(par-num, upper-roman)',
+          'counters(par-num, upper-roman, disc)',
+          'content()', 'content(text)', 'content(before)', 'content(after)',
+          'content(first-letter)'
+        ]),
+        [
+          'header content(before) content(text)',
+          'header "Chapter " counter(chapter) content()',
+          'header "Chapter " counter(header) ": " content()',
+          'index \'foo\' attr(title) ' +
+            'counter(par-num, upper-roman) ' +
+            'counters(par-num, upper-roman, disc) ' +
+            'content() content(text) content(before) content(after) ' +
+            'content(first-letter)',
+          'index content(first-letter), entry content()',
+          'title content(), header content(before), index content(after)'
+        ]
+      ),
+      'content': ['term'].qmark([
+        'first', 'start', 'last', 'first-except'
+      ], ', ').map(function string(arg) {
+        return 'string(' + arg + ')';
+      }).concat(
+        ['header'].qmark([
+          'first', 'start', 'last', 'first-except'
+        ], ', ').map(function element(arg) {
+          return 'element(' + arg + ')';
+        }),
+        ['dotted', 'solid', 'space', '", "'].map(function leader(arg) {
+          return 'leader(' + arg + ')';
+        }),
+        [
+          'target-counter(attr(href url), page)',
+          'target-counter(attr(href url), page, decimal)',
+          'target-counters(attr(href url), section, ".", decimal)',
+          'target-text(attr(href url), content)',
+          'counter(footnote, super-decimal)'
+        ]
+      ),
+      'position': ['running(header)'],
+      'float': [
+        'footnote', 'sidenote', 'bottom-corner', 'bottom page', 'page bottom'
       ],
+      'bookmark-level': ['none', '1'],
+      'bookmark-label': ['none'].concat([
+        '\'foo\'',
+        'counter(par-num, upper-roman)', 'counters(par-num, upper-roman, disc)',
+        'content()', 'content(text)', 'content(before)', 'content(after)',
+        'content(first-letter)',
+        'content(before) content(text)',
+        '"Chapter " counter(chapter) content()',
+        '"Chapter " counter(header) ": " content()',
+        '\'foo\' attr(title) ' +
+          'counter(par-num, upper-roman) ' +
+          'counters(par-num, upper-roman, disc) ' +
+          'content() content(text) content(before) content(after) ' +
+          'content(first-letter)'
+      ]),
       'bookmark-state': ['open', 'closed'],
-      'float-offset': ['0 0', '5px', '2em 3em'],
-      'clear-side': ['auto', 'both']
+      'page-group': ['auto', 'start']
+    },
+    'selectors': {
+      '::footnote-call': '::footnote-call',
+      '::footnote-marker': '::footnote-marker',
+      '::page()': '::page(left)',
+      '::column()': '::column(2n)'
     }
   },
 
