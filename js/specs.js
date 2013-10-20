@@ -1223,7 +1223,7 @@ window.Specs = {
     'title': 'Positioned Layout',
     'tr': 'http://www.w3.org/TR/css3-positioning/',
     'properties': {
-      'position': ['center', 'page'],
+      'position': ['sticky', 'center', 'page'],
       'offset-before': ['auto', '10px', '10%'],
       'offset-end': ['auto', '10px', '10%'],
       'offset-after': ['auto', '10px', '10%'],
