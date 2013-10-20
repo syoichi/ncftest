@@ -763,16 +763,22 @@ window.Specs = {
     'tr': 'http://www.w3.org/TR/css3-page/',
     'properties': {
       'size': ['auto', '4in', '8.5in 11in'].concat(
-        ['A5', 'A4', 'A3', 'B5', 'B4', 'letter', 'legal', 'ledger'].or(['portrait', ' landscape'])
+        ['A5', 'A4', 'A3', 'B5', 'B4', 'letter', 'legal', 'ledger'].or([
+          'portrait', ' landscape'
+        ])
       ),
-      'page': ['auto', 'rotated', 'narrow', 'main', 'index']
+      'marks': ['none'].concat(['crop'].or(['cross'])),
+      'bleed': ['6pt'],
+      'page': ['auto', 'rotated', 'narrow', 'main', 'index', 'funky']
     },
     '@rules': {
       '@page': [
-        '@page :blank', '@page LandscapeTable', '@page :left:right', '@page :left:left',
+        '@page :blank', '@page LandscapeTable',
+        '@page :left:right', '@page :left:left',
         '@page :left:right:first', '@page :left:right:first:blank',
         '@page CompanyLetterHead:left', '@page CompanyLetterHead:right',
-        '@page CompanyLetterHead:first', '@page CompanyLetterHead:blank', '@page page:left:right',
+        '@page CompanyLetterHead:first', '@page CompanyLetterHead:blank',
+        '@page page:left:right',
         '@page :left, :right', '@page toc, index', '@page toc, :first',
         '@page page:left:right, :left:right:first:blank'
       ]/*,
