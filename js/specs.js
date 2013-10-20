@@ -3768,6 +3768,14 @@ window.Specs = {
     }
   },
 
+  'books': {
+    'title': 'CSS Books',
+    'dev': 'http://books.spec.whatwg.org/',
+    'properties': {
+      'content': ['target-pull()']
+    }
+  },
+
   // Web Components
   'components-intro': {
     'title': 'Web Components',
