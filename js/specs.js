@@ -1091,7 +1091,7 @@ window.Specs = {
       ]
     },
     'selectors': {
-      '::marker': ['::marker', 'li::marker']
+      '::marker': '::marker'
     }
   },
 
