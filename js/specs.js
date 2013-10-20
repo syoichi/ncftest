@@ -2435,16 +2435,28 @@ window.Specs = {
     'title': 'Shapes Level 1',
     'properties': {
       'shape-outside': ['auto'].concat(
-        ['10px', '10%'].times(4, 6, ', ').map(function rectangle(arg) {
+        ['10px', '10%'].times(4).map(function rectangle(arg) {
           return 'rectangle(' + arg + ')';
         }),
-        ['10px', '10%'].times(4, 6, ', ').map(function insetRectangle(arg) {
-          return 'inset-rectangle(' + arg + ')';
+        [
+          'rectangle(10px 10px 10px 10px round ' +
+            '10px 10px 10px 10px / 10px 10px 10px 10px)'
+        ],
+        ['10px', '10%'].times(1, 4).map(function inset(arg) {
+          return 'inset(' + arg + ')';
         }),
-        ['10px', '10%'].times(3, 3, ', ').map(function circle(arg) {
+        [
+          'inset(10px 10px 10px 10px round ' +
+            '10px 10px 10px 10px / 10px 10px 10px 10px)'
+        ],
+        ['10px', '10%'].times(2).and([
+          '10px', '10%', 'width', 'height', 'cover', 'contain'
+        ]).map(function circle(arg) {
           return 'circle(' + arg + ')';
         }),
-        ['10px', '10%'].times(4, 4, ', ').map(function ellipse(arg) {
+        ['10px', '10%'].times(2).and([
+          '10px', '10%', 'width', 'height', 'cover', 'contain'
+        ].times(2)).map(function ellipse(arg) {
           return 'ellipse(' + arg + ')';
         }),
         ['nonzero', 'evenodd'].qmark(
@@ -2455,7 +2467,7 @@ window.Specs = {
         ['url(foo.png)', 'linear-gradient(white, black)']
       ),
       'shape-image-threshold': ['0.0', '0.5', '1.0'],
-      'shape-margin': ['0', '1px']
+      'shape-margin': ['0', '1px', '10%']
     }
   },
 
