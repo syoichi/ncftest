@@ -3334,10 +3334,11 @@ window.Specs = {
         '1px 2px, 1px 2px, inset 1px 2px'
       ]
     }
-  },/*
+  },
 
   'css-color-4': {
     'title': 'Color Level 4',
+    'dev': 'http://dev.w3.org/csswg/css-color/',
     'values': {
       'properties': [
         'color',
@@ -3351,18 +3352,162 @@ window.Specs = {
         'rgba(1.1, 0, 0, 1)', 'rgba(1.1, 1.2, 0, 1)', 'rgba(1.1, 1.2, 1.3, 1)',
         'rgba(0, 0, 0, 10%)'
       ],
-      'hsl()': ['90deg', '100grad', '1rad', '1turn'].map(function hsl(angle) {
-        return 'hsl(' + angle + ', 0%, 0%)';
+      'hsl()': ['90deg', '100grad', '1rad', '1turn'].concat(
+        ['red', 'orange', 'yellow', 'green', 'blue', 'purple'].times(1, 2),
+        [
+          'reddish', 'orangish', 'yellowish', 'greenish', 'bluish', 'purplish',
+          'reddish(10%)', 'orangish(10%)', 'yellowish(10%)', 'greenish(10%)',
+          'bluish(10%)', 'purplish(10%)'
+        ].and(['red', 'orange', 'yellow', 'green', 'blue', 'purple'])
+      ).map(function hsl(arg) {
+        return 'hsl(' + arg + ', 0%, 0%)';
       }),
-      'hsla()': ['90deg', '100grad', '1rad', '1turn'].map(function hsla(angle) {
-        return 'hsla(' + angle + ', 0%, 0%, 0.99)';
-      }).concat(['hsla(0, 0%, 0%, 10%)'])
+      'hsla()': ['90deg', '100grad', '1rad', '1turn'].concat(
+        ['red', 'orange', 'yellow', 'green', 'blue', 'purple'].times(1, 2),
+        [
+          'reddish', 'orangish', 'yellowish', 'greenish', 'bluish', 'purplish',
+          'reddish(10%)', 'orangish(10%)', 'yellowish(10%)', 'greenish(10%)',
+          'bluish(10%)', 'purplish(10%)'
+        ].and(['red', 'orange', 'yellow', 'green', 'blue', 'purple'])
+      ).map(function hsla(arg) {
+        return 'hsla(' + arg + ', 0%, 0%, 0.99)';
+      }),
+      'hwb()': [
+        '0', '1', '-1', '1.1', '90deg', '100grad', '1rad', '1turn'
+      ].concat(
+        ['red', 'orange', 'yellow', 'green', 'blue', 'purple'].times(1, 2),
+        [
+          'reddish', 'orangish', 'yellowish', 'greenish', 'bluish', 'purplish',
+          'reddish(10%)', 'orangish(10%)', 'yellowish(10%)', 'greenish(10%)',
+          'bluish(10%)', 'purplish(10%)'
+        ].and(['red', 'orange', 'yellow', 'green', 'blue', 'purple'])
+      ).and(['10%, 10%', '10%, 10%, 1.0'], ', ').map(function hwb(arg) {
+        return 'hwb(' + arg + ')';
+      }),
+      'gray()': [
+        '0', '1', '-1', '1.1', '10%'
+      ].qmark(['1.0'], ', ').map(function gray(arg) {
+        return 'gray(' + arg + ')';
+      }),
+      'device-cmyk()': ['1', '10%'].times(4, 4, ', ').qmark(
+        ['1.0'], ', '
+      ).qmark(['white'], ', ').map(function deviceCmyk(arg) {
+        return 'device-cmyk(' + arg + ')';
+      }),
+      'color()': ['white'].concat(
+        [
+          '0', '1', '-1', '1.1', '90deg', '100grad', '1rad', '1turn'
+        ].concat(
+          ['red', 'orange', 'yellow', 'green', 'blue', 'purple'].times(1, 2),
+          [
+            'reddish', 'orangish', 'yellowish', 'greenish',
+            'bluish', 'purplish',
+            'reddish(10%)', 'orangish(10%)', 'yellowish(10%)', 'greenish(10%)',
+            'bluish(10%)', 'purplish(10%)'
+          ].and(['red', 'orange', 'yellow', 'green', 'blue', 'purple'])
+        ),
+        ['white', '1'].and([].concat(
+          ['+', '-'].qmark(['1', '10%'], ' ', {
+            former: true
+          }).concat(['* 10%']).map(function red(arg) {
+            return 'red(' + arg + ')';
+          }),
+          ['+', '-'].qmark(['1', '10%'], ' ', {
+            former: true
+          }).concat(['* 10%']).map(function green(arg) {
+            return 'green(' + arg + ')';
+          }),
+          ['+', '-'].qmark(['1', '10%'], ' ', {
+            former: true
+          }).concat(['* 10%']).map(function blue(arg) {
+            return 'blue(' + arg + ')';
+          }),
+          ['+', '-'].qmark(['1', '10%'], ' ', {
+            former: true
+          }).concat(['* 10%']).map(function alpha(arg) {
+            return 'alpha(' + arg + ')';
+          }),
+          ['+', '-'].qmark(['1', '10%'], ' ', {
+            former: true
+          }).concat(['* 10%']).map(function a(arg) {
+            return 'a(' + arg + ')';
+          }),
+          ['+', '-'].and(
+            ['1', '10%'].times(3).concat(['#004400'])
+          ).concat(['* 10%']).map(function rgb(arg) {
+            return 'rgb(' + arg + ')';
+          }),
+          ['+', '-', '*'].qmark(['90deg', '100grad', '1rad', '1turn'], ' ', {
+            former: true
+          }).map(function hue(arg) {
+            return 'hue(' + arg + ')';
+          }),
+          ['+', '-', '*'].qmark(['90deg', '100grad', '1rad', '1turn'], ' ', {
+            former: true
+          }).map(function h(arg) {
+            return 'h(' + arg + ')';
+          }),
+          ['+', '-', '*'].qmark(['10%'], ' ', {
+            former: true
+          }).map(function saturation(arg) {
+            return 'saturation(' + arg + ')';
+          }),
+          ['+', '-', '*'].qmark(['10%'], ' ', {
+            former: true
+          }).map(function s(arg) {
+            return 's(' + arg + ')';
+          }),
+          ['+', '-', '*'].qmark(['10%'], ' ', {
+            former: true
+          }).map(function lightness(arg) {
+            return 'lightness(' + arg + ')';
+          }),
+          ['+', '-', '*'].qmark(['10%'], ' ', {
+            former: true
+          }).map(function l(arg) {
+            return 'l(' + arg + ')';
+          }),
+          ['+', '-', '*'].qmark(['10%'], ' ', {
+            former: true
+          }).map(function whiteness(arg) {
+            return 'whiteness(' + arg + ')';
+          }),
+          ['+', '-', '*'].qmark(['10%'], ' ', {
+            former: true
+          }).map(function w(arg) {
+            return 'w(' + arg + ')';
+          }),
+          ['+', '-', '*'].qmark(['10%'], ' ', {
+            former: true
+          }).map(function blackness(arg) {
+            return 'blackness(' + arg + ')';
+          }),
+          ['+', '-', '*'].qmark(['10%'], ' ', {
+            former: true
+          }).map(function b(arg) {
+            return 'b(' + arg + ')';
+          }),
+          ['tint(10%)', 'shade(10%)'],
+          ['white', '10%'].qmark([
+            'rgb', 'hsl', 'hwb'
+          ]).map(function blend(arg) {
+            return 'blend(' + arg + ')';
+          }),
+          ['white', '10%'].qmark([
+            'rgb', 'hsl', 'hwb'
+          ]).map(function blenda(arg) {
+            return 'blenda(' + arg + ')';
+          }),
+          ['contrast()', 'contrast(10%)']
+        ))
+      ).map(function color(arg) {
+        return 'color(' + arg + ')';
+      })
     },
     'properties': {
-      'opacity': '10%',
       'color-correction': 'auto'
     }
-  },*/
+  },
 
   'css-pseudo-4': {
     'title': 'Pseudo-elements Level 4',
