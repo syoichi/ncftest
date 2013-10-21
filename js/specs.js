@@ -1241,7 +1241,7 @@ window.Specs = {
       ),
       'position': ['running(header)'],
       'float': [
-        'footnote', 'sidenote', 'bottom-corner', 'bottom page', 'page bottom'
+        'footnote', 'sidenote', 'bottom page', 'page bottom'
       ],
       'bookmark-level': ['none', '1'],
       'bookmark-label': ['none'].concat([
@@ -1446,13 +1446,11 @@ window.Specs = {
   'css-page-floats': {
     'title': 'Page Floats',
     'properties': {
-      'float': ['snap'].concat(
-        ['10px'].times(1, 2).qmark([
-          'top', 'bottom', 'near'
-        ], ', ').map(function snap(arg) {
-          return 'snap(' + arg + ')';
-        }).concat(['top right'])
-      ),
+      'float': ['10px'].times(1, 2).qmark([
+        'top', 'bottom', 'near'
+      ], ', ').map(function snap(arg) {
+        return 'snap(' + arg + ')';
+      }),
       'float-reference': ['column', 'multicol', 'page'],
       'float-defer-column': ['none', '1', '-1', 'last'],
       'float-defer-page': ['none', '1', '-1', 'last'],
