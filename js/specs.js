@@ -34,7 +34,7 @@ window.Specs = {
         'n+0', 'n+00', '3n +1', '3n- 1', '3n + 1',
         '0', '1', '10', '01', '00', '-0', '-1', '-10', '-01', '-00', '+0', '+1', '+10', '+01', '+00',
         'odd', 'even'
-      ].map(function (nth) {
+      ].map(function nthChild(nth) {
         return ':nth-child(' + nth + ')';
       }),
       ':nth-last-child()': [
@@ -47,7 +47,7 @@ window.Specs = {
         'n+0', 'n+00', '3n +1', '3n- 1', '3n + 1',
         '0', '1', '10', '01', '00', '-0', '-1', '-10', '-01', '-00', '+0', '+1', '+10', '+01', '+00',
         'odd', 'even'
-      ].map(function (nth) {
+      ].map(function nthLastChild(nth) {
         return ':nth-last-child(' + nth + ')';
       }),
       ':nth-of-type()': [
@@ -60,7 +60,7 @@ window.Specs = {
         'n+0', 'n+00', '3n +1', '3n- 1', '3n + 1',
         '0', '1', '10', '01', '00', '-0', '-1', '-10', '-01', '-00', '+0', '+1', '+10', '+01', '+00',
         'odd', 'even'
-      ].map(function (nth) {
+      ].map(function nthOfType(nth) {
         return ':nth-of-type(' + nth + ')';
       }),
       ':nth-last-of-type()': [
@@ -73,7 +73,7 @@ window.Specs = {
         'n+0', 'n+00', '3n +1', '3n- 1', '3n + 1',
         '0', '1', '10', '01', '00', '-0', '-1', '-10', '-01', '-00', '+0', '+1', '+10', '+01', '+00',
         'odd', 'even'
-      ].map(function (nth) {
+      ].map(function nthLastOfType(nth) {
         return ':nth-last-of-type(' + nth + ')';
       }),
       ':not()': [
@@ -445,7 +445,7 @@ window.Specs = {
         'data-text rad', 'data-text ms', 'data-text s', 'data-text Hz',
         'data-text kHz', 'data-text %',
         'data-px, 1px', 'data-px px, 1px', 'data-px px, calc(1px)'
-      ].map(function (arg) {
+      ].map(function attr(arg) {
         return 'attr(' + arg + ')';
       })
     }
@@ -1522,13 +1522,13 @@ window.Specs = {
     'title': 'Grid Positioning',
     'properties': {
       'grid-columns': ['none'].concat(/*
-        ['10px', '10%', '10fr', '*'].times(1, 3).map(function (arg) {
+        ['10px', '10%', '10fr', '*'].times(1, 3).map(function wrap(arg) {
           return '(' + arg + ')';
         }),
-        ['10px', '10%', '10fr', '*'].times(1, 3).map(function (arg) {
+        ['10px', '10%', '10fr', '*'].times(1, 3).map(function wrap(arg) {
           return '(' + arg + ')[1]';
         }),*/
-        ['10px', '10%', '10fr'].times(1, 3).map(function (arg) {
+        ['10px', '10%', '10fr'].times(1, 3).map(function repeat(arg) {
           return 'repeat(' + arg + ')';
         }),
         [
@@ -1540,10 +1540,10 @@ window.Specs = {
         ]
       ),
       'grid-rows': ['none'].concat(
-        ['10px', '10%', '10fr'/*, '*'*/].times(1, 3).map(function (arg) {
+        ['10px', '10%', '10fr'/*, '*'*/].times(1, 3).map(function wrap(arg) {
           return '(' + arg + ')';
         }),
-        ['10px', '10%', '10fr'/*, '*'*/].times(1, 3).map(function (arg) {
+        ['10px', '10%', '10fr'/*, '*'*/].times(1, 3).map(function wrap(arg) {
           return '(' + arg + ')[1]';
         }),
         [
@@ -3075,7 +3075,7 @@ window.Specs = {
       ':scope': [':scope', ':scope > .example'],
       ':drop': [':drop'],
       ':drop()': [':drop()'].concat(
-        ['active'].or(['valid'], ['invalid']).map(function (arg) {
+        ['active'].or(['valid'], ['invalid']).map(function drop(arg) {
           return ':drop(' + arg + ')'
         })
       ),
@@ -3129,7 +3129,7 @@ window.Specs = {
         '0', '1', '10', '01', '00', '-0', '-1', '-10',
         '-01', '-00', '+0', '+1', '+10', '+01', '+00',
         'odd', 'even'
-      ].map(function (nth) {
+      ].map(function nthMatch(nth) {
         return ':nth-match(' + nth + ' of .foo)';
       }).concat([':nth-match(2n+1 of .foo, #bar)']),
       ':nth-last-match(an+b of <selector>)': [
@@ -3147,7 +3147,7 @@ window.Specs = {
         '0', '1', '10', '01', '00', '-0', '-1', '-10',
         '-01', '-00', '+0', '+1', '+10', '+01', '+00',
         'odd', 'even'
-      ].map(function (nth) {
+      ].map(function nthLastMatch(nth) {
         return ':nth-last-match(' + nth + ' of #example)';
       }).concat([':nth-last-match(even of #example > div, .foo)']),
       ':nth-column()': [
@@ -3165,7 +3165,7 @@ window.Specs = {
         '0', '1', '10', '01', '00', '-0', '-1', '-10',
         '-01', '-00', '+0', '+1', '+10', '+01', '+00',
         'odd', 'even'
-      ].map(function (nth) {
+      ].map(function nthColumn(nth) {
         return ':nth-column(' + nth + ')';
       }),
       ':nth-last-column()': [
@@ -3183,7 +3183,7 @@ window.Specs = {
         '0', '1', '10', '01', '00', '-0', '-1', '-10',
         '-01', '-00', '+0', '+1', '+10', '+01', '+00',
         'odd', 'even'
-      ].map(function (nth) {
+      ].map(function nthLastColumn(nth) {
         return ':nth-last-column(' + nth + ')';
       })
     }
@@ -3275,7 +3275,7 @@ window.Specs = {
         ['underline', 'no-underline', 'replace-underline'].or(
           ['overline', 'no-overline', 'replace-overline'],
           ['line-through', 'no-line-through', 'replace-line-through']
-        ).filter(function (val) {
+        ).filter(function filter(val) {
           return this.indexOf(val) === -1;
         }, ['underline'].or(['overline'], ['line-through']))
       ),
@@ -3283,7 +3283,7 @@ window.Specs = {
         ['underline', 'no-underline', 'replace-underline'].or(
           ['overline', 'no-overline', 'replace-overline'],
           ['line-through', 'no-line-through', 'replace-line-through']
-        ).filter(function (val) {
+        ).filter(function filter(val) {
           return this.indexOf(val) === -1;
         }, ['underline'].or(['overline'], ['line-through'])),
         [
@@ -3324,10 +3324,10 @@ window.Specs = {
         'rgba(1.1, 0, 0, 1)', 'rgba(1.1, 1.2, 0, 1)', 'rgba(1.1, 1.2, 1.3, 1)',
         'rgba(0, 0, 0, 10%)'
       ],
-      'hsl()': ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+      'hsl()': ['90deg', '100grad', '1rad', '1turn'].map(function hsl(angle) {
         return 'hsl(' + angle + ', 0%, 0%)';
       }),
-      'hsla()': ['90deg', '100grad', '1rad', '1turn'].map(function (angle) {
+      'hsla()': ['90deg', '100grad', '1rad', '1turn'].map(function hsla(angle) {
         return 'hsla(' + angle + ', 0%, 0%, 0.99)';
       }).concat(['hsla(0, 0%, 0%, 10%)'])
     },
@@ -3444,7 +3444,7 @@ window.Specs = {
             return 'mat4(' + arg + ')';
           }),
           ['white', 'url(foo.png)']
-        )).map(function (arg) {
+        )).map(function custom(arg) {
           return 'custom(' + arg + ')';
         }),
         [
