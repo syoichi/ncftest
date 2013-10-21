@@ -1449,11 +1449,43 @@ window.Specs = {
   'css-page-floats': {
     'title': 'Page Floats',
     'properties': {
-      'float-defer-column': ['none', '1', 'last'],
-      'float-defer-page': ['none', '1', 'last'],
+      'float': ['snap'].concat(
+        ['10px'].times(1, 2).qmark([
+          'top', 'bottom', 'near'
+        ], ', ').map(function snap(arg) {
+          return 'snap(' + arg + ')';
+        }).concat(['top right'])
+      ),
+      'float-reference': ['column', 'multicol', 'page'],
+      'float-defer-column': ['none', '1', '-1', 'last'],
+      'float-defer-page': ['none', '1', '-1', 'last'],
+      'clear': ['top', 'bottom', 'column', 'page'],
       'float-wrap': ['none', 'wrap'],
-      'float-offset': ['0', '5px', '0 0', '2em 3em'],
-      'clear-side': ['auto', 'both']
+      'float-offset': ['0', '5px', '0 0', '2em 3em', '50%', '-50% 3em'],
+      'clear-side': ['auto', 'both'],
+      'background-exclude-level': ['0.0', '0.5', '1.0'],
+      'exclude-level': ['0.0', '0.5', '1.0'],
+      'content-inside': [
+        'circle(50%, 50%, 30%)',
+        'polygon(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5)'
+      ],
+      'content-outside': [
+        'circle(50%, 50%, 30%)',
+        'polygon(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5)'
+      ]
+    },
+    'selectors': {
+      '::column()': [
+        'div.chapter::column(3)',
+        'div.chapter::column(3+)', 'div.chapter::column(2,2)',
+        'div.chapter::column(*,2)', 'div.chapter::column(1,*)'
+      ],
+      '::region()': [
+        'div.chapter::region(3)', 'div.chapter::region(2n)',
+        'div.chapter::region(3+)', 'div.chapter::region(2,2)',
+        'div.chapter::region(*,2)', 'div.chapter::region(1,*)',
+        'article::region(1-3)'
+      ]
     }
   },
 
