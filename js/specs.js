@@ -1436,7 +1436,7 @@ window.Specs = {
     }
   },
 
-  'css-overflow-clipping': {
+  'css-containment': {
     'title': 'Overflow Clipping',
     'properties': {
       'overflow': ['clip']
