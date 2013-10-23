@@ -2606,6 +2606,21 @@ window.Specs = {
     }
   },
 
+  'css-snappoints': {
+    'title': 'Scroll Snap Points Level 1',
+    'properties': {
+      'scroll-snap-type': ['none', 'mandatory', 'proximity'],
+      'scroll-snap-points-x': [
+        'snapInterval(0px, 100%)',
+        'snapList(0px, 100%)', 'snapList(0px, 100%, 10px, 100%)'
+      ],
+      'scroll-snap-points-y': [
+        'snapInterval(0px, 100%)',
+        'snapList(0px, 100%)', 'snapList(0px, 100%, 10px, 100%)'
+      ]
+    }
+  },
+
   // New CSS Level 2
   'css-shapes-2': {
     'title': 'Shapes Level 2',
