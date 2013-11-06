@@ -3773,10 +3773,9 @@ window.Specs = {
     }
   },
 
-  'masking': {
+  'css-masking-1': {
     'title': 'Masking Level 1',
-    'tr': 'http://www.w3.org/TR/css-masking/',
-    'dev': 'http://dev.w3.org/fxtf/masking/',
+    'dev': 'http://dev.w3.org/fxtf/css-masking-1/',
     'properties': {
       'mask-image': [
         'none', 'url(tl.png)', 'linear-gradient(black 0%, transparent 100%)',
