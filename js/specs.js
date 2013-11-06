@@ -3538,7 +3538,7 @@ window.Specs = {
 
   // CSS-SVG Effects
   'filters': {
-    'title': 'Filter Effects 1.0',
+    'title': 'Filter Effects Level 1',
     'tr': 'http://www.w3.org/TR/filter-effects/',
     'dev': 'http://dev.w3.org/fxtf/filters/',
     'properties': {
