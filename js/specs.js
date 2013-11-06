@@ -3981,7 +3981,8 @@ window.Specs = {
     'title': 'Shadow DOM',
     'dev': 'https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html',
     'selectors': {
-      '::content': ['::content div', '.victory::content > span']
+      '::content': ['::content div', '.victory::content > span'],
+      '::part()': ['::part(child)', 'div::part(thumb)']
     },
     '@rules': {
       '@host': '@host'
