@@ -3971,7 +3971,7 @@ window.Specs = {
   // Web Components
   'components-intro': {
     'title': 'Web Components',
-    'dev': 'https://dvcs.w3.org/hg/webcomponents/raw-file/tip/explainer/index.html',
+    'dev': 'http://w3c.github.io/webcomponents/explainer/',
     'properties': {
       'decorator': ['url(#fade-to-white)']
     }
