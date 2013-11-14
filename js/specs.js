@@ -3353,7 +3353,6 @@ window.Specs = {
 
   'css-color-4': {
     'title': 'Color Level 4',
-    'dev': 'http://dev.w3.org/csswg/css-color/',
     'values': {
       'properties': [
         'color',
