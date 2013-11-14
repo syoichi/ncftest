@@ -3991,7 +3991,7 @@ window.Specs = {
 
   'custom-elements': {
     'title': 'Custom Elements',
-    'dev': 'https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/custom/index.html',
+    'dev': 'http://w3c.github.io/webcomponents/spec/custom/',
     'selectors': {
       ':unresolved': ':unresolved'
     }
