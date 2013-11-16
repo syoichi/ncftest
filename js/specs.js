@@ -768,7 +768,7 @@ window.Specs = {
         ])
       ),
       'marks': ['none'].concat(['crop'].or(['cross'])),
-      'bleed': ['6pt'],
+      'bleed': ['auto', '6pt'],
       'page': ['auto', 'rotated', 'narrow', 'main', 'index', 'funky']
     },
     '@rules': {
