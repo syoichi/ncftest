@@ -2515,13 +2515,6 @@ window.Specs = {
     'title': 'Shapes Level 1',
     'properties': {
       'shape-outside': ['auto'].concat(
-        ['10px', '10%'].times(4).map(function rectangle(arg) {
-          return 'rectangle(' + arg + ')';
-        }),
-        [
-          'rectangle(10px 10px 10px 10px round ' +
-            '10px 10px 10px 10px / 10px 10px 10px 10px)'
-        ],
         ['10px', '10%'].times(1, 4).map(function inset(arg) {
           return 'inset(' + arg + ')';
         }),
@@ -2529,14 +2522,38 @@ window.Specs = {
           'inset(10px 10px 10px 10px round ' +
             '10px 10px 10px 10px / 10px 10px 10px 10px)'
         ],
-        ['10px', '10%'].times(2).and([
-          '10px', '10%', 'width', 'height', 'cover', 'contain'
-        ]).map(function circle(arg) {
+        ['10px', '10%', 'closest-side', 'farthest-side'].concat(
+          ['at'].and(
+            ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
+              ['left', 'center', 'right', '10%', '10px'].and([
+                'top', 'center', 'bottom', '10%', '10px'
+              ]),
+              ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
+                ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
+              )
+            ).uniq()
+          ),
+          ['10px', '10%', 'closest-side', 'farthest-side'].and(
+            ['at'].and(['left', 'bottom 10px right 10px'])
+          )
+        ).map(function circle(arg) {
           return 'circle(' + arg + ')';
         }),
-        ['10px', '10%'].times(2).and([
-          '10px', '10%', 'width', 'height', 'cover', 'contain'
-        ].times(2)).map(function ellipse(arg) {
+        ['10px', '10%', 'closest-side', 'farthest-side'].times(2).concat(
+          ['at'].and(
+            ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
+              ['left', 'center', 'right', '10%', '10px'].and([
+                'top', 'center', 'bottom', '10%', '10px'
+              ]),
+              ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
+                ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
+              )
+            ).uniq()
+          ),
+          ['10px', '10%', 'closest-side', 'farthest-side'].times(2).and(
+            ['at'].and(['left', 'bottom 10px right 10px'])
+          )
+        ).map(function ellipse(arg) {
           return 'ellipse(' + arg + ')';
         }),
         ['nonzero', 'evenodd'].qmark(
@@ -2544,7 +2561,12 @@ window.Specs = {
         ).map(function polygon(arg) {
           return 'polygon(' + arg + ')';
         }),
-        ['url(foo.png)', 'linear-gradient(white, black)']
+        [
+          'border-box', 'padding-box', 'content-box',
+          'url(foo.png)', 'linear-gradient(white, black)',
+          'inset(10px) border-box', 'border-box inset(10px)',
+          'content-box ellipse(10% farthest-side at bottom 10px right 10px)'
+        ]
       ),
       'shape-image-threshold': ['0.0', '0.5', '1.0'],
       'shape-margin': ['0', '1px', '10%']
