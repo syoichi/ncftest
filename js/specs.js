@@ -3980,11 +3980,7 @@ window.Specs = {
     'title': 'Shadow DOM',
     'dev': 'http://w3c.github.io/webcomponents/spec/shadow/',
     'selectors': {
-      '::content': ['::content div', '.victory::content > span'],
-      '::part()': ['::part(child)', 'div::part(thumb)']
-    },
-    '@rules': {
-      '@host': '@host'
+      '::content': ['::content div', '.victory::content > span']
     }
   },
 
