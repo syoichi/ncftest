@@ -1635,6 +1635,13 @@ window.Specs = {
     }
   },
 
+  'selectors-nonelement': {
+    'title': 'Non-element Selectors',
+    'selectors': {
+      '::attr()': ['::attr(title)', 'abbr::attr(title)']
+    }
+  },
+
   'css-line-grid': {
     'title': 'Line Grid',
     'properties': {
