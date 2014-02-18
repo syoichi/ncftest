@@ -3990,14 +3990,6 @@ window.Specs = {
   },
 
   // Web Components
-  'components-intro': {
-    'title': 'Web Components',
-    'dev': 'http://w3c.github.io/webcomponents/explainer/',
-    'properties': {
-      'decorator': ['url(#fade-to-white)']
-    }
-  },
-
   'custom-elements': {
     'title': 'Custom Elements',
     'dev': 'http://w3c.github.io/webcomponents/spec/custom/',
