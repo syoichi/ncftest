@@ -2604,9 +2604,6 @@ window.Specs = {
       'break-after': ['region', 'avoid-region'],
       'break-inside': 'avoid-region',
       'region-fragment': ['auto', 'break']
-    },
-    'selectors': {
-      '::region()': ['#region-1::region(p)']
     }
   },
 
