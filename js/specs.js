@@ -3998,14 +3998,6 @@ window.Specs = {
     }
   },
 
-  'shadow-dom': {
-    'title': 'Shadow DOM',
-    'dev': 'http://w3c.github.io/webcomponents/spec/shadow/',
-    'selectors': {
-      '::content': ['::content div', '.victory::content > span']
-    }
-  },
-
   'custom-elements': {
     'title': 'Custom Elements',
     'dev': 'http://w3c.github.io/webcomponents/spec/custom/',
