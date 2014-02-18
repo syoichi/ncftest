@@ -1760,6 +1760,14 @@ window.Specs = {
     }
   },
 
+  'cssom-view-1': {
+    'title': 'CSSOM View',
+    'tr': 'http://www.w3.org/TR/cssom-view/',
+    'properties': {
+      'scroll-behavior': ['instant', 'smooth']
+    }
+  },
+
   'css-multicol-1': {
     'title': 'Multi-column Layout',
     'tr': 'http://www.w3.org/TR/css3-multicol/',
