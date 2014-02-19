@@ -1206,7 +1206,7 @@ window.Specs = {
           'counter(par-num, upper-roman)',
           'counters(par-num, upper-roman, disc)',
           'content()', 'content(text)', 'content(before)', 'content(after)',
-          'content(first-letter)'
+          'content(first-letter)', 'attr(title)'
         ]),
         [
           'header content(before) content(text)',
@@ -1226,32 +1226,33 @@ window.Specs = {
       ], ', ').map(function string(arg) {
         return 'string(' + arg + ')';
       }).concat(
-        ['header'].qmark([
-          'first', 'start', 'last', 'first-except'
-        ], ', ').map(function element(arg) {
-          return 'element(' + arg + ')';
-        }),
         ['dotted', 'solid', 'space', '", "'].map(function leader(arg) {
           return 'leader(' + arg + ')';
         }),
         [
           'target-counter(attr(href url), page)',
           'target-counter(attr(href url), page, decimal)',
-          'target-counters(attr(href url), section, ".", decimal)',
-          'target-text(attr(href url), content)',
-          'counter(footnote, super-decimal)'
+          'target-counters(attr(href url), section, ".")',
+          'target-counters(attr(href url), section, ".", decimal)'
+        ],
+        ['attr(href url)'].qmark([
+          'content', 'before', 'after', 'first-letter'
+        ], ', ').map(function targetText(arg) {
+          return 'target-text(' + arg + ')';
+        }),
+        [
+          'counter(footnote, symbols(\'*\', \'†\', \'‡\', \'§\'))',
+          'counter(footnote, symbols(\'*\', \'†\', \'‡\', \'§\')) \'. \''
         ]
       ),
-      'position': ['running(header)'],
-      'float': [
-        'footnote', 'sidenote', 'bottom page', 'page bottom'
-      ],
+      'float': ['footnote', 'inline-footnote'],
+      'footnote-policy': ['auto', 'line', 'block'],
       'bookmark-level': ['none', '1'],
       'bookmark-label': ['none'].concat([
         '\'foo\'',
         'counter(par-num, upper-roman)', 'counters(par-num, upper-roman, disc)',
         'content()', 'content(text)', 'content(before)', 'content(after)',
-        'content(first-letter)',
+        'content(first-letter)', 'attr(title)',
         'content(before) content(text)',
         '"Chapter " counter(chapter) content()',
         '"Chapter " counter(header) ": " content()',
@@ -1261,14 +1262,33 @@ window.Specs = {
           'content() content(text) content(before) content(after) ' +
           'content(first-letter)'
       ]),
-      'bookmark-state': ['open', 'closed'],
-      'page-group': ['auto', 'start']
+      'bookmark-state': ['open', 'closed']
     },
     'selectors': {
       '::footnote-call': '::footnote-call',
-      '::footnote-marker': '::footnote-marker',
-      '::page()': '::page(left)',
-      '::column()': '::column(2n)'
+      '::footnote-marker': '::footnote-marker'
+    },
+    '@rules': {
+      '@page': [
+        'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
+        '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
+        'n-1', '-n-1', '+n-1', '1n-1', '-1n-1',
+        '+1n-1', '0n-1', '-0n-1', '+0n-1',
+        '10n-1', '-10n-1', '+10n-1', '01n-1', '-01n-1',
+        '+01n-1', '00n-1', '-00n-1', '+00n-1',
+        'n+1', '-n+1', '+n+1', '1n+1', '-1n+1',
+        '+1n+1', '0n+1', '-0n+1', '+0n+1',
+        '10n+1', '-10n+1', '+10n+1', '01n+1', '-01n+1',
+        '+01n+1', '00n+1', '-00n+1', '+00n+1',
+        'n+0', 'n+00', '3n +1', '3n- 1', '3n + 1',
+        '0', '1', '10', '01', '00', '-0', '-1', '-10',
+        '-01', '-00', '+0', '+1', '+10', '+01', '+00',
+        'odd', 'even'
+      ].map(function atPageNth(nth) {
+        return '@page :nth(' + nth + ')';
+      }).concat([
+        '@page :nth(5 of A)', '@page :nth(1n+1 of B)', '@page :nth(odd of C)'
+      ])
     }
   },
 
