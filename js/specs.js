@@ -1645,12 +1645,27 @@ window.Specs = {
   'css-line-grid': {
     'title': 'Line Grid',
     'properties': {
-      'line-grid': ['root-grid', 'ident'],
+      'line-grid': ['root-grid', 'ident', 'create', 'match-parent'],
       'line-snap': ['none', 'baseline', 'contain'],
       'line-slack': ['none', '1'],
-      'box-snap': ['none', 'margin-box', 'border-box', 'half-border'].concat(
-        ['none', 'margin-box', 'border-box', 'half-border'].and(['ident'].times(1, 4), ' / ')
-      )
+      'box-snap': [
+        'none', 'margin-box', 'border-box', 'half-border'
+      ].times(1, 4).qmark(['ident'].times(1, 4), ' / '),
+      'layout-grid': ['strict both 20pt 15pt'],
+      'layout-grid-line': ['1.5'],
+      'layout-grid-mode': ['baseline'],
+      'line-grid-mode': ['block'],
+      'width': ['rounddown(1em)', 'roundup(1em)'],
+      'height': ['rounddown(1em)', 'roundup(1em)']
+    },
+    'values': {
+      'properties': [
+        'margin',
+        'margin-top',
+        'margin-bottom',
+        'min-height'
+      ],
+      'gd': '1gd'
     }
   },
 
