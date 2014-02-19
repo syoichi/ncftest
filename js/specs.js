@@ -2543,7 +2543,7 @@ window.Specs = {
   'css-shapes-1': {
     'title': 'Shapes Level 1',
     'properties': {
-      'shape-outside': ['auto'].concat(
+      'shape-outside': ['none'].concat(
         ['10px', '10%'].times(1, 4).map(function inset(arg) {
           return 'inset(' + arg + ')';
         }),
@@ -2591,10 +2591,11 @@ window.Specs = {
           return 'polygon(' + arg + ')';
         }),
         [
-          'border-box', 'padding-box', 'content-box',
+          'border-box', 'padding-box', 'content-box', 'margin-box',
           'url(foo.png)', 'linear-gradient(white, black)',
           'inset(10px) border-box', 'border-box inset(10px)',
-          'content-box ellipse(10% farthest-side at bottom 10px right 10px)'
+          'content-box ellipse(10% farthest-side at bottom 10px right 10px)',
+          'polygon(evenodd, 10% 10%, 10% 10%) margin-box'
         ]
       ),
       'shape-image-threshold': ['0.0', '0.5', '1.0'],
