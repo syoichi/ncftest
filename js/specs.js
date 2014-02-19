@@ -255,12 +255,13 @@ window.Specs = {
         ),
         ['none, url(foo.png), linear-gradient(white, black)']
       ),
-      'background-repeat': ['space', 'round'].times(1, 2).concat([
-        'space', 'round'
-      ].amp(['repeat', 'no-repeat'])).concat(
-        ['repeat-x', 'repeat-y'].concat(
+      'background-repeat': ['repeat-x', 'repeat-y'].concat(
           ['repeat', 'space', 'round', 'no-repeat'].times(1, 2)
-        ).times(2, 2, ', '),
+      ).times(1, 2, ', ').filter(function removeCSS2Value(val) {
+        return [
+          'repeat', 'repeat-x', 'repeat-y', 'no-repeat'
+        ].indexOf(val) === -1;
+      }).concat(
         ['repeat, repeat-x, repeat-y']
       ),
       'background-attachment': ['local'].concat(
@@ -310,8 +311,8 @@ window.Specs = {
         ).uniq().and(['auto', '10px', '10%'].times(1, 2).concat([
           'cover', 'contain'
         ]), ' / '),
-        ['space', 'round'].times(1, 2).concat(
-          ['space', 'round'].amp(['repeat', 'no-repeat'])
+        ['space', 'round'].concat(
+          ['repeat', 'space', 'round', 'no-repeat'].times(2)
         ),
         ['local'],
         ['border-box', 'padding-box', 'content-box'].times(1, 2),
@@ -384,12 +385,14 @@ window.Specs = {
             '10 5px 1px 10px repeat round'
         ]
       ),
-      'box-decoration-break': ['slice', 'clone'],
       'box-shadow': ['none'].concat(
         ['inset'].qmark(
-          ['10px'].times(2, 4).qmark(['white'], ' ', {amp: true}),
-          ' ',
-          {former: true, amp: true}
+          ['10px'].times(2, 4), ' ', {former: true, amp: true}
+        ).concat(
+          ['10px'].times(2, 4).amp(['white']),
+          ['inset'].amp(['10px'].times(2, 4)).amp(['white']).concat(
+            ['inset'].amp(['white']).amp(['10px'].times(2, 4))
+          ).uniq()
         ).times(1, 2, ', '),
         ['1px 2px, 1px 2px, 1px 2px']
       )
@@ -1374,7 +1377,8 @@ window.Specs = {
     'tr': 'http://www.w3.org/TR/css3-break/',
     'properties': {
       'break-before': ['any', 'recto', 'verso'],
-      'break-after': ['any', 'recto', 'verso']
+      'break-after': ['any', 'recto', 'verso'],
+      'box-decoration-break': ['slice', 'clone']
     }
   },
 
