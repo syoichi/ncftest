@@ -1277,8 +1277,7 @@ window.Specs = {
       'offset-before': ['auto', '10px', '10%'],
       'offset-end': ['auto', '10px', '10%'],
       'offset-after': ['auto', '10px', '10%'],
-      'offset-start': ['auto', '10px', '10%'],
-      'clip': ['inset(5px, 40px, 45px, 5px)', 'inset(30%, 0%, 30%, 25%)']
+      'offset-start': ['auto', '10px', '10%']
     }
   },
 
