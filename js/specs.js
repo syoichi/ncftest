@@ -1383,36 +1383,57 @@ window.Specs = {
     'title': 'Box Alignment',
     'tr': 'http://www.w3.org/TR/css3-align/',
     'properties': {
-      'justify-self': ['auto', 'baseline', 'start', 'end', 'center', 'stretch'].concat(
-        ['baseline', 'start', 'end', 'center', 'stretch'].and(['true']),
-        ['true'].and(['baseline', 'start', 'end', 'center', 'stretch'])
-      ),
-      'align-self': ['head', 'foot'].concat(
-        ['baseline', 'head', 'foot', 'center', 'stretch'].and(['true']),
-        ['true'].and(['baseline', 'head', 'foot', 'center', 'stretch'])
-      ),
-      'justify-content': ['auto', 'start', 'end', 'left', 'right', 'baseline'].concat(
+      'justify-content': ['auto', 'baseline'].concat(
         [
-          'start', 'end', 'left', 'right', 'flex-start', 'flex-end',
-          'baseline', 'center', 'space-between', 'space-around'
-        ].and(['true']),
-        ['true'].and([
-          'start', 'end', 'left', 'right', 'flex-start', 'flex-end',
-          'baseline', 'center', 'space-between', 'space-around'
-        ])
+          'start', 'end', 'self-start', 'self-end', 'left', 'right'
+        ].concat(
+          [
+            'center', 'start', 'end', 'self-start', 'self-end',
+            'flex-start', 'flex-end', 'left', 'right'
+          ].and([
+            'center', 'start', 'end', 'flex-start', 'flex-end',
+            'left', 'right'
+          ])
+        ).qmark(['true', 'safe'], ' ', {amp: true}),
+        ['center', 'flex-start', 'flex-end'].amp(['true', 'safe'])
       ),
-      'align-content': ['auto', 'head', 'foot', 'baseline'].concat(
-        ['head', 'foot', 'flex-start', 'flex-end', 'baseline', 'center', 'space-between', 'space-around'].and(['true']),
-        ['true'].and(['head', 'foot', 'flex-start', 'flex-end', 'baseline', 'center', 'space-between', 'space-around'])
+      'align-content': ['auto', 'baseline'].concat(
+        [
+          'start', 'end', 'self-start', 'self-end', 'left', 'right'
+        ].concat(
+          [
+            'center', 'start', 'end', 'self-start', 'self-end',
+            'flex-start', 'flex-end', 'left', 'right'
+          ].and([
+            'center', 'start', 'end', 'flex-start', 'flex-end',
+            'left', 'right'
+          ])
+        ).qmark(['true', 'safe'], ' ', {amp: true}),
+        ['center', 'flex-start', 'flex-end'].amp(['true', 'safe'])
       ),
-      'justify-items': ['auto', 'start', 'center', 'end'].concat(
-        ['start', 'center', 'end'].and(['true']),
-        ['true'].and(['start', 'center', 'end'])
+      'justify-self': ['auto', 'stretch', 'baseline'].concat([
+        'center', 'start', 'end', 'self-start', 'self-end',
+        'flex-start', 'flex-end', 'left', 'right'
+      ].qmark(['true', 'safe'], ' ', {amp: true})),
+      'align-self': [
+        'start', 'end', 'self-start', 'self-end', 'left', 'right'
+      ].concat([
+        'center', 'start', 'end', 'self-start', 'self-end',
+        'flex-start', 'flex-end', 'left', 'right'
+      ].amp(['true', 'safe'])),
+      'justify-items': ['auto', 'stretch', 'baseline'].concat(
+        [
+          'center', 'start', 'end', 'self-start', 'self-end',
+          'flex-start', 'flex-end', 'left', 'right'
+        ].qmark(['true', 'safe'], ' ', {amp: true}),
+        ['legacy'].amp(['left', 'right', 'center'])
       ),
-      'align-items': ['auto', 'head', 'foot'].concat(
-        ['head', 'foot', 'flex-start', 'flex-end', 'center', 'baseline', 'stretch'].and(['true']),
-        ['true'].and(['head', 'foot', 'flex-start', 'flex-end', 'center', 'baseline', 'stretch'])
-      )
+      'align-items': [
+        'auto', 'start', 'end', 'self-start', 'self-end', 'left', 'right'
+      ].concat([
+        'center', 'start', 'end', 'self-start', 'self-end',
+        'flex-start', 'flex-end', 'left', 'right'
+      ].amp(['true', 'safe']))
     }
   },
 
