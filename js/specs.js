@@ -3654,13 +3654,70 @@ window.Specs = {
     'title': 'Masking Level 1',
     'dev': 'http://dev.w3.org/fxtf/css-masking-1/',
     'properties': {
+      'clip-path': [
+        'none', 'url("#clip1")', 'url(commonmasks.xml#mask)'
+      ].concat(
+        ['10px', '10%'].times(1, 4).map(function inset(arg) {
+          return 'inset(' + arg + ')';
+        }),
+        [
+          'inset(10px 10px 10px 10px round ' +
+            '10px 10px 10px 10px / 10px 10px 10px 10px)'
+        ],
+        ['10px', '10%', 'closest-side', 'farthest-side'].concat(
+          ['at'].and(
+            ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
+              ['left', 'center', 'right', '10%', '10px'].and([
+                'top', 'center', 'bottom', '10%', '10px'
+              ]),
+              ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
+                ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
+              )
+            ).uniq()
+          ),
+          ['10px', '10%', 'closest-side', 'farthest-side'].and(
+            ['at'].and(['left', 'bottom 10px right 10px'])
+          )
+        ).map(function circle(arg) {
+          return 'circle(' + arg + ')';
+        }),
+        ['10px', '10%', 'closest-side', 'farthest-side'].times(2).concat(
+          ['at'].and(
+            ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
+              ['left', 'center', 'right', '10%', '10px'].and([
+                'top', 'center', 'bottom', '10%', '10px'
+              ]),
+              ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
+                ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
+              )
+            ).uniq()
+          ),
+          ['10px', '10%', 'closest-side', 'farthest-side'].times(2).and(
+            ['at'].and(['left', 'bottom 10px right 10px'])
+          )
+        ).map(function ellipse(arg) {
+          return 'ellipse(' + arg + ')';
+        }),
+        ['nonzero', 'evenodd'].qmark(
+          ['10px', '10%'].times(2).times(1, 2, ', '), ', ', {former: true}
+        ).map(function polygon(arg) {
+          return 'polygon(' + arg + ')';
+        }),
+        [
+          'border-box', 'padding-box', 'content-box', 'margin-box',
+          'fill', 'stroke', 'view-box',
+          'inset(10px) border-box', 'border-box inset(10px)',
+          'content-box ellipse(10% farthest-side at bottom 10px right 10px)',
+          'polygon(evenodd, 10% 10%, 10% 10%) margin-box',
+          'inset(10px) fill', 'inset(10px) stroke', 'inset(10px) view-box'
+        ]
+      ),
+      'clip-rule': ['nonzero', 'evenodd'],
       'mask-image': [
         'none', 'url(tl.png)', 'linear-gradient(black 0%, transparent 100%)',
-        'url(#mask)', 'url(commonmasks.xml#mask)', 'child',
-        'select(img)', 'select(mask:last-of-type)',
-        'select(img, mask:last-of-type)'
+        'url(#mask)', 'url(resources.svg#mask2)'
       ],
-      'mask-source-type': ['auto', 'alpha', 'luminance'],
+      'mask-type': ['auto', 'alpha', 'luminance'],
       'mask-repeat': ['repeat-x', 'repeat-y'].concat(
         ['repeat', 'space', 'round', 'no-repeat'].times(1, 2)
       ),
@@ -3674,16 +3731,20 @@ window.Specs = {
           ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
         )
       ).uniq(),
-      'mask-clip': ['border-box', 'padding-box', 'content-box', 'no-clip'],
-      'mask-origin': ['border-box', 'padding-box', 'content-box'],
+      'mask-clip': [
+        'border-box', 'padding-box', 'content-box', 'margin-box',
+        'fill', 'stroke', 'view-box', 'no-clip'
+      ],
+      'mask-origin': [
+        'border-box', 'padding-box', 'content-box', 'margin-box',
+        'fill', 'stroke', 'view-box'
+      ],
       'mask-size': ['auto', '10px', '10%'].times(1, 2).concat([
         'cover', 'contain'
       ]),
       'mask': [
         'none', 'url(tl.png)', 'linear-gradient(black 0%, transparent 100%)',
-        'url(#mask)', 'url(commonmasks.xml#mask)', 'child',
-        'select(img)', 'select(mask:last-of-type)',
-        'select(img, mask:last-of-type)'
+        'url(#mask)', 'url(commonmasks.xml#mask)'
       ].qmark(['auto', 'alpha', 'luminance']).concat(
         [
           'left', 'center', 'right', 'top', 'bottom', '10%', '10px'
@@ -3700,45 +3761,44 @@ window.Specs = {
         ['repeat-x', 'repeat-y'].concat(
           ['repeat', 'space', 'round', 'no-repeat'].times(1, 2)
         ),
-        ['border-box', 'padding-box', 'content-box'].or([
-          'border-box', 'padding-box', 'content-box', 'no-clip'
-        ]).uniq(), [
+        [
+          'border-box', 'padding-box', 'content-box', 'margin-box',
+          'fill', 'stroke', 'view-box'
+        ].or([
+          'border-box', 'padding-box', 'content-box', 'margin-box',
+          'fill', 'stroke', 'view-box', 'no-clip'
+        ]).uniq(),
+        [
           'none center', 'padding-box space', 'no-repeat none',
           'none left repeat-x border-box border-box',
           'none left / auto repeat-x border-box border-box',
           'none auto left / auto repeat-x border-box border-box',
           'url(tl.png) alpha left / auto repeat-x border-box border-box',
           'linear-gradient(white, black) luminance bottom 10px right 10px' +
-            ' / 10px 10% repeat space content-box no-clip'
+            ' / 10px 10% repeat space fill no-clip'
         ]
       ),
-      'mask-type': ['luminance', 'alpha'],
-      'mask-box-image-source': [
+      'mask-box-source': [
         'none', 'url(tl.png)', 'linear-gradient(white, black)'
       ],
-      'mask-box-image-slice': [
-        '1', '10%'
-      ].times(1, 4).qmark(['fill'], ' ', {amp: true}),
-      'mask-box-image-width': ['auto', '10px', '10%', '1'].times(1, 4),
-      'mask-box-image-outset': ['10px', '1'].times(1, 4),
-      'mask-box-image-repeat': [
-        'stretch', 'repeat', 'round', 'space'
-      ].times(1, 2),
-      'mask-box-image': [
+      'mask-box-slice': ['1', '10%'].times(1, 4).qmark(['fill']),
+      'mask-box-width': ['auto', '10px', '10%', '1'].times(1, 4),
+      'mask-box-outset': ['10px', '1'].times(1, 4),
+      'mask-box-repeat': ['stretch', 'repeat', 'round', 'space'].times(1, 2),
+      'mask-box': [
         'none', 'url(tl.png)', 'linear-gradient(white, black)'
       ].concat(
-        ['1', '10%'].times(1, 4).qmark(['fill'], ' ', {amp: true}).qmark([
+        ['1', '10%'].times(1, 4).qmark(['fill']).qmark([
           '1', '1 / 1', '/ 1'
         ], ' / '),
-        ['1'].and(['auto', '10px', '10%', '1'].times(1, 4), ' / '),
-        ['1'].and(['auto', '10px', '10%', '1'].times(1, 4), ' / ').and([
+        ['1'].and(['auto', '10px', '10%', '1'].times(1, 4), ' / ').qmark([
           '1'
         ], ' / '),
         ['1 / 1', '1 /'].and(['10px', '1'].times(1, 4), ' / '),
         ['stretch', 'repeat', 'round', 'space'].times(1, 2),
         [
-          '30% 30% / / 10px 10px', 'fill 10 / / 1 10px',
-          '30% 10 30% / / 10px 10px 10px', 'fill 30% 30% 30% 30% / / 1 1 1 1',
+          '30% 30% / / 10px 10px', '10 fill / / 1 10px',
+          '30% 10 30% / / 10px 10px 10px', '30% 30% 30% 30% fill / / 1 1 1 1',
           '10 30% 10 30% fill / 1 10px 10% auto / 10 5px 1px 10px',
           'none 100%', '100% none', 'stretch 100%', 'none stretch',
           'none 100% stretch',
@@ -3747,41 +3807,13 @@ window.Specs = {
           'url(foo.png) 10', 'url(foo.png) 10%', 'url(foo.png) 10% fill',
           'url(foo.png) 10 round', 'url(foo.png) 10 stretch repeat',
           'url(foo.png) 10 / 10px', 'url(foo.png) 10 / 10% / 10px',
-          'url(foo.png) fill 10 / 10% / 10px',
-          'url(foo.png) fill 10 / 10% / 10px repeat',
+          'url(foo.png) 10 fill / 10% / 10px',
+          'url(foo.png) 10 fill / 10% / 10px repeat',
           'url(tl.png) 10 30% 10 30% fill / 1 10px 10% auto / ' +
             '10 5px 1px 10px repeat round'
         ]
       ),
-      'clip-path': ['none'].concat(
-        ['10px', '10%'].times(4, 6, ', ').map(function rectangle(arg) {
-          return 'rectangle(' + arg + ')';
-        }),
-        ['10px', '10%'].times(4, 6, ', ').map(function insetRectangle(arg) {
-          return 'inset-rectangle(' + arg + ')';
-        }),
-        ['10px', '10%'].times(3, 3, ', ').map(function circle(arg) {
-          return 'circle(' + arg + ')';
-        }),
-        ['10px', '10%'].times(4, 4, ', ').map(function ellipse(arg) {
-          return 'ellipse(' + arg + ')';
-        }),
-        ['nonzero', 'evenodd'].qmark(
-          ['10px', '10%'].times(2).times(1, 2, ', '), ', ', {former: true}
-        ).map(function polygon(arg) {
-          return 'polygon(' + arg + ')';
-        })
-      ).concat([
-        'url(#mask)', 'url(commonmasks.xml#mask)', 'url(tl.png)',
-        'child', 'select(img)', 'select(clipPath:last-of-type)',
-        'select(img, mask:last-of-type)'
-      ]),
-      'clip-rule': ['nonzero', 'evenodd'],
-      'clip': ['auto'].concat(
-        ['10px', '-20px', 'auto'].times(4, 4, ', ').map(function rect(arg) {
-          return 'rect(' + arg + ')';
-        })
-      )
+      'mask-source-type': ['luminance', 'alpha']
     }
   },
 
