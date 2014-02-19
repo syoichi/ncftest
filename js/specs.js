@@ -3853,6 +3853,21 @@ window.Specs = {
     }
   },
 
+  'figures': {
+    'title': 'CSS Figures',
+    'dev': 'http://figures.spec.whatwg.org/',
+    'properties': {
+      'float-reference': ['element', 'spread'],
+      'clear': ['top-bottom'],
+      'background-wrap-level': ['0.0', '0.5', '1.0'],
+      'wrap-level': ['0.0', '0.5', '1.0']
+    },
+    'values': {
+      'properties': ['width'],
+      'gr': '1gr'
+    }
+  },
+
   // Web Components
   'custom-elements': {
     'title': 'Custom Elements',
