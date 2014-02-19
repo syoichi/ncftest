@@ -3298,17 +3298,43 @@ window.Specs = {
   'mediaqueries4': {
     'title': 'Media Queries Level 4',
     'Media queries': {
-      'script': [
-        '(script)',
-        'not all and (script: 0)', 'not all and (script: -0)', '(script: 1)'
+      'range type': [
+        '(width >= 1px)', '(height > 1px)', '(1px < height)', '(1px <= width)',
+        '(height >= 1px)', '(width <= 10000000em)',
+        'not print and (width = 1px)',
+        'not print and (color > 0)', 'not print and (color >= 8)',
+        'not print and (color-index >= 1)', 'not print and (monochrome >= 2)',
+        '(resolution >= 1dppx)',
+        '(1px < width < 100000px)', '(100000px >= height >= 1px)'
+      ],
+      'update-frequency': [
+        '(update-frequency)',
+        '(update-frequency: none)', '(update-frequency: slow)',
+        '(update-frequency: normal)'
+      ],
+      'overflow-block': [
+        '(overflow-block)',
+        '(overflow-block: none)', '(overflow-block: scroll)',
+        '(overflow-block: optional-paged)', '(overflow-block: paged)'
+      ],
+      'overflow-inline': [
+        '(overflow-inline)',
+        '(overflow-inline: none)', '(overflow-inline: scroll)'
       ],
       'pointer': [
         '(pointer)', '(pointer: none)', '(pointer: coarse)', '(pointer: fine)'
       ],
-      'hover': ['(hover)', '(hover: 0)', '(hover: -0)', '(hover: 1)'],
-      'luminosity': [
-        '(luminosity)',
-        '(luminosity: dim)', '(luminosity: normal)', '(luminosity: washed)'
+      'hover': [
+        '(hover)', '(hover: none)', '(hover: on-demand)', '(hover: over)'
+      ],
+      'light-level': [
+        '(light-level)',
+        '(light-level: dim)', '(light-level: normal)', '(light-level: washed)'
+      ],
+      'scripting': [
+        '(scripting)',
+        'not all and (scripting: none)', '(scripting: initial-only)',
+        '(scripting: enabled)'
       ]
     }
   },
