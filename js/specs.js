@@ -1269,6 +1269,7 @@ window.Specs = {
       '::footnote-marker': '::footnote-marker'
     },
     '@rules': {
+      '@footnote': ['@footnote'],
       '@page': [
         'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
         '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
