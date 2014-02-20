@@ -3891,7 +3891,79 @@ window.Specs = {
     'title': 'CSS Books',
     'dev': 'http://books.spec.whatwg.org/',
     'properties': {
-      'content': ['target-pull()']
+      'position': ['running(header)'],
+      'content':  ['header'].qmark([
+        'first', 'start', 'last', 'first-except'
+      ], ', ').map(function element(arg) {
+        return 'element(' + arg + ')';
+      }).concat([
+        'counter(footnote, super-decimal)',
+        'target-pull(attr(href url))'
+      ]),
+      'float-defer': ['last'],
+      'float': ['sidenote'].qmark([
+        'align', 'align-x', 'align-y', 'fill'
+      ].or([
+        'same-page', 'same-spread', 'any-page'
+      ]).concat([
+        'same-page!', 'align!', 'align-y!', 'stick', 'erase'
+      ]), ', ').map(function to(arg) {
+        return 'to(' + arg + ')';
+      }).concat([
+        'to(running-header, fill, stick)',
+        'copy-to(header, fill stick erase)',
+        'copy-to(running-header, fill, stick)'
+      ]),
+      'page-group': ['auto', 'start'],
+      'baseline-grid': ['normal', 'none', 'root', 'new'],
+      'block-snap': ['auto', 'before', 'after', 'center'],
+      'box-edge': ['half-leading', 'em-box'],
+      'text-replace': ['none', '"foo" "bar"', '"..." "\2026" "\'" "\2019"'],
+      'nav-up': [
+        'go(index)', 'go(previous)', 'go(next)', 'back',
+        'url(..)', 'url(a1.html)', 'url-doc(..)', 'url-doc(a1.html)',
+        'link-rel(next)'
+      ],
+      'nav-right': [
+        'go(index)', 'go(previous)', 'go(next)', 'back',
+        'url(..)', 'url(a1.html)', 'url-doc(..)', 'url-doc(a1.html)',
+        'link-rel(next)'
+      ],
+      'nav-down': [
+        'go(index)', 'go(previous)', 'go(next)', 'back',
+        'url(..)', 'url(a1.html)', 'url-doc(..)', 'url-doc(a1.html)',
+        'link-rel(next)'
+      ],
+      'nav-left': [
+        'go(index)', 'go(previous)', 'go(next)', 'back',
+        'url(..)', 'url(a1.html)', 'url-doc(..)', 'url-doc(a1.html)',
+        'link-rel(next)'
+      ],
+      'nav-up-shift': ['pan', 'turn', 'flip', 'fold'],
+      'nav-right-shift': ['pan', 'turn', 'flip', 'fold'],
+      'nav-down-shift': ['pan', 'turn', 'flip', 'fold'],
+      'nav-left-shift': ['pan', 'turn', 'flip', 'fold']
+    },
+    '@rules': {
+      '@area': ['@area sidenote'],
+      '@inside': ['@inside h1'],
+      '@page': [
+        '@page chapter:nth(3n)', '@page chapter:nth(3n+1)',
+        '@page chapter:nth(3n+2)',
+        '@page :range(3-5)', '@page :range(3+)', '@page chapter:range(2)',
+        '@page :first p', '@page :nth(1) .sidenote',
+        '@page :nth(3n+1) p:first-line', '@page funky:nth(1) p', '@page :left p'
+      ],
+      '@layout': ['@layout'],
+      '@navigation': ['@navigation']
+    },
+    'selectors': {
+      '::call': ['::call'],
+      ':column()': [
+        'div.chapter:column(3)', 'div.chapter:column(2n)',
+        'div.chapter:column(3+)', 'div.chapter:column(2, 2)',
+        'div.chapter:column(*, 2)', 'div.chapter:column(1, *)'
+      ]
     }
   },
 
