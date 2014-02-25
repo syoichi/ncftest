@@ -1683,8 +1683,10 @@ window.Specs = {
     'tr': 'http://www.w3.org/TR/css3-namespace/',
     '@rules': {
       '@namespace': [
-        '@namespace \'http://www.w3.org/1999/xhtml\';',
-        '@namespace svg \'http://www.w3.org/2000/svg\';',
+        '@namespace "";',
+        '@namespace empty "";',
+        '@namespace "http://www.w3.org/1999/xhtml";',
+        '@namespace svg "http://www.w3.org/2000/svg";',
         '@namespace url(http://www.w3.org/1999/xhtml);',
         '@namespace svg url(http://www.w3.org/2000/svg);'
       ]
