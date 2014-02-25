@@ -3879,7 +3879,7 @@ window.Specs = {
       ).uniq()),
     },
     '@rules': {
-      // http://www.whatwg.org/specs/web-apps/current-work/multipage/semantics.html#the-style-element
+      // http://www.whatwg.org/specs/web-apps/current-work/multipage/semantics.html#the-@global-rule
       '@global': '@global'
     }
   },
