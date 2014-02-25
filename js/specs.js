@@ -399,61 +399,6 @@ window.Specs = {
     }
   },
 
-  'css-values-3': {
-    'title': 'Values and Units',
-    'tr': 'http://www.w3.org/TR/css3-values/',
-    'values': {
-      'properties': [
-        'top',
-        'bottom',
-        'left',
-        'right',
-        // 'width',
-        // 'height',
-        // 'max-width',
-        // 'max-height',
-        // 'min-width',
-        // 'min-height',
-        'margin',
-        // 'padding',
-        // 'font-size',
-        // 'line-height',
-        'background-position',
-        'text-indent',
-        'vertical-align'
-      ],
-      'initial': 'initial',
-      'ch': '5ch',
-      'rem': '5rem',
-      'vw': '5vw',
-      'vh': '5vh',
-      'vmin': '5vmin',
-      'vmax': '5vmax',
-      'calc()': [
-        /*'calc(1)', 'calc(0)', 'calc(-1)', 'calc(+1)', 'calc(1.1)',*/
-        'calc(1px)', 'calc(0px)', 'calc(-1px)', 'calc(+1px)', 'calc(1.1px)',
-        'calc(1%)', 'calc(0%)', 'calc(-1%)', 'calc(+1%)', 'calc(1.1%)',
-        'calc(1px + 2px)', 'calc(5px - 10px)', 'calc(5px * 2)', 'calc(5px / 2)',
-        'calc(100%/3 - 2*1em - 2*1px)'/*, 'calc(attr(data-px) * 2)'*/
-      ],
-      'toggle()': ['toggle(1px, 2px)', 'toggle(1px, 2px, 3px)'],
-      'attr()': [
-        'data-px',
-        'data-text string', 'data-text color', 'data-text url', 'data-text integer',
-        'data-text number', 'data-text length', 'data-text angle', 'data-text time',
-        'data-text frequency', 'data-text em', 'data-text ex', 'data-text px',
-        'data-text rem', 'data-text vw', 'data-text vh', 'data-text vmin',
-        'data-text vmax', 'data-text mm', 'data-text cm', 'data-text in',
-        'data-text pt', 'data-text pc', 'data-text deg', 'data-text grad',
-        'data-text rad', 'data-text ms', 'data-text s', 'data-text Hz',
-        'data-text kHz', 'data-text %',
-        'data-px, 1px', 'data-px px, 1px', 'data-px px, calc(1px)'
-      ].map(function attr(arg) {
-        return 'attr(' + arg + ')';
-      })
-    }
-  },
-
   'css-fonts-3': {
     'title': 'Fonts',
     'properties': {
@@ -646,18 +591,58 @@ window.Specs = {
     }
   },
 
-  'css-writing-modes-3': {
-    'title': 'Writing Modes',
-    'tr': 'http://www.w3.org/TR/css3-writing-modes/',
-    'properties': {
-      'unicode-bidi': ['isolate', 'isolate-override', 'plaintext'],
-      'writing-mode': ['horizontal-tb', 'vertical-rl', 'vertical-lr'],
-      'text-orientation': [
-        'mixed', 'upright', 'sideways-right', 'sideways-left', 'sideways',
-        'use-glyph-orientation'
+  'css-values-3': {
+    'title': 'Values and Units',
+    'tr': 'http://www.w3.org/TR/css3-values/',
+    'values': {
+      'properties': [
+        'top',
+        'bottom',
+        'left',
+        'right',
+        // 'width',
+        // 'height',
+        // 'max-width',
+        // 'max-height',
+        // 'min-width',
+        // 'min-height',
+        'margin',
+        // 'padding',
+        // 'font-size',
+        // 'line-height',
+        'background-position',
+        'text-indent',
+        'vertical-align'
       ],
-      'caption-side': ['block-start', 'block-end'],
-      'text-combine-upright': ['none', 'all', 'digits', 'digits 2']
+      'initial': 'initial',
+      'ch': '5ch',
+      'rem': '5rem',
+      'vw': '5vw',
+      'vh': '5vh',
+      'vmin': '5vmin',
+      'vmax': '5vmax',
+      'calc()': [
+        /*'calc(1)', 'calc(0)', 'calc(-1)', 'calc(+1)', 'calc(1.1)',*/
+        'calc(1px)', 'calc(0px)', 'calc(-1px)', 'calc(+1px)', 'calc(1.1px)',
+        'calc(1%)', 'calc(0%)', 'calc(-1%)', 'calc(+1%)', 'calc(1.1%)',
+        'calc(1px + 2px)', 'calc(5px - 10px)', 'calc(5px * 2)', 'calc(5px / 2)',
+        'calc(100%/3 - 2*1em - 2*1px)'/*, 'calc(attr(data-px) * 2)'*/
+      ],
+      'toggle()': ['toggle(1px, 2px)', 'toggle(1px, 2px, 3px)'],
+      'attr()': [
+        'data-px',
+        'data-text string', 'data-text color', 'data-text url', 'data-text integer',
+        'data-text number', 'data-text length', 'data-text angle', 'data-text time',
+        'data-text frequency', 'data-text em', 'data-text ex', 'data-text px',
+        'data-text rem', 'data-text vw', 'data-text vh', 'data-text vmin',
+        'data-text vmax', 'data-text mm', 'data-text cm', 'data-text in',
+        'data-text pt', 'data-text pc', 'data-text deg', 'data-text grad',
+        'data-text rad', 'data-text ms', 'data-text s', 'data-text Hz',
+        'data-text kHz', 'data-text %',
+        'data-px, 1px', 'data-px px, 1px', 'data-px px, calc(1px)'
+      ].map(function attr(arg) {
+        return 'attr(' + arg + ')';
+      })
     }
   },
 
@@ -804,6 +789,21 @@ window.Specs = {
       '@right-top': '@right-top',
       '@right-middle': '@right-middle',
       '@right-bottom': '@right-bottom'*/
+    }
+  },
+
+  'css-writing-modes-3': {
+    'title': 'Writing Modes',
+    'tr': 'http://www.w3.org/TR/css3-writing-modes/',
+    'properties': {
+      'unicode-bidi': ['isolate', 'isolate-override', 'plaintext'],
+      'writing-mode': ['horizontal-tb', 'vertical-rl', 'vertical-lr'],
+      'text-orientation': [
+        'mixed', 'upright', 'sideways-right', 'sideways-left', 'sideways',
+        'use-glyph-orientation'
+      ],
+      'caption-side': ['block-start', 'block-end'],
+      'text-combine-upright': ['none', 'all', 'digits', 'digits 2']
     }
   },
 
@@ -983,6 +983,67 @@ window.Specs = {
     }
   },
 
+  'css-lists-3': {
+    'title': 'Lists and Counters',
+    'tr': 'http://www.w3.org/TR/css3-lists/',
+    'properties': {
+      'display': ['inline-list-item'],
+      'list-style-image': ['linear-gradient(white, black)'],
+      'list-style-type': [
+        '\'★\'', 'cjk-decimal', 'hebrew', 'hiragana', 'hiragana-iroha',
+        'katakana', 'katakana-iroha', 'disclosure-open', 'disclosure-closed',
+        'japanese-informal', 'japanese-formal', 'korean-hangul-formal',
+        'korean-hanja-informal', 'korean-hanja-formal', 'simp-chinese-informal',
+        'simp-chinese-formal', 'trad-chinese-informal', 'trad-chinese-formal',
+        'cjk-ideographic', 'ethiopic-numeric'/*, 'circled-lower-latin',
+        'symbols(\'\')', 'symbols(repeating \'○\' \'●\')',
+        'toggle(disc, square, circle)'*/
+      ],
+      'list-style': [
+        '\'★\'', 'cjk-decimal', 'hebrew', 'hiragana', 'hiragana-iroha',
+        'katakana', 'katakana-iroha', 'disclosure-open', 'disclosure-closed',
+        'japanese-informal', 'japanese-formal', 'korean-hangul-formal',
+        'korean-hanja-informal', 'korean-hanja-formal', 'simp-chinese-informal',
+        'simp-chinese-formal', 'trad-chinese-informal', 'trad-chinese-formal',
+        'cjk-ideographic', 'ethiopic-numeric'
+      ].or(['linear-gradient(white, black)']).concat(
+        [
+          'disc', 'circle', 'square', 'decimal',
+          'decimal-leading-zero', 'lower-roman', 'upper-roman', 'lower-greek',
+          'lower-latin', 'upper-latin', 'armenian', 'georgian', 'lower-alpha',
+          'upper-alpha', 'none'
+        ].amp(['linear-gradient(white, black)']),
+        [
+          '\'★\'', 'cjk-decimal', 'hebrew', 'hiragana', 'hiragana-iroha',
+          'katakana', 'katakana-iroha', 'disclosure-open', 'disclosure-closed',
+          'japanese-informal', 'japanese-formal', 'korean-hangul-formal',
+          'korean-hanja-informal', 'korean-hanja-formal',
+          'simp-chinese-informal', 'simp-chinese-formal',
+          'trad-chinese-informal', 'trad-chinese-formal',
+          'cjk-ideographic', 'ethiopic-numeric'
+        ].amp(['inside', 'outside', 'none', 'url(foo.png)']),
+        ['linear-gradient(white, black)'].amp(['inside', 'outside']),
+        [
+          'cjk-ideographic radial-gradient(at center, white, black) outside',
+          'repeating-linear-gradient(to left, white, black) hebrew inside',
+          'outside hiragana repeating-radial-gradient(at center, white, black)',
+          'inside ' +
+            'radial-gradient(closest-side ellipse at 10px 10%, white, black) ' +
+            'hiragana-iroha'
+        ]
+      ),
+      'position': ['marker'],
+      'marker-side': ['list-item', 'list-container'],
+      'counter-set': [
+        'none', 'section', 'chapter 0', 'section -1 imagenum 99'/*,
+        'list-item attr(value integer, 1)'*/
+      ]
+    },
+    'selectors': {
+      '::marker': '::marker'
+    }
+  },
+
   'css-inline-3': {
     'title': 'Line Layout',
     'tr': 'http://www.w3.org/TR/css3-linebox/',
@@ -1043,67 +1104,6 @@ window.Specs = {
         'text-before-edge', 'before-edge', 'central', 'middle', 'hanging',
         'mathematical', '0%', '10%', '0cm', '10px'
       ]
-    }
-  },
-
-  'css-lists-3': {
-    'title': 'Lists and Counters',
-    'tr': 'http://www.w3.org/TR/css3-lists/',
-    'properties': {
-      'display': ['inline-list-item'],
-      'list-style-image': ['linear-gradient(white, black)'],
-      'list-style-type': [
-        '\'★\'', 'cjk-decimal', 'hebrew', 'hiragana', 'hiragana-iroha',
-        'katakana', 'katakana-iroha', 'disclosure-open', 'disclosure-closed',
-        'japanese-informal', 'japanese-formal', 'korean-hangul-formal',
-        'korean-hanja-informal', 'korean-hanja-formal', 'simp-chinese-informal',
-        'simp-chinese-formal', 'trad-chinese-informal', 'trad-chinese-formal',
-        'cjk-ideographic', 'ethiopic-numeric'/*, 'circled-lower-latin',
-        'symbols(\'\')', 'symbols(repeating \'○\' \'●\')',
-        'toggle(disc, square, circle)'*/
-      ],
-      'list-style': [
-        '\'★\'', 'cjk-decimal', 'hebrew', 'hiragana', 'hiragana-iroha',
-        'katakana', 'katakana-iroha', 'disclosure-open', 'disclosure-closed',
-        'japanese-informal', 'japanese-formal', 'korean-hangul-formal',
-        'korean-hanja-informal', 'korean-hanja-formal', 'simp-chinese-informal',
-        'simp-chinese-formal', 'trad-chinese-informal', 'trad-chinese-formal',
-        'cjk-ideographic', 'ethiopic-numeric'
-      ].or(['linear-gradient(white, black)']).concat(
-        [
-          'disc', 'circle', 'square', 'decimal',
-          'decimal-leading-zero', 'lower-roman', 'upper-roman', 'lower-greek',
-          'lower-latin', 'upper-latin', 'armenian', 'georgian', 'lower-alpha',
-          'upper-alpha', 'none'
-        ].amp(['linear-gradient(white, black)']),
-        [
-          '\'★\'', 'cjk-decimal', 'hebrew', 'hiragana', 'hiragana-iroha',
-          'katakana', 'katakana-iroha', 'disclosure-open', 'disclosure-closed',
-          'japanese-informal', 'japanese-formal', 'korean-hangul-formal',
-          'korean-hanja-informal', 'korean-hanja-formal',
-          'simp-chinese-informal', 'simp-chinese-formal',
-          'trad-chinese-informal', 'trad-chinese-formal',
-          'cjk-ideographic', 'ethiopic-numeric'
-        ].amp(['inside', 'outside', 'none', 'url(foo.png)']),
-        ['linear-gradient(white, black)'].amp(['inside', 'outside']),
-        [
-          'cjk-ideographic radial-gradient(at center, white, black) outside',
-          'repeating-linear-gradient(to left, white, black) hebrew inside',
-          'outside hiragana repeating-radial-gradient(at center, white, black)',
-          'inside ' +
-            'radial-gradient(closest-side ellipse at 10px 10%, white, black) ' +
-            'hiragana-iroha'
-        ]
-      ),
-      'position': ['marker'],
-      'marker-side': ['list-item', 'list-container'],
-      'counter-set': [
-        'none', 'section', 'chapter 0', 'section -1 imagenum 99'/*,
-        'list-item attr(value integer, 1)'*/
-      ]
-    },
-    'selectors': {
-      '::marker': '::marker'
     }
   },
 
@@ -1183,6 +1183,86 @@ window.Specs = {
       'indent-edge-reset': [
         'none', 'margin-edge', 'border-edge', 'padding-edge', 'content-edge'
       ]
+    }
+  },
+
+  'css-position-3': {
+    'title': 'Positioned Layout',
+    'tr': 'http://www.w3.org/TR/css3-positioning/',
+    'properties': {
+      'position': ['sticky', 'center', 'page'],
+      'offset-before': ['auto', '10px', '10%'],
+      'offset-end': ['auto', '10px', '10%'],
+      'offset-after': ['auto', '10px', '10%'],
+      'offset-start': ['auto', '10px', '10%']
+    }
+  },
+
+  'css-align-3': {
+    'title': 'Box Alignment',
+    'tr': 'http://www.w3.org/TR/css3-align/',
+    'properties': {
+      'justify-content': ['auto', 'baseline'].concat(
+        [
+          'start', 'end', 'self-start', 'self-end', 'left', 'right'
+        ].concat(
+          [
+            'center', 'start', 'end', 'self-start', 'self-end',
+            'flex-start', 'flex-end', 'left', 'right'
+          ].and([
+            'center', 'start', 'end', 'flex-start', 'flex-end',
+            'left', 'right'
+          ])
+        ).qmark(['true', 'safe'], ' ', {amp: true}),
+        ['center', 'flex-start', 'flex-end'].amp(['true', 'safe'])
+      ),
+      'align-content': ['auto', 'baseline'].concat(
+        [
+          'start', 'end', 'self-start', 'self-end', 'left', 'right'
+        ].concat(
+          [
+            'center', 'start', 'end', 'self-start', 'self-end',
+            'flex-start', 'flex-end', 'left', 'right'
+          ].and([
+            'center', 'start', 'end', 'flex-start', 'flex-end',
+            'left', 'right'
+          ])
+        ).qmark(['true', 'safe'], ' ', {amp: true}),
+        ['center', 'flex-start', 'flex-end'].amp(['true', 'safe'])
+      ),
+      'justify-self': ['auto', 'stretch', 'baseline'].concat([
+        'center', 'start', 'end', 'self-start', 'self-end',
+        'flex-start', 'flex-end', 'left', 'right'
+      ].qmark(['true', 'safe'], ' ', {amp: true})),
+      'align-self': [
+        'start', 'end', 'self-start', 'self-end', 'left', 'right'
+      ].concat([
+        'center', 'start', 'end', 'self-start', 'self-end',
+        'flex-start', 'flex-end', 'left', 'right'
+      ].amp(['true', 'safe'])),
+      'justify-items': ['auto', 'stretch', 'baseline'].concat(
+        [
+          'center', 'start', 'end', 'self-start', 'self-end',
+          'flex-start', 'flex-end', 'left', 'right'
+        ].qmark(['true', 'safe'], ' ', {amp: true}),
+        ['legacy'].amp(['left', 'right', 'center'])
+      ),
+      'align-items': [
+        'auto', 'start', 'end', 'self-start', 'self-end', 'left', 'right'
+      ].concat([
+        'center', 'start', 'end', 'self-start', 'self-end',
+        'flex-start', 'flex-end', 'left', 'right'
+      ].amp(['true', 'safe']))
+    }
+  },
+
+  'css-break-3': {
+    'title': 'Fragmentation',
+    'tr': 'http://www.w3.org/TR/css3-break/',
+    'properties': {
+      'break-before': ['any', 'recto', 'verso'],
+      'break-after': ['any', 'recto', 'verso'],
+      'box-decoration-break': ['slice', 'clone']
     }
   },
 
@@ -1296,18 +1376,6 @@ window.Specs = {
     }
   },
 
-  'css-position-3': {
-    'title': 'Positioned Layout',
-    'tr': 'http://www.w3.org/TR/css3-positioning/',
-    'properties': {
-      'position': ['sticky', 'center', 'page'],
-      'offset-before': ['auto', '10px', '10%'],
-      'offset-end': ['auto', '10px', '10%'],
-      'offset-after': ['auto', '10px', '10%'],
-      'offset-start': ['auto', '10px', '10%']
-    }
-  },
-
   'css-sizing-3': {
     'title': 'Intrinsic & Extrinsic Sizing',
     'tr': 'http://www.w3.org/TR/css3-sizing/',
@@ -1396,74 +1464,6 @@ window.Specs = {
     },
   },
 
-  'css-break-3': {
-    'title': 'Fragmentation',
-    'tr': 'http://www.w3.org/TR/css3-break/',
-    'properties': {
-      'break-before': ['any', 'recto', 'verso'],
-      'break-after': ['any', 'recto', 'verso'],
-      'box-decoration-break': ['slice', 'clone']
-    }
-  },
-
-  'css-align-3': {
-    'title': 'Box Alignment',
-    'tr': 'http://www.w3.org/TR/css3-align/',
-    'properties': {
-      'justify-content': ['auto', 'baseline'].concat(
-        [
-          'start', 'end', 'self-start', 'self-end', 'left', 'right'
-        ].concat(
-          [
-            'center', 'start', 'end', 'self-start', 'self-end',
-            'flex-start', 'flex-end', 'left', 'right'
-          ].and([
-            'center', 'start', 'end', 'flex-start', 'flex-end',
-            'left', 'right'
-          ])
-        ).qmark(['true', 'safe'], ' ', {amp: true}),
-        ['center', 'flex-start', 'flex-end'].amp(['true', 'safe'])
-      ),
-      'align-content': ['auto', 'baseline'].concat(
-        [
-          'start', 'end', 'self-start', 'self-end', 'left', 'right'
-        ].concat(
-          [
-            'center', 'start', 'end', 'self-start', 'self-end',
-            'flex-start', 'flex-end', 'left', 'right'
-          ].and([
-            'center', 'start', 'end', 'flex-start', 'flex-end',
-            'left', 'right'
-          ])
-        ).qmark(['true', 'safe'], ' ', {amp: true}),
-        ['center', 'flex-start', 'flex-end'].amp(['true', 'safe'])
-      ),
-      'justify-self': ['auto', 'stretch', 'baseline'].concat([
-        'center', 'start', 'end', 'self-start', 'self-end',
-        'flex-start', 'flex-end', 'left', 'right'
-      ].qmark(['true', 'safe'], ' ', {amp: true})),
-      'align-self': [
-        'start', 'end', 'self-start', 'self-end', 'left', 'right'
-      ].concat([
-        'center', 'start', 'end', 'self-start', 'self-end',
-        'flex-start', 'flex-end', 'left', 'right'
-      ].amp(['true', 'safe'])),
-      'justify-items': ['auto', 'stretch', 'baseline'].concat(
-        [
-          'center', 'start', 'end', 'self-start', 'self-end',
-          'flex-start', 'flex-end', 'left', 'right'
-        ].qmark(['true', 'safe'], ' ', {amp: true}),
-        ['legacy'].amp(['left', 'right', 'center'])
-      ),
-      'align-items': [
-        'auto', 'start', 'end', 'self-start', 'self-end', 'left', 'right'
-      ].concat([
-        'center', 'start', 'end', 'self-start', 'self-end',
-        'flex-start', 'flex-end', 'left', 'right'
-      ].amp(['true', 'safe']))
-    }
-  },
-
   'css-display-3': {
     'title': 'Display',
     'properties': {
@@ -1485,6 +1485,28 @@ window.Specs = {
   },
 
   // Unmaintained CSS Level 3
+  'css3-tables': {
+    'title': 'Tables',
+    'properties': {
+      'tab-position': ['0', '10px', '10%'],
+      'tab-align': ['none ', 'left', 'top', 'center', 'right', 'bottom', '\'foo\''],
+      'tab-leaders': ['\'\'', '\'foo\''],
+      'tab-leaders-alignment': ['aligned', 'centered', 'distributed'],
+      'tab': ['10px', '10%'].or(['none ', 'left', 'top', 'center', 'right', 'bottom', '\'foo\'']).concat(
+        ['10px', '10%'].or(['none ', 'left', 'top', 'center', 'right', 'bottom', '\'foo\'']).and(
+          ['\'foo\''].or(['aligned', 'centered', 'distributed']), ' / '
+        )
+      ),
+      'caption-side': ['left', 'right', 'before', 'after'].concat(
+        ['top', 'bottom', 'left', 'right', 'before', 'after'].amp(['outside'])
+      ),
+      'table-column-span': ['auto', 'attr(colspan)'],
+      'table-row-span': ['auto', 'attr(rowspan)'],
+      'table-baseline': '1',
+      'speak-header': ['once', 'always']
+    }
+  },
+
   'css-content-3': {
     'title': 'Generated Content',
     'tr': 'http://www.w3.org/TR/css3-content/',
@@ -1523,28 +1545,6 @@ window.Specs = {
     }*/
   },
 
-  'css3-tables': {
-    'title': 'Tables',
-    'properties': {
-      'tab-position': ['0', '10px', '10%'],
-      'tab-align': ['none ', 'left', 'top', 'center', 'right', 'bottom', '\'foo\''],
-      'tab-leaders': ['\'\'', '\'foo\''],
-      'tab-leaders-alignment': ['aligned', 'centered', 'distributed'],
-      'tab': ['10px', '10%'].or(['none ', 'left', 'top', 'center', 'right', 'bottom', '\'foo\'']).concat(
-        ['10px', '10%'].or(['none ', 'left', 'top', 'center', 'right', 'bottom', '\'foo\'']).and(
-          ['\'foo\''].or(['aligned', 'centered', 'distributed']), ' / '
-        )
-      ),
-      'caption-side': ['left', 'right', 'before', 'after'].concat(
-        ['top', 'bottom', 'left', 'right', 'before', 'after'].amp(['outside'])
-      ),
-      'table-column-span': ['auto', 'attr(colspan)'],
-      'table-row-span': ['auto', 'attr(rowspan)'],
-      'table-baseline': '1',
-      'speak-header': ['once', 'always']
-    }
-  },
-
   'css3-marquee': {
     'title': 'Marquee',
     'properties': {
@@ -1576,7 +1576,7 @@ window.Specs = {
     }
   },
 
-  // CSS Level 3?
+  // CSS Level 3? New CSS Level 1?
   'css-namespaces-1': {
     'title': 'Namespaces',
     'tr': 'http://www.w3.org/TR/css3-namespace/',
@@ -1607,6 +1607,21 @@ window.Specs = {
       'atrule': '@template paged-display',
       'atruleName': '@template',
       'required-flow': ['related-flow', 'lead-flow']
+    }
+  },
+
+  // CSS Level 3?
+  'shadow-styling': {
+    'title': 'Shadow DOM Styling',
+    'selectors': {
+      'E /shadow/ F': ['x-foo /shadow/ span', 'x-foo /shadow/ div > span'],
+      'E /shadow-all/ F': ['x-foo /shadow-all/ span'],
+      'E /shadow-deep/ F': ['x-foo /shadow-deep/ span'],
+      'E /content/ F': ['* /content/ div'],
+      ':top': [':top'],
+      ':host': [':host', '.foo:host'],
+      ':host()': [':host(.foo)', ':host(div:only-child)'],
+      ':ancestor()': [':ancestor(.foo)', ':ancestor(div:only-child)']
     }
   },
 
@@ -1655,20 +1670,6 @@ window.Specs = {
         'div.chapter::region(*,2)', 'div.chapter::region(1,*)',
         'article::region(1-3)'
       ]
-    }
-  },
-
-  'shadow-styling': {
-    'title': 'Shadow DOM Styling',
-    'selectors': {
-      'E /shadow/ F': ['x-foo /shadow/ span', 'x-foo /shadow/ div > span'],
-      'E /shadow-all/ F': ['x-foo /shadow-all/ span'],
-      'E /shadow-deep/ F': ['x-foo /shadow-deep/ span'],
-      'E /content/ F': ['* /content/ div'],
-      ':top': [':top'],
-      ':host': [':host', '.foo:host'],
-      ':host()': [':host(.foo)', ':host(div:only-child)'],
-      ':ancestor()': [':ancestor(.foo)', ':ancestor(div:only-child)']
     }
   },
 
@@ -1799,14 +1800,6 @@ window.Specs = {
     }
   },
 
-  'cssom-view-1': {
-    'title': 'CSSOM View',
-    'tr': 'http://www.w3.org/TR/cssom-view/',
-    'properties': {
-      'scroll-behavior': ['instant', 'smooth']
-    }
-  },
-
   'css-multicol-1': {
     'title': 'Multi-column Layout',
     'tr': 'http://www.w3.org/TR/css3-multicol/',
@@ -1854,6 +1847,14 @@ window.Specs = {
       'max-zoom': ['auto', '1.0', '2.0', '0.5', '100%', '200%', '50%'],
       'user-zoom': ['zoom', 'fixed'],
       'orientation': ['auto', 'portrait', 'landscape']
+    }
+  },
+
+  'cssom-view-1': {
+    'title': 'CSSOM View',
+    'tr': 'http://www.w3.org/TR/cssom-view/',
+    'properties': {
+      'scroll-behavior': ['instant', 'smooth']
     }
   },
 
@@ -2041,6 +2042,26 @@ window.Specs = {
   },
 
   // New CSS Level 1
+  'css-flexbox-1': {
+    'title': 'Flexible Box Layout Level 1',
+    'tr': 'http://www.w3.org/TR/css3-flexbox/',
+    'properties': {
+      'display': ['flex', 'inline-flex'],
+      'flex-direction': ['row', 'row-reverse', 'column', 'column-reverse'],
+      'flex-wrap': ['nowrap', 'wrap', 'wrap-reverse'],
+      'flex-flow': ['row', 'row-reverse', 'column', 'column-reverse'].or(['nowrap', 'wrap', 'wrap-reverse']),
+      'order': ['0', '1', '-1'],
+      'flex': ['none'].concat(['1', '1 1'].or(['auto', '10px', '10%'])),
+      'flex-grow': ['0', '5', '0.11'],
+      'flex-shrink': ['1', '10', '0', '0.11'],
+      'flex-basis': ['auto', '1px', '1%'],
+      'justify-content': ['flex-start', 'flex-end', 'center', 'space-between', 'space-around'],
+      'align-items': ['stretch', 'flex-start', 'flex-end', 'center', 'baseline'],
+      'align-self': ['auto', 'flex-start', 'flex-end', 'center', 'baseline', 'stretch'],
+      'align-content': ['stretch', 'flex-start', 'flex-end', 'center', 'space-between', 'space-around']
+    }
+  },
+
   'css-transforms-1': {
     'title': 'Transforms Level 1',
     'tr': 'http://www.w3.org/TR/css3-transforms/',
@@ -2127,23 +2148,98 @@ window.Specs = {
     }
   },
 
-  'css-flexbox-1': {
-    'title': 'Flexible Box Layout Level 1',
-    'tr': 'http://www.w3.org/TR/css3-flexbox/',
+  'css-variables-1': {
+    'title': 'Custom Properties for Cascading Variables Level 1',
+    'tr': 'http://www.w3.org/TR/css-variables/',
+    'values': {
+      'properties': ['background-color', 'var-foo'],
+      'var()': [
+        'var(color)', 'var(header-color)', 'var(header-color, blue)'
+        /*, 'calc(var(gap) * 1px)'*/
+      ]
+    }/*,
+    // 'var-*' must be checked by element.style.var.*.
     'properties': {
-      'display': ['flex', 'inline-flex'],
-      'flex-direction': ['row', 'row-reverse', 'column', 'column-reverse'],
-      'flex-wrap': ['nowrap', 'wrap', 'wrap-reverse'],
-      'flex-flow': ['row', 'row-reverse', 'column', 'column-reverse'].or(['nowrap', 'wrap', 'wrap-reverse']),
-      'order': ['0', '1', '-1'],
-      'flex': ['none'].concat(['1', '1 1'].or(['auto', '10px', '10%'])),
-      'flex-grow': ['0', '5', '0.11'],
-      'flex-shrink': ['1', '10', '0', '0.11'],
-      'flex-basis': ['auto', '1px', '1%'],
-      'justify-content': ['flex-start', 'flex-end', 'center', 'space-between', 'space-around'],
-      'align-items': ['stretch', 'flex-start', 'flex-end', 'center', 'baseline'],
-      'align-self': ['auto', 'flex-start', 'flex-end', 'center', 'baseline', 'stretch'],
-      'align-content': ['stretch', 'flex-start', 'flex-end', 'center', 'space-between', 'space-around']
+      'var-*': ['var-foo', 'var-FOO', 'var-header-color']
+    }*/
+  },
+
+  'css-size-adjust': {
+    'title': 'Mobile Text Size Adjustment Level 1',
+    'properties': {
+      'text-size-adjust': ['auto', 'none', '50%']
+    }
+  },
+
+  'css-shapes-1': {
+    'title': 'Shapes Level 1',
+    'properties': {
+      'shape-outside': ['none'].concat(
+        ['10px', '10%'].times(1, 4).map(function inset(arg) {
+          return 'inset(' + arg + ')';
+        }),
+        [
+          'inset(10px 10px 10px 10px round ' +
+            '10px 10px 10px 10px / 10px 10px 10px 10px)'
+        ],
+        ['10px', '10%', 'closest-side', 'farthest-side'].concat(
+          ['at'].and(
+            ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
+              ['left', 'center', 'right', '10%', '10px'].and([
+                'top', 'center', 'bottom', '10%', '10px'
+              ]),
+              ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
+                ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
+              )
+            ).uniq()
+          ),
+          ['10px', '10%', 'closest-side', 'farthest-side'].and(
+            ['at'].and(['left', 'bottom 10px right 10px'])
+          )
+        ).map(function circle(arg) {
+          return 'circle(' + arg + ')';
+        }),
+        ['10px', '10%', 'closest-side', 'farthest-side'].times(2).concat(
+          ['at'].and(
+            ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
+              ['left', 'center', 'right', '10%', '10px'].and([
+                'top', 'center', 'bottom', '10%', '10px'
+              ]),
+              ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
+                ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
+              )
+            ).uniq()
+          ),
+          ['10px', '10%', 'closest-side', 'farthest-side'].times(2).and(
+            ['at'].and(['left', 'bottom 10px right 10px'])
+          )
+        ).map(function ellipse(arg) {
+          return 'ellipse(' + arg + ')';
+        }),
+        ['nonzero', 'evenodd'].qmark(
+          ['10px', '10%'].times(2).times(1, 2, ', '), ', ', {former: true}
+        ).map(function polygon(arg) {
+          return 'polygon(' + arg + ')';
+        }),
+        [
+          'border-box', 'padding-box', 'content-box', 'margin-box',
+          'url(foo.png)', 'linear-gradient(white, black)',
+          'inset(10px) border-box', 'border-box inset(10px)',
+          'content-box ellipse(10% farthest-side at bottom 10px right 10px)',
+          'polygon(evenodd, 10% 10%, 10% 10%) margin-box'
+        ]
+      ),
+      'shape-image-threshold': ['0.0', '0.5', '1.0'],
+      'shape-margin': ['0', '1px', '10%']
+    }
+  },
+
+  'css-exclusions-1': {
+    'title': 'Exclusions Level 1',
+    'tr': 'http://www.w3.org/TR/css3-exclusions/',
+    'properties': {
+      'wrap-flow': ['auto', 'both', 'start', 'end', 'minimum', 'maximum', 'clear'],
+      'wrap-through': ['wrap', 'none']
     }
   },
 
@@ -2552,75 +2648,18 @@ window.Specs = {
     }
   },
 
-  'css-exclusions-1': {
-    'title': 'Exclusions Level 1',
-    'tr': 'http://www.w3.org/TR/css3-exclusions/',
+  'css-snappoints': {
+    'title': 'Scroll Snap Points Level 1',
     'properties': {
-      'wrap-flow': ['auto', 'both', 'start', 'end', 'minimum', 'maximum', 'clear'],
-      'wrap-through': ['wrap', 'none']
-    }
-  },
-
-  'css-shapes-1': {
-    'title': 'Shapes Level 1',
-    'properties': {
-      'shape-outside': ['none'].concat(
-        ['10px', '10%'].times(1, 4).map(function inset(arg) {
-          return 'inset(' + arg + ')';
-        }),
-        [
-          'inset(10px 10px 10px 10px round ' +
-            '10px 10px 10px 10px / 10px 10px 10px 10px)'
-        ],
-        ['10px', '10%', 'closest-side', 'farthest-side'].concat(
-          ['at'].and(
-            ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
-              ['left', 'center', 'right', '10%', '10px'].and([
-                'top', 'center', 'bottom', '10%', '10px'
-              ]),
-              ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
-                ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
-              )
-            ).uniq()
-          ),
-          ['10px', '10%', 'closest-side', 'farthest-side'].and(
-            ['at'].and(['left', 'bottom 10px right 10px'])
-          )
-        ).map(function circle(arg) {
-          return 'circle(' + arg + ')';
-        }),
-        ['10px', '10%', 'closest-side', 'farthest-side'].times(2).concat(
-          ['at'].and(
-            ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
-              ['left', 'center', 'right', '10%', '10px'].and([
-                'top', 'center', 'bottom', '10%', '10px'
-              ]),
-              ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
-                ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
-              )
-            ).uniq()
-          ),
-          ['10px', '10%', 'closest-side', 'farthest-side'].times(2).and(
-            ['at'].and(['left', 'bottom 10px right 10px'])
-          )
-        ).map(function ellipse(arg) {
-          return 'ellipse(' + arg + ')';
-        }),
-        ['nonzero', 'evenodd'].qmark(
-          ['10px', '10%'].times(2).times(1, 2, ', '), ', ', {former: true}
-        ).map(function polygon(arg) {
-          return 'polygon(' + arg + ')';
-        }),
-        [
-          'border-box', 'padding-box', 'content-box', 'margin-box',
-          'url(foo.png)', 'linear-gradient(white, black)',
-          'inset(10px) border-box', 'border-box inset(10px)',
-          'content-box ellipse(10% farthest-side at bottom 10px right 10px)',
-          'polygon(evenodd, 10% 10%, 10% 10%) margin-box'
-        ]
-      ),
-      'shape-image-threshold': ['0.0', '0.5', '1.0'],
-      'shape-margin': ['0', '1px', '10%']
+      'scroll-snap-type': ['none', 'mandatory', 'proximity'],
+      'scroll-snap-points-x': [
+        'snapInterval(0px, 100%)',
+        'snapList(0px, 100%)', 'snapList(0px, 100%, 10px, 100%)'
+      ],
+      'scroll-snap-points-y': [
+        'snapInterval(0px, 100%)',
+        'snapList(0px, 100%)', 'snapList(0px, 100%, 10px, 100%)'
+      ]
     }
   },
 
@@ -2650,44 +2689,6 @@ window.Specs = {
       ),
       'ruby-merge': ['separate', 'collapse', 'auto'],
       'ruby-align': ['space-around', 'start', 'center', 'space-between']
-    }
-  },
-
-  'css-variables-1': {
-    'title': 'Custom Properties for Cascading Variables Level 1',
-    'tr': 'http://www.w3.org/TR/css-variables/',
-    'values': {
-      'properties': ['background-color', 'var-foo'],
-      'var()': [
-        'var(color)', 'var(header-color)', 'var(header-color, blue)'
-        /*, 'calc(var(gap) * 1px)'*/
-      ]
-    }/*,
-    // 'var-*' must be checked by element.style.var.*.
-    'properties': {
-      'var-*': ['var-foo', 'var-FOO', 'var-header-color']
-    }*/
-  },
-
-  'css-size-adjust': {
-    'title': 'Mobile Text Size Adjustment Level 1',
-    'properties': {
-      'text-size-adjust': ['auto', 'none', '50%']
-    }
-  },
-
-  'css-snappoints': {
-    'title': 'Scroll Snap Points Level 1',
-    'properties': {
-      'scroll-snap-type': ['none', 'mandatory', 'proximity'],
-      'scroll-snap-points-x': [
-        'snapInterval(0px, 100%)',
-        'snapList(0px, 100%)', 'snapList(0px, 100%, 10px, 100%)'
-      ],
-      'scroll-snap-points-y': [
-        'snapInterval(0px, 100%)',
-        'snapList(0px, 100%)', 'snapList(0px, 100%, 10px, 100%)'
-      ]
     }
   },
 
@@ -3345,108 +3346,6 @@ window.Specs = {
     }
   },
 
-  // No Ready CSS Level 4
-  'css-backgrounds-4': {
-    'title': 'Backgrounds and Borders Level 4',
-    'properties': {
-      'border-corner-shape': ['curve', 'bevel', 'scoop', 'notch'],
-      'border-image': ['10', '30%'].times(1, 4).concat(
-        ['10', '30%'].times(1, 4).amp(['fill'])
-      ).and([' / ']),
-      'border-clip': ['normal'].concat(
-        ['10px', '10%', '1fr'].times(1, 3),
-        ['0 10px 1fr 10px', '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr']
-      ),
-      'border-clip-top': ['normal'].concat(
-        ['10px', '10%', '1fr'].times(1, 3),
-        ['0 10px 1fr 10px', '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr']
-      ),
-      'border-clip-right': ['normal'].concat(
-        ['10px', '10%', '1fr'].times(1, 3),
-        ['0 10px 1fr 10px', '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr']
-      ),
-      'border-clip-bottom': ['normal'].concat(
-        ['10px', '10%', '1fr'].times(1, 3),
-        ['0 10px 1fr 10px', '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr']
-      ),
-      'border-clip-left': ['normal'].concat(
-        ['10px', '10%', '1fr'].times(1, 3),
-        ['0 10px 1fr 10px', '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr']
-      ),
-      'border-top-parts': [
-        'repeat(10px 10px)', 'repeat(10px 10px) 1fr',
-        '40px 20px 0 1fr repeat(20px 20px) 0 1fr 40px',
-        '40px 20px 0 1fr 20px 20px 0 1fr 40px'
-      ]
-    }
-  },
-
-  'css-text-4': {
-    'title': 'Text Level 4',
-    'properties': {
-      'text-transform': ['capitalize', 'uppercase', 'lowercase'].or(
-        ['full-width'], ['full-size-kana']
-      ).slice(4),
-      'text-space-collapse': ['collapse', 'discard'].concat(
-        ['preserve', 'preserve-breaks'].amp(['trim-inner'].or(['consume-before'], ['consume-after']))
-      ),
-      'hyphenate-character': ['auto', '\'\2010\''],
-      'hyphenate-limit-zone': ['0', '10%', '10px'],
-      'hyphenate-limit-chars': ['auto', '1'].times(1, 3),
-      'hyphenate-limit-lines': ['no-limit ', '1'],
-      'hyphenate-limit-last': ['none ', 'always', 'column', 'page', 'spread'],
-      'text-wrap': ['normal', 'none', 'avoid'],
-      'overflow-wrap': ['hyphenate'].concat(['break-word'].amp(['hyphenate'])),
-      'text-align': ['\'foo\''].and(['start', 'end', 'left', 'right', 'center', 'justify']),
-      'text-justify': ['inter-ideograph', 'inter-cluster', 'kashida'],
-      'word-spacing': ['normal', '1em', '50%'].times(2, 3),
-      'letter-spacing': ['50%'].concat(['normal', '1em', '50%'].times(2, 3)),
-      'text-spacing': [
-        'normal', 'none', 'trim-start', 'space-start',
-        'trim-end', 'space-end', 'allow-end', 'trim-adjacent', 'space-adjacent',
-        'no-compress', 'ideograph-alpha', 'ideograph-numeric', 'punctuation',
-        'trim-start trim-end', 'trim-end trim-start',
-        'no-compress ideograph-alpha ideograph-numeric punctuation',
-        'trim-start trim-end trim-adjacent no-compress ideograph-alpha ideograph-numeric punctuation'
-      ],
-      'text-decoration-line': ['remove-all'].concat(
-        ['underline', 'no-underline', 'replace-underline'].or(
-          ['overline', 'no-overline', 'replace-overline'],
-          ['line-through', 'no-line-through', 'replace-line-through']
-        ).filter(function filter(val) {
-          return this.indexOf(val) === -1;
-        }, ['underline'].or(['overline'], ['line-through']))
-      ),
-      'text-decoration': ['remove-all '].concat(
-        ['underline', 'no-underline', 'replace-underline'].or(
-          ['overline', 'no-overline', 'replace-overline'],
-          ['line-through', 'no-line-through', 'replace-line-through']
-        ).filter(function filter(val) {
-          return this.indexOf(val) === -1;
-        }, ['underline'].or(['overline'], ['line-through'])),
-        [
-          'remove-all solid', 'solid remove-all',
-          'remove-all solid black', 'underline overline no-line-through solid black'
-        ]
-      ),
-      'text-underline-position': ['below left', 'below right'],
-      'text-emphasis-position': ['above', 'below'].amp(['right', 'left']),
-      'text-emphasis-skip': ['spaces'].or(['punctuation'], ['symbols'], ['narrow']),
-      'text-shadow': [
-        '1px 2px 3px 4px', '1px 2px 3px 4px purple', 'pink 1px 2px 3px 4px',
-        'inset 1px 2px', '1px 2px inset', 'inset 1px 2px 3px', '1px 2px 3px inset',
-        'inset 1px 2px 3px 4px', '1px 2px 3px 4px inset',
-        'inset 1px 2px red', '1px 2px red inset', 'inset blue 1px 2px', 'blue 1px 2px inset',
-        'inset 1px 2px 3px yellow', '1px 2px 3px yellow inset',
-        'inset green 1px 2px 3px', 'green 1px 2px 3px inset',
-        'inset 1px 2px 3px 4px purple', '1px 2px 3px 4px purple inset',
-        'inset pink 1px 2px 3px 4px', 'pink 1px 2px 3px 4px inset',
-        '1px 2px, inset 1px 2px', '1px 2px 3px 4px, 1px 2px 3px 4px',
-        '1px 2px, 1px 2px, inset 1px 2px'
-      ]
-    }
-  },
-
   'css-color-4': {
     'title': 'Color Level 4',
     'values': {
@@ -3619,6 +3518,108 @@ window.Specs = {
     }
   },
 
+  // No Ready CSS Level 4
+  'css-text-4': {
+    'title': 'Text Level 4',
+    'properties': {
+      'text-transform': ['capitalize', 'uppercase', 'lowercase'].or(
+        ['full-width'], ['full-size-kana']
+      ).slice(4),
+      'text-space-collapse': ['collapse', 'discard'].concat(
+        ['preserve', 'preserve-breaks'].amp(['trim-inner'].or(['consume-before'], ['consume-after']))
+      ),
+      'hyphenate-character': ['auto', '\'\2010\''],
+      'hyphenate-limit-zone': ['0', '10%', '10px'],
+      'hyphenate-limit-chars': ['auto', '1'].times(1, 3),
+      'hyphenate-limit-lines': ['no-limit ', '1'],
+      'hyphenate-limit-last': ['none ', 'always', 'column', 'page', 'spread'],
+      'text-wrap': ['normal', 'none', 'avoid'],
+      'overflow-wrap': ['hyphenate'].concat(['break-word'].amp(['hyphenate'])),
+      'text-align': ['\'foo\''].and(['start', 'end', 'left', 'right', 'center', 'justify']),
+      'text-justify': ['inter-ideograph', 'inter-cluster', 'kashida'],
+      'word-spacing': ['normal', '1em', '50%'].times(2, 3),
+      'letter-spacing': ['50%'].concat(['normal', '1em', '50%'].times(2, 3)),
+      'text-spacing': [
+        'normal', 'none', 'trim-start', 'space-start',
+        'trim-end', 'space-end', 'allow-end', 'trim-adjacent', 'space-adjacent',
+        'no-compress', 'ideograph-alpha', 'ideograph-numeric', 'punctuation',
+        'trim-start trim-end', 'trim-end trim-start',
+        'no-compress ideograph-alpha ideograph-numeric punctuation',
+        'trim-start trim-end trim-adjacent no-compress ideograph-alpha ideograph-numeric punctuation'
+      ],
+      'text-decoration-line': ['remove-all'].concat(
+        ['underline', 'no-underline', 'replace-underline'].or(
+          ['overline', 'no-overline', 'replace-overline'],
+          ['line-through', 'no-line-through', 'replace-line-through']
+        ).filter(function filter(val) {
+          return this.indexOf(val) === -1;
+        }, ['underline'].or(['overline'], ['line-through']))
+      ),
+      'text-decoration': ['remove-all '].concat(
+        ['underline', 'no-underline', 'replace-underline'].or(
+          ['overline', 'no-overline', 'replace-overline'],
+          ['line-through', 'no-line-through', 'replace-line-through']
+        ).filter(function filter(val) {
+          return this.indexOf(val) === -1;
+        }, ['underline'].or(['overline'], ['line-through'])),
+        [
+          'remove-all solid', 'solid remove-all',
+          'remove-all solid black', 'underline overline no-line-through solid black'
+        ]
+      ),
+      'text-underline-position': ['below left', 'below right'],
+      'text-emphasis-position': ['above', 'below'].amp(['right', 'left']),
+      'text-emphasis-skip': ['spaces'].or(['punctuation'], ['symbols'], ['narrow']),
+      'text-shadow': [
+        '1px 2px 3px 4px', '1px 2px 3px 4px purple', 'pink 1px 2px 3px 4px',
+        'inset 1px 2px', '1px 2px inset', 'inset 1px 2px 3px', '1px 2px 3px inset',
+        'inset 1px 2px 3px 4px', '1px 2px 3px 4px inset',
+        'inset 1px 2px red', '1px 2px red inset', 'inset blue 1px 2px', 'blue 1px 2px inset',
+        'inset 1px 2px 3px yellow', '1px 2px 3px yellow inset',
+        'inset green 1px 2px 3px', 'green 1px 2px 3px inset',
+        'inset 1px 2px 3px 4px purple', '1px 2px 3px 4px purple inset',
+        'inset pink 1px 2px 3px 4px', 'pink 1px 2px 3px 4px inset',
+        '1px 2px, inset 1px 2px', '1px 2px 3px 4px, 1px 2px 3px 4px',
+        '1px 2px, 1px 2px, inset 1px 2px'
+      ]
+    }
+  },
+
+  'css-backgrounds-4': {
+    'title': 'Backgrounds and Borders Level 4',
+    'properties': {
+      'border-corner-shape': ['curve', 'bevel', 'scoop', 'notch'],
+      'border-image': ['10', '30%'].times(1, 4).concat(
+        ['10', '30%'].times(1, 4).amp(['fill'])
+      ).and([' / ']),
+      'border-clip': ['normal'].concat(
+        ['10px', '10%', '1fr'].times(1, 3),
+        ['0 10px 1fr 10px', '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr']
+      ),
+      'border-clip-top': ['normal'].concat(
+        ['10px', '10%', '1fr'].times(1, 3),
+        ['0 10px 1fr 10px', '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr']
+      ),
+      'border-clip-right': ['normal'].concat(
+        ['10px', '10%', '1fr'].times(1, 3),
+        ['0 10px 1fr 10px', '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr']
+      ),
+      'border-clip-bottom': ['normal'].concat(
+        ['10px', '10%', '1fr'].times(1, 3),
+        ['0 10px 1fr 10px', '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr']
+      ),
+      'border-clip-left': ['normal'].concat(
+        ['10px', '10%', '1fr'].times(1, 3),
+        ['0 10px 1fr 10px', '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr']
+      ),
+      'border-top-parts': [
+        'repeat(10px 10px)', 'repeat(10px 10px) 1fr',
+        '40px 20px 0 1fr repeat(20px 20px) 0 1fr 40px',
+        '40px 20px 0 1fr 20px 20px 0 1fr 40px'
+      ]
+    }
+  },
+
   'css-pseudo-4': {
     'title': 'Pseudo-elements Level 4',
     'selectors': {
@@ -3632,6 +3633,26 @@ window.Specs = {
   },
 
   // CSS-SVG Effects
+  'compositing-1': {
+    'title': 'Compositing and Blending Level 1',
+    'tr': 'http://www.w3.org/TR/compositing/',
+    'dev': 'http://dev.w3.org/fxtf/compositing-1/',
+    'properties': {
+      'mix-blend-mode': [
+        'normal', 'multiply', 'screen', 'overlay', 'darken', 'lighten',
+        'color-dodge', 'color-burn', 'hard-light', 'soft-light', 'difference',
+        'exclusion', 'hue', 'saturation', 'color', 'luminosity'
+      ],
+      'isolation': ['auto', 'isolate'],
+      'background-blend-mode': [
+        'normal', 'multiply', 'screen', 'overlay', 'darken', 'lighten',
+        'color-dodge', 'color-burn', 'hard-light', 'soft-light', 'difference',
+        'exclusion', 'hue', 'saturation', 'color', 'luminosity',
+        'normal, multiply'
+      ]
+    }
+  },
+
   'filters': {
     'title': 'Filter Effects Level 1',
     'tr': 'http://www.w3.org/TR/filter-effects/',
@@ -3837,26 +3858,6 @@ window.Specs = {
         ]
       ),
       'mask-source-type': ['luminance', 'alpha']
-    }
-  },
-
-  'compositing-1': {
-    'title': 'Compositing and Blending Level 1',
-    'tr': 'http://www.w3.org/TR/compositing/',
-    'dev': 'http://dev.w3.org/fxtf/compositing-1/',
-    'properties': {
-      'mix-blend-mode': [
-        'normal', 'multiply', 'screen', 'overlay', 'darken', 'lighten',
-        'color-dodge', 'color-burn', 'hard-light', 'soft-light', 'difference',
-        'exclusion', 'hue', 'saturation', 'color', 'luminosity'
-      ],
-      'isolation': ['auto', 'isolate'],
-      'background-blend-mode': [
-        'normal', 'multiply', 'screen', 'overlay', 'darken', 'lighten',
-        'color-dodge', 'color-burn', 'hard-light', 'soft-light', 'difference',
-        'exclusion', 'hue', 'saturation', 'color', 'luminosity',
-        'normal, multiply'
-      ]
     }
   },
 
