@@ -1481,54 +1481,6 @@ window.Specs = {
     }
   },
 
-  'css-containment': {
-    'title': 'Containment',
-    'properties': {
-      'contain': ['none', 'strict']
-    }
-  },
-
-  'css-page-floats': {
-    'title': 'Page Floats',
-    'properties': {
-      'float': ['10px'].times(1, 2).qmark([
-        'top', 'bottom', 'near'
-      ], ', ').map(function snap(arg) {
-        return 'snap(' + arg + ')';
-      }),
-      'float-reference': ['column', 'multicol', 'page'],
-      'float-defer-column': ['none', '1', '-1', 'last'],
-      'float-defer-page': ['none', '1', '-1', 'last'],
-      'clear': ['top', 'bottom', 'column', 'page'],
-      'float-wrap': ['none', 'wrap'],
-      'float-offset': ['0', '5px', '0 0', '2em 3em', '50%', '-50% 3em'],
-      'clear-side': ['auto', 'both'],
-      'background-exclude-level': ['0.0', '0.5', '1.0'],
-      'exclude-level': ['0.0', '0.5', '1.0'],
-      'content-inside': [
-        'circle(50%, 50%, 30%)',
-        'polygon(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5)'
-      ],
-      'content-outside': [
-        'circle(50%, 50%, 30%)',
-        'polygon(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5)'
-      ]
-    },
-    'selectors': {
-      '::column()': [
-        'div.chapter::column(3)',
-        'div.chapter::column(3+)', 'div.chapter::column(2,2)',
-        'div.chapter::column(*,2)', 'div.chapter::column(1,*)'
-      ],
-      '::region()': [
-        'div.chapter::region(3)', 'div.chapter::region(2n)',
-        'div.chapter::region(3+)', 'div.chapter::region(2,2)',
-        'div.chapter::region(*,2)', 'div.chapter::region(1,*)',
-        'article::region(1-3)'
-      ]
-    }
-  },
-
   // Unmaintained CSS Level 3
   'css-content-3': {
     'title': 'Generated Content',
@@ -1622,6 +1574,87 @@ window.Specs = {
   },
 
   // CSS Level 3?
+  'css-namespaces-1': {
+    'title': 'Namespaces',
+    'tr': 'http://www.w3.org/TR/css3-namespace/',
+    '@rules': {
+      '@namespace': [
+        '@namespace "";',
+        '@namespace empty "";',
+        '@namespace "http://www.w3.org/1999/xhtml";',
+        '@namespace svg "http://www.w3.org/2000/svg";',
+        '@namespace url(http://www.w3.org/1999/xhtml);',
+        '@namespace svg url(http://www.w3.org/2000/svg);'
+      ]
+    }
+  },
+
+  'css-page-template-1': {
+    'title': 'Pagination Templates',
+    'properties': {
+      'overflow-style': [
+        'paged-x', 'paged-y', 'paged-x-controls', 'paged-y-controls'
+      ],
+      'template-set': ['one', 'one two']
+    },
+    '@rules': {
+      '@template': ['@template paged-display', '@template side-by-side:first']
+    },
+    'descriptors': {
+      'atrule': '@template paged-display',
+      'atruleName': '@template',
+      'required-flow': ['related-flow', 'lead-flow']
+    }
+  },
+
+  'css-containment': {
+    'title': 'Containment',
+    'properties': {
+      'contain': ['none', 'strict']
+    }
+  },
+
+  'css-page-floats': {
+    'title': 'Page Floats',
+    'properties': {
+      'float': ['10px'].times(1, 2).qmark([
+        'top', 'bottom', 'near'
+      ], ', ').map(function snap(arg) {
+        return 'snap(' + arg + ')';
+      }),
+      'float-reference': ['column', 'multicol', 'page'],
+      'float-defer-column': ['none', '1', '-1', 'last'],
+      'float-defer-page': ['none', '1', '-1', 'last'],
+      'clear': ['top', 'bottom', 'column', 'page'],
+      'float-wrap': ['none', 'wrap'],
+      'float-offset': ['0', '5px', '0 0', '2em 3em', '50%', '-50% 3em'],
+      'clear-side': ['auto', 'both'],
+      'background-exclude-level': ['0.0', '0.5', '1.0'],
+      'exclude-level': ['0.0', '0.5', '1.0'],
+      'content-inside': [
+        'circle(50%, 50%, 30%)',
+        'polygon(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5)'
+      ],
+      'content-outside': [
+        'circle(50%, 50%, 30%)',
+        'polygon(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5)'
+      ]
+    },
+    'selectors': {
+      '::column()': [
+        'div.chapter::column(3)',
+        'div.chapter::column(3+)', 'div.chapter::column(2,2)',
+        'div.chapter::column(*,2)', 'div.chapter::column(1,*)'
+      ],
+      '::region()': [
+        'div.chapter::region(3)', 'div.chapter::region(2n)',
+        'div.chapter::region(3+)', 'div.chapter::region(2,2)',
+        'div.chapter::region(*,2)', 'div.chapter::region(1,*)',
+        'article::region(1-3)'
+      ]
+    }
+  },
+
   'shadow-styling': {
     'title': 'Shadow DOM Styling',
     'selectors': {
@@ -1678,21 +1711,6 @@ window.Specs = {
   },
 
   // New CSS Level 1~3
-  'css-namespaces-1': {
-    'title': 'Namespaces',
-    'tr': 'http://www.w3.org/TR/css3-namespace/',
-    '@rules': {
-      '@namespace': [
-        '@namespace "";',
-        '@namespace empty "";',
-        '@namespace "http://www.w3.org/1999/xhtml";',
-        '@namespace svg "http://www.w3.org/2000/svg";',
-        '@namespace url(http://www.w3.org/1999/xhtml);',
-        '@namespace svg url(http://www.w3.org/2000/svg);'
-      ]
-    }
-  },
-
   'css-transitions-1': {
     'title': 'Transitions',
     'tr': 'http://www.w3.org/TR/css3-transitions/',
@@ -2016,24 +2034,6 @@ window.Specs = {
       ':below-level': [':below-level'],
       ':at-level': [':at-level'],
       ':above-level': [':above-level']
-    }
-  },
-
-  'css-page-template-1': {
-    'title': 'Pagination Templates',
-    'properties': {
-      'overflow-style': [
-        'paged-x', 'paged-y', 'paged-x-controls', 'paged-y-controls'
-      ],
-      'template-set': ['one', 'one two']
-    },
-    '@rules': {
-      '@template': ['@template paged-display', '@template side-by-side:first']
-    },
-    'descriptors': {
-      'atrule': '@template paged-display',
-      'atruleName': '@template',
-      'required-flow': ['related-flow', 'lead-flow']
     }
   },
 
