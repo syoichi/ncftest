@@ -652,9 +652,12 @@ window.Specs = {
     'properties': {
       'unicode-bidi': ['isolate', 'isolate-override', 'plaintext'],
       'writing-mode': ['horizontal-tb', 'vertical-rl', 'vertical-lr'],
-      'text-orientation': ['mixed', 'upright', 'sideways-right', 'sideways-left', 'sideways', 'use-glyph-orientation'],
+      'text-orientation': [
+        'mixed', 'upright', 'sideways-right', 'sideways-left', 'sideways',
+        'use-glyph-orientation'
+      ],
       'caption-side': ['block-start', 'block-end'],
-      'text-combine-horizontal': ['none', 'all', 'digits', 'digits 2']
+      'text-combine-upright': ['none', 'all', 'digits', 'digits 2']
     }
   },
 
