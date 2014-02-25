@@ -815,16 +815,16 @@ window.Specs = {
         'background-image',
         'list-style-image',
         'border-image-source',
-        'cursor',
+        // 'cursor',
         'content',
         'background',
         'border-image',
-        'list-style',
+        'list-style'/*,
         'shape-outside',
         'mask-image',
         'mask',
-        'mask-box-image-source',
-        'mask-box-image'
+        'mask-box-source',
+        'mask-box'*/
       ],
       'image()': [
         'image(url(../img/noise.png))', 'image("../img/noise.png")',
