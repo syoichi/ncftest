@@ -3861,6 +3861,231 @@ window.Specs = {
     }
   },
 
+  // SVG
+  'svg2': {
+    'title': 'Scalable Vector Graphics 2',
+    'tr': 'http://www.w3.org/TR/SVG2/',
+    'dev': 'https://svgwg.org/svg2-draft/',
+    // https://svgwg.org/svg2-draft/propidx.html
+    'properties': {
+      'shape-inside': ['none'], // old
+      'shape-outside': [
+        '10px', '10%'
+      ].times(4, 6, ', ').map(function rectangle(arg) {
+        return 'rectangle(' + arg + ')';
+      }), // old
+      'shape-margin': ['25'], // syntax definition not found
+      'shape-padding': ['25'], // syntax definition not found
+      'writing-mode': ['lr-tb', 'rl-tb', 'tb-rl', 'lr', 'rl', 'tb'],
+      'glyph-orientation-vertical': [
+        'auto', '0deg', '1deg', '90grad', '180rad', '270turn',
+        '0', '1', '90', '180', '270'
+      ],
+      'glyph-orientation-horizontal': [
+        '0deg', '1deg', '90grad', '180rad', '270turn',
+        '0', '1', '90', '180', '270'
+      ],
+      'alignment-baseline': ['auto'],
+      'text-anchor': ['start', 'middle', 'end'],
+      'font-stretch': ['wider', 'narrower'],
+      'fill': [
+        'none', 'url(tl.png)', 'linear-gradient(white, black)',
+        'url(#Triangle)', 'icc-color(ident, 1)',
+        'context-fill', 'context-stroke'
+      ].concat(
+        [
+          'left', 'center', 'right', 'top', 'bottom', '10%', '10px'
+        ].concat(
+          ['left', 'center', 'right', '10%', '10px'].and([
+            'top', 'center', 'bottom', '10%', '10px'
+          ]),
+          ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
+            ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
+          )
+        ).uniq(),
+        ['left'].and(['auto', '10px', '10%'].times(1, 2).concat([
+          'cover', 'contain'
+        ]), ' / '),
+        ['repeat-x', 'repeat-y'].concat(
+          ['repeat', 'space', 'round', 'no-repeat'].times(1, 2)
+        ),
+        [
+          'border-box', 'padding-box', 'content-box', 'margin-box',
+          'fill', 'stroke', 'view-box'
+        ].times(1, 2),
+        ['white'],
+        [
+          'none center', 'padding-box space', 'no-repeat none',
+          'none left repeat-x border-box border-box',
+          'none left / auto repeat-x border-box border-box',
+          'none center left / auto repeat-x border-box border-box',
+          'url(tl.png) center left / auto repeat-x border-box border-box',
+          'linear-gradient(white, black) bottom 10px right 10px' +
+            ' / 10px 10% repeat space fill margin-box',
+          'context-stroke bottom 10px right 10px' +
+            ' / 10px 10% repeat space stroke view-box white',
+          'none, none', 'none, none, none'
+        ]
+      ),
+      'fill-rule': ['nonzero', 'evenodd'],
+      'fill-opacity': ['1', '0.5', '0'],
+      'stroke': [
+        'none', 'url(tl.png)', 'linear-gradient(white, black)',
+        'url(#Triangle)', 'icc-color(ident, 1)',
+        'context-fill', 'context-stroke'
+      ].concat(
+        [
+          'left', 'center', 'right', 'top', 'bottom', '10%', '10px'
+        ].concat(
+          ['left', 'center', 'right', '10%', '10px'].and([
+            'top', 'center', 'bottom', '10%', '10px'
+          ]),
+          ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
+            ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
+          )
+        ).uniq(),
+        ['left'].and(['auto', '10px', '10%'].times(1, 2).concat([
+          'cover', 'contain'
+        ]), ' / '),
+        ['repeat-x', 'repeat-y'].concat(
+          ['repeat', 'space', 'round', 'no-repeat'].times(1, 2)
+        ),
+        [
+          'border-box', 'padding-box', 'content-box', 'margin-box',
+          'fill', 'stroke', 'view-box'
+        ].times(1, 2),
+        ['white'],
+        [
+          'none center', 'padding-box space', 'no-repeat none',
+          'none left repeat-x border-box border-box',
+          'none left / auto repeat-x border-box border-box',
+          'none center left / auto repeat-x border-box border-box',
+          'url(tl.png) center left / auto repeat-x border-box border-box',
+          'linear-gradient(white, black) bottom 10px right 10px' +
+            ' / 10px 10% repeat space fill margin-box',
+          'context-stroke bottom 10px right 10px' +
+            ' / 10px 10% repeat space stroke view-box white',
+          'none, none', 'none, none, none'
+        ]
+      ),
+      'stroke-opacity': ['1', '0.5', '0'],
+      'stroke-width': ['1', '10%', '10px'],
+      'stroke-linecap': ['butt', 'round', 'square'],
+      'stroke-linejoin': ['miter', 'round', 'bevel', 'arcs'],
+      'stroke-miterlimit': ['4', '0.5', '0'],
+      'stroke-dasharray': ['none'].concat(['10px', '10%'].times(1, 3, ', ')),
+      'stroke-dashoffset': ['0', '10px', '10%'],
+      'vector-effect': ['none', 'non-scaling-stroke'],
+      'marker-start': [
+        'none', 'url(#Triangle)', 'child',
+        'select(img)', 'select(mask:last-of-type)',
+        'select(img, mask)', 'select(img, mask:last-of-type)'
+      ],
+      'marker-mid': [
+        'none', 'url(#Triangle)', 'child',
+        'select(img)', 'select(mask:last-of-type)',
+        'select(img, mask)', 'select(img, mask:last-of-type)'
+      ],
+      'marker-end': [
+        'none', 'url(#Triangle)', 'child',
+        'select(img)', 'select(mask:last-of-type)',
+        'select(img, mask)', 'select(img, mask:last-of-type)'
+      ],
+      'marker-segment': [
+        'none', 'url(#Triangle)', 'child',
+        'select(img)', 'select(mask:last-of-type)',
+        'select(img, mask)', 'select(img, mask:last-of-type)'
+      ],
+      'marker-pattern': [
+        'none', '10px', '10%', 'url(#Triangle)', 'child',
+        'select(img)', 'select(mask:last-of-type)',
+        'select(img, mask)', 'select(img, mask:last-of-type)',
+        'none 10px', '40 url(#DoubleDash) 40 url(#SingleDash)'
+      ],
+      'marker': [
+        'none', 'url(#Triangle)', 'child',
+        'select(img)', 'select(mask:last-of-type)',
+        'select(img, mask)', 'select(img, mask:last-of-type)', '10px', '10%'
+      ].concat(
+        [
+          'none', 'url(#Triangle)', 'child', 'select(img)'
+        ].times(2, 4),
+        ['none', 'none url(#Triangle) none url(#Triangle)'].and([
+          'none', '10px', '10%', 'url(#Triangle)', 'child',
+          'select(img)', 'select(mask:last-of-type)',
+          'select(img, mask)', 'select(img, mask:last-of-type)', 'none 10px'
+        ], ' / '),
+        [
+          'none', 'url(#Triangle)', 'child', 'select(img)'
+        ].times(1, 4).and(['10px', '10%']),
+        ['10px', '10%'].and([
+          'none', '10px', '10%', 'url(#Triangle)', 'child',
+          'select(img)', 'select(mask:last-of-type)',
+          'select(img, mask)', 'select(img, mask:last-of-type)', 'none 10px'
+        ]),
+        ['none url(#Triangle) none url(#Triangle) 10px none url(#Triangle)']
+      ),
+      'marker-knockout-left': ['0', '10px', '10%'].concat(
+        ['10px', '10%'].qmark(['inverted']).and([
+          'circle', 'rectangle', 'triangle'
+        ]).concat(
+          ['10px', '10%'].times(2, 2).qmark(['inverted']).and([
+            'ellipse', 'rectangle', 'triangle'
+          ])
+        ).qmark(['at'].and(['10px', '10%']))
+      ),
+      'marker-knockout-right': ['0', '10px', '10%'].concat(
+        ['10px', '10%'].qmark(['inverted']).and([
+          'circle', 'rectangle', 'triangle'
+        ]).concat(
+          ['10px', '10%'].times(2, 2).qmark(['inverted']).and([
+            'ellipse', 'rectangle', 'triangle'
+          ])
+        ).qmark(['at'].and(['10px', '10%']))
+      ),
+      'paint-order': ['normal'].concat(['fill'].or(['stroke'], ['markers'])),
+      'color-interpolation': ['sRGB', 'auto', 'linearRGB'],
+      'color-rendering': ['auto', 'optimizeSpeed', 'optimizeQuality'],
+      'shape-rendering': [
+        'auto', 'optimizeSpeed', 'crispEdges', 'geometricPrecision'
+      ],
+      'text-rendering': [
+        'auto', 'optimizeSpeed', 'optimizeLegibility', 'geometricPrecision'
+      ],
+      'image-rendering': ['optimizeQuality', 'optimizeSpeed'],
+      'buffered-rendering': ['auto', 'dynamic', 'static'],
+      'solid-color': ['currentColor', 'black', 'white icc-color(ident, 1)'],
+      'solid-opacity': ['1', '0.0', '0.5'],
+      'stop-color': ['currentColor', 'black', 'white icc-color(ident, 1)'],
+      'stop-opacity': ['1', '0.0', '0.5'],
+      'pointer-events': [
+        'visiblePainted', 'bounding-box', 'visibleFill', 'visibleStroke',
+        'visible', 'painted', 'fill', 'stroke', 'all', 'none'
+      ],
+      'display': ['marker'], // syntax definition not found
+      'enable-background': ['accumulate', 'new'] // old
+    },
+    '@rules': {
+      '@color-profile': '@color-profile'
+    },
+    'descriptors': {
+      'atrule': '@color-profile',
+      'src': [
+        'sRGB', 'local(red)',
+        'http://example.com/someDrawing.svg',
+        'http://example.com/someDrawing.svg#Lamppost',
+        '(local(red) http://example.com/someDrawing.svg)',
+        '(local(red) http://example.com/someDrawing.svg#Lamppost)',
+        'url(http://swatches.example.com/Foo)'
+      ],
+      'name': ['FooColors'],
+      'rendering-intent': [
+        'auto', 'perceptual', 'relative-colorimetric', 'saturation',
+        'absolute-colorimetric'
+      ]
+    }
+  },
+
   // WHAT
   'html': {
     'title': 'HTML',
