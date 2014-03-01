@@ -644,7 +644,40 @@ window.Specs = {
       'vw': ['width', 'height'],
       'vh': ['width', 'height'],
       'vmin': ['width', 'height'],
-      'vmax': ['width', 'height']
+      'vmax': ['width', 'height'],
+      'deg': [
+        'azimuth', 'elevation', 'image-orientation',
+        'glyph-orientation-vertical', 'glyph-orientation-horizontal'
+      ],
+      'grad': [
+        'azimuth', 'elevation', 'image-orientation',
+        'glyph-orientation-vertical', 'glyph-orientation-horizontal'
+      ],
+      'rad': [
+        'azimuth', 'elevation', 'image-orientation',
+        'glyph-orientation-vertical', 'glyph-orientation-horizontal'
+      ],
+      'turn': [
+        'azimuth', 'elevation', 'image-orientation',
+        'glyph-orientation-vertical', 'glyph-orientation-horizontal'
+      ],
+      's': [
+        'transition-duration', 'transition-delay', 'transition',
+        'animation-duration', 'animation-delay', 'animation',
+        'pause-before', 'pause-after', 'pause', 'rest-before', 'rest-after',
+        'rest', 'voice-duration'
+      ],
+      'ms': [
+        'transition-duration', 'transition-delay', 'transition',
+        'animation-duration', 'animation-delay', 'animation',
+        'pause-before', 'pause-after', 'pause', 'rest-before', 'rest-after',
+        'rest', 'voice-duration'
+      ],
+      'Hz': ['pitch', 'voice-pitch', 'voice-range'],
+      'kHz': ['pitch', 'voice-pitch', 'voice-range'],
+      'dpi': ['image-resolution'],
+      'dpcm': ['image-resolution'],
+      'dppx': ['image-resolution']
     }
   },
 
