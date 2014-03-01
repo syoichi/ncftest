@@ -129,6 +129,59 @@
 
       return false;
     },
+    unit: function unitFunc(unit, property) {
+      var cached, idx, prefix, prefixed;
+
+      cached = unitFunc.cached;
+
+      if (!cached) {
+        cached = unitFunc.cached = {};
+      }
+
+      property = this.property(property);
+
+      if (!property) {
+        return false;
+      }
+
+      if (isCSS) {
+        for (idx = 0; idx < prefixesLen; idx += 1) {
+          prefix = prefixes[idx];
+          prefixed = '1' + prefix + unit;
+
+          if (win.CSS.supports(property, prefixed)) {
+            if (unit && cached[unit] === void 0) {
+              cached[unit] = prefix + unit;
+            }
+
+            return prefixed;
+          }
+        }
+      } else {
+        property = camelCase(property);
+        inline[property] = inline.cssText = '';
+
+        for (idx = 0; idx < prefixesLen; idx += 1) {
+          prefix = prefixes[idx];
+          prefixed = '1' + prefix + unit;
+
+          // Trident throws Undefined Error.
+          try {
+            inline[property] = prefixed;
+          } catch (err) {}
+
+          if (inline.length > 0) {
+            if (unit && cached[unit] === void 0) {
+              cached[unit] = prefix + unit;
+            }
+
+            return prefixed;
+          }
+        }
+      }
+
+      return false;
+    },
     selector: function selectorFunc(selector) {
       var cached, idx, prefixed;
 

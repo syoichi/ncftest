@@ -615,12 +615,6 @@ window.Specs = {
         'vertical-align'
       ],
       'initial': 'initial',
-      'ch': '5ch',
-      'rem': '5rem',
-      'vw': '5vw',
-      'vh': '5vh',
-      'vmin': '5vmin',
-      'vmax': '5vmax',
       'calc()': [
         /*'calc(1)', 'calc(0)', 'calc(-1)', 'calc(+1)', 'calc(1.1)',*/
         'calc(1px)', 'calc(0px)', 'calc(-1px)', 'calc(+1px)', 'calc(1.1px)',
@@ -643,6 +637,14 @@ window.Specs = {
       ].map(function attr(arg) {
         return 'attr(' + arg + ')';
       })
+    },
+    'units': {
+      'ch': ['width', 'height'],
+      'rem': ['width', 'height'],
+      'vw': ['width', 'height'],
+      'vh': ['width', 'height'],
+      'vmin': ['width', 'height'],
+      'vmax': ['width', 'height']
     }
   },
 
@@ -1696,14 +1698,13 @@ window.Specs = {
       'width': ['rounddown(1em)', 'roundup(1em)'],
       'height': ['rounddown(1em)', 'roundup(1em)']
     },
-    'values': {
-      'properties': [
+    'units': {
+      'gd': [
         'margin',
         'margin-top',
         'margin-bottom',
         'min-height'
-      ],
-      'gd': '1gd'
+      ]
     }
   },
 
@@ -2635,16 +2636,15 @@ window.Specs = {
         'auto / auto / auto', 'auto / auto / auto / auto'
       ])
     },
-    'values': {
-      'properties': [
+    'units': {
+      'fr': [
         'grid-template-columns',
         'grid-template-rows',
         'grid-auto-columns',
         'grid-auto-rows',
         'grid-columns',
         'grid-rows'
-      ],
-      'fr': '1fr'
+      ]
     }
   },
 
@@ -4207,9 +4207,8 @@ window.Specs = {
       'background-wrap-level': ['0.0', '0.5', '1.0'],
       'wrap-level': ['0.0', '0.5', '1.0']
     },
-    'values': {
-      'properties': ['width'],
-      'gr': '1gr'
+    'units': {
+      'gr': ['width']
     }
   },
 

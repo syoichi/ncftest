@@ -124,8 +124,14 @@
             tests = Array.isArray(tests) ? tests : [tests];
 
             for (j = 0, testsLen = tests.length; j < testsLen; j += 1) {
-              test = tests[j];
-              results = testCallback(test, feature, theseTests);
+              if (what === 'units') {
+                testsLen = 1;
+                test = '1' + feature;
+                results = testCallback(feature, tests);
+              } else {
+                test = tests[j];
+                results = testCallback(test, feature, theseTests);
+              }
 
               if (typeof results === 'object') {
                 success = results.success;
@@ -219,6 +225,35 @@
           if (!Supports.property(property)) {
             properties.splice(idx -= 1, 1);
           } else if (!Supports.value(property, value, label)) {
+            failed.push(property);
+          }
+        }
+
+        results.success = success =
+          1 - (properties.length ? failed.length / properties.length : 1);
+
+        if (0 < success && success < 1) {
+          results.note = 'Failed in: ' + failed.join(', ');
+        }
+
+        return results;
+      }
+    },
+    units: {
+      type: 'unit',
+      getResults: function units(unit, properties) {
+        var failed, results, idx, property, success;
+
+        failed = [];
+        results = {};
+
+        for (idx = 0; properties[idx];) {
+          property = properties[idx];
+          idx += 1;
+
+          if (!Supports.property(property)) {
+            properties.splice(idx -= 1, 1);
+          } else if (!Supports.unit(unit, property)) {
             failed.push(property);
           }
         }
