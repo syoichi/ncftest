@@ -38,7 +38,7 @@ position = [
 ).uniq();
 box = ['border-box', 'padding-box', 'content-box'];
 shapeBox = box.concat('margin-box');
-geometryBox = shapeBox.concat(['fill', 'stroke', 'view-box']);
+geometryBox = shapeBox.concat(['fill-box', 'stroke-box', 'view-box']);
 bgSize = ['auto', '10px', '10%'].times(1, 2).concat([
   'cover', 'contain'
 ]);
@@ -3619,7 +3619,7 @@ win.Specs = {
         position,
         ['left'].and(bgSize, ' / '),
         repeatStyle,
-        geometryBox.times(1, 2),
+        shapeBox.concat(['fill', 'stroke', 'view-box']).times(1, 2),
         ['white'],
         [
           'none center', 'padding-box space', 'no-repeat none',
@@ -3645,7 +3645,7 @@ win.Specs = {
         position,
         ['left'].and(bgSize, ' / '),
         repeatStyle,
-        geometryBox.times(1, 2),
+        shapeBox.concat(['fill', 'stroke', 'view-box']).times(1, 2),
         ['white'],
         [
           'none center', 'padding-box space', 'no-repeat none',
