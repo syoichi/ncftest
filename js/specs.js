@@ -2080,8 +2080,8 @@ win.Specs = {
     'properties': {
       'transform': ['none', 'matrix(1, 2, 3, 4, 5, 6)'].concat([
         '0', '10px', '-20px', '50%'
-        ].times(1, 2, ', ').map(function translate(arg) {
-          return 'translate(' + arg + ')';
+        ].times(1, 2, ', ').map(function translate(translationValues) {
+          return 'translate(' + translationValues + ')';
         }),
         ['0', '1px', '-20px', '50%'].map(function translateX(translationValue) {
           return 'translateX(' + translationValue + ')';
@@ -2093,8 +2093,8 @@ win.Specs = {
         angle.map(function rotate(angle) {
           return 'rotate(' + angle + ')';
         }),
-        angle.times(1, 2, ', ').map(function skew(arg) {
-          return 'skew(' + arg + ')';
+        angle.times(1, 2, ', ').map(function skew(angles) {
+          return 'skew(' + angles + ')';
         }),
         angle.map(function skewX(angle) {
           return 'skewX(' + angle + ')';
