@@ -1,4 +1,96 @@
-window.Specs = {
+(function executeSpec(win) {
+var anb, alphavalue, image, repeatStyle, position, box, shapeBox, geometryBox,
+    bgSize, counterStyle, angle, fillRule, basicShape, blendMode;
+
+anb = [
+  'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
+  '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
+  'n-1', '-n-1', '+n-1', '1n-1', '-1n-1', '+1n-1', '0n-1', '-0n-1', '+0n-1',
+  '10n-1', '-10n-1', '+10n-1', '01n-1',
+  '-01n-1', '+01n-1', '00n-1', '-00n-1', '+00n-1',
+  'n+1', '-n+1', '+n+1', '1n+1', '-1n+1', '+1n+1', '0n+1', '-0n+1', '+0n+1',
+  '10n+1', '-10n+1', '+10n+1', '01n+1',
+  '-01n+1', '+01n+1', '00n+1', '-00n+1', '+00n+1',
+  'n+0', 'n+00', '3n +1', '3n- 1', '3n + 1',
+  '0', '1', '10', '01', '00', '-0', '-1', '-10',
+  '-01', '-00', '+0', '+1', '+10', '+01', '+00',
+  'odd', 'even'
+];
+alphavalue = ['1', '0', '2', '-5', '.5', '0.0', '1.0'];
+image = [
+  'url(foo.png)', /* image(white), */
+  'linear-gradient(white, black)', 'radial-gradient(white, white)',
+  'repeating-linear-gradient(white, white)',
+  'repeating-radial-gradient(white, white)'
+];
+repeatStyle = ['repeat-x', 'repeat-y'].concat(
+  ['repeat', 'space', 'round', 'no-repeat'].times(1, 2)
+);
+position = [
+  'left', 'center', 'right', 'top', 'bottom', '10%', '10px'
+].concat(
+  ['left', 'center', 'right', '10%', '10px'].and([
+    'top', 'center', 'bottom', '10%', '10px'
+  ]),
+  ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
+    ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
+  )
+).uniq();
+box = ['border-box', 'padding-box', 'content-box'];
+shapeBox = box.concat('margin-box');
+geometryBox = shapeBox.concat(['fill', 'stroke', 'view-box']);
+bgSize = ['auto', '10px', '10%'].times(1, 2).concat([
+  'cover', 'contain'
+]);
+counterStyle = [
+  'cjk-decimal', 'hebrew', 'hiragana', 'hiragana-iroha',
+  'katakana', 'katakana-iroha', 'disclosure-open', 'disclosure-closed',
+  'japanese-informal', 'japanese-formal', 'korean-hangul-formal',
+  'korean-hanja-informal', 'korean-hanja-formal', 'simp-chinese-informal',
+  'simp-chinese-formal', 'trad-chinese-informal', 'trad-chinese-formal',
+  'cjk-ideographic', 'ethiopic-numeric'/*, 'circled-lower-latin',
+  'symbols(\'\')', 'symbols(repeating \'○\' \'●\')',
+  'toggle(disc, square, circle)'*/
+];
+angle = ['90deg', '100grad', '1rad', '1turn'];
+fillRule = ['nonzero', 'evenodd'];
+basicShape = [].concat(
+  ['10px', '10%'].times(1, 4).map(function inset(arg) {
+    return 'inset(' + arg + ')';
+  }),
+  [
+    'inset(10px 10px 10px 10px round ' +
+      '10px 10px 10px 10px / 10px 10px 10px 10px)'
+  ],
+  ['10px', '10%', 'closest-side', 'farthest-side'].concat(
+    ['at'].and(position),
+    ['10px', '10%', 'closest-side', 'farthest-side'].and(
+      ['at'].and(['left', 'bottom 10px right 10px'])
+    )
+  ).map(function circle(arg) {
+    return 'circle(' + arg + ')';
+  }),
+  ['10px', '10%', 'closest-side', 'farthest-side'].times(2).concat(
+    ['at'].and(position),
+    ['10px', '10%', 'closest-side', 'farthest-side'].times(2).and(
+      ['at'].and(['left', 'bottom 10px right 10px'])
+    )
+  ).map(function ellipse(arg) {
+    return 'ellipse(' + arg + ')';
+  }),
+  fillRule.qmark(
+    ['10px', '10%'].times(2).times(1, 2, ', '), ', ', {former: true}
+  ).map(function polygon(arg) {
+    return 'polygon(' + arg + ')';
+  })
+);
+blendMode = [
+  'normal', 'multiply', 'screen', 'overlay', 'darken', 'lighten',
+  'color-dodge', 'color-burn', 'hard-light', 'soft-light', 'difference',
+  'exclusion', 'hue', 'saturation', 'color', 'luminosity'
+];
+
+win.Specs = {
   // CSS Level 3
   'selectors3': {
     'title': 'Selectors',
@@ -24,56 +116,16 @@ window.Specs = {
       ':only-child': ':only-child',
       ':only-of-type': ':only-of-type',
       ':empty': ':empty',
-      ':nth-child()': [
-        'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
-        '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
-        'n-1', '-n-1', '+n-1', '1n-1', '-1n-1', '+1n-1', '0n-1', '-0n-1', '+0n-1',
-        '10n-1', '-10n-1', '+10n-1', '01n-1', '-01n-1', '+01n-1', '00n-1', '-00n-1', '+00n-1',
-        'n+1', '-n+1', '+n+1', '1n+1', '-1n+1', '+1n+1', '0n+1', '-0n+1', '+0n+1',
-        '10n+1', '-10n+1', '+10n+1', '01n+1', '-01n+1', '+01n+1', '00n+1', '-00n+1', '+00n+1',
-        'n+0', 'n+00', '3n +1', '3n- 1', '3n + 1',
-        '0', '1', '10', '01', '00', '-0', '-1', '-10', '-01', '-00', '+0', '+1', '+10', '+01', '+00',
-        'odd', 'even'
-      ].map(function nthChild(nth) {
+      ':nth-child()': anb.map(function nthChild(nth) {
         return ':nth-child(' + nth + ')';
       }),
-      ':nth-last-child()': [
-        'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
-        '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
-        'n-1', '-n-1', '+n-1', '1n-1', '-1n-1', '+1n-1', '0n-1', '-0n-1', '+0n-1',
-        '10n-1', '-10n-1', '+10n-1', '01n-1', '-01n-1', '+01n-1', '00n-1', '-00n-1', '+00n-1',
-        'n+1', '-n+1', '+n+1', '1n+1', '-1n+1', '+1n+1', '0n+1', '-0n+1', '+0n+1',
-        '10n+1', '-10n+1', '+10n+1', '01n+1', '-01n+1', '+01n+1', '00n+1', '-00n+1', '+00n+1',
-        'n+0', 'n+00', '3n +1', '3n- 1', '3n + 1',
-        '0', '1', '10', '01', '00', '-0', '-1', '-10', '-01', '-00', '+0', '+1', '+10', '+01', '+00',
-        'odd', 'even'
-      ].map(function nthLastChild(nth) {
+      ':nth-last-child()': anb.map(function nthLastChild(nth) {
         return ':nth-last-child(' + nth + ')';
       }),
-      ':nth-of-type()': [
-        'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
-        '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
-        'n-1', '-n-1', '+n-1', '1n-1', '-1n-1', '+1n-1', '0n-1', '-0n-1', '+0n-1',
-        '10n-1', '-10n-1', '+10n-1', '01n-1', '-01n-1', '+01n-1', '00n-1', '-00n-1', '+00n-1',
-        'n+1', '-n+1', '+n+1', '1n+1', '-1n+1', '+1n+1', '0n+1', '-0n+1', '+0n+1',
-        '10n+1', '-10n+1', '+10n+1', '01n+1', '-01n+1', '+01n+1', '00n+1', '-00n+1', '+00n+1',
-        'n+0', 'n+00', '3n +1', '3n- 1', '3n + 1',
-        '0', '1', '10', '01', '00', '-0', '-1', '-10', '-01', '-00', '+0', '+1', '+10', '+01', '+00',
-        'odd', 'even'
-      ].map(function nthOfType(nth) {
+      ':nth-of-type()': anb.map(function nthOfType(nth) {
         return ':nth-of-type(' + nth + ')';
       }),
-      ':nth-last-of-type()': [
-        'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
-        '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
-        'n-1', '-n-1', '+n-1', '1n-1', '-1n-1', '+1n-1', '0n-1', '-0n-1', '+0n-1',
-        '10n-1', '-10n-1', '+10n-1', '01n-1', '-01n-1', '+01n-1', '00n-1', '-00n-1', '+00n-1',
-        'n+1', '-n+1', '+n+1', '1n+1', '-1n+1', '+1n+1', '0n+1', '-0n+1', '+0n+1',
-        '10n+1', '-10n+1', '+10n+1', '01n+1', '-01n+1', '+01n+1', '00n+1', '-00n+1', '+00n+1',
-        'n+0', 'n+00', '3n +1', '3n- 1', '3n + 1',
-        '0', '1', '10', '01', '00', '-0', '-1', '-10', '-01', '-00', '+0', '+1', '+10', '+01', '+00',
-        'odd', 'even'
-      ].map(function nthLastOfType(nth) {
+      ':nth-last-of-type()': anb.map(function nthLastOfType(nth) {
         return ':nth-last-of-type(' + nth + ')';
       }),
       ':not()': [
@@ -133,7 +185,7 @@ window.Specs = {
         'slateblue', 'slategray', 'slategrey', 'snow', 'springgreen', 'steelblue',
         'tan', 'thistle', 'tomato', 'turquoise', 'violet', 'wheat', 'whitesmoke', 'yellowgreen'
       ],
-      'opacity': ['1', '0', '2', '-5', '.5', '0.0', '1.0']
+      'opacity': alphavalue
     }
   },
 
@@ -255,9 +307,9 @@ window.Specs = {
         ),
         ['none, url(foo.png), linear-gradient(white, black)']
       ),
-      'background-repeat': ['repeat-x', 'repeat-y'].concat(
-          ['repeat', 'space', 'round', 'no-repeat'].times(1, 2)
-      ).times(1, 2, ', ').filter(function removeCSS2Value(val) {
+      'background-repeat': repeatStyle.times(
+        1, 2, ', '
+      ).filter(function removeCSS2Value(val) {
         return [
           'repeat', 'repeat-x', 'repeat-y', 'no-repeat'
         ].indexOf(val) === -1;
@@ -278,19 +330,9 @@ window.Specs = {
         'left, center', 'left, center, right',
         'left, left top, center top 10%, left 10% top 10%'
       ]),
-      'background-clip': [
-        'border-box', 'padding-box', 'content-box'
-      ].times(1, 2, ', ').concat(
-        ['border-box, padding-box, content-box']
-      ),
-      'background-origin': [
-        'padding-box', 'border-box', 'content-box'
-      ].times(1, 2, ', ').concat(
-        ['padding-box, border-box, content-box']
-      ),
-      'background-size': ['auto', '10px', '10%'].times(1, 2).concat([
-        'cover', 'contain'
-      ]).times(1, 2, ', ').concat(
+      'background-clip': box.times(1, 2, ', ').concat(box),
+      'background-origin': box.times(1, 2, ', ').concat(box),
+      'background-size': bgSize.times(1, 2, ', ').concat(
         ['auto, 10px, 50%']
       ),
       'background': ['linear-gradient(white, black)'].concat(
@@ -299,23 +341,12 @@ window.Specs = {
         )).uniq().filter(function remove2ValueSyntax(val) {
           return val.split(' ').length > 2;
         }),
-        [
-          'left', 'center', 'right', 'top', 'bottom', '10%', '10px'
-        ].concat(
-          ['left', 'center', 'right', '10%', '10px'].and([
-            'top', 'center', 'bottom', '10%', '10px'
-          ]),
-          ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
-            ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
-          )
-        ).uniq().and(['auto', '10px', '10%'].times(1, 2).concat([
-          'cover', 'contain'
-        ]), ' / '),
+        position.and(bgSize, ' / '),
         ['space', 'round'].concat(
           ['repeat', 'space', 'round', 'no-repeat'].times(2)
         ),
         ['local'],
-        ['border-box', 'padding-box', 'content-box'].times(1, 2),
+        box.times(1, 2),
         [
           'linear-gradient(white, black) left',
           'linear-gradient(white, black) transparent',
@@ -345,9 +376,7 @@ window.Specs = {
       'border-bottom-right-radius': ['10px', '10%'].times(1, 2),
       'border-bottom-left-radius': ['10px', '10%'].times(1, 2),
       'border-radius': ['10px', '10%'].times(1, 4).times(1, 2, ' / '),
-      'border-image-source': [
-        'none', 'url(foo.png)', 'linear-gradient(white, black)'
-      ],
+      'border-image-source': ['none'].concat(image),
       'border-image-slice': [
         '1', '10%'
       ].times(1, 4).qmark(['fill'], ' ', {amp: true}),
@@ -356,9 +385,8 @@ window.Specs = {
       'border-image-repeat': [
         'stretch', 'repeat', 'round', 'space'
       ].times(1, 2),
-      'border-image': [
-        'none', 'url(tl.png)', 'linear-gradient(white, black)'
-      ].concat(
+      'border-image': ['none'].concat(
+        image,
         ['1', '10%'].times(1, 4).qmark(['fill'], ' ', {amp: true}).qmark([
           '1', '1 / 1', '/ 1'
         ], ' / '),
@@ -687,7 +715,7 @@ window.Specs = {
     'properties': {
       'content': 'icon',
       'icon': ['auto'].concat(['url(foo.png)'].times(1, 3, ', ')),
-      'box-sizing': ['content-box', 'padding-box', 'border-box'],
+      'box-sizing': box,
       'outline-style': 'auto',
       'outline-offset': ['0', '5px', '-5px'],
       'resize': ['none', 'both', 'horizontal', 'vertical'],
@@ -870,9 +898,7 @@ window.Specs = {
         'image(\'dark.png\', black)',
         'image(\'wavy.svg\', \'wavy.png\' , \'wavy.gif\')'
       ],
-      'linear-gradient()': [
-        '45deg', '1turn', '100grad', '2rad'
-      ].concat(
+      'linear-gradient()': angle.concat(
         ['to'].and(['left', 'right'].or(['top', 'bottom']))
       ).qmark(['white'].qmark([
         '10%', '10px'
@@ -891,16 +917,7 @@ window.Specs = {
       ]),
       'radial-gradient()': ['white'].qmark([
         '10%', '10px'
-      ]).times(2, 2, ', ').concat(['at'].and(
-        ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
-          ['left', 'center', 'right', '10%', '10px'].and([
-            'top', 'center', 'bottom', '10%', '10px'
-          ]),
-          ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
-            ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
-          )
-        ).uniq()
-      ).concat(
+      ]).times(2, 2, ', ').concat(['at'].and(position).concat(
         ['circle'].or(['10px']).concat(
           ['ellipse'].or(['10px', '10%'].times(2)),
           ['circle', 'ellipse'].or([
@@ -935,9 +952,7 @@ window.Specs = {
           'hsla(240, 100%, 50%, 0.5) 80%, lightgoldenrodyellow 90%, ' +
           'transparent 100%)'
       ]),
-      'repeating-linear-gradient()': [
-        '45deg', '1turn', '100grad', '2rad'
-      ].concat(
+      'repeating-linear-gradient()': angle.concat(
         ['to'].and(['left', 'right'].or(['top', 'bottom']))
       ).qmark(
         ['white'].qmark(['10%', '10px']).times(2, 2, ', '), ', ', {former: true}
@@ -956,16 +971,7 @@ window.Specs = {
       ]),
       'repeating-radial-gradient()': ['white'].qmark([
         '10%', '10px'
-      ]).times(2, 2, ', ').concat(['at'].and(
-        ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
-          ['left', 'center', 'right', '10%', '10px'].and([
-            'top', 'center', 'bottom', '10%', '10px'
-          ]),
-          ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
-            ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
-          )
-        ).uniq()
-      ).concat(
+      ]).times(2, 2, ', ').concat(['at'].and(position).concat(
         ['circle'].or(['10px']).concat(
           ['ellipse'].or(['10px', '10%'].times(2)),
           ['circle', 'ellipse'].or([
@@ -999,22 +1005,11 @@ window.Specs = {
     },
     'properties': {
       'object-fit': ['fill', 'contain', 'cover', 'none', 'scale-down'],
-      'object-position': [
-        'left', 'center', 'right', 'top', 'bottom', '10%', '10px'
-      ].concat(
-        ['left', 'center', 'right', '10%', '10px'].and([
-          'top', 'center', 'bottom', '10%', '10px'
-        ]),
-        ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
-          ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
-        )
-      ).uniq(),
+      'object-position': position,
       'image-resolution': ['from-image'].or(['300dpi', '1dpcm', '1dppx']).qmark(
         ['snap'], ' ', {amp: true}
       ),
-      'image-orientation': [
-        '0deg', '90deg', '-45deg', '1turn', '100grad', '2rad'
-      ]
+      'image-orientation': angle
     }
   },
 
@@ -1024,39 +1019,17 @@ window.Specs = {
     'properties': {
       'display': ['inline-list-item'],
       'list-style-image': ['linear-gradient(white, black)'],
-      'list-style-type': [
-        '\'★\'', 'cjk-decimal', 'hebrew', 'hiragana', 'hiragana-iroha',
-        'katakana', 'katakana-iroha', 'disclosure-open', 'disclosure-closed',
-        'japanese-informal', 'japanese-formal', 'korean-hangul-formal',
-        'korean-hanja-informal', 'korean-hanja-formal', 'simp-chinese-informal',
-        'simp-chinese-formal', 'trad-chinese-informal', 'trad-chinese-formal',
-        'cjk-ideographic', 'ethiopic-numeric'/*, 'circled-lower-latin',
-        'symbols(\'\')', 'symbols(repeating \'○\' \'●\')',
-        'toggle(disc, square, circle)'*/
-      ],
-      'list-style': [
-        '\'★\'', 'cjk-decimal', 'hebrew', 'hiragana', 'hiragana-iroha',
-        'katakana', 'katakana-iroha', 'disclosure-open', 'disclosure-closed',
-        'japanese-informal', 'japanese-formal', 'korean-hangul-formal',
-        'korean-hanja-informal', 'korean-hanja-formal', 'simp-chinese-informal',
-        'simp-chinese-formal', 'trad-chinese-informal', 'trad-chinese-formal',
-        'cjk-ideographic', 'ethiopic-numeric'
-      ].or(['linear-gradient(white, black)']).concat(
+      'list-style-type': ['\'★\''].concat(counterStyle),
+      'list-style': ['\'★\''].concat(counterStyle).or([
+        'linear-gradient(white, black)'
+      ]).concat(
         [
           'disc', 'circle', 'square', 'decimal',
           'decimal-leading-zero', 'lower-roman', 'upper-roman', 'lower-greek',
           'lower-latin', 'upper-latin', 'armenian', 'georgian', 'lower-alpha',
           'upper-alpha', 'none'
         ].amp(['linear-gradient(white, black)']),
-        [
-          '\'★\'', 'cjk-decimal', 'hebrew', 'hiragana', 'hiragana-iroha',
-          'katakana', 'katakana-iroha', 'disclosure-open', 'disclosure-closed',
-          'japanese-informal', 'japanese-formal', 'korean-hangul-formal',
-          'korean-hanja-informal', 'korean-hanja-formal',
-          'simp-chinese-informal', 'simp-chinese-formal',
-          'trad-chinese-informal', 'trad-chinese-formal',
-          'cjk-ideographic', 'ethiopic-numeric'
-        ].amp(['inside', 'outside', 'none', 'url(foo.png)']),
+        ['\'★\''].concat(counterStyle).amp(['inside', 'outside', 'none', 'url(foo.png)']),
         ['linear-gradient(white, black)'].amp(['inside', 'outside']),
         [
           'cjk-ideographic radial-gradient(at center, white, black) outside',
@@ -1388,22 +1361,7 @@ window.Specs = {
     },
     '@rules': {
       '@footnote': ['@footnote'],
-      '@page': [
-        'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
-        '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
-        'n-1', '-n-1', '+n-1', '1n-1', '-1n-1',
-        '+1n-1', '0n-1', '-0n-1', '+0n-1',
-        '10n-1', '-10n-1', '+10n-1', '01n-1', '-01n-1',
-        '+01n-1', '00n-1', '-00n-1', '+00n-1',
-        'n+1', '-n+1', '+n+1', '1n+1', '-1n+1',
-        '+1n+1', '0n+1', '-0n+1', '+0n+1',
-        '10n+1', '-10n+1', '+10n+1', '01n+1', '-01n+1',
-        '+01n+1', '00n+1', '-00n+1', '+00n+1',
-        'n+0', 'n+00', '3n +1', '3n- 1', '3n + 1',
-        '0', '1', '10', '01', '00', '-0', '-1', '-10',
-        '-01', '-00', '+0', '+1', '+10', '+01', '+00',
-        'odd', 'even'
-      ].map(function atPageNth(nth) {
+      '@page': anb.map(function atPageNth(nth) {
         return '@page :nth(' + nth + ')';
       }).concat([
         '@page :nth(5 of A)', '@page :nth(1n+1 of B)', '@page :nth(odd of C)'
@@ -2112,17 +2070,16 @@ window.Specs = {
           return 'translateY(' + translationValue + ')';
         }),
         ['scale(1)', 'scale(1, 2)', 'scaleX(1)', 'scaleY(1)'],
-        ['90deg', '100grad', '1rad', '1turn'].map(function rotate(angle) {
+        angle.map(function rotate(angle) {
           return 'rotate(' + angle + ')';
-        }), [
-         '90deg', '100grad', '1rad', '1turn'
-        ].times(1, 2, ', ').map(function skew(arg) {
+        }),
+        angle.times(1, 2, ', ').map(function skew(arg) {
           return 'skew(' + arg + ')';
         }),
-        ['90deg', '100grad', '1rad', '1turn'].map(function skewX(angle) {
+        angle.map(function skewX(angle) {
           return 'skewX(' + angle + ')';
         }),
-        ['90deg', '100grad', '1rad', '1turn'].map(function skewY(angle) {
+        angle.map(function skewY(angle) {
           return 'skewY(' + angle + ')';
         }),
         ['matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)'],
@@ -2132,16 +2089,16 @@ window.Specs = {
           return 'translate3d(' + arg + ', 10px)';
         }),
         ['translateZ(10px)', 'scale3d(1, 2, 3)', 'scaleZ(1)'],
-        ['90deg', '100grad', '1rad', '1turn'].map(function rotate3d(angle) {
+        angle.map(function rotate3d(angle) {
           return 'rotate3d(1, 2, 3, ' + angle + ')';
         }),
-        ['90deg', '100grad', '1rad', '1turn'].map(function rotateX(angle) {
+        angle.map(function rotateX(angle) {
           return 'rotateX(' + angle + ')';
         }),
-        ['90deg', '100grad', '1rad', '1turn'].map(function rotateY(angle) {
+        angle.map(function rotateY(angle) {
           return 'rotateY(' + angle + ')';
         }),
-        ['90deg', '100grad', '1rad', '1turn'].map(function rotateZ(angle) {
+        angle.map(function rotateZ(angle) {
           return 'rotateZ(' + angle + ')';
         }),
         [
@@ -2209,61 +2166,14 @@ window.Specs = {
     'title': 'Shapes Level 1',
     'properties': {
       'shape-outside': ['none'].concat(
-        ['10px', '10%'].times(1, 4).map(function inset(arg) {
-          return 'inset(' + arg + ')';
-        }),
+        basicShape, shapeBox, image,
         [
-          'inset(10px 10px 10px 10px round ' +
-            '10px 10px 10px 10px / 10px 10px 10px 10px)'
-        ],
-        ['10px', '10%', 'closest-side', 'farthest-side'].concat(
-          ['at'].and(
-            ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
-              ['left', 'center', 'right', '10%', '10px'].and([
-                'top', 'center', 'bottom', '10%', '10px'
-              ]),
-              ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
-                ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
-              )
-            ).uniq()
-          ),
-          ['10px', '10%', 'closest-side', 'farthest-side'].and(
-            ['at'].and(['left', 'bottom 10px right 10px'])
-          )
-        ).map(function circle(arg) {
-          return 'circle(' + arg + ')';
-        }),
-        ['10px', '10%', 'closest-side', 'farthest-side'].times(2).concat(
-          ['at'].and(
-            ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
-              ['left', 'center', 'right', '10%', '10px'].and([
-                'top', 'center', 'bottom', '10%', '10px'
-              ]),
-              ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
-                ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
-              )
-            ).uniq()
-          ),
-          ['10px', '10%', 'closest-side', 'farthest-side'].times(2).and(
-            ['at'].and(['left', 'bottom 10px right 10px'])
-          )
-        ).map(function ellipse(arg) {
-          return 'ellipse(' + arg + ')';
-        }),
-        ['nonzero', 'evenodd'].qmark(
-          ['10px', '10%'].times(2).times(1, 2, ', '), ', ', {former: true}
-        ).map(function polygon(arg) {
-          return 'polygon(' + arg + ')';
-        }),
-        [
-          'border-box', 'padding-box', 'content-box', 'margin-box',
-          'url(foo.png)', 'linear-gradient(white, black)',
           'inset(10px) border-box', 'border-box inset(10px)',
           'content-box ellipse(10% farthest-side at bottom 10px right 10px)',
           'polygon(evenodd, 10% 10%, 10% 10%) margin-box'
         ]
       ),
-      'shape-image-threshold': ['0.0', '0.5', '1.0'],
+      'shape-image-threshold': alphavalue,
       'shape-margin': ['0', '1px', '10%']
     }
   },
@@ -2742,7 +2652,7 @@ window.Specs = {
         ['10px', '10%'].times(4, 4, ', ').map(function ellipse(arg) {
           return 'ellipse(' + arg + ')';
         }),
-        ['nonzero', 'evenodd'].qmark(
+        fillRule.qmark(
           ['10px', '10%'].times(2).times(1, 2, ', '), ', ', {former: true}
         ).map(function polygon(arg) {
           return 'polygon(' + arg + ')';
@@ -2840,31 +2750,13 @@ window.Specs = {
       'radial-gradient()': [
         /*'at'*/'10px', 'at left', '10px at left',
         'ellipse 10% 20% at top 30% left 40%'
-      ]/*.and(
-        ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
-          ['left', 'center', 'right', '10%', '10px'].and([
-            'top', 'center', 'bottom', '10%', '10px'
-          ]),
-          ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
-            ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
-          )
-        ).uniq()
-      ).concat(
+      ]/*.and(position).concat(
         ['circle'].or(['10px']).concat(
           ['ellipse'].or(['10px', '10%'].times(2)),
           ['circle', 'ellipse'].or([
             'closest-corner', 'closest-side', 'farthest-corner', 'farthest-side'
           ])
-        ).uniq().and(['at'].and(
-          ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
-            ['left', 'center', 'right', '10%', '10px'].and([
-              'top', 'center', 'bottom', '10%', '10px'
-            ]),
-            ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
-              ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
-            )
-          ).uniq()
-        ))
+        ).uniq().and(['at'].and(position))
       )*/.qmark(
         ['10px', '10%'].and(['white']).concat(
           ['white'].amp(['10px', '10%'].times(2))
@@ -2943,16 +2835,7 @@ window.Specs = {
        *                             [[<color> || [<angle>|<percentage>]{1,2}]#, ]?
        *                             <color> && [<angle>|<percentage>]{1,2}?
        */
-       /*'conic-gradient()': ['at'].and(
-        ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
-          ['left', 'center', 'right', '10%', '10px'].and([
-            'top', 'center', 'bottom', '10%', '10px'
-          ]),
-          ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
-            ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
-          )
-        ).uniq()
-      ).qmark(
+       /*'conic-gradient()': ['at'].and(position).qmark(
         ['white'].qmark(['45deg', '1turn', '100grad', '2rad', '10%'].times(1, 2), ' ', {amp: true}).qmark(
           ['white'].or(['45deg', '1turn', '100grad', '2rad', '10%'].times(1, 2)).times(1, 2, ', '), ', '
         ).and(['white'].qmark(['45deg', '1turn', '100grad', '2rad', '10%'].times(1, 2), ' ', {amp: true}), ', '),
@@ -2974,16 +2857,7 @@ window.Specs = {
         ].times(1, 2), ' ', {amp: true})*/,
         ', '
       ).concat(
-        ['at'].and(
-          ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
-            ['left', 'center', 'right', '10%', '10px'].and([
-              'top', 'center', 'bottom', '10%', '10px'
-            ]),
-            ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
-              ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
-            )
-          ).uniq()
-        ).and(['white, black'], ', '), [
+        ['at'].and(position).and(['white, black'], ', '), [
           'red, blue, yellow, green',
           'red 45deg 0%, blue 1turn 30%, yellow 100grad 60%, green 2rad 90%',
           'at left, red, blue, yellow',
@@ -3039,31 +2913,13 @@ window.Specs = {
       'repeating-radial-gradient()': [
         /*'at'*/'10px', 'at left', '10px at left',
         'ellipse 10% 20% at top 30% left 40%'
-      ]/*.and(
-        ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
-          ['left', 'center', 'right', '10%', '10px'].and([
-            'top', 'center', 'bottom', '10%', '10px'
-          ]),
-          ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
-            ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
-          )
-        ).uniq()
-      ).concat(
+      ]/*.and(position).concat(
         ['circle'].or(['10px']).concat(
           ['ellipse'].or(['10px', '10%'].times(2)),
           ['circle', 'ellipse'].or([
             'closest-corner', 'closest-side', 'farthest-corner', 'farthest-side'
           ])
-        ).uniq().and(['at'].and(
-          ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
-            ['left', 'center', 'right', '10%', '10px'].and([
-              'top', 'center', 'bottom', '10%', '10px'
-            ]),
-            ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
-              ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
-            )
-          ).uniq()
-        ))
+        ).uniq().and(['at'].and(position))
       )*/.qmark(
         ['10px', '10%'].and(['white']).concat(
           ['white'].amp(['10px', '10%'].times(2))
@@ -3137,16 +2993,7 @@ window.Specs = {
       ]).map(function repeatingRadialGradient(arg) {
         return 'repeating-radial-gradient(' + arg + ')';
       }),
-       /*'repeating-conic-gradient()': ['at'].and(
-        ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
-          ['left', 'center', 'right', '10%', '10px'].and([
-            'top', 'center', 'bottom', '10%', '10px'
-          ]),
-          ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
-            ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
-          )
-        ).uniq()
-      ).qmark(
+       /*'repeating-conic-gradient()': ['at'].and(position).qmark(
         ['white'].qmark(['45deg', '1turn', '100grad', '2rad', '10%'].times(1, 2), ' ', {amp: true}).qmark(
           ['white'].or(['45deg', '1turn', '100grad', '2rad', '10%'].times(1, 2)).times(1, 2, ', '), ', '
         ).and(['white'].qmark(['45deg', '1turn', '100grad', '2rad', '10%'].times(1, 2), ' ', {amp: true}), ', '),
@@ -3168,16 +3015,7 @@ window.Specs = {
         ].times(1, 2), ' ', {amp: true})*/,
         ', '
       ).concat(
-        ['at'].and(
-          ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
-            ['left', 'center', 'right', '10%', '10px'].and([
-              'top', 'center', 'bottom', '10%', '10px'
-            ]),
-            ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
-              ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
-            )
-          ).uniq()
-        ).and(['white, black'], ', '), [
+        ['at'].and(position).and(['white, black'], ', '), [
           'red, blue, yellow, green',
           'red 45deg 0%, blue 1turn 30%, yellow 100grad 60%, green 2rad 90%',
           'at left, red, blue, yellow',
@@ -3195,9 +3033,9 @@ window.Specs = {
       })
     },
     'properties': {
-      'image-orientation': ['from-image'].concat([
-        '45deg', '1turn', '100grad', '2rad'
-      ].qmark(['flip'], ' ', {former: true})),
+      'image-orientation': [
+        'from-image'
+      ].concat(angle.qmark(['flip'], ' ', {former: true})),
       'image-rendering': ['auto', 'crisp-edges', 'pixelated']
     }
   },
@@ -3260,76 +3098,16 @@ window.Specs = {
         ':matches(div + div)', ':matches(div ~ div)',
         ':matches(div#text.text[data-text^=\'base\']:only-child > div, main)'
       ],
-      ':nth-match(an+b of <selector>)': [
-        'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
-        '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
-        'n-1', '-n-1', '+n-1', '1n-1', '-1n-1',
-        '+1n-1', '0n-1', '-0n-1', '+0n-1',
-        '10n-1', '-10n-1', '+10n-1', '01n-1', '-01n-1',
-        '+01n-1', '00n-1', '-00n-1', '+00n-1',
-        'n+1', '-n+1', '+n+1', '1n+1', '-1n+1',
-        '+1n+1', '0n+1', '-0n+1', '+0n+1',
-        '10n+1', '-10n+1', '+10n+1', '01n+1', '-01n+1',
-        '+01n+1', '00n+1', '-00n+1', '+00n+1',
-        'n+0', 'n+00', '3n +1', '3n- 1', '3n + 1',
-        '0', '1', '10', '01', '00', '-0', '-1', '-10',
-        '-01', '-00', '+0', '+1', '+10', '+01', '+00',
-        'odd', 'even'
-      ].map(function nthMatch(nth) {
+      ':nth-match(an+b of <selector>)': anb.map(function nthMatch(nth) {
         return ':nth-match(' + nth + ' of .foo)';
       }).concat([':nth-match(2n+1 of .foo, #bar)']),
-      ':nth-last-match(an+b of <selector>)': [
-        'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
-        '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
-        'n-1', '-n-1', '+n-1', '1n-1', '-1n-1',
-        '+1n-1', '0n-1', '-0n-1', '+0n-1',
-        '10n-1', '-10n-1', '+10n-1', '01n-1', '-01n-1',
-        '+01n-1', '00n-1', '-00n-1', '+00n-1',
-        'n+1', '-n+1', '+n+1', '1n+1', '-1n+1',
-        '+1n+1', '0n+1', '-0n+1', '+0n+1',
-        '10n+1', '-10n+1', '+10n+1', '01n+1', '-01n+1',
-        '+01n+1', '00n+1', '-00n+1', '+00n+1',
-        'n+0', 'n+00', '3n +1', '3n- 1', '3n + 1',
-        '0', '1', '10', '01', '00', '-0', '-1', '-10',
-        '-01', '-00', '+0', '+1', '+10', '+01', '+00',
-        'odd', 'even'
-      ].map(function nthLastMatch(nth) {
+      ':nth-last-match(an+b of <selector>)': anb.map(function nthLastMatch(nth) {
         return ':nth-last-match(' + nth + ' of #example)';
       }).concat([':nth-last-match(even of #example > div, .foo)']),
-      ':nth-column()': [
-        'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
-        '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
-        'n-1', '-n-1', '+n-1', '1n-1', '-1n-1',
-        '+1n-1', '0n-1', '-0n-1', '+0n-1',
-        '10n-1', '-10n-1', '+10n-1', '01n-1', '-01n-1',
-        '+01n-1', '00n-1', '-00n-1', '+00n-1',
-        'n+1', '-n+1', '+n+1', '1n+1', '-1n+1',
-        '+1n+1', '0n+1', '-0n+1', '+0n+1',
-        '10n+1', '-10n+1', '+10n+1', '01n+1', '-01n+1',
-        '+01n+1', '00n+1', '-00n+1', '+00n+1',
-        'n+0', 'n+00', '3n +1', '3n- 1', '3n + 1',
-        '0', '1', '10', '01', '00', '-0', '-1', '-10',
-        '-01', '-00', '+0', '+1', '+10', '+01', '+00',
-        'odd', 'even'
-      ].map(function nthColumn(nth) {
+      ':nth-column()': anb.map(function nthColumn(nth) {
         return ':nth-column(' + nth + ')';
       }),
-      ':nth-last-column()': [
-        'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
-        '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
-        'n-1', '-n-1', '+n-1', '1n-1', '-1n-1',
-        '+1n-1', '0n-1', '-0n-1', '+0n-1',
-        '10n-1', '-10n-1', '+10n-1', '01n-1', '-01n-1',
-        '+01n-1', '00n-1', '-00n-1', '+00n-1',
-        'n+1', '-n+1', '+n+1', '1n+1', '-1n+1',
-        '+1n+1', '0n+1', '-0n+1', '+0n+1',
-        '10n+1', '-10n+1', '+10n+1', '01n+1', '-01n+1',
-        '+01n+1', '00n+1', '-00n+1', '+00n+1',
-        'n+0', 'n+00', '3n +1', '3n- 1', '3n + 1',
-        '0', '1', '10', '01', '00', '-0', '-1', '-10',
-        '-01', '-00', '+0', '+1', '+10', '+01', '+00',
-        'odd', 'even'
-      ].map(function nthLastColumn(nth) {
+      ':nth-last-column()': anb.map(function nthLastColumn(nth) {
         return ':nth-last-column(' + nth + ')';
       })
     }
@@ -3394,7 +3172,7 @@ window.Specs = {
         'rgba(1.1, 0, 0, 1)', 'rgba(1.1, 1.2, 0, 1)', 'rgba(1.1, 1.2, 1.3, 1)',
         'rgba(0, 0, 0, 10%)'
       ],
-      'hsl()': ['90deg', '100grad', '1rad', '1turn'].concat(
+      'hsl()': angle.concat(
         ['red', 'orange', 'yellow', 'green', 'blue', 'purple'].times(1, 2),
         [
           'reddish', 'orangish', 'yellowish', 'greenish', 'bluish', 'purplish',
@@ -3404,7 +3182,7 @@ window.Specs = {
       ).map(function hsl(arg) {
         return 'hsl(' + arg + ', 0%, 0%)';
       }),
-      'hsla()': ['90deg', '100grad', '1rad', '1turn'].concat(
+      'hsla()': angle.concat(
         ['red', 'orange', 'yellow', 'green', 'blue', 'purple'].times(1, 2),
         [
           'reddish', 'orangish', 'yellowish', 'greenish', 'bluish', 'purplish',
@@ -3414,9 +3192,8 @@ window.Specs = {
       ).map(function hsla(arg) {
         return 'hsla(' + arg + ', 0%, 0%, 0.99)';
       }),
-      'hwb()': [
-        '0', '1', '-1', '1.1', '90deg', '100grad', '1rad', '1turn'
-      ].concat(
+      'hwb()': ['0', '1', '-1', '1.1'].concat(
+        angle,
         ['red', 'orange', 'yellow', 'green', 'blue', 'purple'].times(1, 2),
         [
           'reddish', 'orangish', 'yellowish', 'greenish', 'bluish', 'purplish',
@@ -3437,9 +3214,8 @@ window.Specs = {
         return 'device-cmyk(' + arg + ')';
       }),
       'color()': ['white'].concat(
-        [
-          '0', '1', '-1', '1.1', '90deg', '100grad', '1rad', '1turn'
-        ].concat(
+        ['0', '1', '-1', '1.1'].concat(
+          angle,
           ['red', 'orange', 'yellow', 'green', 'blue', 'purple'].times(1, 2),
           [
             'reddish', 'orangish', 'yellowish', 'greenish',
@@ -3479,12 +3255,12 @@ window.Specs = {
           ).concat(['* 10%']).map(function rgb(arg) {
             return 'rgb(' + arg + ')';
           }),
-          ['+', '-', '*'].qmark(['90deg', '100grad', '1rad', '1turn'], ' ', {
+          ['+', '-', '*'].qmark(angle, ' ', {
             former: true
           }).map(function hue(arg) {
             return 'hue(' + arg + ')';
           }),
-          ['+', '-', '*'].qmark(['90deg', '100grad', '1rad', '1turn'], ' ', {
+          ['+', '-', '*'].qmark(angle, ' ', {
             former: true
           }).map(function h(arg) {
             return 'h(' + arg + ')';
@@ -3671,18 +3447,9 @@ window.Specs = {
     'tr': 'http://www.w3.org/TR/compositing/',
     'dev': 'http://dev.w3.org/fxtf/compositing-1/',
     'properties': {
-      'mix-blend-mode': [
-        'normal', 'multiply', 'screen', 'overlay', 'darken', 'lighten',
-        'color-dodge', 'color-burn', 'hard-light', 'soft-light', 'difference',
-        'exclusion', 'hue', 'saturation', 'color', 'luminosity'
-      ],
+      'mix-blend-mode': blendMode,
       'isolation': ['auto', 'isolate'],
-      'background-blend-mode': [
-        'normal', 'multiply', 'screen', 'overlay', 'darken', 'lighten',
-        'color-dodge', 'color-burn', 'hard-light', 'soft-light', 'difference',
-        'exclusion', 'hue', 'saturation', 'color', 'luminosity',
-        'normal, multiply'
-      ]
+      'background-blend-mode': blendMode.concat(['normal, multiply'])
     }
   },
 
@@ -3706,9 +3473,7 @@ window.Specs = {
           'opacity(1)', 'opacity(25%)', 'saturate(1)', 'saturate(50%)',
           'sepia(0)', 'sepia(50)', 'sepia(10%)'
         ],
-        [
-          'url(foo.png)', 'linear-gradient(white, black)', '"foo.png"'
-        ].map(function filter(shadow) {
+        image.concat(['"foo.png"']).map(function filter(shadow) {
           return 'filter(' + shadow + ', blur(0px))';
         }),
         ['url(commonmasks.svg#filter)', 'url(foo.png)'],
@@ -3734,117 +3499,34 @@ window.Specs = {
       'clip-path': [
         'none', 'url("#clip1")', 'url(commonmasks.xml#mask)'
       ].concat(
-        ['10px', '10%'].times(1, 4).map(function inset(arg) {
-          return 'inset(' + arg + ')';
-        }),
+        basicShape, geometryBox,
         [
-          'inset(10px 10px 10px 10px round ' +
-            '10px 10px 10px 10px / 10px 10px 10px 10px)'
-        ],
-        ['10px', '10%', 'closest-side', 'farthest-side'].concat(
-          ['at'].and(
-            ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
-              ['left', 'center', 'right', '10%', '10px'].and([
-                'top', 'center', 'bottom', '10%', '10px'
-              ]),
-              ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
-                ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
-              )
-            ).uniq()
-          ),
-          ['10px', '10%', 'closest-side', 'farthest-side'].and(
-            ['at'].and(['left', 'bottom 10px right 10px'])
-          )
-        ).map(function circle(arg) {
-          return 'circle(' + arg + ')';
-        }),
-        ['10px', '10%', 'closest-side', 'farthest-side'].times(2).concat(
-          ['at'].and(
-            ['left', 'center', 'right', 'top', 'bottom', '10%', '10px'].concat(
-              ['left', 'center', 'right', '10%', '10px'].and([
-                'top', 'center', 'bottom', '10%', '10px'
-              ]),
-              ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
-                ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
-              )
-            ).uniq()
-          ),
-          ['10px', '10%', 'closest-side', 'farthest-side'].times(2).and(
-            ['at'].and(['left', 'bottom 10px right 10px'])
-          )
-        ).map(function ellipse(arg) {
-          return 'ellipse(' + arg + ')';
-        }),
-        ['nonzero', 'evenodd'].qmark(
-          ['10px', '10%'].times(2).times(1, 2, ', '), ', ', {former: true}
-        ).map(function polygon(arg) {
-          return 'polygon(' + arg + ')';
-        }),
-        [
-          'border-box', 'padding-box', 'content-box', 'margin-box',
-          'fill', 'stroke', 'view-box',
           'inset(10px) border-box', 'border-box inset(10px)',
           'content-box ellipse(10% farthest-side at bottom 10px right 10px)',
           'polygon(evenodd, 10% 10%, 10% 10%) margin-box',
           'inset(10px) fill', 'inset(10px) stroke', 'inset(10px) view-box'
         ]
       ),
-      'clip-rule': ['nonzero', 'evenodd'],
+      'clip-rule': fillRule,
       'mask-image': [
         'none', 'url(tl.png)', 'linear-gradient(black 0%, transparent 100%)',
         'url(#mask)', 'url(resources.svg#mask2)'
       ],
       'mask-type': ['auto', 'alpha', 'luminance'],
-      'mask-repeat': ['repeat-x', 'repeat-y'].concat(
-        ['repeat', 'space', 'round', 'no-repeat'].times(1, 2)
-      ),
-      'mask-position': [
-        'left', 'center', 'right', 'top', 'bottom', '10%', '10px'
-      ].concat(
-        ['left', 'center', 'right', '10%', '10px'].and([
-          'top', 'center', 'bottom', '10%', '10px'
-        ]),
-        ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
-          ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
-        )
-      ).uniq(),
-      'mask-clip': [
-        'border-box', 'padding-box', 'content-box', 'margin-box',
-        'fill', 'stroke', 'view-box', 'no-clip'
-      ],
-      'mask-origin': [
-        'border-box', 'padding-box', 'content-box', 'margin-box',
-        'fill', 'stroke', 'view-box'
-      ],
-      'mask-size': ['auto', '10px', '10%'].times(1, 2).concat([
-        'cover', 'contain'
-      ]),
+      'mask-repeat': repeatStyle,
+      'mask-position': position,
+      'mask-clip': geometryBox.concat('no-clip'),
+      'mask-origin': geometryBox,
+      'mask-size': bgSize,
       'mask': [
         'none', 'url(tl.png)', 'linear-gradient(black 0%, transparent 100%)',
         'url(#mask)', 'url(commonmasks.xml#mask)'
       ].qmark(['auto', 'alpha', 'luminance']).concat(
-        [
-          'left', 'center', 'right', 'top', 'bottom', '10%', '10px'
-        ].concat(
-          ['left', 'center', 'right', '10%', '10px'].and([
-            'top', 'center', 'bottom', '10%', '10px'
-          ]),
-          ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
-            ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
-          )
-        ).uniq().qmark([
+        position.qmark([
           'auto', '10px', '10%', 'cover', 'contain', '10px 10px'
         ], ' / '),
-        ['repeat-x', 'repeat-y'].concat(
-          ['repeat', 'space', 'round', 'no-repeat'].times(1, 2)
-        ),
-        [
-          'border-box', 'padding-box', 'content-box', 'margin-box',
-          'fill', 'stroke', 'view-box'
-        ].or([
-          'border-box', 'padding-box', 'content-box', 'margin-box',
-          'fill', 'stroke', 'view-box', 'no-clip'
-        ]).uniq(),
+        repeatStyle,
+        geometryBox.or(geometryBox.concat('no-clip')).uniq(),
         [
           'none center', 'padding-box space', 'no-repeat none',
           'none left repeat-x border-box border-box',
@@ -3855,16 +3537,13 @@ window.Specs = {
             ' / 10px 10% repeat space fill no-clip'
         ]
       ),
-      'mask-box-source': [
-        'none', 'url(tl.png)', 'linear-gradient(white, black)'
-      ],
+      'mask-box-source': ['none'].concat(image),
       'mask-box-slice': ['1', '10%'].times(1, 4).qmark(['fill']),
       'mask-box-width': ['auto', '10px', '10%', '1'].times(1, 4),
       'mask-box-outset': ['10px', '1'].times(1, 4),
       'mask-box-repeat': ['stretch', 'repeat', 'round', 'space'].times(1, 2),
-      'mask-box': [
-        'none', 'url(tl.png)', 'linear-gradient(white, black)'
-      ].concat(
+      'mask-box': ['none'].concat(
+        image,
         ['1', '10%'].times(1, 4).qmark(['fill']).qmark([
           '1', '1 / 1', '/ 1'
         ], ' / '),
@@ -3921,31 +3600,16 @@ window.Specs = {
       'alignment-baseline': ['auto'],
       'text-anchor': ['start', 'middle', 'end'],
       'font-stretch': ['wider', 'narrower'],
-      'fill': [
-        'none', 'url(tl.png)', 'linear-gradient(white, black)',
-        'url(#Triangle)', 'icc-color(ident, 1)',
-        'context-fill', 'context-stroke'
-      ].concat(
+      'fill': ['none'].concat(
+        image,
         [
-          'left', 'center', 'right', 'top', 'bottom', '10%', '10px'
-        ].concat(
-          ['left', 'center', 'right', '10%', '10px'].and([
-            'top', 'center', 'bottom', '10%', '10px'
-          ]),
-          ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
-            ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
-          )
-        ).uniq(),
-        ['left'].and(['auto', '10px', '10%'].times(1, 2).concat([
-          'cover', 'contain'
-        ]), ' / '),
-        ['repeat-x', 'repeat-y'].concat(
-          ['repeat', 'space', 'round', 'no-repeat'].times(1, 2)
-        ),
-        [
-          'border-box', 'padding-box', 'content-box', 'margin-box',
-          'fill', 'stroke', 'view-box'
-        ].times(1, 2),
+          'url(#Triangle)', 'icc-color(ident, 1)',
+          'context-fill', 'context-stroke'
+        ],
+        position,
+        ['left'].and(bgSize, ' / '),
+        repeatStyle,
+        geometryBox.times(1, 2),
         ['white'],
         [
           'none center', 'padding-box space', 'no-repeat none',
@@ -3960,33 +3624,18 @@ window.Specs = {
           'none, none', 'none, none, none'
         ]
       ),
-      'fill-rule': ['nonzero', 'evenodd'],
+      'fill-rule': fillRule,
       'fill-opacity': ['1', '0.5', '0'],
-      'stroke': [
-        'none', 'url(tl.png)', 'linear-gradient(white, black)',
-        'url(#Triangle)', 'icc-color(ident, 1)',
-        'context-fill', 'context-stroke'
-      ].concat(
+      'stroke': ['none'].concat(
+        image,
         [
-          'left', 'center', 'right', 'top', 'bottom', '10%', '10px'
-        ].concat(
-          ['left', 'center', 'right', '10%', '10px'].and([
-            'top', 'center', 'bottom', '10%', '10px'
-          ]),
-          ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
-            ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
-          )
-        ).uniq(),
-        ['left'].and(['auto', '10px', '10%'].times(1, 2).concat([
-          'cover', 'contain'
-        ]), ' / '),
-        ['repeat-x', 'repeat-y'].concat(
-          ['repeat', 'space', 'round', 'no-repeat'].times(1, 2)
-        ),
-        [
-          'border-box', 'padding-box', 'content-box', 'margin-box',
-          'fill', 'stroke', 'view-box'
-        ].times(1, 2),
+          'url(#Triangle)', 'icc-color(ident, 1)',
+          'context-fill', 'context-stroke'
+        ],
+        position,
+        ['left'].and(bgSize, ' / '),
+        repeatStyle,
+        geometryBox.times(1, 2),
         ['white'],
         [
           'none center', 'padding-box space', 'no-repeat none',
@@ -4125,16 +3774,7 @@ window.Specs = {
     'dev': 'http://www.whatwg.org/specs/web-apps/current-work/multipage/',
     'properties': {
       // http://www.whatwg.org/specs/web-apps/current-work/multipage/commands.html#anchor-points
-      'anchor-point': ['none'].concat([
-        'left', 'center', 'right', 'top', 'bottom', '10%', '10px'
-      ].concat(
-        ['left', 'center', 'right', '10%', '10px'].and([
-          'top', 'center', 'bottom', '10%', '10px'
-        ]),
-        ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
-          ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
-        )
-      ).uniq()),
+      'anchor-point': ['none'].concat(position),
     },
     '@rules': {
       // http://www.whatwg.org/specs/web-apps/current-work/multipage/semantics.html#the-@global-rule
@@ -4296,3 +3936,6 @@ window.Specs = {
     }
   }
 };
+
+
+}(window));
