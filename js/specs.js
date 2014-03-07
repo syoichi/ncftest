@@ -2596,12 +2596,22 @@ win.Specs = {
     'properties': {
       'scroll-snap-type': ['none', 'mandatory', 'proximity'],
       'scroll-snap-points-x': [
-        'snapInterval(0px, 100%)',
-        'snapList(0px, 100%)', 'snapList(0px, 100%, 10px, 100%)'
+        'repeat(100%)', 'repeat(10px)', '10px', 'elements',
+        '10px, 10px', '10px, repeat(10px)', '10px, 10px, 10px',
+        '10px, 10px, repeat(10px)'
       ],
       'scroll-snap-points-y': [
-        'snapInterval(0px, 100%)',
-        'snapList(0px, 100%)', 'snapList(0px, 100%, 10px, 100%)'
+        'repeat(100%)', 'repeat(10px)', '10px', 'elements',
+        '10px, 10px', '10px, repeat(10px)', '10px, 10px, 10px',
+        '10px, 10px, repeat(10px)'
+      ],
+      'scroll-snap-destination': [
+        '0px', '0px 0px', '10px 10px',
+        '50% 50%', '50% 100px'
+      ],
+      'scroll-snap-coordinate': [
+        'none', '0px 0px', '10px 10px', '10px 10px, 10px 10px',
+        '50% 50%', '50% 0'
       ]
     }
   },
