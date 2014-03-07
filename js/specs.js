@@ -3583,6 +3583,18 @@ win.Specs = {
     }
   },
 
+  'web-animations': {
+    'title': 'Web Animations 1.0',
+    'dev': 'http://dev.w3.org/fxtf/web-animations/',
+    'properties': {
+      // http://dev.w3.org/fxtf/web-animations/#dfn-step-timing-function-1
+      'transition-timing-function': ['step-middle', 'steps(1, middle)'],
+      'transition': ['none step-middle', 'steps(1, middle)'],
+      'animation-timing-function': ['step-middle', 'steps(1, middle)'],
+      'animation': ['ident step-middle', 'steps(1, middle)']
+    }
+  },
+
   // SVG
   'svg2': {
     'title': 'Scalable Vector Graphics 2',
