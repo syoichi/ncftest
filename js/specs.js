@@ -3932,7 +3932,9 @@ win.Specs = {
     'title': 'Pointer Events',
     'dev': 'https://dvcs.w3.org/hg/pointerevents/raw-file/tip/pointerEvents.html',
     'properties': {
-      'touch-action': ['auto', 'none'].concat(['pan-x'].or(['pan-y']))
+      'touch-action': ['auto', 'none'].concat(
+        ['pan-x'].or(['pan-y'], ['manipulation'])
+      )
     }
   }
 };
