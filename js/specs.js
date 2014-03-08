@@ -1474,20 +1474,20 @@ win.Specs = {
   'css-display-3': {
     'title': 'Display',
     'properties': {
-      'display-inside': ['auto', 'block', 'table', 'flex', 'grid'],
+      'display-inside': ['auto', 'block', 'table', 'flex', 'grid', 'ruby'],
       'display-outside': [
-        'inline-level', 'block-level', 'none', 'table-row-group', 'table-header-group',
-        'table-footer-group', 'table-row', 'table-cell', 'table-column-group',
-        'table-column', 'table-caption'
+        'inline-level', 'block-level', 'none', 'table-row-group',
+        'table-header-group', 'table-footer-group', 'table-row', 'table-cell',
+        'table-column-group', 'table-column', 'table-caption',
+        'ruby-base', 'ruby-text', 'ruby-base-container', 'ruby-text-container',
+        'run-in'
       ],
       'display-extras': ['none', 'list-item'],
       'display': [
-        'auto', 'block-level', 'inline-level', 'normal', 'contents',
-        'auto inline-level', 'none normal', 'none none',
-        'auto inline-level normal', 'none none none',
-        'auto inline-level normal none'
+        'auto', 'block-level', 'inline-level', 'auto inline-level', 'none none',
+        'auto inline-level none'
       ],
-      'box': ['normal', 'none', 'contents']
+      'display-box': ['normal', 'none', 'contents']
     }
   },
 
@@ -1716,7 +1716,7 @@ win.Specs = {
   'css-module': {
     'title': 'Template',
     'properties': {
-      'display-inside': ['text', 'inline-inside', 'block-inside', 'ruby', 'icon']
+      'display-inside': ['text', 'inline-inside', 'block-inside', 'icon']
     }
   },
 
