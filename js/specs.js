@@ -3155,14 +3155,48 @@ win.Specs = {
   'mediaqueries4': {
     'title': 'Media Queries Level 4',
     'Media queries': {
+      '((query))': [
+        '((width) and (height))', 'speech, ((width) and (height))',
+        '((width) and (height)), ((width) and (height))',
+        'all and ((width) and (height))', '(width) and ((width) and (height))',
+        '((width) and (height)) and (height)',
+        '((width) and (height)) and ((width) and (height))',
+        'only screen and ((width) and (height))',
+        'not embossed and ((width) and (height))',
+        'only screen and (width) and ((width) and (height))',
+        'not aural and ((width) and (height)) and (height)'
+      ],
+      'not (query)': [
+        'not (color-index)', 'not (width: 0)', 'not (width: 0), not (width: 0)',
+        'all and not (width: 0)', '(width) and not (width: 0)',
+        'not (width: 0) and (height)', 'not (width: 0) and not (height: 0)',
+        'only screen and not (width: 0)', 'not print and not (width: 0)',
+        'only screen and (width) and not (width: 0)',
+        'not tv and not (width: 0) and (height)'
+      ],
+      'general enclosed': [
+        'url()', 'url(example.css)', 'url(example.css color.css)',
+        'url(), url()', 'all and url()', '(width) and url()',
+        'url() and (height)', 'url() and url()', 'only screen and url()',
+        'not print and url()', 'only screen and (width) and url()',
+        'not tv and url() and (height)'
+      ],
+      'or': [
+        'all or (width)', '(width) or (height)', 'only screen or (width)',
+        'not print or (height)', 'only screen and (width) or (height)',
+        'not tv or (width) and (height)',
+        'all or (width) and (height), only print or (width), ' +
+          'not screen and (height)'
+      ],
       'range type': [
         '(width >= 1px)', '(height > 1px)', '(1px < height)', '(1px <= width)',
         '(height >= 1px)', '(width <= 10000000em)',
-        'not print and (width = 1px)',
+        '(aspect-ratio > 1/1000000)', 'not print and (width = 1px)',
         'not print and (color > 0)', 'not print and (color >= 8)',
         'not print and (color-index >= 1)', 'not print and (monochrome >= 2)',
         '(resolution >= 1dppx)',
-        '(1px < width < 100000px)', '(100000px >= height >= 1px)'
+        '(1px < width < 100000px)', '(100000px >= height >= 1px)',
+        '(1/1000000 <= aspect-ratio < 1000000/1)'
       ],
       'update-frequency': [
         '(update-frequency)',
