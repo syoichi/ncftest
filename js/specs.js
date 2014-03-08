@@ -1,7 +1,8 @@
 (function executeSpec(win) {
 var anb, alphavalue, image, repeatStyle, position, box, shapeBox, geometryBox,
     bgSize, counterStyle, angle, fillRule, basicShape, blendMode,
-    timingFunction;
+    timingFunction, width, flexDirection, flexWrap, flexPosition, alignItems,
+    justifyContent;
 
 anb = [
   'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
@@ -96,6 +97,12 @@ timingFunction = [
   'cubic-bezier(.5, .5, .5, .5)', 'cubic-bezier(.5, 1.5, .5, -2.5)',
   'cubic-bezier(0, -0.1, 1, 1.1)', 'cubic-bezier(0.5, -0.5, 0.5, -0.5)'
 ];
+width = ['auto', '10px', '10%'];
+flexDirection = ['row', 'row-reverse', 'column', 'column-reverse'];
+flexWrap = ['nowrap', 'wrap', 'wrap-reverse'];
+flexPosition = ['flex-start', 'flex-end', 'center'];
+justifyContent = flexPosition.concat(['space-between', 'space-around']);
+alignItems = flexPosition.concat(['stretch', 'baseline']);
 
 win.Specs = {
   // CSS Level 3
@@ -2059,18 +2066,20 @@ win.Specs = {
     'tr': 'http://www.w3.org/TR/css3-flexbox/',
     'properties': {
       'display': ['flex', 'inline-flex'],
-      'flex-direction': ['row', 'row-reverse', 'column', 'column-reverse'],
-      'flex-wrap': ['nowrap', 'wrap', 'wrap-reverse'],
-      'flex-flow': ['row', 'row-reverse', 'column', 'column-reverse'].or(['nowrap', 'wrap', 'wrap-reverse']),
+      // 'min-width': ['auto'],
+      // 'min-height': ['auto'],
+      'flex-direction': flexDirection,
+      'flex-wrap': flexWrap,
+      'flex-flow': flexDirection.or(flexWrap),
       'order': ['0', '1', '-1'],
-      'flex': ['none'].concat(['1', '1 1'].or(['auto', '10px', '10%'])),
+      'flex': ['none'].concat(['1', '1 1'].or(width)),
       'flex-grow': ['0', '5', '0.11'],
       'flex-shrink': ['1', '10', '0', '0.11'],
-      'flex-basis': ['auto', '1px', '1%'],
-      'justify-content': ['flex-start', 'flex-end', 'center', 'space-between', 'space-around'],
-      'align-items': ['stretch', 'flex-start', 'flex-end', 'center', 'baseline'],
-      'align-self': ['auto', 'flex-start', 'flex-end', 'center', 'baseline', 'stretch'],
-      'align-content': ['stretch', 'flex-start', 'flex-end', 'center', 'space-between', 'space-around']
+      'flex-basis': width,
+      'justify-content': justifyContent,
+      'align-items': alignItems,
+      'align-self': ['auto'].concat(alignItems),
+      'align-content': ['stretch'].concat(justifyContent)
     }
   },
 
