@@ -1622,13 +1622,13 @@ win.Specs = {
     'title': 'Shadow DOM Styling',
     'selectors': {
       'E /shadow/ F': ['x-foo /shadow/ span', 'x-foo /shadow/ div > span'],
-      'E /shadow-all/ F': ['x-foo /shadow-all/ span'],
       'E /shadow-deep/ F': ['x-foo /shadow-deep/ span'],
       'E /content/ F': ['* /content/ div'],
       ':top': [':top'],
       ':host': [':host', '.foo:host'],
       ':host()': [':host(.foo)', ':host(div:only-child)'],
-      ':ancestor()': [':ancestor(.foo)', ':ancestor(div:only-child)']
+      ':ancestor()': [':ancestor(.foo)', ':ancestor(div:only-child)'],
+      '::shadow': ['x-foo::shadow > span', 'x-foo::shadow > div > span']
     }
   },
 
