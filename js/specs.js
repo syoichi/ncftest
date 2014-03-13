@@ -1521,39 +1521,42 @@ win.Specs = {
   'css-content-3': {
     'title': 'Generated Content',
     'tr': 'http://www.w3.org/TR/css3-content/',
-    'properties': {/*
-      'move-to': ['normal', 'here', 'ident', 'top-floats'],
-      'crop': [
-        'auto', 'rect(0px, 115px, 85px, 30px)', 'rect(10%, 10%, 10%, 10%)',
-        'inset-rect(0px, 115px, 85px, 30px)', 'inset-rect(10%, 10%, 10%, 10%)'
-      ],*/
+    'properties': {
+      'string-set': ['title contents', 'chapter contents'],
       'page-policy': ['start', 'first', 'last'],
       'content': [
         'inhibit', 'pending(insert)', 'contents', 'footnote', 'endnote',
-        'section-note', 'box', 'check', 'circle', 'diamond', 'disc', 'hyphen',
-        'square', 'date()', 'time()', 'document-url'/*, '<target>'*/,
+        'section-note', 'list-item', 'box', 'check', 'circle', 'diamond',
+        'disc', 'hyphen', 'square', 'date()', 'time()', 'document-url',
+        /*'<target>',*/
         'url(foo.png), none', 'icon, none', 'icon, icon',
-        'url(foo.png), url(foo.png), none'
+        'url(foo.png), string(name)', 'url(foo.png), pending(footnote)',
+        'url(foo.png), url(foo.png)',
+        'attr(href, url), attr(alt)', 'attr(href, url), contents',
+        'url(foo.png), url(foo.png), none',
+        'url(header/mng), url(header/png), none',
+        'url(logo.mov), url(logo.mng), url(logo.png), none',
+        '\'[\' counter(footnote) \']\' contents',
+        'counter(footnote) \'. \' contents'
+      ],
+      'move-to': ['insert']
+    },
+    'selectors': {
+      '::line-marker': ['::line-marker'],
+      '::alternate': [
+        '::alternate'/*, 'span::alternate',
+        'span::alternate::before', 'span::after::alternate'*/
       ]
     },
-    'selectors': {/*
-      '::outside': [
-        'note::outside', 'note::outside::before'
-      ],
-      '::outside()': [
-        'span::outside(1)', 'span::outside(1)::before', 'span::outside(2)::after'
-      ],
-      '::alternate': [
-        'span::alternate', 'span::alternate::before', 'span::after::alternate'
-      ],*/
-      '::line-marker': 'span::line-marker'
-    }/*,
     '@rules': {
-      '@counter-styles': '@counter-styles',
-      '@counter': '@counter footnote',
-      '@string': '@string chapter',
-      '@footnote': '@footnote'
-    }*/
+      '@counter-styles': ['@counter-styles'],
+      '@string': ['@string chapter'],
+      '@counter': ['@counter', '@counter footnote']
+    },
+    'descriptors': {
+      'atrule': '@counter-styles',
+      'footnote': ['super-decimal']
+    }
   },
 
   'css3-marquee': {
