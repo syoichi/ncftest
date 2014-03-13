@@ -1327,6 +1327,7 @@ win.Specs = {
             'content() content(text) content(before) content(after) ' +
             'content(first-letter)',
           'index content(first-letter), entry content()',
+          'index content(first-letter), term content(text)',
           'title content(), header content(before), index content(after)'
         ]
       ),
@@ -1335,6 +1336,11 @@ win.Specs = {
       ], ', ').map(function string(arg) {
         return 'string(' + arg + ')';
       }).concat(
+        ['header'].qmark([
+          'first', 'start', 'last', 'first-except'
+        ], ', ').map(function element(arg) {
+          return 'element(' + arg + ')';
+        }),
         ['dotted', 'solid', 'space', '", "'].map(function leader(arg) {
           return 'leader(' + arg + ')';
         }),
@@ -1350,11 +1356,17 @@ win.Specs = {
           return 'target-text(' + arg + ')';
         }),
         [
+          '"first: " string(heading, first)',
           'counter(footnote, symbols(\'*\', \'†\', \'‡\', \'§\'))',
-          'counter(footnote, symbols(\'*\', \'†\', \'‡\', \'§\')) \'. \''
+          'counter(footnote, symbols(\'*\', \'†\', \'‡\', \'§\')) \'. \'',
+          'leader(\'.\') target-counter(attr(href url), page)',
+          '", in the chapter entitled " target-text(attr(href url))'
         ]
       ),
-      'float': ['footnote', 'inline-footnote'],
+      'position': ['running(header)'],
+      'running': ['none', 'ident', 'chapter'],
+      'float': ['footnote'],
+      'footnote-display': ['block', 'inline', 'compact'],
       'footnote-policy': ['auto', 'line', 'block'],
       'bookmark-level': ['none', '1'],
       'bookmark-label': ['none'].concat([
@@ -1374,15 +1386,16 @@ win.Specs = {
       'bookmark-state': ['open', 'closed']
     },
     'selectors': {
-      '::footnote-call': '::footnote-call',
-      '::footnote-marker': '::footnote-marker'
+      '::footnote-call': ['::footnote-call'],
+      '::footnote-marker': ['::footnote-marker', '::footnote-marker::after']
     },
     '@rules': {
       '@footnote': ['@footnote'],
       '@page': anb.map(function atPageNth(nth) {
         return '@page :nth(' + nth + ')';
       }).concat([
-        '@page :nth(5 of A)', '@page :nth(1n+1 of B)', '@page :nth(odd of C)'
+        '@page :nth(5 of A)', '@page :nth(1n+1 of B)', '@page :nth(odd of C)',
+        '@page:nth(3 of body)'
       ])
     }
   },
@@ -3887,34 +3900,30 @@ win.Specs = {
     'title': 'CSS Books',
     'dev': 'http://books.spec.whatwg.org/',
     'properties': {
-      'position': ['running(header)'],
-      'content':  ['header'].qmark([
-        'first', 'start', 'last', 'first-except'
-      ], ', ').map(function element(arg) {
-        return 'element(' + arg + ')';
-      }).concat([
+      'content': [
         'counter(footnote, super-decimal)',
         'target-pull(attr(href url))'
-      ]),
+      ],
       'float-defer': ['last'],
-      'float': ['sidenote'].qmark([
+      'flow': ['sidenote'].qmark([
         'align', 'align-x', 'align-y', 'fill'
       ].or([
         'same-page', 'same-spread', 'any-page'
       ]).concat([
         'same-page!', 'align!', 'align-y!', 'stick', 'erase'
-      ]), ', ').map(function to(arg) {
-        return 'to(' + arg + ')';
-      }).concat([
-        'to(running-header, fill, stick)',
-        'copy-to(header, fill stick erase)',
-        'copy-to(running-header, fill, stick)'
-      ]),
-      'page-group': ['auto', 'start'],
-      'baseline-grid': ['normal', 'none', 'root', 'new'],
-      'block-snap': ['auto', 'before', 'after', 'center'],
-      'box-edge': ['half-leading', 'em-box'],
-      'text-replace': ['none', '"foo" "bar"', '"..." "\2026" "\'" "\2019"'],
+      ]), ', ').map(function area(arg) {
+        return 'area(' + arg + ')';
+      }),
+      'condition': ['at-page-break', 'not-at-page-break'],
+      'column-rule-clip': ['none', 'auto', '10px', '10px 10px'],
+      'baseline-grid': ['normal', 'none', 'new', 'root', 'page'],
+      'baseline-block-snap': [
+        'auto', 'before', 'after', 'center'
+      ].or(['margin-box', 'border-box']),
+      'text-replace': [
+        'none', '"foo" "bar"', '"a" ""', '"..." "\2026" "\'" "\2019"',
+        '"a" "b" "b" "c"'
+      ],
       'nav-up': [
         'go(index)', 'go(previous)', 'go(next)', 'back',
         'url(..)', 'url(a1.html)', 'url-doc(..)', 'url-doc(a1.html)',
@@ -3941,15 +3950,14 @@ win.Specs = {
       'nav-left-shift': ['pan', 'turn', 'flip', 'fold']
     },
     '@rules': {
-      '@area': ['@area sidenote'],
-      '@inside': ['@inside h1'],
+      '@area': ['@area', '@area sidenote'],
       '@page': [
         '@page chapter:nth(3n)', '@page chapter:nth(3n+1)',
         '@page chapter:nth(3n+2)',
-        '@page :range(3-5)', '@page :range(3+)', '@page chapter:range(2)',
         '@page :first p', '@page :nth(1) .sidenote',
         '@page :nth(3n+1) p:first-line', '@page funky:nth(1) p', '@page :left p'
       ],
+      '@inside': ['@inside', '@inside p'],
       '@layout': ['@layout'],
       '@navigation': ['@navigation']
     },
