@@ -1667,15 +1667,17 @@ win.Specs = {
       ], ', ').map(function snap(arg) {
         return 'snap(' + arg + ')';
       }),
-      'float-reference': ['column', 'multicol', 'page'],
+      'column-span': ['1', 'page'],
+      // 'float-reference': ['multicol'],
       'float-defer-column': ['none', '1', '-1', 'last'],
       'float-defer-page': ['none', '1', '-1', 'last'],
       'clear': ['top', 'bottom', 'column', 'page'],
-      'float-wrap': ['none', 'wrap'],
+      'float-wrap': ['none', 'wrap'/*, 'intrude'*/],
       'float-offset': ['0', '5px', '0 0', '2em 3em', '50%', '-50% 3em'],
-      'clear-side': ['auto', 'both'],
-      'background-exclude-level': ['0.0', '0.5', '1.0'],
-      'exclude-level': ['0.0', '0.5', '1.0'],
+      'clear-side': ['auto', 'both', 'none', 'left', 'right'],
+      'background-exclude-level': alphavalue,
+      'exclude-level': alphavalue,
+      // 'exclude-margin': ['auto', '10px', '10%'],
       'content-inside': [
         'circle(50%, 50%, 30%)',
         'polygon(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5)'
@@ -1687,14 +1689,16 @@ win.Specs = {
     },
     'selectors': {
       '::column()': [
+        '::column(1)',
         'div.chapter::column(3)',
-        'div.chapter::column(3+)', 'div.chapter::column(2,2)',
-        'div.chapter::column(*,2)', 'div.chapter::column(1,*)'
+        'div.chapter::column(3+)', 'div.chapter::column(2, 2)',
+        'div.chapter::column(*, 2)', 'div.chapter::column(1, *)'
       ],
       '::region()': [
+        '::region(1)',
         'div.chapter::region(3)', 'div.chapter::region(2n)',
-        'div.chapter::region(3+)', 'div.chapter::region(2,2)',
-        'div.chapter::region(*,2)', 'div.chapter::region(1,*)',
+        'div.chapter::region(3+)', 'div.chapter::region(2, 2)',
+        'div.chapter::region(*, 2)', 'div.chapter::region(1, *)',
         'article::region(1-3)'
       ]
     }
@@ -3975,13 +3979,33 @@ win.Specs = {
     'title': 'CSS Figures',
     'dev': 'http://figures.spec.whatwg.org/',
     'properties': {
-      'float-reference': ['element', 'spread'],
-      'clear': ['top-bottom'],
-      'background-wrap-level': ['0.0', '0.5', '1.0'],
-      'wrap-level': ['0.0', '0.5', '1.0']
-    },
-    'units': {
-      'gr': ['width']
+      'float': [
+        'block-start', 'before', 'block-end', 'after', 'top-bottom',
+        'bottom-top'
+      ],
+      'column-span': ['0.5', '1.75', '10px', 'auto'],
+      'float-reference': ['column', 'element', 'page', 'bleed-box'],
+      'object-fill': ['fill'],
+      'float-defer-page': ['left', 'right'].concat(
+        ['1', '-1'].or(
+          ['last'],
+          ['left', 'right']
+        ).filter(function remove1ValueSyntax(val) {
+          return val.split(' ').length > 1;
+        })
+      ),
+      'wrap-side': ['none'].concat([
+        'all', 'left', 'right', 'top', 'bottom', 'line-start', 'line-end',
+        'block-start', 'block-end', 'line'
+      ].or(['1', '-1'])),
+      'wrap-contrast': ['normal', '0.5', '0', '1', '0.5 1em'],
+      'float-defer-line': ['2'],
+      'float-offset-y': ['2'],
+      'float-offset': [
+        '2 top', '3em outside', '2 bottom, 3em outside', '2 bottom, 50% outside'
+      ],
+      'float-outside': ['3em'],
+      'float-offset-x': ['3em', '50%']
     }
   },
 
