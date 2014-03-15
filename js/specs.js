@@ -4,7 +4,7 @@ var anb, alphavalue, image, repeatStyle, position, box, shapeBox, geometryBox,
     timingFunction, width, flexDirection, flexWrap, flexPosition, alignItems,
     justifyContent, trackBreadth, trackSize, lineNames, repeatFunction,
     trackList, trackSizing, gridTemplateAreas, gridTemplate, gridAutoFlow,
-    gridLine;
+    gridLine, borderClip;
 
 anb = [
   'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
@@ -191,6 +191,12 @@ gridAutoFlow = ['none'].concat(
 gridLine = ['auto'].concat(
   ['1'].or(['ident']), ['span'].amp(['1'].or(['ident']))
 );
+borderClip = ['normal'].concat(
+  ['10px', '10%', '1fr'].times(1, 3)
+).concat([
+  '0 10px 1fr 10px',
+  '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr'
+]);
 
 win.Specs = {
   // CSS Level 3
@@ -3221,35 +3227,36 @@ win.Specs = {
   'css-backgrounds-4': {
     'title': 'Backgrounds and Borders Level 4',
     'properties': {
-      'border-corner-shape': ['curve', 'bevel', 'scoop', 'notch'],
-      'border-image': ['10', '30%'].times(1, 4).concat(
-        ['10', '30%'].times(1, 4).amp(['fill'])
-      ).and([' / ']),
-      'border-clip': ['normal'].concat(
-        ['10px', '10%', '1fr'].times(1, 3),
-        ['0 10px 1fr 10px', '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr']
-      ),
-      'border-clip-top': ['normal'].concat(
-        ['10px', '10%', '1fr'].times(1, 3),
-        ['0 10px 1fr 10px', '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr']
-      ),
-      'border-clip-right': ['normal'].concat(
-        ['10px', '10%', '1fr'].times(1, 3),
-        ['0 10px 1fr 10px', '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr']
-      ),
-      'border-clip-bottom': ['normal'].concat(
-        ['10px', '10%', '1fr'].times(1, 3),
-        ['0 10px 1fr 10px', '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr']
-      ),
-      'border-clip-left': ['normal'].concat(
-        ['10px', '10%', '1fr'].times(1, 3),
-        ['0 10px 1fr 10px', '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr']
-      ),
+      'corner-shape': ['round', 'bevel', 'scoop', 'notch'].times(1, 4),
+      'corners': ['round', 'bevel', 'scoop', 'notch'].times(1, 4).concat(
+        ['10px', '10%'].times(1, 4).times(1, 2, ' / ')
+      ).concat([
+        'bevel 50%', 'bevel 0.25em 0.25em 0 0 / 50% 50% 0 0',
+        'round bevel notch scoop 10% 10px 10% 10px / 10px 10% 10% 10%'
+      ]),
+      'border-limit': [/*'round', */'all'].concat(
+        ['sides', 'corners'].qmark(['10px', '10%']),
+        ['top', 'right', 'bottom', 'left'].and(['10px', '10%'])
+      ),/*
+      'border-parts': [
+        'sides 50%', 'corners', 'left 4em', 'corners 10px', 'corners 30%'
+      ],
+      'border-shape': ['scoop'],*/
+      'border-clip': borderClip,
+      'border-clip-top': borderClip,
+      'border-clip-right': borderClip,
+      'border-clip-bottom': borderClip,
+      'border-clip-left': borderClip/*,
       'border-top-parts': [
         'repeat(10px 10px)', 'repeat(10px 10px) 1fr',
         '40px 20px 0 1fr repeat(20px 20px) 0 1fr 40px',
         '40px 20px 0 1fr 20px 20px 0 1fr 40px'
-      ]
+      ],
+      'backround-position': ['start', 'end'],
+      'background-repeat': ['extend'],
+      'border-image': ['10', '30%'].times(1, 4).concat(
+        ['10', '30%'].times(1, 4).amp(['fill'])
+      ).and([' / '])*/
     }
   },
 
