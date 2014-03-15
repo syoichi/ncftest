@@ -4,7 +4,7 @@ var anb, alphavalue, image, repeatStyle, position, box, shapeBox, geometryBox,
     timingFunction, width, flexDirection, flexWrap, flexPosition, alignItems,
     justifyContent, trackBreadth, trackSize, lineNames, repeatFunction,
     trackList, trackSizing, gridTemplateAreas, gridTemplate, gridAutoFlow,
-    gridLine, borderClip;
+    gridLine, borderClip, symbol, symbolsType;
 
 anb = [
   'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
@@ -197,6 +197,8 @@ borderClip = ['normal'].concat(
   '0 10px 1fr 10px',
   '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr'
 ]);
+symbol = ['"string"'].concat(image, ['ident']);
+symbolsType = ['cyclic', 'numeric', 'alphabetic', 'symbolic', 'fixed'];
 
 win.Specs = {
   // CSS Level 3
@@ -1511,19 +1513,18 @@ win.Specs = {
   'css-counter-styles-3': {
     'title': 'Counter Styles',
     'values': {
-      'properties': ['list-style-type'],
-      'symbols()': [
-        'symbols(\'\')', 'symbols(url(foo.png))',
-        'symbols(linear-gradient(white, black))',
-        'symbols(cyclic \'\')', 'symbols(numeric url(foo.png))',
-        'symbols(alphabetic linear-gradient(white, black))',
-        'symbols(\'\' \'\')', 'symbols(url(foo.png) url(foo.png))',
-        'symbols(linear-gradient(white, black) linear-gradient(white, black))',
-        'symbols(symbolic \'\' \'\')',
-        'symbols(fixed url(foo.png) linear-gradient(white, black))',
-        'symbols(cyclic \'\' url(foo.png) linear-gradient(white, black))',
-        'symbols(numeric \'0\' radial-gradient(white, black) \'A\')'
-      ]
+      'properties': ['list-style', 'list-style-type'],
+      'symbols()': symbolsType.qmark(
+        ['"string"'].concat(image).times(1, 2),
+        ' ',
+        {former: true}
+      ).concat([
+        'cyclic \'\' url(foo.png) linear-gradient(white, black)',
+        'numeric \'0\' radial-gradient(white, black) \'A\'',
+        '"*" "\2020" "\2021" "\A7"', 'cyclic "*" "\2020" "\2021" "\A7"'
+      ]).map(function symbols(arg) {
+        return 'symbols(' + arg + ')';
+      })
     },
     '@rules': {
       '@counter-style': '@counter-style circled-lower-latin'
@@ -1531,25 +1532,14 @@ win.Specs = {
     'descriptors': {
       'atrule': '@counter-style circled-lower-latin',
       'atruleName': '@counter-style',
-      'system': [
-        'symbolic', 'cyclic', 'numeric', 'alphabetic', 'additive',
-        'fixed', 'fixed 1', 'override triangle'
-      ],
-      'negative': [
-        '\'-\'', 'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'
-      ].times(1, 2),
-      'prefix': [
-        '\'\'', '\'-webkit-\'',
-        'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'
-      ],
-      'suffix': [
-        '\'.\'', '\'kg\'',
-        'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'
-      ],
-      'range': ['auto'].concat(['1', 'infinite'].times(2), ['1 1, 1 1']),
-      'pad': ['0'].amp([
-        '\'\'', 'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'
+      'system': symbolsType.concat([
+        'additive', 'fixed 1', 'override triangle'
       ]),
+      'negative': symbol.times(1, 2),
+      'prefix': symbol,
+      'suffix': symbol,
+      'range': ['auto'].concat(['1', 'infinite'].times(2).times(1, 2, ', ')),
+      'pad': ['0'].amp(symbol),
       'fallback': [
         'decimal', 'decimal-leading-zero', 'cjk-decimal', 'lower-roman',
         'upper-roman', 'armenian', 'georgian', 'hebrew',
@@ -1563,23 +1553,19 @@ win.Specs = {
         'trad-chinese-informal', 'trad-chinese-formal', 'cjk-ideographic',
         'ethiopic-numeric'
       ],
-      'symbols': [
-        '\'\'', 'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'
-      ].times(1, 2).concat([
+      'symbols': symbol.times(1, 2).concat([
         '‣', '◰ ◳ ◲ ◱', '* ⁑ † ‡',
         'A B C D E F G H I J K L M \nN O P Q R S T U V W X Y Z',
         '\'0\' \'1\' \'2\' \'3\' \'4\' \'5\' \'6\' \'7\' \'8\' \'9\'',
         'ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ⓚ ⓛ ⓜ ⓝ ⓞ ⓟ ⓠ ⓡ ⓢ ⓣ ⓤ ⓥ ⓦ ⓧ ⓨ ⓩ',
         '\'1\' linear-gradient(white, black) あ'
       ]),
-      'additive-symbols': ['0'].amp([
-        '\'\'', 'url(foo.svg)', 'linear-gradient(white, black)', 'triangle'
-      ]).concat([
+      'additive-symbols': ['0'].amp(symbol).concat([
         '3 \'a\', 2 \'b\'', '6 ⚅, 5 ⚄, 4 ⚃, 3 ⚂, 2 ⚁, 1 ⚀',
         '\'0\' 0, 1 radial-gradient(white, black), 2 A'
       ]),
       'speak-as': ['auto', 'numeric', 'alphabetic', 'bullet', 'triangle']
-    },
+    }
   },
 
   'css-display-3': {
