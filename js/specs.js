@@ -8,7 +8,9 @@
       timingFunction, width, flexDirection, flexWrap, flexPosition, alignItems,
       justifyContent, trackBreadth, trackSize, lineNames, repeatFunction,
       trackList, trackSizing, gridTemplateAreas, gridTemplate, gridAutoFlow,
-      gridLine, borderClip, symbol, symbolsType;
+      gridLine, borderClip, symbol, symbolsType, crossPosition, boxPosition,
+      selfPosition, contentPosition, itemPosition, overflowPosition,
+      alignPosition, justifyContent2, justifySelf, alignSelf;
 
   anb = [
     'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
@@ -108,7 +110,25 @@
   flexWrap = ['nowrap', 'wrap', 'wrap-reverse'];
   flexPosition = ['flex-start', 'flex-end', 'center'];
   justifyContent = flexPosition.concat(['space-between', 'space-around']);
-  alignItems = flexPosition.concat(['stretch', 'baseline']);
+  crossPosition = ['stretch', 'baseline'];
+  alignItems = flexPosition.concat(crossPosition);
+  boxPosition = ['start', 'end', 'left', 'right'];
+  selfPosition = ['self-start', 'self-end'];
+  contentPosition = flexPosition.concat(boxPosition);
+  itemPosition = contentPosition.concat(selfPosition);
+  overflowPosition = ['true', 'safe'];
+  alignPosition = boxPosition.concat(selfPosition);
+  justifyContent2 = ['auto', 'baseline'].concat(
+    alignPosition.concat(
+      itemPosition.and(contentPosition)
+    ).qmark(overflowPosition, ' ', {amp: true}),
+    flexPosition.amp(overflowPosition)
+  );
+  justifySelf = ['auto'].concat(
+    crossPosition,
+    itemPosition.qmark(overflowPosition, ' ', {amp: true})
+  );
+  alignSelf = alignPosition.concat(itemPosition.amp(overflowPosition));
   trackBreadth = ['10px', '10%', '1fr', 'min-content', 'max-content'];
   trackSize = trackBreadth.times(2, 2, ', ').map(function minmax(arg) {
     return 'minmax(' + arg + ')';
@@ -1322,40 +1342,14 @@
       'title': 'Box Alignment',
       'tr': 'http://www.w3.org/TR/css3-align/',
       'properties': {
-        'justify-content': ['auto', 'baseline'].concat(
-          ['start', 'end', 'self-start', 'self-end', 'left', 'right'].concat(
-            ['center', 'start', 'end', 'self-start', 'self-end', 'flex-start', 'flex-end', 'left', 'right'].and(['center', 'start', 'end', 'flex-start', 'flex-end', 'left', 'right'])
-          ).qmark(['true', 'safe'], ' ', {amp: true}),
-          ['center', 'flex-start', 'flex-end'].amp(['true', 'safe'])
-        ),
-        'align-content': ['auto', 'baseline'].concat(
-          ['start', 'end', 'self-start', 'self-end', 'left', 'right'].concat(
-            ['center', 'start', 'end', 'self-start', 'self-end', 'flex-start', 'flex-end', 'left', 'right'].and(['center', 'start', 'end', 'flex-start', 'flex-end', 'left', 'right'])
-          ).qmark(['true', 'safe'], ' ', {amp: true}),
-          ['center', 'flex-start', 'flex-end'].amp(['true', 'safe'])
-        ),
-        'justify-self': ['auto', 'stretch', 'baseline'].concat([
-          'center', 'start', 'end', 'self-start', 'self-end',
-          'flex-start', 'flex-end', 'left', 'right'
-        ].qmark(['true', 'safe'], ' ', {amp: true})),
-        'align-self': [
-          'start', 'end', 'self-start', 'self-end', 'left', 'right'
-        ].concat([
-          'center', 'start', 'end', 'self-start', 'self-end',
-          'flex-start', 'flex-end', 'left', 'right'
-        ].amp(['true', 'safe'])),
-        'justify-items': ['auto', 'stretch', 'baseline'].concat([
-          'center', 'start', 'end', 'self-start', 'self-end',
-          'flex-start', 'flex-end', 'left', 'right'
-        ].qmark(['true', 'safe'], ' ', {amp: true})).concat(
+        'justify-content': justifyContent2,
+        'align-content': justifyContent2,
+        'justify-self': justifySelf,
+        'align-self': alignSelf,
+        'justify-items': justifySelf.concat(
           ['legacy'].amp(['left', 'right', 'center'])
         ),
-        'align-items': [
-          'auto', 'start', 'end', 'self-start', 'self-end', 'left', 'right'
-        ].concat([
-          'center', 'start', 'end', 'self-start', 'self-end',
-          'flex-start', 'flex-end', 'left', 'right'
-        ].amp(['true', 'safe']))
+        'align-items': ['auto'].concat(alignSelf)
       }
     },
 
