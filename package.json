@@ -12,6 +12,6 @@
     "grunt-contrib-jshint": "*"
   },
   "scripts": {
-    "test": "node_modules/.bin/grunt travis"
+    "test": "grunt"
   }
 }

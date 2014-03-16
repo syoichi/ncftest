@@ -17,11 +17,7 @@ module.exports = function (grunt) {
     }
   });
 
-  // load tasks
   grunt.loadNpmTasks('grunt-contrib-jshint');
 
-  // alias
-  grunt.registerTask('lint', 'jshint');
-  grunt.registerTask('travis', 'jshint');
-  grunt.registerTask('default', 'lint');
+  grunt.registerTask('default', 'jshint');
 };
