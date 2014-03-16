@@ -1,5 +1,3 @@
-/* jshint maxlen:false */
-
 (function executeSpec(win) {
   'use strict';
 
@@ -266,7 +264,8 @@
           return ':nth-last-of-type(' + nth + ')';
         }),
         ':not()': [
-          ':not(element)', ':not(*)', ':not([attr])', ':not(.class)', ':not(#id)', ':not(:first-child)',
+          ':not(element)', ':not(*)', ':not([attr])', ':not(.class)',
+          ':not(#id)', ':not(:first-child)',
           ':not(.class):not(#id):not([attr]):not(:link)'
         ],
         '::first-line': '::first-line',
@@ -288,7 +287,9 @@
           'text-decoration-color',
           'column-rule-color'
         ],
-        'rgba()': ['rgba(0, 0, 0, .5)', 'rgba(255, 0, 0, 1)', 'rgba(100%, 0%, 0%, 1)'],
+        'rgba()': [
+          'rgba(0, 0, 0, .5)', 'rgba(255, 0, 0, 1)', 'rgba(100%, 0%, 0%, 1)'
+        ],
         'hsl()': 'hsl(0, 0%, 0%)',
         'hsla()': 'hsla(0, 0%, 0%, .5)',
         'transparent': 'transparent',
@@ -299,28 +300,30 @@
           'aliceblue', 'antiquewhite', 'aquamarine', 'azure', 'beige', 'bisque',
           'blanchedalmond', 'blueviolet', 'brown', 'burlywood', 'cadetblue',
           'chartreuse', 'chocolate', 'coral', 'cornflowerblue', 'cornsilk',
-          'crimson', 'cyan', 'darkblue', 'darkcyan', 'darkgoldenrod', 'darkgray',
-          'darkgreen', 'darkgrey', 'darkkhaki', 'darkmagenta', 'darkolivegreen',
-          'darkorange', 'darkorchid', 'darkred', 'darksalmon', 'darkseagreen',
-          'darkslateblue', 'darkslategray', 'darkslategrey', 'darkturquoise',
-          'darkviolet', 'deeppink', 'deepskyblue', 'dimgray', 'dimgrey',
-          'dodgerblue', 'firebrick', 'floralwhite', 'forestgreen', 'gainsboro',
-          'ghostwhite', 'gold', 'goldenrod', 'greenyellow', 'grey', 'honeydew',
-          'hotpink', 'indianred', 'indigo', 'ivory', 'khaki', 'lavender',
-          'lavenderblush', 'lawngreen', 'lemonchiffon', 'lightblue',
+          'crimson', 'cyan', 'darkblue', 'darkcyan', 'darkgoldenrod',
+          'darkgray', 'darkgreen', 'darkgrey', 'darkkhaki', 'darkmagenta',
+          'darkolivegreen', 'darkorange', 'darkorchid', 'darkred', 'darksalmon',
+          'darkseagreen', 'darkslateblue', 'darkslategray', 'darkslategrey',
+          'darkturquoise', 'darkviolet', 'deeppink', 'deepskyblue', 'dimgray',
+          'dimgrey', 'dodgerblue', 'firebrick', 'floralwhite', 'forestgreen',
+          'gainsboro', 'ghostwhite', 'gold', 'goldenrod', 'greenyellow', 'grey',
+          'honeydew', 'hotpink', 'indianred', 'indigo', 'ivory', 'khaki',
+          'lavender', 'lavenderblush', 'lawngreen', 'lemonchiffon', 'lightblue',
           'lightcoral', 'lightcyan', 'lightgoldenrodyellow', 'lightgray',
-          'lightgreen', 'lightgrey', 'lightpink', 'lightsalmon', 'lightseagreen',
-          'lightskyblue', 'lightslategray', 'lightslategrey', 'lightsteelblue',
-          'lightyellow', 'limegreen', 'linen', 'magenta', 'mediumaquamarine',
-          'mediumblue', 'mediumorchid', 'mediumpurple', 'mediumseagreen',
-          'mediumslateblue', 'mediumspringgreen', 'mediumturquoise', 'mediumvioletred',
-          'midnightblue', 'mintcream', 'mistyrose', 'moccasin', 'navajowhite',
-          'oldlace', 'olivedrab', 'orangered', 'orchid', 'palegoldenrod', 'palegreen',
-          'paleturquoise', 'palevioletred', 'papayawhip', 'peachpuff', 'peru',
-          'pink', 'plum', 'powderblue', 'rosybrown', 'royalblue', 'saddlebrown',
-          'salmon', 'sandybrown', 'seagreen', 'seashell', 'sienna', 'skyblue',
-          'slateblue', 'slategray', 'slategrey', 'snow', 'springgreen', 'steelblue',
-          'tan', 'thistle', 'tomato', 'turquoise', 'violet', 'wheat', 'whitesmoke', 'yellowgreen'
+          'lightgreen', 'lightgrey', 'lightpink', 'lightsalmon',
+          'lightseagreen', 'lightskyblue', 'lightslategray', 'lightslategrey',
+          'lightsteelblue', 'lightyellow', 'limegreen', 'linen', 'magenta',
+          'mediumaquamarine', 'mediumblue', 'mediumorchid', 'mediumpurple',
+          'mediumseagreen', 'mediumslateblue', 'mediumspringgreen',
+          'mediumturquoise', 'mediumvioletred', 'midnightblue', 'mintcream',
+          'mistyrose', 'moccasin', 'navajowhite', 'oldlace', 'olivedrab',
+          'orangered', 'orchid', 'palegoldenrod', 'palegreen', 'paleturquoise',
+          'palevioletred', 'papayawhip', 'peachpuff', 'peru', 'pink', 'plum',
+          'powderblue', 'rosybrown', 'royalblue', 'saddlebrown', 'salmon',
+          'sandybrown', 'seagreen', 'seashell', 'sienna', 'skyblue',
+          'slateblue', 'slategray', 'slategrey', 'snow', 'springgreen',
+          'steelblue', 'tan', 'thistle', 'tomato', 'turquoise', 'violet',
+          'wheat', 'whitesmoke', 'yellowgreen'
         ],
         'opacity': alphavalue
       }
@@ -334,12 +337,17 @@
       'tr': 'http://www.w3.org/TR/css3-mediaqueries/',
       'Media queries': {
         'only': ['only screen', 'only all'],
-        'not': ['not braille', 'not handheld', 'not print', 'not projection', 'not tty', 'not tv'],
+        'not': [
+          'not braille', 'not handheld', 'not print', 'not projection',
+          'not tty', 'not tv'
+        ],
         'and': [
           'all and (width)', '(width) and (height)',
-          'screen, print and (height)', 'only screen and (width)', 'not print and (height)',
-          'only screen, (width) and (height)', 'not tv and (width) and (height)',
-          'all and (width) and (height), only print and (width), not screen and (height)'
+          'screen, print and (height)', 'only screen and (width)',
+          'not print and (height)', 'only screen, (width) and (height)',
+          'not tv and (width) and (height)',
+          'all and (width) and (height), only print and (width), ' +
+            'not screen and (height)'
         ],
         'width': [
           '(width)', 'not print and (width: 0)',
@@ -359,7 +367,10 @@
           '(min-device-height: 0)', '(min-device-height: 1px)',
           '(max-device-height: 1000000px)'
         ],
-        'orientation': ['(orientation)', 'not print and (orientation: portrait)', '(orientation: landscape)'],
+        'orientation': [
+          '(orientation)', 'not print and (orientation: portrait)',
+          '(orientation: landscape)'
+        ],
         'aspect-ratio': [
           '(aspect-ratio)',
           'not print and (aspect-ratio: 1/1)',
@@ -375,15 +386,18 @@
           '(max-device-aspect-ratio: 1000000/1)',
         ],
         'color': [
-          '(color)', 'not print and (color: 0)', '(min-color: 0)', '(max-color: 100)'
+          '(color)', 'not print and (color: 0)', '(min-color: 0)',
+          '(max-color: 100)'
         ],
         'color-index': [
-          'not print and (color-index)', '(color-index: 0)', '(min-color-index: 0)',
-          'not print and (min-color-index: 1)', '(max-color-index: 10000000)'
+          'not print and (color-index)', '(color-index: 0)',
+          '(min-color-index: 0)', 'not print and (min-color-index: 1)',
+          '(max-color-index: 10000000)'
         ],
         'monochrome': [
-          'not print and (monochrome)', '(monochrome: 0)', '(min-monochrome: 0)',
-          'not print and (min-monochrome: 1)', '(max-monochrome: 10000)'
+          'not print and (monochrome)', '(monochrome: 0)',
+          '(min-monochrome: 0)', 'not print and (min-monochrome: 1)',
+          '(max-monochrome: 10000)'
         ],
         'resolution': [
           '(resolution)',
@@ -393,8 +407,14 @@
           '(max-resolution: 1000000dpcm)',
           '(max-resolution: 1000000dppx)'
         ],
-        'scan': ['not tv and (scan)', 'not tv and (scan: progressive)', 'not tv and (scan: interlace)'],
-        'grid': ['not print and (grid)', '(grid: -0)', '(grid: 0)', 'not print and (grid: 1)']
+        'scan': [
+          'not tv and (scan)', 'not tv and (scan: progressive)',
+          'not tv and (scan: interlace)'
+        ],
+        'grid': [
+          'not print and (grid)', '(grid: -0)', '(grid: 0)',
+          'not print and (grid: 1)'
+        ]
       }
     },
 
@@ -405,16 +425,25 @@
         '@supports': [
           // check syntax parsing, not check supporting these as a feature.
           // see http://dev.w3.org/csswg/css-conditional-3/#supports_rule
-          '@supports (width: 1px)', '@supports ((width: 1px))', '@supports (width: 1px !important)',
+          '@supports (width: 1px)', '@supports ((width: 1px))',
+          '@supports (width: 1px !important)',
           '@supports (javascript: @return)',
           '@supports url(foo.png)', '@supports (1px)', '@supports (@media)',
-          '@supports (~=)', '@supports (|=)', '@supports (:)', '@supports (url(foo.png))', '@supports ({;})',
+          '@supports (~=)', '@supports (|=)', '@supports (:)',
+          '@supports (url(foo.png))', '@supports ({;})',
           '@supports not (javascript: return)',
-          '@supports (width: 1px) or (display: flex)', '@supports (width: 1px) and (height: 1px)',
-          '@supports (box-shadow: 2px 2px 2px black) or (-moz-box-shadow: 2px 2px 2px black) or (-webkit-box-shadow: 2px 2px 2px black) or (-o-box-shadow: 2px 2px 2px black)',
-          '@supports ((transition-property: color) or (animation-name: foo)) and (transform: rotate(10deg))',
-          '@supports (transition-property: color) or ((animation-name: foo) and (transform: rotate(10deg)))',
-          '@supports ((not (javascript: return)) and (transition-property: color)) or (display: subgrid)'
+          '@supports (width: 1px) or (display: flex)',
+          '@supports (width: 1px) and (height: 1px)',
+          '@supports (box-shadow: 2px 2px 2px black) or ' +
+            '(-moz-box-shadow: 2px 2px 2px black) or ' +
+            '(-webkit-box-shadow: 2px 2px 2px black) or ' +
+            '(-o-box-shadow: 2px 2px 2px black)',
+          '@supports ((transition-property: color) or ' +
+            '(animation-name: foo)) and (transform: rotate(10deg))',
+          '@supports (transition-property: color) or ' +
+            '((animation-name: foo) and (transform: rotate(10deg)))',
+          '@supports ((not (javascript: return)) and ' +
+            '(transition-property: color)) or (display: subgrid)'
         ]
       }
     },
@@ -619,7 +648,8 @@
           'stylistic(Bongo) historical-forms styleset(Bongo) ' +
             'character-variant(Bongo) swash(Bongo) ornaments(Bongo) ' +
             'annotation(Bongo)',
-          'stylistic(Bongo) historical-forms styleset(stacked-g, geometric-m) ' +
+          'stylistic(Bongo) historical-forms ' +
+            'styleset(stacked-g, geometric-m) ' +
             'character-variant(beta-3, gamma) swash(Bongo) ' +
             'ornaments(Bongo) annotation(Bongo)'
         ],
@@ -781,8 +811,8 @@
           /*'calc(1)', 'calc(0)', 'calc(-1)', 'calc(+1)', 'calc(1.1)',*/
           'calc(1px)', 'calc(0px)', 'calc(-1px)', 'calc(+1px)', 'calc(1.1px)',
           'calc(1%)', 'calc(0%)', 'calc(-1%)', 'calc(+1%)', 'calc(1.1%)',
-          'calc(1px + 2px)', 'calc(5px - 10px)', 'calc(5px * 2)', 'calc(5px / 2)',
-          'calc(100%/3 - 2*1em - 2*1px)',
+          'calc(1px + 2px)', 'calc(5px - 10px)', 'calc(5px * 2)',
+          'calc(5px / 2)', 'calc(100%/3 - 2*1em - 2*1px)',
           'calc(1ch * 2)', 'calc(1rem * 2)', 'calc(1vw * 2)', 'calc(1vh * 2)',
           'calc(1vmin * 2)', 'calc(1vmax * 2)'
           /*, 'calc(attr(data-px) * 2)'*/
@@ -861,17 +891,28 @@
         'cursor': [
           'url(foo.png) 2 2, auto', 'url(foo.png) 1 1, url(bar.png), auto',
           'url(foo.png) 1 1, url(bar.png) 2 2, auto',
-          'url(foo.png) 1.1 1.1, url(bar.png) 2.2 2.2, url(baz.png) 3.3 3.3, auto',
-          'url(example.svg#linkcursor), url(hyper.cur), url(hyper.png) 2 3, pointer',
+          'url(foo.png) 1.1 1.1, url(bar.png) 2.2 2.2, ' +
+            'url(baz.png) 3.3 3.3, auto',
+          'url(example.svg#linkcursor), url(hyper.cur), ' +
+            'url(hyper.png) 2 3, pointer',
           'none', 'context-menu', 'cell', 'vertical-text',
-          'alias', 'copy', 'no-drop', 'not-allowed', 'ew-resize', 'ns-resize', 'nesw-resize',
-          'nwse-resize', 'col-resize', 'row-resize', 'all-scroll', 'zoom-in', 'zoom-out'
+          'alias', 'copy', 'no-drop', 'not-allowed', 'ew-resize', 'ns-resize',
+          'nesw-resize', 'nwse-resize', 'col-resize', 'row-resize',
+          'all-scroll', 'zoom-in', 'zoom-out'
         ],
         'nav-index': ['auto', '1', '10', '1.1'],
-        'nav-up': ['auto', '#foo'].concat(['#foo'].and(['current', 'root', '\'main\''])),
-        'nav-right': ['auto', '#foo'].concat(['#foo'].and(['current', 'root', '\'main\''])),
-        'nav-down': ['auto', '#foo'].concat(['#foo'].and(['current', 'root', '\'main\''])),
-        'nav-left': ['auto', '#foo'].concat(['#foo'].and(['current', 'root', '\'main\''])),
+        'nav-up': ['auto', '#foo'].concat(
+          ['#foo'].and(['current', 'root', '\'main\''])
+        ),
+        'nav-right': ['auto', '#foo'].concat(
+          ['#foo'].and(['current', 'root', '\'main\''])
+        ),
+        'nav-down': ['auto', '#foo'].concat(
+          ['#foo'].and(['current', 'root', '\'main\''])
+        ),
+        'nav-left': ['auto', '#foo'].concat(
+          ['#foo'].and(['current', 'root', '\'main\''])
+        ),
         'ime-mode': ['auto', 'normal', 'active', 'inactive', 'disabled']
       },
       'selectors': {
@@ -903,11 +944,15 @@
         'word-wrap': ['normal', 'break-word'],
         'overflow-wrap': ['normal', 'break-word'],
         'text-align': ['start', 'end', 'match-parent', 'start end'],
-        'text-align-last': ['auto', 'start', 'end', 'left', 'right', 'center', 'justify'],
+        'text-align-last': [
+          'auto', 'start', 'end', 'left', 'right', 'center', 'justify'
+        ],
         'text-justify': ['auto', 'none', 'inter-word', 'distribute'],
         'word-spacing': ['10%', '-10%'],
         'text-indent': ['1em', '1%'].amp(['hanging'].or(['each-line'])),
-        'hanging-punctuation': ['none'].concat(['first'].or(['force-end', 'allow-end'], ['last']))
+        'hanging-punctuation': ['none'].concat(
+          ['first'].or(['force-end', 'allow-end'], ['last'])
+        )
       }
     },
 
@@ -918,25 +963,41 @@
           ['underline'].or(['overline'], ['line-through'], ['blink'])
         ),
         'text-decoration-color': 'white',
-        'text-decoration-style': ['solid', 'double', 'dotted', 'dashed', 'wavy'],
-        'text-decoration': ['white', 'solid', 'double', 'dotted', 'dashed', 'wavy'].concat(
-          ['none'].concat(['underline'].or(['overline'], ['line-through'], ['blink'])).amp(['white']),
-          ['none'].concat(['underline'].or(['overline'], ['line-through'], ['blink'])).amp(
+        'text-decoration-style': [
+          'solid', 'double', 'dotted', 'dashed', 'wavy'
+        ],
+        'text-decoration': [
+          'white', 'solid', 'double', 'dotted', 'dashed', 'wavy'
+        ].concat(
+          ['none'].concat(
+            ['underline'].or(['overline'], ['line-through'], ['blink'])
+          ).amp(['white']),
+          ['none'].concat(
+            ['underline'].or(['overline'], ['line-through'], ['blink'])
+          ).amp(
             ['solid', 'double', 'dotted', 'dashed', 'wavy']
           ),
-          ['white'].amp(['solid', 'double', 'dotted', 'dashed', 'wavy']),
-          ['none white solid', 'none solid white', 'underline overline line-through blink white solid']
-        ),
+          ['white'].amp(['solid', 'double', 'dotted', 'dashed', 'wavy'])
+        ).concat([
+          'none white solid', 'none solid white',
+          'underline overline line-through blink white solid'
+        ]),
         'text-decoration-skip': ['none'].concat(
           ['objects'].or(['spaces'], ['ink'], ['edges'], ['box-decoration'])
         ),
-        'text-underline-position': ['auto', 'alphabetic'].concat(['under'].or(['left', 'right'])),
+        'text-underline-position': ['auto', 'alphabetic'].concat(
+          ['under'].or(['left', 'right'])
+        ),
         'text-emphasis-style': ['none', '\'foo\''].concat(
-          ['filled', 'open'].or(['dot', 'circle', 'double-circle', 'triangle', 'sesame'])
+          ['filled', 'open'].or(
+            ['dot', 'circle', 'double-circle', 'triangle', 'sesame']
+          )
         ),
         'text-emphasis-color': 'green',
         'text-emphasis': ['none', '\'foo\''].concat(
-          ['filled', 'open'].or(['dot', 'circle', 'double-circle', 'triangle', 'sesame'])
+          ['filled', 'open'].or(
+            ['dot', 'circle', 'double-circle', 'triangle', 'sesame']
+          )
         ).or(['white']),
         'text-emphasis-position': ['over', 'under'].amp(['right', 'left']),
         'text-shadow': ['none'].concat(
@@ -1034,9 +1095,9 @@
         ],
         'linear-gradient()': angle.concat(
           ['to'].and(['left', 'right'].or(['top', 'bottom']))
-        ).qmark(['white'].qmark([
-          '10%', '10px'
-        ]).times(2, 2, ', '), ', ', {former: true}).map(function linearGradient(arg) {
+        ).qmark(['white'].qmark(
+          ['10%', '10px']).times(2, 2, ', '), ', ', {former: true}
+        ).map(function linearGradient(arg) {
           return 'linear-gradient(' + arg + ')';
         }).concat([
           'linear-gradient(0deg, white, black)',
@@ -1055,13 +1116,17 @@
           ['circle'].or(['10px']).concat(
             ['ellipse'].or(['10px', '10%'].times(2)),
             ['circle', 'ellipse'].or(
-              ['closest-corner', 'closest-side', 'farthest-corner', 'farthest-side']
+              ['closest-corner', 'closest-side'].concat(
+                ['farthest-corner', 'farthest-side']
+              )
             )
           ).uniq().and(['at'].and(
-            ['left', 'center', 'right', 'top', 'bottom', '10%', '10px']/*.concat(
-              ['left', 'center', 'right', '10%', '10px'].and([
-                'top', 'center', 'bottom', '10%', '10px'
-              ]),
+            ['left', 'center', 'right', 'top', 'bottom'].concat(
+              ['10%', '10px']
+            )/*.concat(
+              ['left', 'center', 'right', '10%', '10px'].and(
+                ['top', 'center', 'bottom', '10%', '10px']
+              ),
               ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
                 ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
               )
@@ -1076,7 +1141,8 @@
             'yellow 50px, green)',
           'radial-gradient(closest-side at 20px 30px, red, yellow, green)',
           'radial-gradient(20px 30px at 20px 30px, red, yellow, green)',
-          'radial-gradient(closest-side circle at 20px 30px, red, yellow, green)',
+          'radial-gradient(closest-side circle at 20px 30px, ' +
+            'red, yellow, green)',
           'radial-gradient(circle, #006, #00a 90%, #0000af 100%, white 100%)',
           'radial-gradient(20px 20px at 20px 30px, red, yellow, green)',
           'radial-gradient(10% 100px ellipse at top 10% right 10px, ' +
@@ -1089,7 +1155,9 @@
         'repeating-linear-gradient()': angle.concat(
           ['to'].and(['left', 'right'].or(['top', 'bottom']))
         ).qmark(
-          ['white'].qmark(['10%', '10px']).times(2, 2, ', '), ', ', {former: true}
+          ['white'].qmark(['10%', '10px']).times(2, 2, ', '),
+          ', ',
+          {former: true}
         ).map(function repeatingLinearGradient(arg) {
           return 'repeating-linear-gradient(' + arg + ')';
         }).concat([
@@ -1098,30 +1166,37 @@
           'repeating-linear-gradient(red 0px, white 0px, blue 0px)',
           'repeating-linear-gradient(red 0px, white .1px, blue .2px)',
           'repeating-linear-gradient(red, blue 20px, red 40px)',
-          'repeating-linear-gradient(-270deg, red, blue 90px, yellow, green 50%)',
+          'repeating-linear-gradient(-270deg, red, blue 90px, ' +
+            'yellow, green 50%)',
           'repeating-linear-gradient(to bottom right, currentColor 100%, ' +
             'rgba(255, 0, 255, 0.3) 100px, transparent 0em, ' +
             'hsla(225, 50%, 100%, 0.7) 75%)'
         ]),
         'repeating-radial-gradient()': ['white'].qmark([
           '10%', '10px'
-        ]).times(2, 2, ', ').concat(['at'].and(position).concat(
-          ['circle'].or(['10px']).concat(
-            ['ellipse'].or(['10px', '10%'].times(2)),
-            ['circle', 'ellipse'].or(
-              ['closest-corner', 'closest-side', 'farthest-corner', 'farthest-side']
-            )
-          ).uniq().and(['at'].and(
-            ['left', 'center', 'right', 'top', 'bottom', '10%', '10px']/*.concat(
-              ['left', 'center', 'right', '10%', '10px'].and([
-                'top', 'center', 'bottom', '10%', '10px'
-              ]),
-              ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
-                ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
+        ]).times(2, 2, ', ').concat(
+          ['at'].and(position).concat(
+            ['circle'].or(['10px']).concat(
+              ['ellipse'].or(['10px', '10%'].times(2)),
+              ['circle', 'ellipse'].or(
+                ['closest-corner', 'closest-side'].concat(
+                  ['farthest-corner', 'farthest-side']
+                )
               )
-            ).uniq()*/
-          ))
-        ).and(['white, black'], ', ')).map(function repeatingRadialGradient(arg) {
+            ).uniq().and(['at'].and(
+              ['left', 'center', 'right', 'top', 'bottom'].concat(
+                ['10%', '10px']
+              )/*.concat(
+                ['left', 'center', 'right', '10%', '10px'].and(
+                  ['top', 'center', 'bottom', '10%', '10px']
+                ),
+                ['center'].concat(['left', 'right'].qmark(['10%', '10px'])).amp(
+                  ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
+                )
+              ).uniq()*/
+            ))
+          ).and(['white, black'], ', ')
+        ).map(function repeatingRadialGradient(arg) {
           return 'repeating-radial-gradient(' + arg + ')';
         }).concat([
           'repeating-radial-gradient(red, blue 20px, red 40px)',
@@ -1129,8 +1204,8 @@
             '#0000af 100%, white 100%)',
           'repeating-radial-gradient(circle closest-side at 20px 30px, red, ' +
             'yellow, green 100%, yellow 150%, red 200%)',
-          'repeating-radial-gradient(10% 100px ellipse at top 10% right 10px, ' +
-            'white 10%, black 10px, red 50%)',
+          'repeating-radial-gradient(10% 100px ellipse ' +
+            'at top 10% right 10px, white 10%, black 10px, red 50%)',
           'repeating-radial-gradient(ellipse 10% 20% at top 30% left 40%, ' +
             'currentColor 50%, #0000FF 60%, rgba(255, 255, 0, 0.5) 70%, ' +
             'hsla(240, 100%, 50%, 0.5) 80%, lightgoldenrodyellow 90%, ' +
@@ -1140,9 +1215,9 @@
       'properties': {
         'object-fit': ['fill', 'contain', 'cover', 'none', 'scale-down'],
         'object-position': position,
-        'image-resolution': ['from-image'].or(['300dpi', '1dpcm', '1dppx']).qmark(
-          ['snap'], ' ', {amp: true}
-        ),
+        'image-resolution': ['from-image'].or(
+          ['300dpi', '1dpcm', '1dppx']
+        ).qmark(['snap'], ' ', {amp: true}),
         'image-orientation': angle
       }
     },
@@ -1162,7 +1237,9 @@
           'lower-latin', 'upper-latin', 'armenian', 'georgian', 'lower-alpha',
           'upper-alpha', 'none'
         ].amp(['linear-gradient(white, black)'])).concat(
-          ['\'★\''].concat(counterStyle).amp(['inside', 'outside', 'none', 'url(foo.png)']),
+          ['\'★\''].concat(counterStyle).amp(
+            ['inside', 'outside', 'none', 'url(foo.png)']
+          ),
           ['linear-gradient(white, black)'].amp(['inside', 'outside'])
         ).concat([
           'cjk-ideographic radial-gradient(at center, white, black) outside',
@@ -1216,8 +1293,8 @@
         ],
         'alignment-adjust': [
           'auto', 'baseline', 'before-edge', 'text-before-edge', 'middle',
-          'central', 'after-edge', 'text-after-edge', 'ideographic', 'alphabetic',
-          'hanging', 'mathematical', '0%', '10%', '0cm', '10px'
+          'central', 'after-edge', 'text-after-edge', 'ideographic',
+          'alphabetic', 'hanging', 'mathematical', '0%', '10%', '0cm', '10px'
         ],
         'baseline-shift': [
           'baseline', 'sub', 'super', '0%', '10%', '0cm', '10px'
@@ -1366,9 +1443,18 @@
     'css-overflow-3': {
       'title': 'Overflow',
       'properties': {
-        'overflow-x': ['paged-x', 'paged-y', 'paged-x-controls', 'paged-y-controls', 'fragments'],
-        'overflow-y': ['paged-x', 'paged-y', 'paged-x-controls', 'paged-y-controls', 'fragments'],
-        'overflow': ['paged-x', 'paged-y', 'paged-x-controls', 'paged-y-controls', 'fragments'],
+        'overflow-x': [
+          'paged-x', 'paged-y', 'paged-x-controls', 'paged-y-controls',
+          'fragments'
+        ],
+        'overflow-y': [
+          'paged-x', 'paged-y', 'paged-x-controls', 'paged-y-controls',
+          'fragments'
+        ],
+        'overflow': [
+          'paged-x', 'paged-y', 'paged-x-controls', 'paged-y-controls',
+          'fragments'
+        ],
         'max-lines': ['none', '1']
       },
       'selectors': {
@@ -1438,7 +1524,8 @@
         'bookmark-level': ['none', '1'],
         'bookmark-label': ['none'].concat([
           '\'foo\'',
-          'counter(par-num, upper-roman)', 'counters(par-num, upper-roman, disc)',
+          'counter(par-num, upper-roman)',
+          'counters(par-num, upper-roman, disc)',
           'content()', 'content(text)', 'content(before)', 'content(after)',
           'content(first-letter)', 'attr(title)',
           'content(before) content(text)',
@@ -1517,8 +1604,8 @@
           'katakana', 'katakana-iroha',
           'disc', 'circle', 'square', 'disclosure-open', 'disclosure-closed',
           'japanese-informal', 'japanese-formal',
-          'korean-hangul-formal', 'korean-hanja-informal', 'korean-hanja-formal',
-          'simp-chinese-informal', 'simp-chinese-formal',
+          'korean-hangul-formal', 'korean-hanja-informal',
+          'korean-hanja-formal', 'simp-chinese-informal', 'simp-chinese-formal',
           'trad-chinese-informal', 'trad-chinese-formal', 'cjk-ideographic',
           'ethiopic-numeric'
         ],
@@ -1545,13 +1632,13 @@
           'inline-level', 'block-level', 'none', 'table-row-group',
           'table-header-group', 'table-footer-group', 'table-row', 'table-cell',
           'table-column-group', 'table-column', 'table-caption',
-          'ruby-base', 'ruby-text', 'ruby-base-container', 'ruby-text-container',
-          'run-in'
+          'ruby-base', 'ruby-text', 'ruby-base-container',
+          'ruby-text-container', 'run-in'
         ],
         'display-extras': ['none', 'list-item'],
         'display': [
-          'auto', 'block-level', 'inline-level', 'auto inline-level', 'none none',
-          'auto inline-level none'
+          'auto', 'block-level', 'inline-level', 'auto inline-level',
+          'none none', 'auto inline-level none'
         ],
         'display-box': ['normal', 'none', 'contents']
       }
@@ -1562,11 +1649,17 @@
       'title': 'Tables',
       'properties': {
         'tab-position': ['0', '10px', '10%'],
-        'tab-align': ['none ', 'left', 'top', 'center', 'right', 'bottom', '\'foo\''],
+        'tab-align': [
+          'none ', 'left', 'top', 'center', 'right', 'bottom', '\'foo\''
+        ],
         'tab-leaders': ['\'\'', '\'foo\''],
         'tab-leaders-alignment': ['aligned', 'centered', 'distributed'],
-        'tab': ['10px', '10%'].or(['none ', 'left', 'top', 'center', 'right', 'bottom', '\'foo\'']).concat(
-          ['10px', '10%'].or(['none ', 'left', 'top', 'center', 'right', 'bottom', '\'foo\'']).and(
+        'tab': ['10px', '10%'].or([
+          'none ', 'left', 'top', 'center', 'right', 'bottom', '\'foo\''
+        ]).concat(
+          ['10px', '10%'].or(
+            ['none ', 'left', 'top', 'center', 'right', 'bottom', '\'foo\'']
+          ).and(
             ['\'foo\''].or(['aligned', 'centered', 'distributed']), ' / '
           )
         ),
@@ -1638,14 +1731,26 @@
         'target-name': ['current', 'root', 'parent', 'new', 'modal', '\'foo\''],
         'target-new': ['window', 'tab', 'none'],
         'target-position': ['above', 'behind', 'front', 'back'],
-        'target': ['current', 'root', 'parent', 'new', 'modal', '\'foo\''].concat(
+        'target': [
+          'current', 'root', 'parent', 'new', 'modal', '\'foo\''
+        ].concat(
           ['window', 'tab', 'none'],
           ['above', 'behind', 'front', 'back'],
-          ['current', 'root', 'parent', 'new', 'modal', '\'foo\''].and(['window', 'tab', 'none']),
-          ['current', 'root', 'parent', 'new', 'modal', '\'foo\''].and(['above', 'behind', 'front', 'back']),
-          ['window', 'tab', 'none'].and(['current', 'root', 'parent', 'new', 'modal', '\'foo\'']),
-          ['window', 'tab', 'none'].and(['above', 'behind', 'front', 'back']),
-          ['above', 'behind', 'front', 'back'].and(['current', 'root', 'parent', 'new', 'modal', '\'foo\'']),
+          ['current', 'root', 'parent', 'new', 'modal', '\'foo\''].and(
+            ['window', 'tab', 'none']
+          ),
+          ['current', 'root', 'parent', 'new', 'modal', '\'foo\''].and(
+            ['above', 'behind', 'front', 'back']
+          ),
+          ['window', 'tab', 'none'].and(
+            ['current', 'root', 'parent', 'new', 'modal', '\'foo\'']
+          ),
+          ['window', 'tab', 'none'].and(
+            ['above', 'behind', 'front', 'back']
+          ),
+          ['above', 'behind', 'front', 'back'].and(
+            ['current', 'root', 'parent', 'new', 'modal', '\'foo\'']
+          ),
           ['above', 'behind', 'front', 'back'].and(['window', 'tab', 'none']),
           ['current window above', 'behind tab root']
         )
@@ -1808,17 +1913,21 @@
           'line-height', 'margin-bottom', 'margin-left', 'margin-right',
           'margin-top', 'max-height', 'max-width', 'min-height', 'min-width',
           'opacity', 'outline-color', 'outline-width', 'padding-bottom',
-          'padding-left', 'padding-right', 'padding-top', 'right', 'text-indent',
-          'text-shadow', 'top', 'vertical-align', 'visibility', 'width',
-          'word-spacing', 'z-index',
+          'padding-left', 'padding-right', 'padding-top', 'right',
+          'text-indent', 'text-shadow', 'top', 'vertical-align', 'visibility',
+          'width', 'word-spacing', 'z-index',
           'all, all', 'all, background-color', 'width, height',
           'width, all, height', 'opacity, left, top, width'
         ],
-        'transition-duration': ['0s', '1s', '100ms', '0s, 10s', '0ms, 10s, 100s'],
+        'transition-duration': [
+          '0s', '1s', '100ms', '0s, 10s', '0ms, 10s, 100s'
+        ],
         'transition-timing-function': timingFunction.concat([
           'ease, linear', 'ease, ease, ease'
         ]),
-        'transition-delay': ['0s', '-1s', '100ms', '0s, 10s', '-100ms, 1s, 10s'],
+        'transition-delay': [
+          '0s', '-1s', '100ms', '0s, 10s', '-100ms, 1s, 10s'
+        ],
         'transition': ['none', 'all', 'background-color', '0s', '-1s'].concat(
           timingFunction,
           ['none', 'all', 'top'].or(['2s'], ['ease'], ['-2ms'])
@@ -1891,22 +2000,35 @@
       'properties': {
         'column-width': ['10em', 'auto'],
         'column-count': ['2', 'auto'],
-        'columns': ['100px', '3', '10em 2', 'auto 2', '10em auto', 'auto auto', '2 10em', 'auto 10em', '2 auto'],
+        'columns': [
+          '100px', '3', '10em 2', 'auto 2', '10em auto', 'auto auto', '2 10em',
+          'auto 10em', '2 auto'
+        ],
         'column-gap': ['1em', 'normal'],
         'column-rule-color': 'red',
-        'column-rule-style': ['none', 'hidden', 'dotted', 'dashed', 'solid', 'double', 'groove', 'ridge', 'inset', 'outset'],
+        'column-rule-style': [
+          'none', 'hidden', 'dotted', 'dashed', 'solid', 'double', 'groove',
+          'ridge', 'inset', 'outset'
+        ],
         'column-rule-width': ['1px', 'thin', 'medium', 'thick'],
         'column-rule': [
           'medium', 'none', 'red', 'transparent',
           'medium none', 'none medium', 'medium red', 'none red',
           'red medium', 'red none', 'medium transparent', 'none transparent',
           'transparent medium', 'transparent none',
-          '1px solid black', 'thin outset blue', 'thick yellow hidden', 'dashed white medium',
-          'dotted 10em purple', 'green double thin', 'black thick groove',
-          'transparent ridge medium', 'transparent thin inset'
+          '1px solid black', 'thin outset blue', 'thick yellow hidden',
+          'dashed white medium', 'dotted 10em purple', 'green double thin',
+          'black thick groove', 'transparent ridge medium',
+          'transparent thin inset'
         ],
-        'break-before': ['auto', 'always', 'avoid', 'left', 'right', 'page', 'column', 'avoid-page', 'avoid-column'],
-        'break-after': ['auto', 'always', 'avoid', 'left', 'right', 'page', 'column', 'avoid-page', 'avoid-column'],
+        'break-before': [
+          'auto', 'always', 'avoid', 'left', 'right', 'page', 'column',
+          'avoid-page', 'avoid-column'
+        ],
+        'break-after': [
+          'auto', 'always', 'avoid', 'left', 'right', 'page', 'column',
+          'avoid-page', 'avoid-column'
+        ],
         'break-inside': ['auto', 'avoid', 'avoid-page', 'avoid-column'],
         'column-span': ['none', 'all'],
         'column-fill': ['auto', 'balance']
@@ -1988,14 +2110,15 @@
           '10px 10px "a"', '"a" 10px 10px', '10px "a" 10px',
           '"a" "b" 10px', '10px "a" "b"', '"a" 10px "b"',
           '10px 10px "a" 10px "b" 10px'
-        ]).concat(
-          ['/'].and(
-            ['10px', '10%', '*', '1fr', 'min-content', 'max-content', 'fit-content'].concat(
-              ['10px', '10%', '*', '1fr', 'min-content', 'max-content', 'fit-content'].times(2, 2, ', ').map(function minmax(arg) {
-                return 'minmax(' + arg + ')';
-              })
-            )
-          ),
+        ]).concat(['/'].and(
+          trackBreadth.concat(['*', 'fit-content']).concat(
+            trackBreadth.concat(
+              ['*', 'fit-content']
+            ).times(2, 2, ', ').map(function minmax(arg) {
+              return 'minmax(' + arg + ')';
+            })
+          )
+        )).concat(
           ['*', 'fit-content'].times(2, 2, ' / '),
           ['* * / * *']
         ),
@@ -2013,8 +2136,10 @@
           '10px 10px "a" 10px "b" 10px'
         ]).concat(
           ['/'].and(
-            ['10px', '10%', '*', '1fr', 'min-content', 'max-content', 'fit-content'].concat(
-              ['10px', '10%', '*', '1fr', 'min-content', 'max-content', 'fit-content'].times(2, 2, ', ').map(function minmax(arg) {
+            trackBreadth.concat(['*', 'fit-content']).concat(
+              trackBreadth.concat(
+                ['*', 'fit-content']
+              ).times(2, 2, ', ').map(function minmax(arg) {
                 return 'minmax(' + arg + ')';
               })
             )
@@ -2040,58 +2165,107 @@
       'tr': 'http://www.w3.org/TR/css3-speech/',
       'properties': {
         'voice-volume': ['silent'].concat(
-          ['x-soft', 'soft', 'medium', 'loud', 'x-loud'].or(['-6dB', '0', '6db'])
-        ),
-        'voice-balance': ['center', '-100', '0', '1.1', '100', 'left', 'right', 'leftwards', 'rightwards'],
-        'speak': 'auto',
-        'speak-as': [
-          'normal', 'spell-out', 'digits', 'literal-punctuation', 'no-punctuation',
-          'spell-out digits', 'spell-out literal-punctuation', 'spell-out no-punctuation',
-          'digits spell-out', 'digits literal-punctuation', 'digits no-punctuation',
-          'literal-punctuation spell-out', 'literal-punctuation digits',
-          'no-punctuation spell-out', 'no-punctuation digits',
-          'spell-out digits literal-punctuation', 'spell-out digits no-punctuation',
-          'spell-out literal-punctuation digits', 'spell-out no-punctuation digits',
-          'digits spell-out literal-punctuation', 'digits spell-out no-punctuation',
-          'digits literal-punctuation spell-out', 'digits no-punctuation spell-out',
-          'literal-punctuation spell-out digits', 'literal-punctuation digits spell-out',
-          'no-punctuation spell-out digits', 'no-punctuation digits spell-out'
-        ],
-        'pause-before': ['none', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'],
-        'pause-after': ['none', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'],
-        'pause': ['none', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'].times(1, 2).concat(
-          ['20ms'].amp(['none', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'])
-        ),
-        'rest-before': ['none', '+3s', '250ms', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'],
-        'rest-after': ['none', '+3s', '250ms', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'],
-        'rest': ['none', '+3s', '250ms', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'].times(1, 2),
-        'cue-before': ['url(\'bell.aiff\') -6dB', 'url(\'dong.wav\') 0', 'url(\'pop.au\') 6db'],
-        'cue-after': ['url(/audio/bell.aiff) -6dB', 'url(../clips-1/pop.au) 0', 'url(./audio/caution.wav) 6db'],
-        'cue': ['url(/audio/bell.aiff) -6dB', 'url(../clips-1/pop.au) 0', 'url(./audio/caution.wav) 6db'].times(1, 2).concat(
-          ['none', '-6dB', '0', '6db', 'url(../clips-2/pop.au)'].amp(
-            ['url(\'bell.aiff\') -6dB', 'url(\'dong.wav\') 0', 'url(\'pop.au\') 6db']
+          ['x-soft', 'soft', 'medium', 'loud', 'x-loud'].or(
+            ['-6dB', '0', '6db']
           )
         ),
+        'voice-balance': [
+          'center', '-100', '0', '1.1', '100', 'left', 'right', 'leftwards',
+          'rightwards'
+        ],
+        'speak': 'auto',
+        'speak-as': [
+          'normal', 'spell-out', 'digits', 'literal-punctuation',
+          'no-punctuation',
+          'spell-out digits', 'spell-out literal-punctuation',
+          'spell-out no-punctuation', 'digits spell-out',
+          'digits literal-punctuation', 'digits no-punctuation',
+          'literal-punctuation spell-out', 'literal-punctuation digits',
+          'no-punctuation spell-out', 'no-punctuation digits',
+          'spell-out digits literal-punctuation',
+          'spell-out digits no-punctuation',
+          'spell-out literal-punctuation digits',
+          'spell-out no-punctuation digits',
+          'digits spell-out literal-punctuation',
+          'digits spell-out no-punctuation',
+          'digits literal-punctuation spell-out',
+          'digits no-punctuation spell-out',
+          'literal-punctuation spell-out digits',
+          'literal-punctuation digits spell-out',
+          'no-punctuation spell-out digits', 'no-punctuation digits spell-out'
+        ],
+        'pause-before': [
+          'none', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'
+        ],
+        'pause-after': [
+          'none', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'
+        ],
+        'pause': [
+          'none', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'
+        ].times(1, 2).concat(
+          ['20ms'].amp(
+            ['none', 'x-weak', 'weak', 'medium', 'strong', 'x-strong']
+          )
+        ),
+        'rest-before': [
+          'none', '+3s', '250ms', 'x-weak', 'weak', 'medium', 'strong',
+          'x-strong'
+        ],
+        'rest-after': [
+          'none', '+3s', '250ms', 'x-weak', 'weak', 'medium', 'strong',
+          'x-strong'
+        ],
+        'rest': [
+          'none', '+3s', '250ms', 'x-weak', 'weak', 'medium', 'strong',
+          'x-strong'
+        ].times(1, 2),
+        'cue-before': [
+          'url(\'bell.aiff\') -6dB', 'url(\'dong.wav\') 0',
+          'url(\'pop.au\') 6db'
+        ],
+        'cue-after': [
+          'url(/audio/bell.aiff) -6dB', 'url(../clips-1/pop.au) 0',
+          'url(./audio/caution.wav) 6db'
+        ],
+        'cue': [
+          'url(/audio/bell.aiff) -6dB', 'url(../clips-1/pop.au) 0',
+          'url(./audio/caution.wav) 6db'
+        ].times(
+          1, 2
+        ).concat(['none', '-6dB', '0', '6db', 'url(../clips-2/pop.au)'].amp([
+          'url(\'bell.aiff\') -6dB', 'url(\'dong.wav\') 0',
+          'url(\'pop.au\') 6db'
+        ])),
         'voice-family': ['neutral', 'preserve'].concat(
           ['child', 'young', 'old'].and(['male', 'female', 'neutral']),
           ['male', 'female', 'neutral'].and(['1']),
-          ['child', 'young', 'old'].and(['male', 'female', 'neutral']).and(['1'])
+          ['child', 'young', 'old'].and(
+            ['male', 'female', 'neutral']
+          ).and(['1'])
         ).concat([
-          'comedian, neutral', 'male, preserve', 'female, child male', 'romeo, young male 1',
-          'young female, juliet', 'child male, male 1', 'young male 1, young female 2',
-          'male, female, preserve'
+          'comedian, neutral', 'male, preserve', 'female, child male',
+          'romeo, young male 1', 'young female, juliet', 'child male, male 1',
+          'young male 1, young female 2', 'male, female, preserve'
         ]),
-        'voice-rate': ['normal', 'x-slow', 'slow', 'medium', 'fast', 'x-fast'].or(['0', '100%']),
-        'voice-pitch': ['250Hz', '+250Hz', '-20Hz', '.2kHz'].amp(['absolute']).concat(
-          ['x-low', 'low', 'medium', 'high', 'x-high'].or(
-            ['0', '250Hz', '+250Hz', '-20Hz', '.2kHz', '-3.5st', '3.5st', '100%', '-100%']
-          )
-        ),
-        'voice-range': ['250Hz', '+250Hz', '-20Hz', '.2kHz'].amp(['absolute']).concat(
-          ['x-low', 'low', 'medium', 'high', 'x-high'].or(
-            ['0', '250Hz', '+250Hz', '-20Hz', '.2kHz', '-3.5st', '3.5st', '100%', '-100%']
-          )
-        ),
+        'voice-rate': [
+          'normal', 'x-slow', 'slow', 'medium', 'fast', 'x-fast'
+        ].or(['0', '100%']),
+        'voice-pitch': [
+          '250Hz', '+250Hz', '-20Hz', '.2kHz'
+        ].amp(
+          ['absolute']
+        ).concat(['x-low', 'low', 'medium', 'high', 'x-high'].or([
+          '0', '250Hz', '+250Hz', '-20Hz', '.2kHz',
+          '-3.5st', '3.5st', '100%', '-100%'
+        ])),
+        'voice-range': [
+          '250Hz', '+250Hz', '-20Hz', '.2kHz'
+        ].amp(
+          ['absolute']
+        ).concat(['x-low', 'low', 'medium', 'high', 'x-high'].or([
+          '0', '250Hz', '+250Hz', '-20Hz', '.2kHz',
+          '-3.5st', '3.5st', '100%', '-100%'
+        ])),
         'voice-stress': ['normal', 'strong', 'moderate', 'none', 'reduced'],
         'voice-duration': ['auto', '+3s', '250ms']
       }
@@ -2152,12 +2326,16 @@
           ).map(function translate(translationValues) {
             return 'translate(' + translationValues + ')';
           }),
-          ['0', '1px', '-20px', '50%'].map(function translateX(translationValue) {
-            return 'translateX(' + translationValue + ')';
-          }),
-          ['0', '1px', '-20px', '50%'].map(function translateY(translationValue) {
-            return 'translateY(' + translationValue + ')';
-          }),
+          ['0', '1px', '-20px', '50%'].map(
+            function translateX(translationValue) {
+              return 'translateX(' + translationValue + ')';
+            }
+          ),
+          ['0', '1px', '-20px', '50%'].map(
+            function translateY(translationValue) {
+              return 'translateY(' + translationValue + ')';
+            }
+          ),
           ['scale(1)', 'scale(1, 2)', 'scaleX(1)', 'scaleY(1)'],
           angle.map(function rotate(angle) {
             return 'rotate(' + angle + ')';
@@ -2267,7 +2445,9 @@
       'title': 'Exclusions Level 1',
       'tr': 'http://www.w3.org/TR/css3-exclusions/',
       'properties': {
-        'wrap-flow': ['auto', 'both', 'start', 'end', 'minimum', 'maximum', 'clear'],
+        'wrap-flow': [
+          'auto', 'both', 'start', 'end', 'minimum', 'maximum', 'clear'
+        ],
         'wrap-through': ['wrap', 'none']
       }
     },
@@ -2438,11 +2618,11 @@
           'cross-fade(url(foo.png), linear-gradient(white, black), white)',
           'cross-fade(100% url(foo.png), url(arrow.png), white)'
         ],
-        /*
-         * <color-stop-list> = <color> && [<length>|<percentage>]{1,2}?,
-         *                     [[<color> || [<length>|<percentage>]{1,2}]#, ]?
-         *                     <color> && [<length>|<percentage>]{1,2}?
-         */
+/*
+ * <color-stop-list> = <color> && [<length>|<percentage>]{1,2}?,
+ *                     [[<color> || [<length>|<percentage>]{1,2}]#, ]?
+ *                     <color> && [<length>|<percentage>]{1,2}?
+ */
 
         'linear-gradient()': [
           // '45deg'/*, '1turn', '100grad', '2rad'*/, 'to left', 'to left top'
@@ -2489,9 +2669,11 @@
         ]/*.and(position).concat(
           ['circle'].or(['10px']).concat(
             ['ellipse'].or(['10px', '10%'].times(2)),
-            ['circle', 'ellipse'].or([
-              'closest-corner', 'closest-side', 'farthest-corner', 'farthest-side'
-            ])
+            ['circle', 'ellipse'].or(
+              ['closest-corner', 'closest-side'].concat(
+                ['farthest-corner', 'farthest-side']
+              )
+            )
           ).uniq().and(['at'].and(position))
         )*/.qmark(
           ['10px', '10%'].and(['white']).concat(
@@ -2552,12 +2734,12 @@
             '13% 10px blue, 10px 50% red',
           '10% 100px ellipse at top 10% right 10px, white 10px 10deg, ' +
             '10% 10px black, white 10% 10px, 10px 20% white',
-          '10% 100px ellipse at top 10% right 10px, white, white, white 10px, ' +
-            'white 10px 10px',
+          '10% 100px ellipse at top 10% right 10px, white, white, ' +
+            'white 10px, white 10px 10px',
           '10% 100px ellipse at top 10% right 10px, white 10px 10%, black, ' +
             '10px, 10%, 13% 10px blue, 50% 10px red',
-          'ellipse 10% 20% at top 30% left 40%, white, currentColor, #0000FF, ' +
-            'rgba(255, 255, 0, 0.5), hsla(240, 100%, 50%, 0.5) 80%, ' +
+          'ellipse 10% 20% at top 30% left 40%, white, currentColor, ' +
+            '#0000FF, rgba(255, 255, 0, 0.5), hsla(240, 100%, 50%, 0.5) 80%, ' +
             'lightgoldenrodyellow, transparent 100% 10px',
           '10% 100px ellipse at top 10% right 10px, currentColor 50%, ' +
             '#0000FF 60%, rgba(255, 255, 0, 0.5) 70%, ' +
@@ -2566,15 +2748,29 @@
         ]).map(function radialGradient(arg) {
           return 'radial-gradient(' + arg + ')';
         }),
-        /*
-         * <angular-color-stop-list> = <color> && [<angle>|<percentage>]{1,2}?,
-         *                             [[<color> || [<angle>|<percentage>]{1,2}]#, ]?
-         *                             <color> && [<angle>|<percentage>]{1,2}?
-         */
+/*
+ * <angular-color-stop-list> = <color> && [<angle>|<percentage>]{1,2}?,
+ *                             [[<color> || [<angle>|<percentage>]{1,2}]#, ]?
+ *                             <color> && [<angle>|<percentage>]{1,2}?
+ */
+
          /*'conic-gradient()': ['at'].and(position).qmark(
-          ['white'].qmark(['45deg', '1turn', '100grad', '2rad', '10%'].times(1, 2), ' ', {amp: true}).qmark(
-            ['white'].or(['45deg', '1turn', '100grad', '2rad', '10%'].times(1, 2)).times(1, 2, ', '), ', '
-          ).and(['white'].qmark(['45deg', '1turn', '100grad', '2rad', '10%'].times(1, 2), ' ', {amp: true}), ', '),
+          ['white'].qmark(
+            ['45deg', '1turn', '100grad', '2rad', '10%'].times(1, 2),
+            ' ',
+            {amp: true}
+          ).qmark(
+            ['white'].or(
+              ['45deg', '1turn', '100grad', '2rad', '10%'].times(1, 2)
+            ).times(1, 2, ', '), ', '
+          ).and(
+            ['white'].qmark(
+              ['45deg', '1turn', '100grad', '2rad', '10%'].times(1, 2),
+              ' ',
+              {amp: true}
+            ),
+            ', '
+          ),
           ', ',
           {former: true}
         ).map(function conicGradient(arg) {
@@ -2583,7 +2779,9 @@
         'conic-gradient()': ['white'].qmark([
           '45deg', /*'1turn', '100grad', '2rad', */'10%'
         ].times(1, 2), ' ', {amp: true}).qmark(
-          ['white'].or(['45deg', /*'1turn', '100grad', '2rad', */'10%'].times(1, 2))/*.times(1, 2, ', ')*/,
+          ['white'].or(
+            ['45deg', /*'1turn', '100grad', '2rad', */'10%'].times(1, 2)
+          )/*.times(1, 2, ', ')*/,
           ', '
         ).and(
           // ['white']/*.qmark([
@@ -2652,9 +2850,11 @@
         ]/*.and(position).concat(
           ['circle'].or(['10px']).concat(
             ['ellipse'].or(['10px', '10%'].times(2)),
-            ['circle', 'ellipse'].or([
-              'closest-corner', 'closest-side', 'farthest-corner', 'farthest-side'
-            ])
+            ['circle', 'ellipse'].or(
+              ['closest-corner', 'closest-side'].concat(
+                ['farthest-corner', 'farthest-side']
+              )
+            )
           ).uniq().and(['at'].and(position))
         )*/.qmark(
           ['10px', '10%'].and(['white']).concat(
@@ -2715,12 +2915,12 @@
             '13% 10px blue, 10px 50% red',
           '10% 100px ellipse at top 10% right 10px, white 10px 10deg, ' +
             '10% 10px black, white 10% 10px, 10px 20% white',
-          '10% 100px ellipse at top 10% right 10px, white, white, white 10px, ' +
-            'white 10px 10px',
+          '10% 100px ellipse at top 10% right 10px, white, white, ' +
+            'white 10px, white 10px 10px',
           '10% 100px ellipse at top 10% right 10px, white 10px 10%, black, ' +
             '10px, 10%, 13% 10px blue, 50% 10px red',
-          'ellipse 10% 20% at top 30% left 40%, white, currentColor, #0000FF, ' +
-            'rgba(255, 255, 0, 0.5), hsla(240, 100%, 50%, 0.5) 80%, ' +
+          'ellipse 10% 20% at top 30% left 40%, white, currentColor, ' +
+            '#0000FF, rgba(255, 255, 0, 0.5), hsla(240, 100%, 50%, 0.5) 80%, ' +
             'lightgoldenrodyellow, transparent 100% 10px',
           '10% 100px ellipse at top 10% right 10px, currentColor 50%, ' +
             '#0000FF 60%, rgba(255, 255, 0, 0.5) 70%, ' +
@@ -2730,9 +2930,23 @@
           return 'repeating-radial-gradient(' + arg + ')';
         }),
          /*'repeating-conic-gradient()': ['at'].and(position).qmark(
-          ['white'].qmark(['45deg', '1turn', '100grad', '2rad', '10%'].times(1, 2), ' ', {amp: true}).qmark(
-            ['white'].or(['45deg', '1turn', '100grad', '2rad', '10%'].times(1, 2)).times(1, 2, ', '), ', '
-          ).and(['white'].qmark(['45deg', '1turn', '100grad', '2rad', '10%'].times(1, 2), ' ', {amp: true}), ', '),
+          ['white'].qmark(
+            ['45deg', '1turn', '100grad', '2rad', '10%'].times(1, 2),
+            ' ',
+            {amp: true}
+          ).qmark(
+            ['white'].or(
+              ['45deg', '1turn', '100grad', '2rad', '10%'].times(1, 2)
+            ).times(1, 2, ', '),
+            ', '
+          ).and(
+            ['white'].qmark(
+              ['45deg', '1turn', '100grad', '2rad', '10%'].times(1, 2),
+              ' ',
+              {amp: true}
+            ),
+            ', '
+          ),
           ', ',
           {former: true}
         ).map(function repeatingConicGradient(arg) {
@@ -2741,7 +2955,9 @@
         'repeating-conic-gradient()': ['white'].qmark([
           '45deg', /*'1turn', '100grad', '2rad', */'10%'
         ].times(1, 2), ' ', {amp: true}).qmark(
-          ['white'].or(['45deg', /*'1turn', '100grad', '2rad', */'10%'].times(1, 2))/*.times(1, 2, ', ')*/,
+          ['white'].or(
+            ['45deg', /*'1turn', '100grad', '2rad', */'10%'].times(1, 2)
+          )/*.times(1, 2, ', ')*/,
           ', '
         ).and(
           // ['white']/*.qmark([
@@ -2836,9 +3052,11 @@
         ':nth-match(an+b of <selector>)': anb.map(function nthMatch(nth) {
           return ':nth-match(' + nth + ' of .foo)';
         }).concat([':nth-match(2n+1 of .foo, #bar)']),
-        ':nth-last-match(an+b of <selector>)': anb.map(function nthLastMatch(nth) {
-          return ':nth-last-match(' + nth + ' of #example)';
-        }).concat([':nth-last-match(even of #example > div, .foo)']),
+        ':nth-last-match(an+b of <selector>)': anb.map(
+          function nthLastMatch(nth) {
+            return ':nth-last-match(' + nth + ' of #example)';
+          }
+        ).concat([':nth-last-match(even of #example > div, .foo)']),
         ':nth-column()': anb.map(function nthColumn(nth) {
           return ':nth-column(' + nth + ')';
         }),
@@ -2854,7 +3072,8 @@
         '((query))': [
           '((width) and (height))', 'speech, ((width) and (height))',
           '((width) and (height)), ((width) and (height))',
-          'all and ((width) and (height))', '(width) and ((width) and (height))',
+          'all and ((width) and (height))',
+          '(width) and ((width) and (height))',
           '((width) and (height)) and (height)',
           '((width) and (height)) and ((width) and (height))',
           'only screen and ((width) and (height))',
@@ -2863,9 +3082,10 @@
           'not aural and ((width) and (height)) and (height)'
         ],
         'not (query)': [
-          'not (color-index)', 'not (width: 0)', 'not (width: 0), not (width: 0)',
-          'all and not (width: 0)', '(width) and not (width: 0)',
-          'not (width: 0) and (height)', 'not (width: 0) and not (height: 0)',
+          'not (color-index)', 'not (width: 0)',
+          'not (width: 0), not (width: 0)', 'all and not (width: 0)',
+          '(width) and not (width: 0)', 'not (width: 0) and (height)',
+          'not (width: 0) and not (height: 0)',
           'only screen and not (width: 0)', 'not print and not (width: 0)',
           'only screen and (width) and not (width: 0)',
           'not tv and not (width: 0) and (height)'
@@ -2885,8 +3105,8 @@
             'not screen and (height)'
         ],
         'range type': [
-          '(width >= 1px)', '(height > 1px)', '(1px < height)', '(1px <= width)',
-          '(height >= 1px)', '(width <= 10000000em)',
+          '(width >= 1px)', '(height > 1px)', '(1px < height)',
+          '(1px <= width)', '(height >= 1px)', '(width <= 10000000em)',
           '(aspect-ratio > 1/1000000)', 'not print and (width = 1px)',
           'not print and (color > 0)', 'not print and (color >= 8)',
           'not print and (color-index >= 1)', 'not print and (monochrome >= 2)',
@@ -2936,10 +3156,12 @@
           'text-decoration-color',
           'column-rule-color'
         ],
-        'rgb()': ['rgba(1.1, 0, 0)', 'rgba(1.1, 1.2, 0)', 'rgba(1.1, 1.2, 1.3)'],
+        'rgb()': [
+          'rgba(1.1, 0, 0)', 'rgba(1.1, 1.2, 0)', 'rgba(1.1, 1.2, 1.3)'
+        ],
         'rgba()': [
-          'rgba(1.1, 0, 0, 1)', 'rgba(1.1, 1.2, 0, 1)', 'rgba(1.1, 1.2, 1.3, 1)',
-          'rgba(0, 0, 0, 10%)'
+          'rgba(1.1, 0, 0, 1)', 'rgba(1.1, 1.2, 0, 1)',
+          'rgba(1.1, 1.2, 1.3, 1)', 'rgba(0, 0, 0, 10%)'
         ],
         'hsl()': angle.concat(
           ['red', 'orange', 'yellow', 'green', 'blue', 'purple'].times(1, 2)
@@ -2947,18 +3169,22 @@
           'reddish', 'orangish', 'yellowish', 'greenish', 'bluish', 'purplish',
           'reddish(10%)', 'orangish(10%)', 'yellowish(10%)', 'greenish(10%)',
           'bluish(10%)', 'purplish(10%)'
-        ].and(['red', 'orange', 'yellow', 'green', 'blue', 'purple'])).map(function hsl(arg) {
-          return 'hsl(' + arg + ', 0%, 0%)';
-        }),
+        ].and(['red', 'orange', 'yellow', 'green', 'blue', 'purple'])).map(
+          function hsl(arg) {
+            return 'hsl(' + arg + ', 0%, 0%)';
+          }
+        ),
         'hsla()': angle.concat(
           ['red', 'orange', 'yellow', 'green', 'blue', 'purple'].times(1, 2)
         ).concat([
           'reddish', 'orangish', 'yellowish', 'greenish', 'bluish', 'purplish',
           'reddish(10%)', 'orangish(10%)', 'yellowish(10%)', 'greenish(10%)',
           'bluish(10%)', 'purplish(10%)'
-        ].and(['red', 'orange', 'yellow', 'green', 'blue', 'purple'])).map(function hsla(arg) {
-          return 'hsla(' + arg + ', 0%, 0%, 0.99)';
-        }),
+        ].and(['red', 'orange', 'yellow', 'green', 'blue', 'purple'])).map(
+          function hsla(arg) {
+            return 'hsla(' + arg + ', 0%, 0%, 0.99)';
+          }
+        ),
         'hwb()': ['0', '1', '-1', '1.1'].concat(
           angle,
           ['red', 'orange', 'yellow', 'green', 'blue', 'purple'].times(1, 2)
@@ -3102,7 +3328,9 @@
           ['full-width'], ['full-size-kana']
         ).slice(4),
         'text-space-collapse': ['collapse', 'discard'].concat(
-          ['preserve', 'preserve-breaks'].amp(['trim-inner'].or(['consume-before'], ['consume-after']))
+          ['preserve', 'preserve-breaks'].amp(
+            ['trim-inner'].or(['consume-before'], ['consume-after'])
+          )
         ),
         'hyphenate-character': ['auto', '\'\\2010\''],
         'hyphenate-limit-zone': ['0', '10%', '10px'],
@@ -3110,18 +3338,23 @@
         'hyphenate-limit-lines': ['no-limit ', '1'],
         'hyphenate-limit-last': ['none ', 'always', 'column', 'page', 'spread'],
         'text-wrap': ['normal', 'none', 'avoid'],
-        'overflow-wrap': ['hyphenate'].concat(['break-word'].amp(['hyphenate'])),
-        'text-align': ['\'foo\''].and(['start', 'end', 'left', 'right', 'center', 'justify']),
+        'overflow-wrap': ['hyphenate'].concat(
+          ['break-word'].amp(['hyphenate'])
+        ),
+        'text-align': ['\'foo\''].and(
+          ['start', 'end', 'left', 'right', 'center', 'justify']
+        ),
         'text-justify': ['inter-ideograph', 'inter-cluster', 'kashida'],
         'word-spacing': ['normal', '1em', '50%'].times(2, 3),
         'letter-spacing': ['50%'].concat(['normal', '1em', '50%'].times(2, 3)),
         'text-spacing': [
-          'normal', 'none', 'trim-start', 'space-start',
-          'trim-end', 'space-end', 'allow-end', 'trim-adjacent', 'space-adjacent',
+          'normal', 'none', 'trim-start', 'space-start', 'trim-end',
+          'space-end', 'allow-end', 'trim-adjacent', 'space-adjacent',
           'no-compress', 'ideograph-alpha', 'ideograph-numeric', 'punctuation',
           'trim-start trim-end', 'trim-end trim-start',
           'no-compress ideograph-alpha ideograph-numeric punctuation',
-          'trim-start trim-end trim-adjacent no-compress ideograph-alpha ideograph-numeric punctuation'
+          'trim-start trim-end trim-adjacent no-compress ideograph-alpha ' +
+            'ideograph-numeric punctuation'
         ],
         'text-decoration-line': ['remove-all'].concat(
           ['underline', 'no-underline', 'replace-underline'].or(
@@ -3140,22 +3373,25 @@
           }, ['underline'].or(['overline'], ['line-through']))
         ).concat([
           'remove-all solid', 'solid remove-all',
-          'remove-all solid black', 'underline overline no-line-through solid black'
+          'remove-all solid black',
+          'underline overline no-line-through solid black'
         ]),
         'text-underline-position': ['below left', 'below right'],
         'text-emphasis-position': ['above', 'below'].amp(['right', 'left']),
-        'text-emphasis-skip': ['spaces'].or(['punctuation'], ['symbols'], ['narrow']),
+        'text-emphasis-skip': ['spaces'].or(
+          ['punctuation'], ['symbols'], ['narrow']
+        ),
         'text-shadow': [
           '1px 2px 3px 4px', '1px 2px 3px 4px purple', 'pink 1px 2px 3px 4px',
-          'inset 1px 2px', '1px 2px inset', 'inset 1px 2px 3px', '1px 2px 3px inset',
-          'inset 1px 2px 3px 4px', '1px 2px 3px 4px inset',
-          'inset 1px 2px red', '1px 2px red inset', 'inset blue 1px 2px', 'blue 1px 2px inset',
-          'inset 1px 2px 3px yellow', '1px 2px 3px yellow inset',
-          'inset green 1px 2px 3px', 'green 1px 2px 3px inset',
-          'inset 1px 2px 3px 4px purple', '1px 2px 3px 4px purple inset',
-          'inset pink 1px 2px 3px 4px', 'pink 1px 2px 3px 4px inset',
-          '1px 2px, inset 1px 2px', '1px 2px 3px 4px, 1px 2px 3px 4px',
-          '1px 2px, 1px 2px, inset 1px 2px'
+          'inset 1px 2px', '1px 2px inset', 'inset 1px 2px 3px',
+          '1px 2px 3px inset', 'inset 1px 2px 3px 4px', '1px 2px 3px 4px inset',
+          'inset 1px 2px red', '1px 2px red inset', 'inset blue 1px 2px',
+          'blue 1px 2px inset', 'inset 1px 2px 3px yellow',
+          '1px 2px 3px yellow inset', 'inset green 1px 2px 3px',
+          'green 1px 2px 3px inset', 'inset 1px 2px 3px 4px purple',
+          '1px 2px 3px 4px purple inset', 'inset pink 1px 2px 3px 4px',
+          'pink 1px 2px 3px 4px inset', '1px 2px, inset 1px 2px',
+          '1px 2px 3px 4px, 1px 2px 3px 4px', '1px 2px, 1px 2px, inset 1px 2px'
         ]
       }
     },
@@ -3229,7 +3465,9 @@
           'blur(0px)', 'brightness(1)', 'brightness(15%)',
           'contrast(1)', 'contrast(1%)'
         ]).concat(
-          ['10px'].times(2, 3).qmark(['white']).map(function dropShadow(shadow) {
+          ['10px'].times(2, 3).qmark(
+            ['white']
+          ).map(function dropShadow(shadow) {
             return 'drop-shadow(' + shadow + ')';
           })
         ).concat([
@@ -3615,7 +3853,8 @@
           '@page chapter:nth(3n)', '@page chapter:nth(3n+1)',
           '@page chapter:nth(3n+2)',
           '@page :first p', '@page :nth(1) .sidenote',
-          '@page :nth(3n+1) p:first-line', '@page funky:nth(1) p', '@page :left p'
+          '@page :nth(3n+1) p:first-line', '@page funky:nth(1) p',
+          '@page :left p'
         ],
         '@inside': ['@inside', '@inside p'],
         '@layout': ['@layout'],
@@ -3658,7 +3897,8 @@
         'float-defer-line': ['2'],
         'float-offset-y': ['2'],
         'float-offset': [
-          '2 top', '3em outside', '2 bottom, 3em outside', '2 bottom, 50% outside'
+          '2 top', '3em outside', '2 bottom, 3em outside',
+          '2 bottom, 50% outside'
         ],
         'float-outside': ['3em'],
         'float-offset-x': ['3em', '50%']
@@ -3710,7 +3950,8 @@
 
     'pointerevents': {
       'title': 'Pointer Events',
-      'dev': 'https://dvcs.w3.org/hg/pointerevents/raw-file/tip/pointerEvents.html',
+      'dev': 'https://dvcs.w3.org/hg/pointerevents/raw-file/tip/' +
+        'pointerEvents.html',
       'properties': {
         'touch-action': ['auto', 'none'].concat(
           ['pan-x'].or(['pan-y'], ['manipulation'])
