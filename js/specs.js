@@ -215,7 +215,7 @@
   var symbol = ['"string"'].concat(image, ['ident']);
   var symbolsType = ['cyclic', 'numeric', 'alphabetic', 'symbolic', 'fixed'];
 
-  win.Specs = {
+  win.NCFTest.Specs = {
     // CSS Level 3
     'selectors3': {
       'title': 'Selectors',

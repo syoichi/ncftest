@@ -1,37 +1,34 @@
-/* global Supports, Specs */
-
-(function executeScoringAndTesting(doc) {
+(function executeScoringAndTesting(win, doc) {
   'use strict';
 
-  var mainScore, all, specsTested;
+  var NCFTest, Supports, Specs, extendProperties, mainScore, all, specsTested;
+
+  NCFTest = win.NCFTest;
+  Supports = NCFTest.Supports;
+  Specs = NCFTest.Specs;
+  extendProperties = NCFTest.extendProperties;
 
   function Score(main) {
     this.passed = this.total = this.passedTests = this.totalTests = 0;
     this.main = main;
   }
-  Object.defineProperties(Score.prototype, {
-    update: {
-      value: function update(data) {
-        if (!data.total) {
-          return;
-        }
+  extendProperties(Score.prototype, {
+    update: function update(data) {
+      if (!data.total) {
+        return;
+      }
 
-        this.passedTests += data.passed;
-        this.totalTests += data.total;
-        this.total += 1;
-        this.passed += data.passed / data.total;
+      this.passedTests += data.passed;
+      this.totalTests += data.total;
+      this.total += 1;
+      this.passed += data.passed / data.total;
 
-        if (this.main) {
-          this.main.update(data);
-        }
-      },
-      enumerable: false
+      if (this.main) {
+        this.main.update(data);
+      }
     },
-    percent: {
-      value: function percent() {
-        return parseInt(100 * this.passed / this.total, 10) + '%';
-      },
-      enumerable: false
+    percent: function percent() {
+      return parseInt(100 * this.passed / this.total, 10) + '%';
     }
   });
 
@@ -86,126 +83,120 @@
     anchor.textContent = title;
     specsTested.appendChild(list);
   }
-  Object.defineProperties(Test.prototype, {
-    group: {
-      value: function group(what, testCallback) {
-        var theseTests, testList, thisSection, i, testListLen, feature,
-            dl, dt, passed, tests, j, testsLen,
-            test, results, success, note, dd, support, result;
+  extendProperties(Test.prototype, {
+    group: function group(what, testCallback) {
+      var theseTests, testList, thisSection, i, testListLen, feature,
+          dl, dt, passed, tests, j, testsLen,
+          test, results, success, note, dd, support, result;
 
-        theseTests = this.tests[what];
+      theseTests = this.tests[what];
 
-        if (!theseTests) {
-          return;
-        }
+      if (!theseTests) {
+        return;
+      }
 
-        testList = Object.keys(theseTests);
+      testList = Object.keys(theseTests);
 
-        for (i = 0, testListLen = testList.length; i < testListLen; i += 1) {
-          feature = testList[i];
+      for (i = 0, testListLen = testList.length; i < testListLen; i += 1) {
+        feature = testList[i];
 
-          if (!/^(?:properties|atrule|atruleName)$/.test(feature)) {
-            if (!thisSection) {
-              thisSection = this.section.appendChild(
-                doc.createElement('section')
-              );
-              thisSection.className = what;
-              thisSection.appendChild(
-                doc.createElement('h1')
-              ).textContent = what;
+        if (!/^(?:properties|atrule|atruleName)$/.test(feature)) {
+          if (!thisSection) {
+            thisSection = this.section.appendChild(
+              doc.createElement('section')
+            );
+            thisSection.className = what;
+            thisSection.appendChild(
+              doc.createElement('h1')
+            ).textContent = what;
+          }
+
+          dl = thisSection.appendChild(doc.createElement('dl'));
+          dt = dl.appendChild(doc.createElement('dt'));
+          dt.textContent = feature;
+
+          passed = 0;
+          tests = theseTests[feature];
+          tests = Array.isArray(tests) ? tests : [tests];
+
+          for (j = 0, testsLen = tests.length; j < testsLen; j += 1) {
+            if (what === 'units') {
+              testsLen = 1;
+              test = '1' + feature;
+              results = testCallback(feature, tests);
+            } else {
+              test = tests[j];
+              results = testCallback(test, feature, theseTests);
             }
 
-            dl = thisSection.appendChild(doc.createElement('dl'));
-            dt = dl.appendChild(doc.createElement('dt'));
-            dt.textContent = feature;
-
-            passed = 0;
-            tests = theseTests[feature];
-            tests = Array.isArray(tests) ? tests : [tests];
-
-            for (j = 0, testsLen = tests.length; j < testsLen; j += 1) {
-              if (what === 'units') {
-                testsLen = 1;
-                test = '1' + feature;
-                results = testCallback(feature, tests);
-              } else {
-                test = tests[j];
-                results = testCallback(test, feature, theseTests);
-              }
-
-              if (typeof results === 'object') {
-                success = results.success;
-                note = results.note;
-              } else {
-                success = Number(Boolean(results));
-              }
-
-              passed += Number(success);
-
-              dd = dl.appendChild(doc.createElement('dd'));
-              dd.className = this.passClass(
-                {passed: Math.round(success * 10000), total: 10000}
-              );
-              dd.textContent = test;
-
-              if (note) {
-                dd.appendChild(doc.createElement('small')).textContent = note;
-              }
-
-              if (what === 'properties' && results && results !== test) {
-                dd.classList.add('prefixed');
-                dd.title += 'prefixed';
-              }
+            if (typeof results === 'object') {
+              success = results.success;
+              note = results.note;
+            } else {
+              success = Number(Boolean(results));
             }
 
-            this.score.update({passed: passed, total: testsLen});
+            passed += Number(success);
 
-            dt.className = this.passClass({passed: passed, total: testsLen});
+            dd = dl.appendChild(doc.createElement('dd'));
+            dd.className = this.passClass(
+              {passed: Math.round(success * 10000), total: 10000}
+            );
+            dd.textContent = test;
 
-            support = Supports[Test.groups[what].type];
+            if (note) {
+              dd.appendChild(doc.createElement('small')).textContent = note;
+            }
 
-            if (support.cached) {
-              result = support.cached[feature];
+            if (what === 'properties' && results && results !== test) {
+              dd.classList.add('prefixed');
+              dd.title += 'prefixed';
+            }
+          }
 
-              if (result && result !== feature) {
-                dt.classList.add('prefixed');
-                dt.title += 'prefixed';
-              }
+          this.score.update({passed: passed, total: testsLen});
+
+          dt.className = this.passClass({passed: passed, total: testsLen});
+
+          support = Supports[Test.groups[what].type];
+
+          if (support.cached) {
+            result = support.cached[feature];
+
+            if (result && result !== feature) {
+              dt.classList.add('prefixed');
+              dt.title += 'prefixed';
             }
           }
         }
-      },
-      enumerable: false
+      }
     },
-    passClass: {
-      value: function passClass(info) {
-        var success, classes, index;
+    passClass: function passClass(info) {
+      var success, classes, index;
 
-        if ('passed' in info) {
-          success = info.passed / info.total;
-        } else if ('failed' in info) {
-          success = 1 - info.failed / info.total;
-        }
+      if ('passed' in info) {
+        success = info.passed / info.total;
+      } else if ('failed' in info) {
+        success = 1 - info.failed / info.total;
+      }
 
-        if (success === 1) {
-          return 'pass';
-        }
-        if (success === 0) {
-          return 'epic-fail';
-        }
+      if (success === 1) {
+        return 'pass';
+      }
+      if (success === 0) {
+        return 'epic-fail';
+      }
 
-        classes = [
-          'fail',
-          'very-buggy',
-          'buggy',
-          'slightly-buggy',
-          'almost-pass'
-        ];
-        index = Math.round(success * (classes.length - 1));
+      classes = [
+        'fail',
+        'very-buggy',
+        'buggy',
+        'slightly-buggy',
+        'almost-pass'
+      ];
+      index = Math.round(success * (classes.length - 1));
 
-        return classes[index];
-      },
-      enumerable: false
+      return classes[index];
     }
   });
   Test.groups = {
@@ -359,4 +350,4 @@
       timeTaken.textContent = (Date.now() - timeBefore) + 'ms';
     })();
   });
-}(document));
+}(window, document));

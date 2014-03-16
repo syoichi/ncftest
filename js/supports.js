@@ -1,20 +1,16 @@
 (function executeSupports(win, doc) {
   'use strict';
 
-  var inline, style, prefixes, prefixesLen, isCSS;
+  var NCFTest, camelCase, prefixes, prefixesLen, isCSS, inline, style;
 
+  NCFTest = win.NCFTest;
+  camelCase = NCFTest.camelCase;
   prefixes = [
     '', '-moz-', '-webkit-', '-o-', '-ms-',
     '-wap-', '-op-', '-xv-', 'ms-', '-khtml-', '-apple-'
   ];
   prefixesLen = prefixes.length;
   isCSS = 'CSS' in win;
-
-  function camelCase(str) {
-    return str.replace(/-([a-z])/g, function makeUpperCase($0, $1) {
-      return $1.toUpperCase();
-    }).replace('-', '');
-  }
 
   doc.addEventListener('DOMContentLoaded', function setupDummys() {
     var head, body, dummy, iframe;
@@ -46,7 +42,7 @@
     }
   });
 
-  win.Supports = {
+  NCFTest.Supports = {
     property: function propertyFunc(property) {
       var cached, idx, prefixed;
 
