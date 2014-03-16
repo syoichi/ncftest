@@ -1,17 +1,10 @@
+/* jshint onevar: false */
+
 (function executeSpec(win) {
   'use strict';
 
-  var width, anb, alphavalue, image, repeatStyle, position, box, shapeBox,
-      geometryBox, bgSize, counterStyle, angle, fillRule, basicShape, blendMode,
-      timingFunction, flexDirection, flexWrap, flexPosition, alignItems,
-      justifyContent, trackBreadth, trackSize, lineNames, repeatFunction,
-      trackList, trackSizing, gridTemplateAreas, gridTemplate, gridAutoFlow,
-      gridLine, borderClip, symbol, symbolsType, crossPosition, boxPosition,
-      selfPosition, contentPosition, itemPosition, overflowPosition,
-      alignPosition, justifyContent2, justifySelf, alignSelf;
-
-  width = ['auto', '10px', '10%'];
-  anb = [
+  var width = ['auto', '10px', '10%'];
+  var anb = [
     'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
     '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
     'n-1', '-n-1', '+n-1', '1n-1', '-1n-1', '+1n-1', '0n-1', '-0n-1', '+0n-1',
@@ -25,17 +18,17 @@
     '-01', '-00', '+0', '+1', '+10', '+01', '+00',
     'odd', 'even'
   ];
-  alphavalue = ['1', '0', '2', '-5', '.5', '0.0', '1.0'];
-  image = [
+  var alphavalue = ['1', '0', '2', '-5', '.5', '0.0', '1.0'];
+  var image = [
     'url(foo.png)', /* image(white), */
     'linear-gradient(white, black)', 'radial-gradient(white, white)',
     'repeating-linear-gradient(white, white)',
     'repeating-radial-gradient(white, white)'
   ];
-  repeatStyle = ['repeat-x', 'repeat-y'].concat(
+  var repeatStyle = ['repeat-x', 'repeat-y'].concat(
     ['repeat', 'space', 'round', 'no-repeat'].times(1, 2)
   );
-  position = [
+  var position = [
     'left', 'center', 'right', 'top', 'bottom', '10%', '10px'
   ].concat(
     ['left', 'center', 'right', '10%', '10px'].and([
@@ -45,11 +38,11 @@
       ['center'].concat(['top', 'bottom'].qmark(['10%', '10px']))
     )
   ).uniq();
-  box = ['border-box', 'padding-box', 'content-box'];
-  shapeBox = box.concat('margin-box');
-  geometryBox = shapeBox.concat(['fill-box', 'stroke-box', 'view-box']);
-  bgSize = width.times(1, 2).concat(['cover', 'contain']);
-  counterStyle = [
+  var box = ['border-box', 'padding-box', 'content-box'];
+  var shapeBox = box.concat('margin-box');
+  var geometryBox = shapeBox.concat(['fill-box', 'stroke-box', 'view-box']);
+  var bgSize = width.times(1, 2).concat(['cover', 'contain']);
+  var counterStyle = [
     'cjk-decimal', 'hebrew', 'hiragana', 'hiragana-iroha',
     'katakana', 'katakana-iroha', 'disclosure-open', 'disclosure-closed',
     'japanese-informal', 'japanese-formal', 'korean-hangul-formal',
@@ -59,9 +52,9 @@
     'symbols(\'\')', 'symbols(repeating \'○\' \'●\')',
     'toggle(disc, square, circle)'*/
   ];
-  angle = ['90deg', '100grad', '1rad', '1turn'];
-  fillRule = ['nonzero', 'evenodd'];
-  basicShape = [].concat(
+  var angle = ['90deg', '100grad', '1rad', '1turn'];
+  var fillRule = ['nonzero', 'evenodd'];
+  var basicShape = [].concat(
     ['10px', '10%'].times(1, 4).map(function inset(arg) {
       return 'inset(' + arg + ')';
     }),
@@ -91,46 +84,46 @@
       return 'polygon(' + arg + ')';
     })
   );
-  blendMode = [
+  var blendMode = [
     'normal', 'multiply', 'screen', 'overlay', 'darken', 'lighten',
     'color-dodge', 'color-burn', 'hard-light', 'soft-light', 'difference',
     'exclusion', 'hue', 'saturation', 'color', 'luminosity'
   ];
-  timingFunction = [
+  var timingFunction = [
     'ease', 'linear', 'ease-in', 'ease-out', 'ease-in-out', 'step-start',
     'step-end', 'steps(1)', 'steps(3, start)', 'steps(5, end)',
     'cubic-bezier(.5, .5, .5, .5)', 'cubic-bezier(.5, 1.5, .5, -2.5)',
     'cubic-bezier(0, -0.1, 1, 1.1)', 'cubic-bezier(0.5, -0.5, 0.5, -0.5)'
   ];
-  flexDirection = ['row', 'row-reverse', 'column', 'column-reverse'];
-  flexWrap = ['nowrap', 'wrap', 'wrap-reverse'];
-  flexPosition = ['flex-start', 'flex-end', 'center'];
-  justifyContent = flexPosition.concat(['space-between', 'space-around']);
-  crossPosition = ['stretch', 'baseline'];
-  alignItems = flexPosition.concat(crossPosition);
-  boxPosition = ['start', 'end', 'left', 'right'];
-  selfPosition = ['self-start', 'self-end'];
-  contentPosition = flexPosition.concat(boxPosition);
-  itemPosition = contentPosition.concat(selfPosition);
-  overflowPosition = ['true', 'safe'];
-  alignPosition = boxPosition.concat(selfPosition);
-  justifyContent2 = ['auto', 'baseline'].concat(
+  var flexDirection = ['row', 'row-reverse', 'column', 'column-reverse'];
+  var flexWrap = ['nowrap', 'wrap', 'wrap-reverse'];
+  var flexPosition = ['flex-start', 'flex-end', 'center'];
+  var justifyContent = flexPosition.concat(['space-between', 'space-around']);
+  var crossPosition = ['stretch', 'baseline'];
+  var alignItems = flexPosition.concat(crossPosition);
+  var boxPosition = ['start', 'end', 'left', 'right'];
+  var selfPosition = ['self-start', 'self-end'];
+  var contentPosition = flexPosition.concat(boxPosition);
+  var itemPosition = contentPosition.concat(selfPosition);
+  var overflowPosition = ['true', 'safe'];
+  var alignPosition = boxPosition.concat(selfPosition);
+  var justifyContent2 = ['auto', 'baseline'].concat(
     alignPosition.concat(
       itemPosition.and(contentPosition)
     ).qmark(overflowPosition, ' ', {amp: true}),
     flexPosition.amp(overflowPosition)
   );
-  justifySelf = ['auto'].concat(
+  var justifySelf = ['auto'].concat(
     crossPosition,
     itemPosition.qmark(overflowPosition, ' ', {amp: true})
   );
-  alignSelf = alignPosition.concat(itemPosition.amp(overflowPosition));
-  trackBreadth = ['10px', '10%', '1fr', 'min-content', 'max-content'];
-  trackSize = trackBreadth.times(2, 2, ', ').map(function minmax(arg) {
+  var alignSelf = alignPosition.concat(itemPosition.amp(overflowPosition));
+  var trackBreadth = ['10px', '10%', '1fr', 'min-content', 'max-content'];
+  var trackSize = trackBreadth.times(2, 2, ', ').map(function minmax(arg) {
     return 'minmax(' + arg + ')';
   }).concat(['auto'], trackBreadth);
-  lineNames = [/*'()', */'(a)', '(a b)'];
-  repeatFunction = lineNames.qmark(trackSize, ' ', {
+  var lineNames = [/*'()', */'(a)', '(a b)'];
+  var repeatFunction = lineNames.qmark(trackSize, ' ', {
     former: true
   // })/*.times(1, 2)*/.qmark(lineNames).concat([
   }).qmark(lineNames).concat([
@@ -144,7 +137,7 @@
   ]).map(function repeat(arg) {
     return 'repeat(1, ' + arg + ')';
   });
-  trackList = lineNames.qmark(trackSize.concat(['repeat(1, auto)']), ' ', {
+  var trackList = lineNames.qmark(trackSize.concat(['repeat(1, auto)']), ' ', {
     former: true
   // })/*.times(1, 2)*/.qmark(lineNames).concat(repeatFunction).concat([
   }).qmark(lineNames).concat(repeatFunction).concat([
@@ -176,7 +169,7 @@
       ' repeat(2, (e) 40px) repeat(5, auto)',
     '(a) 50px (b) 320px (b c d) repeat(2, (e) 40px) repeat(4, 0px) 50px'
   ]);
-  trackSizing = ['none'].concat(
+  var trackSizing = ['none'].concat(
     trackList,
     ['subgrid'].qmark(lineNames.concat(lineNames.map(function repeat(arg) {
       return 'repeat(1, ' + arg + ')';
@@ -186,10 +179,10 @@
     ])),
     ['calc(4em - 5px)']
   );
-  gridTemplateAreas = [
+  var gridTemplateAreas = [
     'none', '\'nav\'', '\'.\'', '\'head head\' \'nav main\' \'foot .\''
   ];
-  gridTemplate = gridTemplateAreas.concat(
+  var gridTemplate = gridTemplateAreas.concat(
     ['subgrid'],
     trackSizing.and(['none'], ' / '),
     trackList.and(['"nav"'], ' / '),
@@ -207,20 +200,20 @@
       'repeat(4, (content) 1fr minmax(1px, 1px) (repeat)) (middle) ' +
       '1fr (last footer) / (start) "nav" auto (end)'
   ]);
-  gridAutoFlow = ['none'].concat(
+  var gridAutoFlow = ['none'].concat(
     ['row', 'column'].qmark(['dense'], ' ', {amp: true})
   );
-  gridLine = ['auto'].concat(
+  var gridLine = ['auto'].concat(
     ['1'].or(['ident']), ['span'].amp(['1'].or(['ident']))
   );
-  borderClip = ['normal'].concat(
+  var borderClip = ['normal'].concat(
     ['10px', '10%', '1fr'].times(1, 3)
   ).concat([
     '0 10px 1fr 10px',
     '3fr 10px 2fr 10px 1fr 10px 10px 10px 1fr 10px 2fr 10px 3fr'
   ]);
-  symbol = ['"string"'].concat(image, ['ident']);
-  symbolsType = ['cyclic', 'numeric', 'alphabetic', 'symbolic', 'fixed'];
+  var symbol = ['"string"'].concat(image, ['ident']);
+  var symbolsType = ['cyclic', 'numeric', 'alphabetic', 'symbolic', 'fixed'];
 
   win.Specs = {
     // CSS Level 3
