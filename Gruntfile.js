@@ -7,7 +7,7 @@ module.exports = function (grunt) {
       all: [
         'Gruntfile.js',
         'js/proto.js',
-        // 'js/specs.js',
+        'js/specs.js',
         'js/supports.js',
         'js/main.js'
       ],
