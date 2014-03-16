@@ -1,3 +1,5 @@
+/* global CSS */
+
 (function executeSupports(win, doc) {
   'use strict';
 
@@ -10,7 +12,7 @@
     '-wap-', '-op-', '-xv-', 'ms-', '-khtml-', '-apple-'
   ];
   prefixesLen = prefixes.length;
-  isCSS = 'CSS' in win;
+  isCSS = typeof CSS !== 'undefined';
 
   doc.addEventListener('DOMContentLoaded', function setupDummys() {
     var head, body, dummy, iframe;
@@ -29,7 +31,7 @@
     style.disabled = true;
 
     // On Trident, descriptor test is too slow or freezing.
-    if (/Trident/.test(win.navigator.userAgent)) {
+    if (/Trident/.test(navigator.userAgent)) {
       iframe = doc.createElement('iframe');
       iframe.className = 'dummy';
       iframe.src = 'about:blank';
@@ -92,7 +94,7 @@
           prefix = prefixes[idx];
           prefixed = prefix + value;
 
-          if (win.CSS.supports(property, prefixed)) {
+          if (CSS.supports(property, prefixed)) {
             if (label && cached[label] === void 0) {
               cached[label] = prefix + label;
             }
@@ -145,7 +147,7 @@
           prefix = prefixes[idx];
           prefixed = '1' + prefix + unit;
 
-          if (win.CSS.supports(property, prefixed)) {
+          if (CSS.supports(property, prefixed)) {
             if (unit && cached[unit] === void 0) {
               cached[unit] = prefix + unit;
             }
@@ -301,7 +303,7 @@
       for (idx = 0; idx < prefixesLen; idx += 1) {
         prefix = prefixes[idx];
         prefixed = mq.replace(/\(/g, '(' + prefix);
-        mql = win.matchMedia(prefixed);
+        mql = matchMedia(prefixed);
 
         if (mql.media !== 'invalid' && mql.matches) {
           if (cached[mqName] === void 0) {
