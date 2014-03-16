@@ -214,6 +214,9 @@
   ]);
   var symbol = ['"string"'].concat(image, ['ident']);
   var symbolsType = ['cyclic', 'numeric', 'alphabetic', 'symbolic', 'fixed'];
+  var overflowFragment = [
+    'paged-x', 'paged-y', 'paged-x-controls', 'paged-y-controls', 'fragments'
+  ];
 
   win.NCFTest.Specs = {
     // CSS Level 3
@@ -1430,22 +1433,14 @@
     'css-overflow-3': {
       'title': 'Overflow',
       'properties': {
-        'overflow-x': [
-          'paged-x', 'paged-y', 'paged-x-controls', 'paged-y-controls',
-          'fragments'
-        ],
-        'overflow-y': [
-          'paged-x', 'paged-y', 'paged-x-controls', 'paged-y-controls',
-          'fragments'
-        ],
-        'overflow': [
-          'paged-x', 'paged-y', 'paged-x-controls', 'paged-y-controls',
-          'fragments'
-        ],
+        'overflow-x': overflowFragment,
+        'overflow-y': overflowFragment,
+        'overflow': overflowFragment,
+        // 'break': ['regions'],
         'max-lines': ['none', '1']
       },
       'selectors': {
-        '::nth-fragment()': 'div::nth-fragment(1)'
+        '::nth-fragment()': ['::nth-fragment(1)', 'div::nth-fragment(1)']
       }
     },
 
