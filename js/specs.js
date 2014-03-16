@@ -1,6 +1,6 @@
 /* jshint onevar: false */
 
-(function executeSpec(win) {
+(function executeSpecs(win) {
   'use strict';
 
   var width = ['auto', '10px', '10%'];
