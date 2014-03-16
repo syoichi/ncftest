@@ -1,15 +1,16 @@
 (function executeSpec(win) {
   'use strict';
 
-  var anb, alphavalue, image, repeatStyle, position, box, shapeBox, geometryBox,
-      bgSize, counterStyle, angle, fillRule, basicShape, blendMode,
-      timingFunction, width, flexDirection, flexWrap, flexPosition, alignItems,
+  var width, anb, alphavalue, image, repeatStyle, position, box, shapeBox,
+      geometryBox, bgSize, counterStyle, angle, fillRule, basicShape, blendMode,
+      timingFunction, flexDirection, flexWrap, flexPosition, alignItems,
       justifyContent, trackBreadth, trackSize, lineNames, repeatFunction,
       trackList, trackSizing, gridTemplateAreas, gridTemplate, gridAutoFlow,
       gridLine, borderClip, symbol, symbolsType, crossPosition, boxPosition,
       selfPosition, contentPosition, itemPosition, overflowPosition,
       alignPosition, justifyContent2, justifySelf, alignSelf;
 
+  width = ['auto', '10px', '10%'];
   anb = [
     'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
     '10n', '-10n', '+10n', '01n', '-01n', '+01n', '00n', '-00n', '+00n',
@@ -47,9 +48,7 @@
   box = ['border-box', 'padding-box', 'content-box'];
   shapeBox = box.concat('margin-box');
   geometryBox = shapeBox.concat(['fill-box', 'stroke-box', 'view-box']);
-  bgSize = ['auto', '10px', '10%'].times(1, 2).concat([
-    'cover', 'contain'
-  ]);
+  bgSize = width.times(1, 2).concat(['cover', 'contain']);
   counterStyle = [
     'cjk-decimal', 'hebrew', 'hiragana', 'hiragana-iroha',
     'katakana', 'katakana-iroha', 'disclosure-open', 'disclosure-closed',
@@ -103,7 +102,6 @@
     'cubic-bezier(.5, .5, .5, .5)', 'cubic-bezier(.5, 1.5, .5, -2.5)',
     'cubic-bezier(0, -0.1, 1, 1.1)', 'cubic-bezier(0.5, -0.5, 0.5, -0.5)'
   ];
-  width = ['auto', '10px', '10%'];
   flexDirection = ['row', 'row-reverse', 'column', 'column-reverse'];
   flexWrap = ['nowrap', 'wrap', 'wrap-reverse'];
   flexPosition = ['flex-start', 'flex-end', 'center'];
@@ -555,9 +553,7 @@
           ['1', '10%'].times(1, 4).qmark(['fill'], ' ', {amp: true}).qmark(
             ['1', '1 / 1', '/ 1'], ' / '
           ),
-          ['1'].and(['auto', '10px', '10%', '1'].times(1, 4), ' / ').qmark(
-            ['1'], ' / '
-          ),
+          ['1'].and(width.concat(['1']).times(1, 4), ' / ').qmark(['1'], ' / '),
           ['1 / 1', '1 /'].and(['10px', '1'].times(1, 4), ' / '),
           ['stretch', 'repeat', 'round', 'space'].times(1, 2)
         ).concat([
@@ -1302,7 +1298,7 @@
         'vertical-align': ['auto', 'central'],
         'inline-box-align': ['last', 'initial', '1'],
         'drop-initial-value': ['initial', '1'],
-        'drop-initial-size': ['auto', '1', '10px', '10%'],
+        'drop-initial-size': width.concat(['1']),
         'drop-initial-after-align': [
           'baseline', 'use-script', 'before-edge', 'text-before-edge',
           'after-edge', 'text-after-edge', 'central', 'middle', 'ideographic',
@@ -1331,9 +1327,7 @@
         'display': [
           'run-in', 'compact', 'ruby-base-group', 'ruby-text-group', 'container'
         ],
-        'padding': [
-          '10px', '10%', 'auto'
-        ].times(1, 4).filter(function filter(val) {
+        'padding': width.times(1, 4).filter(function filter(val) {
           return val.indexOf('auto') !== -1;
         }),
         'padding-top': 'auto',
@@ -1344,9 +1338,9 @@
         'margin-right': 'fill',
         'margin-bottom': 'fill',
         'margin-left': 'fill',
-        'margin': [
-          '10px', '10%', 'fill', 'auto'
-        ].times(1, 4).filter(function filter(val) {
+        'margin': width.concat([
+          'fill'
+        ]).times(1, 4).filter(function filter(val) {
           return val.indexOf('fill') !== -1;
         }),
         'width': ['1px', '1%'].amp(['border-box', 'content-box']).concat([
@@ -1408,10 +1402,10 @@
       'tr': 'http://www.w3.org/TR/css3-positioning/',
       'properties': {
         'position': ['sticky', 'center', 'page'],
-        'offset-before': ['auto', '10px', '10%'],
-        'offset-end': ['auto', '10px', '10%'],
-        'offset-after': ['auto', '10px', '10%'],
-        'offset-start': ['auto', '10px', '10%']
+        'offset-before': width,
+        'offset-end': width,
+        'offset-after': width,
+        'offset-start': width
       }
     },
 
@@ -1831,7 +1825,7 @@
         'clear-side': ['auto', 'both', 'none', 'left', 'right'],
         'background-exclude-level': alphavalue,
         'exclude-level': alphavalue,
-        // 'exclude-margin': ['auto', '10px', '10%'],
+        // 'exclude-margin': width,
         'content-inside': [
           'circle(50%, 50%, 30%)',
           'polygon(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5)'
@@ -2043,12 +2037,12 @@
       },
       'descriptors': {
         'atrule': '@viewport',
-        'min-width': ['auto', '10px', '10%'],
-        'max-width': ['auto', '10px', '10%'],
-        'width': ['auto', '10px', '10%'].times(1, 2),
-        'min-height': ['auto', '10px', '10%'],
-        'max-height': ['auto', '10px', '10%'],
-        'height': ['auto', '10px', '10%'].times(1, 2),
+        'min-width': width,
+        'max-width': width,
+        'width': width.times(1, 2),
+        'min-height': width,
+        'max-height': width,
+        'height': width.times(1, 2),
         'zoom': ['auto', '1.0', '2.0', '0.5', '100%', '200%', '50%'],
         'min-zoom': ['auto', '1.0', '2.0', '0.5', '100%', '200%', '50%'],
         'max-zoom': ['auto', '1.0', '2.0', '0.5', '100%', '200%', '50%'],
@@ -3523,9 +3517,9 @@
           'none', 'url(tl.png)', 'linear-gradient(black 0%, transparent 100%)',
           'url(#mask)', 'url(commonmasks.xml#mask)'
         ].qmark(['auto', 'alpha', 'luminance']).concat(
-          position.qmark(
-            ['auto', '10px', '10%', 'cover', 'contain', '10px 10px'], ' / '
-          ),
+          position.qmark(width.concat(
+            ['cover', 'contain', '10px 10px']
+          ), ' / '),
           repeatStyle,
           geometryBox.or(geometryBox.concat('no-clip')).uniq()
         ).concat([
@@ -3539,7 +3533,7 @@
         ]),
         'mask-box-source': ['none'].concat(image),
         'mask-box-slice': ['1', '10%'].times(1, 4).qmark(['fill']),
-        'mask-box-width': ['auto', '10px', '10%', '1'].times(1, 4),
+        'mask-box-width': width.concat(['1']).times(1, 4),
         'mask-box-outset': ['10px', '1'].times(1, 4),
         'mask-box-repeat': ['stretch', 'repeat', 'round', 'space'].times(1, 2),
         'mask-box': ['none'].concat(
@@ -3547,9 +3541,7 @@
           ['1', '10%'].times(1, 4).qmark(['fill']).qmark(
             ['1', '1 / 1', '/ 1'], ' / '
           ),
-          ['1'].and(
-            ['auto', '10px', '10%', '1'].times(1, 4), ' / '
-          ).qmark(['1'], ' / '),
+          ['1'].and(width.concat(['1']).times(1, 4), ' / ').qmark(['1'], ' / '),
           ['1 / 1', '1 /'].and(['10px', '1'].times(1, 4), ' / '),
           ['stretch', 'repeat', 'round', 'space'].times(1, 2)
         ).concat([
