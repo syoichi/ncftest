@@ -3,6 +3,7 @@
 (function executeSpecs(win) {
   'use strict';
 
+  // data types
   var width = ['auto', '10px', '10%'];
   var anb = [
     'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
