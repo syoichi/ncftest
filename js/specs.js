@@ -1,4 +1,4 @@
-/* jshint onevar: false */
+/* jshint onevar: false, maxstatements: false */
 
 (function executeSpecs(win) {
   'use strict';
@@ -218,6 +218,56 @@
   var overflowFragment = [
     'paged-x', 'paged-y', 'paged-x-controls', 'paged-y-controls', 'fragments'
   ];
+  var colWidth = ['*', 'fit-content'];
+  var colWidths = colWidth.concat(
+    colWidth.concat(['minmax(1px, 1px)']).amp(trackBreadth, ', ').concat(
+      colWidth.concat(['minmax(1px, 1px)']).times(2, 2, ', ')
+    ).map(function minmax(arg) {
+      return 'minmax(' + arg + ')';
+    })
+  );
+  var colWidthPlus = colWidths.concat(
+    colWidth.amp(trackBreadth).concat(colWidth.times(2, 2))
+  ).concat([
+    '* * * *', '* * * * *', '* a-line * * b-line * *',
+    '* 1em * 1em * 1em * 1em * 1em *'//,
+    // '* repeat(1em *, 5)', '* (1em *)[5]', '* 5//1em *//'
+  ]);
+  var fullColWidth = trackBreadth.concat(colWidth).concat(
+    trackBreadth.concat(
+      colWidth, ['minmax(1px, 1px)']
+    ).times(2, 2, ', ').map(function minmax(arg) {
+      return 'minmax(' + arg + ')';
+    })
+  );
+  var gridTemplate2 = fullColWidth.and(['"a"']).concat(
+    ['"a"'].and(colWidths)
+  ).concat([
+    '10px 10px "a"', '"a" 10px 10px', '10px "a" 10px',
+    '"a" "b" 10px', '10px "a" "b"', '"a" 10px "b"',
+    '10px 10px "a" 10px "b" 10px'
+  ]).concat(
+    ['/'].and(fullColWidth),
+    colWidth.concat(['minmax(*, 1px)']).times(2, 2, ' / ')
+  ).concat([
+    '* * / * *', '* 10em / 4em 5em', '10em * "a   b"', '* * 3em  "a b c"',
+    '"." "*" fit-content', '* 10em "a b c" "a b d" 4em',
+    '* min-content * "a a a" ". b ."',
+    '1fr "a @ b" "c c c"', 'auto * 10em " a a . " " b . c "',
+    '"a . b" * "a c ." *', '"a c" "a b" auto *',
+    '5em 1em * 1em 10em "a . b . c" 2em ". . . . ." ' +
+      '1em "d . e . f" ". . . . ." 1em "g . h . i" 2em',
+    '* 1em * 1em * "c . d . e" ". . . . ." 1em ". . f . ."',
+    '* 2em * 2em * "a . b . c"', '"a" 5em "@" * "b" auto',
+    // '"a" 5em "*" "b" intrinsic',
+    '* 3em * 3em * 3em * 3em * "A A A A A A A A A" 5cm ' +
+      '". . . . . . . . ." 0.25cm "B . C C C C C C C" * ' +
+      '"B . C C C C C C C" * "B . C C C C C C C" * ' +
+      '"B . C C C C C C C" * "B . C C C C C C C" * ' +
+      '"B . D D D D D D D" * "B . D D D D D D D" * ' +
+      '"B . E E E . F F F" * "B . E E E . F F F" * ' +
+      '"B . E E E . F F F" *'
+  ]);
 
   win.NCFTest.Specs = {
     // CSS Level 3
@@ -2052,95 +2102,64 @@
       'title': 'Grid Template Layout',
       'tr': 'http://www.w3.org/TR/css3-layout/',
       'properties': {
-        'grid-template-areas': ['\'*\'', '\'****\' \'****\' \'****\''],
-        'grid-template-columns': ['*', 'fit-content'].concat(
-          ['*', 'fit-content'].amp(
-            ['10px', '10%', '1fr', 'min-content', 'max-content'], ', '
-          ).concat(
-            ['*', 'fit-content'].times(2, 2, ', ')
-          ).map(function minmax(arg) {
-            return 'minmax(' + arg + ')';
-          }),
-          ['minmax(minmax(1px, 1px), 1px)'],
-          ['*', 'fit-content'].amp(
-            ['10px', '10%', '1fr', 'min-content', 'max-content']
-          ).concat(['*', 'fit-content'].times(2, 2)),
-          ['* * * *']
-        ),
-        'grid-template-rows': ['*', 'fit-content'].concat(
-          ['*', 'fit-content'].amp(
-            ['10px', '10%', '1fr', 'min-content', 'max-content'], ', '
-          ).concat(
-            ['*', 'fit-content'].times(2, 2, ', ')
-          ).map(function minmax(arg) {
-            return 'minmax(' + arg + ')';
-          }),
-          ['minmax(minmax(1px, 1px), 1px)'],
-          ['*', 'fit-content'].amp(
-            ['10px', '10%', '1fr', 'min-content', 'max-content']
-          ).concat(['*', 'fit-content'].times(2, 2)),
-          ['* * * *']
-        ),
-        'grid-template': ['"a"'].amp([
-          '10px', '10%', '*', '1fr',
-          'min-content', 'max-content', 'fit-content'
-        ].concat([
-          '10px', '10%', '*', '1fr',
-          'min-content', 'max-content', 'fit-content'
-        ].times(2, 2, ', ').map(function minmax(arg) {
-          return 'minmax(' + arg + ')';
-        }))).concat([
-          '10px 10px "a"', '"a" 10px 10px', '10px "a" 10px',
-          '"a" "b" 10px', '10px "a" "b"', '"a" 10px "b"',
-          '10px 10px "a" 10px "b" 10px'
-        ]).concat(['/'].and(
-          trackBreadth.concat(['*', 'fit-content']).concat(
-            trackBreadth.concat(
-              ['*', 'fit-content']
-            ).times(2, 2, ', ').map(function minmax(arg) {
-              return 'minmax(' + arg + ')';
-            })
-          )
-        )).concat(
-          ['*', 'fit-content'].times(2, 2, ' / '),
-          ['* * / * *']
-        ),
-        'grid': ['"a"'].amp([
-          '10px', '10%', '*', '1fr',
-          'min-content', 'max-content', 'fit-content'
-        ].concat([
-          '10px', '10%', '*', '1fr',
-          'min-content', 'max-content', 'fit-content'
-        ].times(2, 2, ', ').map(function minmax(arg) {
-          return 'minmax(' + arg + ')';
-        }))).concat([
-          '10px 10px "a"', '"a" 10px 10px', '10px "a" 10px',
-          '"a" "b" 10px', '10px "a" "b"', '"a" 10px "b"',
-          '10px 10px "a" 10px "b" 10px'
-        ]).concat(
-          ['/'].and(
-            trackBreadth.concat(['*', 'fit-content']).concat(
-              trackBreadth.concat(
-                ['*', 'fit-content']
-              ).times(2, 2, ', ').map(function minmax(arg) {
-                return 'minmax(' + arg + ')';
-              })
-            )
-          ),
-          ['*', 'fit-content'].times(2, 2, ' / '),
-          ['* * / * *', '* 10em / 4em 5em', '* 10em "a b c" "a b d" 4em']
-        ),
-        'flow': ['auto', 'p1', '\'initial\'', '*', 'same'],
+        'grid-template-areas': [
+          '\'*\'', '"* *" "* *"', '\'****\' \'****\' \'****\''
+        ],
+        'grid-template-columns': colWidthPlus,
+        'grid-template-rows': colWidthPlus,
+        'grid-template': gridTemplate2,
+        'grid': gridTemplate2,
+        'flow': ['auto', 'p1', '\'initial\'', '*', 'same'/*, 'a, b, c'*/],
         'chains': [
-          'none', 'a', 'b c',
+          'none', 'a', 'b c', 'top-half bottom-half',
           'd, e', 'f g, h i', 'j, k l', 'm n, o p',
-          '@ a b c d e, f g h i j k'
-        ]
+          '@ a b c d e, f g h i j k', '* a b c',
+          '* a b c d e f g', 'a b c d e f'
+        ]/*,
+        'break-content': ['▶ continued on p. " targetcounter(???, page)'],
+        'position': ['@', 'f', 'grid'],
+        'top': ['1fr'],
+        'left': ['1fr'],
+        'width': ['1fr'],
+        'height': ['1fr'],
+        'display': ['inline-block "abc" "abd"'],
+        'break-before': ['page(news)'],
+        'next': ['news-even'],
+        'grid-area': ['2 2', '1 -1', 'next same'],
+        'block-align': [
+          'top', 'bottom', 'middle', 'baseline', '10%', '10px', 'center'
+        ],
+        'margin': ['any'],
+        'grid-slot-align': [
+          'top', 'bottom', 'middle', 'baseline', '10%', '10px', 'center'
+        ]*/
       },
       'selectors': {
-        '::slot()': 'body::slot(a)',
-        '::blank()': 'body::blank(a)'
-      }
+        '::slot()': [
+          '::slot(running-header)', 'P::slot(*)', 'body::slot(a)', '::slot(a) P'
+        ],
+        '::blank()': ['::blank(a)', 'body::blank(a)']/*,
+        '::flow()': ['::flow(a)', 'P::flow(a)'],
+        '::region()': [
+          'P::region(slot(c))', 'EM::region(first-line)', 'P::region(slot c)',
+          'em::region(div::first-line)'
+        ],
+        '::part()': ['::part(first-line)', 'EM::part(first-line)'],
+        '::inside()': ['::inside(first-line)', 'EM::inside(first-line)'],
+        '::overlap()': ['::overlap(first-line)', 'EM::overlap(first-line)']*/
+      },
+      '@rules': {
+        '@region': [
+          '@region ::slot(*)', '@region ::slot(b)', '@region BODY::slot(b)',
+          '@region ::first-line', '@region div::first-line',
+          '@region ul.menu.nav::slot(a)'
+        ]/*,
+        '@footnote': ['@footnote :first::slot(a)'],
+        '@page': ['@page :first::slot(a)', '@page::slot(g)']*/
+      }/*,
+      'units': {
+        'gr': ['width', 'top', 'right', 'bottom', 'left']
+      }*/
     },
 
     'css-speech-1': {
