@@ -283,6 +283,12 @@
         return Supports.descriptor(descriptor, value, tests);
       }
     },
+    '@rule selectors': {
+      type: 'ruleSelector',
+      getResults: function ruleSelectors(ruleSelector, atruleName, tests) {
+        return Supports.ruleSelector(atruleName, ruleSelector, tests);
+      }
+    },
     'Media queries': {
       type: 'mq',
       getResults: function mediaQueries(mq, mqName) {

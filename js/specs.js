@@ -2022,6 +2022,10 @@
       },
       '@rules': {
         '@keyframes': '@keyframes foo'
+      },
+      '@rule selectors': {
+        'atrule': '@keyframes name',
+        '@keyframes': ['to', 'from', '10%'].times(1, 2, ', ')
       }
     },
 

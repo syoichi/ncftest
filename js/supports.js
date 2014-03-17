@@ -289,6 +289,53 @@
 
       return false;
     },
+    ruleSelector: function ruleSelectorFunc(atruleName, ruleSelector, tests) {
+      var cached, key, atrule, idx, prefix, prefixed, prop, cssRule;
+
+      cached = ruleSelectorFunc.cached;
+      key = atruleName + ': ' + ruleSelector;
+
+      if (!cached) {
+        cached = ruleSelectorFunc.cached = {};
+      } else if (cached[key]) {
+        return cached[key];
+      }
+
+      atrule = this.atrule(tests.atrule || atruleName, atruleName);
+
+      if (!atrule) {
+        return false;
+      }
+
+      for (idx = 0; idx < prefixesLen; idx += 1) {
+        prefix = prefixes[idx];
+        prefixed = prefix + ruleSelector;
+        prop = camelCase(prefixed);
+
+        style.textContent = atrule + ' {' + prefixed + ' { top: 0; } }';
+        cssRule = style.sheet.cssRules[0];
+
+        if (
+          // standard
+          // Trident throws Error.
+          // cssRule.findRule(prefixed) ||
+            // for Trident, WebKit/Blink
+            cssRule.cssRules.length > 0
+        ) {
+          if (cached[ruleSelector] === void 0) {
+            cached[ruleSelector] = prefixed;
+          }
+
+          cached[key] = prefixed;
+
+          return prefixed;
+        }
+      }
+
+      cached[key] = false;
+
+      return false;
+    },
     mq: function mqFunc(mq, mqName) {
       var cached, idx, prefix, prefixed, mql;
 
