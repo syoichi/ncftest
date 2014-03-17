@@ -912,8 +912,6 @@
           'pause-before', 'pause-after', 'pause', 'rest-before', 'rest-after',
           'rest', 'voice-duration'
         ],
-        'Hz': ['pitch', 'voice-pitch', 'voice-range'],
-        'kHz': ['pitch', 'voice-pitch', 'voice-range'],
         'dpi': ['image-resolution'],
         'dpcm': ['image-resolution'],
         'dppx': ['image-resolution']
@@ -3956,6 +3954,71 @@
         'touch-action': ['auto', 'none'].concat(
           ['pan-x'].or(['pan-y'], ['manipulation'])
         )
+      }
+    },
+
+    'css2': {
+      'title': 'Missing CSS 2 & 2.1',
+      'properties': {
+        /* CSS 2 */
+        // only Trident pass
+        'font-stretch': ['wider', 'narrower'],
+        // only Gecko pass
+        'marker-offset': ['auto', '10px'],
+        // Blink(maybe WebKit too) pass
+        'text-align': ['"string"'],
+        /* CSS 2.1 Aural style sheets */
+        // http://dev.w3.org/csswg/css2/aural.html
+        'volume': [
+          'medium', '0', '1', '100', '99.99', '10%', 'silent', 'x-soft', 'soft',
+          'loud', 'x-loud'
+        ],
+        // Blink(maybe WebKit too) pass
+        'speak': ['normal', 'none', 'spell-out'],
+        'pause-before': ['0', '10ms', '10s', '10%'],
+        'pause-after': ['0', '10ms', '10s', '10%'],
+        'pause': ['10ms', '10s', '10%'].times(1, 2),
+        'cue-before': ['none', 'url("bell.aiff")'],
+        'cue-after': ['none', 'url("bell.aiff")'],
+        'cue': ['none', 'url("bell.aiff")'].times(1, 2),
+        'play-during': ['auto', 'none'].concat(['url("violins.aiff")'].qmark(
+          ['mix'].or(['repeat'])
+        )),
+        'azimuth': [
+          '90deg', '100grad', '1rad', 'leftwards', 'rightwards'
+        ].concat([
+          'left-side', 'far-left', 'left', 'center-left', 'center',
+          'center-right', 'right', 'far-right', 'right-side'
+        ].or(['behind'])),
+        'elevation': [
+          'level', '90deg', '100grad', '1rad', 'below', 'above', 'higher',
+          'lower'
+        ],
+        'speech-rate': [
+          'medium', '0', '1', '100', '99.99', 'silent', 'x-slow', 'slow',
+          'fast', 'x-fast', 'faster', 'slower'
+        ],
+        'voice-family': [
+          'comedian', 'trinoids', 'carlos', 'lani', 'announcer', 'romeo',
+          'juliet'
+        ].concat(['male', 'female', 'child']).times(1, 2, ', '),
+        'pitch': [
+          'medium', '10Hz', '10kHz', 'silent', 'x-low', 'low', 'high', 'x-high'
+        ],
+        'pitch-range': ['50', '0', '100', '99.99'],
+        'stress': ['50', '0', '100', '99.99'],
+        'richness': ['50', '0', '100', '99.99'],
+        'speak-punctuation': ['none', ' code'],
+        'speak-numeral': ['continuous', 'digits'],
+        'speak-header': ['once', 'always']
+      },
+      '@rules': {
+        // only Gecko doesn't pass
+        '@page': ['@page :left', '@page :right', '@page :first']
+      },
+      'units': {
+        'Hz': ['pitch', 'voice-pitch', 'voice-range'],
+        'kHz': ['pitch', 'voice-pitch', 'voice-range']
       }
     }
   };
