@@ -1823,20 +1823,6 @@
     },
 
     // CSS Level 3?
-    'shadow-styling': {
-      'title': 'Shadow DOM Styling',
-      'selectors': {
-        'E /shadow/ F': ['x-foo /shadow/ span', 'x-foo /shadow/ div > span'],
-        'E /shadow-deep/ F': ['x-foo /shadow-deep/ span'],
-        'E /content/ F': ['* /content/ div'],
-        ':top': [':top'],
-        ':host': [':host', '.foo:host'],
-        ':host()': [':host(.foo)', ':host(div:only-child)'],
-        ':ancestor()': [':ancestor(.foo)', ':ancestor(div:only-child)'],
-        '::shadow': ['x-foo::shadow > span', 'x-foo::shadow > div > span']
-      }
-    },
-
     'css-containment': {
       'title': 'Containment',
       'properties': {
@@ -2550,6 +2536,32 @@
         'ruby-merge': ['separate', 'collapse', 'auto'],
         'ruby-align': ['space-around', 'start', 'center', 'space-between']
       }
+    },
+
+    'css-scoping': {
+      'title': 'Scoping Level 1',
+      'selectors': {
+        ':scope-context()': [
+          ':scope-context(.foo)', ':scope-context(div:only-child)'
+        ],
+        ':host': [':host', '.foo:host'],
+        ':host()': [':host(.foo)', ':host(div:only-child)'],
+        ':host-context()': [
+          ':host-context(.foo)', ':host-context(div:only-child)'
+        ],
+        '::shadow': [
+          '::shadow'/*, 'x-foo::shadow > span', 'x-foo::shadow > div > span'*/
+        ],
+        // 'E /shadow/ F': ['x-foo /shadow/ span', 'x-foo /shadow/ div > span'],
+        '::content': ['::content', '::content div', '::content > div'],
+        'E /deep/ F': ['x-foo /deep/ span'],
+        '::region': ['::region'/*, '#region1::region p'*/]/*,
+        '::page()': ['::page(div)', 'div::page(div)']*/
+      }/*,
+      // It seems that @scope need CSSOM API.
+      '@rules': {
+        '@scope': ['@scope div']
+      }*/
     },
 
     // New CSS Level 2
