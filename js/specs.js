@@ -1882,32 +1882,6 @@
       }
     },
 
-    'css-line-grid': {
-      'title': 'Line Grid',
-      'properties': {
-        'line-grid': ['root-grid', 'ident', 'create', 'match-parent'],
-        'line-snap': ['none', 'baseline', 'contain'],
-        'line-slack': ['none', '1'],
-        'box-snap': [
-          'none', 'margin-box', 'border-box', 'half-border'
-        ].times(1, 4).qmark(['ident'].times(1, 4), ' / '),
-        'layout-grid': ['strict both 20pt 15pt'],
-        'layout-grid-line': ['1.5'],
-        'layout-grid-mode': ['baseline'],
-        'line-grid-mode': ['block'],
-        'width': ['rounddown(1em)', 'roundup(1em)'],
-        'height': ['rounddown(1em)', 'roundup(1em)']
-      },
-      'units': {
-        'gd': [
-          'margin',
-          'margin-top',
-          'margin-bottom',
-          'min-height'
-        ]
-      }
-    },
-
     'css-module': {
       'title': 'Template',
       'properties': {
@@ -2562,6 +2536,32 @@
       '@rules': {
         '@scope': ['@scope div']
       }*/
+    },
+
+    'css-line-grid-1': {
+      'title': 'Line Grid Level 1',
+      'properties': {
+        'line-grid': ['match-parent', 'create'],
+        'line-snap': ['none', 'baseline', 'contain'],
+        'line-slack': ['none', '1'],
+        'box-snap': [
+          'none', 'margin-box', 'border-box', 'half-border'
+        ].times(1, 4).qmark(['ident'].times(1, 4), ' / '),
+        /*'layout-grid': ['strict both 20pt 15pt'],
+        'layout-grid-line': ['1.5'],
+        'layout-grid-mode': ['baseline'],
+        'line-grid-mode': ['block'],*/
+        'width': ['rounddown(1em)', 'roundup(1em)'],
+        'height': ['rounddown(1em)', 'roundup(1em)']
+      },
+      'units': {
+        'gd': [
+          'margin',
+          'margin-top',
+          'margin-bottom',
+          'min-height'
+        ]
+      }
     },
 
     // New CSS Level 2
