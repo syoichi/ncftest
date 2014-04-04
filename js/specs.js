@@ -2371,17 +2371,16 @@
 
     'css-variables-1': {
       'title': 'Custom Properties for Cascading Variables Level 1',
-      'tr': 'http://www.w3.org/TR/css-variables/',
       'values': {
         'properties': ['background-color', 'var-foo'],
         'var()': [
-          'var(color)', 'var(header-color)', 'var(header-color, blue)'
-          /*, 'calc(var(gap) * 1px)'*/
+          'var(--color)', 'var(--header-color)', 'var(--header-color, blue)',
+          'calc(var(--gap) * 1px)'
         ]
       }/*,
-      // 'var-*' must be checked by element.style.var.*.
+      // '--*' must be checked by element.style.getPropertyValue('--*').
       'properties': {
-        'var-*': ['var-foo', 'var-FOO', 'var-header-color']
+        '--*': ['--foo', '--FOO', '--header-color']
       }*/
     },
 
