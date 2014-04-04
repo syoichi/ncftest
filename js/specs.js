@@ -2512,7 +2512,7 @@
       }
     },
 
-    'css-scoping': {
+    'css-scoping-1': {
       'title': 'Scoping Level 1',
       'selectors': {
         ':scope-context()': [
@@ -2524,9 +2524,9 @@
           ':host-context(.foo)', ':host-context(div:only-child)'
         ],
         '::shadow': [
-          '::shadow'/*, 'x-foo::shadow > span', 'x-foo::shadow > div > span'*/
+          '::shadow', 'x-foo::shadow > span', 'x-foo::shadow > div > span',
+          'x-foo::shadow span'/*, ':host::shadow div'*/
         ],
-        // 'E /shadow/ F': ['x-foo /shadow/ span', 'x-foo /shadow/ div > span'],
         '::content': ['::content', '::content div', '::content > div'],
         'E /deep/ F': ['x-foo /deep/ span'],
         '::region': ['::region'/*, '#region1::region p'*/]/*,
