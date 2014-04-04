@@ -2458,7 +2458,7 @@
       }
     },
 
-    'css-snappoints': {
+    'css-snappoints-1': {
       'title': 'Scroll Snap Points Level 1',
       'properties': {
         'scroll-snap-type': ['none', 'mandatory', 'proximity'],
@@ -2473,12 +2473,12 @@
           '10px, 10px, repeat(10px)'
         ],
         'scroll-snap-destination': [
-          '0px', '0px 0px', '10px 10px',
-          '50% 50%', '50% 100px'
+          '0px', '0px 0px', '10px 10px'/*,
+          '50% 50%', '50% 100px'*/
         ],
         'scroll-snap-coordinate': [
-          'none', '0px 0px', '10px 10px', '10px 10px, 10px 10px',
-          '50% 50%', '50% 0'
+          'none', '0px 0px', '10px 10px', '10px 10px, 10px 10px'/*,
+          '50% 50%', '50% 0'*/
         ]
       }
     },
