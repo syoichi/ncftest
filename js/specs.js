@@ -3966,8 +3966,8 @@
       'dev': 'https://dvcs.w3.org/hg/pointerevents/raw-file/tip/' +
         'pointerEvents.html',
       'properties': {
-        'touch-action': ['auto', 'none'].concat(
-          ['pan-x'].or(['pan-y'], ['manipulation'])
+        'touch-action': ['auto', 'none', 'manipulation'].concat(
+          ['pan-x'].or(['pan-y'])
         )
       }
     },
