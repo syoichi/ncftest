@@ -55,6 +55,7 @@
   ];
   var angle = ['90deg', '100grad', '1rad', '1turn'];
   var fillRule = ['nonzero', 'evenodd'];
+  var shapeRadius = ['10px', '10%', 'closest-side', 'farthest-side'];
   var basicShape = [].concat(
     ['10px', '10%'].times(1, 4).map(function inset(arg) {
       return 'inset(' + arg + ')';
@@ -63,25 +64,28 @@
       'inset(10px 10px 10px 10px round ' +
         '10px 10px 10px 10px / 10px 10px 10px 10px)'
     ],
-    ['10px', '10%', 'closest-side', 'farthest-side'].concat(
+    [''].concat(
+      shapeRadius,
       ['at'].and(position),
-      ['10px', '10%', 'closest-side', 'farthest-side'].and(
-        ['at'].and(['left', 'bottom 10px right 10px'])
-      )
+      shapeRadius.and(['at'].and(['left', 'bottom 10px right 10px']))
     ).map(function circle(arg) {
       return 'circle(' + arg + ')';
     }),
-    ['10px', '10%', 'closest-side', 'farthest-side'].times(2).concat(
+    [''].concat(
+      shapeRadius.times(2),
       ['at'].and(position),
-      ['10px', '10%', 'closest-side', 'farthest-side'].times(2).and(
-        ['at'].and(['left', 'bottom 10px right 10px'])
-      )
+      shapeRadius.times(2).and(['at'].and(['left', 'bottom 10px right 10px']))
     ).map(function ellipse(arg) {
       return 'ellipse(' + arg + ')';
     }),
     fillRule.qmark(
       ['10px', '10%'].times(2).times(1, 2, ', '), ', ', {former: true}
-    ).map(function polygon(arg) {
+    ).concat([
+      '0 0, 100% 100%, 0 100%', '100% 0, 100% 100%, 0 100%',
+      '0 0, 500% 500%, 0 500%', '50px 0px, 100px 100px, 0px 100px',
+      '0% 50%, 50% 100%, 0 100%',
+      '10px 10px, 90px 50px, 40px 50px, 90px 90px, 10px 90px'
+    ]).map(function polygon(arg) {
       return 'polygon(' + arg + ')';
     })
   );
