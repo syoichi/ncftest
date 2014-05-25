@@ -2351,6 +2351,15 @@
       }
     },
 
+    'css-will-change-1': {
+      'title': 'Will Change Level 1',
+      'properties': {
+        'will-change': ['auto'].concat([
+          'scroll-position', 'contents', 'ident'
+        ].times(1, 3, ', '))
+      }
+    },
+
     'css-variables-1': {
       'title': 'Custom Properties for Cascading Variables Level 1',
       'values': {
