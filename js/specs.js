@@ -3771,10 +3771,6 @@
       'properties': {
         // http://www.whatwg.org/specs/web-apps/current-work/multipage/commands.html#anchor-points
         'anchor-point': ['none'].concat(position),
-      },
-      '@rules': {
-        // http://www.whatwg.org/specs/web-apps/current-work/multipage/semantics.html#the-@global-rule
-        '@global': '@global'
       }
     },
 
