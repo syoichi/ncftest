@@ -979,16 +979,18 @@
 
     'css-text-3': {
       'title': 'Text',
-      'tr': 'http://www.w3.org/TR/css3-text/',
       'properties': {
         'text-transform': ['full-width'],
         'tab-size': ['8', '1em'],
-        'line-break': ['auto', 'loose', 'normal', 'strict'],
         'word-break': ['normal', 'keep-all', 'break-all'],
+        'line-break': ['auto', 'loose', 'normal', 'strict'],
         'hyphens': ['manual', 'none', 'auto'],
         'word-wrap': ['normal', 'break-word'],
         'overflow-wrap': ['normal', 'break-word'],
-        'text-align': ['start', 'end', 'match-parent', 'start end'],
+        'text-align': ['start', 'end', 'match-parent', 'justify-all'],
+        'text-align-all': [
+          'start', 'end', 'left', 'right', 'center', 'justify', 'match-parent'
+        ],
         'text-align-last': [
           'auto', 'start', 'end', 'left', 'right', 'center', 'justify'
         ],
