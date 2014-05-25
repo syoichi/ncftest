@@ -1910,60 +1910,6 @@
       }
     },
 
-    'css-animations-1': {
-      'title': 'Animations',
-      'tr': 'http://www.w3.org/TR/css3-animations/',
-      'properties': {
-        'animation-name': ['none', 'foo', 'foo, bar', 'none, foo, bar'],
-        'animation-duration': ['0s', '1s', '100ms', '1s, 2s', '0ms, 1s, 3s'],
-        'animation-timing-function': timingFunction.concat([
-          'ease, linear', 'ease, ease, ease'
-        ]),
-        'animation-iteration-count': [
-          'infinite', '8', '4.35', '1, .5', '0, 1, 2'
-        ],
-        'animation-direction': [
-          'normal', 'reverse', 'alternate', 'alternate-reverse',
-          'normal, reverse', 'normal, normal, alternate-reverse'
-        ],
-        'animation-play-state': [
-          'running', 'paused',
-          'running, paused', 'paused, paused, paused'
-        ],
-        'animation-delay': ['1s', '-1s', '0s, 1ms', '-10s, 0s, 10s'],
-        'animation-fill-mode': [
-          'none', 'forwards', 'backwards', 'both',
-          'none, forwards', 'none, none, none'
-        ],
-        'animation': [
-          'none', 'foo', '0s', '-1s', '1', 'infinite',
-          'normal', 'reverse', 'alternate', 'alternate-reverse',
-          'running', 'paused', 'forwards', 'backwards', 'both'
-        ].concat(timingFunction).concat([
-          'none 0s', 'both paused', 'none none', '1s -1s', '-1s 0s',
-          'foo running', 'paused ident'
-        ]).concat(['ident'].and([
-          'infinite', 'normal', 'reverse', 'alternate', 'alternate-reverse',
-          'none', 'forwards', 'backwards', 'both'
-        ])).concat([
-          'none none running', 'none -1s cubic-bezier(.5, 1.5, .5, -2.5)',
-          'foo 1s 2s infinite linear alternate both',
-          'none 0s ease 0s 1 normal none running',
-          'none, none', '-1s, -1s', 'none 0s, both paused',
-          'none 0s ease 0s 1 normal none running, ' +
-            'none 0s ease 1 normal running 0s none',
-          '0s, 0s, 0s'
-        ])
-      },
-      '@rules': {
-        '@keyframes': '@keyframes foo'
-      },
-      '@rule selectors': {
-        'atrule': '@keyframes name',
-        '@keyframes': ['to', 'from', '10%'].times(1, 2, ', ')
-      }
-    },
-
     'css-multicol-1': {
       'title': 'Multi-column Layout',
       'tr': 'http://www.w3.org/TR/css3-multicol/',
@@ -2252,6 +2198,60 @@
         'align-items': alignItems,
         'align-self': ['auto'].concat(alignItems),
         'align-content': ['stretch'].concat(justifyContent)
+      }
+    },
+
+    'css-animations-1': {
+      'title': 'Animations Level 1',
+      'tr': 'http://www.w3.org/TR/css3-animations/',
+      'properties': {
+        'animation-name': ['none', 'foo', 'foo, bar', 'none, foo, bar'],
+        'animation-duration': ['0s', '1s', '100ms', '1s, 2s', '0ms, 1s, 3s'],
+        'animation-timing-function': timingFunction.concat([
+          'ease, linear', 'ease, ease, ease'
+        ]),
+        'animation-iteration-count': [
+          'infinite', '8', '4.35', '1, .5', '0, 1, 2'
+        ],
+        'animation-direction': [
+          'normal', 'reverse', 'alternate', 'alternate-reverse',
+          'normal, reverse', 'normal, normal, alternate-reverse'
+        ],
+        'animation-play-state': [
+          'running', 'paused',
+          'running, paused', 'paused, paused, paused'
+        ],
+        'animation-delay': ['1s', '-1s', '0s, 1ms', '-10s, 0s, 10s'],
+        'animation-fill-mode': [
+          'none', 'forwards', 'backwards', 'both',
+          'none, forwards', 'none, none, none'
+        ],
+        'animation': [
+          'none', 'foo', '0s', '-1s', '1', 'infinite',
+          'normal', 'reverse', 'alternate', 'alternate-reverse',
+          'running', 'paused', 'forwards', 'backwards', 'both'
+        ].concat(timingFunction).concat([
+          'none 0s', 'both paused', 'none none', '1s -1s', '-1s 0s',
+          'foo running', 'paused ident'
+        ]).concat(['ident'].and([
+          'infinite', 'normal', 'reverse', 'alternate', 'alternate-reverse',
+          'none', 'forwards', 'backwards', 'both'
+        ])).concat([
+          'none none running', 'none -1s cubic-bezier(.5, 1.5, .5, -2.5)',
+          'foo 1s 2s infinite linear alternate both',
+          'none 0s ease 0s 1 normal none running',
+          'none, none', '-1s, -1s', 'none 0s, both paused',
+          'none 0s ease 0s 1 normal none running, ' +
+            'none 0s ease 1 normal running 0s none',
+          '0s, 0s, 0s'
+        ])
+      },
+      '@rules': {
+        '@keyframes': '@keyframes foo'
+      },
+      '@rule selectors': {
+        'atrule': '@keyframes name',
+        '@keyframes': ['to', 'from', '10%'].times(1, 2, ', ')
       }
     },
 
