@@ -832,7 +832,6 @@
 
     'css-values-3': {
       'title': 'Values and Units',
-      'tr': 'http://www.w3.org/TR/css3-values/',
       'values': {
         'properties': [
           'top',
@@ -888,6 +887,7 @@
         'vh': ['width', 'height'],
         'vmin': ['width', 'height'],
         'vmax': ['width', 'height'],
+        'q': ['letter-spacing'],
         'deg': [
           'azimuth', 'elevation', 'image-orientation',
           'glyph-orientation-vertical', 'glyph-orientation-horizontal'
