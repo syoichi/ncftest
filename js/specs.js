@@ -268,6 +268,10 @@
       '"B . E E E . F F F" * "B . E E E . F F F" * ' +
       '"B . E E E . F F F" *'
   ]);
+  var baseline = [
+    'central', 'middle', 'alphabetic', 'hanging', 'ideographic',
+    'mathematical', 'text-under-edge', 'text-over-edge'
+  ];
 
   win.NCFTest.Specs = {
     // CSS Level 3
@@ -1303,7 +1307,7 @@
     },
 
     'css-inline-3': {
-      'title': 'Line Layout',
+      'title': 'Inline Layout',
       'tr': 'http://www.w3.org/TR/css3-linebox/',
       'properties': {
         'text-height': ['auto', 'font-size', 'text-size', 'max-size', '10.52'],
@@ -1323,45 +1327,21 @@
           ['consider-shifts', 'disregard-shifts']
         ),
         'dominant-baseline': [
-          'auto', 'use-script', 'no-change', 'reset-size', 'alphabetic',
-          'hanging', 'ideographic', 'mathematical', 'central', 'middle',
-          'text-after-edge', 'text-before-edge'
-        ],
+          'auto', 'use-script', 'no-change', 'reset-size'
+        ].concat(baseline),
         'alignment-baseline': [
-          'baseline', 'use-script', 'before-edge', 'text-before-edge',
-          'after-edge', 'text-after-edge', 'central', 'middle', 'ideographic',
-          'alphabetic', 'hanging', 'mathematical'
-        ],
+          'baseline', 'use-script', 'over-edge', 'under-edge'
+        ].concat(baseline),
         'alignment-adjust': [
-          'auto', 'baseline', 'before-edge', 'text-before-edge', 'middle',
-          'central', 'after-edge', 'text-after-edge', 'ideographic',
-          'alphabetic', 'hanging', 'mathematical', '0%', '10%', '0cm', '10px'
-        ],
+          'auto', 'baseline', 'over-edge', 'under-edge',
+          '0%', '10%', '0cm', '10px'
+        ].concat(baseline),
         'baseline-shift': [
           'baseline', 'sub', 'super', '0%', '10%', '0cm', '10px'
         ],
         'vertical-align': ['auto', 'central'],
-        'inline-box-align': ['last', 'initial', '1'],
-        'drop-initial-value': ['initial', '1'],
-        'drop-initial-size': width.concat(['1']),
-        'drop-initial-after-align': [
-          'baseline', 'use-script', 'before-edge', 'text-before-edge',
-          'after-edge', 'text-after-edge', 'central', 'middle', 'ideographic',
-          'alphabetic', 'hanging', 'mathematical'
-        ],
-        'drop-initial-after-adjust': [
-          'text-after-edge', 'central', 'middle', 'after-edge', 'ideographic',
-          'alphabetic', 'mathematical', '0%', '10%', '0cm', '10px'
-        ],
-        'drop-initial-before-align': [
-          'caps-height', 'baseline', 'use-script', 'before-edge',
-          'text-before-edge', 'after-edge', 'text-after-edge', 'central',
-          'middle', 'ideographic', 'alphabetic', 'hanging', 'mathematical'
-        ],
-        'drop-initial-before-adjust': [
-          'text-before-edge', 'before-edge', 'central', 'middle', 'hanging',
-          'mathematical', '0%', '10%', '0cm', '10px'
-        ]
+        'inline-box-align': ['last', '1'],
+        'initial-letters': ['1', '1 1']
       }
     },
 
