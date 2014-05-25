@@ -2526,23 +2526,9 @@
       'properties': {
         'line-grid': ['match-parent', 'create'],
         'line-snap': ['none', 'baseline', 'contain'],
-        'line-slack': ['none', '1'],
         'box-snap': [
-          'none', 'margin-box', 'border-box', 'half-border'
-        ].times(1, 4).qmark(['ident'].times(1, 4), ' / '),
-        /*'layout-grid': ['strict both 20pt 15pt'],
-        'layout-grid-line': ['1.5'],
-        'layout-grid-mode': ['baseline'],
-        'line-grid-mode': ['block'],*/
-        'width': ['rounddown(1em)', 'roundup(1em)'],
-        'height': ['rounddown(1em)', 'roundup(1em)']
-      },
-      'units': {
-        'gd': [
-          'margin',
-          'margin-top',
-          'margin-bottom',
-          'min-height'
+          'none', 'before', 'after', 'center',
+          'first-baseline', 'last-baseline'
         ]
       }
     },
