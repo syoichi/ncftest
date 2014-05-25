@@ -108,7 +108,7 @@
   var itemPosition = contentPosition.concat(selfPosition);
   var overflowPosition = ['true', 'safe'];
   var alignPosition = boxPosition.concat(selfPosition);
-  var justifyContent2 = ['auto', 'baseline'].concat(
+  var justifyContent2 = ['auto', 'baseline', 'last-baseline'].concat(
     alignPosition.concat(
       itemPosition.and(contentPosition)
     ).qmark(overflowPosition, ' ', {amp: true}),
@@ -116,9 +116,13 @@
   );
   var justifySelf = ['auto'].concat(
     crossPosition,
+    'last-baseline',
     itemPosition.qmark(overflowPosition, ' ', {amp: true})
   );
-  var alignSelf = alignPosition.concat(itemPosition.amp(overflowPosition));
+  var alignSelf = ['last-baseline'].concat(
+    alignPosition,
+    itemPosition.amp(overflowPosition)
+  );
   var trackBreadth = ['10px', '10%', '1fr', 'min-content', 'max-content'];
   var trackSize = trackBreadth.times(2, 2, ', ').map(function minmax(arg) {
     return 'minmax(' + arg + ')';
