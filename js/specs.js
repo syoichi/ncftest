@@ -1857,13 +1857,6 @@
       }
     },
 
-    'selectors-nonelement': {
-      'title': 'Non-element Selectors',
-      'selectors': {
-        '::attr()': ['::attr(title)', 'abbr::attr(title)']
-      }
-    },
-
     'css-module': {
       'title': 'Template',
       'properties': {
@@ -2551,6 +2544,13 @@
           'margin-bottom',
           'min-height'
         ]
+      }
+    },
+
+    'selectors-nonelement': {
+      'title': 'Non-element Selectors Level 1',
+      'selectors': {
+        '::attr()': ['::attr(title)', 'abbr::attr(title)']
       }
     },
 
