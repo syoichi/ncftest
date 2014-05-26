@@ -133,15 +133,15 @@
   var trackBreadth = ['10px', '10%', '1fr', 'min-content', 'max-content'];
   var trackSize = trackBreadth.times(2, 2, ', ').map(function minmax(arg) {
     return 'minmax(' + arg + ')';
-  }).concat(['auto'], trackBreadth);
+  }).concat('auto', trackBreadth);
   var lineNames = [/*'()', */'(a)', '(a b)'];
   var repeatFunction = lineNames.qmark(trackSize, ' ', {
     former: true
   // })/*.times(1, 2)*/.qmark(lineNames).concat([
   }).qmark(lineNames).concat([
     '250px 10px 1px', '1fr auto minmax(30%, 1fr)', '(content) 250px 10px',
-    '250px 10px (content)', '(content) 10px (repeat)', '250px 10px 5px 1px',
-    '(content) 250px 10px 1px', '250px 10px 1px (repeat)',
+    '250px 10px (content)', '(content) 10px (repeat)', '(a) 1fr (b)',
+    '250px 10px 5px 1px', '(content) 250px 10px 1px', '250px 10px 1px (repeat)',
     '(content) 250px 10px (repeat)', '(content) 1fr minmax(1px, 1px) (repeat)',
     '(first) 250px (content) 10px', '250px (content) 10px (repeat)',
     '10px (col-start) 250px (col-end)', '(first) 250px (content) 10px (repeat)',
@@ -179,11 +179,15 @@
       '1fr (last footer)',
     '(a) auto (b) minmax(min-content, 1fr) (b c d)' +
       ' repeat(2, (e) 40px) repeat(5, auto)',
-    '(a) 50px (b) 320px (b c d) repeat(2, (e) 40px) repeat(4, 0px) 50px'
+    '(a) 50px (b) 320px (b c d) repeat(2, (e) 40px) repeat(4, 0px) 50px',
+    '10px (col-start) 250px (col-end) 10px (col-start) 250px (col-end) ' +
+      '10px (col-start) 250px (col-end) 10px (col-start) 250px (col-end) 10px'
   ]);
   var trackSizing = ['none'].concat(
     trackList,
-    ['subgrid'].qmark(lineNames.concat(lineNames.map(function repeat(arg) {
+    ['subgrid'].qmark(lineNames.concat(lineNames.concat([
+      '(a) (a)', '(a) (a b)', '(a b) (a b)'
+    ]).map(function repeat(arg) {
       return 'repeat(1, ' + arg + ')';
     })).times(1, 2).concat([
       '(first) (content) (repeat)',
@@ -212,11 +216,13 @@
       'repeat(4, (content) 1fr minmax(1px, 1px) (repeat)) (middle) ' +
       '1fr (last footer) / (start) "nav" auto (end)'
   ]);
-  var gridAutoFlow = ['none'].concat(
-    ['row', 'column'].qmark(['dense'], ' ', {amp: true})
+  var gridAutoFlow = [
+    'row', 'column'
+  ].qmark(['dense'], ' ', {amp: true}).concat(
+    ['stack'].qmark(['row', 'column'], ' ', {amp: true})
   );
   var gridLine = ['auto'].concat(
-    ['1'].or(['ident']), ['span'].amp(['1'].or(['ident']))
+    ['1'].or(['ident']), ['span'].amp(['1'].or(['ident'])), 'C -1'
   );
   var borderClip = ['normal'].concat(
     ['10px', '10%', '1fr'].times(1, 3)
@@ -2420,7 +2426,6 @@
     'css-grid-1': {
       'title': 'Grid Layout Level 1',
       'properties': {
-        'align-self': ['head', 'foot'],
         'display': ['grid', 'inline-grid'],
         'grid-template-columns': trackSizing,
         'grid-template-rows': trackSizing,
@@ -2429,15 +2434,12 @@
         'grid-auto-columns': trackSize,
         'grid-auto-rows': trackSize,
         'grid-auto-flow': gridAutoFlow,
-        'grid-auto-position': gridLine.times(2, 2, ' / '),
         'grid': gridTemplate.concat(
-          gridAutoFlow.or(trackSize).filter(function filter(val) {
-            return !this[val];
-          }, {none: true}),
-          ['none auto'].and(trackSize, ' / ')
+          gridAutoFlow,
+          ['row'].and(trackSize.and(['auto'], ' / '))
         ).concat([
           'row dense minmax(10px, 10px) / minmax(min-content, max-content)',
-          'rows 1fr', 'columns 1fr / auto',
+          // 'rows 1fr', 'columns 1fr / auto',
           '10rem 10rem 10rem 10rem / 1fr 1fr 1fr 1fr',
           '12rem 12rem 12rem 12rem / 10rem 10rem 10rem 10rem'
         ]),
