@@ -8,10 +8,10 @@
 
     Object.keys(obj).forEach(function setDescriptor(key) {
       props[key] = {
-        value        : obj[key],
-        enumerable   : false,
-        writable     : true,
-        configurable : true
+        value: obj[key],
+        enumerable: false,
+        writable: true,
+        configurable: true
       };
     });
 

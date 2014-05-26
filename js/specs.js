@@ -442,14 +442,14 @@
           'not print and (aspect-ratio: 1/1)',
           '(min-aspect-ratio: 1/1000000)',
           '(min-aspect-ratio: 1 / 1000000)',
-          '(max-aspect-ratio: 1000000/1)',
+          '(max-aspect-ratio: 1000000/1)'
         ],
         'device-aspect-ratio': [
           '(device-aspect-ratio)',
           'not print and (device-aspect-ratio: 1/1)',
           '(min-device-aspect-ratio: 1/1000000)',
           '(min-device-aspect-ratio: 1 / 1000000)',
-          '(max-device-aspect-ratio: 1000000/1)',
+          '(max-device-aspect-ratio: 1000000/1)'
         ],
         'color': [
           '(color)', 'not print and (color: 0)', '(min-color: 0)',
@@ -3809,7 +3809,7 @@
       'dev': 'http://www.whatwg.org/specs/web-apps/current-work/multipage/',
       'properties': {
         // http://www.whatwg.org/specs/web-apps/current-work/multipage/commands.html#anchor-points
-        'anchor-point': ['none'].concat(position),
+        'anchor-point': ['none'].concat(position)
       }
     },
 
@@ -4052,5 +4052,4 @@
       }
     }
   };
-
 }(window));

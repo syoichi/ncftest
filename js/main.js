@@ -223,7 +223,7 @@
         results.success = success =
           1 - (properties.length ? failed.length / properties.length : 1);
 
-        if (0 < success && success < 1) {
+        if (success > 0  && success < 1) {
           results.note = 'Failed in: ' + failed.join(', ');
         }
 
@@ -252,7 +252,7 @@
         results.success = success =
           1 - (properties.length ? failed.length / properties.length : 1);
 
-        if (0 < success && success < 1) {
+        if (success > 0 && success < 1) {
           results.note = 'Failed in: ' + failed.join(', ');
         }
 

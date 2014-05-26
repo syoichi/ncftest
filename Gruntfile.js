@@ -8,10 +8,38 @@ module.exports = function (grunt) {
       options: {
         jshintrc: '.jshintrc'
       }
+    },
+    jscs: {
+      all: {
+        files: {
+          src: [
+            'Gruntfile.js',
+            'js/utils.js', 'js/proto.js', 'js/supports.js', 'js/main.js'
+          ]
+        },
+        options: {
+          config: '.jscsrc'
+        }
+      },
+      specs: {
+        files: {
+          src: 'js/specs.js'
+        },
+        options: {
+          config: '.jscsrc',
+          validateIndentation: null,
+          maximumLineLength: null,
+          requireMultipleVarDecl: null,
+          disallowSpacesInsideArrayBrackets: null,
+          disallowQuotedKeysInObjects: null,
+          requireLeftStickedOperators: null
+        }
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-jscs-checker');
 
-  grunt.registerTask('default', 'jshint');
+  grunt.registerTask('default', ['jshint', 'jscs']);
 };
