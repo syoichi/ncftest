@@ -553,8 +553,12 @@
           'left, center', 'left, center, right',
           'left, left top, center top 10%, left 10% top 10%'
         ]),
-        'background-clip': box.times(1, 2, ', ').concat(box),
-        'background-origin': box.times(1, 2, ', ').concat(box),
+        'background-clip': box.times(1, 2, ', ').concat(
+          'border-box, padding-box, content-box'
+        ),
+        'background-origin': box.times(1, 2, ', ').concat(
+          'border-box, padding-box, content-box'
+        ),
         'background-size': bgSize.times(1, 2, ', ').concat(
           ['auto, 10px, 50%']
         ),
