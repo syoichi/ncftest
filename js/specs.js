@@ -84,7 +84,10 @@
       '0 0, 100% 100%, 0 100%', '100% 0, 100% 100%, 0 100%',
       '0 0, 500% 500%, 0 500%', '50px 0px, 100px 100px, 0px 100px',
       '0% 50%, 50% 100%, 0 100%',
-      '10px 10px, 90px 50px, 40px 50px, 90px 90px, 10px 90px'
+      '10px 10px, 90px 50px, 40px 50px, 90px 90px, 10px 90px',
+      '15px 99px, 30px 87px, 65px 99px, 85px 55px, 122px 57px, 184px 73px, ' +
+        '198px 105px, 199px 150px, 145px 159px, 155px 139px, 126px 120px, ' +
+        '112px 138px, 80px 128px, 39px 126px, 24px 104px'
     ]).map(function polygon(arg) {
       return 'polygon(' + arg + ')';
     })
@@ -3509,71 +3512,93 @@
       'properties': {
         'clip-path': [
           'none', 'url("#clip1")', 'url(commonmasks.xml#mask)'
-        ].concat(basicShape, geometryBox).concat([
-          'inset(10px) border-box', 'border-box inset(10px)',
+        ].concat(basicShape, geometryBox).concat(
+          'inset(10px) border-box', 'padding-box inset(10px)',
           'content-box ellipse(10% farthest-side at bottom 10px right 10px)',
           'polygon(evenodd, 10% 10%, 10% 10%) margin-box',
-          'inset(10px) fill', 'inset(10px) stroke', 'inset(10px) view-box'
-        ]),
+          'inset(10px) fill-box', 'inset(10px) stroke-box',
+          'inset(10px) view-box'
+        ),
         'clip-rule': fillRule,
-        'mask-image': [
-          'none', 'url(tl.png)', 'linear-gradient(black 0%, transparent 100%)',
-          'url(#mask)', 'url(resources.svg#mask2)'
-        ],
-        'mask-type': ['auto', 'alpha', 'luminance'],
-        'mask-repeat': repeatStyle,
-        'mask-position': position,
-        'mask-clip': geometryBox.concat('no-clip'),
-        'mask-origin': geometryBox,
-        'mask-size': bgSize,
-        'mask': [
-          'none', 'url(tl.png)', 'linear-gradient(black 0%, transparent 100%)',
-          'url(#mask)', 'url(commonmasks.xml#mask)'
-        ].qmark(['auto', 'alpha', 'luminance']).concat(
+        'mask-image': ['none'].concat(
+          image,
+          'linear-gradient(black 0%, transparent 100%)', 'url(#mask)',
+          'url(resources.svg#mask2)'
+        ).times(1, 2, ', ').concat('none, none, none'),
+        'mask-mode': [
+          'auto', 'alpha', 'luminance'
+        ].times(1, 2, ', ').concat('auto, auto, auto'),
+        'mask-repeat': repeatStyle.times(1, 2, ', ').concat(
+          'repeat, repeat, repeat'
+        ),
+        'mask-position': position.concat('left, left', 'left, left, left'),
+        'mask-clip': geometryBox.concat('no-clip').times(1, 2, ', ').concat(
+          'border-box, border-box, border-box'
+        ),
+        'mask-origin': geometryBox.times(1, 2, ', ').concat(
+          'border-box, border-box, border-box'
+        ),
+        'mask-size': bgSize.times(1, 2, ', ').concat('auto, auto, auto'),
+        'mask-composite': [
+          'add', 'subtract', 'intersect', 'exclude'
+        ].times(1, 3, ', '),
+        'mask': ['none'].concat(
+          image, 'url(#mask)', 'url(resources.svg#mask2)'
+        ).qmark(['auto', 'alpha', 'luminance']).concat(
           position.qmark(width.concat(
             ['cover', 'contain', '10px 10px']
           ), ' / '),
           repeatStyle,
-          geometryBox.or(geometryBox.concat('no-clip')).uniq()
+          geometryBox.concat('no-clip'),
+          ['add', 'subtract', 'intersect', 'exclude']
         ).concat([
           'none center', 'padding-box space', 'no-repeat none',
           'none left repeat-x border-box border-box',
-          'none left / auto repeat-x border-box border-box',
-          'none auto left / auto repeat-x border-box border-box',
-          'url(tl.png) alpha left / auto repeat-x border-box border-box',
+          'none left repeat-x border-box border-box add',
+          'none left / auto repeat-x border-box border-box add',
+          'none auto left / auto repeat-x border-box border-box add',
+          'url(tl.png) alpha left / auto repeat-x border-box border-box add',
           'linear-gradient(white, black) luminance bottom 10px right 10px' +
-            ' / 10px 10% repeat space fill no-clip'
+            ' / 10px 10% repeat space fill-box no-clip exclude',
+          'none, none', 'none, none, none'
         ]),
-        'mask-box-source': ['none'].concat(image),
-        'mask-box-slice': ['1', '10%'].times(1, 4).qmark(['fill']),
-        'mask-box-width': width.concat(['1']).times(1, 4),
-        'mask-box-outset': ['10px', '1'].times(1, 4),
-        'mask-box-repeat': ['stretch', 'repeat', 'round', 'space'].times(1, 2),
-        'mask-box': ['none'].concat(
+        'mask-border-source': ['none'].concat(image),
+        'mask-border-mode': ['alpha', 'luminance'],
+        'mask-border-slice': ['1', '10%'].times(1, 4).qmark(['fill']),
+        'mask-border-width': width.concat(['1']).times(1, 4),
+        'mask-border-outset': ['10px', '1'].times(1, 4),
+        'mask-border-repeat': [
+          'stretch', 'repeat', 'round', 'space'
+        ].times(1, 2),
+        'mask-border': ['none'].concat(
           image,
           ['1', '10%'].times(1, 4).qmark(['fill']).qmark(
             ['1', '1 / 1', '/ 1'], ' / '
           ),
           ['1'].and(width.concat(['1']).times(1, 4), ' / ').qmark(['1'], ' / '),
           ['1 / 1', '1 /'].and(['10px', '1'].times(1, 4), ' / '),
-          ['stretch', 'repeat', 'round', 'space'].times(1, 2)
+          ['stretch', 'repeat', 'round', 'space'].times(1, 2),
+          ['alpha', 'luminance']
         ).concat([
           '30% 30% / / 10px 10px', '10 fill / / 1 10px',
           '30% 10 30% / / 10px 10px 10px', '30% 30% 30% 30% fill / / 1 1 1 1',
           '10 30% 10 30% fill / 1 10px 10% auto / 10 5px 1px 10px',
           'none 100%', '100% none', 'stretch 100%', 'none stretch',
-          'none 100% stretch',
+          'none 100% stretch', 'none 100% stretch alpha',
           'none 100% / 1 stretch', 'none 100% / / 0 stretch',
-          'none 100% / 1 / 0 stretch', 'none 100% fill / 1 / 0 stretch',
+          'none 100% / 1 / 0 stretch', 'none 100% / 1 / 0 stretch alpha',
+          'none 100% fill / 1 / 0 stretch',
+          'none 100% fill / 1 / 0 stretch alpha',
           'url(foo.png) 10', 'url(foo.png) 10%', 'url(foo.png) 10% fill',
           'url(foo.png) 10 round', 'url(foo.png) 10 stretch repeat',
           'url(foo.png) 10 / 10px', 'url(foo.png) 10 / 10% / 10px',
           'url(foo.png) 10 fill / 10% / 10px',
           'url(foo.png) 10 fill / 10% / 10px repeat',
+          'url(foo.png) 10 fill / 10% / 10px repeat alpha',
           'url(tl.png) 10 30% 10 30% fill / 1 10px 10% auto / ' +
-            '10 5px 1px 10px repeat round'
+            '10 5px 1px 10px repeat round luminance'
         ]),
-        'mask-source-type': ['luminance', 'alpha']
+        'mask-type': ['luminance', 'alpha']
       }
     },
 
