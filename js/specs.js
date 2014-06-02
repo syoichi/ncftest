@@ -284,6 +284,9 @@
     'central', 'middle', 'alphabetic', 'hanging', 'ideographic',
     'mathematical', 'text-under-edge', 'text-over-edge'
   ];
+  var breakInside = [
+    'auto', 'avoid', 'avoid-page', 'avoid-column', 'avoid-region'
+  ];
 
   win.NCFTest.Specs = {
     // CSS Level 3
@@ -1471,8 +1474,15 @@
       'title': 'Fragmentation',
       'tr': 'http://www.w3.org/TR/css3-break/',
       'properties': {
-        'break-before': ['any', 'recto', 'verso'],
-        'break-after': ['any', 'recto', 'verso'],
+        'break-before': breakInside.concat([
+          'always', 'left', 'right', 'page', 'column', 'region',
+          'any', 'recto', 'verso',
+        ]),
+        'break-after': breakInside.concat([
+          'always', 'left', 'right', 'page', 'column', 'region',
+          'any', 'recto', 'verso',
+        ]),
+        'break-inside': breakInside,
         'box-decoration-break': ['slice', 'clone']
       }
     },
@@ -1557,15 +1567,6 @@
           'none', 'hidden', 'dotted', 'dashed', 'solid', 'double', 'groove',
           'ridge', 'inset', 'outset'
         ], ['red']),
-        'break-before': [
-          'auto', 'always', 'avoid', 'left', 'right', 'page', 'column',
-          'avoid-page', 'avoid-column'
-        ],
-        'break-after': [
-          'auto', 'always', 'avoid', 'left', 'right', 'page', 'column',
-          'avoid-page', 'avoid-column'
-        ],
-        'break-inside': ['auto', 'avoid', 'avoid-page', 'avoid-column'],
         'column-span': ['none', 'all'],
         'column-fill': ['balance', 'auto'/*, 'balance-all'*/]
       }

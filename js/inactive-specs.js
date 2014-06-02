@@ -156,9 +156,6 @@
       'properties': {
         'flow-into': ['none'].concat(['ident'].qmark(['element', 'content'])),
         'flow-from': ['none', 'ident'],
-        'break-before': ['region', 'avoid-region'],
-        'break-after': ['region', 'avoid-region'],
-        'break-inside': ['avoid-region'],
         'region-fragment': ['auto', 'break']/*,
         'flex-pack': ['justify']*/
       }
