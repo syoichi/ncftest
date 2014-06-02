@@ -1,4 +1,4 @@
-/* jshint onevar: false, maxstatements: false */
+/* jshint maxstatements: false */
 
 (function executeInactiveSpecs(win) {
   'use strict';
