@@ -1292,6 +1292,59 @@
       }
     },
 
+    'css-sizing-3': {
+      'title': 'Intrinsic & Extrinsic Sizing',
+      'tr': 'http://www.w3.org/TR/css3-sizing/',
+      'properties': {
+        'width': contentSize/*.concat('repudiate-floats')*/,
+        'min-width': contentSize.concat(
+          /*'repudiate-floats', */'contain-floats'
+        ),
+        'max-width': contentSize/*.concat('repudiate-floats')*/,
+        'height': contentSize/*.concat('repudiate-floats')*/,
+        'min-height': contentSize.concat(
+          /*'repudiate-floats', */'contain-floats'
+        ),
+        'max-height': contentSize/*.concat('repudiate-floats')*/,
+        'column-width': contentSize
+      }
+    },
+
+    'css-break-3': {
+      'title': 'Fragmentation',
+      'tr': 'http://www.w3.org/TR/css3-break/',
+      'properties': {
+        'break-before': breakInside.concat([
+          'always', 'left', 'right', 'page', 'column', 'region',
+          'any', 'recto', 'verso'
+        ]),
+        'break-after': breakInside.concat([
+          'always', 'left', 'right', 'page', 'column', 'region',
+          'any', 'recto', 'verso'
+        ]),
+        'break-inside': breakInside,
+        'box-decoration-break': ['slice', 'clone']
+      }
+    },
+
+    'css-overflow-3': {
+      'title': 'Overflow',
+      'properties': {
+        'overflow-x': [
+          'visible', 'hidden', 'scroll', 'auto'
+        ].concat(overflowFragment),
+        'overflow-y': [
+          'visible', 'hidden', 'scroll', 'auto'
+        ].concat(overflowFragment),
+        'overflow': overflowFragment,
+        // 'break': ['regions'],
+        'max-lines': ['none', '1']
+      },
+      'selectors': {
+        '::nth-fragment()': ['::nth-fragment(1)', 'div::nth-fragment(1)']
+      }
+    },
+
     'css-lists-3': {
       'title': 'Lists and Counters',
       'tr': 'http://www.w3.org/TR/css3-lists/',
@@ -1397,59 +1450,6 @@
       }
     },
 
-    'css-break-3': {
-      'title': 'Fragmentation',
-      'tr': 'http://www.w3.org/TR/css3-break/',
-      'properties': {
-        'break-before': breakInside.concat([
-          'always', 'left', 'right', 'page', 'column', 'region',
-          'any', 'recto', 'verso'
-        ]),
-        'break-after': breakInside.concat([
-          'always', 'left', 'right', 'page', 'column', 'region',
-          'any', 'recto', 'verso'
-        ]),
-        'break-inside': breakInside,
-        'box-decoration-break': ['slice', 'clone']
-      }
-    },
-
-    'css-overflow-3': {
-      'title': 'Overflow',
-      'properties': {
-        'overflow-x': [
-          'visible', 'hidden', 'scroll', 'auto'
-        ].concat(overflowFragment),
-        'overflow-y': [
-          'visible', 'hidden', 'scroll', 'auto'
-        ].concat(overflowFragment),
-        'overflow': overflowFragment,
-        // 'break': ['regions'],
-        'max-lines': ['none', '1']
-      },
-      'selectors': {
-        '::nth-fragment()': ['::nth-fragment(1)', 'div::nth-fragment(1)']
-      }
-    },
-
-    'css-sizing-3': {
-      'title': 'Intrinsic & Extrinsic Sizing',
-      'tr': 'http://www.w3.org/TR/css3-sizing/',
-      'properties': {
-        'width': contentSize/*.concat('repudiate-floats')*/,
-        'min-width': contentSize.concat(
-          /*'repudiate-floats', */'contain-floats'
-        ),
-        'max-width': contentSize/*.concat('repudiate-floats')*/,
-        'height': contentSize/*.concat('repudiate-floats')*/,
-        'min-height': contentSize.concat(
-          /*'repudiate-floats', */'contain-floats'
-        ),
-        'max-height': contentSize/*.concat('repudiate-floats')*/,
-        'column-width': contentSize
-      }
-    },
-
     // CSS Level 3? New CSS Level 1?
     'css-namespaces-1': {
       'title': 'Namespaces',
@@ -1535,6 +1535,14 @@
       }
     },
 
+    'cssom-view-1': {
+      'title': 'CSSOM View',
+      'tr': 'http://www.w3.org/TR/cssom-view/',
+      'properties': {
+        'scroll-behavior': ['instant', 'smooth']
+      }
+    },
+
     'css-device-adapt-1': {
       'title': 'Device Adaptation',
       'tr': 'http://www.w3.org/TR/css-device-adapt/',
@@ -1554,14 +1562,6 @@
         'max-zoom': ['auto', '1.0', '2.0', '0.5', '100%', '200%', '50%'],
         'user-zoom': ['zoom', 'fixed'],
         'orientation': ['auto', 'portrait', 'landscape']
-      }
-    },
-
-    'cssom-view-1': {
-      'title': 'CSSOM View',
-      'tr': 'http://www.w3.org/TR/cssom-view/',
-      'properties': {
-        'scroll-behavior': ['instant', 'smooth']
       }
     },
 
@@ -1808,45 +1808,6 @@
       }
     },
 
-    'css-variables-1': {
-      'title': 'Custom Properties for Cascading Variables Level 1',
-      'values': {
-        'properties': ['background-color', 'var-foo'],
-        'var()': [
-          'var(--color)', 'var(--header-color)', 'var(--header-color, blue)',
-          'calc(var(--gap) * 1px)'
-        ]
-      }/*,
-      // '--*' must be checked by element.style.getPropertyValue('--*').
-      'properties': {
-        '--*': ['--foo', '--FOO', '--header-color']
-      }*/
-    },
-
-    'css-shapes-1': {
-      'title': 'Shapes Level 1',
-      'properties': {
-        'shape-outside': ['none'].concat(basicShape, shapeBox, image, [
-          'inset(10px) border-box', 'border-box inset(10px)',
-          'content-box ellipse(10% farthest-side at bottom 10px right 10px)',
-          'polygon(evenodd, 10% 10%, 10% 10%) margin-box'
-        ]),
-        'shape-image-threshold': alphavalue,
-        'shape-margin': ['0', '1px', '10%']
-      }
-    },
-
-    'css-exclusions-1': {
-      'title': 'Exclusions Level 1',
-      'tr': 'http://www.w3.org/TR/css3-exclusions/',
-      'properties': {
-        'wrap-flow': [
-          'auto', 'both', 'start', 'end', 'minimum', 'maximum', 'clear'
-        ],
-        'wrap-through': ['wrap', 'none']
-      }
-    },
-
     'css-grid-1': {
       'title': 'Grid Layout Level 1',
       'properties': {
@@ -1885,6 +1846,34 @@
       }
     },
 
+    'css-variables-1': {
+      'title': 'Custom Properties for Cascading Variables Level 1',
+      'values': {
+        'properties': ['background-color', 'var-foo'],
+        'var()': [
+          'var(--color)', 'var(--header-color)', 'var(--header-color, blue)',
+          'calc(var(--gap) * 1px)'
+        ]
+      }/*,
+      // '--*' must be checked by element.style.getPropertyValue('--*').
+      'properties': {
+        '--*': ['--foo', '--FOO', '--header-color']
+      }*/
+    },
+
+    'css-shapes-1': {
+      'title': 'Shapes Level 1',
+      'properties': {
+        'shape-outside': ['none'].concat(basicShape, shapeBox, image, [
+          'inset(10px) border-box', 'border-box inset(10px)',
+          'content-box ellipse(10% farthest-side at bottom 10px right 10px)',
+          'polygon(evenodd, 10% 10%, 10% 10%) margin-box'
+        ]),
+        'shape-image-threshold': alphavalue,
+        'shape-margin': ['0', '1px', '10%']
+      }
+    },
+
     'css-scoping-1': {
       'title': 'Scoping Level 1',
       'selectors': {
@@ -1909,6 +1898,17 @@
       '@rules': {
         '@scope': ['@scope div']
       }*/
+    },
+
+    'css-exclusions-1': {
+      'title': 'Exclusions Level 1',
+      'tr': 'http://www.w3.org/TR/css3-exclusions/',
+      'properties': {
+        'wrap-flow': [
+          'auto', 'both', 'start', 'end', 'minimum', 'maximum', 'clear'
+        ],
+        'wrap-through': ['wrap', 'none']
+      }
     },
 
     // New CSS Level 2
@@ -2683,6 +2683,42 @@
       }
     },
 
+    'css-backgrounds-4': {
+      'title': 'Backgrounds and Borders Level 4',
+      'properties': {
+        'corner-shape': ['round', 'bevel', 'scoop', 'notch'].times(1, 4),
+        'corners': ['round', 'bevel', 'scoop', 'notch'].times(1, 4).concat(
+          ['10px', '10%'].times(1, 4).times(1, 2, ' / ')
+        ).concat([
+          'bevel 50%', 'bevel 0.25em 0.25em 0 0 / 50% 50% 0 0',
+          'round bevel notch scoop 10% 10px 10% 10px / 10px 10% 10% 10%'
+        ]),
+        'border-limit': [/*'round', */'all'].concat(
+          ['sides', 'corners'].qmark(['10px', '10%']),
+          ['top', 'right', 'bottom', 'left'].and(['10px', '10%'])
+        ),/*
+        'border-parts': [
+          'sides 50%', 'corners', 'left 4em', 'corners 10px', 'corners 30%'
+        ],
+        'border-shape': ['scoop'],*/
+        'border-clip': borderClip,
+        'border-clip-top': borderClip,
+        'border-clip-right': borderClip,
+        'border-clip-bottom': borderClip,
+        'border-clip-left': borderClip/*,
+        'border-top-parts': [
+          'repeat(10px 10px)', 'repeat(10px 10px) 1fr',
+          '40px 20px 0 1fr repeat(20px 20px) 0 1fr 40px',
+          '40px 20px 0 1fr 20px 20px 0 1fr 40px'
+        ],
+        'backround-position': ['start', 'end'],
+        'background-repeat': ['extend'],
+        'border-image': ['10', '30%'].times(1, 4).concat(
+          ['10', '30%'].times(1, 4).amp(['fill'])
+        ).and([' / '])*/
+      }
+    },
+
     // No Ready CSS Level 4
     'css-text-4': {
       'title': 'Text Level 4',
@@ -2756,42 +2792,6 @@
           'pink 1px 2px 3px 4px inset', '1px 2px, inset 1px 2px',
           '1px 2px 3px 4px, 1px 2px 3px 4px', '1px 2px, 1px 2px, inset 1px 2px'
         ]
-      }
-    },
-
-    'css-backgrounds-4': {
-      'title': 'Backgrounds and Borders Level 4',
-      'properties': {
-        'corner-shape': ['round', 'bevel', 'scoop', 'notch'].times(1, 4),
-        'corners': ['round', 'bevel', 'scoop', 'notch'].times(1, 4).concat(
-          ['10px', '10%'].times(1, 4).times(1, 2, ' / ')
-        ).concat([
-          'bevel 50%', 'bevel 0.25em 0.25em 0 0 / 50% 50% 0 0',
-          'round bevel notch scoop 10% 10px 10% 10px / 10px 10% 10% 10%'
-        ]),
-        'border-limit': [/*'round', */'all'].concat(
-          ['sides', 'corners'].qmark(['10px', '10%']),
-          ['top', 'right', 'bottom', 'left'].and(['10px', '10%'])
-        ),/*
-        'border-parts': [
-          'sides 50%', 'corners', 'left 4em', 'corners 10px', 'corners 30%'
-        ],
-        'border-shape': ['scoop'],*/
-        'border-clip': borderClip,
-        'border-clip-top': borderClip,
-        'border-clip-right': borderClip,
-        'border-clip-bottom': borderClip,
-        'border-clip-left': borderClip/*,
-        'border-top-parts': [
-          'repeat(10px 10px)', 'repeat(10px 10px) 1fr',
-          '40px 20px 0 1fr repeat(20px 20px) 0 1fr 40px',
-          '40px 20px 0 1fr 20px 20px 0 1fr 40px'
-        ],
-        'backround-position': ['start', 'end'],
-        'background-repeat': ['extend'],
-        'border-image': ['10', '30%'].times(1, 4).concat(
-          ['10', '30%'].times(1, 4).amp(['fill'])
-        ).and([' / '])*/
       }
     },
 
