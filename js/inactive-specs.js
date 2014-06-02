@@ -111,12 +111,12 @@
       'title': 'Intrinsic & Extrinsic Sizing',
       'tr': 'http://www.w3.org/TR/css3-sizing/',
       'properties': {
-        'width': ['fill', 'repudiate-floats'],
-        'min-width': ['fill', 'repudiate-floats', 'contain-floats'],
-        'max-width': ['fill', 'repudiate-floats'],
-        'height': ['fill', 'repudiate-floats'],
-        'min-height': ['fill', 'repudiate-floats', 'contain-floats'],
-        'max-height': ['fill', 'repudiate-floats'],
+        'width': ['fill'/*, 'repudiate-floats'*/],
+        'min-width': ['fill', /*'repudiate-floats', */'contain-floats'],
+        'max-width': ['fill'/*, 'repudiate-floats'*/],
+        'height': ['fill'/*, 'repudiate-floats'*/],
+        'min-height': ['fill', /*'repudiate-floats', */'contain-floats'],
+        'max-height': ['fill'/*, 'repudiate-floats'*/],
         'column-width': ['fill', 'max-content', 'min-content', 'fit-content']
       }
     },
