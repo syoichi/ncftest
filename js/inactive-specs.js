@@ -612,117 +612,6 @@
     },
 
     // New CSS Level 1~3
-    'css-speech-1': {
-      'title': 'Speech',
-      'tr': 'http://www.w3.org/TR/css3-speech/',
-      'properties': {
-        'voice-volume': ['silent'].concat(
-          ['x-soft', 'soft', 'medium', 'loud', 'x-loud'].or(
-            ['-6dB', '0', '6db']
-          )
-        ),
-        'voice-balance': [
-          'center', '-100', '0', '1.1', '100', 'left', 'right', 'leftwards',
-          'rightwards'
-        ],
-        'speak': 'auto',
-        'speak-as': [
-          'normal', 'spell-out', 'digits', 'literal-punctuation',
-          'no-punctuation',
-          'spell-out digits', 'spell-out literal-punctuation',
-          'spell-out no-punctuation', 'digits spell-out',
-          'digits literal-punctuation', 'digits no-punctuation',
-          'literal-punctuation spell-out', 'literal-punctuation digits',
-          'no-punctuation spell-out', 'no-punctuation digits',
-          'spell-out digits literal-punctuation',
-          'spell-out digits no-punctuation',
-          'spell-out literal-punctuation digits',
-          'spell-out no-punctuation digits',
-          'digits spell-out literal-punctuation',
-          'digits spell-out no-punctuation',
-          'digits literal-punctuation spell-out',
-          'digits no-punctuation spell-out',
-          'literal-punctuation spell-out digits',
-          'literal-punctuation digits spell-out',
-          'no-punctuation spell-out digits', 'no-punctuation digits spell-out'
-        ],
-        'pause-before': [
-          'none', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'
-        ],
-        'pause-after': [
-          'none', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'
-        ],
-        'pause': [
-          'none', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'
-        ].times(1, 2).concat(
-          ['20ms'].amp(
-            ['none', 'x-weak', 'weak', 'medium', 'strong', 'x-strong']
-          )
-        ),
-        'rest-before': [
-          'none', '+3s', '250ms', 'x-weak', 'weak', 'medium', 'strong',
-          'x-strong'
-        ],
-        'rest-after': [
-          'none', '+3s', '250ms', 'x-weak', 'weak', 'medium', 'strong',
-          'x-strong'
-        ],
-        'rest': [
-          'none', '+3s', '250ms', 'x-weak', 'weak', 'medium', 'strong',
-          'x-strong'
-        ].times(1, 2),
-        'cue-before': [
-          'url(\'bell.aiff\') -6dB', 'url(\'dong.wav\') 0',
-          'url(\'pop.au\') 6db'
-        ],
-        'cue-after': [
-          'url(/audio/bell.aiff) -6dB', 'url(../clips-1/pop.au) 0',
-          'url(./audio/caution.wav) 6db'
-        ],
-        'cue': [
-          'url(/audio/bell.aiff) -6dB', 'url(../clips-1/pop.au) 0',
-          'url(./audio/caution.wav) 6db'
-        ].times(
-          1, 2
-        ).concat(['none', '-6dB', '0', '6db', 'url(../clips-2/pop.au)'].amp([
-          'url(\'bell.aiff\') -6dB', 'url(\'dong.wav\') 0',
-          'url(\'pop.au\') 6db'
-        ])),
-        'voice-family': ['neutral', 'preserve'].concat(
-          ['child', 'young', 'old'].and(['male', 'female', 'neutral']),
-          ['male', 'female', 'neutral'].and(['1']),
-          ['child', 'young', 'old'].and(
-            ['male', 'female', 'neutral']
-          ).and(['1'])
-        ).concat([
-          'comedian, neutral', 'male, preserve', 'female, child male',
-          'romeo, young male 1', 'young female, juliet', 'child male, male 1',
-          'young male 1, young female 2', 'male, female, preserve'
-        ]),
-        'voice-rate': [
-          'normal', 'x-slow', 'slow', 'medium', 'fast', 'x-fast'
-        ].or(['0', '100%']),
-        'voice-pitch': [
-          '250Hz', '+250Hz', '-20Hz', '.2kHz'
-        ].amp(
-          ['absolute']
-        ).concat(['x-low', 'low', 'medium', 'high', 'x-high'].or([
-          '0', '250Hz', '+250Hz', '-20Hz', '.2kHz',
-          '-3.5st', '3.5st', '100%', '-100%'
-        ])),
-        'voice-range': [
-          '250Hz', '+250Hz', '-20Hz', '.2kHz'
-        ].amp(
-          ['absolute']
-        ).concat(['x-low', 'low', 'medium', 'high', 'x-high'].or([
-          '0', '250Hz', '+250Hz', '-20Hz', '.2kHz',
-          '-3.5st', '3.5st', '100%', '-100%'
-        ])),
-        'voice-stress': ['normal', 'strong', 'moderate', 'none', 'reduced'],
-        'voice-duration': ['auto', '+3s', '250ms']
-      }
-    },
-
     'css-color-correction-1': {
       'title': 'Color Correction',
       'properties': {
@@ -870,6 +759,117 @@
       'units': {
         'Hz': ['pitch', 'voice-pitch', 'voice-range'],
         'kHz': ['pitch', 'voice-pitch', 'voice-range']
+      }
+    },
+
+    'css-speech-1': {
+      'title': 'Speech',
+      'tr': 'http://www.w3.org/TR/css3-speech/',
+      'properties': {
+        'voice-volume': ['silent'].concat(
+          ['x-soft', 'soft', 'medium', 'loud', 'x-loud'].or(
+            ['-6dB', '0', '6db']
+          )
+        ),
+        'voice-balance': [
+          'center', '-100', '0', '1.1', '100', 'left', 'right', 'leftwards',
+          'rightwards'
+        ],
+        'speak': 'auto',
+        'speak-as': [
+          'normal', 'spell-out', 'digits', 'literal-punctuation',
+          'no-punctuation',
+          'spell-out digits', 'spell-out literal-punctuation',
+          'spell-out no-punctuation', 'digits spell-out',
+          'digits literal-punctuation', 'digits no-punctuation',
+          'literal-punctuation spell-out', 'literal-punctuation digits',
+          'no-punctuation spell-out', 'no-punctuation digits',
+          'spell-out digits literal-punctuation',
+          'spell-out digits no-punctuation',
+          'spell-out literal-punctuation digits',
+          'spell-out no-punctuation digits',
+          'digits spell-out literal-punctuation',
+          'digits spell-out no-punctuation',
+          'digits literal-punctuation spell-out',
+          'digits no-punctuation spell-out',
+          'literal-punctuation spell-out digits',
+          'literal-punctuation digits spell-out',
+          'no-punctuation spell-out digits', 'no-punctuation digits spell-out'
+        ],
+        'pause-before': [
+          'none', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'
+        ],
+        'pause-after': [
+          'none', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'
+        ],
+        'pause': [
+          'none', 'x-weak', 'weak', 'medium', 'strong', 'x-strong'
+        ].times(1, 2).concat(
+          ['20ms'].amp(
+            ['none', 'x-weak', 'weak', 'medium', 'strong', 'x-strong']
+          )
+        ),
+        'rest-before': [
+          'none', '+3s', '250ms', 'x-weak', 'weak', 'medium', 'strong',
+          'x-strong'
+        ],
+        'rest-after': [
+          'none', '+3s', '250ms', 'x-weak', 'weak', 'medium', 'strong',
+          'x-strong'
+        ],
+        'rest': [
+          'none', '+3s', '250ms', 'x-weak', 'weak', 'medium', 'strong',
+          'x-strong'
+        ].times(1, 2),
+        'cue-before': [
+          'url(\'bell.aiff\') -6dB', 'url(\'dong.wav\') 0',
+          'url(\'pop.au\') 6db'
+        ],
+        'cue-after': [
+          'url(/audio/bell.aiff) -6dB', 'url(../clips-1/pop.au) 0',
+          'url(./audio/caution.wav) 6db'
+        ],
+        'cue': [
+          'url(/audio/bell.aiff) -6dB', 'url(../clips-1/pop.au) 0',
+          'url(./audio/caution.wav) 6db'
+        ].times(
+          1, 2
+        ).concat(['none', '-6dB', '0', '6db', 'url(../clips-2/pop.au)'].amp([
+          'url(\'bell.aiff\') -6dB', 'url(\'dong.wav\') 0',
+          'url(\'pop.au\') 6db'
+        ])),
+        'voice-family': ['neutral', 'preserve'].concat(
+          ['child', 'young', 'old'].and(['male', 'female', 'neutral']),
+          ['male', 'female', 'neutral'].and(['1']),
+          ['child', 'young', 'old'].and(
+            ['male', 'female', 'neutral']
+          ).and(['1'])
+        ).concat([
+          'comedian, neutral', 'male, preserve', 'female, child male',
+          'romeo, young male 1', 'young female, juliet', 'child male, male 1',
+          'young male 1, young female 2', 'male, female, preserve'
+        ]),
+        'voice-rate': [
+          'normal', 'x-slow', 'slow', 'medium', 'fast', 'x-fast'
+        ].or(['0', '100%']),
+        'voice-pitch': [
+          '250Hz', '+250Hz', '-20Hz', '.2kHz'
+        ].amp(
+          ['absolute']
+        ).concat(['x-low', 'low', 'medium', 'high', 'x-high'].or([
+          '0', '250Hz', '+250Hz', '-20Hz', '.2kHz',
+          '-3.5st', '3.5st', '100%', '-100%'
+        ])),
+        'voice-range': [
+          '250Hz', '+250Hz', '-20Hz', '.2kHz'
+        ].amp(
+          ['absolute']
+        ).concat(['x-low', 'low', 'medium', 'high', 'x-high'].or([
+          '0', '250Hz', '+250Hz', '-20Hz', '.2kHz',
+          '-3.5st', '3.5st', '100%', '-100%'
+        ])),
+        'voice-stress': ['normal', 'strong', 'moderate', 'none', 'reduced'],
+        'voice-duration': ['auto', '+3s', '250ms']
       }
     }
   };
