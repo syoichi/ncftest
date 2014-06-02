@@ -287,6 +287,9 @@
   var breakInside = [
     'auto', 'avoid', 'avoid-page', 'avoid-column', 'avoid-region'
   ];
+  var width2 = ['1px', '1%'].amp(['border-box', 'content-box']).concat([
+    'available', 'min-content', 'max-content', 'fit-content'
+  ]);
 
   win.NCFTest.Specs = {
     // CSS Level 3
@@ -1371,42 +1374,31 @@
       'tr': 'http://www.w3.org/TR/css3-box/',
       'properties': {
         'display': [
-          'run-in', 'compact', 'ruby-base-group', 'ruby-text-group', 'container'
+          'run-in', 'compact', 'ruby-base-group', 'ruby-text-group',
+          'container'/*, 'align-box'*/
         ],
+        // 'display-role': ['table-cell'],
+        // 'display-model': ['table'],
         'padding': width.times(1, 4).filter(function filter(val) {
           return val.indexOf('auto') !== -1;
         }),
-        'padding-top': 'auto',
-        'padding-right': 'auto',
-        'padding-bottom': 'auto',
-        'padding-left': 'auto',
-        'margin-top': 'fill',
-        'margin-right': 'fill',
-        'margin-bottom': 'fill',
-        'margin-left': 'fill',
-        'margin': width.concat([
-          'fill'
-        ]).times(1, 4).filter(function filter(val) {
+        'padding-top': ['auto'],
+        'padding-right': ['auto'],
+        'padding-bottom': ['auto'],
+        'padding-left': ['auto'],
+        'margin-top': ['fill'],
+        'margin-right': ['fill'],
+        'margin-bottom': ['fill'],
+        'margin-left': ['fill'],
+        'margin': width.concat('fill').times(1, 4).filter(function filter(val) {
           return val.indexOf('fill') !== -1;
         }),
-        'width': ['1px', '1%'].amp(['border-box', 'content-box']).concat([
-          'available', 'min-content', 'max-content', 'fit-content'
-        ]),
-        'height': ['1px', '1%'].amp(['border-box', 'content-box']).concat([
-          'available', 'min-content', 'max-content', 'fit-content', 'complex'
-        ]),
-        'min-width': ['1px', '1%'].amp(['border-box', 'content-box']).concat([
-          'available', 'min-content', 'max-content', 'fit-content'
-        ]),
-        'min-height': ['1px', '1%'].amp(['border-box', 'content-box']).concat([
-          'available', 'min-content', 'max-content', 'fit-content'
-        ]),
-        'max-width': ['1px', '1%'].amp(['border-box', 'content-box']).concat([
-          'available', 'min-content', 'max-content', 'fit-content'
-        ]),
-        'max-height': ['1px', '1%'].amp(['border-box', 'content-box']).concat([
-          'available', 'min-content', 'max-content', 'fit-content'
-        ]),
+        'width': width2/*.concat('shrink-wrap')*/,
+        'height': width2.concat('complex'/*, 'shrink-wrap'*/),
+        'min-width': width2,
+        'min-height': width2,
+        'max-width': width2,
+        'max-height': width2,
         'float': [
           'left', 'right', 'top', 'bottom', 'start', 'end', 'none',
           'top-corner', 'bottom-corner', 'snap'
@@ -1424,7 +1416,14 @@
         'clear-after': [
           'none', 'left', 'right', 'top', 'bottom', 'inside', 'outside',
           'start', 'end', 'both', 'descendants'
-        ],
+        ],/*
+        'clear': [
+          'left', 'right', 'top', 'bottom', 'inside', 'outside', 'start', 'end',
+          'both', 'after'
+        ].times(1, 2).filter(function filter(val) {
+          return !this[val];
+        }, {left: true, right: true, none: true, both: true}),
+        'underhang-limit': ['1'],*/
         'overflow-x': [
           'visible', 'hidden', 'scroll', 'auto', 'no-display', 'no-content'
         ],
@@ -1435,12 +1434,22 @@
           'visible', 'hidden', 'scroll', 'auto', 'no-display', 'no-content'
         ].times(2)),
         'alignment': ['top', 'right', 'bottom', 'left', 'center'],
-        'child-align': ['auto', 'top', 'middle', 'bottom', 'left', 'right'],
-        'float-displace': ['line', 'indent', 'block', 'block-within-page'],
+        // 'block-align': ['top', 'right', 'bottom', 'left', 'center'],
+        'child-align': ['auto', 'top', 'middle', 'bottom', 'left', 'right'],/*
+        'block-vertical-align': [
+          'auto', 'top', 'middle', 'bottom', 'left', 'right'
+        ],*/
+        'float-displace': ['line', 'indent', 'block', 'block-within-page'],/*
+        'float-displace': ['auto'].concat(
+          ['1px'].qmark(['block', 'block-within-page'], ' ', {amp: true})
+        ),*/
         'indent-edge-reset': [
           'none', 'margin-edge', 'border-edge', 'padding-edge', 'content-edge'
         ]
-      }
+      }/*,
+      'selectors': {
+        '::outside': '::outside'
+      }*/
     },
 
     'css-position-3': {
