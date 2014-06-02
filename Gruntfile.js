@@ -34,6 +34,17 @@ module.exports = function (grunt) {
           disallowQuotedKeysInObjects: null,
           requireLeftStickedOperators: null
         }
+      },
+      'inactive-specs': {
+        files: {
+          src: 'js/inactive-specs.js'
+        },
+        options: {
+          config: '.jscsrc',
+          requireMultipleVarDecl: null,
+          disallowSpacesInsideArrayBrackets: null,
+          disallowQuotedKeysInObjects: null
+        }
       }
     }
   });
