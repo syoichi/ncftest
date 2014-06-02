@@ -287,9 +287,9 @@
   var breakInside = [
     'auto', 'avoid', 'avoid-page', 'avoid-column', 'avoid-region'
   ];
-  var width2 = ['1px', '1%'].amp(['border-box', 'content-box']).concat([
-    'available', 'min-content', 'max-content', 'fit-content'
-  ]);
+  var width2 = ['1px', '1%'].amp(['border-box', 'content-box']).concat(
+    'available'
+  );
 
   win.NCFTest.Specs = {
     // CSS Level 3

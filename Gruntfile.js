@@ -43,7 +43,8 @@ module.exports = function (grunt) {
           config: '.jscsrc',
           requireMultipleVarDecl: null,
           disallowSpacesInsideArrayBrackets: null,
-          disallowQuotedKeysInObjects: null
+          disallowQuotedKeysInObjects: null,
+          requireLeftStickedOperators: null
         }
       }
     }

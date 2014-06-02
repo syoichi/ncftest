@@ -30,6 +30,7 @@
   var overflowFragment = [
     'paged-x', 'paged-y', 'paged-x-controls', 'paged-y-controls', 'fragments'
   ];
+  var contentSize = ['fill', 'min-content', 'max-content', 'fit-content'];
 
   win.NCFTest.Specs = {
     // Inactive implementing in Browsers
@@ -111,13 +112,17 @@
       'title': 'Intrinsic & Extrinsic Sizing',
       'tr': 'http://www.w3.org/TR/css3-sizing/',
       'properties': {
-        'width': ['fill'/*, 'repudiate-floats'*/],
-        'min-width': ['fill', /*'repudiate-floats', */'contain-floats'],
-        'max-width': ['fill'/*, 'repudiate-floats'*/],
-        'height': ['fill'/*, 'repudiate-floats'*/],
-        'min-height': ['fill', /*'repudiate-floats', */'contain-floats'],
-        'max-height': ['fill'/*, 'repudiate-floats'*/],
-        'column-width': ['fill', 'max-content', 'min-content', 'fit-content']
+        'width': contentSize/*.concat('repudiate-floats')*/,
+        'min-width': contentSize.concat(
+          /*'repudiate-floats', */'contain-floats'
+        ),
+        'max-width': contentSize/*.concat('repudiate-floats')*/,
+        'height': contentSize/*.concat('repudiate-floats')*/,
+        'min-height': contentSize.concat(
+          /*'repudiate-floats', */'contain-floats'
+        ),
+        'max-height': contentSize/*.concat('repudiate-floats')*/,
+        'column-width': contentSize
       }
     },
 
