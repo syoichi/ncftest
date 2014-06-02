@@ -97,8 +97,12 @@
     'css-overflow-3': {
       'title': 'Overflow',
       'properties': {
-        'overflow-x': overflowFragment,
-        'overflow-y': overflowFragment,
+        'overflow-x': [
+          'visible', 'hidden', 'scroll', 'auto'
+        ].concat(overflowFragment),
+        'overflow-y': [
+          'visible', 'hidden', 'scroll', 'auto'
+        ].concat(overflowFragment),
         'overflow': overflowFragment,
         // 'break': ['regions'],
         'max-lines': ['none', '1']

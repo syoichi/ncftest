@@ -1424,12 +1424,8 @@
           return !this[val];
         }, {left: true, right: true, none: true, both: true}),
         'underhang-limit': ['1'],*/
-        'overflow-x': [
-          'visible', 'hidden', 'scroll', 'auto', 'no-display', 'no-content'
-        ],
-        'overflow-y': [
-          'visible', 'hidden', 'scroll', 'auto', 'no-display', 'no-content'
-        ],
+        'overflow-x': ['no-display', 'no-content'],
+        'overflow-y': ['no-display', 'no-content'],
         'overflow': ['no-display', 'no-content'].concat([
           'visible', 'hidden', 'scroll', 'auto', 'no-display', 'no-content'
         ].times(2)),
