@@ -1545,27 +1545,18 @@
       'properties': {
         'column-width': ['10em', 'auto'],
         'column-count': ['2', 'auto'],
-        'columns': [
-          '100px', '3', '10em 2', 'auto 2', '10em auto', 'auto auto', '2 10em',
-          'auto 10em', '2 auto'
-        ],
-        'column-gap': ['1em', 'normal'],
-        'column-rule-color': 'red',
+        'columns': ['1em', 'auto'].or(['1', 'auto']),
+        'column-gap': ['1em', '0', 'normal'],
+        'column-rule-color': ['red'],
         'column-rule-style': [
           'none', 'hidden', 'dotted', 'dashed', 'solid', 'double', 'groove',
           'ridge', 'inset', 'outset'
         ],
         'column-rule-width': ['1px', 'thin', 'medium', 'thick'],
-        'column-rule': [
-          'medium', 'none', 'red', 'transparent',
-          'medium none', 'none medium', 'medium red', 'none red',
-          'red medium', 'red none', 'medium transparent', 'none transparent',
-          'transparent medium', 'transparent none',
-          '1px solid black', 'thin outset blue', 'thick yellow hidden',
-          'dashed white medium', 'dotted 10em purple', 'green double thin',
-          'black thick groove', 'transparent ridge medium',
-          'transparent thin inset'
-        ],
+        'column-rule': ['1px', 'thin', 'medium', 'thick'].or([
+          'none', 'hidden', 'dotted', 'dashed', 'solid', 'double', 'groove',
+          'ridge', 'inset', 'outset'
+        ], ['red']),
         'break-before': [
           'auto', 'always', 'avoid', 'left', 'right', 'page', 'column',
           'avoid-page', 'avoid-column'
@@ -1576,7 +1567,7 @@
         ],
         'break-inside': ['auto', 'avoid', 'avoid-page', 'avoid-column'],
         'column-span': ['none', 'all'],
-        'column-fill': ['auto', 'balance']
+        'column-fill': ['balance', 'auto'/*, 'balance-all'*/]
       }
     },
 
