@@ -290,6 +290,10 @@
   var width2 = ['1px', '1%'].amp(['border-box', 'content-box']).concat(
     'available'
   );
+  var overflowFragment = [
+    'paged-x', 'paged-y', 'paged-x-controls', 'paged-y-controls', 'fragments'
+  ];
+  var contentSize = ['fill', 'min-content', 'max-content', 'fit-content'];
 
   win.NCFTest.Specs = {
     // CSS Level 3
@@ -1489,6 +1493,42 @@
         ]),
         'break-inside': breakInside,
         'box-decoration-break': ['slice', 'clone']
+      }
+    },
+
+    'css-overflow-3': {
+      'title': 'Overflow',
+      'properties': {
+        'overflow-x': [
+          'visible', 'hidden', 'scroll', 'auto'
+        ].concat(overflowFragment),
+        'overflow-y': [
+          'visible', 'hidden', 'scroll', 'auto'
+        ].concat(overflowFragment),
+        'overflow': overflowFragment,
+        // 'break': ['regions'],
+        'max-lines': ['none', '1']
+      },
+      'selectors': {
+        '::nth-fragment()': ['::nth-fragment(1)', 'div::nth-fragment(1)']
+      }
+    },
+
+    'css-sizing-3': {
+      'title': 'Intrinsic & Extrinsic Sizing',
+      'tr': 'http://www.w3.org/TR/css3-sizing/',
+      'properties': {
+        'width': contentSize/*.concat('repudiate-floats')*/,
+        'min-width': contentSize.concat(
+          /*'repudiate-floats', */'contain-floats'
+        ),
+        'max-width': contentSize/*.concat('repudiate-floats')*/,
+        'height': contentSize/*.concat('repudiate-floats')*/,
+        'min-height': contentSize.concat(
+          /*'repudiate-floats', */'contain-floats'
+        ),
+        'max-height': contentSize/*.concat('repudiate-floats')*/,
+        'column-width': contentSize
       }
     },
 
