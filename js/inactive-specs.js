@@ -800,6 +800,7 @@
       }
     },
 
+    // CSS 2
     'css2': {
       'title': 'Missing CSS 2 & 2.1',
       'properties': {
