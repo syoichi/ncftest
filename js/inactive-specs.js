@@ -810,9 +810,20 @@
         // only Gecko pass
         'marker-offset': ['auto', '10px'],
         // Blink(maybe WebKit too) pass
-        'text-align': ['"string"'],
-        /* CSS 2.1 Aural style sheets */
-        // http://dev.w3.org/csswg/css2/aural.html
+        'text-align': ['"string"']
+      },
+      '@rules': {
+        // only Gecko doesn't pass
+        '@page': ['@page :left', '@page :right', '@page :first']
+      }
+    },
+
+    // Aural
+    'aural': {
+      'title': 'CSS 2.1 Aural style sheets',
+      'tr': 'http://www.w3.org/TR/CSS2/aural.html',
+      'dev': 'http://dev.w3.org/csswg/css2/aural.html',
+      'properties': {
         'volume': [
           'medium', '0', '1', '100', '99.99', '10%', 'silent', 'x-soft', 'soft',
           'loud', 'x-loud'
@@ -855,10 +866,6 @@
         'speak-punctuation': ['none', ' code'],
         'speak-numeral': ['continuous', 'digits'],
         'speak-header': ['once', 'always']
-      },
-      '@rules': {
-        // only Gecko doesn't pass
-        '@page': ['@page :left', '@page :right', '@page :first']
       },
       'units': {
         'Hz': ['pitch', 'voice-pitch', 'voice-range'],
