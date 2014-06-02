@@ -1476,11 +1476,11 @@
       'properties': {
         'break-before': breakInside.concat([
           'always', 'left', 'right', 'page', 'column', 'region',
-          'any', 'recto', 'verso',
+          'any', 'recto', 'verso'
         ]),
         'break-after': breakInside.concat([
           'always', 'left', 'right', 'page', 'column', 'region',
-          'any', 'recto', 'verso',
+          'any', 'recto', 'verso'
         ]),
         'break-inside': breakInside,
         'box-decoration-break': ['slice', 'clone']
