@@ -94,85 +94,6 @@
       }
     },
 
-    'css-box-3': {
-      'title': 'Basic Box Model',
-      'tr': 'http://www.w3.org/TR/css3-box/',
-      'properties': {
-        'display': [
-          'run-in', 'compact', 'ruby-base-group', 'ruby-text-group',
-          'container'/*, 'align-box'*/
-        ],
-        // 'display-role': ['table-cell'],
-        // 'display-model': ['table'],
-        'padding': width.times(1, 4).filter(function filter(val) {
-          return val.indexOf('auto') !== -1;
-        }),
-        'padding-top': ['auto'],
-        'padding-right': ['auto'],
-        'padding-bottom': ['auto'],
-        'padding-left': ['auto'],
-        'margin-top': ['fill'],
-        'margin-right': ['fill'],
-        'margin-bottom': ['fill'],
-        'margin-left': ['fill'],
-        'margin': width.concat('fill').times(1, 4).filter(function filter(val) {
-          return val.indexOf('fill') !== -1;
-        }),
-        'width': width2/*.concat('shrink-wrap')*/,
-        'height': width2.concat('complex'/*, 'shrink-wrap'*/),
-        'min-width': width2,
-        'min-height': width2,
-        'max-width': width2,
-        'max-height': width2,
-        'float': [
-          'left', 'right', 'top', 'bottom', 'start', 'end', 'none',
-          'top-corner', 'bottom-corner', 'snap'
-        ].concat(
-          ['top', 'bottom', 'top-corner', 'bottom-corner'].amp(
-            ['next-page', 'next-column', 'unless-room', 'left', 'right']
-          ),
-          ['inside', 'outside'],
-          ['intrude'].amp(
-            ['left', 'right', 'top', 'bottom', 'top-corner', 'bottom-corner']
-          )
-        ).qmark(['contour'], ' ', {amp: true}).filter(function filter(val) {
-          return !this[val];
-        }, {left: true, right: true, none: true}),
-        'clear-after': [
-          'none', 'left', 'right', 'top', 'bottom', 'inside', 'outside',
-          'start', 'end', 'both', 'descendants'
-        ],/*
-        'clear': [
-          'left', 'right', 'top', 'bottom', 'inside', 'outside', 'start', 'end',
-          'both', 'after'
-        ].times(1, 2).filter(function filter(val) {
-          return !this[val];
-        }, {left: true, right: true, none: true, both: true}),
-        'underhang-limit': ['1'],*/
-        'overflow-x': ['no-display', 'no-content'],
-        'overflow-y': ['no-display', 'no-content'],
-        'overflow': ['no-display', 'no-content'].concat([
-          'visible', 'hidden', 'scroll', 'auto', 'no-display', 'no-content'
-        ].times(2)),
-        'alignment': ['top', 'right', 'bottom', 'left', 'center'],
-        // 'block-align': ['top', 'right', 'bottom', 'left', 'center'],
-        'child-align': ['auto', 'top', 'middle', 'bottom', 'left', 'right'],/*
-        'block-vertical-align': [
-          'auto', 'top', 'middle', 'bottom', 'left', 'right'
-        ],*/
-        'float-displace': ['line', 'indent', 'block', 'block-within-page'],/*
-        'float-displace': ['auto'].concat(
-          ['1px'].qmark(['block', 'block-within-page'], ' ', {amp: true})
-        ),*/
-        'indent-edge-reset': [
-          'none', 'margin-edge', 'border-edge', 'padding-edge', 'content-edge'
-        ]
-      }/*,
-      'selectors': {
-        '::outside': '::outside'
-      }*/
-    },
-
     'css-display-3': {
       'title': 'Display',
       'properties': {
@@ -190,14 +111,6 @@
           'none none', 'auto inline-level none'
         ],
         'display-box': ['normal', 'none', 'contents']
-      }
-    },
-
-    // CSS Level 3?
-    'css-containment': {
-      'title': 'Containment',
-      'properties': {
-        'contain': ['none', 'strict']
       }
     },
 
@@ -564,7 +477,179 @@
     },
 
     // Inactive editing
-    // Unmaintained CSS Level 3
+    // CSS Level 3
+    'css-box-3': {
+      'title': 'Basic Box Model',
+      'tr': 'http://www.w3.org/TR/css3-box/',
+      'properties': {
+        'display': [
+          'run-in', 'compact', 'ruby-base-group', 'ruby-text-group',
+          'container'/*, 'align-box'*/
+        ],
+        // 'display-role': ['table-cell'],
+        // 'display-model': ['table'],
+        'padding': width.times(1, 4).filter(function filter(val) {
+          return val.indexOf('auto') !== -1;
+        }),
+        'padding-top': ['auto'],
+        'padding-right': ['auto'],
+        'padding-bottom': ['auto'],
+        'padding-left': ['auto'],
+        'margin-top': ['fill'],
+        'margin-right': ['fill'],
+        'margin-bottom': ['fill'],
+        'margin-left': ['fill'],
+        'margin': width.concat('fill').times(1, 4).filter(function filter(val) {
+          return val.indexOf('fill') !== -1;
+        }),
+        'width': width2/*.concat('shrink-wrap')*/,
+        'height': width2.concat('complex'/*, 'shrink-wrap'*/),
+        'min-width': width2,
+        'min-height': width2,
+        'max-width': width2,
+        'max-height': width2,
+        'float': [
+          'left', 'right', 'top', 'bottom', 'start', 'end', 'none',
+          'top-corner', 'bottom-corner', 'snap'
+        ].concat(
+          ['top', 'bottom', 'top-corner', 'bottom-corner'].amp(
+            ['next-page', 'next-column', 'unless-room', 'left', 'right']
+          ),
+          ['inside', 'outside'],
+          ['intrude'].amp(
+            ['left', 'right', 'top', 'bottom', 'top-corner', 'bottom-corner']
+          )
+        ).qmark(['contour'], ' ', {amp: true}).filter(function filter(val) {
+          return !this[val];
+        }, {left: true, right: true, none: true}),
+        'clear-after': [
+          'none', 'left', 'right', 'top', 'bottom', 'inside', 'outside',
+          'start', 'end', 'both', 'descendants'
+        ],/*
+        'clear': [
+          'left', 'right', 'top', 'bottom', 'inside', 'outside', 'start', 'end',
+          'both', 'after'
+        ].times(1, 2).filter(function filter(val) {
+          return !this[val];
+        }, {left: true, right: true, none: true, both: true}),
+        'underhang-limit': ['1'],*/
+        'overflow-x': ['no-display', 'no-content'],
+        'overflow-y': ['no-display', 'no-content'],
+        'overflow': ['no-display', 'no-content'].concat([
+          'visible', 'hidden', 'scroll', 'auto', 'no-display', 'no-content'
+        ].times(2)),
+        'alignment': ['top', 'right', 'bottom', 'left', 'center'],
+        // 'block-align': ['top', 'right', 'bottom', 'left', 'center'],
+        'child-align': ['auto', 'top', 'middle', 'bottom', 'left', 'right'],/*
+        'block-vertical-align': [
+          'auto', 'top', 'middle', 'bottom', 'left', 'right'
+        ],*/
+        'float-displace': ['line', 'indent', 'block', 'block-within-page'],/*
+        'float-displace': ['auto'].concat(
+          ['1px'].qmark(['block', 'block-within-page'], ' ', {amp: true})
+        ),*/
+        'indent-edge-reset': [
+          'none', 'margin-edge', 'border-edge', 'padding-edge', 'content-edge'
+        ]
+      }/*,
+      'selectors': {
+        '::outside': '::outside'
+      }*/
+    },
+
+    // CSS Level 3?
+    'css-containment': {
+      'title': 'Containment',
+      'properties': {
+        'contain': ['none', 'strict']
+      }
+    },
+
+    // CSS Level 1~3
+    'css-color-correction-1': {
+      'title': 'Color Correction',
+      'properties': {
+        'color-correction': ['default', 'sRGB']
+      }
+    },
+
+    // New CSS Level 1
+    'css-size-adjust': {
+      'title': 'Mobile Text Size Adjustment Level 1',
+      'properties': {
+        'text-size-adjust': ['auto', 'none', '50%']
+      }
+    },
+
+    // XBL
+    'becss': {
+      'title': 'Behavioral Extensions to CSS',
+      'dev': 'http://dev.w3.org/2006/xbl2/css-module.html',
+      'properties': {
+        'binding': [
+          'none',
+          'url(\'http://example.org/htmlBindings.xml#checkbox\')',
+          'url(triangles.xml#isoceles)',
+          'url(#rightangle)',
+          'url(triangles.xml#isoceles) url(triangles.xml#rightangle)',
+          'url(#checkbox) url(#isoceles) url(#rightangle)'
+        ]
+      },
+      'selectors': {
+        ':bound-element': ':bound-element > *'
+      }
+    },
+
+    // Extra
+    'view-mode': {
+      'title': 'The \'view-mode\' Media Feature',
+      'dev': 'http://dev.w3.org/2006/waf/widgets-vmmf/',
+      'Media queries': {
+        'view-mode': [
+          '(view-mode: windowed)',
+          'not print and (view-mode: floating)',
+          'not print and (view-mode: fullscreen)',
+          'not print and (view-mode: maximized)',
+          'not print and (view-mode: minimized)'
+        ]
+      }
+    },
+
+    // Unofficial
+    // CSS Level 3? New CSS Level 1?
+    'css-page-template-1': {
+      'title': 'Pagination Templates',
+      'properties': {
+        'overflow-style': [
+          'paged-x', 'paged-y', 'paged-x-controls', 'paged-y-controls'
+        ],
+        'template-set': ['one', 'one two']
+      },
+      '@rules': {
+        '@template': ['@template paged-display', '@template side-by-side:first']
+      },
+      'descriptors': {
+        'atrule': '@template paged-display',
+        'atruleName': '@template',
+        'required-flow': ['related-flow', 'lead-flow']
+      }
+    },
+
+    // CSS Level 4
+    'css-pseudo-4': {
+      'title': 'Pseudo-elements Level 4',
+      'selectors': {
+        '::before()': 'div::before(1)',
+        '::after()': 'div::after(1)',
+        '::nth-before()': 'div::nth-before(1)',
+        '::nth-after()': 'div::nth-after(1)',
+        '::nth-last-before()': 'div::nth-last-before(1)',
+        '::nth-last-after()': 'div::nth-last-after(1)'
+      }
+    },
+
+    // Obsolete
+    // CSS Level 3
     'css3-tables': {
       'title': 'Tables',
       'properties': {
@@ -593,6 +678,7 @@
       }
     },
 
+    // Editor's Draft Not Found CSS Level 3
     'css3-marquee': {
       'title': 'Marquee',
       'properties': {
@@ -644,34 +730,7 @@
       }
     },
 
-    // CSS Level 3? New CSS Level 1?
-    'css-page-template-1': {
-      'title': 'Pagination Templates',
-      'properties': {
-        'overflow-style': [
-          'paged-x', 'paged-y', 'paged-x-controls', 'paged-y-controls'
-        ],
-        'template-set': ['one', 'one two']
-      },
-      '@rules': {
-        '@template': ['@template paged-display', '@template side-by-side:first']
-      },
-      'descriptors': {
-        'atrule': '@template paged-display',
-        'atruleName': '@template',
-        'required-flow': ['related-flow', 'lead-flow']
-      }
-    },
-
-    // New CSS Level 1~3
-    'css-color-correction-1': {
-      'title': 'Color Correction',
-      'properties': {
-        'color-correction': ['default', 'sRGB']
-      }
-    },
-
-    // Unmaintained CSS Level 1~3
+    // CSS Level 1~3
     'css-preslev-1': {
       'title': 'Presentation Levels',
       'tr': 'http://www.w3.org/TR/css3-preslev',
@@ -686,66 +745,10 @@
       }
     },
 
-    // Unmaintained New CSS Level 1
-    'css-size-adjust': {
-      'title': 'Mobile Text Size Adjustment Level 1',
-      'properties': {
-        'text-size-adjust': ['auto', 'none', '50%']
-      }
-    },
-
-    // No Ready CSS Level 4
-    'css-pseudo-4': {
-      'title': 'Pseudo-elements Level 4',
-      'selectors': {
-        '::before()': 'div::before(1)',
-        '::after()': 'div::after(1)',
-        '::nth-before()': 'div::nth-before(1)',
-        '::nth-after()': 'div::nth-after(1)',
-        '::nth-last-before()': 'div::nth-last-before(1)',
-        '::nth-last-after()': 'div::nth-last-after(1)'
-      }
-    },
-
-    // XBL
-    'becss': {
-      'title': 'Behavioral Extensions to CSS',
-      'dev': 'http://dev.w3.org/2006/xbl2/css-module.html',
-      'properties': {
-        'binding': [
-          'none',
-          'url(\'http://example.org/htmlBindings.xml#checkbox\')',
-          'url(triangles.xml#isoceles)',
-          'url(#rightangle)',
-          'url(triangles.xml#isoceles) url(triangles.xml#rightangle)',
-          'url(#checkbox) url(#isoceles) url(#rightangle)'
-        ]
-      },
-      'selectors': {
-        ':bound-element': ':bound-element > *'
-      }
-    },
-
-    // Extra
-    'view-mode': {
-      'title': 'The \'view-mode\' Media Feature',
-      'dev': 'http://dev.w3.org/2006/waf/widgets-vmmf/',
-      'Media queries': {
-        'view-mode': [
-          '(view-mode: windowed)',
-          'not print and (view-mode: floating)',
-          'not print and (view-mode: fullscreen)',
-          'not print and (view-mode: maximized)',
-          'not print and (view-mode: minimized)'
-        ]
-      }
-    },
-
-    // CSS 2
+    // CSS Level 2
     'css2': {
-      'title': 'Missing CSS 2 & 2.1',
+      'title': 'Missing CSS Level 2 & 2.1',
       'properties': {
-        /* CSS 2 */
         // only Trident pass
         'font-stretch': ['wider', 'narrower'],
         // only Gecko pass
@@ -761,7 +764,7 @@
 
     // Aural
     'aural': {
-      'title': 'CSS 2.1 Aural style sheets',
+      'title': 'CSS Level 2.1 Aural style sheets',
       'tr': 'http://www.w3.org/TR/CSS2/aural.html',
       'dev': 'http://dev.w3.org/csswg/css2/aural.html',
       'properties': {
