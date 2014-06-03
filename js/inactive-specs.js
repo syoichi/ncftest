@@ -165,7 +165,6 @@
 
     'css-ruby-1': {
       'title': 'Ruby Level 1',
-      'tr': 'http://www.w3.org/TR/css3-ruby/',
       'properties': {
         'display': [
           'ruby', 'ruby-base', 'ruby-text',
@@ -189,7 +188,6 @@
     // Håkon Wium Lie's specs
     'css-gcpm-3': {
       'title': 'Generated Content for Paged Media',
-      'tr': 'http://www.w3.org/TR/css3-gcpm/',
       'properties': {
         'string-set': ['none'].concat(['header'].and([
           '\'foo\'',

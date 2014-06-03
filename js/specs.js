@@ -518,7 +518,6 @@
 
     'css-cascade-3': {
       'title': 'Cascading and Inheritance',
-      'tr': 'http://www.w3.org/TR/css3-cascade/',
       'values': {
         'properties': [
           'width',
@@ -1122,7 +1121,6 @@
 
     'css-writing-modes-3': {
       'title': 'Writing Modes',
-      'tr': 'http://www.w3.org/TR/css3-writing-modes/',
       'properties': {
         'unicode-bidi': ['isolate', 'isolate-override', 'plaintext'],
         'writing-mode': ['horizontal-tb', 'vertical-rl', 'vertical-lr'],
@@ -1347,7 +1345,6 @@
 
     'css-lists-3': {
       'title': 'Lists and Counters',
-      'tr': 'http://www.w3.org/TR/css3-lists/',
       'properties': {
         'display': ['inline-list-item'],
         'list-style-image': ['linear-gradient(white, black)'],
@@ -2797,7 +2794,6 @@
     // CSS-SVG Effects
     'compositing-1': {
       'title': 'Compositing and Blending Level 1',
-      'tr': 'http://www.w3.org/TR/compositing/',
       'dev': 'http://dev.w3.org/fxtf/compositing-1/',
       'properties': {
         'mix-blend-mode': blendMode,
