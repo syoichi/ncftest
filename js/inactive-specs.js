@@ -696,27 +696,10 @@
         'target-position': ['above', 'behind', 'front', 'back'],
         'target': [
           'current', 'root', 'parent', 'new', 'modal', '\'foo\''
-        ].concat(
+        ].or(
           ['window', 'tab', 'none'],
-          ['above', 'behind', 'front', 'back'],
-          ['current', 'root', 'parent', 'new', 'modal', '\'foo\''].and(
-            ['window', 'tab', 'none']
-          ),
-          ['current', 'root', 'parent', 'new', 'modal', '\'foo\''].and(
-            ['above', 'behind', 'front', 'back']
-          ),
-          ['window', 'tab', 'none'].and(
-            ['current', 'root', 'parent', 'new', 'modal', '\'foo\'']
-          ),
-          ['window', 'tab', 'none'].and(
-            ['above', 'behind', 'front', 'back']
-          ),
-          ['above', 'behind', 'front', 'back'].and(
-            ['current', 'root', 'parent', 'new', 'modal', '\'foo\'']
-          ),
-          ['above', 'behind', 'front', 'back'].and(['window', 'tab', 'none']),
-          ['current window above', 'behind tab root']
-        )
+          ['above', 'behind', 'front', 'back']
+        ).concat('attr(target, string)')
       }
     },
 
