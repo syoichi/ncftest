@@ -731,7 +731,7 @@
     // CSS Level 1~3
     'css-preslev-1': {
       'title': 'Presentation Levels',
-      'tr': 'http://www.w3.org/TR/css3-preslev',
+      'tr': 'http://www.w3.org/TR/css3-preslev/',
       'dev': 'http://dev.w3.org/csswg/css-preslev-1/Overview.src.html',
       'properties': {
         'presentation-level': ['0', '1', 'same', 'increment']
