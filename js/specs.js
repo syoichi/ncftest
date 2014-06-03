@@ -1632,11 +1632,10 @@
     // New CSS Level 1
     'css-flexbox-1': {
       'title': 'Flexible Box Layout Level 1',
-      'tr': 'http://www.w3.org/TR/css3-flexbox/',
       'properties': {
         'display': ['flex', 'inline-flex'],
-        // 'min-width': ['auto'],
-        // 'min-height': ['auto'],
+        'min-width': ['auto'],
+        'min-height': ['auto'],
         'flex-direction': flexDirection,
         'flex-wrap': flexWrap,
         'flex-flow': flexDirection.or(flexWrap),
