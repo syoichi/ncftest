@@ -720,14 +720,6 @@
       }
     },
 
-    // CSS Level 3?
-    'css-module': {
-      'title': 'Template',
-      'properties': {
-        'display-inside': ['text', 'inline-inside', 'block-inside', 'icon']
-      }
-    },
-
     // CSS Level 1~3
     'css-preslev-1': {
       'title': 'Presentation Levels',
