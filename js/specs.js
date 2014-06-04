@@ -255,17 +255,16 @@
   var gridTemplate2 = fullColWidth.and(['"a"']).concat(
     ['"a"'].and(colWidths)
   ).concat([
-    '10px 10px "a"', '"a" 10px 10px', '10px "a" 10px',
-    '"a" "b" 10px', '10px "a" "b"', '"a" 10px "b"',
+    '10px 10px "a"', '"a" 10px 10px', '10px "a" 10px', '10px "a" "b"',
     '10px 10px "a" 10px "b" 10px'
   ]).concat(
     ['/'].and(fullColWidth),
     colWidth.concat(['minmax(*, 1px)']).times(2, 2, ' / ')
   ).concat([
-    '* * / * *', '* 10em / 4em 5em', '10em * "a   b"', '* * 3em  "a b c"',
+    '* * / * *', '* 10em / 4em 5em', '10em * "a   b"', '* * 3em "a b c"',
     '"." "*" fit-content', '* 10em "a b c" "a b d" 4em',
-    '* min-content * "a a a" ". b ."',
-    '1fr "a @ b" "c c c"', 'auto * 10em " a a . " " b . c "',
+    '* min-content * "a a a" ". b ."', '1fr "a @ b" "c c c"',
+    // 'auto * 10em " a a . " " b . c "',
     '"a . b" * "a c ." *', '"a c" "a b" auto *',
     '5em 1em * 1em 10em "a . b . c" 2em ". . . . ." ' +
       '1em "d . e . f" ". . . . ." 1em "g . h . i" 2em',
