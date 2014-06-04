@@ -1817,7 +1817,7 @@
         'grid-auto-flow': gridAutoFlow,
         'grid': gridTemplate.concat(
           gridAutoFlow,
-          ['row'].and(trackSize.and(['auto'], ' / '))
+          ['row'].and(trackSize.qmark(['auto'], ' / '))
         ).concat([
           'row dense minmax(10px, 10px) / minmax(min-content, max-content)',
           // 'rows 1fr', 'columns 1fr / auto',
