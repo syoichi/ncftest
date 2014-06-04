@@ -2335,13 +2335,6 @@
           'only screen and (width) and not (width: 0)',
           'not tv and not (width: 0) and (height)'
         ],
-        'general enclosed': [
-          'url()', 'url(example.css)', 'url(example.css color.css)',
-          'url(), url()', 'all and url()', '(width) and url()',
-          'url() and (height)', 'url() and url()', 'only screen and url()',
-          'not print and url()', 'only screen and (width) and url()',
-          'not tv and url() and (height)'
-        ],
         'or': [
           'all or (width)', '(width) or (height)', 'only screen or (width)',
           'not print or (height)', 'only screen and (width) or (height)',
@@ -2357,7 +2350,17 @@
           'not print and (color-index >= 1)', 'not print and (monochrome >= 2)',
           '(resolution >= 1dppx)',
           '(1px < width < 100000px)', '(100000px >= height >= 1px)',
-          '(1/1000000 <= aspect-ratio < 1000000/1)'
+          '(1/1000000 <= aspect-ratio < 1000000/1)',
+          '(0 < device-width < 1000000px)',
+          '(0 < device-height < 1000000px)',
+          '(1/1 < device-aspect-ratio < 1000000/1)'
+        ],
+        'general enclosed': [
+          'url()', 'url(example.css)', 'url(example.css color.css)',
+          'url(), url()', 'all and url()', '(width) and url()',
+          'url() and (height)', 'url() and url()', 'only screen and url()',
+          'not print and url()', 'only screen and (width) and url()',
+          'not tv and url() and (height)'
         ],
         'update-frequency': [
           '(update-frequency)',
@@ -2377,7 +2380,15 @@
           '(pointer)', '(pointer: none)', '(pointer: coarse)', '(pointer: fine)'
         ],
         'hover': [
-          '(hover)', '(hover: none)', '(hover: on-demand)', '(hover: over)'
+          '(hover)', '(hover: none)', '(hover: on-demand)', '(hover: hover)'
+        ],
+        'any-pointer': [
+          '(any-pointer)',
+          '(any-pointer: none)', '(any-pointer: coarse)', '(any-pointer: fine)'
+        ],
+        'any-hover': [
+          '(any-hover)',
+          '(any-hover: none)', '(any-hover: on-demand)', '(any-hover: hover)'
         ],
         'light-level': [
           '(light-level)',
@@ -2388,7 +2399,11 @@
           'not all and (scripting: none)', '(scripting: initial-only)',
           '(scripting: enabled)'
         ]
-      }
+      }/*,
+      // Custom Media Queries must be checked CSSOM API.
+      '@rules': {
+        '@custom-media': ['@custom-media --narrow-window (max-width: 30em)']
+      }*/
     },
 
     'css-color-4': {
