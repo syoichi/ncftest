@@ -293,10 +293,14 @@
       }
     },
 
-    'selectors-nonelement': {
+    'selectors-nonelement-1': {
       'title': 'Non-element Selectors Level 1',
       'selectors': {
-        '::attr()': ['::attr(title)', 'abbr::attr(title)']
+        '::attr()': [
+          '::attr()', '::attr(title)', '::attr(*)', '::attr(|title)',
+          '::attr(|*)', '::attr(svg|title)', '::attr(svg|*)', '::attr(*|title)',
+          '::attr(*|*)', 'abbr::attr(title)'
+        ]
       }
     },
 
