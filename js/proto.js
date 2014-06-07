@@ -7,46 +7,35 @@
 
   extendProperties(Array.prototype, {
     // [ a | b | c ] [ x | y | z ]
-    and: function and(arr2, separator) {
-      var idx, len, ret;
-
-      function map(val) {
-        return val + separator + arr2[idx];
-      }
-
+    and: function and(arr, separator) {
       separator = separator || ' ';
 
-      for (idx = 0, len = arr2.length, ret = []; idx < len; idx += 1) {
-        ret = ret.concat(this.map(map));
-      }
-
-      return ret;
+      return this.map(function returnMap(val1) {
+        return this.map(function combine(val2) {
+          return val1 + separator + val2;
+        });
+      }, arr).flatten();
     },
+    // [ x | y | z ]{num}
     // [ x | y | z ]{min, max}
     times: function times(min, max, separator) {
-      var ret, i, j;
+      var arr = [];
 
-      max = max || min;
-      separator = separator || ' ';
-      ret = [];
-
-      if (min === max) {
-        if (min === 1) {
-          ret = this.slice(); // clone
-        } else {
-          ret = this.and(this, separator);
-
-          for (i = 2; i < min; i += 1) {
-            ret = this.and(ret, separator);
-          }
-        }
-      } else if (min < max) {
-        for (j = min; j <= max; j += 1) {
-          ret = ret.concat(this.times(j, j, separator));
-        }
+      for (min = min || 1, max = max || min; min <= max; min += 1) {
+        arr = arr.concat(this.reperm(min, separator));
       }
 
-      return ret;
+      return arr;
+    },
+    // [ x | y | z ]{num}
+    reperm: function reperm(num, separator) {
+      var arr = this.slice(), idx;
+
+      for (idx = 1, num = num || 1; idx < num; idx += 1) {
+        arr = this.and(arr, separator);
+      }
+
+      return arr;
     },
     // [ a | b | c ] || [ x | y | z ]
     or: function or() {
@@ -74,9 +63,9 @@
       lists.unshift(this);
       listsLen = lists.length;
 
-      return this.concat(arr.reduce(function flattened(pre, cur) {
-        return pre.concat(cur);
-      })).times(1, max, separator).filter(function duplicatedFilter(val) {
+      return this.concat(
+        arr.flatten()
+      ).times(1, max, separator).filter(function duplicatedFilter(val) {
         var vals, i, list, j, count, listLen;
 
         vals = val.split(separator);
@@ -132,6 +121,9 @@
           return true;
         }
       });
+    },
+    flatten: function flatten() {
+      return Array.prototype.concat.apply([], this);
     }
   });
 }(window));
