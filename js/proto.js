@@ -5,6 +5,12 @@
       extendProperties = NCFTest.extendProperties,
       isDuplicated = NCFTest.isDuplicated;
 
+  extendProperties(Array, {
+    from: function from(arrayLike) {
+      return Array.prototype.slice.call(arrayLike);
+    }
+  });
+
   extendProperties(Array.prototype, {
     // [ a | b | c ] [ x | y | z ]
     and: function and(arr, separator) {
@@ -39,33 +45,19 @@
     },
     // [ a | b | c ] || [ x | y | z ]
     or: function or() {
-      var arg, argLen, lastArg, hasSeparator, separator,
-          firstArg, arr, max, lists, listsLen;
+      var arr = Array.from(arguments),
+          separator = typeof arr.last() === 'string' ? arr.pop() : ' ',
+          lists = [this].concat(arr),
+          listsLen = lists.length,
+          flat = lists.flatten();
 
-      arg = Array.prototype.slice.call(arguments);
-      argLen = arg.length;
-      lastArg = arg[argLen - 1];
-      hasSeparator = typeof lastArg === 'string';
-      separator = hasSeparator ? lastArg : ' ';
-
-      if (argLen === 1 || (argLen === 2 && hasSeparator)) {
-        firstArg = arg[0];
-        return this.concat(
-          firstArg,
-          this.and(firstArg, separator),
-          firstArg.and(this, separator)
-        );
+      if (listsLen === 2) {
+        return flat.concat(this.amp(arr[0], separator));
       }
 
-      arr = hasSeparator ? arg.slice(0, -1) : arg;
-      max = 1 + (hasSeparator ? argLen - 1 : argLen);
-      lists = arr.slice();
-      lists.unshift(this);
-      listsLen = lists.length;
-
-      return this.concat(
-        arr.flatten()
-      ).times(1, max, separator).filter(function duplicatedFilter(val) {
+      return flat.times(
+        1, listsLen, separator
+      ).filter(function duplicatedFilter(val) {
         var vals, i, list, j, count, listLen;
 
         vals = val.split(separator);
@@ -121,6 +113,9 @@
     },
     flatten: function flatten() {
       return Array.prototype.concat.apply([], this);
+    },
+    last: function last() {
+      return this[this.length - 1];
     }
   });
 }(window));
