@@ -8,8 +8,12 @@
   NCFTest = win.NCFTest;
   camelCase = NCFTest.camelCase;
   prefixes = [
-    '', '-moz-', '-webkit-', '-o-', '-ms-',
-    '-wap-', '-op-', '-xv-', 'ms-', '-khtml-', '-apple-'
+    '', '-moz-', '-webkit-', '-ms-', '-o-',
+    // for Trident's CSSOM property
+    'ms-',
+    // for Presto
+    '-wap-'/*,
+    '-op-', '-xv-', '-khtml-', '-apple-'*/
   ];
   prefixesLen = prefixes.length;
   isCSS = typeof CSS !== 'undefined';
