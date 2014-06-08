@@ -45,22 +45,19 @@
     },
     // [ a | b | c ] || [ x | y | z ]
     or: function or() {
-      var arr = Array.from(arguments),
-          separator = typeof arr.last() === 'string' ? arr.pop() : ' ',
-          lists = [this].concat(arr),
+      var lists = [this].concat(Array.from(arguments)),
+          sep = typeof lists.last() === 'string' ? lists.pop() : ' ',
           listsLen = lists.length,
-          flat = lists.flatten();
+          arr = lists.flatten();
 
       if (listsLen === 2) {
-        return flat.concat(this.amp(arr[0], separator));
+        return arr.concat(this.amp(lists[1], sep));
       }
 
-      return flat.times(
-        1, listsLen, separator
-      ).filter(function duplicatedFilter(val) {
+      return arr.times(1, listsLen, sep).filter(function duplicatedFilter(val) {
         var vals, i, list, j, count, listLen;
 
-        vals = val.split(separator);
+        vals = val.split(sep);
 
         if (isDuplicated(vals)) {
           return false;
