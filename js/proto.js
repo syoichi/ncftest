@@ -22,10 +22,10 @@
       var arr = [];
 
       for (min = min || 1, max = max || min; min <= max; min += 1) {
-        arr = arr.concat(this.reperm(min, separator));
+        arr.push(this.reperm(min, separator));
       }
 
-      return arr;
+      return arr.flatten();
     },
     // [ x | y | z ]{num}
     reperm: function reperm(num, separator) {
@@ -93,21 +93,18 @@
       });
     },
     // [ a | b | c ] && [ x | y | z ]
-    amp: function amp(arr2, separator) {
-      separator = separator || ' ';
-
-      return this.and(arr2, separator).concat(arr2.and(this, separator));
+    amp: function amp(arr, separator) {
+      return this.and(arr, separator).concat(arr.and(this, separator));
     },
     // [ x | y | z ] a?
     // [ a | b | c ]? [ x | y | z ]
     // [ x | y | z ] && a?
     // [ a | b | c ]? && [ x | y | z ]
-    qmark: function qmark(arr2, separator, option) {
-      separator = separator || ' ';
+    qmark: function qmark(arr, separator, option) {
       option = option || {};
 
-      return (option.former ? arr2 : this).concat(
-        this[option.amp ? 'amp' : 'and'](arr2, separator)
+      return (option.former ? arr : this).concat(
+        this[option.amp ? 'amp' : 'and'](arr, separator)
       );
     },
     // simple uniq
