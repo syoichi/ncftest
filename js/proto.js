@@ -44,13 +44,21 @@
     },
     // [ a | b | c ] || [ d | e | f ] || [ g | h | i ]
     or: function or() {
-      var lists = [this].concat(Array.from(arguments)),
-          separator = typeof lists.last() === 'string' ? lists.pop() : ' ',
-          listsLen = lists.length,
-          arr = lists.flatten();
+      var args = Array.from(arguments), lists = [this].concat(args);
 
-      return arr.concat(listsLen !== 2 ? arr.range(
-        2, listsLen, separator
+      return (
+        typeof lists.last() === 'string' ? lists.slice(0, -1) : lists
+      ).flatten().concat(this.amp.apply(this, args.concat(2)));
+    },
+    // [ a | b | c ] && [ d | e | f ] && [ g | h | i ]
+    amp: function amp() {
+      var lists = [this].concat(Array.from(arguments)),
+          min = typeof lists.last() === 'number' && lists.pop(),
+          separator = typeof lists.last() === 'string' ? lists.pop() : ' ',
+          listsLen = lists.length;
+
+      return listsLen !== 2 ? lists.flatten().range(
+        min || listsLen, listsLen, separator
       ).filter(function duplicatedFilter(val) {
         var vals = val.split(separator), i, list, j, count, listLen;
 
@@ -71,11 +79,7 @@
             return true;
           }
         }
-      }) : this.amp(lists[1], separator));
-    },
-    // [ a | b | c ] && [ x | y | z ]
-    amp: function amp(arr, separator) {
-      return this.and(arr, separator).concat(arr.and(this, separator));
+      }) : this.and(lists[1], separator).concat(lists[1].and(this, separator));
     },
     // x && y && z
     // x || y || z
