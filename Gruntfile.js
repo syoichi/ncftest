@@ -1,4 +1,4 @@
-/* jshint node: true, globalstrict: true */
+/* jshint node: true */
 'use strict';
 
 module.exports = function (grunt) {
@@ -32,7 +32,7 @@ module.exports = function (grunt) {
           requireMultipleVarDecl: null,
           disallowSpacesInsideArrayBrackets: null,
           disallowQuotedKeysInObjects: null,
-          requireLeftStickedOperators: null
+          disallowSpaceBeforeBinaryOperators: null
         }
       },
       'inactive-specs': {
@@ -44,7 +44,7 @@ module.exports = function (grunt) {
           requireMultipleVarDecl: null,
           disallowSpacesInsideArrayBrackets: null,
           disallowQuotedKeysInObjects: null,
-          requireLeftStickedOperators: null
+          disallowSpaceBeforeBinaryOperators: null
         }
       }
     }

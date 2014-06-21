@@ -47,7 +47,7 @@
     "+", "-", "*", "/", "%", "<<", ">>", ">>>", "&", "|", "^",
     "&&", "||", "==", "===", ">=", "<=", "<", ">", "!=", "!=="
   ],
-  "requireLeftStickedOperators": [","],
+  "disallowSpaceBeforeBinaryOperators": [","],
   "disallowSpaceAfterPrefixUnaryOperators": ["+", "-", "!", "~"],
   "requireSpaceBeforeBinaryOperators": [
     "=", "+=", "-=", "*=", "/=", "%=", "<<=", ">>=", ">>>=", "&=", "|=", "^=",
