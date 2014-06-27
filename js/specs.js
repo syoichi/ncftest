@@ -444,11 +444,11 @@
           // check syntax parsing, not check supporting these as a feature.
           // see http://dev.w3.org/csswg/css-conditional-3/#supports_rule
           '@supports (width: 1px)', '@supports ((width: 1px))',
-          '@supports (width: 1px !important)',
+          '@supports (width: 1px !important)',/*
           '@supports (javascript: @return)',
           '@supports url(foo.png)', '@supports (1px)', '@supports (@media)',
           '@supports (~=)', '@supports (|=)', '@supports (:)',
-          '@supports (url(foo.png))', '@supports ({;})',
+          '@supports (url(foo.png))', '@supports ({;})',*/
           '@supports not (javascript: return)',
           '@supports (width: 1px) or (display: flex)',
           '@supports (width: 1px) and (height: 1px)',
