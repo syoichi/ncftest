@@ -81,6 +81,7 @@
       '"B . E E E . F F F" * "B . E E E . F F F" * ' +
       '"B . E E E . F F F" *'
   ]);
+  var fillRule = ['nonzero', 'evenodd'];
 
   win.NCFTest.Specs = {
     // Inactive implementing in Browsers
@@ -312,6 +313,34 @@
           '::attr(|*)', '::attr(svg|title)', '::attr(svg|*)', '::attr(*|title)',
           '::attr(*|*)', 'abbr::attr(title)'
         ]
+      }
+    },
+
+    // New CSS Level 2
+    'css-shapes-2': {
+      'title': 'Shapes Level 2',
+      'properties': {
+        'shape-inside': ['auto', 'outside-shape'].concat(
+          ['10px', '10%'].times(4, 6, ', ').map(function rectangle(arg) {
+            return 'rectangle(' + arg + ')';
+          }),
+          ['10px', '10%'].times(4, 6, ', ').map(function insetRectangle(arg) {
+            return 'inset-rectangle(' + arg + ')';
+          }),
+          ['10px', '10%'].times(3, 3, ', ').map(function circle(arg) {
+            return 'circle(' + arg + ')';
+          }),
+          ['10px', '10%'].times(4, 4, ', ').map(function ellipse(arg) {
+            return 'ellipse(' + arg + ')';
+          }),
+          fillRule.qmark(
+            ['10px', '10%'].times(2).times(1, 2, ', '), ', ', {former: true}
+          ).map(function polygon(arg) {
+            return 'polygon(' + arg + ')';
+          }),
+          ['url(foo.png)']
+        ),
+        'shape-padding': ['0', '1px']
       }
     },
 
