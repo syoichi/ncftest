@@ -230,6 +230,17 @@
     },
 
     // New CSS Level 1
+    'css-exclusions-1': {
+      'title': 'Exclusions Level 1',
+      'tr': 'http://www.w3.org/TR/css3-exclusions/',
+      'properties': {
+        'wrap-flow': [
+          'auto', 'both', 'start', 'end', 'minimum', 'maximum', 'clear'
+        ],
+        'wrap-through': ['wrap', 'none']
+      }
+    },
+
     'css-regions-1': {
       'title': 'Regions Level 1',
       'tr': 'http://www.w3.org/TR/css3-regions/',

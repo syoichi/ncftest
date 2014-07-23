@@ -1782,17 +1782,6 @@
       }*/
     },
 
-    'css-exclusions-1': {
-      'title': 'Exclusions Level 1',
-      'tr': 'http://www.w3.org/TR/css3-exclusions/',
-      'properties': {
-        'wrap-flow': [
-          'auto', 'both', 'start', 'end', 'minimum', 'maximum', 'clear'
-        ],
-        'wrap-through': ['wrap', 'none']
-      }
-    },
-
     // New CSS Level 2
     'css-shapes-2': {
       'title': 'Shapes Level 2',
