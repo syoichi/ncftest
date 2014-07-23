@@ -165,6 +165,18 @@
       }
     },
 
+    'css-position-3': {
+      'title': 'Positioned Layout',
+      'tr': 'http://www.w3.org/TR/css3-positioning/',
+      'properties': {
+        'position': ['sticky', 'center', 'page'],
+        'offset-before': width,
+        'offset-end': width,
+        'offset-after': width,
+        'offset-start': width
+      }
+    },
+
     // New CSS Level 1~3
     'css-template-1': {
       'title': 'Grid Template Layout',
