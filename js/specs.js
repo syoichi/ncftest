@@ -1791,7 +1791,7 @@
         'border-style': ['logical'].and(lineStyle.times(1, 4)),
         'border-width': ['logical'].and(lineWidth.times(1, 4)),
         'background-image-transform': ['physical', 'logical', 'rotate'],
-        'border-image-transform': ['rotate', 'logical', 'physical'],
+        'border-image-transform': ['rotate', 'logical', 'physical']
       },
       '@rules': {
         '@page': ['@page :recto', '@page :verso']
