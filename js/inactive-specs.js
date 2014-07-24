@@ -678,7 +678,7 @@
         'max-width': width2,
         'max-height': width2,
         'float': [
-          'left', 'right', 'top', 'bottom', 'start', 'end', 'none',
+          'left', 'right', 'top', 'bottom', 'none',
           'top-corner', 'bottom-corner', 'snap'
         ].concat(
           ['top', 'bottom', 'top-corner', 'bottom-corner'].amp(
@@ -700,7 +700,10 @@
           'both', 'after'
         ].times(1, 2).filter(function filter(val) {
           return !this[val];
-        }, {left: true, right: true, none: true, both: true}),
+        }, {
+          left: true, right: true, none: true, both: true,
+          start: true, end: true
+        }),
         'underhang-limit': ['1'],*/
         'overflow-x': ['no-display', 'no-content'],
         'overflow-y': ['no-display', 'no-content'],
@@ -837,8 +840,8 @@
             ['\'foo\''].or(['aligned', 'centered', 'distributed']), ' / '
           )
         ),
-        'caption-side': ['left', 'right', 'before', 'after'].concat(
-          ['top', 'bottom', 'left', 'right', 'before', 'after'].amp(['outside'])
+        'caption-side': ['left', 'right'].concat(
+          ['top', 'bottom', 'left', 'right'].amp(['outside'])
         ),
         'table-column-span': ['auto', 'attr(colspan)'],
         'table-row-span': ['auto', 'attr(rowspan)'],

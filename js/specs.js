@@ -241,6 +241,13 @@
     'paged-x', 'paged-y', 'paged-x-controls', 'paged-y-controls', 'fragments'
   ];
   var contentSize = ['fill', 'min-content', 'max-content', 'fit-content'];
+  var logicalPage = ['recto', 'verso'];
+  var lineWidth = ['1px', 'thin', 'medium', 'thick'];
+  var lineStyle = [
+    'none', 'hidden', 'dotted', 'dashed', 'solid', 'double', 'groove',
+    'ridge', 'inset', 'outset'
+  ];
+  var linePosition = lineWidth.or(lineStyle, ['white']);
 
   win.NCFTest.Specs = {
     // CSS Level 3
@@ -1270,13 +1277,11 @@
       'tr': 'http://www.w3.org/TR/css3-break/',
       'properties': {
         'break-before': breakInside.concat([
-          'always', 'left', 'right', 'page', 'column', 'region',
-          'any', 'recto', 'verso'
-        ]),
+          'always', 'left', 'right', 'page', 'column', 'region', 'any'
+        ], logicalPage),
         'break-after': breakInside.concat([
-          'always', 'left', 'right', 'page', 'column', 'region',
-          'any', 'recto', 'verso'
-        ]),
+          'always', 'left', 'right', 'page', 'column', 'region', 'any'
+        ], logicalPage),
         'break-inside': breakInside,
         'box-decoration-break': ['slice', 'clone']
       }
@@ -1463,15 +1468,9 @@
         'columns': ['1em', 'auto'].or(['1', 'auto']),
         'column-gap': ['1em', '0', 'normal'],
         'column-rule-color': ['red'],
-        'column-rule-style': [
-          'none', 'hidden', 'dotted', 'dashed', 'solid', 'double', 'groove',
-          'ridge', 'inset', 'outset'
-        ],
-        'column-rule-width': ['1px', 'thin', 'medium', 'thick'],
-        'column-rule': ['1px', 'thin', 'medium', 'thick'].or([
-          'none', 'hidden', 'dotted', 'dashed', 'solid', 'double', 'groove',
-          'ridge', 'inset', 'outset'
-        ], ['red']),
+        'column-rule-style': lineStyle,
+        'column-rule-width': lineWidth,
+        'column-rule': linePosition,
         'column-span': ['none', 'all'],
         'column-fill': ['balance', 'auto'/*, 'balance-all'*/]
       }
@@ -1736,6 +1735,67 @@
       'properties': {
         '--*': ['--foo', '--FOO', '--header-color']
       }*/
+    },
+
+    'css-logical-props-1': {
+      'title': 'Logical Properties Level 1',
+      'properties': {
+        'caption-side': [
+          'start', 'end', 'before', 'after'
+        ].qmark(['outside'], ' ', {amp: true}),
+        'clear': ['start', 'end'],
+        'background-position': ['start', 'end'].qmark(['10%', '10px']).qmark(
+          ['center'].concat(['top', 'bottom'].qmark(['10%', '10px'])),
+          ' ',
+          {amp: true}
+        ),
+        'float': ['start', 'end'].qmark(['contour'], ' ', {amp: true}),
+        'page-break-after': logicalPage,
+        'page-break-before': logicalPage,
+        'measure': width,
+        // for Presto
+        // 'length': width,
+        'min-measure': ['0', '10px', '10%'],
+        'min-length': ['0', '10px', '10%'],
+        'max-measure': ['none', '10px', '10%'],
+        'max-length': ['none', '10px', '10%'],
+        'margin-before': ['0'].concat(width),
+        'margin-after': ['0'].concat(width),
+        'margin-start': ['0'].concat(width),
+        'margin-end': ['0'].concat(width),
+        'padding-before': ['0', '10px', '10%'],
+        'padding-after': ['0', '10px', '10%'],
+        'padding-start': ['0', '10px', '10%'],
+        'padding-end': ['0', '10px', '10%'],
+        'border-before-width': lineWidth,
+        'border-after-width': lineWidth,
+        'border-start-width': lineWidth,
+        'border-end-width': lineWidth,
+        'border-before-style': lineStyle,
+        'border-after-style': lineStyle,
+        'border-start-style': lineStyle,
+        'border-end-style': lineStyle,
+        'border-before-color': ['white'],
+        'border-after-color': ['white'],
+        'border-start-color': ['white'],
+        'border-end-color': ['white'],
+        'border-before': linePosition,
+        'border-after': linePosition,
+        'border-start': linePosition,
+        'border-end': linePosition,
+        'margin': ['logical'].and(
+          width.concat(['-10px', '-10%', 'fill']).times(1, 4)
+        ),
+        'padding': ['logical'].and(width.times(1, 4)),
+        'border-color': ['logical'].and(['white'].times(1, 4)),
+        'border-style': ['logical'].and(lineStyle.times(1, 4)),
+        'border-width': ['logical'].and(lineWidth.times(1, 4)),
+        'background-image-transform': ['physical', 'logical', 'rotate'],
+        'border-image-transform': ['rotate', 'logical', 'physical'],
+      },
+      '@rules': {
+        '@page': ['@page :recto', '@page :verso']
+      }
     },
 
     'css-shapes-1': {
