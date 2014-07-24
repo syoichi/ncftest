@@ -1163,6 +1163,13 @@
             'red, yellow, green)',
           'radial-gradient(circle, #006, #00a 90%, #0000af 100%, white 100%)',
           'radial-gradient(20px 20px at 20px 30px, red, yellow, green)',
+          'radial-gradient(5em circle at left 55px bottom 75px, yellow, blue)',
+          'radial-gradient(5em circle at top 65px right 45%, yellow, blue)',
+          'radial-gradient(5em circle at bottom 65px right 45%, yellow, blue)',
+          'radial-gradient(5em circle at center left 45%, yellow, blue)',
+          'radial-gradient(5em circle at right 45% center, yellow, blue)',
+          'radial-gradient(5em circle at right calc(60px + 5px) center, ' +
+            'yellow, blue)',
           'radial-gradient(10% 100px ellipse at top 10% right 10px, ' +
             'white 10%, black 10px, red 50%)',
           'radial-gradient(ellipse 10% 20% at top 30% left 40%, ' +
