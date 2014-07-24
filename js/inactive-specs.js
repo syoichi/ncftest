@@ -150,18 +150,18 @@
       'properties': {
         'display-inside': ['auto', 'block', 'table', 'flex', 'grid', 'ruby'],
         'display-outside': [
-          'inline-level', 'block-level', 'none', 'table-row-group',
-          'table-header-group', 'table-footer-group', 'table-row', 'table-cell',
-          'table-column-group', 'table-column', 'table-caption',
-          'ruby-base', 'ruby-text', 'ruby-base-container',
-          'ruby-text-container', 'run-in'
+          'inline-level', 'block-level', 'run-in', 'contents', 'none',
+          'table-row-group', 'table-header-group', 'table-footer-group',
+          'table-row', 'table-cell', 'table-column-group', 'table-column',
+          'table-caption', 'ruby-base', 'ruby-text', 'ruby-base-container',
+          'ruby-text-container'
         ],
         'display-extras': ['none', 'list-item'],
         'display': [
-          'auto', 'block-level', 'inline-level', 'auto inline-level',
-          'none none', 'auto inline-level none'
+          'auto', 'inline-level', 'block-level', 'contents',
+          'auto inline-level', 'none none', 'auto inline-level none'
         ],
-        'display-box': ['normal', 'none', 'contents']
+        'display-box': ['normal', 'none']
       }
     },
 
