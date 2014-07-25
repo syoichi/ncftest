@@ -105,6 +105,7 @@
   ];
   var flexDirection = ['row', 'row-reverse', 'column', 'column-reverse'];
   var flexWrap = ['nowrap', 'wrap', 'wrap-reverse'];
+  var flexBasis = ['main-size'].concat(width);
   var flexPosition = ['flex-start', 'flex-end', 'center'];
   var justifyContent = flexPosition.concat(['space-between', 'space-around']);
   var crossPosition = ['stretch', 'baseline'];
@@ -1521,10 +1522,10 @@
         'flex-wrap': flexWrap,
         'flex-flow': flexDirection.or(flexWrap),
         'order': ['0', '1', '-1'],
-        'flex': ['none'].concat(['1', '1 1'].or(width)),
+        'flex': ['none'].concat(['1', '1 1'].or(flexBasis)),
         'flex-grow': ['0', '5', '0.11'],
         'flex-shrink': ['1', '10', '0', '0.11'],
-        'flex-basis': width,
+        'flex-basis': flexBasis,
         'justify-content': justifyContent,
         'align-items': alignItems,
         'align-self': ['auto'].concat(alignItems),
