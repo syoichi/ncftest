@@ -1378,7 +1378,11 @@
         ],
         'vertical-align': ['auto', 'central'],
         'inline-box-align': ['last', '1'],
-        'initial-letters': ['1', '1 1']
+        'initial-letter': ['1', '1 1'],
+        'initial-letter-align': [
+          'auto', 'alphabetic', 'hanging', 'ideographic'
+        ]/*,
+        'initial-letter-alignment': ['ideographic']*/
       }
     },
 
