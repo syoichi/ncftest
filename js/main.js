@@ -124,6 +124,10 @@
               testsLen = 1;
               test = '1' + feature;
               results = testCallback(feature, tests);
+            } else if (what === 'keywords') {
+              testsLen = 1;
+              test = feature;
+              results = testCallback(feature, tests);
             } else {
               test = tests[j];
               results = testCallback(test, feature, theseTests);
@@ -224,6 +228,35 @@
           1 - (properties.length ? failed.length / properties.length : 1);
 
         if (success > 0  && success < 1) {
+          results.note = 'Failed in: ' + failed.join(', ');
+        }
+
+        return results;
+      }
+    },
+    keywords: {
+      type: 'keyword',
+      getResults: function keywords(keyword, properties) {
+        var failed, results, idx, property, success;
+
+        failed = [];
+        results = {};
+
+        for (idx = 0; properties[idx];) {
+          property = properties[idx];
+          idx += 1;
+
+          if (!Supports.property(property)) {
+            properties.splice(idx -= 1, 1);
+          } else if (!Supports.keyword(keyword, property)) {
+            failed.push(property);
+          }
+        }
+
+        results.success = success =
+          1 - (properties.length ? failed.length / properties.length : 1);
+
+        if (success > 0 && success < 1) {
           results.note = 'Failed in: ' + failed.join(', ');
         }
 

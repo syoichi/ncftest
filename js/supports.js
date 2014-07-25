@@ -131,6 +131,59 @@
 
       return false;
     },
+    keyword: function keywordFunc(keyword, property) {
+      var cached, idx, prefix, prefixed;
+
+      cached = keywordFunc.cached;
+
+      if (!cached) {
+        cached = keywordFunc.cached = {};
+      }
+
+      property = this.property(property);
+
+      if (!property) {
+        return false;
+      }
+
+      if (isCSS) {
+        for (idx = 0; idx < prefixesLen; idx += 1) {
+          prefix = prefixes[idx];
+          prefixed = prefix + keyword;
+
+          if (CSS.supports(property, prefixed)) {
+            if (keyword && cached[keyword] === void 0) {
+              cached[keyword] = prefix + keyword;
+            }
+
+            return prefixed;
+          }
+        }
+      } else {
+        property = camelCase(property);
+        inline[property] = inline.cssText = '';
+
+        for (idx = 0; idx < prefixesLen; idx += 1) {
+          prefix = prefixes[idx];
+          prefixed = prefix + keyword;
+
+          // Trident throws Undefined Error.
+          try {
+            inline[property] = prefixed;
+          } catch (err) {}
+
+          if (inline.length > 0) {
+            if (keyword && cached[keyword] === void 0) {
+              cached[keyword] = prefix + keyword;
+            }
+
+            return prefixed;
+          }
+        }
+      }
+
+      return false;
+    },
     unit: function unitFunc(unit, property) {
       var cached, idx, prefix, prefixed;
 

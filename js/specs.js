@@ -305,6 +305,16 @@
     'css-color-3': {
       'title': 'Color',
       'tr': 'http://www.w3.org/TR/css3-color/',
+      'keywords': {
+        'transparent': [
+          'color', 'background-color', 'border-color', 'text-decoration-color',
+          'column-rule-color'
+        ],
+        'currentColor': [
+          'color', 'background-color', 'border-color', 'text-decoration-color',
+          'column-rule-color'
+        ]
+      },
       'values': {
         'properties': [
           'color',
@@ -317,9 +327,7 @@
           'rgba(0, 0, 0, .5)', 'rgba(255, 0, 0, 1)', 'rgba(100%, 0%, 0%, 1)'
         ],
         'hsl()': 'hsl(0, 0%, 0%)',
-        'hsla()': 'hsla(0, 0%, 0%, .5)',
-        'transparent': 'transparent',
-        'currentColor': 'currentColor'
+        'hsla()': 'hsla(0, 0%, 0%, .5)'
       },
       'properties': {
         'color': [
@@ -476,12 +484,8 @@
 
     'css-cascade-3': {
       'title': 'Cascading and Inheritance',
-      'values': {
-        'properties': [
-          'width',
-          'height'
-        ],
-        'unset': 'unset'
+      'keywords': {
+        'unset': ['width', 'height']
       },
       'properties': {
         'all': ['unset']
@@ -812,6 +816,9 @@
 
     'css-values-3': {
       'title': 'Values and Units',
+      'keywords': {
+        'initial': ['width', 'height']
+      },
       'values': {
         'properties': [
           'top',
@@ -832,7 +839,6 @@
           'text-indent',
           'vertical-align'
         ],
-        'initial': 'initial',
         'calc()': [
           /*'calc(1)', 'calc(0)', 'calc(-1)', 'calc(+1)', 'calc(1.1)',*/
           'calc(1px)', 'calc(0px)', 'calc(-1px)', 'calc(+1px)', 'calc(1.1px)',
