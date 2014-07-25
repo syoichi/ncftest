@@ -87,7 +87,7 @@
     group: function group(what, testCallback) {
       var theseTests, testList, thisSection, i, testListLen, feature,
           dl, dt, passed, tests, j, testsLen,
-          test, results, success, note, dd, support, result;
+          testResults, test, results, success, note, dd, support, result;
 
       theseTests = this.tests[what];
 
@@ -120,18 +120,21 @@
           tests = Array.isArray(tests) ? tests : [tests];
 
           for (j = 0, testsLen = tests.length; j < testsLen; j += 1) {
-            if (what === 'units') {
-              testsLen = 1;
-              test = '1' + feature;
-              results = testCallback(feature, tests);
-            } else if (what === 'keywords') {
-              testsLen = 1;
-              test = feature;
-              results = testCallback(feature, tests);
-            } else {
-              test = tests[j];
-              results = testCallback(test, feature, theseTests);
+            testResults = this.getTestResults({
+              what: what,
+              index: j,
+              tests: tests,
+              feature: feature,
+              theseTests: theseTests,
+              testCallback: testCallback
+            });
+
+            if (testResults.testsLen) {
+              testsLen = testResults.testsLen;
             }
+
+            test = testResults.test;
+            results = testResults.results;
 
             if (typeof results === 'object') {
               success = results.success;
@@ -174,6 +177,34 @@
           }
         }
       }
+    },
+    getTestResults: function getTestResults(obj) {
+      var what = obj.what,
+          tests = obj.tests,
+          index = obj.index,
+          feature = obj.feature,
+          theseTests = obj.theseTests,
+          testCallback = obj.testCallback,
+          testsLen, test, results;
+
+      if (what === 'units') {
+        testsLen = 1;
+        test = '1' + feature;
+        results = testCallback(feature, tests);
+      } else if (what === 'keywords') {
+        testsLen = 1;
+        test = feature;
+        results = testCallback(feature, tests);
+      } else {
+        test = tests[index];
+        results = testCallback(test, feature, theseTests);
+      }
+
+      return {
+        testsLen: testsLen,
+        test: test,
+        results: results
+      };
     },
     passClass: function passClass(info) {
       var success, classes, index;
