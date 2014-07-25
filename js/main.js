@@ -117,6 +117,11 @@
 
           passed = 0;
           tests = theseTests[feature];
+
+          if (what === 'values' && !theseTests.properties) {
+            tests = tests.values;
+          }
+
           tests = Array.isArray(tests) ? tests : [tests];
 
           for (j = 0, testsLen = tests.length; j < testsLen; j += 1) {
@@ -195,6 +200,9 @@
         testsLen = 1;
         test = feature;
         results = testCallback(feature, tests);
+      } else if (what === 'values' && !theseTests.properties) {
+        test = tests[index];
+        results = testCallback(test, feature, theseTests[feature]);
       } else {
         test = tests[index];
         results = testCallback(test, feature, theseTests);

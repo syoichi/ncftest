@@ -820,51 +820,59 @@
         'initial': ['width', 'height']
       },
       'values': {
-        'properties': [
-          'top',
-          'bottom',
-          'left',
-          'right',
-          // 'width',
-          // 'height',
-          // 'max-width',
-          // 'max-height',
-          // 'min-width',
-          // 'min-height',
-          'margin',
-          // 'padding',
-          // 'font-size',
-          // 'line-height',
-          'background-position',
-          'text-indent',
-          'vertical-align'
-        ],
-        'calc()': [
-          /*'calc(1)', 'calc(0)', 'calc(-1)', 'calc(+1)', 'calc(1.1)',*/
-          'calc(1px)', 'calc(0px)', 'calc(-1px)', 'calc(+1px)', 'calc(1.1px)',
-          'calc(1%)', 'calc(0%)', 'calc(-1%)', 'calc(+1%)', 'calc(1.1%)',
-          'calc(1px + 2px)', 'calc(5px - 10px)', 'calc(5px * 2)',
-          'calc(5px / 2)', 'calc(100%/3 - 2*1em - 2*1px)',
-          'calc(1ch * 2)', 'calc(1rem * 2)', 'calc(1vw * 2)', 'calc(1vh * 2)',
-          'calc(1vmin * 2)', 'calc(1vmax * 2)'
-          /*, 'calc(attr(data-px) * 2)'*/
-        ],
-        'toggle()': ['toggle(1px, 2px)', 'toggle(1px, 2px, 3px)'],
-        'attr()': [
-          'data-px',
-          'data-text string', 'data-text color', 'data-text url',
-          'data-text integer', 'data-text number', 'data-text length',
-          'data-text angle', 'data-text time', 'data-text frequency',
-          'data-text em', 'data-text ex', 'data-text px', 'data-text rem',
-          'data-text vw', 'data-text vh', 'data-text vmin', 'data-text vmax',
-          'data-text mm', 'data-text cm', 'data-text in', 'data-text pt',
-          'data-text pc', 'data-text deg', 'data-text grad', 'data-text rad',
-          'data-text ms', 'data-text s', 'data-text Hz', 'data-text kHz',
-          'data-text %',
-          'data-px, 1px', 'data-px px, 1px', 'data-px px, calc(1px)'
-        ].map(function attr(arg) {
-          return 'attr(' + arg + ')';
-        })
+        'calc()': {
+          'values': [
+            /*'calc(1)', 'calc(0)', 'calc(-1)', 'calc(+1)', 'calc(1.1)',*/
+            'calc(1px)', 'calc(0px)', 'calc(-1px)', 'calc(+1px)', 'calc(1.1px)',
+            'calc(1%)', 'calc(0%)', 'calc(-1%)', 'calc(+1%)', 'calc(1.1%)',
+            'calc(1px + 2px)', 'calc(5px - 10px)', 'calc(5px * 2)',
+            'calc(5px / 2)', 'calc(100%/3 - 2*1em - 2*1px)',
+            'calc(1ch * 2)', 'calc(1rem * 2)', 'calc(1vw * 2)', 'calc(1vh * 2)',
+            'calc(1vmin * 2)', 'calc(1vmax * 2)'
+            /*, 'calc(attr(data-px) * 2)'*/
+          ],
+          'properties': [
+            'top',
+            'bottom',
+            'left',
+            'right',
+            // 'width',
+            // 'height',
+            // 'max-width',
+            // 'max-height',
+            // 'min-width',
+            // 'min-height',
+            'margin',
+            // 'padding',
+            // 'font-size',
+            // 'line-height',
+            'background-position',
+            'text-indent',
+            'vertical-align'
+          ]
+        },
+        'toggle()': {
+          'values': ['toggle(1px, 2px)', 'toggle(1px, 2px, 3px)'],
+          'properties': ['width', 'height']
+        },
+        'attr()': {
+          'values': [
+            'data-px',
+            'data-text string', 'data-text color', 'data-text url',
+            'data-text integer', 'data-text number', 'data-text length',
+            'data-text angle', 'data-text time', 'data-text frequency',
+            'data-text em', 'data-text ex', 'data-text px', 'data-text rem',
+            'data-text vw', 'data-text vh', 'data-text vmin', 'data-text vmax',
+            'data-text mm', 'data-text cm', 'data-text in', 'data-text pt',
+            'data-text pc', 'data-text deg', 'data-text grad', 'data-text rad',
+            'data-text ms', 'data-text s', 'data-text Hz', 'data-text kHz',
+            'data-text %',
+            'data-px, 1px', 'data-px px, 1px', 'data-px px, calc(1px)'
+          ].map(function attr(arg) {
+            return 'attr(' + arg + ')';
+          }),
+          'properties': ['width', 'height']
+        }
       },
       'units': {
         'ch': ['width', 'height'],
