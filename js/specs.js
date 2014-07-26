@@ -820,40 +820,189 @@
         'initial': ['width', 'height']
       },
       'values': {
-        'calc()': {
+        '+<number> exponential notation': {
           'values': [
-            /*'calc(1)', 'calc(0)', 'calc(-1)', 'calc(+1)', 'calc(1.1)',*/
-            'calc(1px)', 'calc(0px)', 'calc(-1px)', 'calc(+1px)', 'calc(1.1px)',
-            'calc(1%)', 'calc(0%)', 'calc(-1%)', 'calc(+1%)', 'calc(1.1%)',
-            'calc(1px + 2px)', 'calc(5px - 10px)', 'calc(5px * 2)',
-            'calc(5px / 2)', 'calc(100%/3 - 2*1em - 2*1px)',
-            'calc(1ch * 2)', 'calc(1rem * 2)', 'calc(1vw * 2)', 'calc(1vh * 2)',
-            'calc(1vmin * 2)', 'calc(1vmax * 2)'
-            /*, 'calc(attr(data-px) * 2)'*/
+            '0e+0', '0e-0', '0e0', '+0e+0', '+0e-0', '+0e0', '-0e+0', '-0e-0',
+            '-0e0',
+            '1e+1', '1e-1', '1e1', '+1e+1', '+1e-1', '+1e1',
+            '0.1e+1', '0.1e-1', '0.1e1', '+0.1e+1', '+0.1e-1', '+0.1e1',
+            '.1e+1', '.1e-1', '.1e1', '+.1e+1', '+.1e-1', '+.1e1'
+          ],
+          'properties': ['opacity', 'line-height']
+        },
+        '-<number> exponential notation': {
+          'values': [
+            '0e+0', '0e-0', '0e0', '+0e+0', '+0e-0', '+0e0', '-0e+0', '-0e-0',
+            '-0e0',
+            '-1e+1', '-1e-1', '-1e1',
+            '-0.1e+1', '-0.1e-1', '-0.1e1',
+            '-.1e+1', '-.1e-1', '-.1e1'
+          ],
+          'properties': ['opacity']
+        },
+        '+<percentage> exponential notation': {
+          'values': [
+            '0e+0', '0e-0', '0e0', '+0e+0', '+0e-0', '+0e0', '-0e+0', '-0e-0',
+            '-0e0',
+            '0e+0%', '0e-0%', '0e0%', '+0e+0%', '+0e-0%', '+0e0%',
+            '-0e+0%', '-0e-0%', '-0e0%',
+            '1e+1%', '1e-1%', '1e1%', '+1e+1%', '+1e-1%', '+1e1%',
+            '0.1e+1%', '0.1e-1%', '0.1e1%', '+0.1e+1%', '+0.1e-1%', '+0.1e1%',
+            '.1e+1%', '.1e-1%', '.1e1%', '+.1e+1%', '+.1e-1%', '+.1e1%'
           ],
           'properties': [
-            'top',
-            'bottom',
-            'left',
-            'right',
-            // 'width',
-            // 'height',
-            // 'max-width',
-            // 'max-height',
-            // 'min-width',
-            // 'min-height',
-            'margin',
-            // 'padding',
-            // 'font-size',
-            // 'line-height',
-            'background-position',
-            'text-indent',
-            'vertical-align'
+            'width', 'height', 'max-width', 'max-height', 'min-width',
+            'min-height', 'padding', 'padding-top', 'padding-bottom',
+            'padding-left', 'padding-right', 'font-size', 'line-height', 'top',
+            'bottom', 'left', 'right', 'margin', 'margin-top', 'margin-bottom',
+            'margin-left', 'margin-right', 'background', 'background-position',
+            'text-indent', 'vertical-align'
+          ]
+        },
+        '-<percentage> exponential notation': {
+          'values': [
+            '0e+0', '0e-0', '0e0', '+0e+0', '+0e-0', '+0e0', '-0e+0', '-0e-0',
+            '-0e0',
+            '0e+0%', '0e-0%', '0e0%', '+0e+0%', '+0e-0%', '+0e0%',
+            '-0e+0%', '-0e-0%', '-0e0%',
+            '-1e+1%', '-1e-1%', '-1e1%',
+            '-0.1e+1%', '-0.1e-1%', '-0.1e1%',
+            '-.1e+1%', '-.1e-1%', '-.1e1%'
+          ],
+          'properties': [
+            'top', 'bottom', 'left', 'right', 'margin', 'margin-top',
+            'margin-bottom', 'margin-left', 'margin-right', 'background',
+            'background-position', 'text-indent', 'vertical-align'
+          ]
+        },
+        '+<length> exponential notation': {
+          'values': [
+            '0e+0', '0e-0', '0e0', '+0e+0', '+0e-0', '+0e0', '-0e+0', '-0e-0',
+            '-0e0',
+            '0e+0px', '0e-0px', '0e0px', '+0e+0px', '+0e-0px', '+0e0px',
+            '-0e+0px', '-0e-0px', '-0e0px',
+            '1e+1px', '1e-1px', '1e1px', '+1e+1px', '+1e-1px', '+1e1px',
+            '0.1e+1px', '0.1e-1px', '0.1e1px', '+0.1e+1px', '+0.1e-1px',
+            '+0.1e1px',
+            '.1e+1px', '.1e-1px', '.1e1px', '+.1e+1px', '+.1e-1px', '+.1e1px'
+          ],
+          'properties': [
+            'width', 'height', 'max-width', 'max-height', 'min-width',
+            'min-height', 'padding', 'padding-top', 'padding-bottom',
+            'padding-left', 'padding-right', 'font-size', 'line-height', 'top',
+            'bottom', 'left', 'right', 'margin', 'margin-top', 'margin-bottom',
+            'margin-left', 'margin-right', 'background', 'background-position',
+            'text-indent', 'vertical-align'
+          ]
+        },
+        '-<length> exponential notation': {
+          'values': [
+            '0e+0', '0e-0', '0e0', '+0e+0', '+0e-0', '+0e0', '-0e+0', '-0e-0',
+            '-0e0',
+            '0e+0px', '0e-0px', '0e0px', '+0e+0px', '+0e-0px', '+0e0px',
+            '-0e+0px', '-0e-0px', '-0e0px',
+            '-1e+1px', '-1e-1px', '-1e1px',
+            '-0.1e+1px', '-0.1e-1px', '-0.1e1px',
+            '-.1e+1px', '-.1e-1px', '-.1e1px'
+          ],
+          'properties': [
+            'top', 'bottom', 'left', 'right', 'margin', 'margin-top',
+            'margin-bottom', 'margin-left', 'margin-right', 'background',
+            'background-position', 'text-indent', 'vertical-align'
+          ]
+        },
+        'calc(+<number>)': {
+          'values': [
+            'calc(0)', 'calc(+0)', 'calc(-0)',
+            'calc(1)', 'calc(+1)',
+            'calc(0.1)', 'calc(+0.1)', 'calc(.1)', 'calc(+.1)',
+            'calc(1 + 2)', 'calc(4 - 3)', 'calc(5 * 6)', 'calc(7 / 8)'
+          ],
+          'properties': ['opacity', 'line-height']
+        },
+        'calc(-<number>)': {
+          'values': [
+            'calc(0)', 'calc(+0)', 'calc(-0)',
+            'calc(-1)', 'calc(-0.1)', 'calc(-.1)'
+          ],
+          'properties': ['opacity']
+        },
+        'calc(+<percentage>)': {
+          'values': [
+            'calc(0%)', 'calc(+0%)', 'calc(-0%)',
+            'calc(1%)', 'calc(+1%)',
+            'calc(0.1%)', 'calc(+0.1%)', 'calc(.1%)', 'calc(+.1%)',
+            'calc(1% + 2%)', 'calc(4% - 3%)', 'calc(5% * 6)', 'calc(7% / 8)',
+            'calc(100%/3 - 2*1em - 2*1px)', 'calc(50% + 20px)',
+            'calc(100% - 100% + 1em)'
+          ],
+          'properties': [
+            'width', 'height', 'max-width', 'max-height', 'min-width',
+            'min-height', 'padding', 'padding-top', 'padding-bottom',
+            'padding-left', 'padding-right', 'font-size', 'line-height', 'top',
+            'bottom', 'left', 'right', 'margin', 'margin-top', 'margin-bottom',
+            'margin-left', 'margin-right', 'background', 'background-position',
+            'text-indent', 'vertical-align'
+          ]
+        },
+        'calc(-<percentage>)': {
+          'values': [
+            'calc(0%)', 'calc(+0%)', 'calc(-0%)',
+            'calc(-1%)', 'calc(-0.1%)', 'calc(-.1%)'
+          ],
+          'properties': [
+            'top', 'bottom', 'left', 'right', 'margin', 'margin-top',
+            'margin-bottom', 'margin-left', 'margin-right', 'background',
+            'background-position', 'text-indent', 'vertical-align'
+          ]
+        },
+        'calc(+<length>)': {
+          'values': [
+            'calc(0px)', 'calc(+0px)', 'calc(-0px)',
+            'calc(1px)', 'calc(+1px)',
+            'calc(0.1px)', 'calc(+0.1px)', 'calc(.1px)', 'calc(+.1px)',
+            'calc(1px + 2px)', 'calc(4px - 3px)', 'calc(5px * 6)',
+            'calc(7px / 8)',
+            'calc(1ch * 2)', 'calc(1rem * 2)', 'calc(100vw / 40)',
+            'calc(1vh * 2)', 'calc(1vmin * 2)', 'calc(1vmax * 2)',
+            'calc((100vw - 100%) / 2)', 'calc(1rem - 1px)',
+            'calc((1px))', 'calc(calc(1px))',
+            'calc(1px * 2px)', 'calc(1px * (2))',
+            'calc(calc(1px + 2px) * (3px + 4px))',
+            // 'calc(attr(data-px) * 2)',
+            'calc(1px + 2px + 3px + 4px + 5px + 6px + 7px + 8px + 9px + ' +
+              '10px + 11px + 12px + 13px + 14px + 15px + 16px + 17px + ' +
+              '18px + 19px + 20px)',
+            'calc(1px + 2px + 3px + 4px + 5px + 6px + 7px + 8px + 9px + ' +
+              '10px + 11px + 12px + 13px + 14px + 15px + 16px + 17px + ' +
+              '18px + 19px + 20px + 21px)'
+          ],
+          'properties': [
+            'width', 'height', 'max-width', 'max-height', 'min-width',
+            'min-height', 'padding', 'padding-top', 'padding-bottom',
+            'padding-left', 'padding-right', 'font-size', 'line-height', 'top',
+            'bottom', 'left', 'right', 'margin', 'margin-top', 'margin-bottom',
+            'margin-left', 'margin-right', 'background', 'background-position',
+            'text-indent', 'vertical-align'
+          ]
+        },
+        'calc(-<length>)': {
+          'values': [
+            'calc(0px)', 'calc(+0px)', 'calc(-0px)',
+            'calc(-1px)', 'calc(-0.1px)', 'calc(-.1px)'
+          ],
+          'properties': [
+            'top', 'bottom', 'left', 'right', 'margin', 'margin-top',
+            'margin-bottom', 'margin-left', 'margin-right', 'background',
+            'background-position', 'text-indent', 'vertical-align'
           ]
         },
         'toggle()': {
           'values': ['toggle(1px, 2px)', 'toggle(1px, 2px, 3px)'],
-          'properties': ['width', 'height']
+          'properties': [
+            'width', 'height',
+            'margin-top', 'margin-bottom', 'margin-left', 'margin-right'
+          ]
         },
         'attr()': {
           'values': [
