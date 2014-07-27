@@ -2425,20 +2425,45 @@
 
     'selectors4': {
       'title': 'Selectors Level 4',
-      'selectors': {
-        'E! > F, !E F': [
-          'head! > title', '!ol > li', '!ol > li:only-child', 'ul > ol! > li',
-          '!div p', '!span:only-child a[href^=\'https://\']',
-          '!div > !p.warning'
+      'selectors': {/*
+        ':active-drop': [':active-drop'],
+        ':valid-drop': [':valid-drop'],
+        ':invalid-drop': [':invalid-drop'],*/
+        ':matches()': [
+          // fast profile
+          ':matches(.example)', ':matches(div:only-child)',
+          ':matches(section, article)', ':matches(:link, :visited)',
+          '*|*:matches(:hover, :focus)', '*|*:matches(*:hover, *:focus)',
+          ':matches(section, article, aside, nav) h1',
+          ':matches(section, article, aside, nav) ' +
+            ':matches(section, article, aside, nav) h1',
+          // complete profile
+          ':matches(div div)', ':matches(div > div)',
+          ':matches(div + div)', ':matches(div ~ div)',
+          ':matches(div#text.text[data-text^=\'base\']:only-child > div, main)'
         ],
-        'E /attr/ F': ['label /for/ input'],
-        'E || F': ['div || span', 'col.selected || td'],
+        ':not()': [
+          // fast profile
+          ':not(div:only-child)', ':not(header, footer)',
+          ':not(header, main, footer)',
+          // complete profile
+          ':not(div div)', ':not(div > div)',
+          ':not(div + div)', ':not(div ~ div)',
+          ':not(div#text.text[data-text^=\'base\']:only-child > div, main)'
+        ],
+        ':has()': [
+          ':has(div)', 'div:has(div)', 'div:has( div)', 'a:has(> img)',
+          'dt:has(+ dt)', 'div:has(~ div)',
+          // 'div:has(|| div)', 'label:has(/for/ input)',
+          'section:has(:not(h1, h2, h3, h4, h5, h6))',
+          'div:has(div, div)', 'div:has(> div, > div)'
+        ],
         '[att=val i]': ['[class=\'example\' i]', '[frame=hsides i]'],
-        ':any-link': [':any-link'],
-        ':local-link': [':local-link'],
-        ':local-link()': [
-          ':local-link(0)', ':local-link(1)', ':not(:local-link(0))'
+        ':dir()': [':dir(ltr)', ':dir(rtl)'],
+        ':lang()': [
+          ':lang(de-*)', ':lang(*-CH)', ':lang(en, ja)', ':lang(zh, *-hant)'
         ],
+        ':any-link': [':any-link'],
         ':scope': [':scope', ':scope > .example'],
         ':drop': [':drop'],
         ':drop()': [':drop()'].concat(
@@ -2456,45 +2481,30 @@
         ':placeholder-shown': [':placeholder-shown'],
         ':user-error': [':user-error'],
         ':blank': [':blank'],
-        ':dir()': [':dir(ltr)', ':dir(rtl)'],
-        ':lang()': [
-          ':lang(de-*)', ':lang(*-CH)', ':lang(en, ja)', ':lang(zh, *-hant)'
-        ],
-        ':not()': [
-          // fast profile
-          ':not(div:only-child)', ':not(header, footer)',
-          ':not(header, main, footer)',
-          // complete profile
-          ':not(div div)', ':not(div > div)',
-          ':not(div + div)', ':not(div ~ div)',
-          ':not(div#text.text[data-text^=\'base\']:only-child > div, main)'
-        ],
-        ':matches()': [
-          // fast profile
-          ':matches(.example)', ':matches(div:only-child)',
-          ':matches(section, article)', ':matches(:link, :visited)',
-          ':matches(section, article, aside, nav) h1',
-          ':matches(section, article, aside, nav) ' +
-            ':matches(section, article, aside, nav) h1',
-          // complete profile
-          ':matches(div div)', ':matches(div > div)',
-          ':matches(div + div)', ':matches(div ~ div)',
-          ':matches(div#text.text[data-text^=\'base\']:only-child > div, main)'
-        ],
-        ':nth-match(an+b of <selector>)': anb.map(function nthMatch(nth) {
-          return ':nth-match(' + nth + ' of .foo)';
-        }).concat([':nth-match(2n+1 of .foo, #bar)']),
-        ':nth-last-match(an+b of <selector>)': anb.map(
-          function nthLastMatch(nth) {
-            return ':nth-last-match(' + nth + ' of #example)';
+        ':nth-child(an+b of <selector>)': anb.map(function nthChild(nth) {
+          return ':nth-child(' + nth + ' of .foo)';
+        }).concat([
+          ':nth-child(2n+1 of .foo, #bar)', 'li:nth-child(-n+3 of .important)',
+          'tr:nth-child(even of :not([hidden]))', '*:nth-child(2 of img)'
+        ]),
+        ':nth-last-child(an+b of <selector>)': anb.map(
+          function nthLastChild(nth) {
+            return ':nth-last-child(' + nth + ' of .foo)';
           }
-        ).concat([':nth-last-match(even of #example > div, .foo)']),
+        ).concat([
+          ':nth-last-child(2n+1 of .foo, #bar)',
+          'li:nth-last-child(-n+3 of .important)',
+          'tr:nth-last-child(even of :not([hidden]))',
+          '*:nth-last-child(2 of img)'
+        ]),
+        'E || F': ['div || span', 'col.selected || td'],
         ':nth-column()': anb.map(function nthColumn(nth) {
           return ':nth-column(' + nth + ')';
         }),
         ':nth-last-column()': anb.map(function nthLastColumn(nth) {
           return ':nth-last-column(' + nth + ')';
-        })
+        })/*,
+        'E /attr/ F': ['label /for/ input']*/
       }
     },
 
