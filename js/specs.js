@@ -1139,7 +1139,10 @@
         ],
         'text-justify': ['auto', 'none', 'inter-word', 'distribute'],
         'word-spacing': ['10%', '-10%'],
-        'text-indent': ['1em', '1%'].amp(['hanging'].or(['each-line'])),
+        'text-indent': ['1em', '1%'].amp(['hanging']).concat(
+          ['1em', '1%'].amp(['each-line']),
+          ['1em', '1%'].amp(['hanging'], ['each-line'])
+        ),
         'hanging-punctuation': ['none'].concat(
           ['first'].or(['force-end', 'allow-end'], ['last'])
         )
@@ -2818,11 +2821,11 @@
         'hyphenate-limit-lines': ['no-limit ', '1'],
         'hyphenate-limit-last': ['none ', 'always', 'column', 'page', 'spread'],
         'text-wrap': ['normal', 'none', 'avoid'],
-        'overflow-wrap': ['hyphenate'].concat(
-          ['break-word'].amp(['hyphenate'])
-        ),
-        'text-align': ['\'foo\''].and(
-          ['start', 'end', 'left', 'right', 'center', 'justify']
+        'overflow-wrap': ['hyphenate'].qmark(['break-word'], ' ', {amp: true}),
+        'text-align': ['start end'].concat(
+          ['\'foo\''].and(
+            ['start', 'end', 'left', 'right', 'center', 'justify']
+          )
         ),
         'text-justify': ['inter-ideograph', 'inter-cluster', 'kashida'],
         'word-spacing': ['normal', '1em', '50%'].times(2, 3),
@@ -2844,7 +2847,7 @@
             return this.indexOf(val) === -1;
           }, ['underline'].or(['overline'], ['line-through']))
         ),
-        'text-decoration': ['remove-all '].concat(
+        'text-decoration': ['remove-all'].concat(
           ['underline', 'no-underline', 'replace-underline'].or(
             ['overline', 'no-overline', 'replace-overline'],
             ['line-through', 'no-line-through', 'replace-line-through']
@@ -2852,9 +2855,9 @@
             return this.indexOf(val) === -1;
           }, ['underline'].or(['overline'], ['line-through']))
         ).concat([
-          'remove-all solid', 'solid remove-all',
-          'remove-all solid black',
-          'underline overline no-line-through solid black'
+          'remove-all solid', 'solid remove-all', 'underline solid blink',
+          'remove-all solid black', 'remove-all solid black blink',
+          'underline overline no-line-through solid black blink'
         ]),
         'text-underline-position': ['below left', 'below right'],
         'text-emphasis-position': ['above', 'below'].amp(['right', 'left']),
@@ -2862,16 +2865,7 @@
           ['punctuation'], ['symbols'], ['narrow']
         ),
         'text-shadow': [
-          '1px 2px 3px 4px', '1px 2px 3px 4px purple', 'pink 1px 2px 3px 4px',
-          'inset 1px 2px', '1px 2px inset', 'inset 1px 2px 3px',
-          '1px 2px 3px inset', 'inset 1px 2px 3px 4px', '1px 2px 3px 4px inset',
-          'inset 1px 2px red', '1px 2px red inset', 'inset blue 1px 2px',
-          'blue 1px 2px inset', 'inset 1px 2px 3px yellow',
-          '1px 2px 3px yellow inset', 'inset green 1px 2px 3px',
-          'green 1px 2px 3px inset', 'inset 1px 2px 3px 4px purple',
-          '1px 2px 3px 4px purple inset', 'inset pink 1px 2px 3px 4px',
-          'pink 1px 2px 3px 4px inset', '1px 2px, inset 1px 2px',
-          '1px 2px 3px 4px, 1px 2px 3px 4px', '1px 2px, 1px 2px, inset 1px 2px'
+          '1px 2px 3px 4px', '1px 2px 3px 4px white', 'white 1px 2px 3px 4px'
         ]
       }
     },
