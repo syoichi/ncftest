@@ -741,7 +741,7 @@
     'css-color-correction-1': {
       'title': 'Color Correction',
       'properties': {
-        'color-correction': ['default', 'sRGB']
+        'color-correction': ['default']
       }
     },
 

@@ -4,6 +4,13 @@
   'use strict';
 
   // data types
+  var number = [
+    '0', '+0', '-0', '1', '+1', '-1', '0.1', '+0.1', '-0.1',
+    '.1', '+.1', '-.1'/*, '+.1e+1'*/
+  ];
+  var percentage = number.map(function addPercent(num) {
+    return num + '%';
+  });
   var width = ['auto', '10px', '10%'];
   var anb = [
     'n', '-n', '+n', '1n', '-1n', '+1n', '0n', '-0n', '+0n',
@@ -249,6 +256,14 @@
     'ridge', 'inset', 'outset'
   ];
   var linePosition = lineWidth.or(lineStyle, ['white']);
+  var namedHue = [
+    'red', 'orange', 'yellow', 'green', 'blue', 'purple'
+  ].times(1, 2).concat([
+    'reddish', 'orangish', 'yellowish', 'greenish', 'bluish', 'purplish',
+    'reddish(10%)', 'orangish(10%)', 'yellowish(10%)', 'greenish(10%)',
+    'bluish(10%)', 'purplish(10%)'
+  ].and(['red', 'orange', 'yellow', 'green', 'blue', 'purple']));
+  var hue = number.concat(angle, namedHue);
 
   win.NCFTest.Specs = {
     // CSS Level 3
@@ -2614,166 +2629,94 @@
           'column-rule-color'
         ],
         'rgb()': [
-          'rgba(1.1, 0, 0)', 'rgba(1.1, 1.2, 0)', 'rgba(1.1, 1.2, 1.3)'
+          'rgb(1.1, 0, 0)', 'rgb(1.1, 1.2, 0)', 'rgb(1.1, 1.2, 1.3)'
         ],
         'rgba()': [
           'rgba(1.1, 0, 0, 1)', 'rgba(1.1, 1.2, 0, 1)',
-          'rgba(1.1, 1.2, 1.3, 1)', 'rgba(0, 0, 0, 10%)'
+          'rgba(1.1, 1.2, 1.3, 1)', 'rgba(0, 0, 0, 10%)',
+          'rgba(0, 0, 100%, 80%)'
         ],
-        'hsl()': angle.concat(
-          ['red', 'orange', 'yellow', 'green', 'blue', 'purple'].times(1, 2)
-        ).concat([
-          'reddish', 'orangish', 'yellowish', 'greenish', 'bluish', 'purplish',
-          'reddish(10%)', 'orangish(10%)', 'yellowish(10%)', 'greenish(10%)',
-          'bluish(10%)', 'purplish(10%)'
-        ].and(['red', 'orange', 'yellow', 'green', 'blue', 'purple'])).map(
-          function hsl(arg) {
-            return 'hsl(' + arg + ', 0%, 0%)';
-          }
-        ),
-        'hsla()': angle.concat(
-          ['red', 'orange', 'yellow', 'green', 'blue', 'purple'].times(1, 2)
-        ).concat([
-          'reddish', 'orangish', 'yellowish', 'greenish', 'bluish', 'purplish',
-          'reddish(10%)', 'orangish(10%)', 'yellowish(10%)', 'greenish(10%)',
-          'bluish(10%)', 'purplish(10%)'
-        ].and(['red', 'orange', 'yellow', 'green', 'blue', 'purple'])).map(
-          function hsla(arg) {
-            return 'hsla(' + arg + ', 0%, 0%, 0.99)';
-          }
-        ),
-        'hwb()': ['0', '1', '-1', '1.1'].concat(
-          angle,
-          ['red', 'orange', 'yellow', 'green', 'blue', 'purple'].times(1, 2)
-        ).concat([
-          'reddish', 'orangish', 'yellowish', 'greenish', 'bluish', 'purplish',
-          'reddish(10%)', 'orangish(10%)', 'yellowish(10%)', 'greenish(10%)',
-          'bluish(10%)', 'purplish(10%)'
-        ].and(['red', 'orange', 'yellow', 'green', 'blue', 'purple'])).and(
-          ['10%, 10%', '10%, 10%, 1.0'], ', '
-        ).map(function hwb(arg) {
+        '<hex-color> 8 digits': ['#0000ffcc'],
+        '<hex-color> 4 digits': ['#0000'],
+        'rebeccapurple': ['rebeccapurple'],
+        'hsl()': angle.concat(namedHue).map(function hsl(newHue) {
+          return 'hsl(' + newHue + ', 0%, 0%)';
+        }),
+        'hsla()': angle.concat(namedHue).and([
+          '0%, 0%, 0.99', '100%, 50%, 100%'
+        ], ', ').map(function hsla(arg) {
+          return 'hsla(' + arg + ')';
+        }).concat(['hsla(120, 100%, 50%, 100%)']),
+        'hwb()': hue.and([
+          '10%, 10%', '10%, 10%, 1.0', '10%, 10%, 100%'
+        ], ', ').map(function hwb(arg) {
           return 'hwb(' + arg + ')';
         }),
-        'gray()': [
-          '0', '1', '-1', '1.1', '10%'
-        ].qmark(['1.0'], ', ').map(function gray(arg) {
+        'gray()': number.concat([
+          '10%'
+        ]).qmark(['1.0', '100%'], ', ').map(function gray(arg) {
           return 'gray(' + arg + ')';
         }),
-        'device-cmyk()': ['1', '10%'].times(4, 4, ', ').qmark(
-          ['1.0'], ', '
-        ).qmark(['white'], ', ').map(function deviceCmyk(arg) {
+        'device-cmyk()': ['1.0', '10%'].times(4, 4, ', ').qmark(
+          ['1.0', '100%'], ', '
+        ).qmark(['white'], ', ').concat([
+          '0, 81%, 81%, 30%'
+        ]).map(function deviceCmyk(arg) {
           return 'device-cmyk(' + arg + ')';
         }),
-        'color()': ['white'].concat(
-          ['0', '1', '-1', '1.1'],
-          angle,
-          ['red', 'orange', 'yellow', 'green', 'blue', 'purple'].times(1, 2)
-        ).concat([
-          'reddish', 'orangish', 'yellowish', 'greenish',
-          'bluish', 'purplish',
-          'reddish(10%)', 'orangish(10%)', 'yellowish(10%)', 'greenish(10%)',
-          'bluish(10%)', 'purplish(10%)'
-        ].and(['red', 'orange', 'yellow', 'green', 'blue', 'purple'])).concat(
-          ['white', '1'].and([].concat(
-            ['+', '-'].qmark(
-              ['1', '10%'], ' ', {former: true}).concat(['* 10%']
-            ).map(function red(arg) {
-              return 'red(' + arg + ')';
-            }),
-            ['+', '-'].qmark(
-              ['1', '10%'], ' ', {former: true}).concat(['* 10%']
-            ).map(function green(arg) {
-              return 'green(' + arg + ')';
-            }),
-            ['+', '-'].qmark(
-              ['1', '10%'], ' ', {former: true}).concat(['* 10%']
-            ).map(function blue(arg) {
-              return 'blue(' + arg + ')';
-            }),
-            ['+', '-'].qmark(
-              ['1', '10%'], ' ', {former: true}).concat(['* 10%']
-            ).map(function alpha(arg) {
-              return 'alpha(' + arg + ')';
-            }),
-            ['+', '-'].qmark(
-              ['1', '10%'], ' ', {former: true}).concat(['* 10%']
-            ).map(function a(arg) {
-              return 'a(' + arg + ')';
-            }),
-            ['+', '-'].and(
-              ['1', '10%'].times(3).concat(['#004400'])
-            ).concat(['* 10%']).map(function rgb(arg) {
-              return 'rgb(' + arg + ')';
-            }),
-            ['+', '-', '*'].qmark(
+        'color()': ['white'].concat(hue).concat(['white', '1.0'].and([
+          ['red', 'green', 'blue', 'alpha', 'a'].map(
+            function getFuncList(funcName) {
+              return ['+', '-'].qmark([
+                '1.0', '10%'
+              ], ' ', {former: true}).concat([
+                '* 10%'
+              ]).map(function addFuncName(arg) {
+                return funcName + '(' + arg + ')';
+              });
+            }
+          ).flatten(),
+          ['+', '-'].and(
+            ['1.0', '10%'].times(3).concat(['#004400'])
+          ).concat(['* 10%']).map(function rgb(arg) {
+            return 'rgb(' + arg + ')';
+          }),
+          ['hue', 'h'].map(function getFuncList(funcName) {
+            return ['+', '-', '*'].qmark(
               angle, ' ', {former: true}
-            ).map(function hue(arg) {
-              return 'hue(' + arg + ')';
-            }),
-            ['+', '-', '*'].qmark(
-              angle, ' ', {former: true}
-            ).map(function h(arg) {
-              return 'h(' + arg + ')';
-            }),
-            ['+', '-', '*'].qmark(
+            ).map(function addFuncName(arg) {
+              return funcName + '(' + arg + ')';
+            });
+          }).flatten(),
+          ['saturation', 's', 'lightness', 'l'].concat([
+            'whiteness', 'w', 'blackness', 'b'
+          ]).map(function getFuncList(funcName) {
+            return ['+', '-', '*'].qmark(
               ['10%'], ' ', {former: true}
-            ).map(function saturation(arg) {
-              return 'saturation(' + arg + ')';
-            }),
-            ['+', '-', '*'].qmark(
-              ['10%'], ' ', {former: true}
-            ).map(function s(arg) {
-              return 's(' + arg + ')';
-            }),
-            ['+', '-', '*'].qmark(
-              ['10%'], ' ', {former: true}
-            ).map(function lightness(arg) {
-              return 'lightness(' + arg + ')';
-            }),
-            ['+', '-', '*'].qmark(
-              ['10%'], ' ', {former: true}
-            ).map(function l(arg) {
-              return 'l(' + arg + ')';
-            }),
-            ['+', '-', '*'].qmark(
-              ['10%'], ' ', {former: true}
-            ).map(function whiteness(arg) {
-              return 'whiteness(' + arg + ')';
-            }),
-            ['+', '-', '*'].qmark(
-              ['10%'], ' ', {former: true}
-            ).map(function w(arg) {
-              return 'w(' + arg + ')';
-            }),
-            ['+', '-', '*'].qmark(
-              ['10%'], ' ', {former: true}
-            ).map(function blackness(arg) {
-              return 'blackness(' + arg + ')';
-            }),
-            ['+', '-', '*'].qmark(
-              ['10%'], ' ', {former: true}
-            ).map(function b(arg) {
-              return 'b(' + arg + ')';
-            }),
-            ['tint(10%)', 'shade(10%)'],
-            ['white', '10%'].qmark(
+            ).map(function addFuncName(arg) {
+              return funcName + '(' + arg + ')';
+            });
+          }).flatten(),
+          ['tint(10%)', 'shade(10%)'],
+          ['blend', 'blenda'].map(function getFuncList(funcName) {
+            return ['white', '10%'].qmark(
               ['rgb', 'hsl', 'hwb']
-            ).map(function blend(arg) {
-              return 'blend(' + arg + ')';
-            }),
-            ['white', '10%'].qmark(
-              ['rgb', 'hsl', 'hwb']
-            ).map(function blenda(arg) {
-              return 'blenda(' + arg + ')';
-            }),
-            ['contrast()', 'contrast(10%)']
-          ))
-        ).map(function color(arg) {
+            ).map(function addFuncName(arg) {
+              return funcName + '(' + arg + ')';
+            });
+          }).flatten(),
+          ['contrast()', 'contrast(10%)']
+        ].flatten())).map(function color(arg) {
           return 'color(' + arg + ')';
-        })
+        }).concat([
+          'color(white red(1) red(1))', 'color(red s(- 10%) s(- 10%))',
+          'color(blue w(+ 20%) s(+ 20%))'
+        ])
       },
       'properties': {
-        'color-correction': 'auto'
+        'opacity': percentage,
+        'color-correction': ['auto', 'sRGB'],
+        'color-adjust': ['economy', 'exact']
       }
     },
 
