@@ -568,22 +568,26 @@
     'css-page-floats': {
       'title': 'Page Floats',
       'properties': {
-        'float': ['10px'].times(1, 2).qmark([
-          'top', 'bottom', 'near'
-        ], ', ').map(function snap(arg) {
-          return 'snap(' + arg + ')';
-        }),
+        'float': ['top', 'bottom', 'snap'].concat(
+          ['10px'].times(1, 2).qmark([
+            'top', 'bottom', 'near'
+          ], ', ').map(function snap(arg) {
+            return 'snap(' + arg + ')';
+          })
+        ).concat(['inside', 'outside']),
         'column-span': ['1', 'page'],
         // 'float-reference': ['multicol'],
         'float-defer-column': ['none', '1', '-1', 'last'],
         'float-defer-page': ['none', '1', '-1', 'last'],
         'clear': ['top', 'bottom', 'column', 'page'],
         'float-wrap': ['none', 'wrap'/*, 'intrude'*/],
-        'float-offset': ['0', '5px', '0 0', '2em 3em', '50%', '-50% 3em'],
+        'float-offset': [
+          '0', '5px', '-1px', '0 0', '2em 3em'/*, '-50% 3em', '-80% 2em'*/
+        ],
         'clear-side': ['auto', 'both', 'none', 'left', 'right'],
         'background-exclude-level': alphavalue,
-        'exclude-level': alphavalue,
-        // 'exclude-margin': width,
+        'exclude-level': alphavalue/*,
+        'exclude-margin': width,
         'content-inside': [
           'circle(50%, 50%, 30%)',
           'polygon(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5)'
@@ -591,7 +595,7 @@
         'content-outside': [
           'circle(50%, 50%, 30%)',
           'polygon(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5)'
-        ]
+        ]*/
       },
       'selectors': {
         '::column()': [
@@ -615,12 +619,14 @@
       'dev': 'http://figures.spec.whatwg.org/',
       'properties': {
         'float': [
-          'block-start', 'before', 'block-end', 'after', 'top-bottom',
-          'bottom-top'
-        ],
-        'column-span': ['0.5', '1.75', '10px', 'auto'],
+          'block-start', 'block-end', 'top-bottom', 'block-start-end',
+          'bottom-top', 'block-end-start'/*,
+          'snap(2, near)', 'snap(1)', 'snap(3, bottom)'*/
+        ].concat([
+          'top', 'bottom', 'top-bottom', 'bottom-top', 'snap(1em)'
+        ].amp(['left', 'right', 'inside', 'outside'])),
         'float-reference': ['column', 'element', 'page', 'bleed-box'],
-        'object-fill': ['fill'],
+        // 'object-fill': ['fill'],
         'float-defer-page': ['left', 'right'].concat(
           ['1', '-1'].or(
             ['last'],
@@ -629,19 +635,20 @@
             return val.split(' ').length > 1;
           })
         ),
+        'float-defer-column': ['inside', 'outside'],
+        'float-defer-line': ['none', '1', '1%'],
+        'float-policy': [
+          'normal'/*, 'forward', 'zap-last'*/
+        ].concat(['drop-tail'].or(['in-order'])),
+        'column-span': ['0.5', '1.75', '10px', 'auto'],
+        'float-offset': [
+          'none', '1.1', '-1.1', '50%', '-50%', 'auto'/*, '-3em'*/
+        ],
         'wrap-side': ['none'].concat([
           'all', 'left', 'right', 'top', 'bottom', 'line-start', 'line-end',
           'block-start', 'block-end', 'line'
         ].or(['1', '-1'])),
-        'wrap-contrast': ['normal', '0.5', '0', '1', '0.5 1em'],
-        'float-defer-line': ['2'],
-        'float-offset-y': ['2'],
-        'float-offset': [
-          '2 top', '3em outside', '2 bottom, 3em outside',
-          '2 bottom, 50% outside'
-        ],
-        'float-outside': ['3em'],
-        'float-offset-x': ['3em', '50%']
+        'wrap-contrast': ['normal', '0.5', '0', '1', '0.5 1em']
       }
     },
 
@@ -677,7 +684,15 @@
         'min-height': width2,
         'max-width': width2,
         'max-height': width2,
-        'float': [
+        'float': ['top-corner', 'bottom-corner'].concat(
+          ['top', 'bottom'].amp(['next-page', 'next-column', 'unless-room']),
+          ['top-corner', 'bottom-corner'].amp(
+            ['next-page', 'next-column', 'unless-room', 'left', 'right']
+          ),
+          ['intrude'].amp(
+            ['left', 'right', 'top', 'bottom', 'top-corner', 'bottom-corner']
+          )
+        ).concat([
           'left', 'right', 'top', 'bottom', 'none',
           'top-corner', 'bottom-corner', 'snap'
         ].concat(
@@ -688,22 +703,15 @@
           ['intrude'].amp(
             ['left', 'right', 'top', 'bottom', 'top-corner', 'bottom-corner']
           )
-        ).qmark(['contour'], ' ', {amp: true}).filter(function filter(val) {
-          return !this[val];
-        }, {left: true, right: true, none: true}),
+        ).amp(['contour'])),
         'clear-after': [
           'none', 'left', 'right', 'top', 'bottom', 'inside', 'outside',
           'start', 'end', 'both', 'descendants'
         ],/*
-        'clear': [
+        'clear': ['inside', 'outside', 'after'].concat([
           'left', 'right', 'top', 'bottom', 'inside', 'outside', 'start', 'end',
           'both', 'after'
-        ].times(1, 2).filter(function filter(val) {
-          return !this[val];
-        }, {
-          left: true, right: true, none: true, both: true,
-          start: true, end: true
-        }),
+        ].times(2)),
         'underhang-limit': ['1'],*/
         'overflow-x': ['no-display', 'no-content'],
         'overflow-y': ['no-display', 'no-content'],
