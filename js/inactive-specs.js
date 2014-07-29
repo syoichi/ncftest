@@ -363,6 +363,93 @@
     },
 
     // Håkon Wium Lie's specs
+    'css-page-floats': {
+      'title': 'Page Floats',
+      'properties': {
+        'float': ['top', 'bottom', 'snap'].concat(
+          ['10px'].times(1, 2).qmark([
+            'top', 'bottom', 'near'
+          ], ', ').map(function snap(arg) {
+            return 'snap(' + arg + ')';
+          })
+        ).concat(['inside', 'outside']),
+        'column-span': ['1', 'page'],
+        // 'float-reference': ['multicol'],
+        'float-defer-column': ['none', '1', '-1', 'last'],
+        'float-defer-page': ['none', '1', '-1', 'last'],
+        'clear': ['top', 'bottom', 'column', 'page'],
+        'float-wrap': ['none', 'wrap'/*, 'intrude'*/],
+        'float-offset': [
+          '0', '5px', '-1px', '0 0', '2em 3em'/*, '-50% 3em', '-80% 2em'*/
+        ],
+        'clear-side': ['auto', 'both', 'none', 'left', 'right'],
+        'background-exclude-level': alphavalue,
+        'exclude-level': alphavalue/*,
+        'exclude-margin': width,
+        'content-inside': [
+          'circle(50%, 50%, 30%)',
+          'polygon(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5)'
+        ],
+        'content-outside': [
+          'circle(50%, 50%, 30%)',
+          'polygon(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5)'
+        ]*/
+      },
+      'selectors': {
+        '::column()': [
+          '::column(1)',
+          'div.chapter::column(3)',
+          'div.chapter::column(3+)', 'div.chapter::column(2, 2)',
+          'div.chapter::column(*, 2)', 'div.chapter::column(1, *)'
+        ],
+        '::region()': [
+          '::region(1)',
+          'div.chapter::region(3)', 'div.chapter::region(2n)',
+          'div.chapter::region(3+)', 'div.chapter::region(2, 2)',
+          'div.chapter::region(*, 2)', 'div.chapter::region(1, *)',
+          'article::region(1-3)'
+        ]
+      }
+    },
+
+    'figures': {
+      'title': 'CSS Figures',
+      'dev': 'http://figures.spec.whatwg.org/',
+      'properties': {
+        'float': [
+          'block-start', 'block-end', 'top-bottom', 'block-start-end',
+          'bottom-top', 'block-end-start'/*,
+          'snap(2, near)', 'snap(1)', 'snap(3, bottom)'*/
+        ].concat([
+          'top', 'bottom', 'top-bottom', 'bottom-top', 'snap(1em)'
+        ].amp(['left', 'right', 'inside', 'outside'])),
+        'float-reference': ['column', 'element', 'page', 'bleed-box'],
+        // 'object-fill': ['fill'],
+        'float-defer-page': ['left', 'right'].concat(
+          ['1', '-1'].or(
+            ['last'],
+            ['left', 'right']
+          ).filter(function remove1ValueSyntax(val) {
+            return val.split(' ').length > 1;
+          })
+        ),
+        'float-defer-column': ['inside', 'outside'],
+        'float-defer-line': ['none', '1', '1%'],
+        'float-policy': [
+          'normal'/*, 'forward', 'zap-last'*/
+        ].concat(['drop-tail'].or(['in-order'])),
+        'column-span': ['0.5', '1.75', '10px', 'auto'],
+        'float-offset': [
+          'none', '1.1', '-1.1', '50%', '-50%', 'auto'/*, '-3em'*/
+        ],
+        'wrap-side': ['none'].concat([
+          'all', 'left', 'right', 'top', 'bottom', 'line-start', 'line-end',
+          'block-start', 'block-end', 'line'
+        ].or(['1', '-1'])),
+        'wrap-contrast': ['normal', '0.5', '0', '1', '0.5 1em']
+      }
+    },
+
     'css-gcpm-3': {
       'title': 'Generated Content for Paged Media',
       'properties': {
@@ -455,49 +542,6 @@
       }
     },
 
-    'css-content-3': {
-      'title': 'Generated Content',
-      'tr': 'http://www.w3.org/TR/css3-content/',
-      'properties': {
-        // 'string-set': ['title contents', 'chapter contents'],
-        'page-policy': ['start', 'first', 'last'],
-        'content': [
-          'inhibit', 'pending(insert)', 'contents', 'footnote', 'endnote',
-          'section-note', 'list-item', 'box', 'check', 'circle', 'diamond',
-          'disc', 'hyphen', 'square', 'date()', 'time()', 'document-url',
-          // '<target>',
-          'url(foo.png), none', 'icon, none', 'icon, icon',
-          'url(foo.png), string(name)', 'url(foo.png), pending(footnote)',
-          'url(foo.png), url(foo.png)', 'url(foo.png), attr(alt)',
-          'attr(href, url) contents', 'string(name) string(name)',
-          'url(foo.png), url(foo.png), none',
-          'url(header/mng), url(header/png), none',
-          'url(1), url(2), url(3), contents',
-          'url(logo.mov), url(logo.mng), url(logo.png), none',
-          'url(welcome), "Welcome to: " url(logo)',
-          '\'[\' counter(footnote) \']\' contents',
-          'counter(footnote) \'. \' contents'
-        ]/*,
-        'move-to': ['insert']*/
-      },
-      'selectors': {
-        '::line-marker': ['::line-marker'],
-        '::alternate': [
-          '::alternate'/*, 'span::alternate',
-          'span::alternate::before', 'span::after::alternate'*/
-        ]
-      },
-      '@rules': {
-        '@counter-styles': ['@counter-styles']/*,
-        '@string': ['@string chapter'],
-        '@counter': ['@counter', '@counter footnote']*/
-      },
-      'descriptors': {
-        'atrule': '@counter-styles',
-        'footnote': ['super-decimal']
-      }
-    },
-
     'books': {
       'title': 'CSS Books',
       'dev': 'http://books.spec.whatwg.org/',
@@ -570,90 +614,47 @@
       }
     },
 
-    'css-page-floats': {
-      'title': 'Page Floats',
+    // Obsolete
+    'css-content-3': {
+      'title': 'Generated Content',
+      'tr': 'http://www.w3.org/TR/css3-content/',
       'properties': {
-        'float': ['top', 'bottom', 'snap'].concat(
-          ['10px'].times(1, 2).qmark([
-            'top', 'bottom', 'near'
-          ], ', ').map(function snap(arg) {
-            return 'snap(' + arg + ')';
-          })
-        ).concat(['inside', 'outside']),
-        'column-span': ['1', 'page'],
-        // 'float-reference': ['multicol'],
-        'float-defer-column': ['none', '1', '-1', 'last'],
-        'float-defer-page': ['none', '1', '-1', 'last'],
-        'clear': ['top', 'bottom', 'column', 'page'],
-        'float-wrap': ['none', 'wrap'/*, 'intrude'*/],
-        'float-offset': [
-          '0', '5px', '-1px', '0 0', '2em 3em'/*, '-50% 3em', '-80% 2em'*/
-        ],
-        'clear-side': ['auto', 'both', 'none', 'left', 'right'],
-        'background-exclude-level': alphavalue,
-        'exclude-level': alphavalue/*,
-        'exclude-margin': width,
-        'content-inside': [
-          'circle(50%, 50%, 30%)',
-          'polygon(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5)'
-        ],
-        'content-outside': [
-          'circle(50%, 50%, 30%)',
-          'polygon(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5)'
-        ]*/
+        // 'string-set': ['title contents', 'chapter contents'],
+        'page-policy': ['start', 'first', 'last'],
+        'content': [
+          'inhibit', 'pending(insert)', 'contents', 'footnote', 'endnote',
+          'section-note', 'list-item', 'box', 'check', 'circle', 'diamond',
+          'disc', 'hyphen', 'square', 'date()', 'time()', 'document-url',
+          // '<target>',
+          'url(foo.png), none', 'icon, none', 'icon, icon',
+          'url(foo.png), string(name)', 'url(foo.png), pending(footnote)',
+          'url(foo.png), url(foo.png)', 'url(foo.png), attr(alt)',
+          'attr(href, url) contents', 'string(name) string(name)',
+          'url(foo.png), url(foo.png), none',
+          'url(header/mng), url(header/png), none',
+          'url(1), url(2), url(3), contents',
+          'url(logo.mov), url(logo.mng), url(logo.png), none',
+          'url(welcome), "Welcome to: " url(logo)',
+          '\'[\' counter(footnote) \']\' contents',
+          'counter(footnote) \'. \' contents'
+        ]/*,
+        'move-to': ['insert']*/
       },
       'selectors': {
-        '::column()': [
-          '::column(1)',
-          'div.chapter::column(3)',
-          'div.chapter::column(3+)', 'div.chapter::column(2, 2)',
-          'div.chapter::column(*, 2)', 'div.chapter::column(1, *)'
-        ],
-        '::region()': [
-          '::region(1)',
-          'div.chapter::region(3)', 'div.chapter::region(2n)',
-          'div.chapter::region(3+)', 'div.chapter::region(2, 2)',
-          'div.chapter::region(*, 2)', 'div.chapter::region(1, *)',
-          'article::region(1-3)'
+        '::line-marker': ['::line-marker'],
+        '::alternate': [
+          '::alternate'/*, 'span::alternate',
+          'span::alternate::before', 'span::after::alternate'*/
         ]
-      }
-    },
-
-    'figures': {
-      'title': 'CSS Figures',
-      'dev': 'http://figures.spec.whatwg.org/',
-      'properties': {
-        'float': [
-          'block-start', 'block-end', 'top-bottom', 'block-start-end',
-          'bottom-top', 'block-end-start'/*,
-          'snap(2, near)', 'snap(1)', 'snap(3, bottom)'*/
-        ].concat([
-          'top', 'bottom', 'top-bottom', 'bottom-top', 'snap(1em)'
-        ].amp(['left', 'right', 'inside', 'outside'])),
-        'float-reference': ['column', 'element', 'page', 'bleed-box'],
-        // 'object-fill': ['fill'],
-        'float-defer-page': ['left', 'right'].concat(
-          ['1', '-1'].or(
-            ['last'],
-            ['left', 'right']
-          ).filter(function remove1ValueSyntax(val) {
-            return val.split(' ').length > 1;
-          })
-        ),
-        'float-defer-column': ['inside', 'outside'],
-        'float-defer-line': ['none', '1', '1%'],
-        'float-policy': [
-          'normal'/*, 'forward', 'zap-last'*/
-        ].concat(['drop-tail'].or(['in-order'])),
-        'column-span': ['0.5', '1.75', '10px', 'auto'],
-        'float-offset': [
-          'none', '1.1', '-1.1', '50%', '-50%', 'auto'/*, '-3em'*/
-        ],
-        'wrap-side': ['none'].concat([
-          'all', 'left', 'right', 'top', 'bottom', 'line-start', 'line-end',
-          'block-start', 'block-end', 'line'
-        ].or(['1', '-1'])),
-        'wrap-contrast': ['normal', '0.5', '0', '1', '0.5 1em']
+      },
+      '@rules': {
+        '@counter-styles': ['@counter-styles']/*,
+        '@string': ['@string chapter'],
+        '@counter': ['@counter', '@counter footnote']*/
+      },
+      'descriptors': {
+        'atrule': '@counter-styles',
+        'footnote': ['super-decimal']
       }
     },
 
