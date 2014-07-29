@@ -82,6 +82,12 @@
       '"B . E E E . F F F" *'
   ]);
   var fillRule = ['nonzero', 'evenodd'];
+  var spatialNav = [
+    'go(index)', 'go(previous)', 'go(next)', 'back',
+    'url(..)', 'url(a1.html)', 'url-doc(..)', 'url-doc(a1.html)'/*,
+    'link-rel(next)'*/
+  ];
+  var pageShiftEffects = ['pan', 'turn', 'flip', 'fold'];
 
   win.NCFTest.Specs = {
     // Inactive implementing in Browsers
@@ -368,6 +374,7 @@
           'content(first-letter)', 'attr(title)'
         ])).concat([
           'header content(before) content(text)',
+          'header content(before) \':\' content(text)',
           'header "Chapter " counter(chapter) content()',
           'header "Chapter " counter(header) ": " content()',
           'index \'foo\' attr(title) ' +
@@ -403,16 +410,17 @@
           ).map(function targetText(arg) {
             return 'target-text(' + arg + ')';
           })
-        ).concat([
+        ).concat([/*
           '"first: " string(heading, first)',
           'counter(footnote, symbols(\'*\', \'†\', \'‡\', \'§\'))',
           'counter(footnote, symbols(\'*\', \'†\', \'‡\', \'§\')) \'. \'',
           'leader(\'.\') target-counter(attr(href url), page)',
-          '", in the chapter entitled " target-text(attr(href url))'
+          'leader('.') target-counter(attr(href url), page, lower-roman)',
+          '", in the chapter entitled " target-text(attr(href url))'*/
         ]),
         'position': ['running(header)'],
-        'running': ['none', 'ident', 'chapter'],
-        'float': ['footnote'],
+        // 'running': ['none', 'ident', 'chapter'],
+        'float': ['footnote'/*, 'prince-column-footnote'*/],
         'footnote-display': ['block', 'inline', 'compact'],
         'footnote-policy': ['auto', 'line', 'block'],
         'bookmark-level': ['none', '1'],
@@ -439,12 +447,11 @@
       },
       '@rules': {
         '@footnote': ['@footnote'],
-        '@page': anb.map(function atPageNth(nth) {
+        '@page': anb.concat([
+          '5 of A', '1n+1 of B', 'odd of C'
+        ]).map(function atPageNth(nth) {
           return '@page :nth(' + nth + ')';
-        }).concat([
-          '@page :nth(5 of A)', '@page :nth(1n+1 of B)', '@page :nth(odd of C)',
-          '@page:nth(3 of body)'
-        ])
+        }).concat(['@page:nth(1)', '@page:nth(3 of body)'])
       }
     },
 
@@ -452,24 +459,26 @@
       'title': 'Generated Content',
       'tr': 'http://www.w3.org/TR/css3-content/',
       'properties': {
-        'string-set': ['title contents', 'chapter contents'],
+        // 'string-set': ['title contents', 'chapter contents'],
         'page-policy': ['start', 'first', 'last'],
         'content': [
           'inhibit', 'pending(insert)', 'contents', 'footnote', 'endnote',
           'section-note', 'list-item', 'box', 'check', 'circle', 'diamond',
           'disc', 'hyphen', 'square', 'date()', 'time()', 'document-url',
-          /*'<target>',*/
+          // '<target>',
           'url(foo.png), none', 'icon, none', 'icon, icon',
           'url(foo.png), string(name)', 'url(foo.png), pending(footnote)',
-          'url(foo.png), url(foo.png)',
-          'attr(href, url), attr(alt)', 'attr(href, url), contents',
+          'url(foo.png), url(foo.png)', 'url(foo.png), attr(alt)',
+          'attr(href, url) contents', 'string(name) string(name)',
           'url(foo.png), url(foo.png), none',
           'url(header/mng), url(header/png), none',
+          'url(1), url(2), url(3), contents',
           'url(logo.mov), url(logo.mng), url(logo.png), none',
+          'url(welcome), "Welcome to: " url(logo)',
           '\'[\' counter(footnote) \']\' contents',
           'counter(footnote) \'. \' contents'
-        ],
-        'move-to': ['insert']
+        ]/*,
+        'move-to': ['insert']*/
       },
       'selectors': {
         '::line-marker': ['::line-marker'],
@@ -479,9 +488,9 @@
         ]
       },
       '@rules': {
-        '@counter-styles': ['@counter-styles'],
+        '@counter-styles': ['@counter-styles']/*,
         '@string': ['@string chapter'],
-        '@counter': ['@counter', '@counter footnote']
+        '@counter': ['@counter', '@counter footnote']*/
       },
       'descriptors': {
         'atrule': '@counter-styles',
@@ -493,23 +502,32 @@
       'title': 'CSS Books',
       'dev': 'http://books.spec.whatwg.org/',
       'properties': {
+        // 'string-set': ['index first-letter, entry content()'],
         'content': [
+          // 'leader(space) counter(line)',
+          // '"(see page " target-counter(attr(href url), page, decimal) ")"',
+          /*'"(see section " ' +
+            'target-counters(attr(href url), section, ".", decimal) ")"',*/
+          /*'"Chapter " target-counter(attr(href url), chapter) ' +
+            '\' ("\'  target-text(attr(href url), content) \'") on page \' ' +
+            'target-counter(attr(href url), page)',*/
           'counter(footnote, super-decimal)',
           'target-pull(attr(href url))'
         ],
-        'float-defer': ['last'],
-        'flow': ['sidenote'].qmark([
-          'align', 'align-x', 'align-y', 'fill'
-        ].or([
-          'same-page', 'same-spread', 'any-page'
-        ]).concat([
-          'same-page!', 'align!', 'align-y!', 'stick', 'erase'
-        ]), ', ').map(function area(arg) {
+        // 'float-defer': ['last'],
+        'flow': ['ident'].qmark([
+          'baseline', 'top-edge', 'bottom-edge', 'close', 'same-page',
+          'same-spread', 'fill',
+          'baseline!', 'top-edge!', 'bottom-edge!', 'close!', 'same-page!',
+          'same-spread!', 'fill!'
+        ], ', ').concat([
+          // 'sidenote, fill same-spread', 'sidenote, stick', 'sidenote, erase'
+        ]).map(function area(arg) {
           return 'area(' + arg + ')';
         }),
         'condition': ['at-page-break', 'not-at-page-break'],
         'column-rule-clip': ['none', 'auto', '10px', '10px 10px'],
-        'baseline-grid': ['normal', 'none', 'new', 'root', 'page'],
+        'baseline-grid': ['normal', 'none', 'new', 'root'],
         'baseline-block-snap': [
           'auto', 'before', 'after', 'center'
         ].or(['margin-box', 'border-box']),
@@ -517,51 +535,38 @@
           'none', '"foo" "bar"', '"a" ""', '"..." "\\2026" "\'" "\\2019"',
           '"a" "b" "b" "c"'
         ],
-        'nav-up': [
-          'go(index)', 'go(previous)', 'go(next)', 'back',
-          'url(..)', 'url(a1.html)', 'url-doc(..)', 'url-doc(a1.html)',
-          'link-rel(next)'
-        ],
-        'nav-right': [
-          'go(index)', 'go(previous)', 'go(next)', 'back',
-          'url(..)', 'url(a1.html)', 'url-doc(..)', 'url-doc(a1.html)',
-          'link-rel(next)'
-        ],
-        'nav-down': [
-          'go(index)', 'go(previous)', 'go(next)', 'back',
-          'url(..)', 'url(a1.html)', 'url-doc(..)', 'url-doc(a1.html)',
-          'link-rel(next)'
-        ],
-        'nav-left': [
-          'go(index)', 'go(previous)', 'go(next)', 'back',
-          'url(..)', 'url(a1.html)', 'url-doc(..)', 'url-doc(a1.html)',
-          'link-rel(next)'
-        ],
-        'nav-up-shift': ['pan', 'turn', 'flip', 'fold'],
-        'nav-right-shift': ['pan', 'turn', 'flip', 'fold'],
-        'nav-down-shift': ['pan', 'turn', 'flip', 'fold'],
-        'nav-left-shift': ['pan', 'turn', 'flip', 'fold']
+        'nav-up': spatialNav,
+        'nav-right': spatialNav,
+        'nav-down': spatialNav,
+        'nav-left': spatialNav,
+        'nav-up-shift': pageShiftEffects,
+        'nav-right-shift': pageShiftEffects,
+        'nav-down-shift': pageShiftEffects,
+        'nav-left-shift': pageShiftEffects
       },
       '@rules': {
         '@area': ['@area', '@area sidenote'],
         '@page': [
-          '@page chapter:nth(3n)', '@page chapter:nth(3n+1)',
-          '@page chapter:nth(3n+2)',
-          '@page :first p', '@page :nth(1) .sidenote',
-          '@page :nth(3n+1) p:first-line', '@page funky:nth(1) p',
-          '@page :left p'
-        ],
+          'chapter:nth(1)', 'chapter:nth(3n)', 'chapter:nth(3n+1)', ':first p',
+          ':nth(1) .sidenote', ':nth(3n+1) p:first-line', 'funky:nth(1) p',
+          ':left p'
+        ].map(function atPageNth(nth) {
+          return '@page ' + nth;
+        }),
         '@inside': ['@inside', '@inside p'],
-        '@layout': ['@layout'],
-        '@navigation': ['@navigation']
+        '@layout': ['@layout']/*,
+        '@navigation': ['@navigation'],
+        '@neighborhood': ['@neighborhood'],
+        '@hood': ['@hood']*/
       },
       'selectors': {
-        '::call': ['::call'],
+        '::call': ['::call'/*, '.sidenote::call'*/]/*,
         ':column()': [
+          ':column(1)',
           'div.chapter:column(3)', 'div.chapter:column(2n)',
           'div.chapter:column(3+)', 'div.chapter:column(2, 2)',
           'div.chapter:column(*, 2)', 'div.chapter:column(1, *)'
-        ]
+        ]*/
       }
     },
 
