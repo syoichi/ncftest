@@ -1281,13 +1281,13 @@
           // 'cursor',
           'content',
           'background',
+          'list-style',
           'border-image',
-          'list-style'/*,
           'shape-outside',
-          'mask-image',
+          'mask-image'/*,
           'mask',
-          'mask-box-source',
-          'mask-box'*/
+          'mask-border-source',
+          'mask-border'*/
         ],
         'image()': [
           'image(url(../img/noise.png))', 'image("../img/noise.png")',
