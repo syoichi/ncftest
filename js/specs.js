@@ -2034,35 +2034,40 @@
           'content'
         ],
         'image()': [
-          'image(ltr url(foo.png))', 'image(ltr \'arrow.png\')',
-          'image(ltr green)', 'image(rtl url(foo.png))',
-          'image(rtl url(arrow.png), \'foo.png\')',
-          'image(rtl \'dark.png\', black)',
-          'image(ltr \'wavy.svg\', \'wavy.png\' , \'wavy.gif\')'
-        ],
+          'ltr url(foo.png)', 'rtl url(foo.png)', 'ltr \'arrow.png\'',
+          'ltr \'sprites.png#xywh=10,30,60,20\'', 'ltr green',
+          'ltr url(../img/noise.png), url(foo.png)',
+          'rtl url(arrow.png), \'foo.png\'',
+          'ltr \'cat_meme.gif#frame=5\', \'lolcat.png\'',
+          'rtl url("bg-image.png"), rgba(0, 0, 255, .5)',
+          'ltr \'dark.png\', black',
+          'rtl \'wavy.svg\', \'wavy.png\' , \'wavy.gif\''
+        ].map(function imageFunc(arg) {
+          return 'image(' + arg + ')';
+        }),
         'image-set()': [
-          'image-set(white)',
-          'image-set(url(foo.png) 600dpi)', 'image-set(\'foo.png\' 600dpcm)',
-          'image-set(linear-gradient(white, black) 600dppx)',
-          'image-set(radial-gradient(white, black) 1x)',
-          'image-set(url(foo.png) 600dpi, \'foo.png\' 600dpcm)',
-          'image-set(\'foo.png\' 1x, \'foo-2x.png\' 2x, ' +
-            '\'foo-print.png\' 600dpi)',
-          'image-set(url(foo.png) 600dppx, black)',
-          'image-set(url(foo.png) 1x, \'foo.png\' 2x, white)'
-        ],
+          'white', 'url(foo.png) 600dpi', '\'foo.png\' 600dpcm',
+          'linear-gradient(white, black) 600dppx',
+          'radial-gradient(white, black) 1x',
+          'url(foo.png) 600dpi, \'foo.png\' 600dpcm',
+          '\'foo.png\' 1x, \'foo-2x.png\' 2x, \'foo-print.png\' 600dpi',
+          'url(foo.png) 600dppx, black',
+          'url(foo.png) 1x, \'foo.png\' 2x, white'
+        ].map(function imageSet(arg) {
+          return 'image-set(' + arg + ')';
+        }),
         'element()': ['element(#src)'],
         'cross-fade()': [
-          'cross-fade(url(foo.png))',
-          'cross-fade(linear-gradient(white, black))',
-          'cross-fade(10% url(foo.png))',
-          'cross-fade(url(foo.png), linear-gradient(white, black))',
-          'cross-fade(0% url(foo.png), url(arrow.png))',
-          'cross-fade(url(foo.png), black)',
-          'cross-fade(50% url(foo.png), black)',
-          'cross-fade(url(foo.png), linear-gradient(white, black), white)',
-          'cross-fade(100% url(foo.png), url(arrow.png), white)'
-        ],
+          'url(foo.png)', 'linear-gradient(white, black)', '10% url(foo.png)',
+          'url(foo.png) 10%', 'url(foo.png), url("bar.png")',
+          'url(foo.png), linear-gradient(white, black)', 'url(foo.png), black',
+          '0% url(foo.png), url(arrow.png)',
+          '50% url(foo.png), linear-gradient(white, black)',
+          '50% url(foo.png), black',
+          'linear-gradient(white, black) 100%, rgba(0, 0, 255, .5)'
+        ].map(function crossFade(arg) {
+          return 'cross-fade(' + arg + ')';
+        }),
 /*
  * <color-stop-list> = <color> && [<length>|<percentage>]{1,2}?,
  *                     [[<color> || [<length>|<percentage>]{1,2}]#, ]?
