@@ -3,7 +3,7 @@
 (function executeSupports(win, doc) {
   'use strict';
 
-  var NCFTest, camelCase, prefixes, prefixesLen, isCSS, inline, style;
+  var NCFTest, camelCase, prefixes, prefixesLen, inline, style;
 
   NCFTest = win.NCFTest;
   camelCase = NCFTest.camelCase;
@@ -16,7 +16,6 @@
     '-op-', '-xv-', '-khtml-', '-apple-'*/
   ];
   prefixesLen = prefixes.length;
-  isCSS = typeof CSS !== 'undefined';
 
   doc.addEventListener('DOMContentLoaded', function setupDummys() {
     var head, body, dummy, iframe;
@@ -93,39 +92,16 @@
         return false;
       }
 
-      if (isCSS) {
-        for (idx = 0; idx < prefixesLen; idx += 1) {
-          prefix = prefixes[idx];
-          prefixed = prefix + value;
+      for (idx = 0; idx < prefixesLen; idx += 1) {
+        prefix = prefixes[idx];
+        prefixed = prefix + value;
 
-          if (CSS.supports(property, prefixed)) {
-            if (label && cached[label] === void 0) {
-              cached[label] = prefix + label;
-            }
-
-            return prefixed;
+        if (CSS.supports(property, prefixed)) {
+          if (label && cached[label] === void 0) {
+            cached[label] = prefix + label;
           }
-        }
-      } else {
-        property = camelCase(property);
-        inline[property] = inline.cssText = '';
 
-        for (idx = 0; idx < prefixesLen; idx += 1) {
-          prefix = prefixes[idx];
-          prefixed = prefix + value;
-
-          // Trident throws Undefined Error.
-          try {
-            inline[property] = prefixed;
-          } catch (err) {}
-
-          if (inline.length > 0) {
-            if (label && cached[label] === void 0) {
-              cached[label] = prefix + label;
-            }
-
-            return prefixed;
-          }
+          return prefixed;
         }
       }
 
@@ -146,39 +122,16 @@
         return false;
       }
 
-      if (isCSS) {
-        for (idx = 0; idx < prefixesLen; idx += 1) {
-          prefix = prefixes[idx];
-          prefixed = prefix + keyword;
+      for (idx = 0; idx < prefixesLen; idx += 1) {
+        prefix = prefixes[idx];
+        prefixed = prefix + keyword;
 
-          if (CSS.supports(property, prefixed)) {
-            if (keyword && cached[keyword] === void 0) {
-              cached[keyword] = prefix + keyword;
-            }
-
-            return prefixed;
+        if (CSS.supports(property, prefixed)) {
+          if (keyword && cached[keyword] === void 0) {
+            cached[keyword] = prefix + keyword;
           }
-        }
-      } else {
-        property = camelCase(property);
-        inline[property] = inline.cssText = '';
 
-        for (idx = 0; idx < prefixesLen; idx += 1) {
-          prefix = prefixes[idx];
-          prefixed = prefix + keyword;
-
-          // Trident throws Undefined Error.
-          try {
-            inline[property] = prefixed;
-          } catch (err) {}
-
-          if (inline.length > 0) {
-            if (keyword && cached[keyword] === void 0) {
-              cached[keyword] = prefix + keyword;
-            }
-
-            return prefixed;
-          }
+          return prefixed;
         }
       }
 
@@ -199,39 +152,16 @@
         return false;
       }
 
-      if (isCSS) {
-        for (idx = 0; idx < prefixesLen; idx += 1) {
-          prefix = prefixes[idx];
-          prefixed = '1' + prefix + unit;
+      for (idx = 0; idx < prefixesLen; idx += 1) {
+        prefix = prefixes[idx];
+        prefixed = '1' + prefix + unit;
 
-          if (CSS.supports(property, prefixed)) {
-            if (unit && cached[unit] === void 0) {
-              cached[unit] = prefix + unit;
-            }
-
-            return prefixed;
+        if (CSS.supports(property, prefixed)) {
+          if (unit && cached[unit] === void 0) {
+            cached[unit] = prefix + unit;
           }
-        }
-      } else {
-        property = camelCase(property);
-        inline[property] = inline.cssText = '';
 
-        for (idx = 0; idx < prefixesLen; idx += 1) {
-          prefix = prefixes[idx];
-          prefixed = '1' + prefix + unit;
-
-          // Trident throws Undefined Error.
-          try {
-            inline[property] = prefixed;
-          } catch (err) {}
-
-          if (inline.length > 0) {
-            if (unit && cached[unit] === void 0) {
-              cached[unit] = prefix + unit;
-            }
-
-            return prefixed;
-          }
+          return prefixed;
         }
       }
 
