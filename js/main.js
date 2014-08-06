@@ -362,9 +362,9 @@
       }
     },
     'Media queries': {
-      type: 'mq',
+      type: 'mediaQuery',
       getResults: function mediaQueries(mq, mqName) {
-        return Supports.mq(mq, mqName);
+        return Supports.mediaQuery(mq, mqName);
       }
     }
   };

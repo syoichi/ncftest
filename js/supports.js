@@ -323,13 +323,13 @@
 
       return false;
     },
-    mq: function mqFunc(mq, mqName) {
+    mediaQuery: function mediaQueryFunc(mq, mqName) {
       var cached, idx, prefix, prefixed, mql;
 
-      cached = mqFunc.cached;
+      cached = mediaQueryFunc.cached;
 
       if (!cached) {
-        cached = mqFunc.cached = {};
+        cached = mediaQueryFunc.cached = {};
       } else if (cached[mq]) {
         return cached[mq];
       }
