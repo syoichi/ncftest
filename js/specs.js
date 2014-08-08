@@ -507,6 +507,21 @@
       }
     },
 
+    'css-namespaces-3': {
+      'title': 'Namespaces',
+      'tr': 'http://www.w3.org/TR/css3-namespace/',
+      '@rules': {
+        '@namespace': [
+          '@namespace "";',
+          '@namespace empty "";',
+          '@namespace "http://www.w3.org/1999/xhtml";',
+          '@namespace svg "http://www.w3.org/2000/svg";',
+          '@namespace url(http://www.w3.org/1999/xhtml);',
+          '@namespace svg url(http://www.w3.org/2000/svg);'
+        ]
+      }
+    },
+
     'css-backgrounds-3': {
       'title': 'Backgrounds and Borders',
       'tr': 'http://www.w3.org/TR/css3-background/',
@@ -1578,22 +1593,6 @@
           ['legacy'].amp(['left', 'right', 'center'])
         ),
         'align-items': ['auto'].concat(alignSelf)
-      }
-    },
-
-    // CSS Level 3? New CSS Level 1?
-    'css-namespaces-1': {
-      'title': 'Namespaces',
-      'tr': 'http://www.w3.org/TR/css3-namespace/',
-      '@rules': {
-        '@namespace': [
-          '@namespace "";',
-          '@namespace empty "";',
-          '@namespace "http://www.w3.org/1999/xhtml";',
-          '@namespace svg "http://www.w3.org/2000/svg";',
-          '@namespace url(http://www.w3.org/1999/xhtml);',
-          '@namespace svg url(http://www.w3.org/2000/svg);'
-        ]
       }
     },
 
