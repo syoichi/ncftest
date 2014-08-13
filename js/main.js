@@ -3,7 +3,7 @@
 (function executeScoringAndTesting(doc) {
   'use strict';
 
-  var Supports, Specs, mainScore, all, specsTested;
+  var Supports, Specs, Timer, mainScore, all, specsTested;
 
   Supports = NCFTest.Supports;
   Specs = NCFTest.Specs;
@@ -372,10 +372,22 @@
     }
   };
 
+  Timer = {
+    time: null,
+    timeStart: function timeStart() {
+      this.time = Date.now();
+    },
+    timeEnd: function timeEnd() {
+      var timeTaken = doc.getElementById('timeTaken');
+
+      timeTaken.textContent = (Date.now() - this.time) + 'ms';
+    }
+  };
+
   mainScore = new Score(null);
 
   doc.addEventListener('DOMContentLoaded', function prepare() {
-    var score, passedTests, totalTests, total, specs, timeBefore;
+    var score, passedTests, totalTests, total, specs;
 
     all = doc.getElementById('all');
     specsTested = doc.getElementById('specsTested');
@@ -397,10 +409,10 @@
       }
     });
 
-    timeBefore = Date.now();
+    Timer.timeStart();
 
     (function main() {
-      var spec, test, timeTaken;
+      var spec, test;
 
       if (specs.length) {
         // Get spec id
@@ -422,8 +434,7 @@
       // Done!
 
       // Display time taken
-      timeTaken = doc.getElementById('timeTaken');
-      timeTaken.textContent = (Date.now() - timeBefore) + 'ms';
+      Timer.timeEnd();
     })();
   });
 }(document));
