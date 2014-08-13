@@ -11,7 +11,7 @@
     this.passed = this.total = this.passedTests = this.totalTests = 0;
     this.main = main;
   }
-  Object.extendProperties(Score.prototype, {
+  Object.extend(Score.prototype, {
     update: function update(data) {
       if (!data.total) {
         return;
@@ -82,7 +82,7 @@
     anchor.textContent = title;
     specsTested.appendChild(list);
   }
-  Object.extendProperties(Test.prototype, {
+  Object.extend(Test.prototype, {
     group: function group(what, testCallback) {
       var theseTests, testList, thisSection, i, testListLen, feature,
           dl, dt, passed, tests, j, testsLen,

@@ -1,8 +1,8 @@
 (function executeProto() {
   'use strict';
 
-  Object.defineProperty(Object, 'extendProperties', {
-    value: function extendProperties(target, obj) {
+  Object.defineProperty(Object, 'extend', {
+    value: function extend(target, obj) {
       var props = {};
 
       Object.keys(obj).forEach(function setDescriptor(key) {
@@ -21,7 +21,7 @@
     configurable: true
   });
 
-  Object.extendProperties(Array.prototype, {
+  Object.extend(Array.prototype, {
     // [ a | b | c ] [ x | y | z ]
     and: function and(arr, separator) {
       separator = separator || ' ';
@@ -158,7 +158,7 @@
   // simple polyfills
   // for Trident, Blink, Presto
   if (!Array.from) {
-    Object.extendProperties(Array, {
+    Object.extend(Array, {
       from: function from(arrayLike) {
         return Array.prototype.slice.call(arrayLike);
       }
