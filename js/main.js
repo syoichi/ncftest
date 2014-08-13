@@ -3,7 +3,7 @@
 (function executeScoringAndTesting(doc) {
   'use strict';
 
-  var Supports, Specs, Timer, mainScore, all, specsTested;
+  var Supports, Specs, Timer, mainScore, all, testedSpecs;
 
   Supports = NCFTest.Supports;
   Specs = NCFTest.Specs;
@@ -83,7 +83,7 @@
     addPassedSpecToSideList: function addPassedSpecToSideList() {
       var pass = this.passClass(this.score);
 
-      specsTested.insertAdjacentHTML('BeforeEnd', [
+      testedSpecs.insertAdjacentHTML('BeforeEnd', [
         '<li title="' + this.score.percent() + ' passed" class="' + pass + '">',
         '<a href="#' + this.id + '">' + this.title + '</a>',
         '</li>'
@@ -392,7 +392,7 @@
     var score, passedTests, totalTests, total, specIDs;
 
     all = doc.getElementById('all');
-    specsTested = doc.getElementById('specsTested');
+    testedSpecs = doc.getElementById('testedSpecs');
 
     score = doc.getElementById('score');
     passedTests = doc.getElementById('passedTests');
