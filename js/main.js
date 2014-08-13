@@ -372,7 +372,7 @@
   mainScore = new Score(null);
 
   doc.addEventListener('DOMContentLoaded', function prepare() {
-    var score, passedTests, totalTests, total, duration, specs, timeBefore;
+    var score, passedTests, totalTests, total, specs, timeBefore;
 
     all = doc.getElementById('all');
     specsTested = doc.getElementById('specsTested');
@@ -382,7 +382,6 @@
     totalTests = doc.getElementById('totalTests');
     total = doc.getElementById('total');
 
-    duration = 0;
     specs = Object.keys(Specs);
 
     all.addEventListener('click', function openDL(evt) {
@@ -406,10 +405,6 @@
 
         // Run tests
         test = new Test(Specs[spec], spec, Specs[spec].title);
-
-        // Count test duration
-        duration += Date.now() - timeBefore;
-        timeBefore = Date.now();
 
         // Output current score
         score.textContent = mainScore.percent();
