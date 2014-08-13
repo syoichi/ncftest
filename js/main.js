@@ -412,14 +412,14 @@
     Timer.timeStart();
 
     (function main() {
-      var spec, test;
+      var id, test;
 
       if (specIDs.length) {
         // Get spec id
-        spec = specIDs.shift();
+        id = specIDs.shift();
 
         // Run tests
-        test = new Test(Specs[spec], spec, Specs[spec].title);
+        test = new Test(Specs[id], id, Specs[id].title);
 
         // Output current score
         score.textContent = mainScore.percent();
