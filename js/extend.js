@@ -21,6 +21,14 @@
     configurable: true
   });
 
+  Object.extend(String.prototype, {
+    toCamelCase: function toCamelCase() {
+      return this.replace(/-([a-z])/g, function makeUpperCase($0, $1) {
+        return $1.toUpperCase();
+      }).replace('-', '');
+    }
+  });
+
   Object.extend(Array.prototype, {
     // [ a | b | c ] [ x | y | z ]
     and: function and(arr, separator) {

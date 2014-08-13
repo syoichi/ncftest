@@ -3,10 +3,9 @@
 (function executeSupports(win, doc) {
   'use strict';
 
-  var NCFTest, camelCase, prefixes, prefixesLen, inline, style;
+  var NCFTest, prefixes, prefixesLen, inline, style;
 
   NCFTest = win.NCFTest;
-  camelCase = NCFTest.camelCase;
   prefixes = [
     '', '-moz-', '-webkit-', '-ms-', '-o-',
     // for Trident's CSSOM property
@@ -52,7 +51,7 @@
       var cached, idx, prefixed;
 
       if (property.charAt(0) === '-') {
-        return camelCase(property) in inline ? property : false;
+        return property.toCamelCase() in inline ? property : false;
       }
 
       cached = propertyFunc.cached;
@@ -66,7 +65,7 @@
       for (idx = 0; idx < prefixesLen; idx += 1) {
         prefixed = prefixes[idx] + property;
 
-        if (camelCase(prefixed) in inline) {
+        if (prefixed.toCamelCase() in inline) {
           cached[property] = prefixed;
 
           return prefixed;
@@ -247,7 +246,7 @@
       for (idx = 0; idx < prefixesLen; idx += 1) {
         prefix = prefixes[idx];
         prefixed = prefix + descriptor;
-        prop = camelCase(prefixed);
+        prop = prefixed.toCamelCase();
 
         // value should do prefix test.
         style.textContent = atrule + '{' + prefixed + ': ' + value + ';}';
@@ -297,7 +296,7 @@
       for (idx = 0; idx < prefixesLen; idx += 1) {
         prefix = prefixes[idx];
         prefixed = prefix + ruleSelector;
-        prop = camelCase(prefixed);
+        prop = prefixed.toCamelCase();
 
         style.textContent = atrule + ' {' + prefixed + ' { top: 0; } }';
         cssRule = style.sheet.cssRules[0];
