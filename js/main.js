@@ -51,7 +51,7 @@
     all.appendChild(this.getTest());
 
     // Add to list of tested specs
-    this.addPassedSpecToSideList();
+    this.addTestedSpec();
   }
   Object.extend(Test.prototype, {
     createFeatureList: (function cacheGroups(groups, featureNames) {
@@ -80,7 +80,7 @@
 
       return this.section;
     },
-    addPassedSpecToSideList: function addPassedSpecToSideList() {
+    addTestedSpec: function addTestedSpec() {
       var pass = this.passClass(this.score);
 
       testedSpecs.insertAdjacentHTML('BeforeEnd', [
