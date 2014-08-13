@@ -4,12 +4,6 @@
   var NCFTest = win.NCFTest,
       extendProperties = NCFTest.extendProperties;
 
-  extendProperties(Array, {
-    from: function from(arrayLike) {
-      return Array.prototype.slice.call(arrayLike);
-    }
-  });
-
   extendProperties(Array.prototype, {
     // [ a | b | c ] [ x | y | z ]
     and: function and(arr, separator) {
@@ -143,4 +137,14 @@
       return this[this.length - 1];
     }
   });
+
+  // simple polyfills
+  // for Trident, Blink, Presto
+  if (!Array.from) {
+    extendProperties(Array, {
+      from: function from(arrayLike) {
+        return Array.prototype.slice.call(arrayLike);
+      }
+    });
+  }
 }(window));
