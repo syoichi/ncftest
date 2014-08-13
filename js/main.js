@@ -3,10 +3,9 @@
 (function executeScoringAndTesting(doc) {
   'use strict';
 
-  var Supports, Specs, all, testedSpecs;
-
-  Supports = NCFTest.Supports;
-  Specs = NCFTest.Specs;
+  var Supports = NCFTest.Supports,
+      Specs = NCFTest.Specs,
+      all, testedSpecs;
 
   function Score(main) {
     this.passedTests = this.totalTests = this.total = this.passed = 0;
@@ -425,7 +424,7 @@
 
     timer.start();
 
-    (function main() {
+    (function recursive() {
       var test;
 
       if (specIDs.length) {
@@ -436,7 +435,8 @@
         mainScore.output();
 
         // Schedule next test
-        setTimeout(main, 50);
+        setTimeout(recursive, 50);
+
         return;
       }
       // Done!
