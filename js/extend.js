@@ -1,4 +1,4 @@
-(function executeExtendBuiltInObjects() {
+(function executeExtendBuiltInObjects(doc) {
   'use strict';
 
   Object.defineProperty(Object, 'extend', {
@@ -26,6 +26,13 @@
       return this.replace(/-([a-z])/g, function makeUpperCase($0, $1) {
         return $1.toUpperCase();
       }).replace('-', '');
+    },
+    toElement: function toElement() {
+      var range = doc.createRange();
+
+      range.selectNodeContents(doc.body);
+
+      return range.createContextualFragment(this).firstChild;
     }
   });
 
@@ -172,4 +179,4 @@
       }
     });
   }
-}());
+}(document));

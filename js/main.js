@@ -32,58 +32,61 @@
     }
   });
 
-  function Test(tests, spec, title) {
-    var section, h1, tr, dev, groups, idx, groupsLen, id,
-        miniScore, list, anchor;
-
-    this.tests = tests;
-    this.id = spec;
-    this.title = title;
-    this.score = new Score(mainScore);
-
-    // Wrapper section
-    section = this.section = doc.createElement('section');
-    h1 = section.appendChild(doc.createElement('h1'));
-
-    h1.appendChild(doc.createTextNode(title));
-    tr = h1.appendChild(doc.createElement('a'));
-    tr.target = '_blank';
-    tr.className = 'spec-link';
-    dev = h1.appendChild(tr.cloneNode(false));
-    tr.href = tests.tr || 'http://www.w3.org/TR/' + spec + '/';
-    tr.textContent = 'TR';
-    dev.href = tests.dev || 'http://dev.w3.org/csswg/' + spec + '/';
-    dev.textContent = 'DEV';
-    section.id = spec;
-    section.className = 'test';
+  function Test(tests, id, title) {
+    Object.extend(this, {
+      tests: tests,
+      id: id,
+      title: title,
+      score: new Score(mainScore),
+      // Wrapper section
+      section: ('<section id="' + id + '" class="test"></section>').toElement()
+    });
 
     // Perform tests
-    groups = Object.keys(Test.groups);
-
-    for (idx = 0, groupsLen = groups.length; idx < groupsLen; idx += 1) {
-      id = groups[idx];
-      this.group(id, Test.groups[id].getResults);
-    }
+    this.createFeatureList();
 
     // Display score for this spec
-    miniScore = h1.appendChild(doc.createElement('span'));
-    miniScore.className = 'score';
-    miniScore.textContent = this.score.percent();
-
-    all.appendChild(section);
+    all.appendChild(this.getTest());
 
     // Add to list of tested specs
-    list = doc.createElement('li');
-    list.className = this.passClass(
-      {passed: this.score.passed, total: this.score.total}
-    );
-    list.title = this.score.percent() + ' passed';
-    anchor = list.appendChild(doc.createElement('a'));
-    anchor.href = '#' + spec;
-    anchor.textContent = title;
-    specsTested.appendChild(list);
+    this.addPassedSpecToSideList();
   }
   Object.extend(Test.prototype, {
+    createFeatureList: (function cacheGroups(groups, featureNames) {
+      return function createFeatureList() {
+        if (!groups) {
+          groups = Test.groups;
+          featureNames = Object.keys(Test.groups);
+        }
+
+        featureNames.forEach(function createFeature(featureName) {
+          this.group(featureName, groups[featureName].getResults);
+        }, this);
+      };
+    }()),
+    getTest: function getTest() {
+      var tr = this.tests.tr || 'http://www.w3.org/TR/' + this.id + '/',
+          dev = this.tests.dev || 'http://dev.w3.org/csswg/' + this.id + '/';
+
+      this.section.insertAdjacentHTML('AfterBegin', [
+        '<h1>' + this.title,
+        '<a href="' + tr + '" class="spec-link" target="_blank">TR</a>',
+        '<a href="' + dev + '" class="spec-link" target="_blank">DEV</a>',
+        '<span class="score">' + this.score.percent() + '</span>',
+        '</h1>'
+      ].join(''));
+
+      return this.section;
+    },
+    addPassedSpecToSideList: function addPassedSpecToSideList() {
+      var pass = this.passClass(this.score);
+
+      specsTested.insertAdjacentHTML('BeforeEnd', [
+        '<li title="' + this.score.percent() + ' passed" class="' + pass + '">',
+        '<a href="#' + this.id + '">' + this.title + '</a>',
+        '</li>'
+      ].join(''));
+    },
     group: function group(what, testCallback) {
       var theseTests, testList, thisSection, i, testListLen, feature,
           dl, dt, passed, tests, j, testsLen,
