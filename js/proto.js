@@ -1,10 +1,27 @@
-(function executeProto(win) {
+(function executeProto() {
   'use strict';
 
-  var NCFTest = win.NCFTest,
-      extendProperties = NCFTest.extendProperties;
+  Object.defineProperty(Object, 'extendProperties', {
+    value: function extendProperties(target, obj) {
+      var props = {};
 
-  extendProperties(Array.prototype, {
+      Object.keys(obj).forEach(function setDescriptor(key) {
+        props[key] = {
+          value: obj[key],
+          enumerable: false,
+          writable: true,
+          configurable: true
+        };
+      });
+
+      return Object.defineProperties(target, props);
+    },
+    enumerable: false,
+    writable: true,
+    configurable: true
+  });
+
+  Object.extendProperties(Array.prototype, {
     // [ a | b | c ] [ x | y | z ]
     and: function and(arr, separator) {
       separator = separator || ' ';
@@ -141,10 +158,10 @@
   // simple polyfills
   // for Trident, Blink, Presto
   if (!Array.from) {
-    extendProperties(Array, {
+    Object.extendProperties(Array, {
       from: function from(arrayLike) {
         return Array.prototype.slice.call(arrayLike);
       }
     });
   }
-}(window));
+}());

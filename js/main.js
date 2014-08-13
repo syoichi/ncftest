@@ -1,18 +1,17 @@
 (function executeScoringAndTesting(win, doc) {
   'use strict';
 
-  var NCFTest, Supports, Specs, extendProperties, mainScore, all, specsTested;
+  var NCFTest, Supports, Specs, mainScore, all, specsTested;
 
   NCFTest = win.NCFTest;
   Supports = NCFTest.Supports;
   Specs = NCFTest.Specs;
-  extendProperties = NCFTest.extendProperties;
 
   function Score(main) {
     this.passed = this.total = this.passedTests = this.totalTests = 0;
     this.main = main;
   }
-  extendProperties(Score.prototype, {
+  Object.extendProperties(Score.prototype, {
     update: function update(data) {
       if (!data.total) {
         return;
@@ -83,7 +82,7 @@
     anchor.textContent = title;
     specsTested.appendChild(list);
   }
-  extendProperties(Test.prototype, {
+  Object.extendProperties(Test.prototype, {
     group: function group(what, testCallback) {
       var theseTests, testList, thisSection, i, testListLen, feature,
           dl, dt, passed, tests, j, testsLen,
