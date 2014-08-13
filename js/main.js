@@ -387,7 +387,7 @@
   mainScore = new Score(null);
 
   doc.addEventListener('DOMContentLoaded', function prepare() {
-    var score, passedTests, totalTests, total, specs;
+    var score, passedTests, totalTests, total, specIDs;
 
     all = doc.getElementById('all');
     specsTested = doc.getElementById('specsTested');
@@ -397,7 +397,7 @@
     totalTests = doc.getElementById('totalTests');
     total = doc.getElementById('total');
 
-    specs = Object.keys(Specs);
+    specIDs = Object.keys(Specs);
 
     all.addEventListener('click', function openDL(evt) {
       var target = evt.target;
@@ -414,9 +414,9 @@
     (function main() {
       var spec, test;
 
-      if (specs.length) {
+      if (specIDs.length) {
         // Get spec id
-        spec = specs.shift();
+        spec = specIDs.shift();
 
         // Run tests
         test = new Test(Specs[spec], spec, Specs[spec].title);
