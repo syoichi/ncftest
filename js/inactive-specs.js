@@ -162,12 +162,12 @@
           'table-caption', 'ruby-base', 'ruby-text', 'ruby-base-container',
           'ruby-text-container'
         ],
-        'display-extras': ['none', 'list-item'],
+        'display-list': ['none', 'list-item'],
         'display': [
           'auto', 'inline-level', 'block-level', 'contents',
           'auto inline-level', 'none none', 'auto inline-level none'
         ],
-        'display-box': ['normal', 'none']
+        'box-suppress': ['show', 'discard', 'hide'/*, 'normal'*/]
       }
     },
 
