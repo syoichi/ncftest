@@ -1,4 +1,4 @@
-(function executeProto() {
+(function executeExtendBuiltInObjects() {
   'use strict';
 
   Object.defineProperty(Object, 'extend', {
