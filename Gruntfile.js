@@ -14,7 +14,7 @@ module.exports = function (grunt) {
         files: {
           src: [
             'Gruntfile.js',
-            'js/utils.js', 'js/proto.js', 'js/supports.js', 'js/main.js'
+            'js/utils.js', 'js/extend.js', 'js/supports.js', 'js/main.js'
           ]
         },
         options: {
