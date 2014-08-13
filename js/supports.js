@@ -1,11 +1,10 @@
-/* global CSS */
+/* global NCFTest, CSS */
 
-(function executeSupports(win, doc) {
+(function executeSupports(doc) {
   'use strict';
 
-  var NCFTest, prefixes, prefixesLen, inline, style;
+  var prefixes, prefixesLen, inline, style;
 
-  NCFTest = win.NCFTest;
   prefixes = [
     '', '-moz-', '-webkit-', '-ms-', '-o-',
     // for Trident's CSSOM property
@@ -354,4 +353,4 @@
       return false;
     }
   };
-}(window, document));
+}(document));

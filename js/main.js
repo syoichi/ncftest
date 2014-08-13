@@ -1,9 +1,10 @@
-(function executeScoringAndTesting(win, doc) {
+/* global NCFTest */
+
+(function executeScoringAndTesting(doc) {
   'use strict';
 
-  var NCFTest, Supports, Specs, mainScore, all, specsTested;
+  var Supports, Specs, mainScore, all, specsTested;
 
-  NCFTest = win.NCFTest;
   Supports = NCFTest.Supports;
   Specs = NCFTest.Specs;
 
@@ -422,4 +423,4 @@
       timeTaken.textContent = (Date.now() - timeBefore) + 'ms';
     })();
   });
-}(window, document));
+}(document));

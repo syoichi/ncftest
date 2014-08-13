@@ -1,6 +1,7 @@
 /* jshint maxstatements: false */
+/* global NCFTest */
 
-(function executeInactiveSpecs(win) {
+(function executeInactiveSpecs() {
   'use strict';
 
   // data types
@@ -89,7 +90,7 @@
   ];
   var pageShiftEffects = ['pan', 'turn', 'flip', 'fold'];
 
-  win.NCFTest.Specs = {
+  NCFTest.Specs = {
     // Inactive implementing in Browsers
     // CSS Level 3
     'css-counter-styles-3': {
@@ -1157,4 +1158,4 @@
       }
     }
   };
-}(window));
+}());

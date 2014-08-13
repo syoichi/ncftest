@@ -1,6 +1,7 @@
 /* jshint maxstatements: false */
+/* global NCFTest */
 
-(function executeSpecs(win) {
+(function executeSpecs() {
   'use strict';
 
   // data types
@@ -265,7 +266,7 @@
   ].and(['red', 'orange', 'yellow', 'green', 'blue', 'purple']));
   var hue = number.concat(angle, namedHue);
 
-  win.NCFTest.Specs = {
+  NCFTest.Specs = {
     // CSS Level 3
     'selectors3': {
       'title': 'Selectors',
@@ -3144,4 +3145,4 @@
       }
     }
   };
-}(window));
+}());
