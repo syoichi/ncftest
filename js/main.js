@@ -3,14 +3,25 @@
 (function executeScoringAndTesting(doc) {
   'use strict';
 
-  var Supports, Specs, Timer, mainScore, all, testedSpecs;
+  var Supports, Specs, Timer, all, testedSpecs;
 
   Supports = NCFTest.Supports;
   Specs = NCFTest.Specs;
 
   function Score(main) {
-    this.passed = this.total = this.passedTests = this.totalTests = 0;
+    this.passedTests = this.totalTests = this.total = this.passed = 0;
     this.main = main;
+
+    if (!main) {
+      this.element = {};
+
+      Object.extend(this.element, {
+        score: doc.getElementById('score'),
+        passedTests: doc.getElementById('passedTests'),
+        totalTests: doc.getElementById('totalTests'),
+        total: doc.getElementById('total')
+      });
+    }
   }
   Object.extend(Score.prototype, {
     update: function update(data) {
@@ -29,17 +40,25 @@
     },
     percent: function percent() {
       return parseInt(100 * this.passed / this.total, 10) + '%';
+    },
+    output: function output() {
+      if (!this.main) {
+        this.element.score.textContent = this.percent();
+        this.element.passedTests.textContent = parseInt(this.passedTests, 10);
+        this.element.totalTests.textContent = this.totalTests;
+        this.element.total.textContent = this.total;
+      }
     }
   });
 
-  function Test(id) {
+  function Test(id, score) {
     var spec = Specs[id];
 
     Object.extend(this, {
       tests: spec,
       id: id,
       title: spec.title,
-      score: new Score(mainScore),
+      score: score,
       // Wrapper section
       section: ('<section id="' + id + '" class="test"></section>').toElement()
     });
@@ -386,20 +405,12 @@
     }
   };
 
-  mainScore = new Score(null);
-
   doc.addEventListener('DOMContentLoaded', function prepare() {
-    var score, passedTests, totalTests, total, specIDs;
+    var mainScore = new Score(null),
+        specIDs = Object.keys(Specs);
 
     all = doc.getElementById('all');
     testedSpecs = doc.getElementById('testedSpecs');
-
-    score = doc.getElementById('score');
-    passedTests = doc.getElementById('passedTests');
-    totalTests = doc.getElementById('totalTests');
-    total = doc.getElementById('total');
-
-    specIDs = Object.keys(Specs);
 
     all.addEventListener('click', function openDL(evt) {
       var target = evt.target;
@@ -418,13 +429,10 @@
 
       if (specIDs.length) {
         // Get spec id and Run tests
-        test = new Test(specIDs.shift());
+        test = new Test(specIDs.shift(), new Score(mainScore));
 
         // Output current score
-        score.textContent = mainScore.percent();
-        passedTests.textContent = parseInt(mainScore.passedTests, 10);
-        totalTests.textContent = mainScore.totalTests;
-        total.textContent = mainScore.total;
+        mainScore.output();
 
         // Schedule next test
         setTimeout(main, 50);
