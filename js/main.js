@@ -32,11 +32,13 @@
     }
   });
 
-  function Test(tests, id, title) {
+  function Test(id) {
+    var spec = Specs[id];
+
     Object.extend(this, {
-      tests: tests,
+      tests: spec,
       id: id,
-      title: title,
+      title: spec.title,
       score: new Score(mainScore),
       // Wrapper section
       section: ('<section id="' + id + '" class="test"></section>').toElement()
@@ -412,14 +414,11 @@
     Timer.timeStart();
 
     (function main() {
-      var id, test;
+      var test;
 
       if (specIDs.length) {
-        // Get spec id
-        id = specIDs.shift();
-
-        // Run tests
-        test = new Test(Specs[id], id, Specs[id].title);
+        // Get spec id and Run tests
+        test = new Test(specIDs.shift());
 
         // Output current score
         score.textContent = mainScore.percent();
