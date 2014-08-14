@@ -175,10 +175,7 @@
       tests = this.getFeatureTestList(featureInfo);
 
       for (idx = 0, testsLen = tests.length; idx < testsLen; idx += 1) {
-        testResults = this.getTestResults(Object.assign(featureInfo, {
-          index: idx,
-          tests: tests
-        }));
+        testResults = this.getTestResults(featureInfo, idx, tests);
 
         if (testResults.testsLen) {
           testsLen = testResults.testsLen;
@@ -224,13 +221,11 @@
 
       return Array.isArray(featureTest) ? featureTest : [featureTest];
     },
-    getTestResults: function getTestResults(obj) {
-      var what = obj.what,
-          tests = obj.tests,
-          index = obj.index,
-          feature = obj.feature,
-          theseTests = obj.theseTests,
-          testCallback = obj.featureSupport.getResults,
+    getTestResults: function getTestResults(featureInfo, index, tests) {
+      var what = featureInfo.what,
+          feature = featureInfo.feature,
+          theseTests = featureInfo.theseTests,
+          testCallback = featureInfo.featureSupport.getResults,
           testsLen, test, results;
 
       if (what === 'units') {
