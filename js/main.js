@@ -108,7 +108,7 @@
           }, [
             'properties', 'atrule', 'atruleName'
           ]).forEach(function createFeature(feature) {
-            that.group({
+            that.createFeatureTitle({
               what: featureListName,
               feature: feature,
               theseTests: featureList,
@@ -142,7 +142,7 @@
         '</li>'
       ].join(''));
     },
-    group: function group(featureInfo) {
+    createFeatureTitle: function createFeatureTitle(featureInfo) {
       var feature, dt, data, support, result;
 
       feature = featureInfo.feature;
