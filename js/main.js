@@ -143,15 +143,10 @@
       ].join(''));
     },
     group: function group(featureInfo) {
-      var what, feature, theseTests, featureSupport, dl, dt, data, support,
-          result;
+      var feature, dt, data, support, result;
 
-      what = featureInfo.what;
       feature = featureInfo.feature;
-      theseTests = featureInfo.theseTests;
-      featureSupport = featureInfo.featureSupport;
-      dl = featureInfo.dl;
-      dt = dl.appendChild(doc.createElement('dt'));
+      dt = featureInfo.dl.appendChild(doc.createElement('dt'));
       dt.textContent = feature;
 
       data = this.getScoreData(featureInfo);
@@ -160,7 +155,7 @@
 
       dt.className = this.passClass(data);
 
-      support = Supports[featureSupport.type];
+      support = Supports[featureInfo.featureSupport.type];
 
       if (support.cached) {
         result = support.cached[feature];
