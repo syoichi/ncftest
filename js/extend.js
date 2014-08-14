@@ -172,6 +172,18 @@
 
   // simple polyfills
   // for Trident, Blink, Presto
+  if (!Object.assign) {
+    Object.extend(Object, {
+      assign: function assign(target, obj) {
+        return Object.keys(obj).reduce(function assignToTarget(target, key) {
+          target[key] = obj[key];
+
+          return target;
+        }, target);
+      }
+    });
+  }
+  // for Trident, Blink, Presto
   if (!Array.from) {
     Object.extend(Array, {
       from: function from(arrayLike) {

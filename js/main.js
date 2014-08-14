@@ -13,7 +13,7 @@
     if (!main) {
       this.element = {};
 
-      Object.extend(this.element, {
+      Object.assign(this.element, {
         score: doc.getElementById('score'),
         passedTests: doc.getElementById('passedTests'),
         totalTests: doc.getElementById('totalTests'),
@@ -67,7 +67,7 @@
     createSpecTest: function createSpecTest(id, score) {
       var spec = Specs[id];
 
-      Object.extend(this, {
+      Object.assign(this, {
         tests: spec,
         id: id,
         title: spec.title,
@@ -164,14 +164,11 @@
       tests = Array.isArray(tests) ? tests : [tests];
 
       for (j = 0, testsLen = tests.length; j < testsLen; j += 1) {
-        testResults = this.getTestResults({
-          what: what,
+        testResults = this.getTestResults(Object.assign(featureInfo, {
           index: j,
           tests: tests,
-          feature: feature,
-          theseTests: theseTests,
           testCallback: featureSupport.getResults
-        });
+        }));
 
         if (testResults.testsLen) {
           testsLen = testResults.testsLen;
