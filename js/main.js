@@ -141,8 +141,7 @@
       ].join(''));
     },
     group: function group(featureInfo) {
-      var what, feature, theseTests, featureSupport, dl, dt, passed, tests,
-          idx, testsLen, testResults, test, results, success, note, dd, support,
+      var what, feature, theseTests, featureSupport, dl, dt, data, support,
           result;
 
       what = featureInfo.what;
@@ -153,6 +152,31 @@
       dt = dl.appendChild(doc.createElement('dt'));
       dt.textContent = feature;
 
+      data = this.getScoreData(featureInfo);
+
+      this.score.update(data);
+
+      dt.className = this.passClass(data);
+
+      support = Supports[featureSupport.type];
+
+      if (support.cached) {
+        result = support.cached[feature];
+
+        if (result && result !== feature) {
+          dt.classList.add('prefixed');
+          dt.title += 'prefixed';
+        }
+      }
+    },
+    getScoreData: function getScoreData(featureInfo) {
+      var what, feature, theseTests, dl, passed, tests, idx,
+          testsLen, testResults, test, results, success, note, dd;
+
+      what = featureInfo.what;
+      feature = featureInfo.feature;
+      theseTests = featureInfo.theseTests;
+      dl = featureInfo.dl;
       passed = 0;
       tests = this.getFeatureTest(theseTests[feature], what, theseTests);
 
@@ -194,20 +218,7 @@
         }
       }
 
-      this.score.update({passed: passed, total: testsLen});
-
-      dt.className = this.passClass({passed: passed, total: testsLen});
-
-      support = Supports[featureSupport.type];
-
-      if (support.cached) {
-        result = support.cached[feature];
-
-        if (result && result !== feature) {
-          dt.classList.add('prefixed');
-          dt.title += 'prefixed';
-        }
-      }
+      return {passed: passed, total: testsLen};
     },
     getFeatureTest: function getFeatureTest(featureTest, what, theseTests) {
       if (what === 'values' && !theseTests.properties) {
