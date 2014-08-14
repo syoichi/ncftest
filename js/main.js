@@ -4,8 +4,7 @@
   'use strict';
 
   var Supports = NCFTest.Supports,
-      Specs = NCFTest.Specs,
-      all, testedSpecs;
+      Specs = NCFTest.Specs;
 
   function Score(main) {
     this.passedTests = this.totalTests = this.total = this.passed = 0;
@@ -50,28 +49,44 @@
     }
   });
 
-  function Test(id, score) {
-    var spec = Specs[id];
+  function Test() {
+    this.all = doc.getElementById('all');
+    this.testedSpecs = doc.getElementById('testedSpecs');
 
-    Object.extend(this, {
-      tests: spec,
-      id: id,
-      title: spec.title,
-      score: score,
-      // Wrapper section
-      section: ('<section id="' + id + '" class="test"></section>').toElement()
+    this.all.addEventListener('click', function openDL(evt) {
+      var target = evt.target;
+
+      if (target.tagName === 'DT') {
+        evt.stopPropagation();
+
+        target.parentNode.classList.toggle('open');
+      }
     });
-
-    // Perform tests
-    this.createFeatureList();
-
-    // Display score for this spec
-    all.appendChild(this.getTest());
-
-    // Add to list of tested specs
-    this.addTestedSpec();
   }
   Object.extend(Test.prototype, {
+    createSpecTest: function createSpecTest(id, score) {
+      var spec = Specs[id];
+
+      Object.extend(this, {
+        tests: spec,
+        id: id,
+        title: spec.title,
+        score: score,
+        // Wrapper section
+        section: (
+          '<section id="' + id + '" class="test"></section>'
+        ).toElement()
+      });
+
+      // Perform tests
+      this.createFeatureList();
+
+      // Display score for this spec
+      this.all.appendChild(this.getTest());
+
+      // Add to list of tested specs
+      this.addTestedSpec();
+    },
     createFeatureList: (function cacheGroups(groups, featureNames) {
       return function createFeatureList() {
         if (!groups) {
@@ -101,7 +116,7 @@
     addTestedSpec: function addTestedSpec() {
       var pass = this.passClass(this.score);
 
-      testedSpecs.insertAdjacentHTML('BeforeEnd', [
+      this.testedSpecs.insertAdjacentHTML('BeforeEnd', [
         '<li title="' + this.score.percent() + ' passed" class="' + pass + '">',
         '<a href="#' + this.id + '">' + this.title + '</a>',
         '</li>'
@@ -406,30 +421,16 @@
 
   doc.addEventListener('DOMContentLoaded', function prepare() {
     var mainScore = new Score(null),
+        test = new Test(),
         timer = new Timer(),
         specIDs = Object.keys(Specs);
-
-    all = doc.getElementById('all');
-    testedSpecs = doc.getElementById('testedSpecs');
-
-    all.addEventListener('click', function openDL(evt) {
-      var target = evt.target;
-
-      if (target.tagName === 'DT') {
-        evt.stopPropagation();
-
-        target.parentNode.classList.toggle('open');
-      }
-    });
 
     timer.start();
 
     (function recursive() {
-      var test;
-
       if (specIDs.length) {
         // Get spec id and Run tests
-        test = new Test(specIDs.shift(), new Score(mainScore));
+        test.createSpecTest(specIDs.shift(), new Score(mainScore));
 
         // Output current score
         mainScore.output();
