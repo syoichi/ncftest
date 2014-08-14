@@ -167,12 +167,9 @@
       }
     },
     getScoreData: function getScoreData(featureInfo) {
-      var dl, passed, tests, idx, testsLen, testResults, test, results,
-          success, note, dd;
-
-      dl = featureInfo.dl;
-      passed = 0;
-      tests = this.getFeatureTestList(featureInfo);
+      var passed = 0,
+          tests = this.getFeatureTestList(featureInfo),
+          idx, testsLen, testResults, results, success;
 
       for (idx = 0, testsLen = tests.length; idx < testsLen; idx += 1) {
         testResults = this.getTestResults(featureInfo, idx, tests);
@@ -181,35 +178,24 @@
           testsLen = testResults.testsLen;
         }
 
-        test = testResults.test;
         results = testResults.results;
-
-        if (typeof results === 'object') {
-          success = results.success;
-          note = results.note;
-        } else {
-          success = Number(Boolean(results));
-        }
+        success = typeof results === 'object' ?
+          results.success :
+          Number(Boolean(results));
 
         passed += Number(success);
 
-        dd = dl.appendChild(doc.createElement('dd'));
-        dd.className = this.passClass(
-          {passed: Math.round(success * 10000), total: 10000}
-        );
-        dd.textContent = test;
-
-        if (note) {
-          dd.appendChild(doc.createElement('small')).textContent = note;
-        }
-
-        if (featureInfo.what === 'properties' && results && results !== test) {
-          dd.classList.add('prefixed');
-          dd.title += 'prefixed';
-        }
+        this.createFeatureTest(featureInfo, {
+          test: testResults.test,
+          results: results,
+          success: success
+        });
       }
 
-      return {passed: passed, total: testsLen};
+      return {
+        passed: passed,
+        total: testsLen
+      };
     },
     getFeatureTestList: function getFeatureTestList(featureInfo) {
       var theseTests = featureInfo.theseTests,
@@ -249,6 +235,27 @@
         test: test,
         results: results
       };
+    },
+    createFeatureTest: function createFeatureTest(featureInfo, resultInfo) {
+      var dd = featureInfo.dl.appendChild(doc.createElement('dd')),
+          test = resultInfo.test,
+          results = resultInfo.results,
+          note = results.note;
+
+      dd.className = this.passClass({
+        passed: Math.round(resultInfo.success * 10000),
+        total: 10000
+      });
+      dd.textContent = test;
+
+      if (note) {
+        dd.appendChild(doc.createElement('small')).textContent = note;
+      }
+
+      if (featureInfo.what === 'properties' && results && results !== test) {
+        dd.classList.add('prefixed');
+        dd.title += 'prefixed';
+      }
     },
     passClass: function passClass(info) {
       var success, classes, index;
