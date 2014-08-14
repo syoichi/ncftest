@@ -103,16 +103,18 @@
           ].join('').toElement());
           featureList = that.tests[featureListName];
 
-          Object.keys(featureList).forEach(function createFeature(feature) {
-            if (!/^(?:properties|atrule|atruleName)$/.test(feature)) {
-              that.group({
-                what: featureListName,
-                feature: feature,
-                theseTests: featureList,
-                featureSupport: featureSupport,
-                dl: featureSection.appendChild(doc.createElement('dl'))
-              });
-            }
+          Object.keys(featureList).filter(function removeInfoForTest(propName) {
+            return this.indexOf(propName) === -1;
+          }, [
+            'properties', 'atrule', 'atruleName'
+          ]).forEach(function createFeature(feature) {
+            that.group({
+              what: featureListName,
+              feature: feature,
+              theseTests: featureList,
+              featureSupport: featureSupport,
+              dl: featureSection.appendChild(doc.createElement('dl'))
+            });
           });
         }
       });
