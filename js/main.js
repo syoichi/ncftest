@@ -107,7 +107,6 @@
             if (!/^(?:properties|atrule|atruleName)$/.test(feature)) {
               that.group({
                 what: featureListName,
-                tests: featureList[feature],
                 feature: feature,
                 theseTests: featureList,
                 featureSupport: featureSupport,
@@ -142,12 +141,11 @@
       ].join(''));
     },
     group: function group(featureInfo) {
-      var what, tests, feature, theseTests, featureSupport, dl, dt, passed,
-          j, testsLen, testResults, test, results, success, note, dd, support,
+      var what, feature, theseTests, featureSupport, dl, dt, passed, tests,
+          idx, testsLen, testResults, test, results, success, note, dd, support,
           result;
 
       what = featureInfo.what;
-      tests = featureInfo.tests;
       feature = featureInfo.feature;
       theseTests = featureInfo.theseTests;
       featureSupport = featureInfo.featureSupport;
@@ -156,6 +154,7 @@
       dt.textContent = feature;
 
       passed = 0;
+      tests = theseTests[feature];
 
       if (what === 'values' && !theseTests.properties) {
         tests = tests.values;
@@ -163,11 +162,10 @@
 
       tests = Array.isArray(tests) ? tests : [tests];
 
-      for (j = 0, testsLen = tests.length; j < testsLen; j += 1) {
+      for (idx = 0, testsLen = tests.length; idx < testsLen; idx += 1) {
         testResults = this.getTestResults(Object.assign(featureInfo, {
-          index: j,
-          tests: tests,
-          testCallback: featureSupport.getResults
+          index: idx,
+          tests: tests
         }));
 
         if (testResults.testsLen) {
@@ -223,7 +221,7 @@
           index = obj.index,
           feature = obj.feature,
           theseTests = obj.theseTests,
-          testCallback = obj.testCallback,
+          testCallback = obj.featureSupport.getResults,
           testsLen, test, results;
 
       if (what === 'units') {
