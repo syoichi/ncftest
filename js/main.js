@@ -154,13 +154,7 @@
       dt.textContent = feature;
 
       passed = 0;
-      tests = theseTests[feature];
-
-      if (what === 'values' && !theseTests.properties) {
-        tests = tests.values;
-      }
-
-      tests = Array.isArray(tests) ? tests : [tests];
+      tests = this.getFeatureTest(theseTests[feature], what, theseTests);
 
       for (idx = 0, testsLen = tests.length; idx < testsLen; idx += 1) {
         testResults = this.getTestResults(Object.assign(featureInfo, {
@@ -214,6 +208,13 @@
           dt.title += 'prefixed';
         }
       }
+    },
+    getFeatureTest: function getFeatureTest(featureTest, what, theseTests) {
+      if (what === 'values' && !theseTests.properties) {
+        featureTest = featureTest.values;
+      }
+
+      return Array.isArray(featureTest) ? featureTest : [featureTest];
     },
     getTestResults: function getTestResults(obj) {
       var what = obj.what,
