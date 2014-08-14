@@ -172,7 +172,7 @@
 
       dl = featureInfo.dl;
       passed = 0;
-      tests = this.getFeatureTest(featureInfo);
+      tests = this.getFeatureTestList(featureInfo);
 
       for (idx = 0, testsLen = tests.length; idx < testsLen; idx += 1) {
         testResults = this.getTestResults(Object.assign(featureInfo, {
@@ -214,7 +214,7 @@
 
       return {passed: passed, total: testsLen};
     },
-    getFeatureTest: function getFeatureTest(featureInfo) {
+    getFeatureTestList: function getFeatureTestList(featureInfo) {
       var theseTests = featureInfo.theseTests,
           featureTest = theseTests[featureInfo.feature];
 
