@@ -119,49 +119,6 @@
         }
       }, this);
     },
-    getTest: function getTest() {
-      var tr = this.tests.tr || 'http://www.w3.org/TR/' + this.id + '/',
-          dev = this.tests.dev || 'http://dev.w3.org/csswg/' + this.id + '/';
-
-      this.section.insertAdjacentHTML('AfterBegin', [
-        '<h1>' + this.title,
-        '<a href="' + tr + '" class="spec-link" target="_blank">TR</a>',
-        '<a href="' + dev + '" class="spec-link" target="_blank">DEV</a>',
-        '<span class="score">' + this.score.percent() + '</span>',
-        '</h1>'
-      ].join(''));
-
-      return this.section;
-    },
-    addTestedSpec: function addTestedSpec() {
-      var pass = this.passClass(this.score);
-
-      this.testedSpecs.insertAdjacentHTML('BeforeEnd', [
-        '<li title="' + this.score.percent() + ' passed" class="' + pass + '">',
-        '<a href="#' + this.id + '">' + this.title + '</a>',
-        '</li>'
-      ].join(''));
-    },
-    createFeatureTitle: function createFeatureTitle(featureInfo, data) {
-      var feature = featureInfo.feature,
-          dl = featureInfo.dl,
-          dt = dl.insertBefore(Object.assign(doc.createElement('dt'), {
-            textContent: feature,
-            className: this.passClass(data)
-          }), dl.firstChild),
-          support = Supports[featureInfo.featureSupport.type],
-          cached = support.cached,
-          result;
-
-      if (cached) {
-        result = cached[feature];
-
-        if (result && result !== feature) {
-          dt.classList.add('prefixed');
-          dt.title += 'prefixed';
-        }
-      }
-    },
     getScoreData: function getScoreData(featureInfo) {
       var passed = 0,
           tests = this.getFeatureTestList(featureInfo),
@@ -252,6 +209,49 @@
         dd.classList.add('prefixed');
         dd.title += 'prefixed';
       }
+    },
+    createFeatureTitle: function createFeatureTitle(featureInfo, data) {
+      var feature = featureInfo.feature,
+          dl = featureInfo.dl,
+          dt = dl.insertBefore(Object.assign(doc.createElement('dt'), {
+            textContent: feature,
+            className: this.passClass(data)
+          }), dl.firstChild),
+          support = Supports[featureInfo.featureSupport.type],
+          cached = support.cached,
+          result;
+
+      if (cached) {
+        result = cached[feature];
+
+        if (result && result !== feature) {
+          dt.classList.add('prefixed');
+          dt.title += 'prefixed';
+        }
+      }
+    },
+    getTest: function getTest() {
+      var tr = this.tests.tr || 'http://www.w3.org/TR/' + this.id + '/',
+          dev = this.tests.dev || 'http://dev.w3.org/csswg/' + this.id + '/';
+
+      this.section.insertAdjacentHTML('AfterBegin', [
+        '<h1>' + this.title,
+        '<a href="' + tr + '" class="spec-link" target="_blank">TR</a>',
+        '<a href="' + dev + '" class="spec-link" target="_blank">DEV</a>',
+        '<span class="score">' + this.score.percent() + '</span>',
+        '</h1>'
+      ].join(''));
+
+      return this.section;
+    },
+    addTestedSpec: function addTestedSpec() {
+      var pass = this.passClass(this.score);
+
+      this.testedSpecs.insertAdjacentHTML('BeforeEnd', [
+        '<li title="' + this.score.percent() + ' passed" class="' + pass + '">',
+        '<a href="#' + this.id + '">' + this.title + '</a>',
+        '</li>'
+      ].join(''));
     },
     passClass: function passClass(info) {
       var success, classes, index;
