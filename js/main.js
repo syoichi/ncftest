@@ -88,36 +88,38 @@
       this.addTestedSpec();
     },
     createFeatureList: function createFeatureList() {
-      var that = this;
-
-      Object.keys(that.tests).forEach(function createFeatureSection(propName) {
-        var featureSupport = Test.groups[propName],
-            featureListName, featureSection, featureList;
+      Object.keys(this.tests).forEach(function prepare(featureListName) {
+        var featureSupport = Test.groups[featureListName],
+            featureSection, featureList;
 
         if (featureSupport) {
-          featureListName = propName;
-          featureSection = that.section.appendChild([
+          featureSection = this.section.appendChild([
             '<section class="' + featureListName + '">',
             '<h1>' + featureListName + '</h1>',
             '</section>'
           ].join('').toElement());
-          featureList = that.tests[featureListName];
+          featureList = this.tests[featureListName];
 
           Object.keys(featureList).filter(function removeInfoForTest(propName) {
             return this.indexOf(propName) === -1;
           }, [
             'properties', 'atrule', 'atruleName'
           ]).forEach(function createFeature(feature) {
-            that.createFeatureTitle({
-              what: featureListName,
-              feature: feature,
-              theseTests: featureList,
-              featureSupport: featureSupport,
-              dl: featureSection.appendChild(doc.createElement('dl'))
-            });
-          });
+            var featureInfo = {
+                  what: featureListName,
+                  feature: feature,
+                  theseTests: featureList,
+                  featureSupport: featureSupport,
+                  dl: featureSection.appendChild(doc.createElement('dl'))
+                },
+                data = this.getScoreData(featureInfo);
+
+            this.score.update(data);
+
+            this.createFeatureTitle(featureInfo, data);
+          }, this);
         }
-      });
+      }, this);
     },
     getTest: function getTest() {
       var tr = this.tests.tr || 'http://www.w3.org/TR/' + this.id + '/',
@@ -142,23 +144,19 @@
         '</li>'
       ].join(''));
     },
-    createFeatureTitle: function createFeatureTitle(featureInfo) {
-      var feature, dt, data, support, result;
+    createFeatureTitle: function createFeatureTitle(featureInfo, data) {
+      var feature = featureInfo.feature,
+          dl = featureInfo.dl,
+          dt = dl.insertBefore(Object.assign(doc.createElement('dt'), {
+            textContent: feature,
+            className: this.passClass(data)
+          }), dl.firstChild),
+          support = Supports[featureInfo.featureSupport.type],
+          cached = support.cached,
+          result;
 
-      feature = featureInfo.feature;
-      dt = featureInfo.dl.appendChild(doc.createElement('dt'));
-      dt.textContent = feature;
-
-      data = this.getScoreData(featureInfo);
-
-      this.score.update(data);
-
-      dt.className = this.passClass(data);
-
-      support = Supports[featureInfo.featureSupport.type];
-
-      if (support.cached) {
-        result = support.cached[feature];
+      if (cached) {
+        result = cached[feature];
 
         if (result && result !== feature) {
           dt.classList.add('prefixed');
