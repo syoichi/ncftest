@@ -167,15 +167,12 @@
       }
     },
     getScoreData: function getScoreData(featureInfo) {
-      var what, feature, theseTests, dl, passed, tests, idx,
-          testsLen, testResults, test, results, success, note, dd;
+      var dl, passed, tests, idx, testsLen, testResults, test, results,
+          success, note, dd;
 
-      what = featureInfo.what;
-      feature = featureInfo.feature;
-      theseTests = featureInfo.theseTests;
       dl = featureInfo.dl;
       passed = 0;
-      tests = this.getFeatureTest(theseTests[feature], what, theseTests);
+      tests = this.getFeatureTest(featureInfo);
 
       for (idx = 0, testsLen = tests.length; idx < testsLen; idx += 1) {
         testResults = this.getTestResults(Object.assign(featureInfo, {
@@ -209,7 +206,7 @@
           dd.appendChild(doc.createElement('small')).textContent = note;
         }
 
-        if (what === 'properties' && results && results !== test) {
+        if (featureInfo.what === 'properties' && results && results !== test) {
           dd.classList.add('prefixed');
           dd.title += 'prefixed';
         }
@@ -217,8 +214,11 @@
 
       return {passed: passed, total: testsLen};
     },
-    getFeatureTest: function getFeatureTest(featureTest, what, theseTests) {
-      if (what === 'values' && !theseTests.properties) {
+    getFeatureTest: function getFeatureTest(featureInfo) {
+      var theseTests = featureInfo.theseTests,
+          featureTest = theseTests[featureInfo.feature];
+
+      if (featureInfo.what === 'values' && !theseTests.properties) {
         featureTest = featureTest.values;
       }
 
