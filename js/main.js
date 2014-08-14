@@ -254,12 +254,10 @@
       ].join(''));
     },
     passClass: function passClass(info) {
-      var success, classes, index;
+      var success, classes;
 
       if ('passed' in info) {
         success = info.passed / info.total;
-      } else if ('failed' in info) {
-        success = 1 - info.failed / info.total;
       }
 
       if (success === 1) {
@@ -276,9 +274,8 @@
         'slightly-buggy',
         'almost-pass'
       ];
-      index = Math.round(success * (classes.length - 1));
 
-      return classes[index];
+      return classes[Math.round(success * (classes.length - 1))];
     }
   });
   Test.groups = {
