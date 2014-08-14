@@ -535,9 +535,7 @@
         ),
         'background-repeat': repeatStyle.times(
           1, 2, ', '
-        ).filter(function removeCSS2Value(val) {
-          return this.indexOf(val) === -1;
-        }, ['repeat', 'repeat-x', 'repeat-y', 'no-repeat']).concat(
+        ).remove(['repeat', 'repeat-x', 'repeat-y', 'no-repeat']).concat(
           ['repeat, repeat-x, repeat-y']
         ),
         'background-attachment': ['local'].concat(

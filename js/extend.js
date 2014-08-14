@@ -165,6 +165,11 @@
     flatten: function flatten() {
       return Array.prototype.concat.apply([], this);
     },
+    remove: function remove(arr) {
+      return this.filter(function (val) {
+        return arr.indexOf(val) === -1;
+      });
+    },
     last: function last() {
       return this[this.length - 1];
     }

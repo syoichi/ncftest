@@ -843,17 +843,13 @@
           ['underline', 'no-underline', 'replace-underline'].or(
             ['overline', 'no-overline', 'replace-overline'],
             ['line-through', 'no-line-through', 'replace-line-through']
-          ).filter(function filter(val) {
-            return this.indexOf(val) === -1;
-          }, ['underline'].or(['overline'], ['line-through']))
+          ).remove(['underline'].or(['overline'], ['line-through']))
         ),
         'text-decoration': ['remove-all'].concat(
           ['underline', 'no-underline', 'replace-underline'].or(
             ['overline', 'no-overline', 'replace-overline'],
             ['line-through', 'no-line-through', 'replace-line-through']
-          ).filter(function filter(val) {
-            return this.indexOf(val) === -1;
-          }, ['underline'].or(['overline'], ['line-through']))
+          ).remove(['underline'].or(['overline'], ['line-through']))
         ).concat([
           'remove-all solid', 'solid remove-all', 'underline solid blink',
           'remove-all solid black', 'remove-all solid black blink',

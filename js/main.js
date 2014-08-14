@@ -100,9 +100,7 @@
           ].join('').toElement());
           featureList = this.tests[featureListName];
 
-          Object.keys(featureList).filter(function removeInfoForTest(propName) {
-            return this.indexOf(propName) === -1;
-          }, [
+          Object.keys(featureList).remove([
             'properties', 'atrule', 'atruleName'
           ]).forEach(function createFeature(feature) {
             var featureInfo = {
