@@ -87,18 +87,37 @@
       // Add to list of tested specs
       this.addTestedSpec();
     },
-    createFeatureList: (function cacheGroups(groups, featureNames) {
-      return function createFeatureList() {
-        if (!groups) {
-          groups = Test.groups;
-          featureNames = Object.keys(Test.groups);
-        }
+    createFeatureList: function createFeatureList() {
+      var that = this;
 
-        featureNames.forEach(function createFeature(featureName) {
-          this.group(featureName, groups[featureName].getResults);
-        }, this);
-      };
-    }()),
+      Object.keys(that.tests).forEach(function createFeatureSection(propName) {
+        var featureSupport = Test.groups[propName],
+            featureListName, featureSection, featureList;
+
+        if (featureSupport) {
+          featureListName = propName;
+          featureSection = that.section.appendChild([
+            '<section class="' + featureListName + '">',
+            '<h1>' + featureListName + '</h1>',
+            '</section>'
+          ].join('').toElement());
+          featureList = that.tests[featureListName];
+
+          Object.keys(featureList).forEach(function createFeature(feature) {
+            if (!/^(?:properties|atrule|atruleName)$/.test(feature)) {
+              that.group({
+                what: featureListName,
+                tests: featureList[feature],
+                feature: feature,
+                theseTests: featureList,
+                featureSupport: featureSupport,
+                dl: featureSection.appendChild(doc.createElement('dl'))
+              });
+            }
+          });
+        }
+      });
+    },
     getTest: function getTest() {
       var tr = this.tests.tr || 'http://www.w3.org/TR/' + this.id + '/',
           dev = this.tests.dev || 'http://dev.w3.org/csswg/' + this.id + '/';
@@ -122,102 +141,82 @@
         '</li>'
       ].join(''));
     },
-    group: function group(what, testCallback) {
-      var theseTests, testList, thisSection, i, testListLen, feature,
-          dl, dt, passed, tests, j, testsLen,
-          testResults, test, results, success, note, dd, support, result;
+    group: function group(featureInfo) {
+      var what, tests, feature, theseTests, featureSupport, dl, dt, passed,
+          j, testsLen, testResults, test, results, success, note, dd, support,
+          result;
 
-      theseTests = this.tests[what];
+      what = featureInfo.what;
+      tests = featureInfo.tests;
+      feature = featureInfo.feature;
+      theseTests = featureInfo.theseTests;
+      featureSupport = featureInfo.featureSupport;
+      dl = featureInfo.dl;
+      dt = dl.appendChild(doc.createElement('dt'));
+      dt.textContent = feature;
 
-      if (!theseTests) {
-        return;
+      passed = 0;
+
+      if (what === 'values' && !theseTests.properties) {
+        tests = tests.values;
       }
 
-      testList = Object.keys(theseTests);
+      tests = Array.isArray(tests) ? tests : [tests];
 
-      for (i = 0, testListLen = testList.length; i < testListLen; i += 1) {
-        feature = testList[i];
+      for (j = 0, testsLen = tests.length; j < testsLen; j += 1) {
+        testResults = this.getTestResults({
+          what: what,
+          index: j,
+          tests: tests,
+          feature: feature,
+          theseTests: theseTests,
+          testCallback: featureSupport.getResults
+        });
 
-        if (!/^(?:properties|atrule|atruleName)$/.test(feature)) {
-          if (!thisSection) {
-            thisSection = this.section.appendChild(
-              doc.createElement('section')
-            );
-            thisSection.className = what;
-            thisSection.appendChild(
-              doc.createElement('h1')
-            ).textContent = what;
-          }
+        if (testResults.testsLen) {
+          testsLen = testResults.testsLen;
+        }
 
-          dl = thisSection.appendChild(doc.createElement('dl'));
-          dt = dl.appendChild(doc.createElement('dt'));
-          dt.textContent = feature;
+        test = testResults.test;
+        results = testResults.results;
 
-          passed = 0;
-          tests = theseTests[feature];
+        if (typeof results === 'object') {
+          success = results.success;
+          note = results.note;
+        } else {
+          success = Number(Boolean(results));
+        }
 
-          if (what === 'values' && !theseTests.properties) {
-            tests = tests.values;
-          }
+        passed += Number(success);
 
-          tests = Array.isArray(tests) ? tests : [tests];
+        dd = dl.appendChild(doc.createElement('dd'));
+        dd.className = this.passClass(
+          {passed: Math.round(success * 10000), total: 10000}
+        );
+        dd.textContent = test;
 
-          for (j = 0, testsLen = tests.length; j < testsLen; j += 1) {
-            testResults = this.getTestResults({
-              what: what,
-              index: j,
-              tests: tests,
-              feature: feature,
-              theseTests: theseTests,
-              testCallback: testCallback
-            });
+        if (note) {
+          dd.appendChild(doc.createElement('small')).textContent = note;
+        }
 
-            if (testResults.testsLen) {
-              testsLen = testResults.testsLen;
-            }
+        if (what === 'properties' && results && results !== test) {
+          dd.classList.add('prefixed');
+          dd.title += 'prefixed';
+        }
+      }
 
-            test = testResults.test;
-            results = testResults.results;
+      this.score.update({passed: passed, total: testsLen});
 
-            if (typeof results === 'object') {
-              success = results.success;
-              note = results.note;
-            } else {
-              success = Number(Boolean(results));
-            }
+      dt.className = this.passClass({passed: passed, total: testsLen});
 
-            passed += Number(success);
+      support = Supports[featureSupport.type];
 
-            dd = dl.appendChild(doc.createElement('dd'));
-            dd.className = this.passClass(
-              {passed: Math.round(success * 10000), total: 10000}
-            );
-            dd.textContent = test;
+      if (support.cached) {
+        result = support.cached[feature];
 
-            if (note) {
-              dd.appendChild(doc.createElement('small')).textContent = note;
-            }
-
-            if (what === 'properties' && results && results !== test) {
-              dd.classList.add('prefixed');
-              dd.title += 'prefixed';
-            }
-          }
-
-          this.score.update({passed: passed, total: testsLen});
-
-          dt.className = this.passClass({passed: passed, total: testsLen});
-
-          support = Supports[Test.groups[what].type];
-
-          if (support.cached) {
-            result = support.cached[feature];
-
-            if (result && result !== feature) {
-              dt.classList.add('prefixed');
-              dt.title += 'prefixed';
-            }
-          }
+        if (result && result !== feature) {
+          dt.classList.add('prefixed');
+          dt.title += 'prefixed';
         }
       }
     },
