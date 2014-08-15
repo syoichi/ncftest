@@ -82,7 +82,7 @@
       this.createFeatureList();
 
       // Display score for this spec
-      this.all.appendChild(this.getTest());
+      this.all.appendChild(this.getSpecTest());
 
       // Add to list of tested specs
       this.addTestedSpec();
@@ -230,7 +230,7 @@
         }
       }
     },
-    getTest: function getTest() {
+    getSpecTest: function getSpecTest() {
       var tr = this.spec.tr || 'http://www.w3.org/TR/' + this.id + '/',
           dev = this.spec.dev || 'http://dev.w3.org/csswg/' + this.id + '/';
 
