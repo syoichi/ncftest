@@ -88,35 +88,33 @@
       this.addTestedSpec();
     },
     createFeatureList: function createFeatureList() {
-      Object.keys(this.spec).forEach(function prepare(featureListName) {
+      Object.keys(this.spec).remove([
+        'title', 'tr', 'dev'
+      ]).forEach(function createFeatureSection(featureListName) {
         var featureSupport = Test.groups[featureListName],
-            featureSection, featureList;
+            featureSection = this.section.appendChild([
+              '<section class="' + featureListName + '">',
+              '<h1>' + featureListName + '</h1>',
+              '</section>'
+            ].join('').toElement()),
+            featureList = this.spec[featureListName];
 
-        if (featureSupport) {
-          featureSection = this.section.appendChild([
-            '<section class="' + featureListName + '">',
-            '<h1>' + featureListName + '</h1>',
-            '</section>'
-          ].join('').toElement());
-          featureList = this.spec[featureListName];
+        Object.keys(featureList).remove([
+          'properties', 'atrule', 'atruleName'
+        ]).forEach(function createFeature(featureName) {
+          var featureInfo = {
+                what: featureListName,
+                featureName: featureName,
+                featureList: featureList,
+                featureSupport: featureSupport,
+                dl: featureSection.appendChild(doc.createElement('dl'))
+              },
+              data = this.getScoreData(featureInfo);
 
-          Object.keys(featureList).remove([
-            'properties', 'atrule', 'atruleName'
-          ]).forEach(function createFeature(featureName) {
-            var featureInfo = {
-                  what: featureListName,
-                  featureName: featureName,
-                  featureList: featureList,
-                  featureSupport: featureSupport,
-                  dl: featureSection.appendChild(doc.createElement('dl'))
-                },
-                data = this.getScoreData(featureInfo);
+          this.score.update(data);
 
-            this.score.update(data);
-
-            this.createFeatureTitle(featureInfo, data);
-          }, this);
-        }
+          this.createFeatureTitle(featureInfo, data);
+        }, this);
       }, this);
     },
     getScoreData: function getScoreData(featureInfo) {
