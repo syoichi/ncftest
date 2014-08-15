@@ -106,7 +106,7 @@
             var featureInfo = {
                   what: featureListName,
                   feature: feature,
-                  theseTests: featureList,
+                  featureList: featureList,
                   featureSupport: featureSupport,
                   dl: featureSection.appendChild(doc.createElement('dl'))
                 },
@@ -151,10 +151,10 @@
       };
     },
     getFeatureTestList: function getFeatureTestList(featureInfo) {
-      var theseTests = featureInfo.theseTests,
-          featureTest = theseTests[featureInfo.feature];
+      var featureList = featureInfo.featureList,
+          featureTest = featureList[featureInfo.feature];
 
-      if (featureInfo.what === 'values' && !theseTests.properties) {
+      if (featureInfo.what === 'values' && !featureList.properties) {
         featureTest = featureTest.values;
       }
 
@@ -163,7 +163,7 @@
     getTestResults: function getTestResults(featureInfo, index, tests) {
       var what = featureInfo.what,
           feature = featureInfo.feature,
-          theseTests = featureInfo.theseTests,
+          featureList = featureInfo.featureList,
           testCallback = featureInfo.featureSupport.getResults,
           testsLen, test, results;
 
@@ -175,12 +175,12 @@
         testsLen = 1;
         test = feature;
         results = testCallback(feature, tests);
-      } else if (what === 'values' && !theseTests.properties) {
+      } else if (what === 'values' && !featureList.properties) {
         test = tests[index];
-        results = testCallback(test, feature, theseTests[feature]);
+        results = testCallback(test, feature, featureList[feature]);
       } else {
         test = tests[index];
-        results = testCallback(test, feature, theseTests);
+        results = testCallback(test, feature, featureList);
       }
 
       return {
