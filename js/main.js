@@ -102,10 +102,10 @@
 
           Object.keys(featureList).remove([
             'properties', 'atrule', 'atruleName'
-          ]).forEach(function createFeature(feature) {
+          ]).forEach(function createFeature(featureName) {
             var featureInfo = {
                   what: featureListName,
-                  feature: feature,
+                  featureName: featureName,
                   featureList: featureList,
                   featureSupport: featureSupport,
                   dl: featureSection.appendChild(doc.createElement('dl'))
@@ -152,7 +152,7 @@
     },
     getFeatureTestList: function getFeatureTestList(featureInfo) {
       var featureList = featureInfo.featureList,
-          featureTest = featureList[featureInfo.feature];
+          featureTest = featureList[featureInfo.featureName];
 
       if (featureInfo.what === 'values' && !featureList.properties) {
         featureTest = featureTest.values;
@@ -162,25 +162,25 @@
     },
     getTestResults: function getTestResults(featureInfo, index, tests) {
       var what = featureInfo.what,
-          feature = featureInfo.feature,
+          featureName = featureInfo.featureName,
           featureList = featureInfo.featureList,
           testCallback = featureInfo.featureSupport.getResults,
           testsLen, test, results;
 
       if (what === 'units') {
         testsLen = 1;
-        test = '1' + feature;
-        results = testCallback(feature, tests);
+        test = '1' + featureName;
+        results = testCallback(featureName, tests);
       } else if (what === 'keywords') {
         testsLen = 1;
-        test = feature;
-        results = testCallback(feature, tests);
+        test = featureName;
+        results = testCallback(featureName, tests);
       } else if (what === 'values' && !featureList.properties) {
         test = tests[index];
-        results = testCallback(test, feature, featureList[feature]);
+        results = testCallback(test, featureName, featureList[featureName]);
       } else {
         test = tests[index];
-        results = testCallback(test, feature, featureList);
+        results = testCallback(test, featureName, featureList);
       }
 
       return {
@@ -211,10 +211,10 @@
       }
     },
     createFeatureTitle: function createFeatureTitle(featureInfo, data) {
-      var feature = featureInfo.feature,
+      var featureName = featureInfo.featureName,
           dl = featureInfo.dl,
           dt = dl.insertBefore(Object.assign(doc.createElement('dt'), {
-            textContent: feature,
+            textContent: featureName,
             className: this.passClass(data)
           }), dl.firstChild),
           support = Supports[featureInfo.featureSupport.type],
@@ -222,9 +222,9 @@
           result;
 
       if (cached) {
-        result = cached[feature];
+        result = cached[featureName];
 
-        if (result && result !== feature) {
+        if (result && result !== featureName) {
           dt.classList.add('prefixed');
           dt.title += 'prefixed';
         }
