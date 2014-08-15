@@ -105,7 +105,7 @@
 
       return false;
     },
-    keyword: function keywordFunc(keyword, property) {
+    keyword: function keywordFunc(property, keyword) {
       var cached, idx, prefix, prefixed;
 
       cached = keywordFunc.cached;
@@ -135,7 +135,7 @@
 
       return false;
     },
-    unit: function unitFunc(unit, property) {
+    unit: function unitFunc(property, unit) {
       var cached, idx, prefix, prefixed;
 
       cached = unitFunc.cached;

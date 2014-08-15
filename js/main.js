@@ -323,7 +323,7 @@
 
           if (!Supports.property(property)) {
             properties.splice(idx -= 1, 1);
-          } else if (!Supports.keyword(keyword, property)) {
+          } else if (!Supports.keyword(property, keyword)) {
             failed.push(property);
           }
         }
@@ -352,7 +352,7 @@
 
           if (!Supports.property(property)) {
             properties.splice(idx -= 1, 1);
-          } else if (!Supports.unit(unit, property)) {
+          } else if (!Supports.unit(property, unit)) {
             failed.push(property);
           }
         }
