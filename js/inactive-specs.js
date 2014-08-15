@@ -95,7 +95,7 @@
     // CSS Level 3
     'css-counter-styles-3': {
       'title': 'Counter Styles',
-      'values': {
+      'value': {
         'properties': ['list-style', 'list-style-type'],
         'symbols()': symbolsType.qmark(
           ['"string"'].concat(image).times(1, 2), ' ', {former: true}
@@ -107,10 +107,10 @@
           return 'symbols(' + arg + ')';
         })
       },
-      '@rules': {
+      'atrule': {
         '@counter-style': '@counter-style circled-lower-latin'
       },
-      'descriptors': {
+      'descriptor': {
         'atrule': '@counter-style circled-lower-latin',
         'atruleName': '@counter-style',
         'system': symbolsType.concat([
@@ -154,7 +154,7 @@
 
     'css-display-3': {
       'title': 'Display',
-      'properties': {
+      'property': {
         'display-inside': ['auto', 'block', 'table', 'flex', 'grid', 'ruby'],
         'display-outside': [
           'inline-level', 'block-level', 'run-in', 'contents', 'none',
@@ -175,7 +175,7 @@
     'css-position-3': {
       'title': 'Positioned Layout',
       'tr': 'http://www.w3.org/TR/css3-positioning/',
-      'properties': {
+      'property': {
         'position': ['sticky', 'center', 'page'],
         'offset-before': width,
         'offset-end': width,
@@ -188,7 +188,7 @@
     'css-template-1': {
       'title': 'Grid Template Layout',
       'tr': 'http://www.w3.org/TR/css3-layout/',
-      'properties': {
+      'property': {
         'grid-template-areas': [
           '\'*\'', '"* *" "* *"', '\'****\' \'****\' \'****\''
         ],
@@ -221,7 +221,7 @@
           'top', 'bottom', 'middle', 'baseline', '10%', '10px', 'center'
         ]*/
       },
-      'selectors': {
+      'selector': {
         '::slot()': [
           '::slot(running-header)', 'P::slot(*)', 'body::slot(a)', '::slot(a) P'
         ],
@@ -235,7 +235,7 @@
         '::inside()': ['::inside(first-line)', 'EM::inside(first-line)'],
         '::overlap()': ['::overlap(first-line)', 'EM::overlap(first-line)']*/
       },
-      '@rules': {
+      'atrule': {
         '@region': [
           '@region ::slot(*)', '@region ::slot(b)', '@region BODY::slot(b)',
           '@region ::first-line', '@region div::first-line',
@@ -244,7 +244,7 @@
         '@footnote': ['@footnote :first::slot(a)'],
         '@page': ['@page :first::slot(a)', '@page::slot(g)']*/
       }/*,
-      'units': {
+      'unit': {
         'gr': ['width', 'top', 'right', 'bottom', 'left']
       }*/
     },
@@ -253,7 +253,7 @@
     'css-exclusions-1': {
       'title': 'Exclusions Level 1',
       'tr': 'http://www.w3.org/TR/css3-exclusions/',
-      'properties': {
+      'property': {
         'wrap-flow': [
           'auto', 'both', 'start', 'end', 'minimum', 'maximum', 'clear'
         ],
@@ -264,7 +264,7 @@
     'css-regions-1': {
       'title': 'Regions Level 1',
       'tr': 'http://www.w3.org/TR/css3-regions/',
-      'properties': {
+      'property': {
         'flow-into': ['none'].concat(['ident'].qmark(['element', 'content'])),
         'flow-from': ['none', 'ident'],
         'region-fragment': ['auto', 'break']/*,
@@ -274,7 +274,7 @@
 
     'css-snappoints-1': {
       'title': 'Scroll Snap Points Level 1',
-      'properties': {
+      'property': {
         'scroll-snap-type': ['none', 'mandatory', 'proximity'],
         'scroll-snap-points-x': [
           'repeat(100%)', 'repeat(10px)', '10px', 'elements',
@@ -299,7 +299,7 @@
 
     'css-line-grid-1': {
       'title': 'Line Grid Level 1',
-      'properties': {
+      'property': {
         'line-grid': ['match-parent', 'create'],
         'line-snap': ['none', 'baseline', 'contain'],
         'box-snap': [
@@ -311,7 +311,7 @@
 
     'css-ruby-1': {
       'title': 'Ruby Level 1',
-      'properties': {
+      'property': {
         'display': [
           'ruby', 'ruby-base', 'ruby-text',
           'ruby-base-container', 'ruby-text-container'
@@ -326,7 +326,7 @@
 
     'selectors-nonelement-1': {
       'title': 'Non-element Selectors Level 1',
-      'selectors': {
+      'selector': {
         '::attr()': [
           '::attr()', '::attr(title)', '::attr(*)', '::attr(|title)',
           '::attr(|*)', '::attr(svg|title)', '::attr(svg|*)', '::attr(*|title)',
@@ -338,7 +338,7 @@
     // New CSS Level 2
     'css-shapes-2': {
       'title': 'Shapes Level 2',
-      'properties': {
+      'property': {
         'shape-inside': ['auto', 'outside-shape'].concat(
           ['10px', '10%'].times(4, 6, ', ').map(function rectangle(arg) {
             return 'rectangle(' + arg + ')';
@@ -366,7 +366,7 @@
     // Håkon Wium Lie's specs
     'css-page-floats': {
       'title': 'Page Floats',
-      'properties': {
+      'property': {
         'float': ['top', 'bottom', 'snap'].concat(
           ['10px'].times(1, 2).qmark([
             'top', 'bottom', 'near'
@@ -396,7 +396,7 @@
           'polygon(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5)'
         ]*/
       },
-      'selectors': {
+      'selector': {
         '::column()': [
           '::column(1)',
           'div.chapter::column(3)',
@@ -416,7 +416,7 @@
     'figures': {
       'title': 'CSS Figures',
       'dev': 'http://figures.spec.whatwg.org/',
-      'properties': {
+      'property': {
         'float': [
           'block-start', 'block-end', 'top-bottom', 'block-start-end',
           'bottom-top', 'block-end-start'/*,
@@ -453,7 +453,7 @@
 
     'css-gcpm-3': {
       'title': 'Generated Content for Paged Media',
-      'properties': {
+      'property': {
         'string-set': ['none'].concat(['header'].and([
           '\'foo\'',
           'counter(par-num, upper-roman)',
@@ -529,11 +529,11 @@
         ]),
         'bookmark-state': ['open', 'closed']
       },
-      'selectors': {
+      'selector': {
         '::footnote-call': ['::footnote-call'],
         '::footnote-marker': ['::footnote-marker', '::footnote-marker::after']
       },
-      '@rules': {
+      'atrule': {
         '@footnote': ['@footnote'],
         '@page': anb.concat([
           '5 of A', '1n+1 of B', 'odd of C'
@@ -546,7 +546,7 @@
     'books': {
       'title': 'CSS Books',
       'dev': 'http://books.spec.whatwg.org/',
-      'properties': {
+      'property': {
         // 'string-set': ['index first-letter, entry content()'],
         'content': [
           // 'leader(space) counter(line)',
@@ -589,7 +589,7 @@
         'nav-down-shift': pageShiftEffects,
         'nav-left-shift': pageShiftEffects
       },
-      '@rules': {
+      'atrule': {
         '@area': ['@area', '@area sidenote'],
         '@page': [
           'chapter:nth(1)', 'chapter:nth(3n)', 'chapter:nth(3n+1)', ':first p',
@@ -604,7 +604,7 @@
         '@neighborhood': ['@neighborhood'],
         '@hood': ['@hood']*/
       },
-      'selectors': {
+      'selector': {
         '::call': ['::call'/*, '.sidenote::call'*/]/*,
         ':column()': [
           ':column(1)',
@@ -619,7 +619,7 @@
     'css-content-3': {
       'title': 'Generated Content',
       'tr': 'http://www.w3.org/TR/css3-content/',
-      'properties': {
+      'property': {
         // 'string-set': ['title contents', 'chapter contents'],
         'page-policy': ['start', 'first', 'last'],
         'content': [
@@ -641,19 +641,19 @@
         ]/*,
         'move-to': ['insert']*/
       },
-      'selectors': {
+      'selector': {
         '::line-marker': ['::line-marker'],
         '::alternate': [
           '::alternate'/*, 'span::alternate',
           'span::alternate::before', 'span::after::alternate'*/
         ]
       },
-      '@rules': {
+      'atrule': {
         '@counter-styles': ['@counter-styles']/*,
         '@string': ['@string chapter'],
         '@counter': ['@counter', '@counter footnote']*/
       },
-      'descriptors': {
+      'descriptor': {
         'atrule': '@counter-styles',
         'footnote': ['super-decimal']
       }
@@ -664,7 +664,7 @@
     'css-box-3': {
       'title': 'Basic Box Model',
       'tr': 'http://www.w3.org/TR/css3-box/',
-      'properties': {
+      'property': {
         'display': [
           'run-in', 'compact', 'ruby-base-group', 'ruby-text-group',
           'container'/*, 'align-box'*/
@@ -739,7 +739,7 @@
           'none', 'margin-edge', 'border-edge', 'padding-edge', 'content-edge'
         ]
       }/*,
-      'selectors': {
+      'selector': {
         '::outside': '::outside'
       }*/
     },
@@ -747,7 +747,7 @@
     // CSS Level 3?
     'css-containment': {
       'title': 'Containment',
-      'properties': {
+      'property': {
         'contain': ['none', 'strict']
       }
     },
@@ -755,7 +755,7 @@
     // CSS Level 1~3
     'css-color-correction-1': {
       'title': 'Color Correction',
-      'properties': {
+      'property': {
         'color-correction': ['default']
       }
     },
@@ -763,7 +763,7 @@
     // New CSS Level 1
     'css-size-adjust': {
       'title': 'Mobile Text Size Adjustment Level 1',
-      'properties': {
+      'property': {
         'text-size-adjust': ['auto', 'none', '50%']
       }
     },
@@ -772,7 +772,7 @@
     'becss': {
       'title': 'Behavioral Extensions to CSS',
       'dev': 'http://dev.w3.org/2006/xbl2/css-module.html',
-      'properties': {
+      'property': {
         'binding': [
           'none',
           'url(\'http://example.org/htmlBindings.xml#checkbox\')',
@@ -782,7 +782,7 @@
           'url(#checkbox) url(#isoceles) url(#rightangle)'
         ]
       },
-      'selectors': {
+      'selector': {
         ':bound-element': ':bound-element > *'
       }
     },
@@ -791,7 +791,7 @@
     'view-mode': {
       'title': 'The \'view-mode\' Media Feature',
       'dev': 'http://dev.w3.org/2006/waf/widgets-vmmf/',
-      'Media queries': {
+      'mediaQuery': {
         'view-mode': [
           '(view-mode: windowed)',
           'not print and (view-mode: floating)',
@@ -806,7 +806,7 @@
     // CSS Level 4
     'css-text-4': {
       'title': 'Text Level 4',
-      'properties': {
+      'property': {
         'text-transform': ['capitalize', 'uppercase', 'lowercase'].or(
           ['full-width'], ['full-size-kana']
         ).slice(4),
@@ -870,16 +870,16 @@
     // CSS Level 3? New CSS Level 1?
     'css-page-template-1': {
       'title': 'Pagination Templates',
-      'properties': {
+      'property': {
         'overflow-style': [
           'paged-x', 'paged-y', 'paged-x-controls', 'paged-y-controls'
         ],
         'template-set': ['one', 'one two']
       },
-      '@rules': {
+      'atrule': {
         '@template': ['@template paged-display', '@template side-by-side:first']
       },
-      'descriptors': {
+      'descriptor': {
         'atrule': '@template paged-display',
         'atruleName': '@template',
         'required-flow': ['related-flow', 'lead-flow']
@@ -889,7 +889,7 @@
     // CSS Level 4
     'css-pseudo-4': {
       'title': 'Pseudo-elements Level 4',
-      'selectors': {
+      'selector': {
         '::before()': 'div::before(1)',
         '::after()': 'div::after(1)',
         '::nth-before()': 'div::nth-before(1)',
@@ -903,7 +903,7 @@
     // CSS Level 3
     'css3-tables': {
       'title': 'Tables',
-      'properties': {
+      'property': {
         'tab-position': ['0', '10px', '10%'],
         'tab-align': [
           'none ', 'left', 'top', 'center', 'right', 'bottom', '\'foo\''
@@ -932,7 +932,7 @@
     // Editor's Draft Not Found CSS Level 3
     'css3-marquee': {
       'title': 'Marquee',
-      'properties': {
+      'property': {
         'overflow-style': ['auto', 'marquee-line', 'marquee-block'],
         'marquee-style': ['scroll', 'slide', 'alternate'],
         'marquee-play-count': ['1', '0', 'infinite'],
@@ -943,7 +943,7 @@
 
     'css3-hyperlinks': {
       'title': 'Hyperlink Presentation',
-      'properties': {
+      'property': {
         'target-name': ['current', 'root', 'parent', 'new', 'modal', '\'foo\''],
         'target-new': ['window', 'tab', 'none'],
         'target-position': ['above', 'behind', 'front', 'back'],
@@ -961,10 +961,10 @@
       'title': 'Presentation Levels',
       'tr': 'http://www.w3.org/TR/css3-preslev/',
       'dev': 'http://dev.w3.org/csswg/css-preslev-1/Overview.src.html',
-      'properties': {
+      'property': {
         'presentation-level': ['0', '1', 'same', 'increment']
       },
-      'selectors': {
+      'selector': {
         ':below-level': [':below-level'],
         ':at-level': [':at-level'],
         ':above-level': [':above-level']
@@ -974,7 +974,7 @@
     // CSS Level 2
     'css2': {
       'title': 'Missing CSS Level 2 & 2.1',
-      'properties': {
+      'property': {
         // only Trident pass
         'font-stretch': ['wider', 'narrower'],
         // only Gecko pass
@@ -982,7 +982,7 @@
         // Blink(maybe WebKit too) pass
         'text-align': ['"string"']
       },
-      '@rules': {
+      'atrule': {
         // only Gecko doesn't pass
         '@page': ['@page :left', '@page :right', '@page :first']
       }
@@ -993,7 +993,7 @@
       'title': 'CSS Level 2.1 Aural style sheets',
       'tr': 'http://www.w3.org/TR/CSS2/aural.html',
       'dev': 'http://dev.w3.org/csswg/css2/aural.html',
-      'properties': {
+      'property': {
         'volume': [
           'medium', '0', '1', '100', '99.99', '10%', 'silent', 'x-soft', 'soft',
           'loud', 'x-loud'
@@ -1037,7 +1037,7 @@
         'speak-numeral': ['continuous', 'digits'],
         'speak-header': ['once', 'always']
       },
-      'units': {
+      'unit': {
         'Hz': ['pitch', 'voice-pitch', 'voice-range'],
         'kHz': ['pitch', 'voice-pitch', 'voice-range']
       }
@@ -1046,7 +1046,7 @@
     'css-speech-1': {
       'title': 'Speech',
       'tr': 'http://www.w3.org/TR/css3-speech/',
-      'properties': {
+      'property': {
         'voice-volume': ['silent'].concat(
           ['x-soft', 'soft', 'medium', 'loud', 'x-loud'].or(
             ['-6dB', '0', '6db']

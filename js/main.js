@@ -101,7 +101,7 @@
         Object.assign(this.feature, {
           category: featureListName,
           list: this.spec[featureListName],
-          support: Test.groups[featureListName]
+          support: Supports[featureListName]
         });
 
         Object.keys(this.feature.list).remove(
@@ -124,7 +124,7 @@
     },
     getFeatureSection: function getFeatureSection(featureListName) {
       return this.section.appendChild((
-        '<section><h1>' + featureListName + '</h1></section>'
+        '<section><h1>' + Supports[featureListName].name + '</h1></section>'
       ).toElement());
     },
     getScoreData: function getScoreData() {
@@ -158,7 +158,7 @@
       var featureList = this.feature.list,
           featureTest = featureList[this.feature.name];
 
-      if (this.feature.category === 'values' && !featureList.properties) {
+      if (this.feature.category === 'value' && !featureList.properties) {
         featureTest = featureTest.values;
       }
 
@@ -167,30 +167,27 @@
     getTestResults: function getTestResults(index, tests) {
       var category = this.feature.category,
           featureName = this.feature.name,
-          featureList = this.feature.list,
-          testCallback = this.feature.support.getResults,
-          testsLen, test, results;
+          testsLen, test;
 
-      if (category === 'units') {
+      if (category === 'unit') {
         testsLen = 1;
         test = '1' + featureName;
-        results = testCallback(featureName, tests);
-      } else if (category === 'keywords') {
+      } else if (category === 'keyword') {
         testsLen = 1;
         test = featureName;
-        results = testCallback(featureName, tests);
-      } else if (category === 'values' && !featureList.properties) {
-        test = tests[index];
-        results = testCallback(test, featureName, featureList[featureName]);
       } else {
         test = tests[index];
-        results = testCallback(test, featureName, featureList);
       }
 
       return {
         testsLen: testsLen,
         test: test,
-        results: results
+        results: this.feature.support.getResults({
+          test: test,
+          featureName: featureName,
+          featureList: this.feature.list,
+          featureTestList: tests
+        })
       };
     },
     createFeatureTest: function createFeatureTest(test, results, success) {
@@ -208,7 +205,7 @@
       }
 
       if (
-        this.feature.category === 'properties' &&
+        this.feature.category === 'property' &&
           results && results !== test
       ) {
         dd.classList.add('prefixed');
@@ -222,17 +219,11 @@
             textContent: featureName,
             className: this.passClass(data)
           }), dl.firstChild),
-          support = Supports[this.feature.support.type],
-          cached = support.cached,
-          result;
+          result = this.feature.support.cache[featureName];
 
-      if (cached) {
-        result = cached[featureName];
-
-        if (result && result !== featureName) {
-          dt.classList.add('prefixed');
-          dt.title += 'prefixed';
-        }
+      if (result && result !== featureName) {
+        dt.classList.add('prefixed');
+        dt.title += 'prefixed';
       }
     },
     getSpecTest: function getSpecTest() {
@@ -283,132 +274,6 @@
       return classes[Math.round(success * (classes.length - 1))];
     }
   });
-  Test.groups = {
-    values: {
-      type: 'value',
-      getResults: function values(value, label, tests) {
-        var properties, failed, results, idx, property, success;
-
-        properties = tests.properties;
-        failed = [];
-        results = {};
-
-        for (idx = 0; properties[idx];) {
-          property = properties[idx];
-          idx += 1;
-
-          if (!Supports.property(property)) {
-            properties.splice(idx -= 1, 1);
-          } else if (!Supports.value(property, value, label)) {
-            failed.push(property);
-          }
-        }
-
-        results.success = success =
-          1 - (properties.length ? failed.length / properties.length : 1);
-
-        if (success > 0  && success < 1) {
-          results.note = 'Failed in: ' + failed.join(', ');
-        }
-
-        return results;
-      }
-    },
-    keywords: {
-      type: 'keyword',
-      getResults: function keywords(keyword, properties) {
-        var failed, results, idx, property, success;
-
-        failed = [];
-        results = {};
-
-        for (idx = 0; properties[idx];) {
-          property = properties[idx];
-          idx += 1;
-
-          if (!Supports.property(property)) {
-            properties.splice(idx -= 1, 1);
-          } else if (!Supports.keyword(property, keyword)) {
-            failed.push(property);
-          }
-        }
-
-        results.success = success =
-          1 - (properties.length ? failed.length / properties.length : 1);
-
-        if (success > 0 && success < 1) {
-          results.note = 'Failed in: ' + failed.join(', ');
-        }
-
-        return results;
-      }
-    },
-    units: {
-      type: 'unit',
-      getResults: function units(unit, properties) {
-        var failed, results, idx, property, success;
-
-        failed = [];
-        results = {};
-
-        for (idx = 0; properties[idx];) {
-          property = properties[idx];
-          idx += 1;
-
-          if (!Supports.property(property)) {
-            properties.splice(idx -= 1, 1);
-          } else if (!Supports.unit(property, unit)) {
-            failed.push(property);
-          }
-        }
-
-        results.success = success =
-          1 - (properties.length ? failed.length / properties.length : 1);
-
-        if (success > 0 && success < 1) {
-          results.note = 'Failed in: ' + failed.join(', ');
-        }
-
-        return results;
-      }
-    },
-    properties: {
-      type: 'property',
-      getResults: function properties(value, property) {
-        return Supports.value(property, value);
-      }
-    },
-    selectors: {
-      type: 'selector',
-      getResults: function selectors(selector) {
-        return Supports.selector(selector);
-      }
-    },
-    '@rules': {
-      type: 'atrule',
-      getResults: function atrules(atrule, atruleName) {
-        return Supports.atrule(atrule, atruleName);
-      }
-    },
-    descriptors: {
-      type: 'descriptor',
-      getResults: function descriptors(value, descriptor, tests) {
-        return Supports.descriptor(descriptor, value, tests);
-      }
-    },
-    '@rule selectors': {
-      type: 'ruleSelector',
-      getResults: function ruleSelectors(ruleSelector, atruleName, tests) {
-        return Supports.ruleSelector(atruleName, ruleSelector, tests);
-      }
-    },
-    'Media queries': {
-      type: 'mediaQuery',
-      getResults: function mediaQueries(mq, mqName) {
-        return Supports.mediaQuery(mq, mqName);
-      }
-    }
-  };
 
   function Timer() {
     this.timeTaken = doc.getElementById('timeTaken');

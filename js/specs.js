@@ -271,7 +271,7 @@
     'selectors3': {
       'title': 'Selectors',
       'tr': 'http://www.w3.org/TR/css3-selectors/',
-      'selectors': {
+      'selector': {
         'ns|E': [/*'svg|html', */'*|html', '|html', /*'svg|*', */'*|*', '|*'],
         '[att^=val]': ['[att^=val]', '[att^=\'val\']'],
         '[att$=val]': ['[att$=val]', '[att$=\'val\']'],
@@ -321,7 +321,7 @@
     'css-color-3': {
       'title': 'Color',
       'tr': 'http://www.w3.org/TR/css3-color/',
-      'keywords': {
+      'keyword': {
         'transparent': [
           'color', 'background-color', 'border-color', 'text-decoration-color',
           'column-rule-color'
@@ -331,7 +331,7 @@
           'column-rule-color'
         ]
       },
-      'values': {
+      'value': {
         'properties': [
           'color',
           'background-color',
@@ -345,7 +345,7 @@
         'hsl()': 'hsl(0, 0%, 0%)',
         'hsla()': 'hsla(0, 0%, 0%, .5)'
       },
-      'properties': {
+      'property': {
         'color': [
           'aliceblue', 'antiquewhite', 'aquamarine', 'azure', 'beige', 'bisque',
           'blanchedalmond', 'blueviolet', 'brown', 'burlywood', 'cadetblue',
@@ -385,7 +385,7 @@
     'mediaqueries3': {
       'title': 'Media Queries',
       'tr': 'http://www.w3.org/TR/css3-mediaqueries/',
-      'Media queries': {
+      'mediaQuery': {
         'only': ['only screen', 'only all'],
         'not': [
           'not braille', 'not handheld', 'not print', 'not projection',
@@ -471,7 +471,7 @@
     'css-conditional-3': {
       'title': 'Conditional Rules',
       'tr': 'http://www.w3.org/TR/css3-conditional/',
-      '@rules': {
+      'atrule': {
         '@supports': [
           // check syntax parsing, not check supporting these as a feature.
           // see http://dev.w3.org/csswg/css-conditional-3/#supports_rule
@@ -500,10 +500,10 @@
 
     'css-cascade-3': {
       'title': 'Cascading and Inheritance',
-      'keywords': {
+      'keyword': {
         'unset': ['width', 'height']
       },
-      'properties': {
+      'property': {
         'all': ['unset']
       }
     },
@@ -511,7 +511,7 @@
     'css-namespaces-3': {
       'title': 'Namespaces',
       'tr': 'http://www.w3.org/TR/css3-namespace/',
-      '@rules': {
+      'atrule': {
         '@namespace': [
           '@namespace "";',
           '@namespace empty "";',
@@ -526,7 +526,7 @@
     'css-backgrounds-3': {
       'title': 'Backgrounds and Borders',
       'tr': 'http://www.w3.org/TR/css3-background/',
-      'properties': {
+      'property': {
         'background-image': ['linear-gradient(white, black)'].concat(
           ['none', 'url(foo.png)', 'linear-gradient(white, black)'].times(
             2, 2, ', '
@@ -650,7 +650,7 @@
 
     'css-fonts-3': {
       'title': 'Fonts',
-      'properties': {
+      'property': {
         'font-stretch': [
           'normal', 'ultra-condensed', 'extra-condensed', 'condensed',
           'semi-condensed', 'semi-expanded', 'expanded', 'extra-expanded',
@@ -756,12 +756,12 @@
         ],
         'font-language-override': ['normal', '\'SRB\'']
       },
-      '@rules': {
+      'atrule': {
         '@font-face': '@font-face',
         '@font-feature-values': '@font-feature-values Jupiter Sans'
       },
       // WebKit/Blink has 'src' and 'unicode-range' as a property too.
-      'descriptors': {
+      'descriptor': {
         'atrule': '@font-face',
         'font-family': ['Helvetica', 'Verdana'],
         'src': [
@@ -843,10 +843,10 @@
 
     'css-values-3': {
       'title': 'Values and Units',
-      'keywords': {
+      'keyword': {
         'initial': ['width', 'height']
       },
-      'values': {
+      'value': {
         '+<number> exponential notation': {
           'values': [
             '0e+0', '0e-0', '0e0', '+0e+0', '+0e-0', '+0e0', '-0e+0', '-0e-0',
@@ -1050,7 +1050,7 @@
           'properties': ['width', 'height']
         }
       },
-      'units': {
+      'unit': {
         'ch': ['width', 'height'],
         'rem': ['width', 'height'],
         'vw': ['width', 'height'],
@@ -1095,7 +1095,7 @@
     'css-ui-3': {
       'title': 'Basic User Interface',
       'tr': 'http://www.w3.org/TR/css3-ui/',
-      'properties': {
+      'property': {
         'content': 'icon',
         'icon': ['auto'].concat(['url(foo.png)'].times(1, 3, ', ')),
         'box-sizing': box,
@@ -1130,7 +1130,7 @@
         ),
         'ime-mode': ['auto', 'normal', 'active', 'inactive', 'disabled']
       },
-      'selectors': {
+      'selector': {
         ':default': ':default',
         ':valid': ':valid',
         ':invalid': ':invalid',
@@ -1149,7 +1149,7 @@
 
     'css-text-3': {
       'title': 'Text',
-      'properties': {
+      'property': {
         'text-transform': ['full-width'],
         'tab-size': ['8', '1em'],
         'word-break': ['normal', 'keep-all', 'break-all'],
@@ -1178,7 +1178,7 @@
 
     'css-text-decor-3': {
       'title': 'Text Decoration',
-      'properties': {
+      'property': {
         'text-decoration-line': ['none'].concat(
           ['underline'].or(['overline'], ['line-through'], ['blink'])
         ),
@@ -1232,7 +1232,7 @@
     'css-page-3': {
       'title': 'Paged Media',
       'tr': 'http://www.w3.org/TR/css3-page/',
-      'properties': {
+      'property': {
         'size': ['auto', '4in', '8.5in 11in'].concat([
           'A5', 'A4', 'A3', 'B5', 'B4', 'letter', 'legal', 'ledger'
         ].or(['portrait', ' landscape'])),
@@ -1240,7 +1240,7 @@
         'bleed': ['auto', '6pt'],
         'page': ['auto', 'rotated', 'narrow', 'main', 'index', 'funky']
       },
-      '@rules': {
+      'atrule': {
         '@page': [
           '@page :blank', '@page LandscapeTable',
           '@page :left:right', '@page :left:left',
@@ -1272,7 +1272,7 @@
 
     'css-writing-modes-3': {
       'title': 'Writing Modes',
-      'properties': {
+      'property': {
         'unicode-bidi': ['isolate', 'isolate-override', 'plaintext'],
         'writing-mode': ['horizontal-tb', 'vertical-rl', 'vertical-lr'],
         'text-orientation': [
@@ -1287,7 +1287,7 @@
     'css-images-3': {
       'title': 'Image Values and Replaced Content',
       'tr': 'http://www.w3.org/TR/css3-images/',
-      'values': {
+      'value': {
         'properties': [
           'background-image',
           'list-style-image',
@@ -1438,7 +1438,7 @@
             'transparent 100%)'
         ])
       },
-      'properties': {
+      'property': {
         'object-fit': ['fill', 'contain', 'cover', 'none', 'scale-down'],
         'object-position': position,
         'image-resolution': ['from-image'].or(
@@ -1451,7 +1451,7 @@
     'css-sizing-3': {
       'title': 'Intrinsic & Extrinsic Sizing',
       'tr': 'http://www.w3.org/TR/css3-sizing/',
-      'properties': {
+      'property': {
         'width': contentSize/*.concat('repudiate-floats')*/,
         'min-width': contentSize.concat(
           /*'repudiate-floats', */'contain-floats'
@@ -1469,7 +1469,7 @@
     'css-break-3': {
       'title': 'Fragmentation',
       'tr': 'http://www.w3.org/TR/css3-break/',
-      'properties': {
+      'property': {
         'break-before': breakInside.concat([
           'always', 'left', 'right', 'page', 'column', 'region', 'any'
         ], logicalPage),
@@ -1483,7 +1483,7 @@
 
     'css-overflow-3': {
       'title': 'Overflow',
-      'properties': {
+      'property': {
         'overflow-x': [
           'visible', 'hidden', 'scroll', 'auto'
         ].concat(overflowFragment),
@@ -1494,14 +1494,14 @@
         // 'break': ['regions'],
         'max-lines': ['none', '1']
       },
-      'selectors': {
+      'selector': {
         '::nth-fragment()': ['::nth-fragment(1)', 'div::nth-fragment(1)']
       }
     },
 
     'css-lists-3': {
       'title': 'Lists and Counters',
-      'properties': {
+      'property': {
         'display': ['inline-list-item'],
         'list-style-image': ['linear-gradient(white, black)'],
         'list-style-type': ['\'★\''].concat(counterStyle),
@@ -1532,7 +1532,7 @@
           'list-item attr(value integer, 1)'*/
         ]
       },
-      'selectors': {
+      'selector': {
         '::marker': '::marker'
       }
     },
@@ -1540,7 +1540,7 @@
     'css-inline-3': {
       'title': 'Inline Layout',
       'tr': 'http://www.w3.org/TR/css3-linebox/',
-      'properties': {
+      'property': {
         'text-height': ['auto', 'font-size', 'text-size', 'max-size', '10.52'],
         'line-height': ['none'],
         'line-box-contain': ['block'].or(
@@ -1583,7 +1583,7 @@
     'css-align-3': {
       'title': 'Box Alignment',
       'tr': 'http://www.w3.org/TR/css3-align/',
-      'properties': {
+      'property': {
         'justify-content': justifyContent2,
         'align-content': justifyContent2,
         'justify-self': justifySelf,
@@ -1599,7 +1599,7 @@
     'css-transitions-1': {
       'title': 'Transitions',
       'tr': 'http://www.w3.org/TR/css3-transitions/',
-      'properties': {
+      'property': {
         'transition-property': [
           'all', 'none',
           'background-color', 'background-position', 'border-bottom-color',
@@ -1644,7 +1644,7 @@
     'css-multicol-1': {
       'title': 'Multi-column Layout',
       'tr': 'http://www.w3.org/TR/css3-multicol/',
-      'properties': {
+      'property': {
         'column-width': ['10em', 'auto'],
         'column-count': ['2', 'auto'],
         'columns': ['1em', 'auto'].or(['1', 'auto']),
@@ -1661,7 +1661,7 @@
     'cssom-view-1': {
       'title': 'CSSOM View',
       'tr': 'http://www.w3.org/TR/cssom-view/',
-      'properties': {
+      'property': {
         'scroll-behavior': ['instant', 'smooth']
       }
     },
@@ -1669,10 +1669,10 @@
     'css-device-adapt-1': {
       'title': 'Device Adaptation',
       'tr': 'http://www.w3.org/TR/css-device-adapt/',
-      '@rules': {
+      'atrule': {
         '@viewport': '@viewport'
       },
-      'descriptors': {
+      'descriptor': {
         'atrule': '@viewport',
         'min-width': width,
         'max-width': width,
@@ -1691,7 +1691,7 @@
     // New CSS Level 1
     'css-flexbox-1': {
       'title': 'Flexible Box Layout Level 1',
-      'properties': {
+      'property': {
         'display': ['flex', 'inline-flex'],
         'min-width': ['auto'],
         'min-height': ['auto'],
@@ -1713,7 +1713,7 @@
     'css-animations-1': {
       'title': 'Animations Level 1',
       'tr': 'http://www.w3.org/TR/css3-animations/',
-      'properties': {
+      'property': {
         'animation-name': ['none', 'foo', 'foo, bar', 'none, foo, bar'],
         'animation-duration': ['0s', '1s', '100ms', '1s, 2s', '0ms, 1s, 3s'],
         'animation-timing-function': timingFunction.concat([
@@ -1755,10 +1755,10 @@
           '0s, 0s, 0s'
         ])
       },
-      '@rules': {
+      'atrule': {
         '@keyframes': '@keyframes foo'
       },
-      '@rule selectors': {
+      'ruleSelector': {
         'atrule': '@keyframes name',
         '@keyframes': ['to', 'from', '10%'].times(1, 2, ', ')
       }
@@ -1766,7 +1766,7 @@
 
     'css-transforms-1': {
       'title': 'Transforms Level 1',
-      'properties': {
+      'property': {
         'transform': ['none', 'matrix(1, 2, 3, 4, 5, 6)'].concat(
           ['0', '1px', '-20px'].times(
             1, 2, ', '
@@ -1859,7 +1859,7 @@
 
     'css-will-change-1': {
       'title': 'Will Change Level 1',
-      'properties': {
+      'property': {
         'will-change': ['auto'].concat([
           'scroll-position', 'contents', 'ident'
         ].times(1, 3, ', '))
@@ -1868,7 +1868,7 @@
 
     'css-grid-1': {
       'title': 'Grid Layout Level 1',
-      'properties': {
+      'property': {
         'display': ['grid', 'inline-grid'],
         'grid-template-columns': trackSizing,
         'grid-template-rows': trackSizing,
@@ -1896,7 +1896,7 @@
           'auto / auto / auto', 'auto / auto / auto / auto'
         ])
       },
-      'units': {
+      'unit': {
         'fr': [
           'grid-template-columns', 'grid-template-rows', 'grid-auto-columns',
           'grid-auto-rows', 'grid-columns', 'grid-rows'
@@ -1906,7 +1906,7 @@
 
     'css-variables-1': {
       'title': 'Custom Properties for Cascading Variables Level 1',
-      'values': {
+      'value': {
         'properties': ['background-color', 'var-foo'],
         'var()': [
           'var(--color)', 'var(--header-color)', 'var(--header-color, blue)',
@@ -1914,14 +1914,14 @@
         ]
       }/*,
       // '--*' must be checked by element.style.getPropertyValue('--*').
-      'properties': {
+      'property': {
         '--*': ['--foo', '--FOO', '--header-color']
       }*/
     },
 
     'css-logical-props-1': {
       'title': 'Logical Properties Level 1',
-      'properties': {
+      'property': {
         'caption-side': [
           'start', 'end', 'before', 'after'
         ].qmark(['outside'], ' ', {amp: true}),
@@ -1975,14 +1975,14 @@
         'background-image-transform': ['physical', 'logical', 'rotate'],
         'border-image-transform': ['rotate', 'logical', 'physical']
       },
-      '@rules': {
+      'atrule': {
         '@page': ['@page :recto', '@page :verso']
       }
     },
 
     'css-shapes-1': {
       'title': 'Shapes Level 1',
-      'properties': {
+      'property': {
         'shape-outside': ['none'].concat(basicShape, shapeBox, image, [
           'inset(10px) border-box', 'border-box inset(10px)',
           'content-box ellipse(10% farthest-side at bottom 10px right 10px)',
@@ -1995,7 +1995,7 @@
 
     'css-scoping-1': {
       'title': 'Scoping Level 1',
-      'selectors': {
+      'selector': {
         ':scope-context()': [
           ':scope-context(.foo)', ':scope-context(div:only-child)'
         ],
@@ -2014,7 +2014,7 @@
         '::page()': ['::page(div)', 'div::page(div)']*/
       }/*,
       // It seems that @scope need CSSOM API.
-      '@rules': {
+      'atrule': {
         '@scope': ['@scope div']
       }*/
     },
@@ -2023,7 +2023,7 @@
     'css-images-4': {
       'title': 'Image Values and Replaced Content Level 4',
       'tr': 'http://www.w3.org/TR/css4-images/',
-      'values': {
+      'value': {
         'properties': [
           'background-image',
           'list-style-image',
@@ -2431,7 +2431,7 @@
           return 'repeating-conic-gradient(' + arg + ')';
         })
       },
-      'properties': {
+      'property': {
         'image-orientation': [
           'from-image'
         ].concat(angle.qmark(['flip'], ' ', {former: true})),
@@ -2441,7 +2441,7 @@
 
     'selectors4': {
       'title': 'Selectors Level 4',
-      'selectors': {/*
+      'selector': {/*
         ':active-drop': [':active-drop'],
         ':valid-drop': [':valid-drop'],
         ':invalid-drop': [':invalid-drop'],*/
@@ -2526,7 +2526,7 @@
 
     'mediaqueries4': {
       'title': 'Media Queries Level 4',
-      'Media queries': {
+      'mediaQuery': {
         '((query))': [
           '((width) and (height))', 'speech, ((width) and (height))',
           '((width) and (height)), ((width) and (height))',
@@ -2614,14 +2614,14 @@
         ]
       }/*,
       // Custom Media Queries must be checked CSSOM API.
-      '@rules': {
+      'atrule': {
         '@custom-media': ['@custom-media --narrow-window (max-width: 30em)']
       }*/
     },
 
     'css-color-4': {
       'title': 'Color Level 4',
-      'values': {
+      'value': {
         'properties': [
           'color',
           'background-color',
@@ -2714,7 +2714,7 @@
           'color(blue w(+ 20%) s(+ 20%))'
         ])
       },
-      'properties': {
+      'property': {
         'opacity': percentage,
         'color-correction': ['auto', 'sRGB'],
         'color-adjust': ['economy', 'exact']
@@ -2723,7 +2723,7 @@
 
     'css-backgrounds-4': {
       'title': 'Backgrounds and Borders Level 4',
-      'properties': {
+      'property': {
         'corner-shape': ['round', 'bevel', 'scoop', 'notch'].times(1, 4),
         'corners': ['round', 'bevel', 'scoop', 'notch'].times(1, 4).concat(
           ['10px', '10%'].times(1, 4).times(1, 2, ' / ')
@@ -2761,7 +2761,7 @@
     'compositing-1': {
       'title': 'Compositing and Blending Level 1',
       'dev': 'http://dev.w3.org/fxtf/compositing-1/',
-      'properties': {
+      'property': {
         'mix-blend-mode': blendMode,
         'isolation': ['auto', 'isolate'],
         'background-blend-mode': blendMode.concat(['normal, multiply'])
@@ -2772,7 +2772,7 @@
       'title': 'Filter Effects Level 1',
       'tr': 'http://www.w3.org/TR/filter-effects/',
       'dev': 'http://dev.w3.org/fxtf/filters/',
-      'properties': {
+      'property': {
         'filter': ['none'].concat([
           'blur(0px)', 'brightness(1)', 'brightness(15%)',
           'contrast(1)', 'contrast(1%)'
@@ -2811,7 +2811,7 @@
     'css-masking-1': {
       'title': 'Masking Level 1',
       'dev': 'http://dev.w3.org/fxtf/css-masking-1/',
-      'properties': {
+      'property': {
         'clip-path': [
           'none', 'url("#clip1")', 'url(commonmasks.xml#mask)'
         ].concat(basicShape, geometryBox).concat(
@@ -2907,7 +2907,7 @@
     'web-animations': {
       'title': 'Web Animations 1.0',
       'dev': 'http://dev.w3.org/fxtf/web-animations/',
-      'properties': {
+      'property': {
         // http://dev.w3.org/fxtf/web-animations/#dfn-step-timing-function-1
         'transition-timing-function': ['step-middle', 'steps(1, middle)'],
         'transition': ['none step-middle', 'steps(1, middle)'],
@@ -2922,7 +2922,7 @@
       'tr': 'http://www.w3.org/TR/SVG2/',
       'dev': 'https://svgwg.org/svg2-draft/',
       // https://svgwg.org/svg2-draft/propidx.html
-      'properties': {
+      'property': {
         'shape-inside': ['none'], // old
         'shape-outside': [
           '10px', '10%'
@@ -3082,10 +3082,10 @@
         'display': ['marker'], // syntax definition not found
         'enable-background': ['accumulate', 'new'] // old
       },
-      '@rules': {
+      'atrule': {
         '@color-profile': '@color-profile'
       },
-      'descriptors': {
+      'descriptor': {
         'atrule': '@color-profile',
         'src': [
           'sRGB', 'local(red)',
@@ -3107,7 +3107,7 @@
     'html': {
       'title': 'HTML',
       'dev': 'http://www.whatwg.org/specs/web-apps/current-work/multipage/',
-      'properties': {
+      'property': {
         // http://www.whatwg.org/specs/web-apps/current-work/multipage/commands.html#anchor-points
         'anchor-point': ['none'].concat(position)
       }
@@ -3116,7 +3116,7 @@
     'fullscreen': {
       'title': 'Fullscreen API',
       'dev': 'http://fullscreen.spec.whatwg.org/',
-      'selectors': {
+      'selector': {
         '::backdrop': '::backdrop',
         ':fullscreen': ':fullscreen'
       }
@@ -3126,7 +3126,7 @@
     'custom-elements': {
       'title': 'Custom Elements',
       'dev': 'http://w3c.github.io/webcomponents/spec/custom/',
-      'selectors': {
+      'selector': {
         ':unresolved': ':unresolved'
       }
     },
@@ -3136,7 +3136,7 @@
       'title': 'Pointer Events',
       'dev': 'https://dvcs.w3.org/hg/pointerevents/raw-file/tip/' +
         'pointerEvents.html',
-      'properties': {
+      'property': {
         'touch-action': ['auto', 'none', 'manipulation'].concat(
           ['pan-x'].or(['pan-y'])
         )

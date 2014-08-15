@@ -3,7 +3,7 @@
 (function executeSupports(doc) {
   'use strict';
 
-  var prefixes, prefixesLen, inline, style;
+  var Supports, prefixes, prefixesLen, inline, style;
 
   prefixes = [
     '', '-moz-', '-webkit-', '-ms-', '-o-',
@@ -45,210 +45,291 @@
     }
   });
 
-  NCFTest.Supports = {
-    property: function propertyFunc(property) {
-      var cached, idx, prefixed;
+  function collectValueResults(callback, properties) {
+    var failed, results, idx, property, success;
 
-      if (property.charAt(0) === '-') {
-        return property.toCamelCase() in inline ? property : false;
+    failed = [];
+    results = {};
+
+    for (idx = 0; properties[idx];) {
+      property = properties[idx];
+      idx += 1;
+
+      if (!Supports.property.check(property)) {
+        properties.splice(idx -= 1, 1);
+      } else if (!callback(property)) {
+        failed.push(property);
       }
+    }
 
-      cached = propertyFunc.cached;
+    results.success = success =
+      1 - (properties.length ? failed.length / properties.length : 1);
 
-      if (!cached) {
-        cached = propertyFunc.cached = {};
-      } else if (cached[property]) {
-        return cached[property];
-      }
+    if (success > 0  && success < 1) {
+      results.note = 'Failed in: ' + failed.join(', ');
+    }
 
-      for (idx = 0; idx < prefixesLen; idx += 1) {
-        prefixed = prefixes[idx] + property;
+    return results;
+  }
 
-        if (prefixed.toCamelCase() in inline) {
-          cached[property] = prefixed;
+  NCFTest.Supports = Supports = {
+    property: {
+      name: 'properties',
+      getResults: function getResults(info) {
+        var value = info.test,
+            property = info.featureName;
 
-          return prefixed;
+        return Supports.value.check(property, value);
+      },
+      cache: {},
+      check: function check(property) {
+        var cache = this.cache, idx, prefixed;
+
+        if (property.charAt(0) === '-') {
+          return property.toCamelCase() in inline ? property : '';
         }
-      }
 
-      cached[property] = false;
+        if (cache[property]) {
+          return cache[property];
+        }
 
-      return false;
-    },
-    value: function valueFunc(property, value, label) {
-      var cached, idx, prefix, prefixed;
+        for (idx = 0; idx < prefixesLen; idx += 1) {
+          prefixed = prefixes[idx] + property;
 
-      cached = valueFunc.cached;
+          if (prefixed.toCamelCase() in inline) {
+            cache[property] = prefixed;
 
-      if (!cached) {
-        cached = valueFunc.cached = {};
-      }
-
-      property = this.property(property);
-
-      if (!property) {
-        return false;
-      }
-
-      for (idx = 0; idx < prefixesLen; idx += 1) {
-        prefix = prefixes[idx];
-        prefixed = prefix + value;
-
-        if (CSS.supports(property, prefixed)) {
-          if (label && cached[label] === void 0) {
-            cached[label] = prefix + label;
+            return prefixed;
           }
-
-          return prefixed;
         }
-      }
 
-      return false;
+        cache[property] = '';
+
+        return '';
+      }
     },
-    keyword: function keywordFunc(property, keyword) {
-      var cached, idx, prefix, prefixed;
+    value: {
+      name: 'values',
+      getResults: function getResults(info) {
+        var value = info.test,
+            label = info.featureName,
+            featureList = info.featureList,
+            properties = featureList.properties ||
+              featureList[label].properties;
 
-      cached = keywordFunc.cached;
+        return collectValueResults(function callback(property) {
+          return Supports.value.check(property, value, label);
+        }, properties);
+      },
+      cache: {},
+      check: function check(property, value, label) {
+        var cache = this.cache, idx, prefix, prefixed;
 
-      if (!cached) {
-        cached = keywordFunc.cached = {};
-      }
+        property = Supports.property.check(property);
 
-      property = this.property(property);
+        if (property) {
+          for (idx = 0; idx < prefixesLen; idx += 1) {
+            prefix = prefixes[idx];
+            prefixed = prefix + value;
 
-      if (!property) {
-        return false;
-      }
+            if (CSS.supports(property, prefixed)) {
+              if (label && cache[label] === void 0) {
+                cache[label] = prefix + label;
+              }
 
-      for (idx = 0; idx < prefixesLen; idx += 1) {
-        prefix = prefixes[idx];
-        prefixed = prefix + keyword;
-
-        if (CSS.supports(property, prefixed)) {
-          if (keyword && cached[keyword] === void 0) {
-            cached[keyword] = prefix + keyword;
+              return prefixed;
+            }
           }
-
-          return prefixed;
         }
-      }
 
-      return false;
+        return '';
+      }
     },
-    unit: function unitFunc(property, unit) {
-      var cached, idx, prefix, prefixed;
+    keyword: {
+      name: 'keywords',
+      getResults: function getResults(info) {
+        var keyword = info.featureName,
+            properties = info.featureTestList;
 
-      cached = unitFunc.cached;
+        return collectValueResults(function callback(property) {
+          return Supports.keyword.check(property, keyword);
+        }, properties);
+      },
+      cache: {},
+      check: function check(property, keyword) {
+        var cache = this.cache, idx, prefixed;
 
-      if (!cached) {
-        cached = unitFunc.cached = {};
-      }
+        property = Supports.property.check(property);
 
-      property = this.property(property);
+        if (property) {
+          for (idx = 0; idx < prefixesLen; idx += 1) {
+            prefixed = prefixes[idx] + keyword;
 
-      if (!property) {
-        return false;
-      }
+            if (CSS.supports(property, prefixed)) {
+              if (cache[keyword] === void 0) {
+                cache[keyword] = prefixed;
+              }
 
-      for (idx = 0; idx < prefixesLen; idx += 1) {
-        prefix = prefixes[idx];
-        prefixed = '1' + prefix + unit;
-
-        if (CSS.supports(property, prefixed)) {
-          if (unit && cached[unit] === void 0) {
-            cached[unit] = prefix + unit;
+              return prefixed;
+            }
           }
-
-          return prefixed;
         }
-      }
 
-      return false;
+        return '';
+      }
     },
-    selector: function selectorFunc(selector) {
-      var cached, idx, prefixed;
+    unit: {
+      name: 'units',
+      getResults: function getResults(info) {
+        var unit = info.featureName,
+            properties = info.featureTestList;
 
-      cached = selectorFunc.cached;
+        return collectValueResults(function callback(property) {
+          return Supports.unit.check(property, unit);
+        }, properties);
+      },
+      cache: {},
+      check: function check(property, unit) {
+        var cache = this.cache, idx, prefix, prefixed;
 
-      if (!cached) {
-        cached = selectorFunc.cached = {};
-      } else if (cached[selector]) {
-        return cached[selector];
-      }
+        property = Supports.property.check(property);
 
-      for (idx = 0; idx < prefixesLen; idx += 1) {
-        prefixed = selector.replace(/^(:+)/, '$1' + prefixes[idx]);
+        if (property) {
+          for (idx = 0; idx < prefixesLen; idx += 1) {
+            prefix = prefixes[idx];
+            prefixed = '1' + prefix + unit;
 
-        try {
-          doc.querySelector(prefixed);
+            if (CSS.supports(property, prefixed)) {
+              if (cache[unit] === void 0) {
+                cache[unit] = prefix + unit;
+              }
 
-          cached[selector] = prefixed;
-
-          return prefixed;
-        } catch (err) {}
-      }
-
-      cached[selector] = false;
-
-      return false;
-    },
-    atrule: function atruleFunc(atrule, atruleName) {
-      var cached, idx, prefix, prefixed;
-
-      cached = atruleFunc.cached;
-
-      if (!cached) {
-        cached = atruleFunc.cached = {};
-      } else if (cached[atrule]) {
-        return cached[atrule];
-      }
-
-      for (idx = 0; idx < prefixesLen; idx += 1) {
-        prefix = prefixes[idx];
-        prefixed = atrule.replace(/^@/, '@' + prefix);
-
-        style.textContent = prefixed + '{}';
-
-        if (style.sheet.cssRules.length > 0) {
-          if (cached[atruleName] === void 0) {
-            cached[atruleName] = atruleName.replace(/^@/, '@' + prefix);
+              return prefixed;
+            }
           }
-
-          cached[atrule] = prefixed;
-
-          return prefixed;
         }
+
+        return '';
       }
-
-      cached[atrule] = false;
-
-      return false;
     },
-    descriptor: function descriptorFunc(descriptor, value, tests) {
-      var cached, key, atrule, idx, prefix, prefixed, prop, cssRule, styleDec;
+    selector: {
+      name: 'selectors',
+      getResults: function getResults(info) {
+        var selector = info.test;
 
-      cached = descriptorFunc.cached;
-      key = descriptor + ': ' + value;
+        return this.check(selector);
+      },
+      cache: {},
+      check: function check(selector) {
+        var cache = this.cache, idx, prefixed;
 
-      if (!cached) {
-        cached = descriptorFunc.cached = {};
-      } else if (cached[key]) {
-        return cached[key];
+        if (cache[selector]) {
+          return cache[selector];
+        }
+
+        for (idx = 0; idx < prefixesLen; idx += 1) {
+          prefixed = selector.replace(/^(:+)/, '$1' + prefixes[idx]);
+
+          try {
+            doc.querySelector(prefixed);
+
+            cache[selector] = prefixed;
+
+            return prefixed;
+          } catch (err) { }
+        }
+
+        cache[selector] = '';
+
+        return '';
       }
+    },
+    atrule: {
+      name: '@rules',
+      getResults: function getResults(info) {
+        var atrule = info.test,
+            atruleName = info.featureName;
 
-      atrule = this.atrule(tests.atrule, tests.atruleName || tests.atrule);
+        return this.check(atrule, atruleName);
+      },
+      cache: {},
+      check: function check(atrule, atruleName) {
+        var cache = this.cache, idx, prefix, prefixed;
 
-      if (!atrule) {
-        return false;
+        if (cache[atrule]) {
+          return cache[atrule];
+        }
+
+        for (idx = 0; idx < prefixesLen; idx += 1) {
+          prefix = prefixes[idx];
+          prefixed = atrule.replace(/^@/, '@' + prefix);
+
+          style.textContent = prefixed + '{}';
+
+          if (style.sheet.cssRules.length > 0) {
+            if (cache[atruleName] === void 0) {
+              cache[atruleName] = atruleName.replace(/^@/, '@' + prefix);
+            }
+
+            cache[atrule] = prefixed;
+
+            return prefixed;
+          }
+        }
+
+        cache[atrule] = '';
+
+        return '';
       }
+    },
+    descriptor: {
+      name: 'descriptors',
+      getResults: function getResults(info) {
+        var value = info.test,
+            descriptor = info.featureName,
+            featureList = info.featureList;
 
-      for (idx = 0; idx < prefixesLen; idx += 1) {
-        prefix = prefixes[idx];
-        prefixed = prefix + descriptor;
-        prop = prefixed.toCamelCase();
+        return this.check(descriptor, value, featureList);
+      },
+      cache: {},
+      check: function check(descriptor, value, featureList) {
+        var cache = this.cache,
+            key = descriptor + ': ' + value,
+            atrule = featureList.atrule,
+            atruleName = featureList.atruleName,
+            idx, prefixed;
+
+        if (cache[key]) {
+          return cache[key];
+        }
+
+        atrule = Supports.atrule.check(atrule, atruleName || atrule);
+
+        if (atrule) {
+          for (idx = 0; idx < prefixesLen; idx += 1) {
+            prefixed = prefixes[idx] + descriptor;
+
+            if (this.checkDescriptor(atrule, prefixed, value)) {
+              if (cache[descriptor] === void 0) {
+                cache[descriptor] = prefixed;
+              }
+
+              cache[key] = prefixed;
+
+              return prefixed;
+            }
+          }
+        }
+
+        cache[key] = '';
+
+        return '';
+      },
+      checkDescriptor: function checkDescriptor(atrule, descriptor, value) {
+        var prop = descriptor.toCamelCase(), cssRule, styleDec;
 
         // value should do prefix test.
-        style.textContent = atrule + '{' + prefixed + ': ' + value + ';}';
+        style.textContent = atrule + '{' + descriptor + ': ' + value + ';}';
         cssRule = style.sheet.cssRules[0];
         styleDec = cssRule.style;
 
@@ -258,99 +339,107 @@
             // for Trident, WebKit/Blink, Presto
             styleDec[prop] ||
             // for Gecko
-            styleDec.getPropertyValue(prefixed)
+            styleDec.getPropertyValue(descriptor)
         ) {
-          if (cached[descriptor] === void 0) {
-            cached[descriptor] = prefixed;
-          }
-
-          cached[key] = prefixed;
-
-          return prefixed;
+          return true;
         }
       }
-
-      cached[key] = false;
-
-      return false;
     },
-    ruleSelector: function ruleSelectorFunc(atruleName, ruleSelector, tests) {
-      var cached, key, atrule, idx, prefix, prefixed, prop, cssRule;
+    ruleSelector: {
+      name: '@rule selectors',
+      getResults: function getResults(info) {
+        var ruleSelector = info.test,
+            atruleName = info.featureName,
+            featureList = info.featureList;
 
-      cached = ruleSelectorFunc.cached;
-      key = atruleName + ': ' + ruleSelector;
+        return this.check(atruleName, ruleSelector, featureList);
+      },
+      cache: {},
+      check: function check(atruleName, ruleSelector, featureList) {
+        var cache = this.cache,
+            key = atruleName + ': ' + ruleSelector,
+            atrule = featureList.atrule,
+            idx, prefixed;
 
-      if (!cached) {
-        cached = ruleSelectorFunc.cached = {};
-      } else if (cached[key]) {
-        return cached[key];
-      }
+        if (cache[key]) {
+          return cache[key];
+        }
 
-      atrule = this.atrule(tests.atrule || atruleName, atruleName);
+        atrule = Supports.atrule.check(atrule || atruleName, atruleName);
 
-      if (!atrule) {
-        return false;
-      }
+        if (atrule) {
+          for (idx = 0; idx < prefixesLen; idx += 1) {
+            prefixed = prefixes[idx] + ruleSelector;
 
-      for (idx = 0; idx < prefixesLen; idx += 1) {
-        prefix = prefixes[idx];
-        prefixed = prefix + ruleSelector;
-        prop = prefixed.toCamelCase();
+            if (this.checkRuleSelector(atrule, prefixed)) {
+              if (cache[ruleSelector] === void 0) {
+                cache[ruleSelector] = prefixed;
+              }
 
-        style.textContent = atrule + ' {' + prefixed + ' { top: 0; } }';
+              cache[key] = prefixed;
+
+              return prefixed;
+            }
+          }
+        }
+
+        cache[key] = '';
+
+        return '';
+      },
+      checkRuleSelector: function checkRuleSelector(atrule, ruleSelector) {
+        var cssRule;
+
+        style.textContent = atrule + ' {' + ruleSelector + ' { top: 0; } }';
         cssRule = style.sheet.cssRules[0];
 
         if (
           // standard
           // Trident throws Error.
-          // cssRule.findRule(prefixed) ||
+          // cssRule.findRule(ruleSelector) ||
             // for Trident, WebKit/Blink
             cssRule.cssRules.length > 0
         ) {
-          if (cached[ruleSelector] === void 0) {
-            cached[ruleSelector] = prefixed;
-          }
-
-          cached[key] = prefixed;
-
-          return prefixed;
+          return true;
         }
       }
-
-      cached[key] = false;
-
-      return false;
     },
-    mediaQuery: function mediaQueryFunc(mq, mqName) {
-      var cached, idx, prefix, prefixed, mql;
+    mediaQuery: {
+      name: 'Media queries',
+      getResults: function getResults(info) {
+        var mq = info.test,
+            mqName = info.featureName;
 
-      cached = mediaQueryFunc.cached;
+        return this.check(mq, mqName);
+      },
+      cache: {},
+      check: function check(mq, mqName) {
+        var cache = this.cache, idx, prefix, prefixed, mql;
 
-      if (!cached) {
-        cached = mediaQueryFunc.cached = {};
-      } else if (cached[mq]) {
-        return cached[mq];
-      }
-
-      for (idx = 0; idx < prefixesLen; idx += 1) {
-        prefix = prefixes[idx];
-        prefixed = mq.replace(/\(/g, '(' + prefix);
-        mql = matchMedia(prefixed);
-
-        if (mql.media !== 'invalid' && mql.matches) {
-          if (cached[mqName] === void 0) {
-            cached[mqName] = prefix + mqName;
-          }
-
-          cached[mq] = prefixed;
-
-          return prefixed;
+        if (cache[mq]) {
+          return cache[mq];
         }
+
+        for (idx = 0; idx < prefixesLen; idx += 1) {
+          prefix = prefixes[idx];
+          prefixed = mq.replace(/\(/g, '(' + prefix);
+          mql = matchMedia(prefixed);
+
+          if (mql.media !== 'invalid' && mql.matches) {
+            if (cache[mqName] === void 0) {
+              cache[mqName] = prefix + mqName;
+            }
+
+            cache[mq] = prefixed;
+
+            return prefixed;
+          }
+        }
+
+        cache[mq] = '';
+
+        return '';
       }
-
-      cached[mq] = false;
-
-      return false;
     }
   };
 }(document));
