@@ -50,8 +50,12 @@
   });
 
   function Test() {
-    this.all = doc.getElementById('all');
-    this.testedSpecs = doc.getElementById('testedSpecs');
+    Object.assign(this, {
+      specMetaDataList: ['title', 'tr', 'dev'],
+      featureInfoList: ['properties', 'atrule', 'atruleName'],
+      all: doc.getElementById('all'),
+      testedSpecs: doc.getElementById('testedSpecs')
+    });
 
     this.all.addEventListener('click', function openDL(evt) {
       var target = evt.target;
@@ -72,6 +76,7 @@
         id: id,
         title: spec.title,
         score: score,
+        feature: {},
         // Wrapper section
         section: (
           '<section id="' + id + '" class="test"></section>'
@@ -88,42 +93,49 @@
       this.addTestedSpec();
     },
     createFeatureList: function createFeatureList() {
-      Object.keys(this.spec).remove([
-        'title', 'tr', 'dev'
-      ]).forEach(function createFeatureSection(featureListName) {
-        var featureSupport = Test.groups[featureListName],
-            featureSection = this.section.appendChild([
-              '<section class="' + featureListName + '">',
-              '<h1>' + featureListName + '</h1>',
-              '</section>'
-            ].join('').toElement()),
-            featureList = this.spec[featureListName];
+      Object.keys(this.spec).remove(
+        this.specMetaDataList
+      ).forEach(function prepare(featureListName) {
+        var featureSection = this.getFeatureSection(featureListName);
 
-        Object.keys(featureList).remove([
-          'properties', 'atrule', 'atruleName'
-        ]).forEach(function createFeature(featureName) {
-          var featureInfo = {
-                what: featureListName,
-                featureName: featureName,
-                featureList: featureList,
-                featureSupport: featureSupport,
-                dl: featureSection.appendChild(doc.createElement('dl'))
-              },
-              data = this.getScoreData(featureInfo);
+        Object.assign(this.feature, {
+          category: featureListName,
+          list: this.spec[featureListName],
+          support: Test.groups[featureListName]
+        });
+
+        Object.keys(this.feature.list).remove(
+          this.featureInfoList
+        ).forEach(function createFeature(featureName) {
+          var data;
+
+          Object.assign(this.feature, {
+            name: featureName,
+            item: featureSection.appendChild(doc.createElement('dl'))
+          });
+
+          data = this.getScoreData();
 
           this.score.update(data);
 
-          this.createFeatureTitle(featureInfo, data);
+          this.createFeatureTitle(data);
         }, this);
       }, this);
     },
-    getScoreData: function getScoreData(featureInfo) {
+    getFeatureSection: function getFeatureSection(featureListName) {
+      return this.section.appendChild([
+        '<section class="' + featureListName + '">',
+        '<h1>' + featureListName + '</h1>',
+        '</section>'
+      ].join('').toElement());
+    },
+    getScoreData: function getScoreData() {
       var passed = 0,
-          tests = this.getFeatureTestList(featureInfo),
+          tests = this.getFeatureTestList(),
           idx, testsLen, testResults, results, success;
 
       for (idx = 0, testsLen = tests.length; idx < testsLen; idx += 1) {
-        testResults = this.getTestResults(featureInfo, idx, tests);
+        testResults = this.getTestResults(idx, tests);
 
         if (testResults.testsLen) {
           testsLen = testResults.testsLen;
@@ -136,11 +148,7 @@
 
         passed += Number(success);
 
-        this.createFeatureTest(featureInfo, {
-          test: testResults.test,
-          results: results,
-          success: success
-        });
+        this.createFeatureTest(testResults.test, results, success);
       }
 
       return {
@@ -148,32 +156,32 @@
         total: testsLen
       };
     },
-    getFeatureTestList: function getFeatureTestList(featureInfo) {
-      var featureList = featureInfo.featureList,
-          featureTest = featureList[featureInfo.featureName];
+    getFeatureTestList: function getFeatureTestList() {
+      var featureList = this.feature.list,
+          featureTest = featureList[this.feature.name];
 
-      if (featureInfo.what === 'values' && !featureList.properties) {
+      if (this.feature.category === 'values' && !featureList.properties) {
         featureTest = featureTest.values;
       }
 
       return Array.isArray(featureTest) ? featureTest : [featureTest];
     },
-    getTestResults: function getTestResults(featureInfo, index, tests) {
-      var what = featureInfo.what,
-          featureName = featureInfo.featureName,
-          featureList = featureInfo.featureList,
-          testCallback = featureInfo.featureSupport.getResults,
+    getTestResults: function getTestResults(index, tests) {
+      var category = this.feature.category,
+          featureName = this.feature.name,
+          featureList = this.feature.list,
+          testCallback = this.feature.support.getResults,
           testsLen, test, results;
 
-      if (what === 'units') {
+      if (category === 'units') {
         testsLen = 1;
         test = '1' + featureName;
         results = testCallback(featureName, tests);
-      } else if (what === 'keywords') {
+      } else if (category === 'keywords') {
         testsLen = 1;
         test = featureName;
         results = testCallback(featureName, tests);
-      } else if (what === 'values' && !featureList.properties) {
+      } else if (category === 'values' && !featureList.properties) {
         test = tests[index];
         results = testCallback(test, featureName, featureList[featureName]);
       } else {
@@ -187,14 +195,12 @@
         results: results
       };
     },
-    createFeatureTest: function createFeatureTest(featureInfo, resultInfo) {
-      var dd = featureInfo.dl.appendChild(doc.createElement('dd')),
-          test = resultInfo.test,
-          results = resultInfo.results,
+    createFeatureTest: function createFeatureTest(test, results, success) {
+      var dd = this.feature.item.appendChild(doc.createElement('dd')),
           note = results.note;
 
       dd.className = this.passClass({
-        passed: Math.round(resultInfo.success * 10000),
+        passed: Math.round(success * 10000),
         total: 10000
       });
       dd.textContent = test;
@@ -203,19 +209,22 @@
         dd.appendChild(doc.createElement('small')).textContent = note;
       }
 
-      if (featureInfo.what === 'properties' && results && results !== test) {
+      if (
+        this.feature.category === 'properties' &&
+          results && results !== test
+      ) {
         dd.classList.add('prefixed');
         dd.title += 'prefixed';
       }
     },
-    createFeatureTitle: function createFeatureTitle(featureInfo, data) {
-      var featureName = featureInfo.featureName,
-          dl = featureInfo.dl,
+    createFeatureTitle: function createFeatureTitle(data) {
+      var featureName = this.feature.name,
+          dl = this.feature.item,
           dt = dl.insertBefore(Object.assign(doc.createElement('dt'), {
             textContent: featureName,
             className: this.passClass(data)
           }), dl.firstChild),
-          support = Supports[featureInfo.featureSupport.type],
+          support = Supports[this.feature.support.type],
           cached = support.cached,
           result;
 
