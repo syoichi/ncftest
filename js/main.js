@@ -123,11 +123,9 @@
       }, this);
     },
     getFeatureSection: function getFeatureSection(featureListName) {
-      return this.section.appendChild([
-        '<section class="' + featureListName + '">',
-        '<h1>' + featureListName + '</h1>',
-        '</section>'
-      ].join('').toElement());
+      return this.section.appendChild((
+        '<section><h1>' + featureListName + '</h1></section>'
+      ).toElement());
     },
     getScoreData: function getScoreData() {
       var passed = 0,
