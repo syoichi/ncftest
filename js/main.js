@@ -68,7 +68,7 @@
       var spec = Specs[id];
 
       Object.assign(this, {
-        tests: spec,
+        spec: spec,
         id: id,
         title: spec.title,
         score: score,
@@ -88,7 +88,7 @@
       this.addTestedSpec();
     },
     createFeatureList: function createFeatureList() {
-      Object.keys(this.tests).forEach(function prepare(featureListName) {
+      Object.keys(this.spec).forEach(function prepare(featureListName) {
         var featureSupport = Test.groups[featureListName],
             featureSection, featureList;
 
@@ -98,7 +98,7 @@
             '<h1>' + featureListName + '</h1>',
             '</section>'
           ].join('').toElement());
-          featureList = this.tests[featureListName];
+          featureList = this.spec[featureListName];
 
           Object.keys(featureList).remove([
             'properties', 'atrule', 'atruleName'
@@ -231,8 +231,8 @@
       }
     },
     getTest: function getTest() {
-      var tr = this.tests.tr || 'http://www.w3.org/TR/' + this.id + '/',
-          dev = this.tests.dev || 'http://dev.w3.org/csswg/' + this.id + '/';
+      var tr = this.spec.tr || 'http://www.w3.org/TR/' + this.id + '/',
+          dev = this.spec.dev || 'http://dev.w3.org/csswg/' + this.id + '/';
 
       this.section.insertAdjacentHTML('AfterBegin', [
         '<h1>' + this.title,
