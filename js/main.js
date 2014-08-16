@@ -53,6 +53,9 @@
     Object.assign(this, {
       specMetaDataList: ['title', 'tr', 'dev'],
       featureInfoList: ['properties', 'atrule', 'atruleName'],
+      specStateList: [
+        'fail', 'very-buggy', 'buggy', 'slightly-buggy', 'almost-pass'
+      ],
       all: doc.getElementById('all'),
       testedSpecs: doc.getElementById('testedSpecs')
     });
@@ -250,7 +253,7 @@
       ].join(''));
     },
     getSpecState: function getSpecState(info) {
-      var success, classes;
+      var success;
 
       if ('passed' in info) {
         success = info.passed / info.total;
@@ -263,15 +266,9 @@
         return 'epic-fail';
       }
 
-      classes = [
-        'fail',
-        'very-buggy',
-        'buggy',
-        'slightly-buggy',
-        'almost-pass'
+      return this.specStateList[
+        Math.round(success * (this.specStateList.length - 1))
       ];
-
-      return classes[Math.round(success * (classes.length - 1))];
     }
   });
 
