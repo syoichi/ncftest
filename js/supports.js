@@ -83,10 +83,12 @@
       },
       cache: {},
       check: function check(property) {
-        var cache = this.cache, idx, prefixed;
+        var cache = this.cache,
+            prop = cache[property],
+            idx, prefixed;
 
-        if (cache[property]) {
-          return cache[property];
+        if (prop) {
+          return prop;
         }
 
         for (idx = 0; idx < prefixesLen; idx += 1) {
@@ -171,6 +173,10 @@
           }
         }
 
+        if (cache[keyword] === void 0) {
+          cache[keyword] = '';
+        }
+
         return '';
       }
     },
@@ -205,6 +211,10 @@
           }
         }
 
+        if (cache[unit] === void 0) {
+          cache[unit] = '';
+        }
+
         return '';
       }
     },
@@ -218,10 +228,6 @@
       cache: {},
       check: function check(selector) {
         var cache = this.cache, idx, prefixed;
-
-        if (cache[selector]) {
-          return cache[selector];
-        }
 
         for (idx = 0; idx < prefixesLen; idx += 1) {
           prefixed = selector.replace(/^(:+)/, '$1' + prefixes[idx]);
@@ -250,10 +256,12 @@
       },
       cache: {},
       check: function check(atrule, atruleName) {
-        var cache = this.cache, idx, prefix, prefixed;
+        var cache = this.cache,
+            cachedAtrule = cache[atrule],
+            idx, prefix, prefixed;
 
-        if (cache[atrule]) {
-          return cache[atrule];
+        if (cachedAtrule) {
+          return cachedAtrule;
         }
 
         for (idx = 0; idx < prefixesLen; idx += 1) {
@@ -290,14 +298,9 @@
       cache: {},
       check: function check(descriptor, value, featureList) {
         var cache = this.cache,
-            key = descriptor + ': ' + value,
             atrule = featureList.atrule,
             atruleName = featureList.atruleName,
             idx, prefixed;
-
-        if (cache[key]) {
-          return cache[key];
-        }
 
         atrule = Supports.atrule.check(atrule, atruleName || atrule);
 
@@ -310,14 +313,14 @@
                 cache[descriptor] = prefixed;
               }
 
-              cache[key] = prefixed;
-
               return prefixed;
             }
           }
         }
 
-        cache[key] = '';
+        if (cache[descriptor] === void 0) {
+          cache[descriptor] = '';
+        }
 
         return '';
       },
@@ -353,13 +356,8 @@
       cache: {},
       check: function check(atruleName, ruleSelector, featureList) {
         var cache = this.cache,
-            key = atruleName + ': ' + ruleSelector,
             atrule = featureList.atrule,
             idx, prefixed;
-
-        if (cache[key]) {
-          return cache[key];
-        }
 
         atrule = Supports.atrule.check(atrule || atruleName, atruleName);
 
@@ -372,14 +370,14 @@
                 cache[ruleSelector] = prefixed;
               }
 
-              cache[key] = prefixed;
-
               return prefixed;
             }
           }
         }
 
-        cache[key] = '';
+        if (cache[ruleSelector] === void 0) {
+          cache[ruleSelector] = '';
+        }
 
         return '';
       },
@@ -412,10 +410,6 @@
       check: function check(mq, mqName) {
         var cache = this.cache, idx, prefix, prefixed, mql;
 
-        if (cache[mq]) {
-          return cache[mq];
-        }
-
         for (idx = 0; idx < prefixesLen; idx += 1) {
           prefix = prefixes[idx];
           prefixed = mq.replace(/\(/g, '(' + prefix);
@@ -426,13 +420,13 @@
               cache[mqName] = prefix + mqName;
             }
 
-            cache[mq] = prefixed;
-
             return prefixed;
           }
         }
 
-        cache[mq] = '';
+        if (cache[mqName] === void 0) {
+          cache[mqName] = '';
+        }
 
         return '';
       }
