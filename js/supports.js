@@ -85,10 +85,6 @@
       check: function check(property) {
         var cache = this.cache, idx, prefixed;
 
-        if (property.charAt(0) === '-') {
-          return property.toCamelCase() in inline ? property : '';
-        }
-
         if (cache[property]) {
           return cache[property];
         }
