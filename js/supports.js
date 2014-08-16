@@ -3,7 +3,7 @@
 (function executeSupports(doc) {
   'use strict';
 
-  var Supports, prefixes, prefixesLen, inline, style;
+  var prefixes, prefixesLen, style, inline, Supports;
 
   prefixes = [
     '', '-moz-', '-webkit-', '-ms-', '-o-',
@@ -38,10 +38,9 @@
   });
 
   function collectValueResults(callback, properties) {
-    var failed, results, idx, property, success;
-
-    failed = [];
-    results = {};
+    var failed = [],
+        results = {},
+        idx, property, success;
 
     for (idx = 0; properties[idx];) {
       property = properties[idx];
@@ -57,7 +56,7 @@
     results.success = success =
       1 - (properties.length ? failed.length / properties.length : 1);
 
-    if (success > 0  && success < 1) {
+    if (success > 0 && success < 1) {
       results.note = 'Failed in: ' + failed.join(', ');
     }
 
