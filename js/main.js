@@ -194,7 +194,7 @@
       var dd = this.feature.item.appendChild(doc.createElement('dd')),
           note = results.note;
 
-      dd.className = this.passClass({
+      dd.className = this.getSpecState({
         passed: Math.round(success * 10000),
         total: 10000
       });
@@ -217,7 +217,7 @@
           dl = this.feature.item,
           dt = dl.insertBefore(Object.assign(doc.createElement('dt'), {
             textContent: featureName,
-            className: this.passClass(data)
+            className: this.getSpecState(data)
           }), dl.firstChild),
           result = this.feature.support.cache[featureName];
 
@@ -241,7 +241,7 @@
       return this.section;
     },
     addTestedSpec: function addTestedSpec() {
-      var pass = this.passClass(this.score);
+      var pass = this.getSpecState(this.score);
 
       this.testedSpecs.insertAdjacentHTML('BeforeEnd', [
         '<li title="' + this.score.percent() + ' passed" class="' + pass + '">',
@@ -249,7 +249,7 @@
         '</li>'
       ].join(''));
     },
-    passClass: function passClass(info) {
+    getSpecState: function getSpecState(info) {
       var success, classes;
 
       if ('passed' in info) {
