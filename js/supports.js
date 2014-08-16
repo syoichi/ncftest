@@ -16,29 +16,21 @@
   prefixesLen = prefixes.length;
 
   doc.addEventListener('DOMContentLoaded', function setupDummys() {
-    var head, body, dummy, iframe;
+    var head = doc.head,
+        body = doc.body,
+        iframe;
 
-    head = doc.head;
-    body = doc.body;
-
-    dummy = doc.createElement('_');
-    dummy.className = 'dummy';
-    inline = dummy.style;
-    dummy.setAttribute('data-foo', 'bar');
-    dummy.setAttribute('data-px', '1px');
-    body.appendChild(dummy);
-
-    style = doc.createElement('style');
-    style.disabled = true;
+    style = '<style disabled></style>'.toElement();
+    inline = doc.createElement('div').style;
 
     // On Trident, descriptor test is too slow or freezing.
     if (/Trident/.test(navigator.userAgent)) {
-      iframe = doc.createElement('iframe');
-      iframe.className = 'dummy';
-      iframe.src = 'about:blank';
+      iframe = '<iframe class="dummy" src="about:blank">'.toElement();
+
       iframe.addEventListener('load', function appendStyle() {
         iframe.contentDocument.head.appendChild(style);
       });
+
       body.appendChild(iframe);
     } else {
       head.appendChild(style);
