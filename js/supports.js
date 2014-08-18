@@ -361,10 +361,11 @@
       cache: {},
       check: function check(atruleName, ruleSelector, featureList) {
         var cache = this.cache,
-            atrule = featureList.atrule,
+            atrule = Supports.atrule.check(
+              featureList.atrule || atruleName,
+              atruleName
+            ),
             idx, prefixed;
-
-        atrule = Supports.atrule.check(atrule || atruleName, atruleName);
 
         if (atrule) {
           for (idx = 0; idx < prefixesLen; idx += 1) {
