@@ -189,7 +189,8 @@
           test: test,
           featureName: featureName,
           featureList: this.feature.list,
-          featureTestList: tests
+          featureTestList: tests,
+          spec: this.spec
         })
       };
     },

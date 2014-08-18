@@ -111,8 +111,6 @@
         '@counter-style': '@counter-style circled-lower-latin'
       },
       'descriptor': {
-        'atrule': '@counter-style circled-lower-latin',
-        'atruleName': '@counter-style',
         'system': symbolsType.concat([
           'additive', 'fixed 1', 'override triangle'
         ]),
@@ -654,7 +652,6 @@
         '@counter': ['@counter', '@counter footnote']*/
       },
       'descriptor': {
-        'atrule': '@counter-styles',
         'footnote': ['super-decimal']
       }
     },
@@ -880,8 +877,6 @@
         '@template': ['@template paged-display', '@template side-by-side:first']
       },
       'descriptor': {
-        'atrule': '@template paged-display',
-        'atruleName': '@template',
         'required-flow': ['related-flow', 'lead-flow']
       }
     },

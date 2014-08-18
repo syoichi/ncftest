@@ -281,19 +281,15 @@
       name: 'descriptors',
       getResults: function getResults(info) {
         var value = info.test,
-            descriptor = info.featureName,
-            featureList = info.featureList;
+            descriptor = info.featureName;
 
-        return this.check(descriptor, value, featureList);
+        return this.check(descriptor, value, info);
       },
       cache: {},
-      check: function check(descriptor, value, featureList) {
+      check: function check(descriptor, value, info) {
         var cache = this.cache,
-            atrule = featureList.atrule,
-            atruleName = featureList.atruleName,
+            atrule = this.getAtrule(info),
             idx, prefixed;
-
-        atrule = Supports.atrule.check(atrule, atruleName || atrule);
 
         if (atrule) {
           for (idx = 0; idx < prefixesLen; idx += 1) {
@@ -314,6 +310,24 @@
         }
 
         return '';
+      },
+      getAtrule: function getAtrule(info) {
+        var featureList = info.featureList,
+            atrule = featureList.atrule,
+            specAtrule, atruleName, atruleNameValue;
+
+        if (atrule) {
+          atruleName = featureList.atruleName;
+        } else {
+          specAtrule = info.spec.atrule;
+          atruleName = featureList.atruleName = Object.keys(specAtrule)[0];
+          atruleNameValue = specAtrule[atruleName];
+          atrule = featureList.atrule = Array.isArray(atruleNameValue) ?
+            atruleNameValue[0] :
+            atruleNameValue;
+        }
+
+        return Supports.atrule.check(atrule, atruleName || atrule);
       },
       checkDescriptor: function checkDescriptor(atrule, descriptor, value) {
         var prop = descriptor.toCamelCase(), cssRule, styleDec;

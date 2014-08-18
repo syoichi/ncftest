@@ -1673,7 +1673,6 @@
         '@viewport': '@viewport'
       },
       'descriptor': {
-        'atrule': '@viewport',
         'min-width': width,
         'max-width': width,
         'width': width.times(1, 2),
@@ -3086,7 +3085,6 @@
         '@color-profile': '@color-profile'
       },
       'descriptor': {
-        'atrule': '@color-profile',
         'src': [
           'sRGB', 'local(red)',
           'http://example.com/someDrawing.svg',
