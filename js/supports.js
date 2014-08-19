@@ -78,7 +78,7 @@
             prop = cache[property],
             idx, prefixed;
 
-        if (prop) {
+        if (prop !== void 0) {
           return prop;
         }
 
@@ -252,7 +252,7 @@
             cachedAtrule = cache[atrule],
             idx, prefix, prefixed;
 
-        if (cachedAtrule) {
+        if (cachedAtrule !== void 0) {
           return cachedAtrule;
         }
 
