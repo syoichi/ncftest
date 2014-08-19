@@ -241,12 +241,13 @@
       name: '@rules',
       getResults: function getResults(info) {
         var atrule = info.test,
-            atruleName = info.featureName;
+            atruleName = info.featureName,
+            featureTest = info.featureList[atruleName];
 
-        return this.check(atrule, atruleName);
+        return this.check(atrule, atruleName, featureTest);
       },
       cache: {},
-      check: function check(atrule, atruleName) {
+      check: function check(atrule, atruleName, featureTest) {
         var cache = this.cache,
             cachedAtrule = cache[atrule],
             idx, prefix, prefixed;
@@ -259,11 +260,9 @@
           prefix = prefixes[idx];
           prefixed = atrule.replace(/^@/, '@' + prefix);
 
-          style.textContent = prefixed + '{}';
-
-          if (style.sheet.cssRules.length > 0) {
+          if (this.checkAtrule(prefixed, featureTest)) {
             if (cache[atruleName] === void 0) {
-              cache[atruleName] = atruleName.replace(/^@/, '@' + prefix);
+              cache[atruleName] = atruleName.replace('@', '@' + prefix);
             }
 
             cache[atrule] = prefixed;
@@ -275,6 +274,15 @@
         cache[atrule] = '';
 
         return '';
+      },
+      checkAtrule: function checkAtrule(atrule, featureTest) {
+        if (Object.isObject(featureTest)) {
+          style.textContent = atrule + '{' + featureTest.require + '}';
+        } else {
+          style.textContent = atrule + '{}';
+        }
+
+        return style.sheet.cssRules.length > 0;
       }
     },
     descriptor: {
@@ -295,7 +303,12 @@
           for (idx = 0; idx < prefixesLen; idx += 1) {
             prefixed = prefixes[idx] + descriptor;
 
-            if (this.checkDescriptor(atrule, prefixed, value)) {
+            if (this.checkDescriptor({
+              atrule: atrule,
+              descriptor: prefixed,
+              value: value,
+              featureTest: info.featureList[descriptor]
+            })) {
               if (cache[descriptor] === void 0) {
                 cache[descriptor] = prefixed;
               }
@@ -314,39 +327,63 @@
       getAtrule: function getAtrule(info) {
         var featureList = info.featureList,
             atrule = featureList.atrule,
-            specAtrule, atruleName, atruleNameValue;
+            specAtrule, atruleName, featureTest, atruleNameValue;
 
         if (atrule) {
           atruleName = featureList.atruleName;
         } else {
           specAtrule = info.spec.atrule;
           atruleName = featureList.atruleName = Object.keys(specAtrule)[0];
-          atruleNameValue = specAtrule[atruleName];
+          featureTest = specAtrule[atruleName];
+          atruleNameValue = Object.isObject(featureTest) ?
+            featureTest.values :
+            featureTest;
           atrule = featureList.atrule = Array.isArray(atruleNameValue) ?
             atruleNameValue[0] :
             atruleNameValue;
         }
 
-        return Supports.atrule.check(atrule, atruleName || atrule);
+        return Supports.atrule.check(atrule, atruleName || atrule, featureTest);
       },
-      checkDescriptor: function checkDescriptor(atrule, descriptor, value) {
-        var prop = descriptor.toCamelCase(), cssRule, styleDec;
+      checkDescriptor: function checkDescriptor(info) {
+        var cssRule = this.getCSSRule(info),
+            descriptor, prop, styleDec;
+
+        if (cssRule) {
+          descriptor = info.descriptor;
+          prop = descriptor.toCamelCase();
+
+          // probably standard
+          if (cssRule[prop]) {
+            return true;
+          }
+
+          styleDec = cssRule.style;
+
+          if (styleDec) {
+            // for Trident, WebKit/Blink, Presto
+            return styleDec[prop] ||
+              // for Gecko
+              styleDec.getPropertyValue(descriptor);
+          }
+        }
+      },
+      getCSSRule: function getCSSRule(info) {
+        var atrule = info.atrule,
+            descriptor = info.descriptor,
+            value = info.value,
+            featureTest = info.featureTest;
 
         // value should do prefix test.
-        style.textContent = atrule + '{' + descriptor + ': ' + value + ';}';
-        cssRule = style.sheet.cssRules[0];
-        styleDec = cssRule.style;
-
-        if (
-          // probably standard
-          cssRule[prop] ||
-            // for Trident, WebKit/Blink, Presto
-            styleDec[prop] ||
-            // for Gecko
-            styleDec.getPropertyValue(descriptor)
-        ) {
-          return true;
+        if (Object.isObject(featureTest)) {
+          style.textContent = atrule + '{' +
+            (featureTest.require || featureTest[value] || '') +
+            descriptor + ': ' + value + ';}';
+        } else {
+          style.textContent = atrule + '{' + descriptor + ': ' + value + ';}';
         }
+
+        return style.sheet.cssRules[0];
       }
     },
     ruleSelector: {

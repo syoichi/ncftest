@@ -95,6 +95,89 @@
     // CSS Level 3
     'css-counter-styles-3': {
       'title': 'Counter Styles',
+      'atrule': {
+        '@counter-style': {
+          'values': ['@counter-style ident'],
+          'require': 'system: symbolic; symbols: A;'
+        }
+      },
+      'descriptor': {
+        'system': {
+          'symbolic': 'symbols: A;',
+          'cyclic': 'symbols: ‣;',
+          'numeric': 'symbols: \'0\' \'1\';',
+          'alphabetic': 'symbols: A B;',
+          'additive': 'additive-symbols: 1 ⚀;',
+          'fixed': 'symbols: ◰;',
+          'fixed 1': 'symbols: ◰;',
+          'extends ident': ''
+        },
+        'negative': {
+          'values': symbol.times(1, 2),
+          'require': 'system: symbolic; symbols: A;'
+        },
+        'prefix': {
+          'values': symbol,
+          'require': 'system: symbolic; symbols: A;'
+        },
+        'suffix': {
+          'values': symbol,
+          'require': 'system: symbolic; symbols: A;'
+        },
+        'range': {
+          'values': ['auto'].concat(
+            ['1', 'infinite'].times(2).times(1, 2, ', ').concat(
+              ['-1 0']
+            )
+          ),
+          'require': 'system: symbolic; symbols: A;'
+        },
+        'pad': {
+          'values': ['0'].amp(symbol),
+          'require': 'system: symbolic; symbols: A;'
+        },
+        'fallback': {
+          'values': [
+            'decimal', 'decimal-leading-zero', 'cjk-decimal', 'lower-roman',
+            'upper-roman', 'armenian', 'georgian', 'hebrew',
+            'lower-alpha', 'lower-latin', 'upper-alpha', 'upper-latin',
+            'lower-greek', 'hiragana', 'hiragana-iroha',
+            'katakana', 'katakana-iroha',
+            'disc', 'circle', 'square', 'disclosure-open', 'disclosure-closed',
+            'japanese-informal', 'japanese-formal',
+            'korean-hangul-formal', 'korean-hanja-informal',
+            'korean-hanja-formal',
+            'simp-chinese-informal', 'simp-chinese-formal',
+            'trad-chinese-informal', 'trad-chinese-formal', 'cjk-ideographic',
+            'ethiopic-numeric'
+          ],
+          'require': 'system: symbolic; symbols: A;'
+        },
+        'symbols': {
+          'values': symbol.times(1, 2).concat([
+            '‣', '◰ ◳ ◲ ◱', '\'*\' ⁑ † ‡',
+            'A B C D E F G H I J K L M \nN O P Q R S T U V W X Y Z',
+            '\'0\' \'1\' \'2\' \'3\' \'4\' \'5\' \'6\' \'7\' \'8\' \'9\'',
+            'ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ⓚ ⓛ ' +
+              'ⓜ ⓝ ⓞ ⓟ ⓠ ⓡ ⓢ ⓣ ⓤ ⓥ ⓦ ⓧ ⓨ ⓩ',
+            '\'1\' linear-gradient(white, black) あ'
+          ]),
+          'require': 'system: symbolic;'
+        },
+        'additive-symbols': {
+          'values': ['0'].amp(symbol).concat([
+            '3 \'a\', 2 \'b\'', '6 ⚅, 5 ⚄, 4 ⚃, 3 ⚂, 2 ⚁, 1 ⚀',
+            '2 A, 1 radial-gradient(white, black), \'0\' 0'
+          ]),
+          'require': 'system: additive;'
+        },
+        'speak-as':  {
+          'values': [
+            'auto', 'bullets', 'numbers', 'words', 'spell-out', 'ident'
+          ],
+          'require': 'system: symbolic; symbols: A;'
+        }
+      },
       'value': {
         'properties': ['list-style', 'list-style-type'],
         'symbols()': symbolsType.qmark(
@@ -106,47 +189,6 @@
         ]).map(function symbols(arg) {
           return 'symbols(' + arg + ')';
         })
-      },
-      'atrule': {
-        '@counter-style': '@counter-style circled-lower-latin'
-      },
-      'descriptor': {
-        'system': symbolsType.concat([
-          'additive', 'fixed 1', 'override triangle'
-        ]),
-        'negative': symbol.times(1, 2),
-        'prefix': symbol,
-        'suffix': symbol,
-        'range': ['auto'].concat(['1', 'infinite'].times(2).times(1, 2, ', ')),
-        'pad': ['0'].amp(symbol),
-        'fallback': [
-          'decimal', 'decimal-leading-zero', 'cjk-decimal', 'lower-roman',
-          'upper-roman', 'armenian', 'georgian', 'hebrew',
-          'lower-alpha', 'lower-latin', 'upper-alpha', 'upper-latin',
-          'lower-greek', 'hiragana', 'hiragana-iroha',
-          'katakana', 'katakana-iroha',
-          'disc', 'circle', 'square', 'disclosure-open', 'disclosure-closed',
-          'japanese-informal', 'japanese-formal',
-          'korean-hangul-formal', 'korean-hanja-informal',
-          'korean-hanja-formal', 'simp-chinese-informal', 'simp-chinese-formal',
-          'trad-chinese-informal', 'trad-chinese-formal', 'cjk-ideographic',
-          'ethiopic-numeric'
-        ],
-        'symbols': symbol.times(1, 2).concat([
-          '‣', '◰ ◳ ◲ ◱', '* ⁑ † ‡',
-          'A B C D E F G H I J K L M \nN O P Q R S T U V W X Y Z',
-          '\'0\' \'1\' \'2\' \'3\' \'4\' \'5\' \'6\' \'7\' \'8\' \'9\'',
-          'ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ⓚ ⓛ ' +
-            'ⓜ ⓝ ⓞ ⓟ ⓠ ⓡ ⓢ ⓣ ⓤ ⓥ ⓦ ⓧ ⓨ ⓩ',
-          '\'1\' linear-gradient(white, black) あ'
-        ]),
-        'additive-symbols': ['0'].amp(symbol).concat([
-          '3 \'a\', 2 \'b\'', '6 ⚅, 5 ⚄, 4 ⚃, 3 ⚂, 2 ⚁, 1 ⚀',
-          '\'0\' 0, 1 radial-gradient(white, black), 2 A'
-        ]),
-        'speak-as': [
-          'auto', 'bullets', 'numbers', 'words', 'spell-out', 'triangle'
-        ]
       }
     },
 

@@ -158,14 +158,22 @@
       };
     },
     getFeatureTestList: function getFeatureTestList() {
-      var featureList = this.feature.list,
-          featureTest = featureList[this.feature.name];
+      var category = this.feature.category,
+          featureList = this.feature.list,
+          featureTest = featureList[this.feature.name],
+          tests;
 
-      if (this.feature.category === 'value' && !featureList.properties) {
-        featureTest = featureTest.values;
+      if (category === 'value' && !featureList.properties) {
+        tests = featureTest.values;
+      } else if (category === 'atrule' && Object.isObject(featureTest)) {
+        tests = featureTest.values;
+      } else if (category === 'descriptor' && Object.isObject(featureTest)) {
+        tests = featureTest.values || Object.keys(featureTest);
+      } else {
+        tests = featureTest;
       }
 
-      return Array.isArray(featureTest) ? featureTest : [featureTest];
+      return Array.isArray(tests) ? tests : [tests];
     },
     getTestResults: function getTestResults(index, tests) {
       var category = this.feature.category,
