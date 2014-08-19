@@ -21,6 +21,16 @@
     configurable: true
   });
 
+  Object.extend(Object, {
+    getClassification: function getClassification(target) {
+      return Object.prototype.toString.call(target).slice(8, -1);
+    },
+    isObject: function isObject(target) {
+      return typeof target === 'object' &&
+        Object.getClassification(target) === 'Object';
+    }
+  });
+
   Object.extend(String.prototype, {
     toCamelCase: function toCamelCase() {
       return this.replace(/-([a-z])/g, function makeUpperCase($0, $1) {
