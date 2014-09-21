@@ -132,30 +132,31 @@
     },
     getScoreData: function getScoreData() {
       var passed = 0,
-          tests = Array.wrap(this.feature.support.getTests(this.feature)),
-          idx, testsLen, test, results, success;
+          tests = Array.wrap(this.feature.support.getTests(this.feature));
 
-      for (idx = 0, testsLen = tests.length; idx < testsLen; idx += 1) {
-        test = tests[idx];
-        results = this.feature.support.getResults({
-          test: test,
-          featureName: this.feature.name,
-          featureList: this.feature.list,
-          spec: this.spec
-        });
-        success = typeof results === 'object' ?
-          results.success :
-          Number(Boolean(results));
+      tests.forEach(function countSuccess(test) {
+        var results = this.feature.support.getResults({
+              test: test,
+              featureName: this.feature.name,
+              featureList: this.feature.list,
+              spec: this.spec
+            }),
+            success = this.getSuccess(results);
 
         passed += success;
 
         this.createFeatureTest(test, results, success);
-      }
+      }, this);
 
       return {
         passed: passed,
-        total: testsLen
+        total: tests.length
       };
+    },
+    getSuccess: function getSuccess(results) {
+      return Object.isObject(results) ?
+        results.success :
+        Number(Boolean(results));
     },
     createFeatureTest: function createFeatureTest(test, results, success) {
       var dd = this.feature.item.appendChild(doc.createElement('dd')),
