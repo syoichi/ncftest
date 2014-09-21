@@ -165,7 +165,7 @@ dl.open > dd {
 
 dt:after,
 dd[class]:after,
-.specList li:after {
+.spec-list li:after {
   opacity: 0.75;
   position: absolute;
   top: 0;
@@ -178,7 +178,7 @@ dd[class]:after {
   right: 10px;
 }
 
-.specList li:after {
+.spec-list li:after {
   font-family: Monaco, Consolas, monospace;
   font-size: 83.3%;
   line-height: 29px;
@@ -259,11 +259,11 @@ aside {
         border-bottom: none;
       }
 
-      .specList li {
+      .spec-list li {
         position: relative;
       }
 
-      .specList li:before {
+      .spec-list li:before {
         content: '';
         display: inline-block;
         width: 1.2em;

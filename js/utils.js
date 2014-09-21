@@ -3,32 +3,7 @@
 (function executeUtils(win, doc) {
   'use strict';
 
-  var NCFTest = win.NCFTest = {};
-
-  function extendProperties(target, obj) {
-    var props = {};
-
-    Object.keys(obj).forEach(function setDescriptor(key) {
-      props[key] = {
-        value: obj[key],
-        enumerable: false,
-        writable: true,
-        configurable: true
-      };
-    });
-
-    return Object.defineProperties(target, props);
-  }
-
-  NCFTest.extendProperties = extendProperties;
-
-  function camelCase(str) {
-    return str.replace(/-([a-z])/g, function makeUpperCase($0, $1) {
-      return $1.toUpperCase();
-    }).replace('-', '');
-  }
-
-  NCFTest.camelCase = camelCase;
+  win.NCFTest = {};
 
   // simple polyfills
   // for Trident, Presto
@@ -41,7 +16,7 @@
       var inline = doc.createElement('div').style;
 
       return function supports(property, value) {
-        var prop = camelCase(property);
+        var prop = property.toCamelCase();
 
         inline[prop] = inline.cssText = '';
 

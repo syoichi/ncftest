@@ -1,18 +1,27 @@
-(function executeScoringAndTesting(win, doc) {
+/* global NCFTest */
+
+(function executeScoringAndTesting(doc) {
   'use strict';
 
-  var NCFTest, Supports, Specs, extendProperties, mainScore, all, specsTested;
-
-  NCFTest = win.NCFTest;
-  Supports = NCFTest.Supports;
-  Specs = NCFTest.Specs;
-  extendProperties = NCFTest.extendProperties;
+  var Supports = NCFTest.Supports,
+      Specs = NCFTest.Specs;
 
   function Score(main) {
-    this.passed = this.total = this.passedTests = this.totalTests = 0;
+    this.passedTests = this.totalTests = this.total = this.passed = 0;
     this.main = main;
+
+    if (!main) {
+      this.element = {};
+
+      Object.assign(this.element, {
+        score: doc.getElementById('score'),
+        passedTests: doc.getElementById('passedTests'),
+        totalTests: doc.getElementById('totalTests'),
+        total: doc.getElementById('total')
+      });
+    }
   }
-  extendProperties(Score.prototype, {
+  Object.extend(Score.prototype, {
     update: function update(data) {
       if (!data.total) {
         return;
@@ -29,198 +38,195 @@
     },
     percent: function percent() {
       return parseInt(100 * this.passed / this.total, 10) + '%';
+    },
+    output: function output() {
+      if (!this.main) {
+        this.element.score.textContent = this.percent();
+        this.element.passedTests.textContent = parseInt(this.passedTests, 10);
+        this.element.totalTests.textContent = this.totalTests;
+        this.element.total.textContent = this.total;
+      }
     }
   });
 
-  function Test(tests, spec, title) {
-    var section, h1, tr, dev, groups, idx, groupsLen, id,
-        miniScore, list, anchor;
+  function Test() {
+    Object.assign(this, {
+      specMetaDataList: ['title', 'tr', 'dev'],
+      featureInfoList: ['properties', 'atrule', 'atruleName'],
+      specStateList: [
+        'fail', 'very-buggy', 'buggy', 'slightly-buggy', 'almost-pass'
+      ],
+      all: doc.getElementById('all'),
+      testedSpecs: doc.getElementById('testedSpecs')
+    });
 
-    this.tests = tests;
-    this.id = spec;
-    this.title = title;
-    this.score = new Score(mainScore);
+    this.all.addEventListener('click', function openDL(evt) {
+      var target = evt.target;
 
-    // Wrapper section
-    section = this.section = doc.createElement('section');
-    h1 = section.appendChild(doc.createElement('h1'));
+      if (target.tagName === 'DT') {
+        evt.stopPropagation();
 
-    h1.appendChild(doc.createTextNode(title));
-    tr = h1.appendChild(doc.createElement('a'));
-    tr.target = '_blank';
-    tr.className = 'spec-link';
-    dev = h1.appendChild(tr.cloneNode(false));
-    tr.href = tests.tr || 'http://www.w3.org/TR/' + spec + '/';
-    tr.textContent = 'TR';
-    dev.href = tests.dev || 'http://dev.w3.org/csswg/' + spec + '/';
-    dev.textContent = 'DEV';
-    section.id = spec;
-    section.className = 'test';
-
-    // Perform tests
-    groups = Object.keys(Test.groups);
-
-    for (idx = 0, groupsLen = groups.length; idx < groupsLen; idx += 1) {
-      id = groups[idx];
-      this.group(id, Test.groups[id].getResults);
-    }
-
-    // Display score for this spec
-    miniScore = h1.appendChild(doc.createElement('span'));
-    miniScore.className = 'score';
-    miniScore.textContent = this.score.percent();
-
-    all.appendChild(section);
-
-    // Add to list of tested specs
-    list = doc.createElement('li');
-    list.className = this.passClass(
-      {passed: this.score.passed, total: this.score.total}
-    );
-    list.title = this.score.percent() + ' passed';
-    anchor = list.appendChild(doc.createElement('a'));
-    anchor.href = '#' + spec;
-    anchor.textContent = title;
-    specsTested.appendChild(list);
+        target.parentNode.classList.toggle('open');
+      }
+    });
   }
-  extendProperties(Test.prototype, {
-    group: function group(what, testCallback) {
-      var theseTests, testList, thisSection, i, testListLen, feature,
-          dl, dt, passed, tests, j, testsLen,
-          testResults, test, results, success, note, dd, support, result;
+  Object.extend(Test.prototype, {
+    createSpecTest: function createSpecTest(id, score) {
+      var spec = Specs[id];
 
-      theseTests = this.tests[what];
+      Object.assign(this, {
+        spec: spec,
+        id: id,
+        title: spec.title,
+        score: score,
+        feature: {},
+        // Wrapper section
+        section: (
+          '<section id="' + id + '" class="test"></section>'
+        ).toElement()
+      });
 
-      if (!theseTests) {
-        return;
-      }
+      // Perform tests
+      this.createFeatureList();
 
-      testList = Object.keys(theseTests);
+      // Display score for this spec
+      this.all.appendChild(this.getSpecTest());
 
-      for (i = 0, testListLen = testList.length; i < testListLen; i += 1) {
-        feature = testList[i];
-
-        if (!/^(?:properties|atrule|atruleName)$/.test(feature)) {
-          if (!thisSection) {
-            thisSection = this.section.appendChild(
-              doc.createElement('section')
-            );
-            thisSection.className = what;
-            thisSection.appendChild(
-              doc.createElement('h1')
-            ).textContent = what;
-          }
-
-          dl = thisSection.appendChild(doc.createElement('dl'));
-          dt = dl.appendChild(doc.createElement('dt'));
-          dt.textContent = feature;
-
-          passed = 0;
-          tests = theseTests[feature];
-
-          if (what === 'values' && !theseTests.properties) {
-            tests = tests.values;
-          }
-
-          tests = Array.isArray(tests) ? tests : [tests];
-
-          for (j = 0, testsLen = tests.length; j < testsLen; j += 1) {
-            testResults = this.getTestResults({
-              what: what,
-              index: j,
-              tests: tests,
-              feature: feature,
-              theseTests: theseTests,
-              testCallback: testCallback
-            });
-
-            if (testResults.testsLen) {
-              testsLen = testResults.testsLen;
-            }
-
-            test = testResults.test;
-            results = testResults.results;
-
-            if (typeof results === 'object') {
-              success = results.success;
-              note = results.note;
-            } else {
-              success = Number(Boolean(results));
-            }
-
-            passed += Number(success);
-
-            dd = dl.appendChild(doc.createElement('dd'));
-            dd.className = this.passClass(
-              {passed: Math.round(success * 10000), total: 10000}
-            );
-            dd.textContent = test;
-
-            if (note) {
-              dd.appendChild(doc.createElement('small')).textContent = note;
-            }
-
-            if (what === 'properties' && results && results !== test) {
-              dd.classList.add('prefixed');
-              dd.title += 'prefixed';
-            }
-          }
-
-          this.score.update({passed: passed, total: testsLen});
-
-          dt.className = this.passClass({passed: passed, total: testsLen});
-
-          support = Supports[Test.groups[what].type];
-
-          if (support.cached) {
-            result = support.cached[feature];
-
-            if (result && result !== feature) {
-              dt.classList.add('prefixed');
-              dt.title += 'prefixed';
-            }
-          }
-        }
-      }
+      // Add to list of tested specs
+      this.addTestedSpec();
     },
-    getTestResults: function getTestResults(obj) {
-      var what = obj.what,
-          tests = obj.tests,
-          index = obj.index,
-          feature = obj.feature,
-          theseTests = obj.theseTests,
-          testCallback = obj.testCallback,
-          testsLen, test, results;
+    createFeatureList: function createFeatureList() {
+      Object.keys(this.spec).remove(
+        this.specMetaDataList
+      ).forEach(function prepare(featureListName) {
+        var featureSection = this.getFeatureSection(featureListName);
 
-      if (what === 'units') {
-        testsLen = 1;
-        test = '1' + feature;
-        results = testCallback(feature, tests);
-      } else if (what === 'keywords') {
-        testsLen = 1;
-        test = feature;
-        results = testCallback(feature, tests);
-      } else if (what === 'values' && !theseTests.properties) {
-        test = tests[index];
-        results = testCallback(test, feature, theseTests[feature]);
-      } else {
-        test = tests[index];
-        results = testCallback(test, feature, theseTests);
-      }
+        Object.assign(this.feature, {
+          category: featureListName,
+          list: this.spec[featureListName],
+          support: Supports[featureListName]
+        });
+
+        Object.keys(this.feature.list).remove(
+          this.featureInfoList
+        ).forEach(function createFeature(featureName) {
+          var data;
+
+          Object.assign(this.feature, {
+            name: featureName,
+            item: featureSection.appendChild(doc.createElement('dl'))
+          });
+
+          data = this.getScoreData();
+
+          this.score.update(data);
+
+          this.createFeatureTitle(data);
+        }, this);
+      }, this);
+    },
+    getFeatureSection: function getFeatureSection(featureListName) {
+      return this.section.appendChild((
+        '<section><h1>' + Supports[featureListName].name + '</h1></section>'
+      ).toElement());
+    },
+    getScoreData: function getScoreData() {
+      var passed = 0,
+          feature = this.feature,
+          support = feature.support,
+          info = {
+            featureName: feature.name,
+            featureList: feature.list,
+            featureTest: feature.list[feature.name],
+            spec: this.spec
+          },
+          tests = Array.wrap(support.getTests(info));
+
+      tests.forEach(function countSuccess(test) {
+        var results = support.getResults(Object.assign({
+              test: test
+            }, info)),
+            success = this.getSuccess(results);
+
+        passed += success;
+
+        this.createFeatureTest(test, results, success);
+      }, this);
 
       return {
-        testsLen: testsLen,
-        test: test,
-        results: results
+        passed: passed,
+        total: tests.length
       };
     },
-    passClass: function passClass(info) {
-      var success, classes, index;
+    getSuccess: function getSuccess(results) {
+      return Object.isObject(results) ?
+        results.success :
+        Number(Boolean(results));
+    },
+    createFeatureTest: function createFeatureTest(test, results, success) {
+      var dd = this.feature.item.appendChild(doc.createElement('dd')),
+          note = results.note;
+
+      dd.className = this.getSpecState({
+        passed: Math.round(success * 10000),
+        total: 10000
+      });
+      dd.textContent = test;
+
+      if (note) {
+        dd.appendChild(doc.createElement('small')).textContent = note;
+      }
+
+      if (
+        this.feature.category === 'property' &&
+          results && results !== test
+      ) {
+        dd.classList.add('prefixed');
+        dd.title += 'prefixed';
+      }
+    },
+    createFeatureTitle: function createFeatureTitle(data) {
+      var featureName = this.feature.name,
+          dl = this.feature.item,
+          dt = dl.insertBefore(Object.assign(doc.createElement('dt'), {
+            textContent: featureName,
+            className: this.getSpecState(data)
+          }), dl.firstChild),
+          result = this.feature.support.cache[featureName];
+
+      if (result && result !== featureName) {
+        dt.classList.add('prefixed');
+        dt.title += 'prefixed';
+      }
+    },
+    getSpecTest: function getSpecTest() {
+      var tr = this.spec.tr || 'http://www.w3.org/TR/' + this.id + '/',
+          dev = this.spec.dev || 'http://dev.w3.org/csswg/' + this.id + '/';
+
+      this.section.insertAdjacentHTML('AfterBegin', [
+        '<h1>' + this.title,
+        '<a href="' + tr + '" class="spec-link" target="_blank">TR</a>',
+        '<a href="' + dev + '" class="spec-link" target="_blank">DEV</a>',
+        '<span class="score">' + this.score.percent() + '</span>',
+        '</h1>'
+      ].join(''));
+
+      return this.section;
+    },
+    addTestedSpec: function addTestedSpec() {
+      var pass = this.getSpecState(this.score);
+
+      this.testedSpecs.insertAdjacentHTML('BeforeEnd', [
+        '<li title="' + this.score.percent() + ' passed" class="' + pass + '">',
+        '<a href="#' + this.id + '">' + this.title + '</a>',
+        '</li>'
+      ].join(''));
+    },
+    getSpecState: function getSpecState(info) {
+      var success;
 
       if ('passed' in info) {
         success = info.passed / info.total;
-      } else if ('failed' in info) {
-        success = 1 - info.failed / info.total;
       }
 
       if (success === 1) {
@@ -230,202 +236,49 @@
         return 'epic-fail';
       }
 
-      classes = [
-        'fail',
-        'very-buggy',
-        'buggy',
-        'slightly-buggy',
-        'almost-pass'
+      return this.specStateList[
+        Math.round(success * (this.specStateList.length - 1))
       ];
-      index = Math.round(success * (classes.length - 1));
-
-      return classes[index];
     }
   });
-  Test.groups = {
-    values: {
-      type: 'value',
-      getResults: function values(value, label, tests) {
-        var properties, failed, results, idx, property, success;
 
-        properties = tests.properties;
-        failed = [];
-        results = {};
-
-        for (idx = 0; properties[idx];) {
-          property = properties[idx];
-          idx += 1;
-
-          if (!Supports.property(property)) {
-            properties.splice(idx -= 1, 1);
-          } else if (!Supports.value(property, value, label)) {
-            failed.push(property);
-          }
-        }
-
-        results.success = success =
-          1 - (properties.length ? failed.length / properties.length : 1);
-
-        if (success > 0  && success < 1) {
-          results.note = 'Failed in: ' + failed.join(', ');
-        }
-
-        return results;
-      }
+  function Timer() {
+    this.timeTaken = doc.getElementById('timeTaken');
+  }
+  Object.extend(Timer.prototype, {
+    start: function start() {
+      this.time = Date.now();
     },
-    keywords: {
-      type: 'keyword',
-      getResults: function keywords(keyword, properties) {
-        var failed, results, idx, property, success;
-
-        failed = [];
-        results = {};
-
-        for (idx = 0; properties[idx];) {
-          property = properties[idx];
-          idx += 1;
-
-          if (!Supports.property(property)) {
-            properties.splice(idx -= 1, 1);
-          } else if (!Supports.keyword(keyword, property)) {
-            failed.push(property);
-          }
-        }
-
-        results.success = success =
-          1 - (properties.length ? failed.length / properties.length : 1);
-
-        if (success > 0 && success < 1) {
-          results.note = 'Failed in: ' + failed.join(', ');
-        }
-
-        return results;
-      }
-    },
-    units: {
-      type: 'unit',
-      getResults: function units(unit, properties) {
-        var failed, results, idx, property, success;
-
-        failed = [];
-        results = {};
-
-        for (idx = 0; properties[idx];) {
-          property = properties[idx];
-          idx += 1;
-
-          if (!Supports.property(property)) {
-            properties.splice(idx -= 1, 1);
-          } else if (!Supports.unit(unit, property)) {
-            failed.push(property);
-          }
-        }
-
-        results.success = success =
-          1 - (properties.length ? failed.length / properties.length : 1);
-
-        if (success > 0 && success < 1) {
-          results.note = 'Failed in: ' + failed.join(', ');
-        }
-
-        return results;
-      }
-    },
-    properties: {
-      type: 'property',
-      getResults: function properties(value, property) {
-        return Supports.value(property, value);
-      }
-    },
-    selectors: {
-      type: 'selector',
-      getResults: function selectors(selector) {
-        return Supports.selector(selector);
-      }
-    },
-    '@rules': {
-      type: 'atrule',
-      getResults: function atrules(atrule, atruleName) {
-        return Supports.atrule(atrule, atruleName);
-      }
-    },
-    descriptors: {
-      type: 'descriptor',
-      getResults: function descriptors(value, descriptor, tests) {
-        return Supports.descriptor(descriptor, value, tests);
-      }
-    },
-    '@rule selectors': {
-      type: 'ruleSelector',
-      getResults: function ruleSelectors(ruleSelector, atruleName, tests) {
-        return Supports.ruleSelector(atruleName, ruleSelector, tests);
-      }
-    },
-    'Media queries': {
-      type: 'mediaQuery',
-      getResults: function mediaQueries(mq, mqName) {
-        return Supports.mediaQuery(mq, mqName);
-      }
+    end: function end() {
+      this.timeTaken.textContent = (Date.now() - this.time) + 'ms';
     }
-  };
-
-  mainScore = new Score(null);
+  });
 
   doc.addEventListener('DOMContentLoaded', function prepare() {
-    var score, passedTests, totalTests, total, duration, specs, timeBefore;
+    var mainScore = new Score(null),
+        test = new Test(),
+        timer = new Timer(),
+        specIDs = Object.keys(Specs);
 
-    all = doc.getElementById('all');
-    specsTested = doc.getElementById('specsTested');
+    timer.start();
 
-    score = doc.getElementById('score');
-    passedTests = doc.getElementById('passedTests');
-    totalTests = doc.getElementById('totalTests');
-    total = doc.getElementById('total');
-
-    duration = 0;
-    specs = Object.keys(Specs);
-
-    all.addEventListener('click', function openDL(evt) {
-      var target = evt.target;
-
-      if (target.tagName === 'DT') {
-        evt.stopPropagation();
-
-        target.parentNode.classList.toggle('open');
-      }
-    });
-
-    timeBefore = Date.now();
-
-    (function main() {
-      var spec, test, timeTaken;
-
-      if (specs.length) {
-        // Get spec id
-        spec = specs.shift();
-
-        // Run tests
-        test = new Test(Specs[spec], spec, Specs[spec].title);
-
-        // Count test duration
-        duration += Date.now() - timeBefore;
-        timeBefore = Date.now();
+    (function recursive() {
+      if (specIDs.length) {
+        // Get spec id and Run tests
+        test.createSpecTest(specIDs.shift(), new Score(mainScore));
 
         // Output current score
-        score.textContent = mainScore.percent();
-        passedTests.textContent = parseInt(mainScore.passedTests, 10);
-        totalTests.textContent = mainScore.totalTests;
-        total.textContent = mainScore.total;
+        mainScore.output();
 
         // Schedule next test
-        setTimeout(main, 50);
+        setTimeout(recursive, 50);
+
         return;
       }
       // Done!
 
       // Display time taken
-      timeTaken = doc.getElementById('timeTaken');
-      timeTaken.textContent = (Date.now() - timeBefore) + 'ms';
+      timer.end();
     })();
   });
-}(window, document));
+}(document));

@@ -1,16 +1,58 @@
-(function executeProto(win) {
+(function executeExtendBuiltInObjects(doc) {
   'use strict';
 
-  var NCFTest = win.NCFTest,
-      extendProperties = NCFTest.extendProperties;
+  Object.defineProperty(Object, 'extend', {
+    value: function extend(target, obj) {
+      var props = {};
 
-  extendProperties(Array, {
-    from: function from(arrayLike) {
-      return Array.prototype.slice.call(arrayLike);
+      Object.keys(obj).forEach(function setDescriptor(key) {
+        props[key] = {
+          value: obj[key],
+          enumerable: false,
+          writable: true,
+          configurable: true
+        };
+      });
+
+      return Object.defineProperties(target, props);
+    },
+    enumerable: false,
+    writable: true,
+    configurable: true
+  });
+
+  Object.extend(Object, {
+    getClassification: function getClassification(target) {
+      return Object.prototype.toString.call(target).slice(8, -1);
+    },
+    isObject: function isObject(target) {
+      return typeof target === 'object' &&
+        Object.getClassification(target) === 'Object';
     }
   });
 
-  extendProperties(Array.prototype, {
+  Object.extend(String.prototype, {
+    toCamelCase: function toCamelCase() {
+      return this.replace(/-([a-z])/g, function makeUpperCase($0, $1) {
+        return $1.toUpperCase();
+      }).replace('-', '');
+    },
+    toElement: function toElement() {
+      var range = doc.createRange();
+
+      range.selectNodeContents(doc.body);
+
+      return range.createContextualFragment(this).firstChild;
+    }
+  });
+
+  Object.extend(Array, {
+    wrap: function wrap(target) {
+      return Array.isArray(target) ? target : [target];
+    }
+  });
+
+  Object.extend(Array.prototype, {
     // [ a | b | c ] [ x | y | z ]
     and: function and(arr, separator) {
       separator = separator || ' ';
@@ -139,8 +181,35 @@
     flatten: function flatten() {
       return Array.prototype.concat.apply([], this);
     },
+    remove: function remove(arr) {
+      return this.filter(function (val) {
+        return arr.indexOf(val) === -1;
+      });
+    },
     last: function last() {
       return this[this.length - 1];
     }
   });
-}(window));
+
+  // simple polyfills
+  // for Trident, Blink, Presto
+  if (!Object.assign) {
+    Object.extend(Object, {
+      assign: function assign(target, obj) {
+        return Object.keys(obj).reduce(function assignToTarget(target, key) {
+          target[key] = obj[key];
+
+          return target;
+        }, target);
+      }
+    });
+  }
+  // for Trident, Blink, Presto
+  if (!Array.from) {
+    Object.extend(Array, {
+      from: function from(arrayLike) {
+        return Array.prototype.slice.call(arrayLike);
+      }
+    });
+  }
+}(document));
