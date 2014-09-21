@@ -66,6 +66,9 @@
   NCFTest.Supports = Supports = {
     property: {
       name: 'properties',
+      getTests: function getTests(feature) {
+        return feature.list[feature.name];
+      },
       getResults: function getResults(info) {
         var value = info.test,
             property = info.featureName;
@@ -99,6 +102,16 @@
     },
     value: {
       name: 'values',
+      getTests: function getTests(feature) {
+        var featureList = feature.list,
+            featureTest = featureList[feature.name];
+
+        if (featureList.properties) {
+          return featureTest;
+        }
+
+        return featureTest.values;
+      },
       getResults: function getResults(info) {
         var value = info.test,
             label = info.featureName,
@@ -136,6 +149,9 @@
     },
     keyword: {
       name: 'keywords',
+      getTests: function getTests(feature) {
+        return feature.name;
+      },
       getResults: function getResults(info) {
         var keyword = info.featureName,
             properties = info.featureList[keyword];
@@ -173,6 +189,9 @@
     },
     unit: {
       name: 'units',
+      getTests: function getTests(feature) {
+        return '1' + feature.name;
+      },
       getResults: function getResults(info) {
         var unit = info.featureName,
             properties = info.featureList[unit];
@@ -211,6 +230,9 @@
     },
     selector: {
       name: 'selectors',
+      getTests: function getTests(feature) {
+        return feature.list[feature.name];
+      },
       getResults: function getResults(info) {
         var selector = info.test;
 
@@ -239,6 +261,15 @@
     },
     atrule: {
       name: '@rules',
+      getTests: function getTests(feature) {
+        var featureTest = feature.list[feature.name];
+
+        if (Object.isObject(featureTest)) {
+          return featureTest.values;
+        }
+
+        return featureTest;
+      },
       getResults: function getResults(info) {
         var atrule = info.test,
             atruleName = info.featureName,
@@ -287,6 +318,15 @@
     },
     descriptor: {
       name: 'descriptors',
+      getTests: function getTests(feature) {
+        var featureTest = feature.list[feature.name];
+
+        if (Object.isObject(featureTest)) {
+          return featureTest.values || Object.keys(featureTest);
+        }
+
+        return featureTest;
+      },
       getResults: function getResults(info) {
         var value = info.test,
             descriptor = info.featureName;
@@ -388,6 +428,9 @@
     },
     ruleSelector: {
       name: '@rule selectors',
+      getTests: function getTests(feature) {
+        return feature.list[feature.name];
+      },
       getResults: function getResults(info) {
         var ruleSelector = info.test,
             atruleName = info.featureName,
@@ -443,6 +486,9 @@
     },
     mediaQuery: {
       name: 'Media queries',
+      getTests: function getTests(feature) {
+        return feature.list[feature.name];
+      },
       getResults: function getResults(info) {
         var mq = info.test,
             mqName = info.featureName;

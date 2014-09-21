@@ -46,6 +46,12 @@
     }
   });
 
+  Object.extend(Array, {
+    wrap: function wrap(target) {
+      return Array.isArray(target) ? target : [target];
+    }
+  });
+
   Object.extend(Array.prototype, {
     // [ a | b | c ] [ x | y | z ]
     and: function and(arr, separator) {

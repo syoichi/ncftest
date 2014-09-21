@@ -132,7 +132,7 @@
     },
     getScoreData: function getScoreData() {
       var passed = 0,
-          tests = this.getFeatureTestList(),
+          tests = Array.wrap(this.feature.support.getTests(this.feature)),
           idx, testsLen, test, results, success;
 
       for (idx = 0, testsLen = tests.length; idx < testsLen; idx += 1) {
@@ -156,29 +156,6 @@
         passed: passed,
         total: testsLen
       };
-    },
-    getFeatureTestList: function getFeatureTestList() {
-      var category = this.feature.category,
-          featureList = this.feature.list,
-          featureName = this.feature.name,
-          featureTest = featureList[featureName],
-          tests;
-
-      if (category === 'value' && !featureList.properties) {
-        tests = featureTest.values;
-      } else if (category === 'unit') {
-        tests = '1' + featureName;
-      } else if (category === 'keyword') {
-        tests = featureName;
-      } else if (category === 'atrule' && Object.isObject(featureTest)) {
-        tests = featureTest.values;
-      } else if (category === 'descriptor' && Object.isObject(featureTest)) {
-        tests = featureTest.values || Object.keys(featureTest);
-      } else {
-        tests = featureTest;
-      }
-
-      return Array.isArray(tests) ? tests : [tests];
     },
     createFeatureTest: function createFeatureTest(test, results, success) {
       var dd = this.feature.item.appendChild(doc.createElement('dd')),
