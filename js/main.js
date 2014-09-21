@@ -133,23 +133,23 @@
     getScoreData: function getScoreData() {
       var passed = 0,
           tests = this.getFeatureTestList(),
-          idx, testsLen, testResults, results, success;
+          idx, testsLen, test, results, success;
 
       for (idx = 0, testsLen = tests.length; idx < testsLen; idx += 1) {
-        testResults = this.getTestResults(idx, tests);
-
-        if (testResults.testsLen) {
-          testsLen = testResults.testsLen;
-        }
-
-        results = testResults.results;
+        test = tests[idx];
+        results = this.feature.support.getResults({
+          test: test,
+          featureName: this.feature.name,
+          featureList: this.feature.list,
+          spec: this.spec
+        });
         success = typeof results === 'object' ?
           results.success :
           Number(Boolean(results));
 
-        passed += Number(success);
+        passed += success;
 
-        this.createFeatureTest(testResults.test, results, success);
+        this.createFeatureTest(test, results, success);
       }
 
       return {
@@ -160,11 +160,16 @@
     getFeatureTestList: function getFeatureTestList() {
       var category = this.feature.category,
           featureList = this.feature.list,
-          featureTest = featureList[this.feature.name],
+          featureName = this.feature.name,
+          featureTest = featureList[featureName],
           tests;
 
       if (category === 'value' && !featureList.properties) {
         tests = featureTest.values;
+      } else if (category === 'unit') {
+        tests = '1' + featureName;
+      } else if (category === 'keyword') {
+        tests = featureName;
       } else if (category === 'atrule' && Object.isObject(featureTest)) {
         tests = featureTest.values;
       } else if (category === 'descriptor' && Object.isObject(featureTest)) {
@@ -174,33 +179,6 @@
       }
 
       return Array.isArray(tests) ? tests : [tests];
-    },
-    getTestResults: function getTestResults(index, tests) {
-      var category = this.feature.category,
-          featureName = this.feature.name,
-          testsLen, test;
-
-      if (category === 'unit') {
-        testsLen = 1;
-        test = '1' + featureName;
-      } else if (category === 'keyword') {
-        testsLen = 1;
-        test = featureName;
-      } else {
-        test = tests[index];
-      }
-
-      return {
-        testsLen: testsLen,
-        test: test,
-        results: this.feature.support.getResults({
-          test: test,
-          featureName: featureName,
-          featureList: this.feature.list,
-          featureTestList: tests,
-          spec: this.spec
-        })
-      };
     },
     createFeatureTest: function createFeatureTest(test, results, success) {
       var dd = this.feature.item.appendChild(doc.createElement('dd')),

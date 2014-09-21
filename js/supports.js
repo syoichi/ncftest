@@ -138,7 +138,7 @@
       name: 'keywords',
       getResults: function getResults(info) {
         var keyword = info.featureName,
-            properties = info.featureTestList;
+            properties = info.featureList[keyword];
 
         return collectValueResults(function callback(property) {
           return Supports.keyword.check(property, keyword);
@@ -175,7 +175,7 @@
       name: 'units',
       getResults: function getResults(info) {
         var unit = info.featureName,
-            properties = info.featureTestList;
+            properties = info.featureList[unit];
 
         return collectValueResults(function callback(property) {
           return Supports.unit.check(property, unit);
