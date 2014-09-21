@@ -105,11 +105,7 @@
       getTests: function getTests(info) {
         var featureTest = info.featureTest;
 
-        if (info.featureList.properties) {
-          return featureTest;
-        }
-
-        return featureTest.values;
+        return Object.isObject(featureTest) ? featureTest.values : featureTest;
       },
       getResults: function getResults(info) {
         var value = info.test,
@@ -262,11 +258,7 @@
       getTests: function getTests(info) {
         var featureTest = info.featureTest;
 
-        if (Object.isObject(featureTest)) {
-          return featureTest.values;
-        }
-
-        return featureTest;
+        return Object.isObject(featureTest) ? featureTest.values : featureTest;
       },
       getResults: function getResults(info) {
         var atrule = info.test,
@@ -319,11 +311,9 @@
       getTests: function getTests(info) {
         var featureTest = info.featureTest;
 
-        if (Object.isObject(featureTest)) {
-          return featureTest.values || Object.keys(featureTest);
-        }
-
-        return featureTest;
+        return Object.isObject(featureTest) ?
+          featureTest.values || Object.keys(featureTest) :
+          featureTest;
       },
       getResults: function getResults(info) {
         var value = info.test,
@@ -373,9 +363,9 @@
           specAtrule = info.spec.atrule;
           atruleName = featureList.atruleName = Object.keys(specAtrule)[0];
           featureTest = specAtrule[atruleName];
-          atruleNameValue = Object.isObject(featureTest) ?
-            featureTest.values :
-            featureTest;
+          atruleNameValue = Supports.atrule.getTests({
+            featureTest: featureTest
+          });
           atrule = featureList.atrule = Array.isArray(atruleNameValue) ?
             atruleNameValue[0] :
             atruleNameValue;
