@@ -66,8 +66,8 @@
   NCFTest.Supports = Supports = {
     property: {
       name: 'properties',
-      getTests: function getTests(feature) {
-        return feature.list[feature.name];
+      getTests: function getTests(info) {
+        return info.featureTest;
       },
       getResults: function getResults(info) {
         var value = info.test,
@@ -102,11 +102,10 @@
     },
     value: {
       name: 'values',
-      getTests: function getTests(feature) {
-        var featureList = feature.list,
-            featureTest = featureList[feature.name];
+      getTests: function getTests(info) {
+        var featureTest = info.featureTest;
 
-        if (featureList.properties) {
+        if (info.featureList.properties) {
           return featureTest;
         }
 
@@ -115,9 +114,8 @@
       getResults: function getResults(info) {
         var value = info.test,
             label = info.featureName,
-            featureList = info.featureList,
-            properties = featureList.properties ||
-              featureList[label].properties;
+            properties = info.featureList.properties ||
+              info.featureTest.properties;
 
         return collectValueResults(function callback(property) {
           return Supports.value.check(property, value, label);
@@ -149,12 +147,12 @@
     },
     keyword: {
       name: 'keywords',
-      getTests: function getTests(feature) {
-        return feature.name;
+      getTests: function getTests(info) {
+        return info.featureName;
       },
       getResults: function getResults(info) {
         var keyword = info.featureName,
-            properties = info.featureList[keyword];
+            properties = info.featureTest;
 
         return collectValueResults(function callback(property) {
           return Supports.keyword.check(property, keyword);
@@ -189,12 +187,12 @@
     },
     unit: {
       name: 'units',
-      getTests: function getTests(feature) {
-        return '1' + feature.name;
+      getTests: function getTests(info) {
+        return '1' + info.featureName;
       },
       getResults: function getResults(info) {
         var unit = info.featureName,
-            properties = info.featureList[unit];
+            properties = info.featureTest;
 
         return collectValueResults(function callback(property) {
           return Supports.unit.check(property, unit);
@@ -230,8 +228,8 @@
     },
     selector: {
       name: 'selectors',
-      getTests: function getTests(feature) {
-        return feature.list[feature.name];
+      getTests: function getTests(info) {
+        return info.featureTest;
       },
       getResults: function getResults(info) {
         var selector = info.test;
@@ -261,8 +259,8 @@
     },
     atrule: {
       name: '@rules',
-      getTests: function getTests(feature) {
-        var featureTest = feature.list[feature.name];
+      getTests: function getTests(info) {
+        var featureTest = info.featureTest;
 
         if (Object.isObject(featureTest)) {
           return featureTest.values;
@@ -273,7 +271,7 @@
       getResults: function getResults(info) {
         var atrule = info.test,
             atruleName = info.featureName,
-            featureTest = info.featureList[atruleName];
+            featureTest = info.featureTest;
 
         return this.check(atrule, atruleName, featureTest);
       },
@@ -318,8 +316,8 @@
     },
     descriptor: {
       name: 'descriptors',
-      getTests: function getTests(feature) {
-        var featureTest = feature.list[feature.name];
+      getTests: function getTests(info) {
+        var featureTest = info.featureTest;
 
         if (Object.isObject(featureTest)) {
           return featureTest.values || Object.keys(featureTest);
@@ -347,7 +345,7 @@
               atrule: atrule,
               descriptor: prefixed,
               value: value,
-              featureTest: info.featureList[descriptor]
+              featureTest: info.featureTest
             })) {
               if (cache[descriptor] === void 0) {
                 cache[descriptor] = prefixed;
@@ -428,8 +426,8 @@
     },
     ruleSelector: {
       name: '@rule selectors',
-      getTests: function getTests(feature) {
-        return feature.list[feature.name];
+      getTests: function getTests(info) {
+        return info.featureTest;
       },
       getResults: function getResults(info) {
         var ruleSelector = info.test,
@@ -486,8 +484,8 @@
     },
     mediaQuery: {
       name: 'Media queries',
-      getTests: function getTests(feature) {
-        return feature.list[feature.name];
+      getTests: function getTests(info) {
+        return info.featureTest;
       },
       getResults: function getResults(info) {
         var mq = info.test,

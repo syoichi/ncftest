@@ -132,15 +132,20 @@
     },
     getScoreData: function getScoreData() {
       var passed = 0,
-          tests = Array.wrap(this.feature.support.getTests(this.feature));
+          feature = this.feature,
+          support = feature.support,
+          info = {
+            featureName: feature.name,
+            featureList: feature.list,
+            featureTest: feature.list[feature.name],
+            spec: this.spec
+          },
+          tests = Array.wrap(support.getTests(info));
 
       tests.forEach(function countSuccess(test) {
-        var results = this.feature.support.getResults({
-              test: test,
-              featureName: this.feature.name,
-              featureList: this.feature.list,
-              spec: this.spec
-            }),
+        var results = support.getResults(Object.assign({
+              test: test
+            }, info)),
             success = this.getSuccess(results);
 
         passed += success;
