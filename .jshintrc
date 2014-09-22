@@ -13,7 +13,7 @@
   "strict": true,
   "maxparams": 3,
   "maxdepth": 5,
-  "maxstatements": 50,
+  "maxstatements": 30,
   "maxcomplexity": false,
   "maxlen": 80,
 
