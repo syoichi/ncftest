@@ -3018,10 +3018,10 @@
     },
 
     'web-animations': {
-      'title': 'Web Animations 1.0',
-      'dev': 'http://dev.w3.org/fxtf/web-animations/',
+      'title': 'Web Animations',
+      'dev': 'http://w3c.github.io/web-animations/',
       'property': {
-        // http://dev.w3.org/fxtf/web-animations/#dfn-step-timing-function-1
+        // http://w3c.github.io/web-animations/#typedef-step-timing-function
         'transition-timing-function': ['step-middle', 'steps(1, middle)'],
         'transition': ['none step-middle', 'steps(1, middle)'],
         'animation-timing-function': ['step-middle', 'steps(1, middle)'],
