@@ -236,7 +236,7 @@
         'line-grid': ['match-parent', 'create'],
         'line-snap': ['none', 'baseline', 'contain'],
         'box-snap': [
-          'none', 'before', 'after', 'center',
+          'none', 'block-start', 'block-end', 'center',
           'first-baseline', 'last-baseline'
         ]
       }
