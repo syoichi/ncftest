@@ -101,7 +101,7 @@
           'auto', 'inline-level', 'block-level', 'contents',
           'auto inline-level', 'none none', 'auto inline-level none'
         ],
-        'box-suppress': ['show', 'discard', 'hide'/*, 'normal'*/]
+        'box-suppress': ['show', 'discard', 'hide']
       }
     },
 
