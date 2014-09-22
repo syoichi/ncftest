@@ -476,6 +476,17 @@
       }
     },
 
+    'css-gcpm-4': {
+      'title': 'Generated Content for Paged Media Level 4',
+      'property': {
+        'flow-policy': ['extract', 'copy'],
+        'flow-persist': ['normal', 'persist', 'static'].qmark([
+          'start', 'first', 'last', 'first-except'
+        ])/*,
+        'required-flow': ['footnote']*/
+      }
+    },
+
     'books': {
       'title': 'CSS Books',
       'dev': 'http://books.spec.whatwg.org/',
