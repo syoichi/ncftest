@@ -3240,6 +3240,25 @@
           ['pan-x'].or(['pan-y'])
         )
       }
+    },
+
+    'webvtt': {
+      'title': 'WebVTT',
+      'dev': 'http://dev.w3.org/html5/webvtt/',
+      'selector': {
+        '::cue': '::cue',
+        // Presto crashes.
+        /*'::cue()': [
+          '::cue(#\\31)', '::cue(#transcript\\ credit)',
+          '::cue(v[voice="Esme"])', '::cue(v[voice="Mary"])',
+          '::cue(i)', '::cue(.loud)',
+          '::cue(c)', '::cue(b)', '::cue(u)', '::cue(ruby)', '::cue(rt)',
+          '::cue(v)', '::cue(lang)', '::cue(*)', '::cue(v[voice])',
+          '::cue(lang[lang])', '::cue(lang[lang="ja"])', '::cue(:lang(en))',
+          '::cue(v#track.loud[voice="John"]:lang(en))'
+        ],*/
+        '::cue-region': '::cue-region'
+      }
     }
   };
 }());
