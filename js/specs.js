@@ -3004,6 +3004,19 @@
       }
     },
 
+    'motion-1': {
+      'title': 'Motion Path Level 1',
+      'dev': 'http://dev.w3.org/fxtf/motion-1/',
+      'property': {
+        'motion-path': ['none'].concat(
+          basicShape, ['path("string")', 'url(foo.png)']
+        ),
+        'motion-position': ['0', '10px', '-10px', '10%', '-10%'],
+        'motion-rotation': ['auto'].concat(['auto', 'reverse'].amp(angle)),
+        'motion': ['none 0 auto 90deg', '10% 1turn reverse path("string")']
+      }
+    },
+
     'web-animations': {
       'title': 'Web Animations 1.0',
       'dev': 'http://dev.w3.org/fxtf/web-animations/',
