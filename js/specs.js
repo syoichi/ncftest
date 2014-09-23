@@ -1642,7 +1642,9 @@
       'title': 'Inline Layout',
       'tr': 'http://www.w3.org/TR/css3-linebox/',
       'property': {
-        'text-height': ['auto', 'font-size', 'text-size', 'max-size', '10.52'],
+        'text-height': [
+          'auto', 'font-size', 'text-size', 'max-size', '10.52', '-1'
+        ],
         'line-height': ['none'],
         'line-box-contain': ['block'].or(
           ['inline'], ['font'], ['glyphs'], ['replaced'], ['inline-box']
@@ -1666,14 +1668,17 @@
         ].concat(baseline),
         'alignment-adjust': [
           'auto', 'baseline', 'over-edge', 'under-edge',
-          '0%', '10%', '0cm', '10px'
+          '0%', '10%', '-10%', '0cm', '10px', '-10px'
         ].concat(baseline),
         'baseline-shift': [
-          'baseline', 'sub', 'super', '0%', '10%', '0cm', '10px'
+          'baseline', 'sub', 'super',
+          '0%', '10%', '-10%', '0cm', '10px', '-10px'
         ],
         'vertical-align': ['auto', 'central'],
         'inline-box-align': ['last', '1'],
-        'initial-letter': ['1', '1 1'],
+        'initial-letter': ['normal', '1', '1 1'],
+        'initial-letter-drop': ['normal', '1'],
+        'initial-letter-size': ['normal', '1'],
         'initial-letter-align': [
           'auto', 'alphabetic', 'hanging', 'ideographic'
         ]/*,
