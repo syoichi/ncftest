@@ -200,8 +200,8 @@
       }
     },
     getSpecTest: function getSpecTest() {
-      var tr = this.spec.tr || 'http://www.w3.org/TR/' + this.id + '/',
-          dev = this.spec.dev || 'http://dev.w3.org/csswg/' + this.id + '/';
+      var tr = this.spec.tr || 'https://www.w3.org/TR/' + this.id + '/',
+          dev = this.spec.dev || 'https://drafts.csswg.org/' + this.id + '/';
 
       this.section.insertAdjacentHTML('AfterBegin', [
         '<h1>' + this.title,
