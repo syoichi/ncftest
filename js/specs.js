@@ -113,7 +113,7 @@
   ];
   var flexDirection = ['row', 'row-reverse', 'column', 'column-reverse'];
   var flexWrap = ['nowrap', 'wrap', 'wrap-reverse'];
-  var flexBasis = ['main-size'].concat(width);
+  var flexBasis = ['content'].concat(width);
   var flexPosition = ['flex-start', 'flex-end', 'center'];
   var justifyContent = flexPosition.concat(['space-between', 'space-around']);
   var crossPosition = ['stretch', 'baseline'];
