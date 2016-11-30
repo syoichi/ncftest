@@ -1,5 +1,3 @@
-/* global NCFTest, CSS */
-
 (function executeSupports(doc) {
   'use strict';
 
@@ -245,7 +243,9 @@
             cache[selector] = prefixed;
 
             return prefixed;
-          } catch (err) { }
+          } catch (err) {
+            // do nothing
+          }
         }
 
         cache[selector] = '';

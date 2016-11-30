@@ -1,12 +1,18 @@
 {
   "scripts": {
-    "test": "grunt"
+    "test": "eslint js/"
   },
   "devDependencies": {
-    "grunt": "",
-    "grunt-cli": "",
-    "grunt-contrib-jshint": "",
-    "grunt-jscs": ""
+    "eslint": ""
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "env": {
+      "browser": true
+    },
+    "globals": {
+      "NCFTest": true
+    }
   },
   "engines": {
     "node": ">=7.2.0",

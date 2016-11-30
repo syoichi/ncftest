@@ -1,6 +1,3 @@
-/* jshint maxstatements: false */
-/* global NCFTest */
-
 (function executeInactiveSpecs() {
   'use strict';
 

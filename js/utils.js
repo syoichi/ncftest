@@ -1,5 +1,3 @@
-/* global CSS */
-
 (function executeUtils(win, doc) {
   'use strict';
 
@@ -23,7 +21,9 @@
         // Trident throws Undefined Error.
         try {
           inline[prop] = value;
-        } catch (err) { }
+        } catch (err) {
+          // do nothing
+        }
 
         return inline.length > 0;
       };

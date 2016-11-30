@@ -1,5 +1,3 @@
-/* global NCFTest */
-
 (function executeScoringAndTesting(doc) {
   'use strict';
 
